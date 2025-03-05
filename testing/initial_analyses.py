@@ -47,7 +47,7 @@ def get_wordnet_pos(word):
 
 def preprocess_text(text):
     """
-    Cleans and preprocesses text by removing stopwords, tokenizing, and lemmatizing with NLTK.
+    Cleans and preprocesses text by removing stopwords and tokenizing (without lemmatization).
 
     :param text: Raw text to preprocess.
     :return: Preprocessed text as a single string.
@@ -55,17 +55,37 @@ def preprocess_text(text):
     # Unescape HTML characters
     text = html.unescape(text)
 
-    # Remove special characters, URLs, and extra spaces
+    # Remove special characters, URLs, and extra spaces; convert to lowercase
     text = re.sub(r"http\S+|www\S+|[^a-zA-Z\s]", " ", text.lower())
 
     # Tokenization
     words = word_tokenize(text)
 
-    # Lemmatization & Stopword Removal
-    processed_tokens = [lemmatizer.lemmatize(word, get_wordnet_pos(word)) for word in words if word not in STOPWORDS]
+    # Stopword removal (without lemmatization)
+    processed_tokens = [word for word in words if word not in STOPWORDS]
 
     return " ".join(processed_tokens)
 
+def preprocess_text_lemmatize(text):
+    """
+    Cleans and preprocesses text by removing stopwords and tokenizing (without lemmatization).
+
+    :param text: Raw text to preprocess.
+    :return: Preprocessed text as a single string.
+    """
+    # Unescape HTML characters
+    text = html.unescape(text)
+
+    # Remove special characters, URLs, and extra spaces; convert to lowercase
+    text = re.sub(r"http\S+|www\S+|[^a-zA-Z\s]", " ", text.lower())
+
+    # Tokenization
+    words = word_tokenize(text)
+
+    # Stopword removal (without lemmatization)
+    processed_tokens = [lemmatizer.lemmatize(word, get_wordnet_pos(word)) for word in words if word not in STOPWORDS]
+    
+    return " ".join(processed_tokens)
 
 def apply_lsa(corpus, num_topics):
     """

@@ -65,8 +65,9 @@ print(f"Total candidate terms: {len(candidate_terms)}")
 # 3. LOAD PRETRAINED MODEL (BIO+CLINICALBERT) AND DEFINE EMBEDDING FUNCTION
 ##############################################################################
 
-model_name = "emilyalsentzer/Bio_ClinicalBERT"
-tokenizer = AutoTokenizer.from_pretrained(model_name)
+# model_name = "emilyalsentzer/Bio_ClinicalBERT"
+model_name = "bioclinicalbert_noburp_pretrained/final_model"
+tokenizer = AutoTokenizer.from_pretrained("emilyalsentzer/Bio_ClinicalBERT")
 model = AutoModel.from_pretrained(model_name)
 model.eval()  # inference mode
 
