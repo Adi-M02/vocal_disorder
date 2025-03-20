@@ -11,6 +11,9 @@ import os
 from collections import Counter
 from nltk.util import ngrams
 
+SYMPTOM_DISEASE_SUBREDDITS = ["emetophobia", "anxiety", "gerd", "ibs", "sibo", "emetophobiarecovery", "pots", "gastritis", "healthanxiety"]
+SELF_HELP_MEDICATION_SUBREDDITS = ["trees", "advice", "drugs", "supplements", "shrooms"]
+
 sys.path.append("/local/disk2/not_backed_up/amukundan/research/vocal_disorder")
 import query_mongo as query
 
@@ -44,7 +47,7 @@ def get_wordnet_pos(word):
 
 def preprocess_text(text):
     """
-    Cleans and preprocesses text by removing stopwords, tokenizing, and lemmatizing with NLTK.
+    Cleans and preprocesses text by removing stopwords and tokenizing (without lemmatization).
 
     :param text: Raw text to preprocess.
     :return: Preprocessed text as a single string.
@@ -52,17 +55,37 @@ def preprocess_text(text):
     # Unescape HTML characters
     text = html.unescape(text)
 
-    # Remove special characters, URLs, and extra spaces
+    # Remove special characters, URLs, and extra spaces; convert to lowercase
     text = re.sub(r"http\S+|www\S+|[^a-zA-Z\s]", " ", text.lower())
 
     # Tokenization
     words = word_tokenize(text)
 
-    # Lemmatization & Stopword Removal
-    processed_tokens = [lemmatizer.lemmatize(word, get_wordnet_pos(word)) for word in words if word not in STOPWORDS]
+    # Stopword removal (without lemmatization)
+    processed_tokens = [word for word in words if word not in STOPWORDS]
 
     return " ".join(processed_tokens)
 
+def preprocess_text_lemmatize(text):
+    """
+    Cleans and preprocesses text by removing stopwords and tokenizing (without lemmatization).
+
+    :param text: Raw text to preprocess.
+    :return: Preprocessed text as a single string.
+    """
+    # Unescape HTML characters
+    text = html.unescape(text)
+
+    # Remove special characters, URLs, and extra spaces; convert to lowercase
+    text = re.sub(r"http\S+|www\S+|[^a-zA-Z\s]", " ", text.lower())
+
+    # Tokenization
+    words = word_tokenize(text)
+
+    # Stopword removal (without lemmatization)
+    processed_tokens = [lemmatizer.lemmatize(word, get_wordnet_pos(word)) for word in words if word not in STOPWORDS]
+    
+    return " ".join(processed_tokens)
 
 def apply_lsa(corpus, num_topics):
     """
@@ -91,53 +114,57 @@ def apply_lsa(corpus, num_topics):
 
 
 if __name__ == "__main__":
-    subreddit = "noburp"
-    raw_posts = query.get_posts_by_subreddit(subreddit)
+    # subreddit = "noburp"
+    # raw_posts = query.get_posts_by_subreddit(subreddit)
+
+    raw_posts = query.get_posts_by_subreddits(SELF_HELP_MEDICATION_SUBREDDITS)
+    print(raw_posts[0])
 
     if not raw_posts:
         print("No posts found for the given subreddit.")
     else:
         # Preprocess all posts
         processed_posts = [preprocess_text(post['selftext']) for post in raw_posts]
+        
 
-        # Apply LSA to find related concepts
-        topics = apply_lsa(processed_posts, 5)
+        # # Apply LSA to find related concepts
+        # topics = apply_lsa(processed_posts, 5)
 
-        # Print discovered topics
-        print("\nLSA Topics Found:")
-        for topic in topics:
-            print(topic)
+        # # Print discovered topics
+        # print("\nLSA Topics Found:")
+        # for topic in topics:
+        #     print(topic)
 
-        vectorizer = TfidfVectorizer(max_df=0.9, min_df=5, stop_words="english")
-        tfidf_matrix = vectorizer.fit_transform(processed_posts)
-        feature_names = vectorizer.get_feature_names_out()
+        # vectorizer = TfidfVectorizer(max_df=0.9, min_df=5, stop_words="english")
+        # tfidf_matrix = vectorizer.fit_transform(processed_posts)
+        # feature_names = vectorizer.get_feature_names_out()
 
-        # Get the top TF-IDF terms
-        top_n = 20
-        sorted_tfidf = sorted(zip(vectorizer.idf_, feature_names))[:top_n]
-        print("Top TF-IDF Terms:", [word for _, word in sorted_tfidf])
+        # # Get the top TF-IDF terms
+        # top_n = 20
+        # sorted_tfidf = sorted(zip(vectorizer.idf_, feature_names))[:top_n]
+        # print("Top TF-IDF Terms:", [word for _, word in sorted_tfidf])
 
-        def get_top_ngrams(corpus, n=2, top_n=10):
-            all_ngrams = [ngram for text in corpus for ngram in ngrams(text.split(), n)]
-            ngram_counts = Counter(all_ngrams)
-            return ngram_counts.most_common(top_n)
+        # def get_top_ngrams(corpus, n=2, top_n=10):
+        #     all_ngrams = [ngram for text in corpus for ngram in ngrams(text.split(), n)]
+        #     ngram_counts = Counter(all_ngrams)
+        #     return ngram_counts.most_common(top_n)
 
-        # Find common bigrams (2-word phrases)
-        print("Top Bigrams:", get_top_ngrams(processed_posts, n=2))
+        # # Find common bigrams (2-word phrases)
+        # print("Top Bigrams:", get_top_ngrams(processed_posts, n=2))
 
-        # Find common trigrams (3-word phrases)
-        print("Top Trigrams:", get_top_ngrams(processed_posts, n=3))
+        # # Find common trigrams (3-word phrases)
+        # print("Top Trigrams:", get_top_ngrams(processed_posts, n=3))
 
-        lda = LatentDirichletAllocation(n_components=5, random_state=42)
-        lda_matrix = lda.fit_transform(tfidf_matrix)
+        # lda = LatentDirichletAllocation(n_components=5, random_state=42)
+        # lda_matrix = lda.fit_transform(tfidf_matrix)
 
-        # Get the top words for each topic
-        terms = vectorizer.get_feature_names_out()
-        topics = []
-        for i, comp in enumerate(lda.components_):
-            top_words = [terms[j] for j in comp.argsort()[-10:]]
-            topics.append(f"Topic {i+1}: {', '.join(top_words)}")
+        # # Get the top words for each topic
+        # terms = vectorizer.get_feature_names_out()
+        # topics = []
+        # for i, comp in enumerate(lda.components_):
+        #     top_words = [terms[j] for j in comp.argsort()[-10:]]
+        #     topics.append(f"Topic {i+1}: {', '.join(top_words)}")
 
-        print("\nLDA Topics Found:")
-        for topic in topics:
-            print(topic)
+        # print("\nLDA Topics Found:")
+        # for topic in topics:
+        #     print(topic)
