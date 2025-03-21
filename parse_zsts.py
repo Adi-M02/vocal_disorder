@@ -14,7 +14,7 @@ log.setLevel(logging.INFO)
 log.addHandler(logging.StreamHandler())
 
 OUR_set = set() 
-def read_and_decode(reader, chunk_size, max_window_size, previous_chunk=None, bytes_read=0):
+def read_and_decode(reader, file_name, chunk_size, max_window_size, previous_chunk=None, bytes_read=0):
     chunk = reader.read(chunk_size)
     
     if not chunk:  # End of file reached
@@ -28,8 +28,7 @@ def read_and_decode(reader, chunk_size, max_window_size, previous_chunk=None, by
     try:
         return chunk.decode()
     except UnicodeDecodeError:
-        log.warning(f"Decoding error at {bytes_read:,} bytes, skipping problematic characters.")
-        
+        log.warning(f"Decoding error in file {file_name} at {bytes_read:,} bytes, skipping problematic characters.")
         # Option 1: Try decoding with 'replace' to avoid breaking
         return chunk.decode(errors="replace")
       
@@ -38,7 +37,8 @@ def read_lines_zst(file_name):
         buffer = ''
         reader = zstandard.ZstdDecompressor(max_window_size=2**31).stream_reader(file_handle)
         while True:
-            chunk = read_and_decode(reader, 2**27, (2**29) * 2)
+            # Pass the file_name to trace the source in case of errors.
+            chunk = read_and_decode(reader, file_name, 2**27, (2**29) * 2)
 
             if not chunk:
                 break

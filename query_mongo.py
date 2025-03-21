@@ -1,4 +1,8 @@
+import pymongo
 from pymongo import MongoClient
+from datetime import datetime
+from collections import defaultdict
+import logging
 import html
 import random
 
@@ -64,11 +68,161 @@ def get_posts_by_subreddits(subreddit_list, db_name="reddit", collection_name="n
     finally:
         client.close()  # Close the connection
 
-# Example usage
+def get_posts_by_users(users, subreddits=None, db_name="reddit", collection_name="posts", mongo_uri="mongodb://localhost:27017/"):
+    """
+    Returns a list of posts from the specified users, filtered by the given subreddits if provided.
+    
+    Parameters:
+        users (list): List of user names (strings) whose posts to retrieve.
+        subreddits (list, optional): List of subreddit names (strings) to filter posts.
+                                     If None or empty, returns all posts by the users.
+        db_name (str): Name of the MongoDB database.
+        collection_name (str): Name of the collection containing posts.
+        mongo_uri (str): MongoDB connection string.
+    
+    Returns:
+        list: A list of post documents matching the query.
+    """
+    # Build the query to include only posts by the specified users.
+    query = {"author": {"$in": users}}
+    # If a list of subreddits is provided, add it to the query.
+    if subreddits and len(subreddits) > 0:
+        query["subreddit"] = {"$in": subreddits}
+    
+    client = pymongo.MongoClient(mongo_uri)
+    db = client[db_name]
+    collection = db[collection_name]
+    
+    posts = list(collection.find(query))
+    client.close()
+    
+    return posts
+
+
+def write_all_users_posts(mongo_uri="mongodb://localhost:27017/",
+                          db_name="reddit", collection_name="posts",
+                          filter_subreddits=None, filter_num_posts=None,
+                          output_file=None):
+    """
+    Queries MongoDB for all posts, groups them by author, sorts authors
+    by the number of posts in the filtered subreddits (if provided; otherwise by total post count),
+    and writes only posts whose subreddit is in the filtered list to a .txt file.
+
+    In the header for each author, the function prints:
+      - Author (username)
+      - Total number of posts for that author (unfiltered)
+      - Number of posts in the filtered subreddits
+
+    Authors are processed only if they have more than `filter_num_posts` posts
+    in the filtered subreddits.
+
+    The 'created_utc' field is used to display the time in a human-readable format.
+
+    Parameters:
+        mongo_uri (str): MongoDB connection string.
+        db_name (str): Name of the MongoDB database.
+        collection_name (str): Name of the collection containing posts.
+        filter_subreddits (list): List of subreddit names (strings) to include posts.
+        filter_num_posts (int): Minimum number of posts in the filtered subreddits required to process an author.
+        output_file (str): Path to the output .txt file.
+    """
+    # Configure logging
+    logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
+    
+    logging.info("Connecting to MongoDB at %s", mongo_uri)
+    client = pymongo.MongoClient(mongo_uri)
+    db = client[db_name]
+    collection = db[collection_name]
+    
+    logging.info("Querying posts from collection '%s' in database '%s'", collection_name, db_name)
+    posts_cursor = collection.find({})
+    
+    logging.info("Grouping posts by author")
+    posts_by_author = defaultdict(list)
+    total_posts = 0
+    for post in posts_cursor:
+        author = post.get("author", "Unknown")
+        posts_by_author[author].append(post)
+        total_posts += 1
+    logging.info("Total posts retrieved: %d", total_posts)
+    logging.info("Total authors found: %d", len(posts_by_author))
+    
+    # Sort authors by number of posts in the filtered subreddits if filter_subreddits is provided,
+    # otherwise sort by total number of posts.
+    if filter_subreddits:
+        filter_list = [s.lower() for s in filter_subreddits]
+        sorted_authors = sorted(posts_by_author.keys(), 
+                                key=lambda a: sum(1 for post in posts_by_author[a] 
+                                                  if post.get("subreddit", "").lower() in filter_list),
+                                reverse=True)
+    else:
+        sorted_authors = sorted(posts_by_author.keys(), key=lambda a: len(posts_by_author[a]), reverse=True)
+    
+    total_written_posts = 0
+    logging.info("Writing output to file: %s", output_file)
+    with open(output_file, "w", encoding="utf-8") as f:
+        for i, author in enumerate(sorted_authors, start=1):
+            author_posts = posts_by_author[author]
+            total_author_posts = len(author_posts)
+            
+            # Only include posts in the filtered subreddit list.
+            if filter_subreddits:
+                filter_list = [s.lower() for s in filter_subreddits]
+                filtered_posts = [post for post in author_posts if post.get("subreddit", "").lower() in filter_list]
+            else:
+                filtered_posts = author_posts
+            
+            count_filtered = len(filtered_posts)
+            
+            # Skip authors who don't have enough filtered posts if specified.
+            if filter_num_posts and count_filtered <= filter_num_posts:
+                continue
+            
+            f.write("#" * 80 + "\n")
+            header = f"Author: {author} - Total posts: {total_author_posts} - Filtered posts: {count_filtered}"
+            f.write(header + "\n")
+            f.write("#" * 80 + "\n")
+            
+            logging.info("Processing author %d/%d: %s with %d filtered posts", i, len(sorted_authors), author, count_filtered)
+            
+            # Sort the filtered posts by created_utc (ascending)
+            filtered_posts.sort(key=lambda p: p.get("created_utc", 0))
+            
+            posts_written_for_author = 0
+            for post in filtered_posts:
+                subreddit = post.get("subreddit", "N/A")
+                timestamp = post.get("created_utc", None)
+                if isinstance(timestamp, (int, float)):
+                    time_str = datetime.fromtimestamp(timestamp).strftime("%Y-%m-%d %H:%M:%S")
+                elif isinstance(timestamp, datetime):
+                    time_str = timestamp.strftime("%Y-%m-%d %H:%M:%S")
+                else:
+                    time_str = "Unknown time"
+                title = post.get("title", "N/A")
+                selftext = html.unescape(post.get("selftext", "N/A"))
+                
+                f.write("=" * 80 + "\n")
+                f.write(f"Subreddit: {subreddit}\n")
+                f.write(f"Time     : {time_str}\n")
+                f.write(f"Title    : {title}\n")
+                f.write("Selftext :\n")
+                f.write(selftext + "\n")
+                f.write("=" * 80 + "\n\n")
+                
+                posts_written_for_author += 1
+                total_written_posts += 1
+            
+            f.write("\n\n")
+            logging.info("Finished writing %d posts for author: %s", posts_written_for_author, author)
+    
+    client.close()
+    logging.info("Finished writing all authors' posts. Total posts written: %d", total_written_posts)
+    logging.info("Output saved to %s", output_file)
+
+
 if __name__ == "__main__":
-    posts = get_posts_by_subreddit("noburp")
-    print(f"Found {len(posts)} posts.")
-    # Print 5 random posts (for preview)
-    random_posts = random.sample(posts, min(5, len(posts)))
-    for post in random_posts:
-        print(html.unescape(post["selftext"]))
+    # filter_subreddits = ["noburp", "emetophobia", "anxiety", "gerd", "ibs", "sibo", "emetophobiarecovery", "pots", "gastritis", "healthanxiety", "trees", "advice", "supplements"]
+    filter_subreddits = ["noburp"]
+    write_all_users_posts(mongo_uri="mongodb://localhost:27017/",
+                          db_name="reddit", collection_name="noburp_posts",
+                          filter_subreddits=filter_subreddits, filter_num_posts=3, output_file="user_posts.txt")
