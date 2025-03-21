@@ -11,7 +11,7 @@ import logging
 import parse_zsts as pz
 
 AUTHOR_SET = set()
-with open("user_lists/noburp_users.txt", "r") as f:
+with open("user_lists/no_burp_users_2.txt", "r") as f:
      for line in f:
          AUTHOR_SET.add(line.strip())
 
@@ -41,10 +41,11 @@ def get_authors(args):
     return user_set
 
 def get_user_set(input_folder, subreddit, num_workers):
+    ignored_files = ['RS_2021-07.zst']
     files = [
         (os.path.join(input_folder, file_name), subreddit, idx + 1, len(os.listdir(input_folder)))
         for idx, file_name in enumerate(os.listdir(input_folder))
-        if not file_name.startswith(".") and file_name.endswith(".zst")
+        if not file_name.startswith(".") and file_name.endswith(".zst") and file_name not in ignored_files
     ]
 
     user_set = set()
@@ -135,8 +136,12 @@ if __name__ == "__main__":
     log.setLevel(logging.INFO)
     if not log.handlers:
         log.addHandler(logging.StreamHandler())
-    input_folder = "/local/disk3/not_backed_up/amukundan/2009_to_2024_posts/"
+    input_folder = "/local/disk3/not_backed_up/amukundan/2009_to_2025_posts/"
     subreddit = "noburp"
+    # users = get_user_set(input_folder, subreddit, num_workers=os.cpu_count())
+    # with open("user_lists/no_burp_users_2.txt", "w") as f:
+    #     for user in users:
+    #         f.write(user + "\n")
     client = MongoClient()
     db = client["reddit"]
     collection = db["noburp_posts"]
@@ -146,4 +151,4 @@ if __name__ == "__main__":
     except Exception as e:
         log.info(f"MongoDB connection failed: {e}")
 
-    enter_posts_to_mongodb(input_folder, "reddit", "noburp_posts", AUTHOR_SET)
+    enter_posts_to_mongodb(input_folder, "reddit", "noburp_posts_2", AUTHOR_SET)
