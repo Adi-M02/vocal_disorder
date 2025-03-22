@@ -225,4 +225,4 @@ if __name__ == "__main__":
     filter_subreddits = ["noburp"]
     write_all_users_posts(mongo_uri="mongodb://localhost:27017/",
                           db_name="reddit", collection_name="noburp_posts",
-                          filter_subreddits=filter_subreddits, filter_num_posts=3, output_file="user_posts.txt")
+                          filter_subreddits=filter_subreddits, filter_num_posts=3, output_file="user_posts_new.txt")
