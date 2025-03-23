@@ -28,5 +28,7 @@ def extract_highlighted_words(file_path):
     highlighted_words = re.findall(r'\[\[hl\]\](.*?)\[\[\/hl\]\]', text)
     return highlighted_words
 
-words = extract_highlighted_words('user_posts.txt')
-print(words)
+# words = extract_highlighted_words('user_posts.txt')
+# print(words)
+if __name__ == "__main__":
+    pass
