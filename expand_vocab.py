@@ -100,7 +100,7 @@ def load_and_preprocess_posts(subreddits, query_module, preprocess_function):
     Returns:
         list: A list of processed post texts.
     """
-    raw_posts = query_module.get_posts_by_subreddits(subreddits)
+    raw_posts = query_module.get_posts_by_subreddits(subreddits, collection_name="noburp_posts")
     processed_posts = [preprocess_function(post['selftext']) for post in raw_posts]
     return processed_posts
 
@@ -349,10 +349,10 @@ if __name__ == "__main__":
                                                 min_freq_bigram=3,
                                                 min_freq_trigram=2,
                                                 model_name="emilyalsentzer/Bio_ClinicalBERT",
-                                                convert_underscores=False,
+                                                convert_underscores=True,
                                                 batch_size=64,
                                                 term_category_dict=TERM_CATEGORY_DICT,
-                                                top_n=10,
+                                                top_n=20,
                                                 device="cuda")
     for cat, terms in updated_dict.items():
         print(f"{cat}: {terms}")
