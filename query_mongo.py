@@ -219,6 +219,29 @@ def write_all_users_posts(mongo_uri="mongodb://localhost:27017/",
     logging.info("Finished writing all authors' posts. Total posts written: %d", total_written_posts)
     logging.info("Output saved to %s", output_file)
 
+def return_user_posts(mongo_uri="mongodb://localhost:27017/",
+                          db_name="reddit", collection_name="noburp_posts_2",
+                          user=None, filter_subreddits=None):
+    client = pymongo.MongoClient(mongo_uri)
+    db = client[db_name]
+    collection = db[collection_name]
+    posts_cursor = collection.find({})
+    posts_by_author = defaultdict(list)
+    total_posts = 0
+    for post in posts_cursor:
+        author = post.get("author", "Unknown")
+        posts_by_author[author].append(post)
+        total_posts += 1
+    client.close()
+    if filter_subreddits:
+        filter_list = [s.lower() for s in filter_subreddits]
+        filtered_posts = [post for post in posts_by_author[user] if post.get("subreddit", "").lower() in filter_list]
+    else:
+        filtered_posts = posts_by_author[user]
+    return filtered_posts
+
+    
+
 
 if __name__ == "__main__":
     # filter_subreddits = ["noburp", "emetophobia", "anxiety", "gerd", "ibs", "sibo", "emetophobiarecovery", "pots", "gastritis", "healthanxiety", "trees", "advice", "supplements"]

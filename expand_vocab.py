@@ -84,7 +84,7 @@ def preprocess_text_lemmatize(text):
     # Tokenization
     words = word_tokenize(text)
 
-    # Stopword removal (wit lemmatization)
+    # Stopword removal (with lemmatization)
     processed_tokens = [lemmatizer.lemmatize(word, get_wordnet_pos(word)) for word in words if word not in STOPWORDS]
     
     return " ".join(processed_tokens)
