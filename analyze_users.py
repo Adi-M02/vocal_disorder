@@ -12,7 +12,7 @@ import query_mongo as query
 import text_processing as text
 from rcpd_terms import rcpd_terms
 
-manually_analyzed_users = ['ThinkSuccotash']
+manually_analyzed_users = ['ThinkSuccotash', 'ScratchGolfer1976', 'Mobile-Breakfast-526', 'Wrob88', 'Tornteddie', 'AmazingAd5243', ]
 
 term_categories = rcpd_terms
 
@@ -26,7 +26,7 @@ def preprocess_terms(category_terms):
     processed = {}
     for term in category_terms:
         term_clean = term.replace('_', ' ').lower()
-        processed[term_clean] = re.compile(r'\\b' + re.escape(term_clean) + r'\\b')
+        processed[term_clean] = re.compile(r'\b' + re.escape(term_clean) + r'\b')
     return processed
 
 # Count occurrences avoiding double counting
@@ -45,15 +45,13 @@ def count_category_occurrences(text, processed_terms):
 
 # Prepare DataFrame for user analysis
 def prepare_user_dataframe(username):
-    posts = query.return_user_posts(user=username)
+    posts = query.return_user_posts(user=username, filter_subreddits=["noburp"])
     log.info(f"Retrieved {len(posts)} posts for user {username}")
     df = pd.DataFrame(posts)
     df["date"] = pd.to_datetime(df["created_utc"], unit='s')
     df.sort_values(by="date", inplace=True)
 
     df["selftext"] = df["selftext"].fillna("").apply(text.preprocess_text)
-    print(df["selftext"].head(10))
-    return
     processed_category_terms = {cat: preprocess_terms(terms) for cat, terms in term_categories.items()}
 
     for category, processed_terms in processed_category_terms.items():
@@ -94,7 +92,7 @@ def category_transition_matrix(df):
     plt.xlabel("Next Category")
     plt.show()
 
-def survival_analysis(df, event_category="Alternative Treatments"):
+def survival_analysis(df, event_category="Self-Treatment & Behavioral Interventions"):
     df["event"] = df[event_category] > 0
     df["timeline"] = (df["date"] - df["date"].iloc[0]).dt.days
 

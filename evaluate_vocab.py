@@ -90,3 +90,5 @@ if __name__ == "__main__":
     print("✅ Terms found by BOTH dictionary and manual list:", agreement_terms)
     print("📙 Terms found ONLY by dictionary:", dict_only_terms)
     print("✏️ Terms found ONLY by manual list:", manual_only_terms)
+    print()
+    print(manual_terms)
