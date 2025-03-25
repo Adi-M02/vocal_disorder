@@ -1,0 +1,144 @@
+import pandas as pd
+import numpy as np
+import re
+import logging
+import matplotlib.pyplot as plt
+import seaborn as sns
+from collections import Counter, defaultdict
+from textblob import TextBlob
+from lifelines import KaplanMeierFitter
+from datetime import datetime
+import query_mongo as query
+import text_processing as text
+from rcpd_terms import rcpd_terms
+
+manually_analyzed_users = ['ThinkSuccotash']
+
+term_categories = rcpd_terms
+
+log = logging.getLogger("bot")
+log.setLevel(logging.INFO)
+if not log.handlers:
+    log.addHandler(logging.StreamHandler())
+
+# Preprocess terms for accurate bi/trigram matching
+def preprocess_terms(category_terms):
+    processed = {}
+    for term in category_terms:
+        term_clean = term.replace('_', ' ').lower()
+        processed[term_clean] = re.compile(r'\\b' + re.escape(term_clean) + r'\\b')
+    return processed
+
+# Count occurrences avoiding double counting
+def count_category_occurrences(text, processed_terms):
+    text_lower = text.lower()
+    matched_spans = []
+    count = 0
+    # Sort terms by length to prioritize bi/trigrams
+    for term, pattern in sorted(processed_terms.items(), key=lambda x: -len(x[0])):
+        for match in pattern.finditer(text_lower):
+            span = match.span()
+            if not any(span[0] >= existing_span[0] and span[1] <= existing_span[1] for existing_span in matched_spans):
+                matched_spans.append(span)
+                count += 1
+    return count
+
+# Prepare DataFrame for user analysis
+def prepare_user_dataframe(username):
+    posts = query.return_user_posts(user=username)
+    log.info(f"Retrieved {len(posts)} posts for user {username}")
+    df = pd.DataFrame(posts)
+    df["date"] = pd.to_datetime(df["created_utc"], unit='s')
+    df.sort_values(by="date", inplace=True)
+
+    df["selftext"] = df["selftext"].fillna("").apply(text.preprocess_text)
+    print(df["selftext"].head(10))
+    return
+    processed_category_terms = {cat: preprocess_terms(terms) for cat, terms in term_categories.items()}
+
+    for category, processed_terms in processed_category_terms.items():
+        df[category] = df["selftext"].apply(lambda x: count_category_occurrences(x, processed_terms))
+
+    df["month"] = df["date"].dt.to_period("M")
+    return df
+
+# Analysis Functions
+def plot_category_trends(df, username):
+    monthly = df.groupby("month")[list(term_categories.keys())].sum()
+    monthly.plot(marker='o', figsize=(12,6), title=f"Category Trends Over Time for {username}")
+    plt.xlabel("Month")
+    plt.ylabel("Occurrences")
+    plt.xticks(rotation=45)
+    plt.tight_layout()
+    plt.show()
+
+def sentiment_analysis(df):
+    df["sentiment"] = df["selftext"].apply(lambda x: TextBlob(x).sentiment.polarity)
+    monthly_sentiment = df.groupby("month")["sentiment"].mean()
+
+    monthly_sentiment.plot(marker='o', figsize=(10,5), title="Sentiment Trajectory")
+    plt.xlabel("Month")
+    plt.ylabel("Average Sentiment Polarity")
+    plt.xticks(rotation=45)
+    plt.tight_layout()
+    plt.show()
+
+def category_transition_matrix(df):
+    df["dominant_category"] = df[list(term_categories.keys())].idxmax(axis=1)
+    transitions = pd.crosstab(df["dominant_category"], df["dominant_category"].shift(-1), normalize='index')
+
+    plt.figure(figsize=(8,6))
+    sns.heatmap(transitions, annot=True, cmap="Blues")
+    plt.title("Category Transition Matrix")
+    plt.ylabel("Current Category")
+    plt.xlabel("Next Category")
+    plt.show()
+
+def survival_analysis(df, event_category="Alternative Treatments"):
+    df["event"] = df[event_category] > 0
+    df["timeline"] = (df["date"] - df["date"].iloc[0]).dt.days
+
+    kmf = KaplanMeierFitter()
+    kmf.fit(df["timeline"], event_observed=df["event"])
+
+    kmf.plot_survival_function()
+    plt.title("Time Until First Mention of Alternative Treatment")
+    plt.xlabel("Days")
+    plt.ylabel("Survival Probability (No Alternative Treatment Mentioned)")
+    plt.tight_layout()
+    plt.show()
+
+def category_cooccurrence_network(df):
+    import networkx as nx
+
+    G = nx.Graph()
+    for _, row in df.iterrows():
+        present_categories = [cat for cat in term_categories if row[cat] > 0]
+        for cat1 in present_categories:
+            for cat2 in present_categories:
+                if cat1 != cat2:
+                    if G.has_edge(cat1, cat2):
+                        G[cat1][cat2]['weight'] += 1
+                    else:
+                        G.add_edge(cat1, cat2, weight=1)
+
+    plt.figure(figsize=(8,6))
+    pos = nx.spring_layout(G, k=0.5)
+    edges = G.edges(data=True)
+    nx.draw(G, pos, with_labels=True, node_size=2000, node_color='lightblue', font_size=10)
+    nx.draw_networkx_edge_labels(G, pos, edge_labels={(u,v):d['weight'] for u,v,d in edges})
+    plt.title("Category Co-occurrence Network")
+    plt.show()
+
+# Main analysis function
+def run_full_user_analysis(username):
+    df = prepare_user_dataframe(username)
+
+    plot_category_trends(df, username)
+    sentiment_analysis(df)
+    category_transition_matrix(df)
+    survival_analysis(df)
+    category_cooccurrence_network(df)
+
+# Example usage:
+run_full_user_analysis("ThinkSuccotash")
