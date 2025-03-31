@@ -12,7 +12,7 @@ import query_mongo as query
 import text_processing as text
 from rcpd_terms import rcpd_terms
 
-manually_analyzed_users = ['ThinkSuccotash', 'ScratchGolfer1976', 'Mobile-Breakfast-526', 'Wrob88', 'Tornteddie', 'AmazingAd5243', ]
+manually_analyzed_users = ['ThinkSuccotash', 'ScratchGolfer1976', 'Mobile-Breakfast-526', 'Wrob88', 'tornteddie', 'AmazingAd5243', ]
 
 term_categories = rcpd_terms
 
@@ -134,9 +134,9 @@ def run_full_user_analysis(username):
 
     plot_category_trends(df, username)
     sentiment_analysis(df)
-    category_transition_matrix(df)
-    survival_analysis(df)
-    category_cooccurrence_network(df)
+    # category_transition_matrix(df)
+    # survival_analysis(df)
+    # category_cooccurrence_network(df)
 
 # Example usage:
-run_full_user_analysis("ThinkSuccotash")
+run_full_user_analysis("AmazingAd5243")
