@@ -247,5 +247,5 @@ if __name__ == "__main__":
     # filter_subreddits = ["noburp", "emetophobia", "anxiety", "gerd", "ibs", "sibo", "emetophobiarecovery", "pots", "gastritis", "healthanxiety", "trees", "advice", "supplements"]
     filter_subreddits = ["noburp"]
     write_all_users_posts(mongo_uri="mongodb://localhost:27017/",
-                          db_name="reddit", collection_name="noburp_posts",
+                          db_name="reddit", collection_name="noburp_posts_2",
                           filter_subreddits=filter_subreddits, filter_num_posts=3, output_file="user_posts_new.txt")
