@@ -9,9 +9,10 @@ from pymongo import MongoClient
 from pymongo.errors import PyMongoError
 import logging
 import parse_zsts as pz
+import html 
 
 AUTHOR_SET = set()
-with open("user_lists/no_burp_users_2.txt", "r") as f:
+with open("user_lists/no_burp_users.txt", "r") as f:
      for line in f:
          AUTHOR_SET.add(line.strip())
 
@@ -75,6 +76,12 @@ def process_file(filepath, db_name, collection_name, author_set, progress, total
                 obj = json.loads(line)
                 if obj.get('author') in author_set:
                     obj = pz.process_json_object(obj)
+
+                    # HTML unescape specified fields if they exist
+                    for field in ['body', 'title', 'selftext']:
+                        if field in obj and isinstance(obj[field], str):
+                            obj[field] = html.unescape(obj[field])
+
                     batch.append(obj)
 
                 processed_lines += 1
@@ -105,7 +112,7 @@ def process_file(filepath, db_name, collection_name, author_set, progress, total
     log.info(f"Completed {completed_files}/{total_files}: {filepath}")
 
 
-def enter_posts_to_mongodb(input_folder, db_name, collection_name, author_set):
+def enter_to_mongodb(input_folder, db_name, collection_name, author_set):
     """
     Uses multiprocessing to process all .zst files in input_folder.
     """
@@ -115,7 +122,6 @@ def enter_posts_to_mongodb(input_folder, db_name, collection_name, author_set):
     log.info(f"Total files to process: {total_files}")
     
     start_time = time.time()
-
     with Manager() as manager:
         progress = manager.dict()  # Shared dictionary instead of Value
 
@@ -136,7 +142,7 @@ if __name__ == "__main__":
     log.setLevel(logging.INFO)
     if not log.handlers:
         log.addHandler(logging.StreamHandler())
-    input_folder = "/local/disk3/not_backed_up/amukundan/2009_to_2025_posts/"
+    input_folder = "/local/disk1/not_backed_up/amukundan/2020-2025_comments/reddit/comments/"
     subreddit = "noburp"
     # users = get_user_set(input_folder, subreddit, num_workers=os.cpu_count())
     # with open("user_lists/no_burp_users_2.txt", "w") as f:
@@ -151,4 +157,4 @@ if __name__ == "__main__":
     except Exception as e:
         log.info(f"MongoDB connection failed: {e}")
 
-    enter_posts_to_mongodb(input_folder, "reddit", "noburp_posts_2", AUTHOR_SET)
+    enter_to_mongodb(input_folder, "reddit", "noburp_comments", AUTHOR_SET)
