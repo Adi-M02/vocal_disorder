@@ -219,25 +219,31 @@ def write_all_users_posts(
     logging.info("Output saved to %s", output_file)
 
 
-def return_user_posts(db_name, collection_name,
-                          user=None, filter_subreddits=None, mongo_uri="mongodb://localhost:27017/"):
+def return_user_entries(
+    db_name,
+    collection_name,
+    user=None,
+    filter_subreddits=None,
+    mongo_uri="mongodb://localhost:27017/"
+):
+    if not user:
+        raise ValueError("You must specify a user.")
+
     client = pymongo.MongoClient(mongo_uri)
     db = client[db_name]
     collection = db[collection_name]
-    posts_cursor = collection.find({})
-    posts_by_author = defaultdict(list)
-    total_posts = 0
-    for post in posts_cursor:
-        author = post.get("author", "Unknown")
-        posts_by_author[author].append(post)
-        total_posts += 1
-    client.close()
+
+    # Build query for the user and optional subreddit filter
+    query = {"author": user}
     if filter_subreddits:
         filter_list = [s.lower() for s in filter_subreddits]
-        filtered_posts = [post for post in posts_by_author[user] if post.get("subreddit", "").lower() in filter_list]
-    else:
-        filtered_posts = posts_by_author[user]
-    return filtered_posts
+        query["subreddit"] = {"$in": filter_list}
+
+    # Run the query
+    user_posts = list(collection.find(query))
+    client.close()
+
+    return user_posts
 
     
 

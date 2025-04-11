@@ -45,17 +45,30 @@ def count_category_occurrences(text, processed_terms):
 
 # Prepare DataFrame for user analysis
 def prepare_user_dataframe(username):
-    posts = query.return_user_posts(user=username, filter_subreddits=["noburp"])
-    log.info(f"Retrieved {len(posts)} posts for user {username}")
-    df = pd.DataFrame(posts)
+    entries = query.return_user_entries(db_name="reddit", collection_name="noburp_all", user=username, filter_subreddits=["noburp"])
+    log.info(f"Retrieved {len(entries)} entries for user {username}")
+    df = pd.DataFrame(entries)
     df["date"] = pd.to_datetime(df["created_utc"], unit='s')
     df.sort_values(by="date", inplace=True)
 
-    df["selftext"] = df["selftext"].fillna("").apply(text.preprocess_text)
-    processed_category_terms = {cat: preprocess_terms(terms) for cat, terms in term_categories.items()}
+    # Create 'content' field from title + selftext or from body
+    def combine_content(row):
+        title = row["title"] if "title" in row and pd.notna(row["title"]) else ""
+        selftext = row["selftext"] if "selftext" in row and pd.notna(row["selftext"]) else ""
+        body = row["body"] if "body" in row and pd.notna(row["body"]) else ""
 
+        content = f"{title} {selftext}".strip()
+        return content if content else body.strip()
+
+    df["content"] = df.apply(combine_content, axis=1)
+
+    # Preprocess the content field
+    # df["content"] = df["content"].apply(text.preprocess_text)
+
+    # Preprocess category terms and count occurrences
+    processed_category_terms = {cat: preprocess_terms(terms) for cat, terms in term_categories.items()}
     for category, processed_terms in processed_category_terms.items():
-        df[category] = df["selftext"].apply(lambda x: count_category_occurrences(x, processed_terms))
+        df[category] = df["content"].apply(lambda x: count_category_occurrences(x, processed_terms))
 
     df["month"] = df["date"].dt.to_period("M")
     return df
@@ -138,5 +151,5 @@ def run_full_user_analysis(username):
     # survival_analysis(df)
     # category_cooccurrence_network(df)
 
-# Example usage:
-run_full_user_analysis("AmazingAd5243")
+# # Example usage:
+# run_full_user_analysis("AmazingAd5243")
