@@ -92,4 +92,3 @@ if __name__ == "__main__":
     mongo_users = load_usernames_from_mongo(mongo_uri, db_name, collection_name)
 
     show_missing_and_duplicates(csv_users, mongo_users, csv_counts)
-
