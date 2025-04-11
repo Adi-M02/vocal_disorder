@@ -245,6 +245,32 @@ def return_user_entries(
 
     return user_posts
 
+def return_multiple_users_entries(
+    db_name,
+    collection_name,
+    users,
+    filter_subreddits=None,
+    mongo_uri="mongodb://localhost:27017/"
+):
+    if not users or not isinstance(users, list):
+        raise ValueError("You must pass a non-empty list of users.")
+
+    client = pymongo.MongoClient(mongo_uri)
+    db = client[db_name]
+    collection = db[collection_name]
+
+    # Build query for multiple users and optional subreddit filter
+    query = {"author": {"$in": users}}
+    if filter_subreddits:
+        filter_list = [s.lower() for s in filter_subreddits]
+        query["subreddit"] = {"$in": filter_list}
+
+    # Run the query
+    all_posts = list(collection.find(query))
+    client.close()
+
+    return all_posts
+
     
 
 
