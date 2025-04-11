@@ -73,6 +73,57 @@ def prepare_user_dataframe(username):
     df["month"] = df["date"].dt.to_period("M")
     return df
 
+def prepare_all_users_dataframe(user_list):
+    """
+    Fetch all user posts from r/noburp in a single MongoDB query,
+    then return a combined DataFrame with per-post category counts,
+    user column, and post dates.
+    """
+
+    entries = query.return_multiple_users_entries(
+        db_name="reddit",
+        collection_name="noburp_all",
+        users=user_list,
+        filter_subreddits=["noburp"]
+    )
+
+    if not entries:
+        print("no entries found")
+        return pd.DataFrame()
+    print(len(entries))
+    df = pd.DataFrame(entries)
+    df["date"] = pd.to_datetime(df["created_utc"], unit="s", errors="coerce")
+    df = df[df["date"].notnull()]
+    df.sort_values(by="date", inplace=True)
+
+    # Fill missing fields to avoid KeyError
+    for col in ["title", "selftext", "body", "author"]:
+        if col not in df.columns:
+            df[col] = ""
+
+    # Combine title + selftext or fallback to body
+    def combine_content(row):
+        title = row["title"] if pd.notna(row["title"]) else ""
+        selftext = row["selftext"] if pd.notna(row["selftext"]) else ""
+        body = row["body"] if pd.notna(row["body"]) else ""
+        content = f"{title} {selftext}".strip()
+        return content if content else body.strip()
+
+    df["content"] = df.apply(combine_content, axis=1)
+
+    # Add user column
+    df["user"] = df["author"]
+
+    # Apply category term processing
+    processed_category_terms = {
+        cat: preprocess_terms(terms) for cat, terms in term_categories.items()
+    }
+    for category, processed_terms in processed_category_terms.items():
+        df[category] = df["content"].apply(lambda x: count_category_occurrences(x, processed_terms))
+
+    df["month"] = df["date"].dt.to_period("M")
+    return df
+
 # Analysis Functions
 def plot_category_trends(df, username):
     monthly = df.groupby("month")[list(term_categories.keys())].sum()
