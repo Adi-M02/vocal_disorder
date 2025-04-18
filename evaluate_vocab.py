@@ -1,7 +1,7 @@
 import re
 import query_mongo as query
 from collections import defaultdict
-from expand_vocab import preprocess_text
+from expand_vocab_modular import preprocess_text
 
 TERM_CATEGORY_DICT = {
     "Experience with RCPD": ['Faux pas', 'Anxiety', 'Social-anxiety', 'Flare-ups', 'Misdiagnosis', 'R-CPD', 'Isolation'], 
