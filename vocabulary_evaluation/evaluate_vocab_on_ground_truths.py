@@ -1,47 +1,38 @@
 import sys
 import os
 import re
+import json
 from itertools import chain
 import pandas as pd
 
 # === CONFIG ===
-VOCAB_PATH = "vocabulary_evaluation"
-VOCAB_MODULE = "vocabularies.base_expansion_and_manual"
-MANUAL_TERM_FILE = 'vocabulary_evaluation/manual_terms.txt'
+VOCAB_JSON_PATH = "vocab_output_04_18/expanded_vocab_ngram_top20_uf5_bf3_tf2.json"
+GROUND_TRUTHS = "vocabulary_evaluation/manual_terms.txt"
 USERNAME = "freddiethecalathea"
 
 # === SETUP ===
-sys.path.append(os.path.abspath(VOCAB_PATH))
+sys.path.append(os.path.abspath("vocabulary_evaluation"))
 sys.path.append(os.path.abspath("."))
 from analyze_users import prepare_user_dataframe, preprocess_terms
 
 # === UTILITIES ===
 def normalize_term(term):
     term = term.lower()
-    term = re.sub(r'[^a-z0-9\s\-]', '', term)  # preserve hyphens
+    term = re.sub(r'[^a-z0-9\s\-]', '', term)
     return re.sub(r'\s+', ' ', term).strip()
 
 def normalize_text(text):
     text = text.lower()
-    text = re.sub(r'[^a-z0-9\s\-]', ' ', text)  # preserve hyphens
+    text = re.sub(r'[^a-z0-9\s\-]', ' ', text)
     return re.sub(r'\s+', ' ', text).strip()
 
 def match_terms_in_text(terms, text):
     found_terms = set()
     for term in terms:
-        # Match the exact term with whitespace boundaries around it
-        # Use lookahead/lookbehind for exact matching
-        pattern = r'(?<!\w)' + re.escape(term) + r'(?!\w)'  # enforces exact match
+        pattern = r'(?<!\w)' + re.escape(term) + r'(?!\w)'
         if re.search(pattern, text):
             found_terms.add(term)
     return found_terms
-
-
-
-# === LOAD TERMS ===
-rcpd_terms = __import__(VOCAB_MODULE, fromlist=['rcpd_terms']).rcpd_terms
-vocab_terms_raw = chain.from_iterable(rcpd_terms.values())
-vocab_terms = set(normalize_term(term) for term in preprocess_terms(vocab_terms_raw))
 
 def load_ground_truth_terms(filepath):
     with open(filepath, 'r') as f:
@@ -49,11 +40,19 @@ def load_ground_truth_terms(filepath):
         terms = [term.strip() for term in content.split(',') if term.strip()]
         return [normalize_term(term) for term in preprocess_terms(terms)]
 
-ground_truth_terms = load_ground_truth_terms(MANUAL_TERM_FILE)
+def load_vocab_terms_from_json(json_path):
+    with open(json_path, "r", encoding="utf-8") as f:
+        vocab_json = json.load(f)
+    vocab_raw = list(chain.from_iterable(vocab_json["vocabulary"].values()))
+    return set(normalize_term(term) for term in preprocess_terms(vocab_raw))
+
+# === LOAD TERMS ===
+ground_truth_terms = load_ground_truth_terms(GROUND_TRUTHS)
+vocab_terms = load_vocab_terms_from_json(VOCAB_JSON_PATH)
 
 # === RUN PIPELINE ===
 df = prepare_user_dataframe(USERNAME)
-df[["subreddit", "content"]].to_csv("test.csv", index=False)
+# df[["subreddit", "content"]].to_csv("test.csv", index=False)
 all_text = normalize_text(" ".join(df["content"].fillna("").tolist()))
 
 # === TERM MATCHING ===
@@ -94,7 +93,6 @@ print("\n❌ Missed by Vocab (False Negatives):", sorted(false_negatives))
 print("\n⚠️ False Positives:", sorted(false_positives))
 print("\nJaccard Similarity:", jaccard_similarity(matched_gt, matched_vocab))
 
-# Extra diagnostic
 not_in_text = set(ground_truth_terms) - matched_gt
 print("\n🔍 Ground truth terms NOT found in the text:")
 print(sorted(not_in_text))

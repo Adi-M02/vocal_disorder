@@ -155,7 +155,7 @@ def expand_category_terms_pipeline(subreddits, query_module, preprocess_fn,
 if __name__ == "__main__":
     params = {
         "subreddits": MAIN_RCPD_SUBREDDITS,
-        "candidate_generation_method": "combined",
+        "candidate_generation_method": "ngram",  # change this to try others
         "min_freq_unigram": 5,
         "min_freq_bigram": 3,
         "min_freq_trigram": 2,
@@ -163,6 +163,8 @@ if __name__ == "__main__":
         "batch_size": 64,
         "top_n": 20,
     }
+
+    device = "cuda" if torch.cuda.is_available() else "mps" if torch.backends.mps.is_available() else "cpu"
 
     updated_dict = expand_category_terms_pipeline(
         subreddits=params["subreddits"],
@@ -176,14 +178,28 @@ if __name__ == "__main__":
         batch_size=params["batch_size"],
         term_category_dict=TERM_CATEGORY_DICT,
         top_n=params["top_n"],
-        device="cuda"
+        device=device
     )
 
+    # === Adjust metadata ===
+    metadata = {
+        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "subreddits": params["subreddits"],
+        "candidate_generation_method": params["candidate_generation_method"],
+        "model_name": params["model_name"],
+        "batch_size": params["batch_size"],
+        "top_n": params["top_n"],
+    }
+
+    if params["candidate_generation_method"] in ["ngram", "combined"]:
+        metadata.update({
+            "min_freq_unigram": params["min_freq_unigram"],
+            "min_freq_bigram": params["min_freq_bigram"],
+            "min_freq_trigram": params["min_freq_trigram"],
+        })
+
     output_payload = {
-        "metadata": {
-            "generated_at": datetime.now(timezone.utc).isoformat(),
-            **params
-        },
+        "metadata": metadata,
         "vocabulary": updated_dict
     }
 
@@ -195,13 +211,17 @@ if __name__ == "__main__":
     output_folder = Path(f"vocab_output_{folder_date}")
     output_folder.mkdir(parents=True, exist_ok=True)
 
-    run_tag = (
-        f"{params['candidate_generation_method']}"
-        f"_top{params['top_n']}"
-        f"_uf{params['min_freq_unigram']}"
-        f"_bf{params['min_freq_bigram']}"
-        f"_tf{params['min_freq_trigram']}"
-    )
+    run_tag_parts = [
+        params["candidate_generation_method"],
+        f"top{params['top_n']}"
+    ]
+    if params["candidate_generation_method"] in ["ngram", "combined"]:
+        run_tag_parts += [
+            f"uf{params['min_freq_unigram']}",
+            f"bf{params['min_freq_bigram']}",
+            f"tf{params['min_freq_trigram']}"
+        ]
+    run_tag = "_".join(run_tag_parts)
 
     output_path = output_folder / f"expanded_vocab_{run_tag}.json"
     with open(output_path, "w", encoding="utf-8") as f:
