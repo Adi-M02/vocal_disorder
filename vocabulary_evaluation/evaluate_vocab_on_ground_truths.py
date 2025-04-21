@@ -6,7 +6,7 @@ from itertools import chain
 import pandas as pd
 
 # === CONFIG ===
-VOCAB_JSON_PATH = "vocab_output_04_18/expanded_vocab_ngram_top20_uf5_bf3_tf2.json"
+VOCAB_JSON_PATH = "vocab_output_04_20/expanded_vocab_ngram_top40_uf5_bf3_tf2.json"
 GROUND_TRUTHS = "vocabulary_evaluation/manual_terms.txt"
 USERNAMES = ["freddiethecalathea", "Many_Pomegranate_566", "rpesce518"]
 
@@ -46,59 +46,80 @@ def load_vocab_terms_from_json(json_path):
     vocab_raw = list(chain.from_iterable(vocab_json["vocabulary"].values()))
     return set(normalize_term(term) for term in preprocess_terms(vocab_raw))
 
-# === LOAD TERMS ===
-ground_truth_terms = load_ground_truth_terms(GROUND_TRUTHS)
-vocab_terms = load_vocab_terms_from_json(VOCAB_JSON_PATH)
+if __name__ == "__main__":
+    # === LOAD TERMS & VOCAB JSON ===
+    with open(VOCAB_JSON_PATH, "r", encoding="utf-8") as f:
+        vocab_json = json.load(f)
 
-# === RUN PIPELINE ===
-df = prepare_user_dataframe_multi(USERNAMES)
-# df[["subreddit", "content"]].to_csv("test.csv", index=False)
-all_text = normalize_text(" ".join(df["content"].fillna("").tolist()))
+    vocab_raw = list(chain.from_iterable(vocab_json["vocabulary"].values()))
+    vocab_terms = set(normalize_term(term) for term in preprocess_terms(vocab_raw))
+    ground_truth_terms = load_ground_truth_terms(GROUND_TRUTHS)
 
-# === TERM MATCHING ===
-all_possible_terms = set(ground_truth_terms).union(vocab_terms)
-terms_in_text = match_terms_in_text(all_possible_terms, all_text)
+    # === RUN PIPELINE ===
+    df = prepare_user_dataframe_multi(USERNAMES)
+    all_text = normalize_text(" ".join(df["content"].fillna("").tolist()))
 
-# === TERM MATCH ANALYSIS ===
-matched_gt = set(ground_truth_terms).intersection(terms_in_text)
-matched_vocab = set(vocab_terms).intersection(terms_in_text)
+    # === TERM MATCHING ===
+    all_possible_terms = set(ground_truth_terms).union(vocab_terms)
+    terms_in_text = match_terms_in_text(all_possible_terms, all_text)
 
-true_positives = matched_gt.intersection(matched_vocab)
-false_negatives = matched_gt - matched_vocab
-false_positives = matched_vocab - matched_gt
+    matched_gt = set(ground_truth_terms).intersection(terms_in_text)
+    matched_vocab = set(vocab_terms).intersection(terms_in_text)
+    true_positives = matched_gt.intersection(matched_vocab)
+    false_negatives = matched_gt - matched_vocab
+    false_positives = matched_vocab - matched_gt
 
-# === METRICS ===
-def jaccard_similarity(set1, set2):
-    return len(set1 & set2) / len(set1 | set2) if set1 | set2 else 0
+    # === METRICS ===
+    def jaccard_similarity(set1, set2):
+        return len(set1 & set2) / len(set1 | set2) if (set1 | set2) else 0
 
-tp = len(true_positives)
-fp = len(false_positives)
-fn = len(false_negatives)
+    tp = len(true_positives)
+    fp = len(false_positives)
+    fn = len(false_negatives)
 
-precision = tp / (tp + fp) if (tp + fp) > 0 else 0.0
-recall = tp / (tp + fn) if (tp + fn) > 0 else 0.0
-accuracy = tp / (tp + fp + fn) if (tp + fp + fn) > 0 else 0.0
+    precision = tp / (tp + fp) if (tp + fp) > 0 else 0.0
+    recall = tp / (tp + fn) if (tp + fn) > 0 else 0.0
+    accuracy = tp / (tp + fp + fn) if (tp + fp + fn) > 0 else 0.0
 
-print("\n===== Evaluation Metrics =====")
-print(f"True Positives: {tp}")
-print(f"False Positives: {fp}")
-print(f"False Negatives: {fn}")
-print(f"Precision: {precision:.2f}")
-print(f"Recall: {recall:.2f}")
-print(f"Accuracy: {accuracy:.2f}")
+    # === ADD METRICS TO METADATA AND WRITE BACK ===
+    vocab_json["metadata"].update({
+        "evaluation": {
+            "evaluated_on_users": USERNAMES,
+            "precision": round(precision, 4),
+            "recall": round(recall, 4),
+            "accuracy": round(accuracy, 4),
+            "true_positives": tp,
+            "false_positives": fp,
+            "false_negatives": fn,
+            "jaccard_similarity": round(jaccard_similarity(matched_gt, matched_vocab), 4)
+        }
+    })
 
-print("\n===== Term Match Breakdown =====")
-print("\n✅ True Positives:", sorted(true_positives))
-print("\n❌ Missed by Vocab (False Negatives):", sorted(false_negatives))
-print("\n⚠️ False Positives:", sorted(false_positives))
-print("\nJaccard Similarity:", jaccard_similarity(matched_gt, matched_vocab))
+    with open(VOCAB_JSON_PATH, "w", encoding="utf-8") as f:
+        json.dump(vocab_json, f, indent=2, ensure_ascii=False)
 
-not_in_text = set(ground_truth_terms) - matched_gt
-print("\n🔍 Ground truth terms NOT found in the text:")
-print(sorted(not_in_text))
-print(f"Count: {len(not_in_text)}")
-for term in sorted(not_in_text):
-    if term in all_text:
-        print(f"✅ Found '{term}' in normalized text")
-    else:
-        print(f"❌ '{term}' still not found")
+    print("\n===== Evaluation Metrics =====")
+    print(f"True Positives: {tp}")
+    print(f"False Positives: {fp}")
+    print(f"False Negatives: {fn}")
+    print(f"Precision: {precision:.2f}")
+    print(f"Recall: {recall:.2f}")
+    print(f"Accuracy: {accuracy:.2f}")
+
+    print("\n===== Term Match Breakdown =====")
+    print("\n✅ True Positives:", sorted(true_positives))
+    print("\n❌ Missed by Vocab (False Negatives):", sorted(false_negatives))
+    print("\n⚠️ False Positives:", sorted(false_positives))
+    print("\nJaccard Similarity:", jaccard_similarity(matched_gt, matched_vocab))
+
+    not_in_text = set(ground_truth_terms) - matched_gt
+    print("\n🔍 Ground truth terms NOT found in the text:")
+    print(sorted(not_in_text))
+    print(f"Count: {len(not_in_text)}")
+    for term in sorted(not_in_text):
+        if term in all_text:
+            print(f"✅ Found '{term}' in normalized text")
+        else:
+            print(f"❌ '{term}' still not found")
+
+    print(f"\n✅ Updated JSON with evaluation metrics saved to {VOCAB_JSON_PATH}")

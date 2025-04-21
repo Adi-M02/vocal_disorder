@@ -49,8 +49,17 @@ def preprocess_text_lemmatize(text):
     return " ".join(lemmatizer.lemmatize(w, get_wordnet_pos(w)) for w in words if w not in STOPWORDS)
 
 def load_and_preprocess_posts(subreddits, query_module, preprocess_fn):
-    raw = query_module.get_posts_by_subreddits(subreddits, collection_name="noburp_posts")
-    return [preprocess_fn(p.get('selftext', '')) for p in raw]
+    raw = query_module.get_posts_by_subreddits(subreddits, collection_name="noburp_all")
+
+    def combine_fields(post):
+        title = post.get("title", "") or ""
+        selftext = post.get("selftext", "") or ""
+        body = post.get("body", "") or ""
+
+        combined = f"{title} {selftext}".strip()
+        return combined if combined else body.strip()
+
+    return [preprocess_fn(combine_fields(p)) for p in raw]
 
 def tokenize(text):
     return re.findall(r"\b[\w']+\b", text.lower())
@@ -161,7 +170,7 @@ if __name__ == "__main__":
         "min_freq_trigram": 2,
         "model_name": "emilyalsentzer/Bio_ClinicalBERT",
         "batch_size": 64,
-        "top_n": 20,
+        "top_n": 40,
     }
 
     device = "cuda" if torch.cuda.is_available() else "mps" if torch.backends.mps.is_available() else "cpu"
