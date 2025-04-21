@@ -8,12 +8,12 @@ import pandas as pd
 # === CONFIG ===
 VOCAB_JSON_PATH = "vocab_output_04_18/expanded_vocab_ngram_top20_uf5_bf3_tf2.json"
 GROUND_TRUTHS = "vocabulary_evaluation/manual_terms.txt"
-USERNAME = "freddiethecalathea"
+USERNAMES = ["freddiethecalathea", "Many_Pomegranate_566", "rpesce518"]
 
 # === SETUP ===
 sys.path.append(os.path.abspath("vocabulary_evaluation"))
 sys.path.append(os.path.abspath("."))
-from analyze_users import prepare_user_dataframe, preprocess_terms
+from analyze_users import prepare_user_dataframe, prepare_user_dataframe_multi, preprocess_terms
 
 # === UTILITIES ===
 def normalize_term(term):
@@ -51,7 +51,7 @@ ground_truth_terms = load_ground_truth_terms(GROUND_TRUTHS)
 vocab_terms = load_vocab_terms_from_json(VOCAB_JSON_PATH)
 
 # === RUN PIPELINE ===
-df = prepare_user_dataframe(USERNAME)
+df = prepare_user_dataframe_multi(USERNAMES)
 # df[["subreddit", "content"]].to_csv("test.csv", index=False)
 all_text = normalize_text(" ".join(df["content"].fillna("").tolist()))
 
