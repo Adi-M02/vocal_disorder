@@ -7,12 +7,10 @@ import numpy as np
 from datetime import datetime
 from pathlib import Path
 import json
-
-from analyze_users import prepare_all_users_dataframe
-
-# If using mlxtend for association rule mining:
 from mlxtend.frequent_patterns import apriori, association_rules
 from mlxtend.preprocessing import TransactionEncoder
+
+from analyze_users import prepare_all_users_dataframe
 
 # -----------------------------
 # 1. LOAD BOTOX DATES CSV
