@@ -170,7 +170,7 @@ if __name__ == "__main__":
         "min_freq_trigram": 2,
         "model_name": "emilyalsentzer/Bio_ClinicalBERT",
         "batch_size": 64,
-        "top_n": 40,
+        "top_n": 60,
     }
 
     device = "cuda" if torch.cuda.is_available() else "mps" if torch.backends.mps.is_available() else "cpu"
@@ -222,14 +222,17 @@ if __name__ == "__main__":
 
     run_tag_parts = [
         params["candidate_generation_method"],
-        f"top{params['top_n']}"
+        f"top{params['top_n']}",
+        params["model_name"].split("/")[-1]  # Add model name suffix
     ]
+
     if params["candidate_generation_method"] in ["ngram", "combined"]:
         run_tag_parts += [
             f"uf{params['min_freq_unigram']}",
             f"bf{params['min_freq_bigram']}",
             f"tf{params['min_freq_trigram']}"
         ]
+
     run_tag = "_".join(run_tag_parts)
 
     output_path = output_folder / f"expanded_vocab_{run_tag}.json"

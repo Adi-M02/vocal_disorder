@@ -4,6 +4,10 @@ import re
 import json
 from itertools import chain
 import pandas as pd
+import nltk
+from nltk.tokenize import word_tokenize
+from nltk.corpus import stopwords, wordnet
+from nltk.stem import WordNetLemmatizer
 
 # === CONFIG ===
 VOCAB_JSON_PATH = "vocab_output_04_20/expanded_vocab_wordnet_top60_Bio_ClinicalBERT.json"
@@ -13,13 +17,34 @@ USERNAMES = ["freddiethecalathea", "Many_Pomegranate_566", "rpesce518"]
 # === SETUP ===
 sys.path.append(os.path.abspath("vocabulary_evaluation"))
 sys.path.append(os.path.abspath("."))
-from analyze_users import prepare_user_dataframe, prepare_user_dataframe_multi, preprocess_terms
+from analyze_users import prepare_user_dataframe_multi, preprocess_terms
+
+# === NLTK Setup ===
+nltk.download("punkt", quiet=True)
+nltk.download("wordnet", quiet=True)
+nltk.download("averaged_perceptron_tagger", quiet=True)
+lemmatizer = WordNetLemmatizer()
+
+def get_wordnet_pos(word):
+    from nltk import pos_tag
+    tag = pos_tag([word])[0][1][0].upper()
+    return {"J": wordnet.ADJ, "N": wordnet.NOUN, "V": wordnet.VERB, "R": wordnet.ADV}.get(tag, wordnet.NOUN)
 
 # === UTILITIES ===
 def normalize_term(term):
     term = term.lower()
     term = re.sub(r'[^a-z0-9\s\-]', '', term)
     return re.sub(r'\s+', ' ', term).strip()
+
+def lemmatize_vocab_term(term):
+    tokens = term.lower().split("_")
+    lemmatized = [lemmatizer.lemmatize(w, get_wordnet_pos(w)) for w in tokens]
+    return "_".join(lemmatized)
+
+def lemmatize_plain_term(term):
+    tokens = word_tokenize(term.lower())
+    lemmatized = [lemmatizer.lemmatize(w, get_wordnet_pos(w)) for w in tokens]
+    return " ".join(lemmatized)
 
 def normalize_text(text):
     text = text.lower()
@@ -38,28 +63,24 @@ def load_ground_truth_terms(filepath):
     with open(filepath, 'r') as f:
         content = f.read()
         terms = [term.strip() for term in content.split(',') if term.strip()]
-        return [normalize_term(term) for term in preprocess_terms(terms)]
+        processed = preprocess_terms(terms)
+        return [lemmatize_plain_term(normalize_term(term)) for term in processed]
 
 def load_vocab_terms_from_json(json_path):
     with open(json_path, "r", encoding="utf-8") as f:
         vocab_json = json.load(f)
     vocab_raw = list(chain.from_iterable(vocab_json["vocabulary"].values()))
-    return set(normalize_term(term) for term in preprocess_terms(vocab_raw))
+    processed = preprocess_terms(vocab_raw)
+    return set(lemmatize_vocab_term(normalize_term(term)) for term in processed)
 
+# === MAIN EXECUTION ===
 if __name__ == "__main__":
-    # === LOAD TERMS & VOCAB JSON ===
-    with open(VOCAB_JSON_PATH, "r", encoding="utf-8") as f:
-        vocab_json = json.load(f)
-
-    vocab_raw = list(chain.from_iterable(vocab_json["vocabulary"].values()))
-    vocab_terms = set(normalize_term(term) for term in preprocess_terms(vocab_raw))
+    vocab_terms = load_vocab_terms_from_json(VOCAB_JSON_PATH)
     ground_truth_terms = load_ground_truth_terms(GROUND_TRUTHS)
 
-    # === RUN PIPELINE ===
     df = prepare_user_dataframe_multi(USERNAMES)
     all_text = normalize_text(" ".join(df["content"].fillna("").tolist()))
 
-    # === TERM MATCHING ===
     all_possible_terms = set(ground_truth_terms).union(vocab_terms)
     terms_in_text = match_terms_in_text(all_possible_terms, all_text)
 
@@ -69,7 +90,6 @@ if __name__ == "__main__":
     false_negatives = matched_gt - matched_vocab
     false_positives = matched_vocab - matched_gt
 
-    # === METRICS ===
     def jaccard_similarity(set1, set2):
         return len(set1 & set2) / len(set1 | set2) if (set1 | set2) else 0
 
@@ -81,7 +101,9 @@ if __name__ == "__main__":
     recall = tp / (tp + fn) if (tp + fn) > 0 else 0.0
     accuracy = tp / (tp + fp + fn) if (tp + fp + fn) > 0 else 0.0
 
-    # === ADD METRICS TO METADATA AND WRITE BACK ===
+    with open(VOCAB_JSON_PATH, "r", encoding="utf-8") as f:
+        vocab_json = json.load(f)
+
     vocab_json["metadata"].update({
         "evaluation": {
             "evaluated_on_users": USERNAMES,

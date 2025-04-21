@@ -3,6 +3,7 @@ import pandas as pd
 import logging
 from collections import defaultdict
 import matplotlib.pyplot as plt
+import addcopyfighandler
 
 def calculate_non_botox_percentages(
     db_name: str,
@@ -77,62 +78,101 @@ def calculate_non_botox_percentages(
     client.close()
     return results
 
+def avg_wordcount_by_postcount(
+    db_name: str,
+    collection_name: str,
+    target_subreddit: str,
+    post_min: int = 4,
+    post_max: int = 10,
+    mongo_uri: str = "mongodb://localhost:27017/"
+) -> dict:
+    """
+    For each author in `target_subreddit`, count how many posts they have
+    and how many total words across title+selftext. Then for each N in
+    post_max..post_min, compute average word‐count per user (only users with
+    exactly N posts).
+    Returns: { N: {"num_users": int, "avg_words": float} }
+    """
+    logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
+    logging.info("Connecting to MongoDB at %s", mongo_uri)
+    client = pymongo.MongoClient(mongo_uri)
+    coll = client[db_name][collection_name]
 
-import pandas as pd
-import matplotlib.pyplot as plt
+    # accumulate per-user stats
+    stats = defaultdict(lambda: {"count": 0, "words": 0})
+    logging.info("Scanning posts in r/%s …", target_subreddit)
+    for doc in coll.find({"subreddit": target_subreddit}, {"author":1, "title":1, "selftext":1}):
+        author = doc.get("author")
+        if not author:
+            continue
+        stats[author]["count"] += 1
+
+        # combine title + selftext, split on whitespace
+        text = ""
+        if doc.get("title"):
+            text += doc["title"] + " "
+        if doc.get("selftext"):
+            text += doc["selftext"]
+        # simple word count
+        stats[author]["words"] += len(text.split())
+
+    client.close()
+    logging.info("Finished scanning %d users", len(stats))
+
+    # group by post-count
+    group = defaultdict(list)
+    for author, vals in stats.items():
+        cnt = vals["count"]
+        group[cnt].append(vals["words"])
+
+    # for each N in [post_max..post_min], compute average
+    results = {}
+    for N in range(post_max, post_min - 1, -1):
+        word_lists = group.get(N, [])
+        num_users = len(word_lists)
+        if num_users == 0:
+            continue
+        avg_words = sum(word_lists) / num_users
+        results[N] = {"num_users": num_users, "avg_words": avg_words}
+
+    return results
+
 
 if __name__ == "__main__":
-    # … assume calculate_non_botox_percentages is already defined above …
     db_name          = "reddit"
     collection_name  = "noburp_posts"
-    botox_csv_file   = "user_botox_dates_fixed.csv"
     target_subreddit = "noburp"
 
     # 1) compute
-    stats = calculate_non_botox_percentages(
+    wc_stats = avg_wordcount_by_postcount(
         db_name,
         collection_name,
-        botox_csv_file,
-        target_subreddit=target_subreddit
+        target_subreddit,
+        post_min=4,
+        post_max=10
     )
 
     # 2) build DataFrame
     df = pd.DataFrame.from_dict(
-        stats,
-        orient="index",
-        columns=["total_users", "non_botox_users", "pct_non_botox"]
+        wc_stats, orient="index", columns=["num_users", "avg_words"]
     )
     df.index.name = "num_posts"
+    df = df.sort_index(ascending=False)
 
-    # 3) reindex for exactly 10→4, introducing NaNs if missing
-    desired = list(range(10, 3, -1))   # [10, 9, …, 4]
-    df = df.reindex(desired)
+    # 3) print table
+    print("\nAverage Word‑Count per User (10→4 posts):")
+    print(df.to_string(formatters={
+        "num_users": "{:>5}".format,
+        "avg_words": "{:8.1f}".format
+    }))
 
-    # 4) drop any rows where we never had users
-    df = df.dropna(how="all")
-
-    # 5) print nicely
-    print("\nDetailed table (10→4):")
-    print(
-        df.to_string(formatters={
-            "total_users":     "{:>5}".format,
-            "non_botox_users": "{:>5}".format,
-            "pct_non_botox":   "{:6.2f}%".format
-        })
-    )
-
-    # 6) plot in that exact order
+    # 4) plot
     fig, ax = plt.subplots()
-    ax.bar(df.index.astype(int), df["pct_non_botox"])
-    ax.set_xlabel("Number of Posts")
-    ax.set_ylabel("Percentage of Non‑Botox Users")
-    ax.set_title(f"Non‑Botox % by Post Count in r/{target_subreddit}")
-
-    # ensure ticks are exactly 10→4
-    ax.set_xticks(desired)
-    # if you still want the *visual* left‑to‑right to be 10→4
-    ax.invert_xaxis()
-
+    ax.bar(df.index.astype(int), df["avg_words"])
+    ax.set_xlabel("Number of Posts in r/noburp")
+    ax.set_ylabel("Avg. Total Words per User")
+    ax.set_title("Avg. Word‑Count by Post Count (10→4 posts)")
+    ax.set_xticks(df.index.tolist())
+    ax.invert_xaxis()      # so it runs left→right: 10,9,…,4
     plt.tight_layout()
     plt.show()
-
