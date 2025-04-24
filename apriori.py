@@ -69,7 +69,7 @@ from vocabulary_evaluation.vocabularies.base_expansion_and_manual import rcpd_te
 category_cols = list(term_categories.keys())
 
 direction = "after"
-time_window_days = 30
+time_window_days = 365
 transactions = []
 
 for user, group in merged_df.groupby("user"):
@@ -134,7 +134,7 @@ te_ary = te.fit(transactions).transform(transactions)
 basket_df = pd.DataFrame(te_ary, columns=te.columns_)
 
 # Run Apriori
-freq_itemsets = apriori(basket_df, min_support=min_support, use_colnames=True)
+freq_itemsets = apriori(basket_df, min_support=min_support, use_colnames=True, max_len=3)
 freq_itemsets_sorted = freq_itemsets.sort_values(by="support", ascending=False).reset_index(drop=True)
 
 # Save frequent itemsets

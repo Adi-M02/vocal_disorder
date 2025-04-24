@@ -4,6 +4,7 @@ import logging
 from collections import defaultdict
 import matplotlib.pyplot as plt
 import addcopyfighandler
+from datetime import datetime, timedelta
 
 def calculate_non_botox_percentages(
     db_name: str,
@@ -138,41 +139,98 @@ def avg_wordcount_by_postcount(
     return results
 
 
-if __name__ == "__main__":
-    db_name          = "reddit"
-    collection_name  = "noburp_posts"
-    target_subreddit = "noburp"
+logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
 
-    # 1) compute
-    wc_stats = avg_wordcount_by_postcount(
-        db_name,
-        collection_name,
-        target_subreddit,
-        post_min=4,
-        post_max=10
-    )
+def load_botox_dates(csv_path: str) -> dict:
+    df = pd.read_csv(csv_path)
+    date_cols = [c for c in df.columns if "botox" in c.lower() and "date" in c.lower()]
+    if not date_cols:
+        raise KeyError("No botox-date column found in CSV.")
+    col = date_cols[0]
+    df[col] = pd.to_datetime(df[col], format="%m-%d-%y", errors="coerce")
+    return dict(zip(df["user"].astype(str), df[col]))
 
-    # 2) build DataFrame
-    df = pd.DataFrame.from_dict(
-        wc_stats, orient="index", columns=["num_users", "avg_words"]
-    )
-    df.index.name = "num_posts"
-    df = df.sort_index(ascending=False)
+def fetch_noburp_posts(db_name: str,
+                       coll_name: str,
+                       mongo_uri: str = "mongodb://localhost:27017/") -> pd.DataFrame:
+    client = pymongo.MongoClient(mongo_uri)
+    coll   = client[db_name][coll_name]
+    docs   = list(coll.find({}, {"author":1, "created_utc":1}))
+    client.close()
 
-    # 3) print table
-    print("\nAverage Word‑Count per User (10→4 posts):")
-    print(df.to_string(formatters={
-        "num_users": "{:>5}".format,
-        "avg_words": "{:8.1f}".format
-    }))
+    # build DataFrame
+    df = pd.DataFrame(docs)
+    df = df.rename(columns={"created_utc":"ts_unix"})
+    df["ts"] = pd.to_datetime(df["ts_unix"], unit="s")
+    df = df[["author","ts"]].dropna()
+    
+    logging.info("Fetched %d posts for %d unique users",
+                 len(df), df["author"].nunique())
+    return df
 
-    # 4) plot
-    fig, ax = plt.subplots()
-    ax.bar(df.index.astype(int), df["avg_words"])
-    ax.set_xlabel("Number of Posts in r/noburp")
-    ax.set_ylabel("Avg. Total Words per User")
-    ax.set_title("Avg. Word‑Count by Post Count (10→4 posts)")
-    ax.set_xticks(df.index.tolist())
-    ax.invert_xaxis()      # so it runs left→right: 10,9,…,4
+def compute_rate_counts(df: pd.DataFrame,
+                        botox_dates: dict,
+                        windows: list[tuple[str,int,int]]) -> pd.DataFrame:
+    records = []
+    # for each user, slice df once
+    users = list(botox_dates.keys())
+    logging.info("Computing rates for %d users …", len(users))
+    for user in users:
+        botox_dt = botox_dates[user]
+        if pd.isna(botox_dt):
+            continue
+        user_posts = df[df["author"] == user]
+        for label, start_off, end_off in windows:
+            start = botox_dt + timedelta(days=start_off)
+            end   = botox_dt + timedelta(days=end_off)
+            cnt   = user_posts[(user_posts["ts"] >= start) & (user_posts["ts"] <= end)].shape[0]
+            days  = max((end-start).days, 1)
+            rate  = cnt / days
+            records.append((user, label, cnt, days, rate))
+    return pd.DataFrame.from_records(
+        records,
+        columns=["user","window","count","days","posts_per_day"]
+    ).set_index(["user","window"])
+
+def plot_rate_summary(rate_df: pd.DataFrame, windows: list):
+    order = [w[0] for w in windows]
+    agg   = rate_df.groupby("window")["posts_per_day"].agg(["mean","std"]).reindex(order)
+    fig, ax = plt.subplots(figsize=(8,5))
+    ax.bar(agg.index, agg["mean"], yerr=agg["std"], capsize=4)
+    ax.set_xlabel("Window")
+    ax.set_ylabel("Posts per Day")
+    ax.set_title("Posting Rate Before vs. After Botox")
     plt.tight_layout()
     plt.show()
+
+if __name__ == "__main__":
+    CSV_FILE   = "user_botox_dates_fixed.csv"
+    DB_NAME    = "reddit"
+    COLL_NAME  = "noburp_posts"
+    botox_dates = load_botox_dates(CSV_FILE)
+
+    # 1) Fetch once
+    posts_df = fetch_noburp_posts(DB_NAME, COLL_NAME)
+
+    # 2) Define windows
+    windows = [
+        ("baseline", -30, -1),
+        ("early",      1, 10),
+        ("mid",       11, 30),
+        ("long",     31,180),
+    ]
+
+    # 3) Compute in‑memory
+    rate_df = compute_rate_counts(posts_df, botox_dates, windows)
+
+    # 4) Show summary
+    summary = (
+        rate_df.reset_index()
+               .groupby("window")["posts_per_day"]
+               .agg(["mean","std","count"])
+               .reindex([w[0] for w in windows])
+    )
+    print(summary.to_string(float_format="{:6.3f}".format))
+
+    # 5) Plot
+    plot_rate_summary(rate_df, windows)
