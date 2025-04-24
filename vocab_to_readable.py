@@ -2,7 +2,7 @@ import json
 from pathlib import Path
 
 # === CONFIG ===
-INPUT_JSON = Path("vocab_output_04_18/expanded_vocab_ngram_top20_uf5_bf3_tf2.json")
+INPUT_JSON = Path("vocab_output_04_20/expanded_vocab_ngram_top40_uf5_bf3_tf2.json")
 
 def format_vocab_for_word(vocab_dict):
     lines = []
@@ -17,7 +17,8 @@ def format_vocab_for_word(vocab_dict):
 
         sorted_terms = sorted(set(terms), key=lambda x: x.lower())
         for term in sorted_terms:
-            lines.append(term)
+            readable_term = term.replace("_", " ")  # Replace underscores with spaces
+            lines.append(readable_term)
         lines.append("")  # add spacing between sections
 
     return "\n".join(lines)
