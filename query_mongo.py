@@ -277,4 +277,4 @@ def return_multiple_users_entries(
 if __name__ == "__main__":
     # filter_subreddits = ["noburp", "emetophobia", "anxiety", "gerd", "ibs", "sibo", "emetophobiarecovery", "pots", "gastritis", "healthanxiety", "trees", "advice", "supplements"]
     filter_subreddits = ["noburp"]
-    write_all_users_posts("reddit", "noburp_all", "vocabulary_evaluation/rpesce518.txt", filter_subreddits, None, "rpesce518" )
+    write_all_users_posts("reddit", "noburp_all", "vocabulary_evaluation/mjh59.txt", filter_subreddits, None, "mjh59" )

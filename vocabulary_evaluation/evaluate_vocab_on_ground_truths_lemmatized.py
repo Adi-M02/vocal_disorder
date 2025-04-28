@@ -12,7 +12,7 @@ from nltk.stem import WordNetLemmatizer
 # === CONFIG ===
 VOCAB_JSON_PATH = "vocab_output_04_20/expanded_vocab_wordnet_top60_Bio_ClinicalBERT.json"
 GROUND_TRUTHS = "vocabulary_evaluation/manual_terms.txt"
-USERNAMES = ["freddiethecalathea", "Many_Pomegranate_566", "rpesce518"]
+USERNAMES = ["freddiethecalathea", "Many_Pomegranate_566", "rpesce518", "kinglgw", "mjh59"]
 
 # === SETUP ===
 sys.path.append(os.path.abspath("vocabulary_evaluation"))
