@@ -251,9 +251,9 @@ if __name__ == "__main__":
         "model_name": "emilyalsentzer/Bio_ClinicalBERT",
         "batch_size": 64,
         "top_n": 60,
-        "enable_morphology": True,
-        "enable_lsa": False,
-        "enable_hybrid": False,
+        "enable_morphology": False,
+        "enable_lsa": True,
+        "enable_hybrid": True,
         "alpha": 0.5,
     }
     device = (
