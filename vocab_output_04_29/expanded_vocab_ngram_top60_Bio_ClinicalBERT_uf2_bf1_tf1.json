@@ -10,7 +10,23 @@
     "top_n": 60,
     "min_freq_unigram": 2,
     "min_freq_bigram": 1,
-    "min_freq_trigram": 1
+    "min_freq_trigram": 1,
+    "evaluation": {
+      "evaluated_on_users": [
+        "freddiethecalathea",
+        "Many_Pomegranate_566",
+        "rpesce518",
+        "kinglgw",
+        "mjh59"
+      ],
+      "precision": 0.8621,
+      "recall": 0.4237,
+      "accuracy": 0.3968,
+      "true_positives": 50,
+      "false_positives": 8,
+      "false_negatives": 68,
+      "jaccard_similarity": 0.3968
+    }
   },
   "vocabulary": {
     "Symptom Experience & Severity": [
