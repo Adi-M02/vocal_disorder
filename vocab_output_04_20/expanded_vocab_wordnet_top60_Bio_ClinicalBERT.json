@@ -12,15 +12,17 @@
       "evaluated_on_users": [
         "freddiethecalathea",
         "Many_Pomegranate_566",
-        "rpesce518"
+        "rpesce518",
+        "kinglgw",
+        "mjh59"
       ],
-      "precision": 0.661,
-      "recall": 0.5,
-      "accuracy": 0.398,
-      "true_positives": 39,
-      "false_positives": 20,
-      "false_negatives": 39,
-      "jaccard_similarity": 0.398
+      "precision": 0.75,
+      "recall": 0.4322,
+      "accuracy": 0.3778,
+      "true_positives": 51,
+      "false_positives": 17,
+      "false_negatives": 67,
+      "jaccard_similarity": 0.3778
     }
   },
   "vocabulary": {

@@ -165,9 +165,9 @@ if __name__ == "__main__":
     params = {
         "subreddits": MAIN_RCPD_SUBREDDITS,
         "candidate_generation_method": "ngram",  # change this to try others
-        "min_freq_unigram": 5,
-        "min_freq_bigram": 3,
-        "min_freq_trigram": 2,
+        "min_freq_unigram": 3,
+        "min_freq_bigram": 2,
+        "min_freq_trigram": 1,
         "model_name": "emilyalsentzer/Bio_ClinicalBERT",
         "batch_size": 64,
         "top_n": 60,
