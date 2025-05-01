@@ -70,34 +70,38 @@ def get_posts_by_subreddits(subreddit_list, db_name="reddit", collection_name="n
 
 def get_text_by_subreddits(subreddit_list, db_name="reddit", collection_name="noburp_all", mongo_uri="mongodb://localhost:27017/"):
     """
-    Fetches all posts from a MongoDB collection where the subreddit field matches any subreddit in subreddit_list.
+    Fetches readable post texts from a MongoDB collection filtered by subreddits.
 
-    :param subreddit_list: List of subreddit names to filter posts.
-    :param db_name: Name of the database.
-    :param collection_name: Name of the collection.
-    :param mongo_uri: MongoDB connection URI.
-    :return: List of matching posts.
+    :param subreddit_list: List of subreddit names.
+    :param db_name: MongoDB database name.
+    :param collection_name: Collection name.
+    :param mongo_uri: MongoDB URI.
+    :return: List of strings (combined title/selftext or body).
     """
+
     if not subreddit_list:
         print("Error: subreddit_list cannot be empty.")
         return []
 
     try:
-        # Connect to MongoDB
         client = MongoClient(mongo_uri)
         db = client[db_name]
         collection = db[collection_name]
 
-        # Query to filter posts by multiple subreddits
         query = {"subreddit": {"$in": subreddit_list}}
         texts = []
         for entry in collection.find(query):
-            if entry.get("selftext"):
-                texts.append(html.unescape(entry["selftext"]) + html.unescape(entry["title"]))
-            else:
-                texts.append(html.unescape(entry["body"]))
+            # Safely extract fields
+            title = html.unescape(entry.get("title", "") or "")
+            selftext = html.unescape(entry.get("selftext", "") or "")
+            body = html.unescape(entry.get("body", "") or "")
 
-        return texts  # Returns a list of documents
+            # Prefer post-style content
+            combined = f"{title} {selftext}".strip() if selftext else body.strip()
+            if combined and combined.lower() not in {"[deleted]", "[removed]"}:
+                texts.append(combined)
+
+        return texts
 
     except Exception as e:
         print(f"Error: {e}")
