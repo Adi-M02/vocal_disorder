@@ -61,11 +61,7 @@ def get_noburp_text():
     Returns a list of cleaned self-texts from r/noburp posts and comments.
     """
     raw_texts = []
-    for post in query.get_text_by_subreddits(MAIN_RCPD_SUBREDDITS):
-        # `post` is a dict with at least "selftext"
-        text = post.get("selftext", "").strip()
-        if not text:
-            continue
+    for text in query.get_text_by_subreddits(MAIN_RCPD_SUBREDDITS):
         text = re.sub(r"\s+", " ", text)
         raw_texts.append(text)
     return raw_texts
@@ -123,10 +119,53 @@ def main():
         tokenizer=tokenizer,
         mlm_probability=MLM_PROB,
     )
-
-    # 5.6 Training args (keep your original hyper-params)
+    # 5.6 training args (no eval, OOM issue)
     training_args = TrainingArguments(
         output_dir="bioclinicalbert_noburp_all_pretrained",
         overwrite_output_dir=True,
         num_train_epochs=3,
+        per_device_train_batch_size=2,
+        gradient_accumulation_steps=4,
+        evaluation_strategy="no",
+        save_strategy="steps",
+        save_steps=1000,
+        save_total_limit=2,
+        logging_steps=1000,
+        report_to="none",
+        fp16=torch.cuda.is_available(),
     )
+    # 5.7 Trainer
+    trainer = Trainer(
+        model=model,
+        args=training_args,
+        train_dataset=train_ds,
+        eval_dataset=eval_ds,
+        data_collator=data_collator,
+        compute_metrics=compute_metrics,
+        tokenizer=tokenizer,
+    )
+
+    # 5.8 Train
+    checkpoint_dir = training_args.output_dir
+    last_checkpoint = None
+    if os.path.isdir(checkpoint_dir):
+        checkpoints = [os.path.join(checkpoint_dir, d) for d in os.listdir(checkpoint_dir) if d.startswith("checkpoint")]
+        if checkpoints:
+            last_checkpoint = max(checkpoints, key=os.path.getctime)
+    train_output = trainer.train(resume_from_checkpoint=last_checkpoint)
+
+    # 5.9 Save final model & tokenizer
+    model_dir = "bioclinicalbert_noburp_all/model"
+    trainer.save_model(model_dir)
+    tokenizer.save_pretrained(os.path.join(model_dir, "tokenizer"))
+
+    # 5.10 Save training metrics
+    metrics_path = os.path.join("bioclinicalbert_noburp_all", "train_metrics.log")
+    with open(metrics_path, "w", encoding="utf-8") as f:
+        import json
+        json.dump(train_output.metrics, f, indent=4)
+    print(f"✅  Pretraining completed. Model saved to {model_dir}")
+    print(f"📊  Training metrics saved to {metrics_path}")
+# ────────────────────────────────────────────────────
+if __name__ == "__main__":
+    main()
