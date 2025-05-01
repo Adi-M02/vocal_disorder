@@ -64,21 +64,40 @@ def generate_candidate_terms(posts):
         tri.update(["_".join(toks[i:i+3]) for i in range(len(toks)-2)])
     return list(set([w for w in uni if uni[w]>=5] + [w for w in bi if bi[w]>=3] + [w for w in tri if tri[w]>=2]))
 
-def embed_texts(texts, tokenizer, model, device):
-    inputs = tokenizer(texts, padding=True, truncation=True, return_tensors="pt")
-    with torch.no_grad():
-        out = model(input_ids=inputs["input_ids"].to(device), attention_mask=inputs["attention_mask"].to(device))
-    mask = inputs["attention_mask"].unsqueeze(-1).expand(out.last_hidden_state.size()).float()
-    mean = (out.last_hidden_state * mask).sum(1) / mask.sum(1).clamp(min=1e-9)
-    return torch.nn.functional.normalize(mean, p=2, dim=1).cpu().numpy()
+def embed_texts(texts, tokenizer, model, device, max_length=128, batch_size=32):
+    all_embeddings = []
+
+    for i in range(0, len(texts), batch_size):
+        batch = texts[i:i + batch_size]
+        encoded = tokenizer(
+            batch,
+            padding=True,
+            truncation=True,
+            max_length=max_length,
+            return_tensors='pt'
+        )
+
+        # Move tensors to device
+        input_ids = encoded['input_ids'].to(device)
+        attention_mask = encoded['attention_mask'].to(device)
+
+        with torch.no_grad():
+            out = model(input_ids=input_ids, attention_mask=attention_mask)
+
+        # Mean pooling with proper device handling
+        mask = attention_mask.unsqueeze(-1).expand(out.last_hidden_state.size()).float()
+        mean = (out.last_hidden_state * mask).sum(1) / mask.sum(1).clamp(min=1e-9)
+
+        # Normalize and move to CPU
+        normed = torch.nn.functional.normalize(mean, p=2, dim=1)
+        all_embeddings.append(normed.cpu().numpy())
+
+    return np.concatenate(all_embeddings, axis=0)
 
 def embed_candidates(candidates, tokenizer, model, device):
-    return {
-        c: emb for c, emb in zip(
-            candidates,
-            embed_texts([c.replace("_", " ") for c in candidates], tokenizer, model, device)
-        )
-    }
+    texts = [c.replace('_', ' ') for c in candidates]
+    embeddings = embed_texts(texts, tokenizer, model, device, max_length=128, batch_size=32)
+    return {c: emb for c, emb in zip(candidates, embeddings)}
 
 def add_keybert_phrases(posts, term_dict, model_name):
     kw_model = KeyBERT(model_name)
@@ -111,13 +130,13 @@ if __name__ == "__main__":
         "subreddits": ["noburp"],
         "model_name": "emilyalsentzer/Bio_ClinicalBERT",
         "top_n": 50,
-        "use_maxsim": True,
+        "use_maxsim": False,
         "dynamic_topn": False,
-        "use_keybert": False,
+        "use_keybert": True,
         "keybert_model_name": "all-MiniLM-L6-v2",
     }
 
-    device = "cuda" if torch.cuda.is_available() else "cpu"
+    device = "cuda" if torch.cuda.is_available() else "mps" if torch.backends.mps.is_available() else "cpu"
     print("Device:", device)
 
     posts = load_posts(params["subreddits"])
@@ -144,7 +163,7 @@ if __name__ == "__main__":
 
     out_dir = Path(f"vocab_output_{datetime.now().strftime('%m_%d')}")
     out_dir.mkdir(exist_ok=True)
-    out_path = out_dir / "expanded_vocab_flags.json"
+    out_path = out_dir / f"expanded_output_{datetime.now().strftime('%m_%d_%H_%M')}.json"
     with open(out_path, "w", encoding="utf-8") as f:
         json.dump(output_payload, f, indent=2, ensure_ascii=False)
     print(f"✅ Saved vocabulary to {out_path}")
