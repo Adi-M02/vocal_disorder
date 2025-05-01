@@ -6,7 +6,7 @@ from itertools import chain
 import pandas as pd
 
 # === CONFIG ===
-VOCAB_JSON_PATH = "vocab_output/expanded_vocab_04_30_0117.json"
+VOCAB_JSON_PATH = "vocab_output/expanded_vocab_04_29_1906.json"
 GROUND_TRUTHS = "vocabulary_evaluation/manual_terms.txt"
 USERNAMES = ["freddiethecalathea", "Many_Pomegranate_566", "rpesce518", "kinglgw", "mjh59"]
 

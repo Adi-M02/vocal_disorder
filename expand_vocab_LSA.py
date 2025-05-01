@@ -11,6 +11,11 @@ from datetime import datetime, timezone
 from pathlib import Path
 from sentence_transformers import util
 from transformers import AutoTokenizer, AutoModel
+import importlib.util
+import sys
+spec = importlib.util.spec_from_file_location("evaluate_vocab", 'vocabulary_evaluation/evaluate_vocab.py')
+evaluate_vocab_module = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(evaluate_vocab_module)
 
 # OPTIONAL LSA ------------------------------------
 try:
@@ -297,4 +302,5 @@ if __name__ == "__main__":
     out_path = Path("vocab_output") / file_name
     with open(out_path, "w", encoding="utf-8") as f:
         json.dump(payload, f, indent=2, ensure_ascii=False)
-    print(f"✅ Saved to {out_path}")
+    print(f"Vocabulary saved to {out_path}")
+    evaluate_vocab_module.evaluate_vocab(out_path, 'vocabulary_evaluation/manual_terms.txt', usernames = ["freddiethecalathea", "Many_Pomegranate_566", "rpesce518", "kinglgw", "mjh59"], )
