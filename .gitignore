@@ -177,6 +177,8 @@ cython_debug/
 
 # models
 pretrained_models/
+bioclinicalbert_noburp_all_pretrained/
+bioclinicalbert_noburp_all/
 
 # nltk data
 nltk_data/
