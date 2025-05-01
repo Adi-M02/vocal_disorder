@@ -13,7 +13,7 @@ from spellchecker import SpellChecker
 from lemminflect import getAllInflections
 
 # === CONFIG ===
-VOCAB_JSON_PATH = "vocab_output/expanded_vocab_04_29_1906.json"
+VOCAB_JSON_PATH = "vocab_output_05_01/expanded_vocab_ngram_top60_Bio_ClinicalBERT_uf3_bf2_tf1.json"
 GROUND_TRUTHS = "vocabulary_evaluation/manual_terms.txt"
 USERNAMES = ["freddiethecalathea", "Many_Pomegranate_566", "rpesce518", "kinglgw", "mjh59"]
 PROTECTED_TERMS = {"ibs", "ent", "ents", "gp", "op", "ptsd", "ocd", "rcpd"}
