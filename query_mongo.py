@@ -68,6 +68,44 @@ def get_posts_by_subreddits(subreddit_list, db_name="reddit", collection_name="n
     finally:
         client.close()  # Close the connection
 
+def get_text_by_subreddits(subreddit_list, db_name="reddit", collection_name="noburp_all", mongo_uri="mongodb://localhost:27017/"):
+    """
+    Fetches all posts from a MongoDB collection where the subreddit field matches any subreddit in subreddit_list.
+
+    :param subreddit_list: List of subreddit names to filter posts.
+    :param db_name: Name of the database.
+    :param collection_name: Name of the collection.
+    :param mongo_uri: MongoDB connection URI.
+    :return: List of matching posts.
+    """
+    if not subreddit_list:
+        print("Error: subreddit_list cannot be empty.")
+        return []
+
+    try:
+        # Connect to MongoDB
+        client = MongoClient(mongo_uri)
+        db = client[db_name]
+        collection = db[collection_name]
+
+        # Query to filter posts by multiple subreddits
+        query = {"subreddit": {"$in": subreddit_list}}
+        texts = []
+        for entry in collection.find(query):
+            if entry.get("selftext"):
+                texts.append(html.unescape(entry["selftext"]) + html.unescape(entry["title"]))
+            else:
+                texts.append(html.unescape(entry["body"]))
+
+        return texts  # Returns a list of documents
+
+    except Exception as e:
+        print(f"Error: {e}")
+        return []
+
+    finally:
+        client.close()
+
 def get_posts_by_users(users, subreddits=None, db_name="reddit", collection_name="noburp_posts_2", mongo_uri="mongodb://localhost:27017/"):
     """
     Returns a list of posts from the specified users, filtered by the given subreddits if provided.
