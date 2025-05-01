@@ -11,6 +11,10 @@ import nltk
 from datetime import datetime, timezone
 from pathlib import Path
 from transformers import AutoTokenizer, AutoModel
+import importlib
+spec = importlib.util.spec_from_file_location("evaluate_vocab", 'vocabulary_evaluation/evaluate_vocab.py')
+evaluate_vocab_module = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(evaluate_vocab_module)
 
 # Set up NLTK environment
 tmp_dir = os.path.join(os.getcwd(), "nltk_data")
@@ -240,3 +244,4 @@ if __name__ == "__main__":
         json.dump(output_payload, f, indent=2, ensure_ascii=False)
 
     print(f"✅ Vocabulary + metadata saved to {output_path}")
+    evaluate_vocab_module.evaluate_vocab(output_path, 'vocabulary_evaluation/manual_terms.txt', usernames = ["freddiethecalathea", "Many_Pomegranate_566", "rpesce518", "kinglgw", "mjh59"], )
