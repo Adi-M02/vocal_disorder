@@ -265,17 +265,21 @@ if __name__ == "__main__":
         term_dict = TERM_CATEGORY_DICT
 
     # Embed candidates & expand with your pretrained model
-    cand_embs = embed_candidates(cands, tokenizer, model, device)
-    expanded = expand_terms(
-        term_dict,
-        tokenizer,
-        model,
-        cand_embs,
-        params["use_maxsim"],
-        params["dynamic_topn"],
-        params["top_n"],
-        device
-    )
+    if params["use_keybert"]:
+        expanded = term_dict
+        
+    else:
+        cand_embs = embed_candidates(cands, tokenizer, model, device)
+        expanded = expand_terms(
+            term_dict,
+            tokenizer,
+            model,
+            cand_embs,
+            params["use_maxsim"],
+            params["dynamic_topn"],
+            params["top_n"],
+            device
+        )
 
     # Save output
     output = {
