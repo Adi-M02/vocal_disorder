@@ -227,24 +227,27 @@ if __name__ == "__main__":
     params = {
         "subreddits": ["noburp"],
         # use your continued-pretrained directory here
-        "finetuned_dir": "bioclinicalbert_noburp_all/model",
+        "finetuned_dir": "emilyalsentzer/Bio_ClinicalBERT",
         "top_n": 50,
         "use_maxsim": False,
-        "dynamic_topn": True,
-        "use_keybert": False,
+        "dynamic_topn": False,
+        "use_keybert": True,
         "min_df": 3,
         "max_workers": 8,
     }
 
-    device = "cuda" if torch.cuda.is_available() else "cpu"
+    device = "cuda" if torch.cuda.is_available() else ("mps" if torch.backends.mps.is_available() else "cpu")
     logger.info(f"Device: {device}")
 
     # Load and preprocess posts
     posts = load_posts(params["subreddits"])
 
     # Load pretrained tokenizer & model from local dir
-    tokenizer = AutoTokenizer.from_pretrained(os.path.join(params["finetuned_dir"], "tokenizer"))
-    model     = AutoModel.from_pretrained(params["finetuned_dir"]).to(device).eval()
+    # tokenizer = AutoTokenizer.from_pretrained(os.path.join(params["finetuned_dir"], "tokenizer"))
+    # model     = AutoModel.from_pretrained(params["finetuned_dir"]).to(device).eval()
+    # load off the shelf Bio-ClinicalBERT
+    tokenizer = AutoTokenizer.from_pretrained(params["finetuned_dir"])
+    model = AutoModel.from_pretrained(params["finetuned_dir"]).to(device)
 
     # Generate candidate terms
     cands = generate_candidate_terms(posts)
