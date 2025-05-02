@@ -6,7 +6,7 @@ from itertools import chain
 import pandas as pd
 
 # === CONFIG ===
-VOCAB_JSON_PATH = "vocab_output/expanded_vocab_04_29_1906.json"
+VOCAB_JSON_PATH = "vocab_output_05_02/expanded_output_05_02_05_18.json"
 GROUND_TRUTHS = "vocabulary_evaluation/manual_terms.txt"
 USERNAMES = ["freddiethecalathea", "Many_Pomegranate_566", "rpesce518", "kinglgw", "mjh59"]
 
@@ -58,6 +58,7 @@ if __name__ == "__main__":
     # === RUN PIPELINE ===
     df = prepare_user_dataframe_multi(USERNAMES)
     all_text = normalize_text(" ".join(df["content"].fillna("").tolist()))
+
 
     # === TERM MATCHING ===
     all_possible_terms = set(ground_truth_terms).union(vocab_terms)
