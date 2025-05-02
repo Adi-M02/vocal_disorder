@@ -231,7 +231,7 @@ if __name__ == "__main__":
         "top_n": 50,
         "use_maxsim": False,
         "dynamic_topn": False,
-        "use_keybert": True,
+        "use_keybert": False,
         "min_df": 3,
         "max_workers": 8,
     }

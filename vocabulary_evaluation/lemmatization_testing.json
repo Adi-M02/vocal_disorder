@@ -77141,7 +77141,8 @@
       "ent"
     ],
     "procedure": [
-      "procedure"
+      "procedure",
+      "procedures"
     ],
     "botox procedure": [
       "botox procedure"
@@ -77294,7 +77295,8 @@
     ],
     "air vomit": [
       "air vomit",
-      "air vomiting"
+      "air vomiting",
+      "air vomits"
     ],
     "chest pain": [
       "chest pain",
@@ -77501,6 +77503,357 @@
       "regurgitated",
       "regurgitates",
       "regurgitating"
+    ],
+    "air vomitte": [
+      "air vomitte",
+      "air vomitting"
+    ],
+    "anesthesia general": [
+      "anesthesia general"
+    ],
+    "anesthesia procedure": [
+      "anesthesia procedure"
+    ],
+    "bad hiccup": [
+      "bad hiccup",
+      "bad hiccups"
+    ],
+    "bloat excess": [
+      "bloat excess",
+      "bloating excess"
+    ],
+    "bloat excess wind": [
+      "bloat excess wind",
+      "bloating excess wind"
+    ],
+    "botox diary": [
+      "botox diary"
+    ],
+    "botox effect": [
+      "botox effect",
+      "botox effects"
+    ],
+    "botox go": [
+      "botox go",
+      "botox going"
+    ],
+    "botox injection": [
+      "botox injection",
+      "botox injections"
+    ],
+    "botox last": [
+      "botox last",
+      "botox lasts"
+    ],
+    "botox need": [
+      "botox need"
+    ],
+    "botox needle": [
+      "botox needle"
+    ],
+    "botox procedure life": [
+      "botox procedure life"
+    ],
+    "botox question": [
+      "botox question",
+      "botox questions"
+    ],
+    "botox success": [
+      "botox success"
+    ],
+    "botox treatment": [
+      "botox treatment"
+    ],
+    "botox wear": [
+      "botox wear",
+      "botox wears"
+    ],
+    "constant pain": [
+      "constant pain"
+    ],
+    "cricoid massage shaker": [
+      "cricoid massage shaker"
+    ],
+    "cure": [
+      "cure",
+      "cured",
+      "cures",
+      "curing"
+    ],
+    "different ent": [
+      "different ent"
+    ],
+    "different kind": [
+      "different kind"
+    ],
+    "different procedure": [
+      "different procedure",
+      "different procedures"
+    ],
+    "dose botox": [
+      "dose botox"
+    ],
+    "embarrassment": [
+      "embarrassment"
+    ],
+    "ent surgeon": [
+      "ent surgeon",
+      "ent surgeons"
+    ],
+    "exercise": [
+      "exercise",
+      "exercised",
+      "exercises",
+      "exercising"
+    ],
+    "feel uncomfortable": [
+      "feel uncomfortable",
+      "feeling uncomfortable"
+    ],
+    "gag cough": [
+      "gag cough"
+    ],
+    "general anesthesia": [
+      "general anesthesia"
+    ],
+    "general anesthesia general": [
+      "general anesthesia general"
+    ],
+    "general anesthesia procedure": [
+      "general anesthesia procedure"
+    ],
+    "get botox": [
+      "get botox",
+      "getting botox"
+    ],
+    "get surgery": [
+      "get surgery",
+      "getting surgery"
+    ],
+    "gurgle feel": [
+      "gurgle feel",
+      "gurgles feel"
+    ],
+    "gurgle hope": [
+      "gurgle hope",
+      "gurgles hope"
+    ],
+    "gurgle quite": [
+      "gurgle quite",
+      "gurgling quite"
+    ],
+    "health anxiety": [
+      "health anxiety"
+    ],
+    "hiccup frequently": [
+      "hiccup frequently",
+      "hiccups frequently"
+    ],
+    "horribly painful": [
+      "horribly painful"
+    ],
+    "ibs food": [
+      "ibs food"
+    ],
+    "initial botox": [
+      "initial botox"
+    ],
+    "instead": [
+      "instead"
+    ],
+    "involuntary microburps": [
+      "involuntary microburps"
+    ],
+    "issue stomach": [
+      "issue stomach",
+      "issues stomach"
+    ],
+    "life change": [
+      "life change",
+      "life changing"
+    ],
+    "like gag": [
+      "like gag"
+    ],
+    "little pressure": [
+      "little pressure"
+    ],
+    "massage shaker": [
+      "massage shaker"
+    ],
+    "mental": [
+      "mental"
+    ],
+    "mental thing": [
+      "mental thing"
+    ],
+    "mention issue": [
+      "mention issue",
+      "mentioned issues"
+    ],
+    "microburps day": [
+      "microburps day"
+    ],
+    "microburps today": [
+      "microburps today"
+    ],
+    "office injection": [
+      "office injection",
+      "office injections"
+    ],
+    "office procedure": [
+      "office procedure"
+    ],
+    "outpatient": [
+      "outpatient"
+    ],
+    "outpatient procedure": [
+      "outpatient procedure"
+    ],
+    "pain level": [
+      "pain level"
+    ],
+    "pain relate": [
+      "pain relate",
+      "pain related"
+    ],
+    "pain sickness": [
+      "pain sickness"
+    ],
+    "pain usually": [
+      "pain usually"
+    ],
+    "parent": [
+      "parent",
+      "parents"
+    ],
+    "patient": [
+      "patient",
+      "patients"
+    ],
+    "people air vomit": [
+      "people air vomit"
+    ],
+    "permanent": [
+      "permanent"
+    ],
+    "plateau": [
+      "plateau",
+      "plateaued",
+      "plateauing",
+      "plateaus"
+    ],
+    "private patient": [
+      "private patient"
+    ],
+    "procedure life": [
+      "procedure life"
+    ],
+    "procedure overall": [
+      "procedure overall"
+    ],
+    "procedure really": [
+      "procedure really"
+    ],
+    "really uncomfortable": [
+      "really uncomfortable"
+    ],
+    "recently": [
+      "recently"
+    ],
+    "recently discover": [
+      "recently discover",
+      "recently discovered"
+    ],
+    "recently learn": [
+      "recently learn",
+      "recently learned"
+    ],
+    "recently refer": [
+      "recently refer",
+      "recently referred"
+    ],
+    "recovery go": [
+      "recovery go",
+      "recovery went"
+    ],
+    "sadly": [
+      "sadly"
+    ],
+    "shaker": [
+      "shaker"
+    ],
+    "slow swallow regurgitation": [
+      "slow swallow regurgitation"
+    ],
+    "stomach": [
+      "stomach",
+      "stomached",
+      "stomaching",
+      "stomachs"
+    ],
+    "stomach apparently": [
+      "stomach apparently"
+    ],
+    "stomach area": [
+      "stomach area"
+    ],
+    "stomach content": [
+      "stomach content",
+      "stomach contents"
+    ],
+    "stomach regurgitation": [
+      "stomach regurgitation"
+    ],
+    "super uncomfortable": [
+      "super uncomfortable"
+    ],
+    "surgery like": [
+      "surgery like"
+    ],
+    "surgery work": [
+      "surgery work"
+    ],
+    "suspect ibs": [
+      "suspect ibs",
+      "suspected ibs"
+    ],
+    "swallow regurgitation": [
+      "swallow regurgitation"
+    ],
+    "symptom instead": [
+      "symptom instead",
+      "symptoms instead"
+    ],
+    "throat botox": [
+      "throat botox"
+    ],
+    "throat gurgle feel": [
+      "throat gurgle feel",
+      "throat gurgles feel"
+    ],
+    "tiny microburps": [
+      "tiny microburps"
+    ],
+    "treatment": [
+      "treatment"
+    ],
+    "treatment try": [
+      "treatment try"
+    ],
+    "tummy throat": [
+      "tummy throat"
+    ],
+    "vomit multiple": [
+      "vomit multiple"
+    ],
+    "vomit multiple time": [
+      "vomit multiple time",
+      "vomit multiple times"
+    ],
+    "week post botox": [
+      "week post botox",
+      "weeks post botox"
     ]
   }
 }

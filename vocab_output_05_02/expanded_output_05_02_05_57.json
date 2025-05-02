@@ -10,7 +10,23 @@
     "use_keybert": true,
     "min_df": 3,
     "max_workers": 8,
-    "generated_at": "2025-05-02T10:57:28.533173+00:00"
+    "generated_at": "2025-05-02T10:57:28.533173+00:00",
+    "evaluation": {
+      "evaluated_on_users": [
+        "freddiethecalathea",
+        "Many_Pomegranate_566",
+        "rpesce518",
+        "kinglgw",
+        "mjh59"
+      ],
+      "precision": 0.2877,
+      "recall": 0.5169,
+      "accuracy": 0.2268,
+      "true_positives": 61,
+      "false_positives": 151,
+      "false_negatives": 57,
+      "jaccard_similarity": 0.2268
+    }
   },
   "vocabulary": {
     "Symptom Experience & Severity": [

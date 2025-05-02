@@ -258,7 +258,7 @@ if __name__ == "__main__":
         "top_n": 60,
         "enable_morphology": False,
         "enable_lsa": True,
-        "enable_hybrid": True,
+        "enable_hybrid": False,
         "alpha": 0.5,
     }
     device = (
