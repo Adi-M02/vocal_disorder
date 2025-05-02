@@ -1,8 +1,8 @@
 # vocab_expansion_flags.py
-# Vocabulary expansion with support for maxsim, dynamic top-N, and KeyBERT
+# Vocabulary expansion with support for maxsim, dynamic top-N, and KeyBERT,
+# now using pretrained Bio-ClinicalBERT for all embedding.
 
 import os
-import sys
 import re
 import html
 import json
@@ -19,7 +19,7 @@ from nltk.tokenize import word_tokenize
 from nltk.stem import WordNetLemmatizer
 from nltk import download, data, pos_tag
 
-from sentence_transformers import SentenceTransformer, models, util
+from sentence_transformers import SentenceTransformer, models
 from transformers import AutoTokenizer, AutoModel
 from keybert import KeyBERT
 
@@ -107,7 +107,7 @@ def embed_texts(texts, tokenizer, model, device, max_length=128, batch_size=32):
         batch = texts[i:i+batch_size]
         encoded = tokenizer(batch, padding=True, truncation=True,
                             max_length=max_length, return_tensors="pt")
-        input_ids = encoded["input_ids"].to(device)
+        input_ids      = encoded["input_ids"].to(device)
         attention_mask = encoded["attention_mask"].to(device)
         with torch.no_grad():
             out = model(input_ids=input_ids, attention_mask=attention_mask)
@@ -125,10 +125,8 @@ def embed_candidates(candidates, tokenizer, model, device):
 # ─────────────────────────────────────────────────────────────────────────────
 # KeyBERT + Bio-ClinicalBERT integration
 # ─────────────────────────────────────────────────────────────────────────────
-def build_bioclinical_keybert(model_name: str, device: str) -> KeyBERT:
-    # Transformer backbone
-    word_embed = models.Transformer(model_name, max_seq_length=512)
-    # Mean pooling
+def build_bioclinical_keybert(model_path: str, device: str) -> KeyBERT:
+    word_embed = models.Transformer(model_path, max_seq_length=512)
     pooling_layer = models.Pooling(
         word_embed.get_word_embedding_dimension(),
         pooling_mode_mean_tokens=True,
@@ -172,21 +170,21 @@ def filter_by_df(phrase_counts: Counter, min_df: int = 3) -> set:
 def add_keybert_phrases(
     posts,
     term_dict: dict,
-    model_name: str,
+    model_path: str,
     device: str,
     top_k: int = 5,
     min_df: int = 3,
     ngram_range: tuple = (1,3),
     max_workers: int = 4
 ) -> dict:
-    logger.info(f"[KeyBERT] Building model with {model_name} on {device}")
-    kw_model = build_bioclinical_keybert(model_name, device)
+    logger.info(f"[KeyBERT] Building model at {model_path} on {device}")
+    kw_model = build_bioclinical_keybert(model_path, device)
 
     logger.info(f"[KeyBERT] Starting phrase addition (top_k={top_k}, min_df={min_df})")
-    counts = extract_keyphrases_per_post_threaded(posts, kw_model, top_k, ngram_range, max_workers)
+    counts  = extract_keyphrases_per_post_threaded(posts, kw_model, top_k, ngram_range, max_workers)
     frequent = filter_by_df(counts, min_df)
 
-    updated = {cat: set(terms) for cat,terms in term_dict.items()}
+    updated = {cat:set(terms) for cat,terms in term_dict.items()}
     for cat, seeds in term_dict.items():
         before = len(updated[cat])
         for phrase in frequent:
@@ -196,7 +194,7 @@ def add_keybert_phrases(
         logger.info(f"[KeyBERT] Category '{cat}': +{after-before} phrases (total {after})")
 
     logger.info(f"[KeyBERT] Merged into {len(term_dict)} categories")
-    return {cat: list(terms) for cat, terms in updated.items()}
+    return {cat:list(terms) for cat, terms in updated.items()}
 
 # ─────────────────────────────────────────────────────────────────────────────
 # Term-expansion pipeline
@@ -212,12 +210,11 @@ def expand_terms(term_dict, tokenizer, model, cand_embs,
         seed_vecs = [term2emb[t] for t in terms if t in term2emb]
         sims = {}
         for c,v in cand_embs.items():
-            if use_maxsim:
-                sims[c] = max(np.dot(v,s) for s in seed_vecs)
-            else:
-                sims[c] = np.dot(v, np.mean(seed_vecs, axis=0))
+            sims[c] = (max(np.dot(v,s) for s in seed_vecs)
+                       if use_maxsim else
+                       np.dot(v, np.mean(seed_vecs, axis=0)))
         sorted_terms = sorted(sims.items(), key=lambda x: x[1], reverse=True)
-        this_top_n = top_n  # placeholder for dynamic logic
+        this_top_n = top_n
         expanded[cat] = list(set(terms) | {c for c,_ in sorted_terms[:this_top_n]})
     return expanded
 
@@ -229,7 +226,8 @@ if __name__ == "__main__":
 
     params = {
         "subreddits": ["noburp"],
-        "model_name": "emilyalsentzer/Bio_ClinicalBERT",
+        # use your continued-pretrained directory here
+        "finetuned_dir": "bioclinicalbert_noburp_all/model",
         "top_n": 50,
         "use_maxsim": False,
         "dynamic_topn": False,
@@ -241,16 +239,22 @@ if __name__ == "__main__":
     device = "cuda" if torch.cuda.is_available() else "cpu"
     logger.info(f"Device: {device}")
 
+    # Load and preprocess posts
     posts = load_posts(params["subreddits"])
-    tokenizer = AutoTokenizer.from_pretrained(params["model_name"])
-    model = AutoModel.from_pretrained(params["model_name"]).to(device).eval()
 
+    # Load pretrained tokenizer & model from local dir
+    tokenizer = AutoTokenizer.from_pretrained(os.path.join(params["finetuned_dir"], "tokenizer"))
+    model     = AutoModel.from_pretrained(params["finetuned_dir"]).to(device).eval()
+
+    # Generate candidate terms
     cands = generate_candidate_terms(posts)
+
+    # KeyBERT expansion with continued-pretrained Bio-ClinicalBERT
     if params["use_keybert"]:
         term_dict = add_keybert_phrases(
             posts,
             TERM_CATEGORY_DICT,
-            params["model_name"],
+            params["finetuned_dir"],
             device,
             top_k=params["top_n"],
             min_df=params["min_df"],
@@ -260,6 +264,7 @@ if __name__ == "__main__":
     else:
         term_dict = TERM_CATEGORY_DICT
 
+    # Embed candidates & expand with your pretrained model
     cand_embs = embed_candidates(cands, tokenizer, model, device)
     expanded = expand_terms(
         term_dict,
@@ -272,6 +277,7 @@ if __name__ == "__main__":
         device
     )
 
+    # Save output
     output = {
         "metadata": {**params, "generated_at": datetime.now(timezone.utc).isoformat()},
         "vocabulary": expanded
