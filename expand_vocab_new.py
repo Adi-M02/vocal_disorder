@@ -99,13 +99,36 @@ def embed_candidates(candidates, tokenizer, model, device):
     embeddings = embed_texts(texts, tokenizer, model, device, max_length=128, batch_size=32)
     return {c: emb for c, emb in zip(candidates, embeddings)}
 
-def add_keybert_phrases(posts, term_dict, model_name):
-    kw_model = KeyBERT(model_name)
+def extract_keyphrases_per_post(posts, model_name, top_k=5, ngram_range=(1,3)):
+    kw = KeyBERT(model_name)
+    phrase_counts = Counter()
+    for doc in posts:
+        # limit doc length if needed: doc[:5000]
+        phrases = kw.extract_keywords(
+            doc,
+            keyphrase_ngram_range=ngram_range,
+            stop_words="english",
+            top_n=top_k
+        )
+        for p, _ in phrases:
+            phrase_counts[p.lower()] += 1
+    return phrase_counts
+
+def filter_by_df(phrase_counts, min_df=3):
+    return {phrase for phrase, cnt in phrase_counts.items() if cnt >= min_df}
+
+def add_keybert_phrases(posts, term_dict, model_name, top_k=5, min_df=3):
+    # 1) extract counts over all posts
+    phrase_counts = extract_keyphrases_per_post(posts, model_name, top_k)
+    # 2) threshold
+    frequent = filter_by_df(phrase_counts, min_df)
     updated = {cat: set(terms) for cat, terms in term_dict.items()}
-    for cat in term_dict:
-        keyphrases = kw_model.extract_keywords(" ".join(posts), keyphrase_ngram_range=(1, 3), stop_words="english", top_n=5)
-        for phrase, _ in keyphrases:
-            updated[cat].add(phrase.replace(" ", "_"))
+    for cat, seeds in term_dict.items():
+        for phrase in frequent:
+            # split phrase into words, compare stems or direct substring
+            words = phrase.replace(" ", "_")
+            if any(seed.lower() in phrase for seed in seeds):
+                updated[cat].add(words)
     return {cat: list(terms) for cat, terms in updated.items()}
 
 def expand_terms(term_dict, tokenizer, model, cand_embs, use_maxsim, dynamic_topn, top_n):
