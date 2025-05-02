@@ -1,7 +1,55 @@
 {
   "vocab_bins": {
-    "zero appetite": [
-      "zero appetite"
+    "burp vomit": [
+      "burp vomit",
+      "burps vomit"
+    ],
+    "throat tightness": [
+      "throat tightness"
+    ],
+    "uncomfortable burp": [
+      "uncomfortable burp",
+      "uncomfortable burping"
+    ],
+    "vomit work": [
+      "vomit work",
+      "vomiting work"
+    ],
+    "pain air vomit": [
+      "pain air vomit",
+      "pain air vomiting"
+    ],
+    "nauseous air vomit": [
+      "nauseous air vomit"
+    ],
+    "no burp": [
+      "no burp"
+    ],
+    "air vomit throat": [
+      "air vomit throat",
+      "air vomiting throat"
+    ],
+    "bloat sensation": [
+      "bloat sensation",
+      "bloating sensation"
+    ],
+    "involuntary dry heaving": [
+      "involuntary dry heaving"
+    ],
+    "pressure": [
+      "pressure",
+      "pressured",
+      "pressures",
+      "pressuring"
+    ],
+    "excess wind": [
+      "excess wind"
+    ],
+    "vomit": [
+      "vomit",
+      "vomited",
+      "vomiting",
+      "vomits"
     ],
     "bloat": [
       "bloat",
@@ -9,27 +57,53 @@
       "bloating",
       "bloats"
     ],
-    "air vomit": [
-      "air vomit",
-      "air vomiting"
+    "vomit bad": [
+      "vomit bad",
+      "vomiting bad"
+    ],
+    "vomit gas": [
+      "vomit gas",
+      "vomiting gas"
     ],
     "vomit throat": [
       "vomit throat",
       "vomiting throat"
     ],
-    "burp stomach": [
-      "burp stomach",
-      "burps stomach"
+    "shortness of breath": [
+      "shortness of breath"
     ],
-    "retch": [
-      "retch",
-      "retched",
-      "retches",
-      "retching"
+    "feel vomit": [
+      "feel vomit",
+      "feel vomiting",
+      "felt vomiting"
     ],
-    "issue vomit burp": [
-      "issue vomit burp",
-      "issues vomiting burp"
+    "choke": [
+      "choke",
+      "choked",
+      "chokes",
+      "choking"
+    ],
+    "burp anxiety issue": [
+      "burp anxiety issue",
+      "burp anxiety issues"
+    ],
+    "vomit really": [
+      "vomit really",
+      "vomiting really"
+    ],
+    "gurgle": [
+      "gurgle",
+      "gurgled",
+      "gurgles",
+      "gurgling"
+    ],
+    "pain gag": [
+      "pain gag",
+      "pain gagging"
+    ],
+    "liquid vomit": [
+      "liquid vomit",
+      "liquid vomiting"
     ],
     "gag": [
       "gag",
@@ -37,54 +111,113 @@
       "gagging",
       "gags"
     ],
-    "vomit air": [
-      "vomit air"
-    ],
-    "vomit use": [
-      "vomit use",
-      "vomiting use",
-      "vomiting used"
-    ],
-    "shortness of breath": [
-      "shortness of breath"
-    ],
-    "anxiety induce": [
-      "anxiety induce",
-      "anxiety induced"
-    ],
-    "involuntary dry heaving": [
-      "involuntary dry heaving"
-    ],
-    "tummy": [
-      "tummy"
-    ],
-    "vomit gas": [
-      "vomit gas",
-      "vomiting gas"
-    ],
-    "distension": [
-      "distension"
-    ],
-    "typical anxiety symptom": [
-      "typical anxiety symptom"
-    ],
-    "burp vomit": [
-      "burp vomit",
-      "burp vomiting",
-      "burps vomit",
-      "burps vomiting"
+    "stomach nausea": [
+      "stomach nausea"
     ],
     "expand bubble feel": [
       "expand bubble feel",
       "expanding bubble feeling"
     ],
-    "vomit stop": [
-      "vomit stop",
-      "vomiting stop"
+    "tummy ache": [
+      "tummy ache",
+      "tummy aches"
     ],
-    "vomit end": [
-      "vomit end",
-      "vomiting end"
+    "throat bloat": [
+      "throat bloat",
+      "throat bloating"
+    ],
+    "cramp gas": [
+      "cramp gas",
+      "cramps gas"
+    ],
+    "choke sensation": [
+      "choke sensation",
+      "choking sensation"
+    ],
+    "croak": [
+      "croak",
+      "croaked",
+      "croaking",
+      "croaks"
+    ],
+    "gas trap": [
+      "gas trap",
+      "gas trapped"
+    ],
+    "vomit feel": [
+      "vomit feel",
+      "vomiting feel",
+      "vomiting feels"
+    ],
+    "gas trap pain": [
+      "gas trap pain",
+      "gas trapped pain"
+    ],
+    "air vomit": [
+      "air vomit",
+      "air vomiting"
+    ],
+    "dry heaving": [
+      "dry heaving"
+    ],
+    "vomit feel sick": [
+      "vomit feel sick",
+      "vomiting feel sick"
+    ],
+    "slow swallow": [
+      "slow swallow",
+      "slow swallowing"
+    ],
+    "regurgitation": [
+      "regurgitation"
+    ],
+    "excessive bloat": [
+      "excessive bloat",
+      "excessive bloating"
+    ],
+    "vomit hold": [
+      "vomit hold",
+      "vomiting hold"
+    ],
+    "burp symptom": [
+      "burp symptom",
+      "burps symptoms"
+    ],
+    "dry heave y": [
+      "dry heave y"
+    ],
+    "full vomit": [
+      "full vomit",
+      "full vomiting"
+    ],
+    "uncontrollable dry heaving": [
+      "uncontrollable dry heaving"
+    ],
+    "difficulty breathe": [
+      "difficulty breathe",
+      "difficulty breathing"
+    ],
+    "vomit sound": [
+      "vomit sound",
+      "vomiting sound",
+      "vomiting sounds"
+    ],
+    "throat vomit air": [
+      "throat vomit air",
+      "throat vomiting air"
+    ],
+    "nauseate": [
+      "nauseate",
+      "nauseated",
+      "nauseates",
+      "nauseating"
+    ],
+    "gas gag": [
+      "gas gag",
+      "gas gagging"
+    ],
+    "gaggy": [
+      "gaggy"
     ],
     "hiccup": [
       "hiccup",
@@ -94,259 +227,149 @@
       "hiccupping",
       "hiccups"
     ],
-    "vomit slowly help": [
-      "vomit slowly help",
-      "vomiting slowly help"
+    "nausea in throat": [
+      "nausea in throat"
     ],
-    "vomit issue": [
-      "vomit issue",
-      "vomiting issue",
-      "vomiting issues"
+    "always trouble vomit": [
+      "always trouble vomit",
+      "always trouble vomiting"
     ],
-    "vomit loud": [
-      "vomit loud",
-      "vomiting loud"
+    "globus": [
+      "globus"
     ],
-    "acid reflux": [
-      "acid reflux"
+    "distension": [
+      "distension"
     ],
-    "difficulty breathe": [
-      "difficulty breathe",
-      "difficulty breathing"
+    "vomit get": [
+      "vomit get",
+      "vomiting get"
     ],
-    "gag involuntarily": [
-      "gag involuntarily",
-      "gagging involuntarily"
-    ],
-    "slow swallow": [
-      "slow swallow",
-      "slow swallowing"
-    ],
-    "hiccup stomach": [
-      "hiccup stomach",
-      "hiccups stomach"
-    ],
-    "vomit": [
-      "vomit",
-      "vomited",
-      "vomiting",
-      "vomits"
-    ],
-    "vomit easy": [
-      "vomit easy",
-      "vomiting easy"
-    ],
-    "full of air": [
-      "full of air"
-    ],
-    "vomit problem": [
-      "vomit problem",
-      "vomiting problem"
-    ],
-    "tummy ache": [
-      "tummy ache",
-      "tummy aches"
-    ],
-    "vomit rest": [
-      "vomit rest",
-      "vomiting rest"
-    ],
-    "fear vomit": [
-      "fear vomit",
-      "fear vomiting"
-    ],
-    "throat gurgle": [
-      "throat gurgle",
-      "throat gurgles"
-    ],
-    "gas trap": [
-      "gas trap",
-      "gas trapped"
-    ],
-    "vomit condition": [
-      "vomit condition",
-      "vomiting condition"
-    ],
-    "vomit non": [
-      "vomit non",
-      "vomiting non"
+    "vomit also feel": [
+      "vomit also feel",
+      "vomiting also feel"
     ],
     "vomit pressure": [
       "vomit pressure",
       "vomiting pressure"
     ],
-    "throat tightness": [
-      "throat tightness"
+    "involuntary gag": [
+      "involuntary gag",
+      "involuntary gagging"
     ],
-    "dry heaving": [
-      "dry heaving"
+    "retch sound": [
+      "retch sound",
+      "retching sounds"
     ],
-    "vomit work": [
-      "vomit work",
-      "vomiting work"
+    "throat gurgle": [
+      "throat gurgle",
+      "throat gurgles"
     ],
-    "vomitte bad": [
-      "vomitte bad",
-      "vomitting bad"
+    "inability to burp": [
+      "inability to burp"
     ],
-    "burp anxiety issue": [
-      "burp anxiety issue",
-      "burp anxiety issues"
+    "feel air vomit": [
+      "feel air vomit",
+      "feel air vomiting"
     ],
-    "croak": [
-      "croak",
-      "croaked",
-      "croaking",
-      "croaks"
+    "globus sensation": [
+      "globus sensation"
     ],
-    "early satiety": [
-      "early satiety"
+    "burp stomach": [
+      "burp stomach",
+      "burps stomach"
     ],
-    "vomitte": [
-      "vomitte",
-      "vomitting"
+    "gurgle x": [
+      "gurgle x",
+      "gurgles x"
+    ],
+    "nauseous vomit": [
+      "nauseous vomit",
+      "nauseous vomiting"
+    ],
+    "vomit relieve": [
+      "vomit relieve",
+      "vomiting relieve"
+    ],
+    "bad air vomit": [
+      "bad air vomit",
+      "bad air vomiting",
+      "worse air vomiting"
+    ],
+    "can burp": [
+      "can burp",
+      "cant burp"
+    ],
+    "gurgle air vomitte": [
+      "gurgle air vomitte",
+      "gurgles air vomitting"
+    ],
+    "also gag": [
+      "also gag",
+      "also gagging"
+    ],
+    "vomit bloat": [
+      "vomit bloat",
+      "vomit bloating"
+    ],
+    "nauseous air bubble": [
+      "nauseous air bubble",
+      "nauseous air bubbles"
+    ],
+    "air bloat": [
+      "air bloat"
     ],
     "constipation": [
       "constipation"
     ],
-    "nauseous": [
-      "nauseous"
-    ],
-    "vomit keep": [
-      "vomit keep",
-      "vomiting keep"
-    ],
-    "burb": [
-      "burb",
-      "burbs"
-    ],
-    "liquid vomit": [
-      "liquid vomit",
-      "liquid vomiting"
-    ],
-    "vomit hold": [
-      "vomit hold",
-      "vomiting hold"
-    ],
-    "chest pain": [
-      "chest pain"
+    "happen throat vomit": [
+      "happen throat vomit",
+      "happens throat vomiting"
     ],
     "burp stomach issue": [
       "burp stomach issue",
       "burp stomach issues"
     ],
-    "vomit bad": [
-      "vomit bad",
-      "vomiting bad"
+    "air vomit sound": [
+      "air vomit sound",
+      "air vomiting sound"
     ],
-    "excess wind": [
-      "excess wind"
+    "burb": [
+      "burb",
+      "burbs"
     ],
-    "cramp gas": [
-      "cramp gas",
-      "cramps gas"
+    "vomit burp": [
+      "vomit burp",
+      "vomit burps"
     ],
-    "vomit help": [
-      "vomit help",
-      "vomiting help"
+    "nauseous": [
+      "nauseous"
     ],
-    "vomit sound": [
-      "vomit sound",
-      "vomiting sound",
-      "vomiting sounds"
-    ],
-    "vomit nice": [
-      "vomit nice",
-      "vomiting nice"
-    ],
-    "vomit worry": [
-      "vomit worry",
-      "vomiting worry"
-    ],
-    "vomit go": [
-      "vomit go",
-      "vomiting go",
-      "vomiting goes"
-    ],
-    "uncomfortable": [
-      "uncomfortable"
-    ],
-    "vomit fear": [
-      "vomit fear",
-      "vomiting fear"
-    ],
-    "gaggy": [
-      "gaggy"
-    ],
-    "gas trap pain": [
-      "gas trap pain",
-      "gas trapped pain"
-    ],
-    "hurt": [
-      "hurt",
-      "hurting",
-      "hurts"
-    ],
-    "get air vomit": [
-      "get air vomit",
-      "get air vomiting"
-    ],
-    "gurgle": [
-      "gurgle",
-      "gurgled",
-      "gurgles",
-      "gurgling"
-    ],
-    "choke": [
-      "choke",
-      "choked",
-      "chokes",
-      "choking"
-    ],
-    "air vomit throat": [
-      "air vomit throat",
-      "air vomiting throat"
-    ],
-    "bubble feel": [
-      "bubble feel",
-      "bubble feeling"
-    ],
-    "burp symptom": [
-      "burp symptom",
-      "burps symptoms"
-    ],
-    "no burp": [
-      "no burp"
-    ],
-    "abdominal pain": [
-      "abdominal pain"
-    ],
-    "uncontrollable dry heaving": [
-      "uncontrollable dry heaving"
-    ],
-    "burp stay": [
-      "burp stay",
-      "burps stay"
-    ],
-    "involuntary gag": [
-      "involuntary gag",
-      "involuntary gagging"
-    ],
-    "vomit seem": [
-      "vomit seem",
-      "vomiting seems"
+    "hiccup stomach": [
+      "hiccup stomach",
+      "hiccups stomach"
     ],
     "motility issue": [
       "motility issue",
       "motility issues"
     ],
-    "excessive bloat": [
-      "excessive bloat",
-      "excessive bloating"
+    "retch": [
+      "retch",
+      "retched",
+      "retches",
+      "retching"
     ],
-    "vomit hour": [
-      "vomit hour",
-      "vomiting hours"
+    "abdominal pain": [
+      "abdominal pain"
+    ],
+    "uncomfortable": [
+      "uncomfortable"
+    ],
+    "full of air": [
+      "full of air"
+    ],
+    "gas bubble": [
+      "gas bubble",
+      "gas bubbling"
     ],
     "anaesthesia": [
       "anaesthesia"
@@ -354,222 +377,159 @@
     "flatulence": [
       "flatulence"
     ],
-    "vomit need": [
-      "vomit need",
-      "vomiting need"
+    "hurt": [
+      "hurt",
+      "hurting",
+      "hurts"
     ],
-    "vomit want": [
-      "vomit want",
-      "vomiting want"
+    "burp pain": [
+      "burp pain",
+      "burps pain"
     ],
-    "nausea burp": [
-      "nausea burp",
-      "nausea burps"
+    "typical anxiety symptom": [
+      "typical anxiety symptom"
     ],
-    "can burp": [
-      "can burp",
-      "cant burp"
+    "air vomit really": [
+      "air vomit really",
+      "air vomiting really"
     ],
-    "nausea in throat": [
-      "nausea in throat"
+    "vomitte": [
+      "vomitte",
+      "vomitting"
     ],
-    "vomit usually air": [
-      "vomit usually air",
-      "vomiting usually air"
+    "constant air vomit": [
+      "constant air vomit",
+      "constant air vomiting"
     ],
-    "burp make vomit": [
-      "burp make vomit",
-      "burp make vomiting"
+    "get throat nausea": [
+      "get throat nausea",
+      "got throat nausea"
     ],
-    "regurgitation": [
-      "regurgitation"
+    "vomit pain": [
+      "vomit pain",
+      "vomiting pain"
     ],
-    "air vomit sound": [
-      "air vomit sound",
-      "air vomiting sound"
+    "gurgle likely": [
+      "gurgle likely",
+      "gurgles likely"
     ],
-    "stomach nausea": [
-      "stomach nausea"
+    "chest pain": [
+      "chest pain"
     ],
-    "unable to burp": [
-      "unable to burp"
+    "tummy": [
+      "tummy"
     ],
-    "globus": [
-      "globus"
+    "really air vomit": [
+      "really air vomit",
+      "really air vomiting"
     ],
-    "inability to burp": [
-      "inability to burp"
+    "burp stay": [
+      "burp stay",
+      "burps stay"
     ],
-    "vomit time": [
-      "vomit time",
-      "vomiting time"
+    "get air vomit": [
+      "get air vomit",
+      "get air vomiting"
     ],
-    "vomit question": [
-      "vomit question",
-      "vomiting question"
+    "gag involuntarily": [
+      "gag involuntarily",
+      "gagging involuntarily"
     ],
-    "vomit dry": [
-      "vomit dry",
-      "vomiting dry"
+    "bubble feel": [
+      "bubble feel",
+      "bubble feeling"
     ],
-    "fear vomit r": [
-      "fear vomit r",
-      "fear vomiting r"
+    "vomit noise": [
+      "vomit noise",
+      "vomiting noises"
     ],
-    "choke sensation": [
-      "choke sensation",
-      "choking sensation"
+    "get vomit": [
+      "get vomit",
+      "get vomiting"
     ],
-    "nauseate": [
-      "nauseate",
-      "nauseated",
-      "nauseates",
-      "nauseating"
+    "zero appetite": [
+      "zero appetite"
     ],
-    "globus sensation": [
-      "globus sensation"
+    "early satiety": [
+      "early satiety"
+    ],
+    "vomit discomfort": [
+      "vomit discomfort",
+      "vomiting discomfort"
+    ],
+    "vomit air": [
+      "vomit air"
+    ],
+    "air vomit feel": [
+      "air vomit feel",
+      "air vomiting feeling"
+    ],
+    "anxiety induce": [
+      "anxiety induce",
+      "anxiety induced"
     ],
     "throw up": [
       "throw up",
       "throwing up"
     ],
-    "pressure": [
-      "pressure",
-      "pressured",
-      "pressures",
-      "pressuring"
+    "gurgle possible": [
+      "gurgle possible",
+      "gurgles possible"
     ],
-    "dry heave y": [
-      "dry heave y"
+    "unable to burp": [
+      "unable to burp"
     ],
-    "vomit burp": [
-      "vomit burp",
-      "vomit burps"
+    "air vomit gas": [
+      "air vomit gas",
+      "air vomiting gas"
     ],
-    "vomit try": [
-      "vomit try",
-      "vomiting try"
+    "nauseous air": [
+      "nauseous air"
     ],
-    "vomit rare": [
-      "vomit rare",
-      "vomiting rare"
+    "acid reflux": [
+      "acid reflux"
     ],
-    "procedure worry": [
-      "procedure worried",
-      "procedure worry"
-    ],
-    "surgery mean": [
-      "surgery mean",
-      "surgery meant"
+    "procedure although": [
+      "procedure although"
     ],
     "relieve bloat": [
       "relieve bloat",
       "relieving bloating"
     ],
-    "procedure think": [
-      "procedure think",
-      "procedure thinking"
+    "procedure first": [
+      "procedure first"
     ],
-    "procedure anymore": [
-      "procedure anymore"
+    "procedure something": [
+      "procedure something"
     ],
-    "procedure talk": [
-      "procedure talk",
-      "procedure talking"
+    "botox procedure get": [
+      "botox procedure get",
+      "botox procedure got"
     ],
-    "procedure often get": [
-      "procedure often get"
+    "inflammation": [
+      "inflammation"
     ],
-    "procedure say": [
-      "procedure said",
-      "procedure say",
-      "procedure saying"
+    "procedure instead": [
+      "procedure instead"
     ],
-    "uncontrollable belch": [
-      "uncontrollable belch",
-      "uncontrollable belching"
+    "surgery although": [
+      "surgery although"
     ],
-    "insurance": [
-      "insurance"
+    "procedure already": [
+      "procedure already"
+    ],
+    "botox drink": [
+      "botox drink"
     ],
     "botox swallow": [
       "botox swallow",
       "botox swallowing"
     ],
-    "procedure get": [
-      "procedure get"
-    ],
-    "anti nausea medication": [
-      "anti nausea medication"
-    ],
-    "insurance provider": [
-      "insurance provider"
-    ],
-    "injection": [
-      "injection",
-      "injections"
-    ],
-    "also nervous procedure": [
-      "also nervous procedure"
-    ],
     "procedure": [
       "procedure"
     ],
-    "surgery sometimes": [
-      "surgery sometimes"
-    ],
-    "surgery diary": [
-      "surgery diaries",
-      "surgery diary"
-    ],
-    "post botox": [
-      "post botox"
-    ],
-    "procedure week say": [
-      "procedure week say",
-      "procedure weeks say"
-    ],
-    "procedure sometimes": [
-      "procedure sometimes"
-    ],
-    "burp mini": [
-      "burp mini"
-    ],
-    "procedure soon worry": [
-      "procedure soon worried",
-      "procedure soon worry"
-    ],
-    "procedure sore": [
-      "procedure sore"
-    ],
-    "procedure do year": [
-      "procedure do year",
-      "procedure done year"
-    ],
-    "procedure worry get": [
-      "procedure worry get"
-    ],
-    "procedure seem": [
-      "procedure seem",
-      "procedure seems"
-    ],
-    "procedure real": [
-      "procedure real"
-    ],
-    "bubble in throat": [
-      "bubble in throat"
-    ],
-    "botox procedure": [
-      "botox procedure"
-    ],
-    "procedure often": [
-      "procedure often"
-    ],
-    "sore throat etc": [
-      "sore throat etc"
-    ],
-    "botox": [
-      "botox"
+    "botox procedure feel": [
+      "botox procedure feel"
     ],
     "pain": [
       "pain",
@@ -577,114 +537,204 @@
       "paining",
       "pains"
     ],
-    "procedure constantly": [
-      "procedure constantly"
+    "zofran": [
+      "zofran"
     ],
-    "nervous procedure actually": [
-      "nervous procedure actually"
+    "surgery obviously": [
+      "surgery obviously"
     ],
-    "procedure thing": [
-      "procedure thing"
+    "injection": [
+      "injection",
+      "injections"
     ],
-    "procedure really": [
-      "procedure really"
+    "procedure often": [
+      "procedure often"
     ],
-    "procedure afraid acid": [
-      "procedure afraid acid"
+    "botox procedure definitely": [
+      "botox procedure definitely"
     ],
-    "procedure monday get": [
-      "procedure monday get",
-      "procedure monday got"
+    "mini burp": [
+      "mini burp"
     ],
-    "procedure wait": [
-      "procedure wait",
-      "procedure waited"
-    ],
-    "procedure hard": [
-      "procedure hard"
-    ],
-    "procedure help": [
-      "procedure help"
-    ],
-    "inflammation": [
-      "inflammation"
-    ],
-    "procedure idea": [
-      "procedure idea"
-    ],
-    "procedure something": [
-      "procedure something"
-    ],
-    "procedure want": [
-      "procedure want",
-      "procedure wanted"
+    "procedure worry": [
+      "procedure worried",
+      "procedure worry"
     ],
     "procedure happy": [
       "procedure happy"
     ],
-    "procedure doctor": [
-      "procedure doctor"
+    "uncontrollable belch": [
+      "uncontrollable belch",
+      "uncontrollable belching"
     ],
-    "wet burp": [
-      "wet burp",
-      "wet burps"
+    "procedure hope": [
+      "procedure hope",
+      "procedure hoping"
+    ],
+    "groggy": [
+      "groggy"
+    ],
+    "surgery diary": [
+      "surgery diaries",
+      "surgery diary"
+    ],
+    "procedure say": [
+      "procedure said",
+      "procedure say",
+      "procedure saying"
+    ],
+    "insurance": [
+      "insurance"
+    ],
+    "botox procedure actually": [
+      "botox procedure actually"
+    ],
+    "procedure talk": [
+      "procedure talk",
+      "procedure talking"
+    ],
+    "procedure immediately": [
+      "procedure immediately"
+    ],
+    "ear pain": [
+      "ear pain"
+    ],
+    "botox procedure always": [
+      "botox procedure always"
+    ],
+    "procedure thing": [
+      "procedure thing"
+    ],
+    "procedure x": [
+      "procedure x"
+    ],
+    "procedure sore": [
+      "procedure sore"
+    ],
+    "procedure kinda": [
+      "procedure kinda"
+    ],
+    "whole procedure also": [
+      "whole procedure also"
+    ],
+    "surgery basically": [
+      "surgery basically"
+    ],
+    "botox": [
+      "botox"
+    ],
+    "procedure give": [
+      "procedure gave",
+      "procedure give",
+      "procedure gives"
+    ],
+    "procedure iv": [
+      "procedure iv"
+    ],
+    "hypersalvation": [
+      "hypersalvation"
     ],
     "microburpe": [
       "microburpe",
       "microburped"
     ],
-    "long procedure start": [
-      "long procedure start"
-    ],
-    "procedure happen": [
-      "procedure happen"
-    ],
-    "procedure we": [
-      "procedure us",
-      "procedure we"
-    ],
-    "mini burp": [
-      "mini burp"
+    "insurance provider": [
+      "insurance provider"
     ],
     "liquid ibuprofen": [
       "liquid ibuprofen"
     ],
-    "procedure always": [
-      "procedure always"
+    "botox procedure think": [
+      "botox procedure think"
     ],
-    "ear pain": [
-      "ear pain"
+    "procedure get": [
+      "procedure get"
     ],
-    "general anaesthetic": [
-      "general anaesthetic"
-    ],
-    "microburps": [
-      "microburps"
-    ],
-    "lump": [
-      "lump",
-      "lumped",
-      "lumping",
-      "lumps"
+    "procedure constantly": [
+      "procedure constantly"
     ],
     "surgery": [
       "surgery"
+    ],
+    "post botox": [
+      "post botox"
+    ],
+    "procedure think": [
+      "procedure think",
+      "procedure thinking"
+    ],
+    "burp mini": [
+      "burp mini"
+    ],
+    "procedure regardless feel": [
+      "procedure regardless feel"
+    ],
+    "botox procedure unless": [
+      "botox procedure unless"
+    ],
+    "botox procedure although": [
+      "botox procedure although"
+    ],
+    "anesthesia": [
+      "anesthesia"
+    ],
+    "botox procedure": [
+      "botox procedure"
+    ],
+    "procedure obviously": [
+      "procedure obviously"
+    ],
+    "microburps": [
+      "microburps"
     ],
     "hyper I I salivation": [
       "hyper   salivation",
       "hyper I I salivation"
     ],
-    "procedure afraid": [
-      "procedure afraid"
+    "procedure we": [
+      "procedure us",
+      "procedure we"
     ],
-    "procedure obviously": [
-      "procedure obviously"
+    "procedure basically": [
+      "procedure basically"
     ],
-    "procedure first": [
-      "procedure first"
+    "anti nausea medication": [
+      "anti nausea medication"
     ],
-    "anxiety procedure actually": [
-      "anxiety procedure actually"
+    "procedure honestly": [
+      "procedure honestly"
+    ],
+    "ondansetron": [
+      "ondansetron"
+    ],
+    "nervous procedure": [
+      "nervous procedure"
+    ],
+    "micro burp": [
+      "micro burp"
+    ],
+    "post botox burper": [
+      "post botox burper",
+      "post botox burpers"
+    ],
+    "botox procedure also": [
+      "botox procedure also"
+    ],
+    "post anaesthetic nausea": [
+      "post anaesthetic nausea"
+    ],
+    "procedure try": [
+      "procedure try",
+      "procedure trying"
+    ],
+    "botox procedure really": [
+      "botox procedure really"
+    ],
+    "actual procedure really": [
+      "actual procedure really"
+    ],
+    "bubble in throat": [
+      "bubble in throat"
     ],
     "relieve": [
       "relieve",
@@ -692,266 +742,152 @@
       "relieves",
       "relieving"
     ],
-    "post anaesthetic nausea": [
-      "post anaesthetic nausea"
+    "also anxiety procedure": [
+      "also anxiety procedure"
     ],
-    "procedure ever": [
-      "procedure ever"
+    "procedure help": [
+      "procedure help"
     ],
-    "anesthesia": [
-      "anesthesia"
-    ],
-    "nervous procedure": [
-      "nervous procedure"
-    ],
-    "surgery scare": [
-      "surgery scare",
-      "surgery scared"
-    ],
-    "in office procedure": [
-      "in office procedure"
-    ],
-    "post botox burper": [
-      "post botox burper",
-      "post botox burpers"
+    "surgery actually": [
+      "surgery actually"
     ],
     "unit": [
       "unit",
       "units"
     ],
-    "zofran": [
-      "zofran"
+    "wet burp": [
+      "wet burp",
+      "wet burps"
     ],
-    "procedure try": [
-      "procedure try",
-      "procedure trying"
+    "botox procedure probably": [
+      "botox procedure probably"
     ],
-    "ondansetron": [
-      "ondansetron"
+    "procedure anyway": [
+      "procedure anyway"
     ],
-    "procedure come": [
-      "procedure come",
-      "procedure comes"
+    "procedure actually": [
+      "procedure actually"
     ],
-    "procedure hope": [
-      "procedure hope"
-    ],
-    "procedure mostly": [
-      "procedure mostly"
-    ],
-    "since procedure think": [
-      "since procedure think"
+    "sore throat etc": [
+      "sore throat etc"
     ],
     "sore throat": [
       "sore throat"
     ],
-    "long procedure think": [
-      "long procedure think"
+    "first procedure really": [
+      "first procedure really"
     ],
-    "micro burp": [
-      "micro burp"
+    "get procedure something": [
+      "get procedure something",
+      "getting procedure something"
     ],
-    "procedure tell": [
-      "procedure tell",
-      "procedure told"
+    "procedure always": [
+      "procedure always"
     ],
-    "procedure give": [
-      "procedure give"
+    "general anaesthetic": [
+      "general anaesthetic"
     ],
-    "surgery always": [
-      "surgery always"
+    "procedure regardless": [
+      "procedure regardless"
     ],
-    "prior procedure think": [
-      "prior procedure think"
+    "botox procedure something": [
+      "botox procedure something"
     ],
-    "hypersalvation": [
-      "hypersalvation"
+    "botox procedure many": [
+      "botox procedure many"
     ],
-    "sleeve surgery afraid": [
-      "sleeve surgery afraid"
+    "lump": [
+      "lump",
+      "lumped",
+      "lumping",
+      "lumps"
     ],
-    "botox drink": [
-      "botox drink"
+    "procedure really": [
+      "procedure really"
     ],
-    "groggy": [
-      "groggy"
+    "botox procedure seem": [
+      "botox procedure seem",
+      "botox procedure seemed"
     ],
-    "burp lot": [
-      "burp lot",
-      "burp lots",
-      "burping lots"
+    "procedure lol": [
+      "procedure lol"
     ],
-    "tea": [
-      "tea"
+    "procedure doctor": [
+      "procedure doctor"
     ],
-    "cbt": [
-      "cbt"
+    "botox procedure least": [
+      "botox procedure least"
     ],
-    "live san": [
-      "live san"
+    "surgery anyway": [
+      "surgery anyway"
     ],
-    "gaviscon night": [
-      "gaviscon night"
+    "in office procedure": [
+      "in office procedure"
     ],
-    "fizzy drink": [
-      "fizzy drink",
-      "fizzy drinks"
+    "procedure wait": [
+      "procedure wait",
+      "procedure waited"
     ],
-    "friday slow swallow": [
-      "friday slow swallow"
+    "procedure therefore": [
+      "procedure therefore"
     ],
-    "gas x": [
-      "gas x"
-    ],
-    "hicklin treatment": [
-      "hicklin treatment"
-    ],
-    "shaker": [
-      "shaker"
-    ],
-    "chicago say": [
-      "chicago said",
-      "chicago say"
-    ],
-    "back work procedure": [
-      "back work procedure"
-    ],
-    "burp change": [
-      "burp change",
-      "burping change",
-      "burping changed",
-      "burps change"
-    ],
-    "boston medical": [
-      "boston medical"
-    ],
-    "crane neck forward": [
-      "crane neck forward",
-      "craning neck forward"
-    ],
-    "shaker exercise": [
-      "shaker exercise"
-    ],
-    "omeprazole": [
-      "omeprazole"
+    "turn head": [
+      "turn head",
+      "turning heading"
     ],
     "self cure": [
       "self cure",
       "self cured",
       "self curing"
     ],
-    "burp final": [
-      "burp final"
-    ],
-    "prevacid": [
-      "prevacid"
-    ],
-    "exercise": [
-      "exercise",
-      "exercised",
-      "exercises",
-      "exercising"
-    ],
-    "self teach": [
-      "self taught",
-      "self teach"
-    ],
-    "tunisia": [
-      "tunisia"
-    ],
-    "head turn": [
-      "head turn"
-    ],
-    "crane neck": [
-      "crane neck",
-      "craning neck"
-    ],
-    "pelvic tilt": [
-      "pelvic tilt"
-    ],
-    "botox pill": [
-      "botox pill",
-      "botox pills"
-    ],
-    "clench stomach": [
-      "clench stomach"
-    ],
     "herbal treatment": [
       "herbal treatment"
     ],
-    "position": [
-      "position",
-      "positioned",
-      "positioning",
-      "positions"
+    "fizzy water": [
+      "fizzy water"
     ],
-    "chicago recommend": [
-      "chicago recommend"
+    "speech therapy": [
+      "speech therapy"
     ],
-    "burp carbonate": [
-      "burp carbonate",
-      "burps carbonated"
+    "wedge pillow": [
+      "wedge pillow"
     ],
-    "famotidine": [
-      "famotidine"
+    "acupuncture really": [
+      "acupuncture really"
     ],
-    "burp everyday": [
-      "burp everyday",
-      "burping everyday",
-      "burps everyday"
+    "kiss the ceiling": [
+      "kiss the ceiling"
     ],
-    "thursday slow swallow": [
-      "thursday slow swallow"
+    "shaker exercise x": [
+      "shaker exercise x",
+      "shaker exercises x"
+    ],
+    "tcm herb": [
+      "tcm herb",
+      "tcm herbs"
+    ],
+    "try carbonation": [
+      "tried carbonation",
+      "try carbonation",
+      "trying carbonation"
+    ],
+    "shaker exercise nd": [
+      "shaker exercise nd",
+      "shaker exercises nd"
     ],
     "carbonate water": [
       "carbonate water",
       "carbonated water"
     ],
-    "probiotic help": [
-      "probiotic help"
-    ],
-    "emetic work": [
-      "emetic work",
-      "emetics work"
-    ],
-    "keast": [
-      "keast"
-    ],
-    "bastian use": [
-      "bastian use"
+    "head turn": [
+      "head turn"
     ],
     "chamomile": [
       "chamomile"
     ],
-    "botox throat": [
-      "botox throat"
-    ],
-    "emdr": [
-      "emdr"
-    ],
-    "lasik eye": [
-      "lasik eye"
-    ],
-    "burp repeat": [
-      "burp repeat"
-    ],
-    "mounjaro": [
-      "mounjaro"
-    ],
-    "today burp": [
-      "today burp",
-      "today burps"
-    ],
-    "burp afternoon": [
-      "burp afternoon",
-      "burps afternoon"
-    ],
-    "bastian talk": [
-      "bastian talk",
-      "bastian talking"
-    ],
-    "kiss the ceiling": [
-      "kiss the ceiling"
+    "antacid": [
+      "antacid",
+      "antacids"
     ],
     "acupuncture": [
       "acupuncture",
@@ -959,45 +895,49 @@
       "acupunctures",
       "acupuncturing"
     ],
-    "burpin": [
-      "burpin"
+    "shaker exercise almost": [
+      "shaker exercise almost",
+      "shaker exercises almost"
     ],
-    "traditional chinese medicine": [
-      "traditional chinese medicine"
+    "shaker exercise although": [
+      "shaker exercise although",
+      "shaker exercises although"
     ],
-    "neck turn": [
-      "neck turn",
-      "neck turning"
+    "rapid drink challenge": [
+      "rapid drink challenge"
     ],
-    "kommer": [
-      "kommer"
+    "want shaker exercise": [
+      "want shaker exercise",
+      "want shaker exercises"
     ],
-    "botox sleep": [
-      "botox sleep",
-      "botox sleeping"
+    "awful shaker exercise": [
+      "awful shaker exercise",
+      "awful shaker exercises"
     ],
-    "antacid": [
-      "antacid",
-      "antacids"
+    "never shaker exercise": [
+      "never shaker exercise",
+      "never shaker exercises"
     ],
-    "burp carbonation": [
-      "burp carbonation",
-      "burps carbonation"
+    "neck massage professional": [
+      "neck massage professional",
+      "neck massages professional"
     ],
-    "cricoid massage": [
-      "cricoid massage"
+    "shaker": [
+      "shaker"
     ],
-    "botox feel anything": [
-      "botox feel anything"
+    "shaker exercise least": [
+      "shaker exercise least",
+      "shaker exercises least"
     ],
-    "botox water": [
-      "botox water"
+    "shaker exercise always": [
+      "shaker exercise always"
     ],
-    "chicago local": [
-      "chicago local"
+    "shaker exercise": [
+      "shaker exercise"
     ],
-    "nope even": [
-      "nope even"
+    "shaker exercise need": [
+      "shaker exercise need",
+      "shaker exercises need"
     ],
     "contort": [
       "contort",
@@ -1005,45 +945,86 @@
       "contorting",
       "contorts"
     ],
-    "turn head": [
-      "turn head",
-      "turning heading"
+    "emdr": [
+      "emdr"
     ],
-    "wedge pillow": [
-      "wedge pillow"
+    "famotidine": [
+      "famotidine"
     ],
-    "carbonation talk": [
-      "carbonation talk",
-      "carbonation talking"
+    "pelvic tilt": [
+      "pelvic tilt"
     ],
-    "chug water": [
-      "chug water"
+    "gas x": [
+      "gas x"
     ],
-    "like other botox": [
-      "like other botox",
-      "like others botox"
+    "acupuncture help": [
+      "acupuncture help",
+      "acupuncture helped"
     ],
-    "speech therapy": [
-      "speech therapy"
+    "mounjaro": [
+      "mounjaro"
     ],
-    "throat rest day": [
-      "throat rest day"
+    "traditional chinese medicine": [
+      "traditional chinese medicine"
     ],
-    "burp case": [
-      "burp case",
-      "burping case",
-      "burps case"
+    "fizzy drink": [
+      "fizzy drink",
+      "fizzy drinks"
     ],
-    "tummy drop": [
-      "tummy drop",
-      "tummy drops"
+    "carbonation get": [
+      "carbonation get",
+      "carbonation gets"
+    ],
+    "omeprazole": [
+      "omeprazole"
+    ],
+    "shaker exercise wish": [
+      "shaker exercise wish",
+      "shaker exercises wish"
+    ],
+    "cbt": [
+      "cbt"
+    ],
+    "acupuncture might": [
+      "acupuncture might"
+    ],
+    "shaker exercise nothing": [
+      "shaker exercise nothing",
+      "shaker exercises nothing"
     ],
     "larynx lower exercise": [
       "larynx lower exercise",
       "larynx lowering exercise"
     ],
-    "fizzy water": [
-      "fizzy water"
+    "self teach": [
+      "self taught",
+      "self teach"
+    ],
+    "air carbonation": [
+      "air carbonation"
+    ],
+    "shaker exercise honestly": [
+      "shaker exercise honestly",
+      "shaker exercises honestly"
+    ],
+    "crane neck forward": [
+      "crane neck forward",
+      "craning neck forward"
+    ],
+    "shaker exercise mostly": [
+      "shaker exercise mostly",
+      "shaker exercises mostly"
+    ],
+    "shaker exercise actually": [
+      "shaker exercise actually",
+      "shaker exercises actually"
+    ],
+    "neck turn": [
+      "neck turn",
+      "neck turning"
+    ],
+    "yes shaker exercise": [
+      "yes shaker exercise"
     ],
     "pat": [
       "pat",
@@ -1051,174 +1032,227 @@
       "patted",
       "patting"
     ],
-    "rapid drink challenge": [
-      "rapid drink challenge"
+    "shaker exercise religiously": [
+      "shaker exercise religiously",
+      "shaker exercises religiously"
     ],
-    "barium pill": [
-      "barium pill"
+    "carbonation first": [
+      "carbonation first"
     ],
-    "botox sometimes take": [
-      "botox sometimes take"
+    "try acupuncture": [
+      "tried acupuncture",
+      "try acupuncture"
     ],
-    "tcm herb": [
-      "tcm herb",
-      "tcm herbs"
+    "cricoid massage": [
+      "cricoid massage"
     ],
-    "botox jaw": [
-      "botox jaw"
+    "sugery": [
+      "sugery"
     ],
-    "rumination": [
-      "rumination"
+    "shaker exercise literally": [
+      "shaker exercise literally",
+      "shaker exercises literally"
     ],
-    "anxiety due": [
-      "anxiety due"
+    "shaker exercise enough": [
+      "shaker exercise enough"
     ],
-    "anxiety come": [
-      "anxiety come",
-      "anxiety comes"
+    "exercise": [
+      "exercise",
+      "exercised",
+      "exercises",
+      "exercising"
     ],
-    "anxiety psychological": [
-      "anxiety psychological"
+    "tea": [
+      "tea"
     ],
-    "anxiety go": [
-      "anxiety go",
-      "anxiety goes",
-      "anxiety gone"
+    "sure shaker exercise": [
+      "sure shaker exercise",
+      "sure shaker exercises"
     ],
-    "anxiety ever": [
-      "anxiety ever"
+    "carbonation give": [
+      "carbonation give",
+      "carbonation gives"
     ],
-    "anxiety totally": [
-      "anxiety totally"
+    "position": [
+      "position",
+      "positioned",
+      "positioning",
+      "positions"
     ],
-    "anxiety already": [
-      "anxiety already"
+    "crane neck": [
+      "crane neck",
+      "craning neck"
     ],
-    "anxiety realize": [
-      "anxiety realize",
-      "anxiety realized"
+    "shaker exercise never": [
+      "shaker exercise never",
+      "shaker exercises never"
+    ],
+    "need carbonation": [
+      "need carbonation"
+    ],
+    "often shaker exercise": [
+      "often shaker exercise",
+      "often shaker exercises"
+    ],
+    "start carbonation": [
+      "start carbonation",
+      "started carbonation"
+    ],
+    "shaker exercise personally": [
+      "shaker exercise personally",
+      "shaker exercises personally"
+    ],
+    "shaker exercise definitely": [
+      "shaker exercise definitely",
+      "shaker exercises definitely"
+    ],
+    "ktc exercise": [
+      "ktc exercise",
+      "ktc exercises"
+    ],
+    "say shaker exercise": [
+      "say shaker exercise",
+      "say shaker exercises"
+    ],
+    "acupuncture help I": [
+      "acupuncture help I",
+      "acupuncture helped im"
+    ],
+    "use carbonation": [
+      "use carbonation",
+      "using carbonation"
+    ],
+    "I shaker exercise": [
+      "I shaker exercise",
+      "ive shaker exercises"
+    ],
+    "back work procedure": [
+      "back work procedure"
+    ],
+    "neck exercise cure": [
+      "neck exercise cure",
+      "neck exercises cure"
     ],
     "anxiety cause": [
       "anxiety cause",
-      "anxiety causes"
+      "anxiety caused",
+      "anxiety causes",
+      "anxiety causing"
     ],
-    "anxiety true": [
-      "anxiety true"
+    "attribute anxiety": [
+      "attribute anxiety",
+      "attributed anxiety"
     ],
-    "anxiety prior": [
-      "anxiety prior"
+    "anxiety tend": [
+      "anxiety tend",
+      "anxiety tends"
     ],
-    "anxiety remember": [
-      "anxiety remember"
+    "anxiety main": [
+      "anxiety main"
     ],
-    "anxiety finally": [
-      "anxiety finally"
+    "anxiety trigger": [
+      "anxiety trigger"
     ],
-    "anxiety lately": [
-      "anxiety lately"
+    "anxiety root": [
+      "anxiety root"
     ],
-    "anxiety think": [
-      "anxiety think",
-      "anxiety thought"
+    "anxiety whenever": [
+      "anxiety whenever"
     ],
-    "anxiety acid": [
-      "anxiety acid"
+    "sad": [
+      "sad"
     ],
-    "social anxiety also": [
-      "social anxiety also"
+    "social anxiety": [
+      "social anxiety"
     ],
-    "anxiety usual": [
-      "anxiety usual"
+    "anxiety roof": [
+      "anxiety roof"
     ],
-    "anxiety lead": [
-      "anxiety lead"
+    "anxiety alone": [
+      "anxiety alone"
     ],
-    "anxiety thing": [
-      "anxiety thing"
+    "anxiety many": [
+      "anxiety many"
     ],
-    "anxiety vomit": [
-      "anxiety vomit"
+    "anxiety class": [
+      "anxiety class"
     ],
-    "anxiety definitely": [
-      "anxiety definitely"
+    "anxiety basically": [
+      "anxiety basically"
     ],
-    "anxiety long": [
-      "anxiety long"
-    ],
-    "anxiety work": [
-      "anxiety work",
-      "anxiety working"
+    "isolation": [
+      "isolation"
     ],
     "anxiety ride": [
       "anxiety ridden",
       "anxiety ride"
     ],
+    "anxiety issue": [
+      "anxiety issue"
+    ],
+    "anxiety whole": [
+      "anxiety whole"
+    ],
+    "major anxiety": [
+      "major anxiety"
+    ],
+    "anxiety therefore": [
+      "anxiety therefore"
+    ],
+    "anxiety gut": [
+      "anxiety gut"
+    ],
+    "anxiety among": [
+      "anxiety among"
+    ],
+    "relate anxiety": [
+      "relate anxiety",
+      "related anxiety"
+    ],
     "anxiety use": [
       "anxiety use",
       "anxiety used"
     ],
-    "anxiety crazy": [
-      "anxiety crazy"
+    "anxiety produce": [
+      "anxiety produce",
+      "anxiety producing"
     ],
-    "anxiety bad": [
-      "anxiety bad"
+    "anxiety usual": [
+      "anxiety usual"
     ],
-    "anxiety could": [
-      "anxiety could"
-    ],
-    "anxiety awful": [
-      "anxiety awful"
-    ],
-    "anxiety new": [
-      "anxiety new"
-    ],
-    "depressed": [
-      "depressed"
-    ],
-    "anxiety mention": [
-      "anxiety mention",
-      "anxiety mentioned"
-    ],
-    "anxiety wise": [
-      "anxiety wise"
-    ],
-    "anxiety far": [
-      "anxiety far"
-    ],
-    "anxiety tell": [
-      "anxiety tell",
-      "anxiety told"
+    "anxiety social": [
+      "anxiety social"
     ],
     "anxiety common": [
       "anxiety common"
     ],
-    "anxiety": [
-      "anxiety"
+    "depressed": [
+      "depressed"
     ],
-    "anxiety real": [
-      "anxiety real"
+    "anxiety lead": [
+      "anxiety lead"
     ],
-    "anxiety happen": [
-      "anxiety happen",
-      "anxiety happens"
+    "anxiety surround": [
+      "anxiety surround",
+      "anxiety surrounding"
     ],
-    "anxiety obviously": [
-      "anxiety obviously"
+    "anxiety inability": [
+      "anxiety inability"
     ],
-    "anxiety kind": [
-      "anxiety kind"
+    "anxiety deal": [
+      "anxiety deal",
+      "anxiety dealt"
     ],
-    "sad": [
-      "sad"
+    "anxiety particularly": [
+      "anxiety particularly"
     ],
-    "anxiety issue": [
-      "anxiety issue"
+    "anxiety come": [
+      "anxiety come",
+      "anxiety comes"
     ],
-    "anxiety cure": [
-      "anxiety cure"
-    ],
-    "anxiety basically": [
-      "anxiety basically"
+    "anxiety link": [
+      "anxiety link",
+      "anxiety linked"
     ],
     "isolate": [
       "isolate",
@@ -1226,243 +1260,112 @@
       "isolates",
       "isolating"
     ],
-    "isolation": [
-      "isolation"
+    "anxiety": [
+      "anxiety"
     ],
-    "social anxiety": [
-      "social anxiety"
+    "anxiety surely": [
+      "anxiety surely"
     ],
-    "anxiety class": [
-      "anxiety class"
+    "anxiety obviously": [
+      "anxiety obviously"
     ],
-    "anxiety school": [
-      "anxiety school"
+    "anxiety especially": [
+      "anxiety especially"
     ],
-    "anxiety inability": [
-      "anxiety inability"
+    "anxiety factor": [
+      "anxiety factor"
     ],
-    "anxiety certain": [
-      "anxiety certain"
+    "anxiety bay": [
+      "anxiety bay"
     ],
-    "gaviscon work": [
-      "gaviscon work"
+    "anxiety wise": [
+      "anxiety wise"
     ],
-    "bastian procedure office": [
-      "bastian procedure office"
+    "anxiety psychological": [
+      "anxiety psychological"
     ],
-    "bastian study": [
-      "bastian study"
+    "anxiety hold": [
+      "anxiety hold",
+      "anxiety holding"
     ],
-    "esophageal examination": [
-      "esophageal examination"
+    "social anxiety also": [
+      "social anxiety also"
+    ],
+    "also anxiety": [
+      "also anxiety"
+    ],
+    "fear vomit": [
+      "fear vomit",
+      "fear vomiting"
+    ],
+    "anxiety even": [
+      "anxiety even"
+    ],
+    "anxiety actually": [
+      "anxiety actually"
+    ],
+    "anxiety affect": [
+      "anxiety affect"
+    ],
+    "anxiety almost": [
+      "anxiety almost"
+    ],
+    "anxiety physical": [
+      "anxiety physical"
+    ],
+    "otolaryngologist": [
+      "otolaryngologist"
+    ],
+    "swallow endoscopy": [
+      "swallow endoscopy"
+    ],
+    "endoscopy think": [
+      "endoscopy think"
+    ],
+    "endoscopy since already": [
+      "endoscopy since already"
+    ],
+    "manometry etc": [
+      "manometry etc"
     ],
     "gastroenterologist": [
       "gastroenterologist"
     ],
-    "esophageal dilation": [
-      "esophageal dilation"
-    ],
-    "ibs also endoscopy": [
-      "ibs also endoscopy"
-    ],
-    "barium swallow": [
-      "barium swallow"
-    ],
-    "barium swallow study": [
-      "barium swallow study"
-    ],
-    "bastian consultation": [
-      "bastian consultation"
-    ],
-    "gaviscon go": [
-      "gaviscon go"
-    ],
-    "endoscopy test": [
-      "endoscopy test",
-      "endoscopy tests"
-    ],
-    "endoscopy go": [
-      "endoscopy go"
-    ],
-    "gaviscon": [
-      "gaviscon"
-    ],
-    "image": [
-      "image",
-      "imaged",
-      "images",
-      "imaging"
-    ],
-    "misdiagnosis": [
-      "misdiagnosis"
-    ],
-    "fluoroscopy": [
-      "fluoroscopy"
-    ],
-    "ibs colonoscopy": [
-      "ibs colonoscopy"
-    ],
-    "endoscopy nothing": [
-      "endoscopy nothing"
-    ],
-    "gi endoscopy": [
-      "gi endoscopy"
-    ],
-    "colonic pressure gas": [
-      "colonic pressure gas"
-    ],
-    "gaviscon meal": [
-      "gaviscon meal",
-      "gaviscon meals"
-    ],
-    "bastian scope": [
-      "bastian scope"
-    ],
-    "bastian appointment": [
-      "bastian appointment"
-    ],
-    "eg gastroscopy": [
-      "eg gastroscopy"
-    ],
-    "endoscopy general": [
-      "endoscopy general"
-    ],
-    "upper gi endoscope": [
-      "upper gi endoscope"
-    ],
-    "endoscopy ent": [
-      "endoscopy ent"
-    ],
-    "endoscopy bravo": [
-      "endoscopy bravo"
-    ],
-    "ph‐impedance monitor": [
-      "phimpedance monitoring",
-      "ph‐impedance monitor"
-    ],
-    "bastian medical": [
-      "bastian medical"
-    ],
-    "laryngoscopy office": [
-      "laryngoscopy office"
-    ],
-    "endoscopy swallow": [
-      "endoscopy swallow"
-    ],
-    "manometry": [
-      "manometry"
-    ],
-    "gaviscon advance": [
-      "gaviscon advance"
-    ],
-    "upper esophageal sphincter": [
-      "upper esophageal sphincter"
-    ],
-    "bastian research": [
-      "bastian research",
-      "bastians research"
-    ],
-    "barium swallow motility": [
-      "barium swallow motility"
-    ],
-    "endoscopy even": [
-      "endoscopy even"
-    ],
-    "endoscopy never": [
-      "endoscopy never"
-    ],
-    "swallow test": [
-      "swallow test",
-      "swallow tests"
-    ],
-    "colonoscopy": [
-      "colonoscopied",
-      "colonoscopies",
-      "colonoscopy",
-      "colonoscopying"
-    ],
-    "bastian inject": [
-      "bastian inject"
-    ],
-    "endoscopy everything": [
-      "endoscopy everything"
-    ],
-    "bastian travel": [
-      "bastian travel"
-    ],
-    "xray of colon": [
-      "xray of colon",
-      "xrays of colon"
-    ],
-    "esophageal sphincter": [
-      "esophageal sphincter",
-      "esophageal sphincters"
-    ],
-    "burp gastro": [
-      "burp gastro"
-    ],
-    "endoscopy awake": [
-      "endoscopy awake"
-    ],
-    "stoma": [
-      "stoma"
-    ],
-    "muscle operation": [
-      "muscle operation"
-    ],
-    "ent": [
-      "ent"
-    ],
-    "hrm": [
-      "hrm"
-    ],
-    "endoscopy appointment": [
-      "endoscopy appointment"
-    ],
-    "ph impedance": [
-      "ph impedance"
-    ],
-    "biopsy": [
-      "biopsied",
-      "biopsies",
-      "biopsy",
-      "biopsying"
-    ],
-    "bastian scope little": [
-      "bastian scope little"
-    ],
-    "fee test": [
-      "fee test",
-      "fees test"
-    ],
-    "oscopy barium swallow": [
-      "oscopy barium swallow"
-    ],
-    "gaviscon etc": [
-      "gaviscon etc"
-    ],
-    "gavison": [
-      "gavison"
-    ],
-    "endoscopy use scope": [
-      "endoscopy use scope",
-      "endoscopy uses scope"
+    "type endoscopy specifically": [
+      "type endoscopy specifically"
     ],
     "excessive air swallow": [
       "excessive air swallow",
       "excessive air swallowing"
     ],
-    "endoscopy": [
-      "endoscopy"
+    "nervous endoscopy": [
+      "nervous endoscopy"
     ],
-    "bastian office": [
-      "bastian office"
+    "wrong endoscopy": [
+      "wrong endoscopy"
     ],
-    "barium swallow surgery": [
-      "barium swallow surgery"
+    "throat endoscopy": [
+      "throat endoscopy"
     ],
-    "clear endoscopy": [
-      "clear endoscopy"
+    "endoscopy swallow": [
+      "endoscopy swallow"
+    ],
+    "endoscopy x": [
+      "endoscopy x"
+    ],
+    "endoscopy tell": [
+      "endoscopy tell",
+      "endoscopy told"
+    ],
+    "endoscopy honestly": [
+      "endoscopy honestly"
+    ],
+    "throat endoscope": [
+      "throat endoscope"
+    ],
+    "refer barium swallow": [
+      "refer barium swallow",
+      "referred barium swallow"
     ],
     "fee": [
       "fee",
@@ -1471,14 +1374,182 @@
       "feeing",
       "fees"
     ],
-    "otolaryngologist": [
-      "otolaryngologist"
+    "direct endoscopy although": [
+      "direct endoscopy although"
     ],
-    "laryngologist": [
-      "laryngologist"
+    "barium swallow also": [
+      "barium swallow also"
     ],
-    "gaviscon try": [
-      "gaviscon try"
+    "ago barium swallow": [
+      "ago barium swallow"
+    ],
+    "also barium swallow": [
+      "also barium swallow"
+    ],
+    "endoscopy however": [
+      "endoscopy however"
+    ],
+    "barium swallow study": [
+      "barium swallow study"
+    ],
+    "direct endoscopy": [
+      "direct endoscopy"
+    ],
+    "upper endoscopy rule": [
+      "upper endoscopy rule"
+    ],
+    "nasal gastric tube": [
+      "nasal gastric tube"
+    ],
+    "muscle operation": [
+      "muscle operation"
+    ],
+    "endoscopy actually": [
+      "endoscopy actually"
+    ],
+    "fee test": [
+      "fee test",
+      "fees test"
+    ],
+    "previously endoscopy": [
+      "previously endoscopy"
+    ],
+    "endoscopy hope": [
+      "endoscopy hope"
+    ],
+    "endoscopy everything": [
+      "endoscopy everything"
+    ],
+    "ph impedance": [
+      "ph impedance"
+    ],
+    "barium swallow": [
+      "barium swallow"
+    ],
+    "endoscopy many": [
+      "endoscopy many"
+    ],
+    "endoscopy although": [
+      "endoscopy although"
+    ],
+    "colonoscopy": [
+      "colonoscopied",
+      "colonoscopies",
+      "colonoscopy",
+      "colonoscopying"
+    ],
+    "upper esophageal sphincter": [
+      "upper esophageal sphincter"
+    ],
+    "say endoscopy": [
+      "said endoscopy",
+      "say endoscopy"
+    ],
+    "xray of colon": [
+      "xray of colon",
+      "xrays of colon"
+    ],
+    "hrm": [
+      "hrm"
+    ],
+    "voice institute endoscopy": [
+      "voice institute endoscopy"
+    ],
+    "endoscopy totally": [
+      "endoscopy totally"
+    ],
+    "endoscopy test": [
+      "endoscopy test",
+      "endoscopy tests"
+    ],
+    "get manometry": [
+      "get manometry",
+      "got manometry"
+    ],
+    "endoscopy really": [
+      "endoscopy really"
+    ],
+    "swallow test": [
+      "swallow test",
+      "swallow tests"
+    ],
+    "problem endoscopy": [
+      "problem endoscopy"
+    ],
+    "endoscopy": [
+      "endoscopy"
+    ],
+    "full endoscopy": [
+      "full endoscopy"
+    ],
+    "endoscopy need": [
+      "endoscopy need",
+      "endoscopy needed"
+    ],
+    "esophageal sphincter": [
+      "esophageal sphincter",
+      "esophageal sphincters"
+    ],
+    "doctor endoscopy": [
+      "doctor endoscopy"
+    ],
+    "stoma": [
+      "stoma"
+    ],
+    "upper gi endoscope": [
+      "upper gi endoscope"
+    ],
+    "nasal gastric": [
+      "nasal gastric"
+    ],
+    "ent": [
+      "ent"
+    ],
+    "endoscopy like": [
+      "endoscopy like"
+    ],
+    "endoscopy doctor": [
+      "endoscopy doctor",
+      "endoscopy doctors"
+    ],
+    "biopsy": [
+      "biopsied",
+      "biopsies",
+      "biopsy",
+      "biopsying"
+    ],
+    "ph‐impedance monitor": [
+      "phimpedance monitoring",
+      "ph‐impedance monitor"
+    ],
+    "endoscopy sure": [
+      "endoscopy sure"
+    ],
+    "pcp": [
+      "pcp"
+    ],
+    "also refer endoscopy": [
+      "also refer endoscopy",
+      "also referred endoscopy"
+    ],
+    "ent barium swallow": [
+      "ent barium swallow"
+    ],
+    "ent manometry": [
+      "ent manometry"
+    ],
+    "image": [
+      "image",
+      "imaged",
+      "images",
+      "imaging"
+    ],
+    "endoscopy something": [
+      "endoscopy something"
+    ],
+    "endoscopy specifically focus": [
+      "endoscopy specifically focus",
+      "endoscopy specifically focused"
     ],
     "nasoendoscopy": [
       "nasoendoscopy"
@@ -1486,320 +1557,400 @@
     "specialist": [
       "specialist"
     ],
-    "liquid gaviscon": [
-      "liquid gaviscon"
+    "endoscopy since": [
+      "endoscopy since"
     ],
-    "nasal gastric tube": [
-      "nasal gastric tube"
+    "fluoroscopy": [
+      "fluoroscopy"
     ],
-    "pcp": [
-      "pcp"
+    "esophageal examination": [
+      "esophageal examination"
     ],
-    "laryngoscopy direct": [
-      "laryngoscopy direct"
+    "manometry": [
+      "manometry"
     ],
-    "gaviscon extra": [
-      "gaviscon extra"
+    "endoscopy say": [
+      "endoscopy said",
+      "endoscopy say"
     ],
-    "nasal gastric": [
-      "nasal gastric"
+    "upper endoscopy never": [
+      "upper endoscopy never"
     ],
-    "gas tummy": [
-      "gas tummy"
+    "see endoscopy": [
+      "see endoscopy",
+      "seen endoscopy"
     ],
-    "botox dysphagia r": [
-      "botox dysphagia r"
+    "manometry x": [
+      "manometry x"
     ],
-    "reflux surgery lot": [
-      "reflux surgery lot"
+    "misdiagnosis": [
+      "misdiagnosis"
     ],
-    "sibo": [
-      "sibo"
+    "esophageal dilation": [
+      "esophageal dilation"
     ],
-    "irritable bowel syndrome": [
-      "irritable bowel syndrome"
+    "laryngologist": [
+      "laryngologist"
     ],
-    "burp acid reflux": [
-      "burp acid reflux"
+    "sibo rapid gastric": [
+      "sibo rapid gastric"
     ],
-    "abdomino phrenic dyssynergia": [
-      "abdomino phrenic dyssynergia"
-    ],
-    "ibs": [
-      "ibs"
-    ],
-    "acid reflux esophagitis": [
-      "acid reflux esophagitis"
-    ],
-    "aerophagia supragastric belch": [
-      "aerophagia supragastric belch",
-      "aerophagia supragastric belching"
-    ],
-    "methane small intestine": [
-      "methane small intestine"
-    ],
-    "botox treatment achalasia": [
-      "botox treatment achalasia"
-    ],
-    "sibo gastritis": [
-      "sibo gastritis"
-    ],
-    "gi disorder": [
-      "gi disorder"
-    ],
-    "hiatal hernia apparently": [
-      "hiatal hernia apparently"
-    ],
-    "hiatal hernia": [
-      "hiatal hernia"
-    ],
-    "hiatal hernia time": [
-      "hiatal hernia time"
-    ],
-    "hiatal hernia see": [
-      "hiatal hernia see",
-      "hiatal hernia seen"
-    ],
-    "sibo small intestine": [
-      "sibo small intestine"
-    ],
-    "acid reflux burp": [
-      "acid reflux burp",
-      "acid reflux burps"
-    ],
-    "gaviscon acid reflux": [
-      "gaviscon acid reflux"
-    ],
-    "reflux acid burp": [
-      "reflux acid burp",
-      "reflux acid burps"
-    ],
-    "supra gastric belch": [
-      "supra gastric belch",
-      "supra gastric belching"
-    ],
-    "apd": [
-      "apd"
-    ],
-    "burp nasal gastric": [
-      "burp nasal gastric",
-      "burping nasal gastric"
-    ],
-    "botox reflux": [
-      "botox reflux"
-    ],
-    "supragastric belch": [
-      "supragastric belch",
-      "supragastric belching"
-    ],
-    "botox use dysphagia": [
-      "botox use dysphagia",
-      "botox used dysphagia"
-    ],
-    "acid reflux surgery": [
-      "acid reflux surgery"
-    ],
-    "small intestine bacterial overgrowth": [
-      "small intestine bacterial overgrowth"
-    ],
-    "reflux back botox": [
-      "reflux back botox"
-    ],
-    "botox dysphagia e": [
-      "botox dysphagia e"
-    ],
-    "eg dysphagia botox": [
-      "eg dysphagia botox"
-    ],
-    "acid reflux botox": [
-      "acid reflux botox"
-    ],
-    "bowel paralysis": [
-      "bowel paralysis"
-    ],
-    "aerophagia on swallow": [
-      "aerophagia on swallow",
-      "aerophagia on swallowing"
-    ],
-    "acid reflux gaviscon": [
-      "acid reflux gaviscon"
-    ],
-    "reflux symptom botox": [
-      "reflux symptom botox",
-      "reflux symptoms botox"
-    ],
-    "hiatal hernia even": [
-      "hiatal hernia even"
-    ],
-    "reflux upper endoscopy": [
-      "reflux upper endoscopy"
+    "stomach inflame gastritis": [
+      "stomach inflame gastritis",
+      "stomach inflamed gastritis"
     ],
     "ehler danlo syndrome": [
       "ehler danlo syndrome",
       "ehlers danlos syndrome"
     ],
-    "reflux know botox": [
-      "reflux know botox"
+    "esophagitis well hiatal": [
+      "esophagitis well hiatal"
     ],
-    "gas stomach burp": [
-      "gas stomach burp"
+    "gastritis inflammation": [
+      "gastritis inflammation"
     ],
-    "gastroesophageal gas reflux": [
-      "gastroesophageal gas reflux"
+    "irritable bowel reflux": [
+      "irritable bowel reflux"
     ],
-    "acid reflux night": [
-      "acid reflux night"
+    "reflux gastritis": [
+      "reflux gastritis"
     ],
-    "gastric motility": [
-      "gastric motility"
+    "also diagnose gastritis": [
+      "also diagnose gastritis",
+      "also diagnosed gastritis"
     ],
-    "reflux gaviscon": [
-      "reflux gaviscon"
+    "ulcer esophagus": [
+      "ulcer esophagus",
+      "ulcers esophagus"
     ],
-    "gastritis ibs": [
-      "gastritis ibs"
+    "sigmoid colon obstruction": [
+      "sigmoid colon obstruction"
     ],
-    "acid reflux esophageal": [
-      "acid reflux esophageal"
+    "gastro intestinal issue": [
+      "gastro intestinal issue",
+      "gastro intestinal issues"
     ],
-    "burp reflux flare": [
-      "burp reflux flare"
+    "esophogitis lax les": [
+      "esophogitis lax les"
     ],
-    "sibo small intestinal": [
-      "sibo small intestinal"
+    "gerd damage esophagus": [
+      "gerd damage esophagus",
+      "gerd damaged esophagus"
     ],
-    "small intestine bacterial overgroeth": [
-      "small intestine bacterial overgroeth"
+    "sibo gastritis rcpd": [
+      "sibo gastritis rcpd"
     ],
-    "supragastric belch aerophagia": [
-      "supragastric belch aerophagia",
-      "supragastric belching aerophagia"
+    "inflame stomach gerd": [
+      "inflame stomach gerd",
+      "inflamed stomach gerd"
     ],
-    "hiccup acid reflux": [
-      "hiccup acid reflux",
-      "hiccups acid reflux"
+    "burp rule gastroenteritis": [
+      "burp rule gastroenteritis",
+      "burp ruling gastroenteritis"
     ],
-    "supra gastric burp": [
-      "supra gastric burp",
-      "supra gastric burps"
+    "small intestine bacterial overgrowth": [
+      "small intestine bacterial overgrowth"
     ],
-    "sigmoid colon": [
-      "sigmoid colon"
+    "reflux oesophagitis": [
+      "reflux oesophagitis"
+    ],
+    "gastritis cause": [
+      "gastritis cause",
+      "gastritis caused"
+    ],
+    "gerd esophagitis": [
+      "gerd esophagitis"
+    ],
+    "aerophagia on swallow": [
+      "aerophagia on swallow",
+      "aerophagia on swallowing"
     ],
     "gastric colonic volvulus": [
       "gastric colonic volvulus"
     ],
-    "hernia gerd likely": [
-      "hernia gerd likely"
+    "supragastric belch": [
+      "supragastric belch",
+      "supragastric belching"
     ],
-    "dysphagia botox injection": [
-      "dysphagia botox injection"
+    "gerd esophagus": [
+      "gerd esophagus"
     ],
-    "achalasia supragastric belch": [
-      "achalasia supragastric belch",
-      "achalasia supragastric belching"
+    "gastroptosis": [
+      "gastroptosis"
     ],
-    "gastric reflux": [
-      "gastric reflux"
+    "gastroesophageal gas reflux": [
+      "gastroesophageal gas reflux"
     ],
-    "acid reflux gas": [
-      "acid reflux gas"
+    "gastritis sibo": [
+      "gastritis sibo"
+    ],
+    "gastritis r cpd": [
+      "gastritis r cpd"
+    ],
+    "irritable bowel syndrome": [
+      "irritable bowel syndrome"
+    ],
+    "acid reflux esophagus": [
+      "acid reflux esophagus"
+    ],
+    "irritable bowel disease": [
+      "irritable bowel disease"
+    ],
+    "acid reflux hiatal": [
+      "acid reflux hiatal"
+    ],
+    "obstruction sigmoid colon": [
+      "obstruction sigmoid colon"
+    ],
+    "gastroperisis": [
+      "gastroperisis"
+    ],
+    "diagnose ibs reflux": [
+      "diagnose ibs reflux",
+      "diagnosed ibs reflux"
+    ],
+    "acid reflux esophogitis": [
+      "acid reflux esophogitis"
+    ],
+    "also duodenal diverticula": [
+      "also duodenal diverticula"
+    ],
+    "gi disorder": [
+      "gi disorder"
+    ],
+    "acid reflux esophageal": [
+      "acid reflux esophageal"
+    ],
+    "c esophagitis": [
+      "c esophagitis"
+    ],
+    "sigmoid colon": [
+      "sigmoid colon"
+    ],
+    "diagnose gastric reflux": [
+      "diagnose gastric reflux",
+      "diagnosed gastric reflux"
+    ],
+    "also endometriosis bowel": [
+      "also endometriosis bowel",
+      "also endometriosis bowels"
+    ],
+    "abdomino phrenic dyssynergia": [
+      "abdomino phrenic dyssynergia"
+    ],
+    "apd": [
+      "apd"
+    ],
+    "acid reflux esophagitis": [
+      "acid reflux esophagitis"
+    ],
+    "gastroptosis prolapse stomach": [
+      "gastroptosis prolapse stomach",
+      "gastroptosis prolapsed stomach"
+    ],
+    "sibo": [
+      "sibo"
+    ],
+    "also gastroperisis": [
+      "also gastroperisis"
+    ],
+    "reflux esophogitis": [
+      "reflux esophogitis"
+    ],
+    "ibs": [
+      "ibs"
+    ],
+    "back esophagitis": [
+      "back esophagitis"
+    ],
+    "sibo gastritis": [
+      "sibo gastritis"
+    ],
+    "small intestine bacterial overgroeth": [
+      "small intestine bacterial overgroeth"
+    ],
+    "diagnose gastritis inflammation": [
+      "diagnose gastritis inflammation",
+      "diagnosed gastritis inflammation"
+    ],
+    "erosive esophagitis": [
+      "erosive esophagitis"
+    ],
+    "ibs coeliac disease": [
+      "ibs coeliac disease"
+    ],
+    "acid reflux gastritis": [
+      "acid reflux gastritis"
+    ],
+    "reflux esophagitis": [
+      "reflux esophagitis"
+    ],
+    "sibo small intestine": [
+      "sibo small intestine"
+    ],
+    "hiatal hernia": [
+      "hiatal hernia"
+    ],
+    "gastric volvulus": [
+      "gastric volvulus"
+    ],
+    "check bowel obstruction": [
+      "check bowel obstruction",
+      "checked bowel obstruction"
+    ],
+    "burp die": [
+      "burp die",
+      "burping died"
+    ],
+    "burp fade": [
+      "burp fade",
+      "burping fading"
+    ],
+    "burp third": [
+      "burp third",
+      "burping third"
+    ],
+    "absolutely burp": [
+      "absolutely burp",
+      "absolutely burping"
+    ],
+    "burp cure": [
+      "burp cure",
+      "burping cured"
+    ],
+    "burp incredible": [
+      "burp incredible",
+      "burping incredible"
+    ],
+    "burp glorious": [
+      "burp glorious",
+      "burping glorious"
+    ],
+    "burp bring": [
+      "burp bring",
+      "burping bring",
+      "burping brings",
+      "burping brought"
+    ],
+    "burp totally": [
+      "burp totally",
+      "burping totally"
+    ],
+    "burp excess": [
+      "burp excess",
+      "burping excess"
+    ],
+    "burp incredibly": [
+      "burp incredibly",
+      "burping incredibly"
+    ],
+    "burp least": [
+      "burp least",
+      "burping least"
+    ],
+    "burp botox": [
+      "burp botox",
+      "burping botox"
+    ],
+    "burp hundred": [
+      "burp hundred",
+      "burping hundreds"
+    ],
+    "burp ease": [
+      "burp ease",
+      "burping ease"
+    ],
+    "burp genuinely": [
+      "burp genuinely",
+      "burping genuinely"
+    ],
+    "life change": [
+      "life change",
+      "life changing"
+    ],
+    "burp away": [
+      "burp away",
+      "burping away"
+    ],
+    "burp wear": [
+      "burp wear",
+      "burping wears"
+    ],
+    "burp frequently": [
+      "burp frequently"
+    ],
+    "burp truly": [
+      "burp truly",
+      "burping truly"
+    ],
+    "burp completely": [
+      "burp completely",
+      "burping completely"
+    ],
+    "burp throw": [
+      "burp throw",
+      "burping threw"
+    ],
+    "burp everything": [
+      "burp everything",
+      "burping everything"
+    ],
+    "burp clearly": [
+      "burp clearly",
+      "burping clearly"
+    ],
+    "burp lose": [
+      "burp lose",
+      "burping lose",
+      "burping losing"
+    ],
+    "burp well": [
+      "burp well",
+      "burping best"
+    ],
+    "burp suffer": [
+      "burp suffer",
+      "burping suffering"
+    ],
+    "burp foreign": [
+      "burp foreign",
+      "burping foreign"
+    ],
+    "burp become": [
+      "burp become",
+      "burping become"
     ],
     "still burp": [
       "still burp",
       "still burping"
     ],
-    "burp help": [
-      "burp help",
-      "burping helping"
+    "burp fix": [
+      "burp fix",
+      "burping fix",
+      "burping fixed"
     ],
-    "burp frequently": [
-      "burp frequently"
+    "burp reverse": [
+      "burp reverse",
+      "burping reverse"
     ],
     "able to burp": [
       "able to burp"
     ],
-    "burp say": [
-      "burp say",
-      "burping said",
-      "burps said"
+    "always burp": [
+      "always burp",
+      "always burping"
     ],
-    "burp mainly": [
-      "burp mainly"
+    "burp rude": [
+      "burp rude",
+      "burping rude"
     ],
-    "burp remember": [
-      "burp remember",
-      "burps remember"
+    "burp certainly": [
+      "burp certainly",
+      "burping certainly"
     ],
-    "burp start": [
-      "burp start",
-      "burping start",
-      "burping starts"
-    ],
-    "burp turn": [
-      "burp turn",
-      "burping turned"
-    ],
-    "burp trouble": [
-      "burp trouble",
-      "burps trouble"
-    ],
-    "burp currently": [
-      "burp currently",
-      "burping currently"
-    ],
-    "burper try": [
-      "burper try",
-      "burpers try"
-    ],
-    "burp necessary": [
-      "burp necessary",
-      "burping necessary"
-    ],
-    "burp life": [
-      "burp life",
-      "burps life"
-    ],
-    "burp begin": [
-      "burp begin",
-      "burp beginning"
-    ],
-    "burp stop": [
-      "burp stop",
-      "burping stop",
-      "burping stops",
-      "burps stopping"
-    ],
-    "burp personally": [
-      "burp personally",
-      "burping personally"
-    ],
-    "burp couple": [
-      "burp couple",
-      "burping couple"
-    ],
-    "burp go": [
-      "burp go",
-      "burping going",
-      "burps go"
-    ],
-    "burp come": [
-      "burp come",
-      "burp comes",
-      "burps comes"
-    ],
-    "burp tell": [
-      "burp tell",
-      "burps told"
-    ],
-    "burp never": [
-      "burp never",
-      "burps never"
-    ],
-    "burp try": [
-      "burp try",
-      "burp trying",
-      "burping try"
+    "burp simply": [
+      "burp simply",
+      "burping simply"
     ],
     "cure": [
       "cure",
@@ -1807,118 +1958,133 @@
       "cures",
       "curing"
     ],
-    "burp ok": [
-      "burp ok",
-      "burping ok"
+    "burp let": [
+      "burp let",
+      "burping let"
     ],
-    "burp able": [
-      "burp able",
-      "burping able"
+    "burp x": [
+      "burp x",
+      "burping x"
     ],
-    "burp sudden": [
-      "burp sudden",
-      "burps sudden"
+    "burp solve": [
+      "burp solve",
+      "burping solved"
     ],
-    "burp full": [
-      "burp full",
-      "burping full"
+    "still burp never": [
+      "still burp never",
+      "still burping never"
     ],
-    "burp soon keep": [
-      "burp soon keep",
-      "burping soon keep"
+    "burp give": [
+      "burp give",
+      "burping give"
     ],
-    "burp due": [
-      "burp due",
-      "burping due"
+    "burp ent": [
+      "burp ent",
+      "burping ent"
     ],
-    "burp nice": [
-      "burp nice",
-      "burping nice"
+    "burp beautifully": [
+      "burp beautifully",
+      "burping beautifully"
     ],
-    "burp keep": [
-      "burp keep",
-      "burping keep"
+    "burp absolutely": [
+      "burp absolutely",
+      "burping absolutely"
     ],
-    "life change": [
-      "life change",
-      "life changing"
+    "burp always": [
+      "burp always",
+      "burping always"
     ],
-    "burp gradually": [
-      "burp gradually"
+    "burp even": [
+      "burp even",
+      "burping even"
     ],
-    "yesterday burp": [
-      "yesterday burp",
-      "yesterday burps"
+    "burp back": [
+      "burp back",
+      "burping back"
     ],
-    "burpy": [
-      "burpy"
+    "burp forever": [
+      "burp forever",
+      "burping forever"
     ],
-    "burp bad": [
-      "burp bad",
-      "burping bad"
+    "pain definitely": [
+      "pain definitely"
     ],
-    "burp drank": [
-      "burp drank",
-      "burps drank"
+    "discomfort seem": [
+      "discomfort seem",
+      "discomfort seems"
     ],
-    "burp okay": [
-      "burp okay",
-      "burping okay"
+    "tension": [
+      "tension",
+      "tensioned",
+      "tensioning",
+      "tensions"
     ],
-    "burp mostly": [
-      "burp mostly"
+    "discomfort mostly": [
+      "discomfort mostly"
     ],
-    "burp": [
-      "burp",
-      "burped",
-      "burping",
-      "burps"
+    "discomfort usually": [
+      "discomfort usually"
     ],
-    "discomfort go": [
-      "discomfort go",
-      "discomfort went"
+    "ineffective": [
+      "ineffective"
     ],
-    "nausea go": [
-      "nausea go",
-      "nausea goes"
+    "pain thing": [
+      "pain thing",
+      "pain things"
     ],
-    "nausea something": [
-      "nausea something"
+    "sometimes pain": [
+      "sometimes pain"
     ],
-    "nausea cause": [
-      "nausea cause",
-      "nausea causes"
+    "pain seem": [
+      "pain seem",
+      "pain seems"
     ],
-    "discomfort think": [
-      "discomfort think"
+    "pain start": [
+      "pain start",
+      "pain starts"
     ],
-    "discomfort could": [
-      "discomfort could"
+    "pain come": [
+      "pain come",
+      "pain comes"
     ],
-    "discomfort really": [
-      "discomfort really"
+    "get discomfort": [
+      "get discomfort",
+      "getting discomfort"
     ],
-    "needle": [
-      "needle",
-      "needled",
-      "needles",
-      "needling"
+    "pain feel": [
+      "pain feel",
+      "pain feels"
+    ],
+    "discomfort rather": [
+      "discomfort rather"
+    ],
+    "growl": [
+      "growl",
+      "growled",
+      "growling",
+      "growls"
+    ],
+    "stab": [
+      "stab",
+      "stabbed",
+      "stabbing",
+      "stabs"
     ],
     "discomfort get": [
       "discomfort get",
-      "discomfort getting",
-      "discomfort got"
+      "discomfort gets"
     ],
-    "anxiety feel": [
-      "anxiety feel",
-      "anxiety feels",
-      "anxiety felt"
+    "pain somehow": [
+      "pain somehow"
+    ],
+    "pain instead": [
+      "pain instead"
     ],
     "pain might": [
       "pain might"
     ],
-    "nausea want": [
-      "nausea want"
+    "real pain": [
+      "real pain"
     ],
     "burn": [
       "burn",
@@ -1927,105 +2093,78 @@
       "burns",
       "burnt"
     ],
-    "nausea give": [
-      "nausea give",
-      "nausea gives"
+    "hunger": [
+      "hunger",
+      "hungered",
+      "hungering",
+      "hungers"
     ],
-    "pain seem": [
-      "pain seem",
-      "pain seems"
+    "sharp": [
+      "sharp"
     ],
-    "pain possibly": [
-      "pain possibly"
+    "mostly discomfort": [
+      "mostly discomfort"
     ],
-    "discomfort maybe": [
-      "discomfort maybe"
+    "get pain": [
+      "get pain",
+      "getting pain",
+      "got pain"
     ],
-    "nausea make": [
-      "nausea make"
+    "discomfort actually": [
+      "discomfort actually"
     ],
-    "discomfort r": [
-      "discomfort r"
+    "pressure hurt": [
+      "pressure hurt",
+      "pressure hurts"
     ],
-    "discomfort like": [
-      "discomfort like"
+    "lot pain": [
+      "lot pain",
+      "lots pain"
     ],
-    "nausea seem": [
-      "nausea seem",
-      "nausea seems"
+    "pain obviously": [
+      "pain obviously"
     ],
-    "nausea work": [
-      "nausea work"
+    "discomfort feel": [
+      "discomfort feel",
+      "discomfort feels"
     ],
-    "nausea definitely": [
-      "nausea definitely"
+    "pain inflammation": [
+      "pain inflammation"
     ],
-    "nausea acid": [
-      "nausea acid"
+    "pain sound": [
+      "pain sound",
+      "pain sounds"
     ],
-    "pain happen": [
-      "pain happen",
-      "pain happens"
+    "uncomfortable pain": [
+      "uncomfortable pain"
     ],
-    "nausea think": [
-      "nausea think"
+    "pain actually": [
+      "pain actually"
     ],
-    "discomfort seem": [
-      "discomfort seem",
-      "discomfort seems"
+    "pain get": [
+      "pain get",
+      "pain gets"
     ],
-    "moan": [
-      "moan",
-      "moaned",
-      "moaning",
-      "moans"
+    "agony": [
+      "agony"
     ],
-    "pain know": [
-      "pain knew",
-      "pain know"
+    "pain usually": [
+      "pain usually"
     ],
-    "nausea get": [
-      "nausea get"
+    "definitely pain": [
+      "definitely pain"
     ],
-    "nausea use": [
-      "nausea use",
-      "nausea used"
+    "discomfort": [
+      "discomfort"
     ],
-    "nervous": [
-      "nervous"
+    "bad pain": [
+      "bad pain"
     ],
-    "pain could": [
-      "pain could"
+    "also pain": [
+      "also pain"
     ],
-    "discomfort talk": [
-      "discomfort talk",
-      "discomfort talking"
-    ],
-    "nausea keep": [
-      "nausea keep",
-      "nausea kept"
-    ],
-    "nausea maybe": [
-      "nausea maybe"
-    ],
-    "pain seriously": [
-      "pain seriously"
-    ],
-    "ineffective": [
-      "ineffective"
-    ],
-    "irritation": [
-      "irritation"
-    ],
-    "pain man": [
-      "pain man"
-    ],
-    "nausea mean": [
-      "nausea mean"
-    ],
-    "nausea come": [
-      "nausea come",
-      "nausea comes"
+    "pain anyway": [
+      "pain anyway"
     ]
   },
   "ground_truth_bins": {
@@ -2319,7 +2458,8 @@
     "acid reflux": [
       "acid reflux"
     ],
-    "gaviscon": [
+    "gascon": [
+      "gascon",
       "gaviscon"
     ],
     "famotidine": [
