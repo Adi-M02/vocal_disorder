@@ -7,13 +7,14 @@ import pandas as pd
 from pathlib import Path
 import spacy
 import spacy.cli
-spacy.cli.download("en_core_web_sm")
+if not spacy.util.is_package("en_core_web_sm"):
+    spacy.cli.download("en_core_web_sm")
 nlp = spacy.load("en_core_web_sm")
 from spellchecker import SpellChecker
 from lemminflect import getAllInflections
 
 # === CONFIG ===
-VOCAB_JSON_PATH = "vocab_output_05_02/expanded_output_05_02_03_34.json"
+VOCAB_JSON_PATH = "vocab_output_05_02/expanded_output_05_02_05_57.json"
 GROUND_TRUTHS = "vocabulary_evaluation/manual_terms.txt"
 USERNAMES = ["freddiethecalathea", "Many_Pomegranate_566", "rpesce518", "kinglgw", "mjh59"]
 PROTECTED_TERMS = {"ibs", "ent", "ents", "gp", "op", "ptsd", "ocd", "rcpd"}
