@@ -230,8 +230,8 @@ if __name__ == "__main__":
         "finetuned_dir": "bioclinicalbert_noburp_all/model",
         "top_n": 50,
         "use_maxsim": False,
-        "dynamic_topn": False,
-        "use_keybert": True,
+        "dynamic_topn": True,
+        "use_keybert": False,
         "min_df": 3,
         "max_workers": 8,
     }
