@@ -19,14 +19,14 @@
         "kinglgw",
         "mjh59"
       ],
-      "precision": 0.2431,
-      "recall": 0.53,
-      "accuracy": 0.2,
-      "f1_score": 0.3333,
-      "true_positives": 53,
-      "false_positives": 165,
+      "precision": 0.7064,
+      "recall": 0.7662,
+      "accuracy": 0.5811,
+      "f1_score": 0.7351,
+      "true_positives": 154,
+      "false_positives": 64,
       "false_negatives": 47,
-      "jaccard_similarity": 0.2
+      "jaccard_similarity": 0.5811
     }
   },
   "vocabulary": {
