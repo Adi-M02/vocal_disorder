@@ -3,6 +3,7 @@
 # now using pretrained Bio-ClinicalBERT for all embedding.
 
 import os
+import sys
 import re
 import html
 import json
@@ -80,9 +81,15 @@ def load_posts(subreddits):
     raw = query.get_posts_by_subreddits(subreddits, collection_name="noburp_all")
     posts = []
     for p in raw:
-        combined = f"{p.get('title','')} {p.get('selftext','')}".strip() or p.get("body","").strip()
-        if combined:
-            posts.append(preprocess_text(combined))
+        title   = p.get('title','').strip()
+        selftext = p.get('selftext','') or p.get('body','')
+        selftext = selftext.strip()
+        # only add if non-empty
+        if title or selftext:
+            posts.append((
+                preprocess_text(title)   if title   else None,
+                preprocess_text(selftext) if selftext else None
+            ))
     return posts
 
 def tokenize(text):
@@ -137,29 +144,29 @@ def build_bioclinical_keybert(model_path: str, device: str) -> KeyBERT:
     return KeyBERT(model=st)
 
 def extract_keyphrases_per_post_threaded(
-    posts,
-    kw_model: KeyBERT,
-    top_k: int = 5,
-    ngram_range: tuple = (1,3),
-    max_workers: int = 4
+    posts, kw_model, top_k=5, ngram_range=(1,3), max_workers=4
 ) -> Counter:
-    logger.info(f"[KeyBERT] Dispatching {len(posts)} docs across {max_workers} threads")
     phrase_counts = Counter()
-    def _worker(doc):
-        kws = kw_model.extract_keywords(
-            doc,
-            keyphrase_ngram_range=ngram_range,
-            stop_words="english",
-            top_n=top_k
-        )
-        return [p.lower() for p,_ in kws]
+
+    def _worker(pair):
+        title, body = pair
+        kws = []
+        if title:
+            kws += [p.lower() for p,_ in kw_model.extract_keywords(
+                title, keyphrase_ngram_range=ngram_range,
+                stop_words="english", top_n=top_k)]
+        if body:
+            kws += [p.lower() for p,_ in kw_model.extract_keywords(
+                body, keyphrase_ngram_range=ngram_range,
+                stop_words="english", top_n=top_k)]
+        return kws
 
     with ThreadPoolExecutor(max_workers=max_workers) as exe:
-        futures = {exe.submit(_worker, doc): i for i,doc in enumerate(posts)}
-        for future in tqdm(as_completed(futures), total=len(futures), desc="KeyBERT", unit="doc"):
+        futures = [exe.submit(_worker, doc) for doc in posts]
+        for future in tqdm(as_completed(futures), total=len(futures),
+                           desc="KeyBERT", unit="doc"):
             phrase_counts.update(future.result())
 
-    logger.info(f"[KeyBERT] Extraction complete: {len(phrase_counts)} unique phrases")
     return phrase_counts
 
 def filter_by_df(phrase_counts: Counter, min_df: int = 3) -> set:
@@ -196,6 +203,81 @@ def add_keybert_phrases(
     logger.info(f"[KeyBERT] Merged into {len(term_dict)} categories")
     return {cat:list(terms) for cat, terms in updated.items()}
 
+
+# ─────────────────────────────────────────────────────────────────────────────
+# save keybert phrases before min_df filtering
+# ─────────────────────────────────────────────────────────────────────────────
+
+def run_keybert_extraction(
+    posts,
+    model_path: str,
+    device: str,
+    top_k: int = 5,
+    ngram_range: tuple = (1,3),
+    max_workers: int = 4,
+) -> dict:
+    """
+    Runs KeyBERT up through building the 'phrase_counts' Counter.
+    Returns a dict containing:
+      - 'phrase_counts': plain dict mapping phrase -> doc frequency
+      - 'metadata': dict of the parameters + run timestamp
+    """
+    # record run timestamp in MM_DD_HH_MM_SS format
+    now = datetime.utcnow()
+    run_ts = now.strftime('%m_%d_%H_%M_%S')
+
+    # 1. Build model
+    kw_model = build_bioclinical_keybert(model_path, device)
+
+    # 2. Extract counts
+    counts = extract_keyphrases_per_post_threaded(
+        posts, kw_model,
+        top_k=top_k,
+        ngram_range=ngram_range,
+        max_workers=max_workers
+    )
+
+    # 3. Bundle with metadata
+    return {
+        'metadata': {
+            'run_timestamp': run_ts,
+            'extraction_time': now.isoformat(),
+            'model_path': model_path,
+            'device': device,
+            'top_k': top_k,
+            'ngram_range': ngram_range,
+            'max_workers': max_workers,
+            'num_docs': len(posts),
+        },
+        'phrase_counts': dict(counts)  # Counter → plain dict
+    }
+
+def save_extraction_json(run_output: dict, directory: str = '.', prefix: str = 'keybert_run') -> str:
+    """
+    Serialize the run_output to a JSON file named:
+      {prefix}_{MM_DD_HH_MM_SS}.json
+    Returns the full path to the saved file.
+    """
+    ts = run_output['metadata']['run_timestamp']
+    filename = f"{prefix}_{ts}.json"
+    filepath = os.path.join(directory, filename)
+    with open(filepath, 'w', encoding='utf-8') as f:
+        json.dump(run_output, f, ensure_ascii=False, indent=2)
+    return filepath
+
+def load_extraction_json(filepath: str):
+    """
+    Load a previously-saved JSON extraction.
+    Returns:
+      - phrase_counts: Counter
+      - metadata: dict
+    """
+    with open(filepath, 'r', encoding='utf-8') as f:
+        data = json.load(f)
+    counts = Counter(data['phrase_counts'])
+    metadata = data['metadata']
+    return counts, metadata
+
 # ─────────────────────────────────────────────────────────────────────────────
 # Term-expansion pipeline
 # ─────────────────────────────────────────────────────────────────────────────
@@ -223,7 +305,7 @@ def expand_terms(term_dict, tokenizer, model, cand_embs,
 # ─────────────────────────────────────────────────────────────────────────────
 if __name__ == "__main__":
     set_start_method("spawn", force=True)
-
+    
     params = {
         "subreddits": ["noburp"],
         # use your continued-pretrained directory here
@@ -241,7 +323,17 @@ if __name__ == "__main__":
 
     # Load and preprocess posts
     posts = load_posts(params["subreddits"])
-
+    run_output = run_keybert_extraction(
+        posts,
+        model_path="emilyalsentzer/Bio_ClinicalBERT",
+        device="cuda",
+        top_k=5,
+        ngram_range=(2,4),
+        max_workers=4,
+    )
+    saved_path = save_extraction_json(run_output, directory=".", prefix="keybert_run")
+    print(f"Extraction saved to {saved_path}")
+    sys.exit(0)
     # Load pretrained tokenizer & model from local dir
     # tokenizer = AutoTokenizer.from_pretrained(os.path.join(params["finetuned_dir"], "tokenizer"))
     # model     = AutoModel.from_pretrained(params["finetuned_dir"]).to(device).eval()
