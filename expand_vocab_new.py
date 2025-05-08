@@ -323,17 +323,38 @@ if __name__ == "__main__":
 
     # Load and preprocess posts
     posts = load_posts(params["subreddits"])
-    run_output = run_keybert_extraction(
-        posts,
-        model_path="emilyalsentzer/Bio_ClinicalBERT",
-        device="cuda",
-        top_k=5,
-        ngram_range=(2,4),
-        max_workers=4,
-    )
-    saved_path = save_extraction_json(run_output, directory=".", prefix="keybert_run")
-    print(f"Extraction saved to {saved_path}")
+
+    #save keybert phrases before min_df filtering
+
+    model_path  = "emilyalsentzer/Bio_ClinicalBERT"
+    device      = "cuda"
+    max_workers = 4
+    prefix      = "keybert_run"
+
+    for top_k in range(1, 11):                  # 1 → 10
+        for ngram_range in [(1,3), (2,4)]:     # (1,3) and (2,4)
+            print(f"▶ Running top_k={top_k}, ngram_range={ngram_range}")
+            run_output = run_keybert_extraction(
+                posts,
+                model_path=model_path,
+                device=device,
+                top_k=top_k,
+                ngram_range=ngram_range,
+                max_workers=max_workers,
+            )
+            # embed parameters in filename
+            run_prefix = f"{prefix}_k{top_k}_ng{ngram_range[0]}-{ngram_range[1]}"
+            saved_path = save_extraction_json(
+                run_output,
+                directory="keybert_outputs",
+                prefix=run_prefix
+            )
+            print(f"✔ Saved to {saved_path}\n")
     sys.exit(0)
+
+    # load keybert phrases and run min_df filtering
+    # counts, metadata = load_extraction_json("keybert_outputs/keybert_run_05_07_20_39_29.js    on")
+
     # Load pretrained tokenizer & model from local dir
     # tokenizer = AutoTokenizer.from_pretrained(os.path.join(params["finetuned_dir"], "tokenizer"))
     # model     = AutoModel.from_pretrained(params["finetuned_dir"]).to(device).eval()
