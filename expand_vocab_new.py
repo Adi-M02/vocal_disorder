@@ -20,7 +20,7 @@ from nltk.tokenize import word_tokenize
 from nltk.stem import WordNetLemmatizer
 from nltk import download, data, pos_tag
 
-from sentence_transformers import SentenceTransformer, models
+from sentence_transformers import SentenceTransformer, models, util
 from transformers import AutoTokenizer, AutoModel
 from keybert import KeyBERT
 
@@ -279,6 +279,93 @@ def load_extraction_json(filepath: str):
     return counts, metadata
 
 # ─────────────────────────────────────────────────────────────────────────────
+# assign keyphrases to categories
+# ─────────────────────────────────────────────────────────────────────────────
+
+def build_vocab_from_keybert(
+    keyphrase_json_path: str,
+    term_dict: dict,
+    subreddits: list,
+    model_name: str,
+    device: str = "cpu",
+    min_df: int = 3,
+    min_sim: float = 0.6
+) -> str:
+    """
+    1. Load phrase_counts & metadata from keyphrase_json_path
+    2. Filter by min_df, embed all candidates
+    3. Compute centroids on term_dict seeds
+    4. Assign any candidate with cos_sim ≥ min_sim
+    5. Save under vocab_output_MM_DD/expanded_output_MM_DD_HH_MM_SS.json
+    Returns the output filepath.
+    """
+    # --- 1. load keyphrase run ---
+    with open(keyphrase_json_path, 'r', encoding='utf-8') as f:
+        run = json.load(f)
+    phrase_counts = Counter(run['phrase_counts'])
+
+    # --- 2. filter by min_df ---
+    candidates = [p for p,c in phrase_counts.items() if c >= min_df]
+    if not candidates:
+        raise ValueError(f"No phrases survive min_df={min_df}")
+    texts = [p.replace('_',' ') for p in candidates]
+
+    # --- 3. embed candidates & seeds ---
+    embed_model = SentenceTransformer(model_name, device=device)
+    cand_embs = embed_model.encode(texts, device=device, convert_to_tensor=True)
+
+    # compute category centroids
+    centroids = {}
+    for cat, seeds in term_dict.items():
+        if not seeds:
+            centroids[cat] = None
+        else:
+            # use seeds + category name as seed phrases
+            emb_texts = [s.replace('_',' ') for s in seeds] + [cat.replace('_',' ')]
+            seed_embs = embed_model.encode(emb_texts, device=device, convert_to_tensor=True)
+            centroids[cat] = seed_embs.mean(dim=0)
+
+    # --- 4. assign by fixed threshold ---
+    updated = {cat:set(terms) for cat,terms in term_dict.items()}
+    for cat, cent in centroids.items():
+        if cent is None: continue
+        sims = util.cos_sim(cent.unsqueeze(0), cand_embs)[0]
+        hits = (sims >= min_sim).nonzero(as_tuple=True)[0].cpu().tolist()
+        for idx in hits:
+            phrase = candidates[idx].replace(' ', '_')
+            updated[cat].add(phrase)
+
+    # --- 5. prepare output JSON ---
+    now = datetime.utcnow()
+    mmdd      = now.strftime("%m_%d")
+    timestamp = now.strftime("%m_%d_%H_%M_%S")
+    out_dir = f"vocab_output_{mmdd}"
+    os.makedirs(out_dir, exist_ok=True)
+    out_path = os.path.join(out_dir, f"expanded_output_{timestamp}.json")
+
+    out_json = {
+        "metadata": {
+            "generated_at": now.isoformat() + "+00:00",
+            "subreddits": subreddits,
+            "candidate_generation_method": "keybert_threshold",
+            "source_keyphrase_json": keyphrase_json_path,
+            "model_name": model_name,
+            "min_df": min_df,
+            "min_sim": min_sim
+        },
+        "vocabulary": {
+            cat: sorted(list(terms))
+            for cat, terms in updated.items()
+        }
+    }
+
+    # --- 6. save ---
+    with open(out_path, 'w', encoding='utf-8') as f:
+        json.dump(out_json, f, ensure_ascii=False, indent=2)
+
+    return out_path
+
+# ─────────────────────────────────────────────────────────────────────────────
 # Term-expansion pipeline
 # ─────────────────────────────────────────────────────────────────────────────
 def expand_terms(term_dict, tokenizer, model, cand_embs,
@@ -322,89 +409,98 @@ if __name__ == "__main__":
     logger.info(f"Device: {device}")
 
     # Load and preprocess posts
-    posts = load_posts(params["subreddits"])
+    # posts = load_posts(params["subreddits"])
 
     #save keybert phrases before min_df filtering
 
-    model_path  = "emilyalsentzer/Bio_ClinicalBERT"
-    device      = "cuda"
-    max_workers = 4
-    prefix      = "keybert_run"
+    # model_path  = "emilyalsentzer/Bio_ClinicalBERT"
+    # device      = "cuda"
+    # max_workers = 4
+    # prefix      = "keybert_run"
 
-    for top_k in range(1, 11):                  # 1 → 10
-        for ngram_range in [(1,3), (2,4)]:     # (1,3) and (2,4)
-            print(f"▶ Running top_k={top_k}, ngram_range={ngram_range}")
-            run_output = run_keybert_extraction(
-                posts,
-                model_path=model_path,
-                device=device,
-                top_k=top_k,
-                ngram_range=ngram_range,
-                max_workers=max_workers,
-            )
-            # embed parameters in filename
-            run_prefix = f"{prefix}_k{top_k}_ng{ngram_range[0]}-{ngram_range[1]}"
-            saved_path = save_extraction_json(
-                run_output,
-                directory="keybert_outputs",
-                prefix=run_prefix
-            )
-            print(f"✔ Saved to {saved_path}\n")
-    sys.exit(0)
+    # for top_k in range(1, 11):                  # 1 → 10
+    #     for ngram_range in [(1,3), (2,4)]:     # (1,3) and (2,4)
+    #         print(f"▶ Running top_k={top_k}, ngram_range={ngram_range}")
+    #         run_output = run_keybert_extraction(
+    #             posts,
+    #             model_path=model_path,
+    #             device=device,
+    #             top_k=top_k,
+    #             ngram_range=ngram_range,
+    #             max_workers=max_workers,
+    #         )
+    #         # embed parameters in filename
+    #         run_prefix = f"{prefix}_k{top_k}_ng{ngram_range[0]}-{ngram_range[1]}"
+    #         saved_path = save_extraction_json(
+    #             run_output,
+    #             directory="keybert_outputs",
+    #             prefix=run_prefix
+    #         )
+    #         print(f"✔ Saved to {saved_path}\n")
+    # sys.exit(0)
 
-    # load keybert phrases and run min_df filtering
-    # counts, metadata = load_extraction_json("keybert_outputs/keybert_run_05_07_20_39_29.js    on")
+    # load keybert phrases and run min_df filtering and asssign to categories
+    vocab_file = build_vocab_from_keybert(
+        keyphrase_json_path="keybert_outputs/keybert_run_k1_ng1-3_05_08_06_46_00.json",
+        term_dict=TERM_CATEGORY_DICT,
+        subreddits=["noburp"],
+        model_name="emilyalsentzer/Bio_ClinicalBERT",
+        device="cuda",
+        min_df=1,
+        min_sim=0.92
+    )
+    print("Saved vocabulary to:", vocab_file)
 
-    # Load pretrained tokenizer & model from local dir
-    # tokenizer = AutoTokenizer.from_pretrained(os.path.join(params["finetuned_dir"], "tokenizer"))
-    # model     = AutoModel.from_pretrained(params["finetuned_dir"]).to(device).eval()
-    # load off the shelf Bio-ClinicalBERT
-    tokenizer = AutoTokenizer.from_pretrained(params["finetuned_dir"])
-    model = AutoModel.from_pretrained(params["finetuned_dir"]).to(device)
+    # # Load pretrained tokenizer & model from local dir
+    # # tokenizer = AutoTokenizer.from_pretrained(os.path.join(params["finetuned_dir"], "tokenizer"))
+    # # model     = AutoModel.from_pretrained(params["finetuned_dir"]).to(device).eval()
+    # # load off the shelf Bio-ClinicalBERT
+    # tokenizer = AutoTokenizer.from_pretrained(params["finetuned_dir"])
+    # model = AutoModel.from_pretrained(params["finetuned_dir"]).to(device)
 
-    # Generate candidate terms
-    cands = generate_candidate_terms(posts)
+    # # Generate candidate terms
+    # cands = generate_candidate_terms(posts)
 
-    # KeyBERT expansion with continued-pretrained Bio-ClinicalBERT
-    if params["use_keybert"]:
-        term_dict = add_keybert_phrases(
-            posts,
-            TERM_CATEGORY_DICT,
-            params["finetuned_dir"],
-            device,
-            top_k=params["top_n"],
-            min_df=params["min_df"],
-            ngram_range=(1,3),
-            max_workers=params["max_workers"]
-        )
-    else:
-        term_dict = TERM_CATEGORY_DICT
+    # # KeyBERT expansion with continued-pretrained Bio-ClinicalBERT
+    # if params["use_keybert"]:
+    #     term_dict = add_keybert_phrases(
+    #         posts,
+    #         TERM_CATEGORY_DICT,
+    #         params["finetuned_dir"],
+    #         device,
+    #         top_k=params["top_n"],
+    #         min_df=params["min_df"],
+    #         ngram_range=(1,3),
+    #         max_workers=params["max_workers"]
+    #     )
+    # else:
+    #     term_dict = TERM_CATEGORY_DICT
 
-    # Embed candidates & expand with your pretrained model
-    if params["use_keybert"]:
-        expanded = term_dict
+    # # Embed candidates & expand with your pretrained model
+    # if params["use_keybert"]:
+    #     expanded = term_dict
         
-    else:
-        cand_embs = embed_candidates(cands, tokenizer, model, device)
-        expanded = expand_terms(
-            term_dict,
-            tokenizer,
-            model,
-            cand_embs,
-            params["use_maxsim"],
-            params["dynamic_topn"],
-            params["top_n"],
-            device
-        )
+    # else:
+    #     cand_embs = embed_candidates(cands, tokenizer, model, device)
+    #     expanded = expand_terms(
+    #         term_dict,
+    #         tokenizer,
+    #         model,
+    #         cand_embs,
+    #         params["use_maxsim"],
+    #         params["dynamic_topn"],
+    #         params["top_n"],
+    #         device
+    #     )
 
-    # Save output
-    output = {
-        "metadata": {**params, "generated_at": datetime.now(timezone.utc).isoformat()},
-        "vocabulary": expanded
-    }
-    out_dir = Path(f"vocab_output_{datetime.now().strftime('%m_%d')}")
-    out_dir.mkdir(exist_ok=True)
-    out_path = out_dir / f"expanded_output_{datetime.now().strftime('%m_%d_%H_%M')}.json"
-    with open(out_path, "w", encoding="utf-8") as f:
-        json.dump(output, f, indent=2, ensure_ascii=False)
-    logger.info(f"✅ Saved vocabulary to {out_path}")
+    # # Save output
+    # output = {
+    #     "metadata": {**params, "generated_at": datetime.now(timezone.utc).isoformat()},
+    #     "vocabulary": expanded
+    # }
+    # out_dir = Path(f"vocab_output_{datetime.now().strftime('%m_%d')}")
+    # out_dir.mkdir(exist_ok=True)
+    # out_path = out_dir / f"expanded_output_{datetime.now().strftime('%m_%d_%H_%M')}.json"
+    # with open(out_path, "w", encoding="utf-8") as f:
+    #     json.dump(output, f, indent=2, ensure_ascii=False)
+    # logger.info(f"✅ Saved vocabulary to {out_path}")

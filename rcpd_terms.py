@@ -149,12 +149,9 @@ rcpd_terms = {
         'aerophagia_on_swallowing', 'supragastric_belching_aerophagia'
     ],
     "Deterioration indicators (worsening symptoms)": [
-        'anxiety_feels', 'bloating', 'burning', 'discomfort_got', 'discomfort_maybe', 'discomfort_r',
+        'burning', 'discomfort_got', 'discomfort_maybe', 'discomfort_r',
         'discomfort_really', 'discomfort_seems', 'discomfort_talking', 'discomfort_think',
-        'discomfort_went', 'hurt', 'Hurts', 'hurts', 'ineffective', 'inflammation', 'irritation', 'moan',
-        'nausea_acid', 'nausea_causes', 'nausea_comes', 'nausea_gives', 'nausea_go', 'nausea_goes',
-        'nausea_kept', 'nausea_make', 'nausea_maybe', 'nausea_mean', 'nausea_seem', 'nausea_seems',
-        'nausea_something', 'nausea_think', 'nausea_want', 'needles', 'nervous', 'pain', 'pain_happen',
+        'discomfort_went', 'hurt', 'Hurts', 'hurts', 'ineffective', 'inflammation', 'irritation','pain', 'pain_happen',
         'pain_happens', 'pain_knew', 'pain_man', 'pain_possibly', 'pain_seem', 'pain_seems',
         'pain_seriously', 'pains'
     ],
