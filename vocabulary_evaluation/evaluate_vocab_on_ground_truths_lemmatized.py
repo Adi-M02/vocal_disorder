@@ -14,7 +14,7 @@ from spellchecker import SpellChecker
 from lemminflect import getAllInflections
 
 # === CONFIG ===
-VOCAB_JSON_PATH = "vocab_output_05_02/expanded_output_05_02_05_18.json"
+VOCAB_JSON_PATH = "vocab_output_05_09/expanded_output_05_09_02_36_37.json"
 GROUND_TRUTHS = "vocabulary_evaluation/manual_terms.txt"
 USERNAMES = ["freddiethecalathea", "Many_Pomegranate_566", "rpesce518", "kinglgw", "mjh59"]
 PROTECTED_TERMS = {"ibs", "ent", "ents", "gp", "op", "ptsd", "ocd", "rcpd"}

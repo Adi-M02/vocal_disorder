@@ -163,7 +163,7 @@ rcpd_terms = {
         'burping_okay', 'burping_personally', 'burping_soon_keep', 'burping_start', 'burping_starts',
         'burping_stop', 'burping_stops', 'burping_turned', 'burps_comes', 'burps_drank', 'burps_go',
         'burps_life', 'burps_never', 'burps_remember', 'burps_stopping', 'burps_sudden', 'burps_told',
-        'burps_trouble', 'burpy', 'cure', 'cured', 'Cures', 'life_changing', 'still_burping',
+        'burps_trouble', 'burpy', 'cure', 'cured', 'Cures', 'life_changing', 'still_burping', 'uncontrollable burping',
         'yesterday_burps'
     ],
     "Psychological Factors & Mental Health": [
