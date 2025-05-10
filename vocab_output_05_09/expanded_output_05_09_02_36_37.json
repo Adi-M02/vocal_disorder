@@ -8,7 +8,23 @@
     "source_keyphrase_json": "keybert_outputs/keybert_run_k1_ng1-3_05_08_06_46_00.json",
     "model_name": "emilyalsentzer/Bio_ClinicalBERT",
     "min_df": 1,
-    "min_sim": 0.92
+    "min_sim": 0.92,
+    "evaluation": {
+      "evaluated_on_users": [
+        "freddiethecalathea",
+        "Many_Pomegranate_566",
+        "rpesce518",
+        "kinglgw",
+        "mjh59"
+      ],
+      "precision": 0.6636,
+      "recall": 0.3202,
+      "accuracy": 0.2755,
+      "true_positives": 73,
+      "false_positives": 37,
+      "false_negatives": 155,
+      "jaccard_similarity": 0.2755
+    }
   },
   "vocabulary": {
     "Alternative Surgical Treatments/Diagnostics": [

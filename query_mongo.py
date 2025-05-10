@@ -110,7 +110,7 @@ def get_text_by_subreddits(subreddit_list, db_name="reddit", collection_name="no
     finally:
         client.close()
 
-def get_posts_by_users(users, subreddits=None, db_name="reddit", collection_name="noburp_posts_2", mongo_uri="mongodb://localhost:27017/"):
+def get_posts_by_users(users, subreddits=None, db_name="reddit", collection_name="noburp_all", mongo_uri="mongodb://localhost:27017/"):
     """
     Returns a list of posts from the specified users, filtered by the given subreddits if provided.
     
