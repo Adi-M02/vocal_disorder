@@ -499,6 +499,8 @@ def return_multiple_users_entries(
 
 
 if __name__ == "__main__":
+    write_selected_users_posts("reddit", "noburp_all", "user_posts_all", "noburp", 3)
+    sys.exit(0)
     # filter_subreddits = ["noburp", "emetophobia", "anxiety", "gerd", "ibs", "sibo", "emetophobiarecovery", "pots", "gastritis", "healthanxiety", "trees", "advice", "supplements"]
     filter_subreddits = ["noburp"]
     # write_all_users_posts("reddit", "noburp_all", "vocabulary_evaluation/mjh59.txt", filter_subreddits, None, "mjh59" )
