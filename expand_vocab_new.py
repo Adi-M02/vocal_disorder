@@ -441,7 +441,7 @@ if __name__ == "__main__":
 
     # load keybert phrases and run min_df filtering and asssign to categories
     vocab_file = build_vocab_from_keybert(
-        keyphrase_json_path="keybert_outputs/keybert_run_k1_ng1-3_05_08_06_46_00.json",
+        keyphrase_json_path="keybert_outputs/keybert_run_k4_ng2-4_05_08_13_11_52.json",
         term_dict=TERM_CATEGORY_DICT,
         subreddits=["noburp"],
         model_name="emilyalsentzer/Bio_ClinicalBERT",
