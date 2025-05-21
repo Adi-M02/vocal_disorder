@@ -6,6 +6,7 @@ import pandas as pd
 import random
 from pathlib import Path
 import logging
+import sys
 import html
 import random
 
@@ -384,6 +385,124 @@ def write_selected_users_posts(
     logging.info("Finished writing all selected authors' posts. Total posts written: %d", total_written_posts)
     logging.info("Output saved to %s", output_file)
 
+def write_users_posts_by_subreddit(
+    db_name: str,
+    collection_name: str,
+    output_file: str,
+    filter_subreddits: list[str] | None = None,
+    min_posts: int | None = None,
+    mongo_uri: str = "mongodb://localhost:27017/",
+):
+    """
+    Export authors who have at least `min_posts` posts in the specified
+    `filter_subreddits` (case‑insensitive).  If `filter_subreddits` is None
+    the post‑count requirement is applied across *all* subreddits.
+
+    The text file produced is identical in structure to write_all_users_posts().
+    """
+
+    # ────────────────────────── 0. connect ──────────────────────────
+    logging.info("Connecting to MongoDB at %s", mongo_uri)
+    coll = pymongo.MongoClient(mongo_uri)[db_name][collection_name]
+
+    # ───────────── 1. aggregation: find qualifying authors ───────────
+    pipeline = []
+
+    if filter_subreddits:
+        pipeline.append(
+            {
+                "$match": {
+                    "$expr": {
+                        "$in": [
+                            {"$toLower": "$subreddit"},
+                            [s.lower() for s in filter_subreddits],
+                        ]
+                    }
+                }
+            }
+        )
+
+    pipeline.append({"$group": {"_id": "$author", "post_count": {"$sum": 1}}})
+
+    if min_posts is not None:
+        pipeline.append({"$match": {"post_count": {"$gte": int(min_posts)}}})
+
+    authors = [doc["_id"] for doc in coll.aggregate(pipeline)]
+    logging.info("Qualified authors: %d", len(authors))
+    if not authors:
+        logging.warning("No authors meet the criteria — nothing to write.")
+        return
+
+    # ───────────── 2. fetch their posts (apply sub filter again) ──────
+    query = {"author": {"$in": authors}}
+    if filter_subreddits:
+        query["subreddit"] = {"$in": filter_subreddits}
+
+    posts_by_author = defaultdict(list)
+    for post in coll.find(query):
+        posts_by_author[post["author"]].append(post)
+
+    sorted_authors = sorted(
+        posts_by_author, key=lambda a: len(posts_by_author[a]), reverse=True
+    )
+
+    # ───────────── 3. write to disk ──────────────────────────────────
+    total_written = 0
+    with open(output_file, "w", encoding="utf-8") as fout:
+        for idx, author in enumerate(sorted_authors, 1):
+            author_posts = posts_by_author[author]
+            author_posts.sort(key=lambda p: p.get("created_utc", 0))
+
+            fout.write("#" * 80 + "\n")
+            fout.write(
+                f"Author: {author} - Total posts: {len(author_posts)} "
+                f"- Filtered posts: {len(author_posts)}\n"
+            )
+            fout.write("#" * 80 + "\n")
+
+            logging.info(
+                "Writing %d/%d – %s (%d posts)",
+                idx,
+                len(sorted_authors),
+                author,
+                len(author_posts),
+            )
+
+            for p in author_posts:
+                ts = p.get("created_utc")
+                if isinstance(ts, (int, float)):
+                    ts = datetime.fromtimestamp(ts).strftime(
+                        "%Y-%m-%d %H:%M:%S"
+                    )
+                elif isinstance(ts, datetime):
+                    ts = ts.strftime("%Y-%m-%d %H:%M:%S")
+                else:
+                    ts = "Unknown time"
+
+                fout.write("=" * 80 + "\n")
+                fout.write(f"Subreddit: {p.get('subreddit', 'N/A')}\n")
+                fout.write(f"Time     : {ts}\n")
+
+                if body := p.get("body"):
+                    fout.write("body :\n")
+                    fout.write(body + "\n")
+                else:
+                    fout.write(f"Title    : {p.get('title', 'N/A')}\n")
+                    fout.write("Selftext :\n")
+                    fout.write(html.unescape(p.get("selftext", "N/A")) + "\n")
+
+                fout.write("=" * 80 + "\n\n")
+                total_written += 1
+
+            fout.write("\n\n")
+
+    logging.info(
+        "Finished: %d authors, %d posts written. Output → %s",
+        len(sorted_authors),
+        total_written,
+        output_file,
+    )
+
 def generate_post_samples_and_write_output(
     other_users_csv,
     botox_users_csv,
@@ -499,7 +618,13 @@ def return_multiple_users_entries(
 
 
 if __name__ == "__main__":
-    write_selected_users_posts("reddit", "noburp_all", "user_posts_all", "noburp", 3)
+    write_users_posts_by_subreddit(
+        db_name="reddit",
+        collection_name="noburp_all",
+        output_file="user_posts_all.txt",
+        filter_subreddits=["noburp"],
+        min_posts=3,
+    )
     sys.exit(0)
     # filter_subreddits = ["noburp", "emetophobia", "anxiety", "gerd", "ibs", "sibo", "emetophobiarecovery", "pots", "gastritis", "healthanxiety", "trees", "advice", "supplements"]
     filter_subreddits = ["noburp"]
