@@ -14,7 +14,7 @@ from spellchecker import SpellChecker
 from lemminflect import getAllInflections
 
 # === CONFIG ===
-VOCAB_JSON_PATH = "vocab_output_05_20/expanded_output_05_20_23_46_31.json"
+VOCAB_JSON_PATH = "vocab_output_05_21/expanded_output_05_21_15_31_28.json"
 GROUND_TRUTHS = "vocabulary_evaluation/manual_terms.txt"
 USERNAMES = ["freddiethecalathea", "Many_Pomegranate_566", "rpesce518", "kinglgw", "mjh59"]
 PROTECTED_TERMS = {"ibs", "ent", "ents", "gp", "op", "ptsd", "ocd", "rcpd"}
@@ -144,6 +144,7 @@ if __name__ == "__main__":
         gt_raw = [t.strip() for t in f.read().split(',') if t.strip()]
 
     # === BUILD TERM BINS ===
+    print("Building term bins...")
     vocab_bins = build_term_bins(vocab_raw)
     gt_bins = build_term_bins(gt_raw)
 
@@ -151,6 +152,7 @@ if __name__ == "__main__":
     ground_truth_terms = set(gt_bins.keys())
 
     # === RUN PIPELINE ===
+    print("Preparing user data...")
     df = prepare_user_dataframe_multi(USERNAMES)
     all_text = normalize_text(" ".join(df["content"].fillna("").tolist()))
 
