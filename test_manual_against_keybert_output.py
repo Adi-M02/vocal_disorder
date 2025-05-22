@@ -42,21 +42,21 @@ def check_terms_against_keybert_output(
     print(f"\n✅ Found ({len(found)}):\n" + ", ".join(found) or "  (none)")
     print(f"\n❌ Not Found ({len(not_found)}):\n" + ", ".join(not_found) or "  (none)")
 
-    # # Optionally write out files
-    # if write_files:
-    #     summary = {
-    #         "checked": len(terms),
-    #         "found_count": len(found),
-    #         "not_found_count": len(not_found),
-    #         "found": found,
-    #         "not_found": not_found
-    #     }
-    #     json_out = json_path.with_name(f"{prefix}.json")
-    #     json_out.write_text(json.dumps(summary, indent=2, ensure_ascii=False), encoding="utf-8")
+    # Optionally write out files
+    if write_files:
+        summary = {
+            "checked": len(terms),
+            "found_count": len(found),
+            "not_found_count": len(not_found),
+            "found": found,
+            "not_found": not_found
+        }
+        json_out = json_path.with_name(f"{prefix}.json")
+        json_out.write_text(json.dumps(summary, indent=2, ensure_ascii=False), encoding="utf-8")
 
-    #     json_path.with_name(f"{prefix}_found.txt").write_text("\n".join(found), encoding="utf-8")
-    #     json_path.with_name(f"{prefix}_not_found.txt").write_text("\n".join(not_found), encoding="utf-8")
-    #     print(f"\n📝 Wrote summary to {json_out} and lists to *_found.txt / *_not_found.txt")
+        json_path.with_name(f"{prefix}_found.txt").write_text("\n".join(found), encoding="utf-8")
+        json_path.with_name(f"{prefix}_not_found.txt").write_text("\n".join(not_found), encoding="utf-8")
+        print(f"\n📝 Wrote summary to {json_out} and lists to *_found.txt / *_not_found.txt")
 
     return found, not_found
 
@@ -147,12 +147,113 @@ def check_terms_against_vocab(
         print(f"\n📝 Wrote summary to {json_out} and lists to *_found.txt / *_not_found.txt")
 
     return found, not_found
+
+def check_terms_against_category_vocab(
+    json_path: str,
+    terms_txt_path: str,
+    write_files: bool = False,
+    out_prefix: str = None
+) -> Tuple[List[str], List[str]]:
+    """
+    Loads a JSON of the form { category: [terms…], … } and a comma-separated TXT of terms,
+    flattens all category lists, then reports which TXT terms appear in that set.
+    Matching is done on lowercase, replacing underscores with spaces.
+    If write_files=True, also writes summary and _found/_not_found files.
+    Returns (found, not_found).
+    """
+    json_path = Path(json_path)
+    terms_txt = Path(terms_txt_path)
+    prefix = Path(out_prefix).stem if out_prefix else json_path.stem + "_category_check"
+
+    # 1️⃣ Load & flatten all category terms
+    data = json.loads(json_path.read_text(encoding="utf-8"))
+    vocab_raw = list(chain.from_iterable(data.values()))
+    vocab_set = {t.lower().replace('_', ' ') for t in vocab_raw}
+
+    # 2️⃣ Load and split comma-separated terms
+    raw = terms_txt.read_text(encoding="utf-8").lower()
+    terms = [t.strip() for t in raw.split(",") if t.strip()]
+
+    # 3️⃣ Compare
+    found     = [t for t in terms if t in vocab_set]
+    not_found = [t for t in terms if t not in vocab_set]
+
+    # 4️⃣ Print summary
+    print(f"🔎 Checked {len(terms)} terms against {len(vocab_set)} vocab terms")
+    if found:
+        print(f"\n✅ Found ({len(found)}):\n" + ", ".join(found))
+    else:
+        print("\n✅ Found: (none)")
+    if not_found:
+        print(f"\n❌ Not Found ({len(not_found)}):\n" + ", ".join(not_found))
+    else:
+        print("\n❌ Not Found: (none)")
+
+    # 5️⃣ Optionally write files
+    if write_files:
+        summary = {
+            "checked": len(terms),
+            "found_count": len(found),
+            "not_found_count": len(not_found),
+            "found": found,
+            "not_found": not_found
+        }
+        json_out = json_path.with_name(f"{prefix}.json")
+        json_out.write_text(json.dumps(summary, indent=2, ensure_ascii=False), encoding="utf-8")
+
+        json_path.with_name(f"{prefix}_found.txt")    \
+                 .write_text("\n".join(found), encoding="utf-8")
+        json_path.with_name(f"{prefix}_not_found.txt")\
+                 .write_text("\n".join(not_found), encoding="utf-8")
+        print(f"\n📝 Wrote summary to {json_out}")
+
+    return found, not_found
+
+def check_json_terms_in_text_file(
+    json_path: str,
+    text_file: str
+) -> Tuple[List[str], List[str]]:
+    """
+    Reads a JSON of the form { category: [term, …], … },
+    flattens all category lists into one term list,
+    then reads the entire contents of text_file and
+    returns (found, not_found), where found are the
+    JSON terms that appear as whole words in text_file.
+    """
+    # 1️⃣ Load & flatten JSON terms
+    data = json.loads(Path(json_path).read_text(encoding="utf-8"))
+    raw_terms = list(chain.from_iterable(data.values()))
+    # Normalize for matching: underscores → spaces, lowercase
+    norm_terms = [(t, t.lower().replace("_", " ")) for t in raw_terms]
+
+    # 2️⃣ Load corpus text
+    corpus = Path(text_file).read_text(encoding="utf-8").lower()
+
+    # 3️⃣ Check each term
+    found, not_found = [], []
+    for orig, lower in norm_terms:
+        if re.search(rf'\b{re.escape(lower)}\b', corpus):
+            found.append(orig)
+        else:
+            not_found.append(orig)
+
+    # 4️⃣ Print summary
+    print(f"🔎 Checked {len(raw_terms)} JSON terms against text in {text_file}")
+    if found:
+        print(f"\n✅ Found ({len(found)}):\n  " + ", ".join(found))
+    else:
+        print("\n✅ Found: (none)")
+    if not_found:
+        print(f"\n❌ Not Found ({len(not_found)}):\n  " + ", ".join(not_found))
+    else:
+        print("\n❌ Not Found: (none)")
+
+    return found, not_found
+
 if __name__ == "__main__":
-    # Example usage:
-    # check_terms_against_json("my_phrases.json", "terms_to_check.txt")
-    # check_terms_against_json("my_phrases.json", "terms_to_check.txt", write_files=True)
-    check_terms_against_keybert_output("keybert_outputs/keybert_run_k4_ng1-3_05_08_12_16_27.json", "vocabulary_evaluation/manual_terms.txt", write_files=True, out_prefix="my_report")
+
+    # check_terms_against_keybert_output("keybert_outputs/keybert_run_k4_ng1-3_05_08_12_16_27.json", "vocabulary_evaluation/manual_terms.txt")
     # check_terms_against_vocab("vocab_output_05_21/expanded_output_05_21_15_31_28.json", "vocabulary_evaluation/manual_terms.txt")
     # check_terms_in_text_file("user_posts_all.txt", "vocabulary_evaluation/manual_terms.txt")
-# Print + write files:
-# check_terms_against_json("my_phrases.json", "terms_to_check.txt", write_files=True, out_prefix="my_report")
+    # check_terms_against_category_vocab("rcpd_terms.json","vocabulary_evaluation/manual_terms.txt")
+    check_json_terms_in_text_file("rcpd_terms.json", "user_posts_all.txt")
