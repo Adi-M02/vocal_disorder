@@ -56,7 +56,8 @@ STOPWORDS = set(stopwords.words("english"))
 # ─────────────────────────────────────────────────────────────────────────────
 # Project imports
 # ─────────────────────────────────────────────────────────────────────────────
-from rcpd_terms import rcpd_terms as TERM_CATEGORY_DICT
+with open('rcpd_terms.json', encoding="utf-8") as _f:
+    rcpd_terms = json.load(_f)
 import query_mongo as query
 
 # ─────────────────────────────────────────────────────────────────────────────

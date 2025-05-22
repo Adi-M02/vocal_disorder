@@ -1,0 +1,95 @@
+{
+    "Alternative Surgical Treatments/Diagnostics": [
+        "acid_reflux", "Barium_swallow", "Biopsies",
+        "endoscopy", "colonoscopy", "EMDR", "Endoscopy", "endoscopy_appointment",
+        "endoscopy_tests", "ENT", "Esophageal_dilation", "esophageal_examination",
+        "esophageal_sphincters", "excessive_air_swallowing", "FEES", "FEES_test", "Fluoroscopy",
+        "Gastroenterologist", "gaviscon","gavison", "gi_endoscopy", "HRM", "Imaging", "Insurance", "Laryngologist", "laryngoscopy_direct",
+        "Manometry", "Misdiagnosis", "muscle_operation", "nasal_gastric", "nasal_gastric_tube", "Nasoendoscopy",
+        "omeprazole", "Otolaryngologist", "PCP", "pH_impedance", "pH‐impedance_monitoring",
+        "Specialist", "speech_therapy", "Stoma", "Swallow_tests", "upper_esophageal_sphincter",
+        "Upper_GI_endoscope", "Xrays_of_colon"
+    ],
+    "Botox Treatment Experiences & Procedures": [
+        "anaesthesia", "Anesthesia", "anti_nausea_medication",
+        "botox", "botox_procedure", "botox_swallowing", "bubble_in_throat", "ear_pain",
+        "general_anaesthetic", "groggy", "hurts", "hyper_-_salivation", "hypersalvation", "in-office_procedure",
+        "Injections", "insurance", "insurance_provider", "liquid_ibuprofen", "lump", "micro_burp", "microburped", "microburps", "mini_burp", "Ondansetron", "pain", "post-botox", "post-botox_burpers", "post_anaesthetic_nausea",
+        "procedure", "sore_throat",
+        "surgery", "surgery_diaries", "Throat_tightness", "throat_tightness",
+        "uncontrollable_belching", "Units", "wet_burps", "Zofran"
+    ],
+    "Comorbidities": [
+        "Abdomino_phrenic_dyssynergia", "achalasia", "acid_reflux", "reflux",
+        "esophagitis", "gaviscon",
+        "aerophagia", "APD", "bowel_paralysis",
+        "colonic_pressure", "ehlers_danlos_syndrome", "gastric_volvulus",
+        "gastric_motility", "gastric_reflux", "gi_disorder", "hernia_gerd", "hiatal_hernia", "ibs", "irritable_bowel_syndrome",
+        "nasal_gastric", "nasal_gastric_tube", "SIBO", "Small_Intestine_Bacterial_Overgroeth",
+        "Small_Intestine_Bacterial_Overgrowth", "supra_gastric_belching", "supra_gastric_burps",
+        "supragastric_belching"
+    ],
+    "Acid reflux": [
+        "acid_reflux", "Gavison", "gaviscon"
+    ],
+    "Gastroesophageal Reflux Disease": [
+        "gastroesophageal_gas_reflux", "Gavison", "Gaviscon", "gerd"
+    ],
+    "Supragastric belching": [
+        "nasal_gastric", "nasal_gastric_tube", "supra_gastric_belching",
+        "supra_gastric_burps", "supragastric_belching"
+    ],
+    "Abdomino phrenic dyssynergia": [
+        "Abdomino_phrenic_dyssynergia", "APD"
+    ],
+    "ehlers danlos syndrome": [
+        "ehlers_danlos_syndrome"
+    ],
+    "Irritable bowel syndrome": [
+        "ibs", "irritable_bowel_syndrome"
+    ],
+    "Small Intestine Bacterial Overgrowth": [
+        "SIBO", "gastritis", "Small_Intestine_Bacterial_Overgroeth", "Small_Intestine_Bacterial_Overgrowth"
+    ],
+    "Aerophagia": [
+        "aerophagia"
+    ],
+    "Deterioration indicators (worsening symptoms)": [
+        "burning", "discomfort", "hurt", "hurts", "ineffective", "inflammation", "irritation","pain", "pains"
+    ],
+    "Improvement indicators (success, relief, reduced symptoms)": [
+        "able_to_burp", "burp_frequently", "burps_gradually", "burping", "burping_everyday", "burping_start", "burping_starts",
+        "cure", "cured", "Cures", "life_changing", "still_burping", "uncontrollable burping"
+    ],
+    "Psychological Factors & Mental Health": [
+        "Anxiety", "anxiety_vomit", "anxious", "emetephobes", "emetephobia", "fear_of_vomiting",
+        "burp_anxiety_issues", "depressed", "fear_vomiting", "isolated", "isolation", "Sad",
+        "Social-anxiety", "social_anxiety", "anti_emetics"
+    ],
+    "Self-Treatment & Behavioral Interventions": [
+        "acupuncture", "antacids", "carbonated_water", "CBT", "Chamomile", "clench_stomach", "contort", "craning_neck", "craning_neck_forward", "cricoid_massage", "EMDR",
+        "Exercises", "Famotidine", "Fizzy_drinks", "fizzy_water", 
+        "Gas-X", "gaviscon_night", "head_turn", "herbal_treatment", "keast",
+        "kiss_the_ceiling", "kommer", "larynx_lowering_exercise",
+        "Mounjaro", "Neck_turning", "Omeprazole", "Patting", "Pelvic_tilt", "positioning",
+        "Rapid_Drink_Challenge", "rumination", "Self-cured", "Self-curing", "Self-taught", "Shaker",
+        "shaker_exercise", "speech_therapy", "tcm_herbs", "Tea", "throat_rest_day", "traditional_chinese_medicine", "tcm", "turning_heading",
+        "wedge_pillow"
+    ],
+    "Symptom Experience & Severity": [
+        "Abdominal_pain", "air_vomiting", "Air_vomiting", "bloating", "Bloating", "bubble_feeling",
+        "burbs", "burp_vomiting", "burps_stay", "burps_stomach",
+        "burps_symptoms", "burps_vomit", "can’t_burp", "Chest_pain", "choking",
+        "choking_sensation", "constipation", "Croaking", "Croaks", "difficulty_breathing",
+        "Difficulty_breathing", "distension", "dry_heave-y", "dry_heaving", "early_satiety", "excess_wind",
+        "excessive_bloating", "expanding_bubble_feeling", "flatulence", "full_of_air",
+        "Gag", "gagging", "gagging_involuntarily", "gaggy", "gas_trapped", "gas_trapped_pain",
+        "globus", "globus_sensation", "Gurgles", "Gurgling", "Hiccups", "hurts", "inability_to_burp", "involuntary_dry_heaving", "involuntary_gagging",
+        "liquid_vomiting", "motility_issues", "nausea_in_throat",
+        "nauseating", "nauseous", "no_burp", "Pressure", "Regurgitation", "retching",
+        "Shortness_of_breath", "slow_swallow", "slow_swallowing", "stomach_nausea", "Throat_gurgles",
+        "Throat_tightness", "Throwing_up", "tummy_aches", "unable_to_burp",
+        "uncomfortable", "uncontrollable_dry_heaving", "Vomit", "Vomit_air", "vomit_burps", "vomiting",
+        "vomiting_air", "vomitting_air", "zero_appetite"
+    ]
+}
