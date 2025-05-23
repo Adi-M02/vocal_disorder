@@ -44,8 +44,8 @@
     "Self Treatment and Behavioral Interventions": [
         "acupuncture", "antacids", "carbonated_water", "CBT", "Chamomile", "clench_stomach", "contort", "craning_neck", "craning_neck_forward", "cricoid_massage", "EMDR",
         "Exercises", "Famotidine", "Fizzy_drinks", "fizzy_water", 
-        "Gas-X", "gaviscon_night", "head_turn", "herbal_treatment", "keast",
-        "kiss_the_ceiling", "kommer", "larynx_lowering_exercise",
+        "Gas-X", "gaviscon_night", "head_turn", "herbal_treatment",
+        "kiss_the_ceiling", "larynx_lowering_exercise",
         "Mounjaro", "Neck_turning", "Omeprazole", "Patting", "Pelvic_tilt", "positioning",
         "Rapid_Drink_Challenge", "rumination", "Self-cured", "Self-curing", "Self-taught", "Shaker",
         "shaker_exercise", "speech_therapy", "tcm_herbs", "Tea", "throat_rest_day", "traditional_chinese_medicine", "tcm", "turning_heading",
@@ -65,6 +65,6 @@
         "Shortness_of_breath", "stomach_nausea", "Throat_gurgles",
         "Throat_tightness", "Throwing_up", "tummy_aches", "unable_to_burp",
         "uncomfortable", "uncontrollable_dry_heaving", "Vomit", "Vomit_air", "vomit_burps", "vomiting",
-        "vomiting_air", "vomitting_air", "zero_appetite"
+        "vomiting_air", "zero_appetite"
     ]
 }
