@@ -29,6 +29,31 @@
         "Small_Intestine_Bacterial_Overgrowth", "supra_gastric_belching", "supra_gastric_burps",
         "supragastric_belching", "gastritis", "excessive_air_swallowing", "swallowing_air"
     ],
+    "Acid reflux": [
+        "acid_reflux", "Gavison", "gaviscon"
+    ],
+    "Gastroesophageal Reflux Disease": [
+        "gastroesophageal_gas_reflux", "Gavison", "Gaviscon", "gerd"
+    ],
+    "Supragastric belching": [
+        "nasal_gastric", "nasal_gastric_tube", "supra_gastric_belching",
+        "supra_gastric_burps", "supragastric_belching"
+    ],
+    "Abdomino phrenic dyssynergia": [
+        "Abdomino_phrenic_dyssynergia", "APD"
+    ],
+    "ehlers danlos syndrome": [
+        "ehlers_danlos_syndrome"
+    ],
+    "Irritable bowel syndrome": [
+        "ibs", "irritable_bowel_syndrome"
+    ],
+    "Small Intestine Bacterial Overgrowth": [
+        "SIBO", "gastritis", "Small_Intestine_Bacterial_Overgrowth"
+    ],
+    "Aerophagia": [
+        "aerophagia", "excessive_air_swallowing", "swallowing_air"
+    ],
     "Deterioration": [
         "burning", "discomfort", "hurt", "hurts", "ineffective", "inflammation", "irritation", "pain", "pains"
     ],
