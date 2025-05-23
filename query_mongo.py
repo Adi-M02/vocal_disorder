@@ -614,7 +614,70 @@ def return_multiple_users_entries(
 
     return all_posts
 
-    
+def return_documents(
+    db_name: str,
+    collection_name: str,
+    filter_subreddits: list[str] | None = None,
+    min_docs: int | None = None,
+    mongo_uri: str = "mongodb://localhost:27017/",
+) -> list[str]:
+    """
+    Returns a flat list of text documents from MongoDB:
+    - If a document has `body`, it's returned as one document.
+    - Otherwise, `title` and `selftext` (if present) are treated as separate documents.
+    """
+    logging.info("Connecting to MongoDB at %s", mongo_uri)
+    coll = pymongo.MongoClient(mongo_uri)[db_name][collection_name]
+
+    # Step 1: If min_docs is set, get authors who meet the threshold
+    if min_docs is not None:
+        pipeline = []
+
+        if filter_subreddits:
+            pipeline.append({
+                "$match": {
+                    "$expr": {
+                        "$in": [
+                            {"$toLower": "$subreddit"},
+                            [s.lower() for s in filter_subreddits],
+                        ]
+                    }
+                }
+            })
+
+        pipeline += [
+            {"$group": {"_id": "$author", "post_count": {"$sum": 1}}},
+            {"$match": {"post_count": {"$gte": int(min_docs)}}}
+        ]
+
+        authors = [doc["_id"] for doc in coll.aggregate(pipeline)]
+        logging.info("Qualified authors: %d", len(authors))
+
+        if not authors:
+            logging.warning("No authors meet the criteria — returning empty list.")
+            return []
+
+        query = {"author": {"$in": authors}}
+    else:
+        query = {}
+
+    # Step 2: Apply subreddit filter if needed
+    if filter_subreddits:
+        query["subreddit"] = {"$in": filter_subreddits}
+
+    # Step 3: Fetch and extract text documents
+    documents = []
+    for doc in coll.find(query):
+        if "body" in doc and doc["body"].strip():
+            documents.append(doc["body"].strip())
+        else:
+            if "title" in doc and doc["title"].strip():
+                documents.append(doc["title"].strip())
+            if "selftext" in doc and doc["selftext"].strip():
+                documents.append(doc["selftext"].strip())
+
+    logging.info("Total text documents returned: %d", len(documents))
+    return documents
 
 
 if __name__ == "__main__":
