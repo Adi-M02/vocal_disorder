@@ -61,19 +61,36 @@ def main():
     # load terms with underscores replaced
     terms_map = load_terms(args.terms)
 
-    # iterate categories and terms
-    for category, terms in terms_map.items():
-        print(f"\n=== Category: {category} ===")
-        for term in terms:
-            comps = term.split(' ')
-            print(f"\nTerm: {term}")
-            for comp in comps:
-                in_cbow = component_status(cbow, comp)
-                in_skip = component_status(skip, comp)
-                print(
-                    f"  {comp:15}  CBOW: {'Yes' if in_cbow else ' No'}    "
-                    f"Skip-gram: {'Yes' if in_skip else ' No'}"
-                )
+    # # iterate categories and terms
+    # for category, terms in terms_map.items():
+    #     print(f"\n=== Category: {category} ===")
+    #     for term in terms:
+    #         comps = term.split(' ')
+    #         print(f"\nTerm: {term}")
+    #         for comp in comps:
+    #             in_cbow = component_status(cbow, comp)
+    #             in_skip = component_status(skip, comp)
+    #             print(
+    #                 f"  {comp:15}  CBOW: {'Yes' if in_cbow else ' No'}    "
+    #                 f"Skip-gram: {'Yes' if in_skip else ' No'}"
+    #             )
+    # loop over manual terms
+    with open('vocabulary_evaluation/manual_terms.txt', 'r', encoding='utf-8') as f:
+        terms = []
+        for line in f:
+            line = line.strip()
+            if line:
+                terms.extend([term.strip() for term in line.split(',') if term.strip()])
+    for term in terms:
+        comps = term.split(' ')
+        print(f"\nTerm: {term}")
+        for comp in comps:
+            in_cbow = component_status(cbow, comp)
+            in_skip = component_status(skip, comp)
+            print(
+                f"  {comp:15}  CBOW: {'Yes' if in_cbow else ' No'}    "
+                f"Skip-gram: {'Yes' if in_skip else ' No'}"
+            )
 
 if __name__ == '__main__':
     main()
