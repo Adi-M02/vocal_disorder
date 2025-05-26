@@ -25,6 +25,7 @@ def clean_and_tokenize(text: str) -> list[str]:
     clean = clean.replace("/", " ")
     # 4) restore preserved slash
     clean = clean.replace("<SLASH>", "/")
+    clean = clean.replace("-", " ")
     # 5) drop other junk but keep letters, apostrophes, hyphens, and spaces
     clean = junk_pattern.sub(" ", clean)
     # 6) tokenize on lowercase
