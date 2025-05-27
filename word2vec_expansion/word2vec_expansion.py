@@ -9,6 +9,7 @@ from gensim.models import Word2Vec
 from datetime import datetime
 from collections import Counter
 from typing import List, Tuple, Optional
+from nltk.corpus import stopwords
 
 # allow importing your project's tokenizer
 sys.path.append('../vocal_disorder')
@@ -40,10 +41,12 @@ def extract_frequent_bigrams(
             bigram_counts[(w1, w2)] += 1
 
     # filter by frequency threshold
+    stop_words = set(stopwords.words('english'))
+    print(stop_words)
     frequent = [
         bigram
         for bigram, cnt in bigram_counts.items()
-        if cnt >= min_count
+        if cnt >= min_count and (bigram[0] not in stop_words and bigram[1] not in stop_words)
     ]
     return frequent
 
