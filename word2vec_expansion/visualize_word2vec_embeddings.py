@@ -49,6 +49,21 @@ def extract_embeddings(model: Word2Vec, terms_map: dict[str, list[str]]) -> pd.D
             for i, val in enumerate(mean_vec):
                 row[f'dim{i}'] = float(val)
             rows.append(row)
+        # also embed the category name
+        cat_tokens = clean_and_tokenize(category)
+        if not cat_tokens:
+            continue
+        cat_vecs = [model.wv[t] for t in cat_tokens if t in model.wv]
+        if not cat_vecs:
+            continue
+        cat_mean_vec = np.mean(cat_vecs, axis=0)
+        row = {
+            'term': category,
+            'category': category,
+        }
+        for i, val in enumerate(cat_mean_vec):
+            row[f'dim{i}'] = float(val)
+        rows.append(row)
     return pd.DataFrame(rows)
 
 
