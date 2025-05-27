@@ -22,28 +22,26 @@ def load_terms(path: str) -> dict[str, list[str]]:
     return {category.replace('_', ' '): terms for category, terms in terms_map.items()}
 
 
-def extract_category_and_query_embeddings(
+def extract_term_and_query_embeddings(
     model: Word2Vec,
-    categories: list[str],
+    terms_map: dict[str, list[str]],
     queries: list[str]
 ) -> pd.DataFrame:
-    """
-    Embed each category name and each query word/phrase via mean-pooling.
-    Returns a DataFrame with columns: term, category, type, dim0...dimN.
-    """
     rows = []
-    # categories
-    for cat in categories:
-        tokens = clean_and_tokenize(cat)
-        vecs = [model.wv[t] for t in tokens if t in model.wv]
-        if not vecs:
-            continue
-        mean_vec = np.mean(vecs, axis=0)
-        row = {'term': cat, 'category': cat, 'type': 'category'}
-        for i, val in enumerate(mean_vec):
-            row[f'dim{i}'] = float(val)
-        rows.append(row)
-    # queries
+    # 1) embed every seed term in its category
+    for category, terms in terms_map.items():
+        for term in terms:
+            tokens = clean_and_tokenize(term)
+            vecs = [model.wv[t] for t in tokens if t in model.wv]
+            if not vecs:
+                continue
+            mean_vec = np.mean(vecs, axis=0)
+            row = {'term': term, 'category': category, 'type': 'seed'}
+            for i, val in enumerate(mean_vec):
+                row[f'dim{i}'] = float(val)
+            rows.append(row)
+
+    # 2) embed your additional query words/phrases
     for q in queries:
         tokens = clean_and_tokenize(q)
         vecs = [model.wv[t] for t in tokens if t in model.wv]
@@ -54,6 +52,7 @@ def extract_category_and_query_embeddings(
         for i, val in enumerate(mean_vec):
             row[f'dim{i}'] = float(val)
         rows.append(row)
+
     return pd.DataFrame(rows)
 
 
@@ -86,7 +85,7 @@ if __name__ == "__main__":
     TERMS_PATH      = "rcpd_terms.json"
     MODEL_DIR       = "word2vec_expansion/word2vec_05_26_16_04"
     ADDITIONAL_WORDS = [
-        "still"
+        "still", "second"
     ]
 
     # Prepare output directory
@@ -112,8 +111,8 @@ if __name__ == "__main__":
         print(f"[{label}] Loading model from {model_path} …")
         model = Word2Vec.load(model_path)
 
-        print(f"[{label}] Embedding categories + {len(ADDITIONAL_WORDS)} queries …")
-        df = extract_category_and_query_embeddings(model, categories, ADDITIONAL_WORDS)
+        print(f"[{label}] Embedding {sum(len(v) for v in terms_map.values())} seed terms + {len(ADDITIONAL_WORDS)} queries …")
+        df = extract_term_and_query_embeddings(model, terms_map, ADDITIONAL_WORDS)
         print(f"  → Embedded {len(df)} items")
 
         print(f"[{label}] Reducing to 2D via PCA …")
