@@ -40,11 +40,13 @@ def main():
     # 3) load & tokenize custom terms so they end up in vocab
     custom_terms_map = load_terms("rcpd_terms.json")
     custom_token_lists: list[list[str]] = []
-    for terms in custom_terms_map.values():
+    for category, terms in custom_terms_map.items():
         for term in terms:
             toks = clean_and_tokenize(term)
             if toks:
                 custom_token_lists.append(toks)
+        cats = clean_and_tokenize(category)
+        custom_token_lists.append(cats)
     print(f"Loaded {sum(len(v) for v in custom_terms_map.values())} custom terms → {len(custom_token_lists)} token lists")
 
     # 4) build timestamped output directory

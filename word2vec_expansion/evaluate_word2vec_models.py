@@ -1,11 +1,9 @@
-#!/usr/bin/env python3
 import os
 import json
 import argparse
 import sys
 from gensim.models import Word2Vec
 
-# allow importing your project’s tokenizer
 sys.path.append('../vocal_disorder')
 from tokenizer import clean_and_tokenize
 
