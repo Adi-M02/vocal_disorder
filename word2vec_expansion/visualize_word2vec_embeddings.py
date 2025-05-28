@@ -51,8 +51,23 @@ def extract_embeddings(model: Word2Vec, terms_map: dict[str, list[str]]) -> pd.D
 
 def reduce_to_2d(df: pd.DataFrame) -> pd.DataFrame:
     dim_cols = [c for c in df.columns if c.startswith('dim')]
+    X = df[dim_cols].values
+
     pca = PCA(n_components=2)
-    coords = pca.fit_transform(df[dim_cols].values)
+    coords = pca.fit_transform(X)
+
+    # 1) Explained-variance “error”
+    explained = float(pca.explained_variance_ratio_.sum())
+    lost = 1.0 - explained
+    print(f"PCA: 2 components explain {explained:.2%} of the variance, losing {lost:.2%}")
+
+    # 2) Reconstruction MSE
+    X_recon = pca.inverse_transform(coords)
+    mse = np.mean((X - X_recon) ** 2)
+    print(f"PCA reconstruction MSE: {mse:.6f}")
+
+    # attach the 2D coords back to your dataframe
+    df = df.copy()
     df['x'], df['y'] = coords[:, 0], coords[:, 1]
     return df
 
