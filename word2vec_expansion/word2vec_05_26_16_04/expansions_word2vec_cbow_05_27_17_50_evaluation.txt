@@ -1,0 +1,660 @@
+Expansion JSON: word2vec_expansion/word2vec_05_26_16_04/expansions_word2vec_cbow_05_27_17_50.json
+=== Evaluation Summary Across 189 Documents ===
+Total terms evaluated: 3285198
+True Positives (TP): 613
+False Positives (FP): 1108
+True Negatives (TN): 3283439
+False Negatives (FN): 38
+Precision: 0.356
+Recall: 0.942
+Accuracy: 1.000
+
+Unique False Positive terms 626 terms, (expansion predicted but manual not present):
+  1 injection
+  1 procedure
+  10 micro
+  100 units
+  19th
+  1st dose
+  2 burps
+  2 ent
+  2 injections
+  24h
+  2nd botox
+  2nd dose
+  2nd injection
+  3 days
+  3 micro
+  30 neck
+  4 slow
+  5 still
+  50 units
+  6 weeks
+  abdomen
+  abdominal
+  ability
+  abs
+  acid
+  actually sick
+  additional
+  address
+  affect
+  affecting
+  afraid
+  air
+  air also
+  air bubbles
+  air come
+  air coming
+  air escape
+  air stuck
+  alcohol
+  anesthesia procedure
+  another gp
+  another injection
+  anxious
+  anything carbonated
+  area
+  arm
+  armpit
+  arms
+  aspect
+  aspects
+  assumption
+  asthma
+  avoid burping
+  awake
+  bad lately
+  beginning
+  beverages
+  big burps
+  bit anxious
+  bite
+  bloating excess
+  block
+  blocking
+  blood
+  blood vessels
+  book
+  bother
+  botox 1
+  botox 10
+  botox 5
+  botox back
+  botox done
+  botox every
+  bottom
+  bread
+  breathing
+  bruising
+  bubbles
+  bubbly
+  burp alot
+  burp came
+  burp coming
+  burp completely
+  burp every
+  burp feels
+  burp forever
+  burp get
+  burp kind
+  burp like
+  burp obviously
+  burp properly
+  burp sadly
+  burp syndrome
+  burping alot
+  burping definitely
+  burping like
+  burping post
+  burping still
+  burping without
+  burps come
+  burps day
+  burps feeling
+  burps like
+  burps may
+  burps since
+  burps today
+  burps unfortunately
+  burps without
+  calves
+  can't burp
+  carbonated
+  carbonated beverages
+  carbonation
+  cardio
+  cause
+  cause issues
+  causes
+  causing
+  cells
+  centre
+  chair
+  change
+  changes
+  charge
+  chest
+  chest instead
+  chest shoulders
+  chest touches
+  chewing
+  childhood
+  chin
+  clear
+  clinic
+  closest
+  coffee
+  complete control
+  concerned
+  condition
+  conditions
+  confirmed
+  confirmed rcpd
+  conscious
+  constant
+  constantly
+  constantly choking
+  consultant
+  consultation
+  consultation fee
+  contents
+  control
+  control burping
+  cost
+  cough
+  coughing
+  coughing fit
+  coughing fits
+  could burp
+  cranberry
+  cranberry juice
+  cricoid
+  cricopharyngeal
+  crunches
+  ct
+  curing
+  damage
+  date
+  day 6
+  day slow
+  diagnosed
+  diet change
+  different ent
+  different procedure
+  digesting food
+  discount
+  disorders
+  doctor
+  doctor explained
+  doctor though
+  doctor told
+  doctor's
+  doctor's office
+  doctors
+  done
+  done correctly
+  done today
+  done yesterday
+  dose
+  doses
+  downwards
+  dr
+  dr bastian
+  dr hayley
+  dr hicklin
+  dr karagama
+  drink
+  drink alcohol
+  drink anything
+  drink carbonated
+  drink water
+  drinking alcohol
+  drinking carbonated
+  drinking fizzy
+  drinking try
+  drinking water
+  drinks
+  drunk
+  dry
+  dry foods
+  eating drinking
+  eating feels
+  eating food
+  eating slow
+  eating small
+  effect
+  effects also
+  email
+  emailed mr
+  embarrassing
+  emotional
+  entire body
+  entire life
+  eosinophilic
+  esophageal
+  esophageal sphincter
+  even water
+  every doctor
+  evidence
+  exams
+  excess
+  excessive
+  excessive amount
+  exercise
+  exercise also
+  experimenting
+  explanation
+  extend
+  extreme
+  extreme side
+  facing
+  fear
+  fee
+  feel fine
+  feel like
+  feel terrible
+  feeling
+  feeling full
+  feeling like
+  feelings
+  feels
+  feels like
+  feels normal
+  feels worse
+  fees
+  felt bloated
+  felt like
+  felt weird
+  fiber
+  first appointment
+  first botox
+  first day
+  first dose
+  first month
+  first rcpd
+  first week
+  fix
+  fizzy
+  floor
+  food
+  food especially
+  force air
+  frequent
+  full feeling
+  fully burp
+  function
+  ga
+  gag cough
+  gas
+  general anesthesia
+  get bloated
+  get chest
+  get gurgling
+  get microburps
+  get painful
+  get sick
+  get stuck
+  get throat
+  get trapped
+  get treatment
+  gets stuck
+  gets worse
+  getting botox
+  getting rcpd
+  getting trapped
+  great burping
+  gum
+  gurgle burp
+  gurgles feel
+  gurgles get
+  gurgles hope
+  gurgles sometimes
+  gurgling quite
+  gurgling still
+  gut
+  happen
+  happen sometimes
+  happy burping
+  head
+  head neck
+  head position
+  head positions
+  head towards
+  health
+  heartburn
+  heds
+  hiccups frequently
+  hicklin
+  higher dose
+  him
+  hospital
+  hot
+  hr
+  huge burp
+  immediately feel
+  impatient
+  improving
+  increase
+  infections
+  initial
+  injected
+  injection worked
+  injections either
+  instantly feel
+  intense
+  intense chest
+  intubation
+  intubation tube
+  involuntary
+  irritated
+  issue
+  issues could
+  juice
+  knees
+  large burps
+  lean
+  lean back
+  left
+  left right
+  lemonade
+  less bloated
+  life
+  life back
+  life especially
+  life except
+  life saver
+  lift
+  lifting
+  like air
+  liquid
+  little air
+  little burps
+  little pressure
+  little relief
+  local gp
+  lucky hicklin
+  lucy hicklin
+  massage
+  massive burps
+  meantime
+  medical
+  medication
+  medications
+  mental block
+  mental thing
+  method
+  micro
+  microburps day
+  microburps throughout
+  microburps today
+  mine done
+  misdiagnosed
+  mixed
+  mixer
+  monitoring
+  motion
+  motor
+  move
+  moving
+  mr karagama
+  much burping
+  much carbonation
+  much relief
+  muscle
+  muscles
+  myotomy procedure
+  neck
+  neck day
+  neck surgery
+  needle
+  negative
+  nerve
+  nerve damage
+  nervous
+  never gurgle
+  nhs
+  nj
+  noburps
+  noise
+  noises
+  noises sometimes
+  norm
+  nothing feels
+  numb tongue
+  nyc area
+  oesophagus
+  office
+  office visits
+  official
+  one round
+  ones
+  opening
+  operative
+  option
+  options
+  originally
+  originally diagnosed
+  overall feeling
+  pa
+  pain 3
+  pain sometimes
+  pain usually
+  panicking
+  paranoid
+  past week
+  people air
+  phlegm
+  phlegmy
+  placebo effect
+  plagued
+  poor
+  position
+  positions
+  possibly
+  pre botox
+  prescribed
+  prescribed something
+  price
+  primarily
+  private ent
+  problem
+  problems
+  procedure done
+  procedure even
+  procedure overall
+  procedure please
+  procedure really
+  progress
+  proper burps
+  properly burp
+  psychological
+  pt
+  push
+  pushing
+  quite nervous
+  r cpd
+  randomly burping
+  rcpd might
+  rcpd sufferers
+  rcpd symptoms
+  really bother
+  really excessive
+  really feel
+  really intense
+  really sound
+  really tight
+  recommendation
+  recovery time
+  referral
+  referred
+  reflux
+  reflux would
+  regurgitate food
+  relationships
+  release
+  releasing
+  relief also
+  relief day
+  required
+  resting
+  results
+  round
+  saliva
+  salivating
+  salt
+  scared
+  second
+  second injection
+  secretary
+  see dr
+  sensation
+  sensitive
+  sensory
+  serious
+  service
+  shoulders
+  sickness
+  side effect
+  sip
+  slightest
+  slightly painful
+  slightly worried
+  slow
+  slow process
+  small amount
+  small amounts
+  small burps
+  small ones
+  smoothies
+  social
+  social aspect
+  something carbonated
+  somewhat painful
+  sound
+  sound like
+  sources
+  specifically
+  sphincter
+  spirits
+  squeeze
+  stable
+  start
+  start panicking
+  started burping
+  states
+  statistics
+  still
+  still burp
+  still feeling
+  still gone
+  still gurgling
+  still nowhere
+  still slow
+  stir
+  stomach apparently
+  strengthen
+  stuck
+  studies
+  subsided
+  success
+  successful
+  suffering
+  surface
+  surgeon
+  surgeon recommended
+  surgeons
+  surgeries
+  surgery like
+  surgery two
+  suspected
+  suspected ibs
+  swallow
+  swallow regurgitation
+  swallowed
+  swallowing
+  swallowing etc
+  swallowing pills
+  swallowing water
+  symptom
+  symptoms instead
+  syndrome
+  system
+  technique
+  temporary relief
+  terrible
+  tests
+  theatre
+  there's air
+  things
+  throat
+  throat felt
+  throat gargle
+  throat like
+  throat muscles
+  throat neck
+  throat open
+  throat still
+  throwing
+  time still
+  tl dr
+  tongue
+  tools
+  trapped
+  trapped air
+  trapped gas
+  tricks
+  try turning
+  tube
+  turn
+  turning
+  ues
+  uk
+  uk people
+  uncontrollable
+  undigested food
+  unexpected
+  upset
+  us doctors
+  vessels
+  vibration
+  visits
+  vocal
+  vocal issues
+  voice feels
+  wall
+  water
+  water whilst
+  website
+  week mark
+  weird gurgle
+  whole life
+  wind
+  wine
+  workout
+  worried
+  worrying
+  worsening
+  would burp
+Unique False Negative terms 21 terms, (manual present but expansion missed):
+  botox technique
+  choke
+  dose botox
+  forceful
+  lingual neuropraxia
+  nasopharyngoscope
+  neck lift
+  neuropraxia
+  no burp syndrome
+  not burping
+  patient
+  patients
+  permanent
+  pillows
+  plateau
+  post op
+  regurgitated
+  severity
+  throw up
+  vomited
+  vomits

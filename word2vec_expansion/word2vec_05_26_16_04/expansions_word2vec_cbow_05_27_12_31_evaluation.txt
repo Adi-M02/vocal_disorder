@@ -1,0 +1,398 @@
+Expansion JSON: word2vec_expansion/word2vec_05_26_16_04/expansions_word2vec_cbow_05_27_12_31.json
+=== Evaluation Summary Across 189 Documents ===
+Total terms evaluated: 539028
+True Positives (TP): 522
+False Positives (FP): 713
+True Negatives (TN): 537664
+False Negatives (FN): 129
+Precision: 0.423
+Recall: 0.802
+Accuracy: 0.998
+
+Unique False Positive terms 308 terms, (expansion predicted but manual not present):
+  19th
+  24h
+  abdomen
+  abdominal
+  ability
+  abs
+  acid
+  additional
+  address
+  affect
+  affecting
+  afraid
+  air
+  alcohol
+  anxious
+  area
+  arm
+  armpit
+  arms
+  aspect
+  aspects
+  assumption
+  asthma
+  awake
+  beginning
+  beverages
+  bite
+  block
+  blocking
+  blood
+  book
+  bother
+  bottom
+  bread
+  breathing
+  bruising
+  bubbles
+  bubbly
+  calves
+  can't burp
+  carbonated
+  carbonation
+  cardio
+  cause
+  causes
+  causing
+  cells
+  centre
+  chair
+  change
+  changes
+  charge
+  chest
+  chewing
+  childhood
+  chin
+  clear
+  clinic
+  closest
+  coffee
+  concerned
+  condition
+  conditions
+  confirmed
+  conscious
+  constant
+  constantly
+  consultant
+  consultation
+  contents
+  control
+  cost
+  cough
+  coughing
+  cranberry
+  cricoid
+  cricopharyngeal
+  crunches
+  ct
+  curing
+  damage
+  date
+  diagnosed
+  discount
+  disorders
+  doctor
+  doctor's
+  doctors
+  done
+  dose
+  doses
+  downwards
+  dr
+  drink
+  drinks
+  drunk
+  dry
+  effect
+  email
+  embarrassing
+  emotional
+  eosinophilic
+  esophageal
+  evidence
+  exams
+  excess
+  excessive
+  exercise
+  experimenting
+  explanation
+  extend
+  extreme
+  facing
+  fear
+  fee
+  feeling
+  feelings
+  feels
+  fees
+  fiber
+  fix
+  fizzy
+  floor
+  food
+  frequent
+  function
+  ga
+  gas
+  gum
+  gut
+  happen
+  head
+  health
+  heartburn
+  heds
+  hicklin
+  him
+  hospital
+  hot
+  hr
+  impatient
+  improving
+  increase
+  infections
+  initial
+  injected
+  intense
+  intubation
+  involuntary
+  irritated
+  issue
+  juice
+  knees
+  lean
+  left
+  lemonade
+  life
+  lift
+  lifting
+  liquid
+  massage
+  meantime
+  medical
+  medication
+  medications
+  method
+  micro
+  misdiagnosed
+  mixed
+  mixer
+  monitoring
+  motion
+  motor
+  move
+  moving
+  muscle
+  muscles
+  neck
+  needle
+  negative
+  nerve
+  nervous
+  nhs
+  nj
+  noburps
+  noise
+  noises
+  norm
+  oesophagus
+  office
+  official
+  ones
+  opening
+  operative
+  option
+  options
+  originally
+  pa
+  panicking
+  paranoid
+  phlegm
+  phlegmy
+  plagued
+  poor
+  position
+  positions
+  possibly
+  prescribed
+  price
+  primarily
+  problem
+  problems
+  progress
+  psychological
+  pt
+  push
+  pushing
+  recommendation
+  referral
+  referred
+  reflux
+  relationships
+  release
+  releasing
+  required
+  resting
+  results
+  round
+  saliva
+  salivating
+  salt
+  scared
+  second
+  secretary
+  sensation
+  sensitive
+  sensory
+  serious
+  service
+  shoulders
+  sickness
+  sip
+  slightest
+  slow
+  smoothies
+  social
+  sound
+  sources
+  specifically
+  sphincter
+  spirits
+  squeeze
+  stable
+  start
+  states
+  statistics
+  still
+  stir
+  strengthen
+  stuck
+  studies
+  subsided
+  success
+  successful
+  suffering
+  surface
+  surgeon
+  surgeons
+  surgeries
+  suspected
+  swallow
+  swallowed
+  swallowing
+  symptom
+  syndrome
+  system
+  technique
+  terrible
+  tests
+  theatre
+  things
+  throat
+  throwing
+  tongue
+  tools
+  trapped
+  tricks
+  tube
+  turn
+  turning
+  ues
+  uk
+  uncontrollable
+  unexpected
+  upset
+  vessels
+  vibration
+  visits
+  vocal
+  wall
+  water
+  website
+  wind
+  wine
+  workout
+  worried
+  worrying
+  worsening
+Unique False Negative terms 77 terms, (manual present but expansion missed):
+  air vomit
+  air vomits
+  air vomitting
+  baby burps
+  bad hiccups
+  botox diary
+  botox effects
+  botox going
+  botox injection
+  botox injections
+  botox lasts
+  botox need
+  botox needle
+  botox questions
+  botox success
+  botox technique
+  botox treatment
+  botox wears
+  burping uncontrollably
+  carbonated drinks
+  chest pains
+  choke
+  constant pain
+  cricopharyngeal myotomy
+  dose botox
+  ent surgeon
+  ent surgeons
+  feeling uncomfortable
+  forceful
+  getting surgery
+  gurgling noises
+  gut issues
+  health anxiety
+  horribly painful
+  initial botox
+  involuntary microburps
+  lingual neuropraxia
+  micro burping
+  micro burps
+  nasopharyngoscope
+  neck crunches
+  neck lift
+  neuropraxia
+  no burp syndrome
+  not burping
+  office injections
+  office procedure
+  outpatient procedure
+  pain level
+  pain related
+  painful hiccups
+  patient
+  patients
+  permanent
+  pillows
+  plateau
+  post op
+  private patient
+  really uncomfortable
+  regurgitated
+  severity
+  side effects
+  stomach area
+  stomach contents
+  stomach issues
+  stomach pain
+  stomach pains
+  super uncomfortable
+  throat botox
+  throat pain
+  throw up
+  tight throat
+  tiny burps
+  tiny microburps
+  uncontrollable burps
+  vomited
+  vomits
