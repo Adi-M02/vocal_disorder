@@ -9,6 +9,8 @@ import logging
 import sys
 import html
 import random
+from typing import Any
+
 
 def get_posts_by_subreddit(subreddit_name, db_name="reddit", collection_name="noburp_posts", mongo_uri="mongodb://localhost:27017/"):
     """
@@ -390,13 +392,15 @@ def write_users_posts_by_subreddit(
     collection_name: str,
     output_file: str,
     filter_subreddits: list[str] | None = None,
+    filter_users: list[str] | None = None,
     min_posts: int | None = None,
     mongo_uri: str = "mongodb://localhost:27017/",
 ):
     """
     Export authors who have at least `min_posts` posts in the specified
-    `filter_subreddits` (case‑insensitive).  If `filter_subreddits` is None
-    the post‑count requirement is applied across *all* subreddits.
+    `filter_subreddits` (case-insensitive) and (if provided) are in `filter_users`.
+    If `filter_subreddits` is None, the post-count requirement is applied
+    across *all* subreddits.  If `filter_users` is None, all users are considered.
 
     The text file produced is identical in structure to write_all_users_posts().
     """
@@ -408,22 +412,31 @@ def write_users_posts_by_subreddit(
     # ───────────── 1. aggregation: find qualifying authors ───────────
     pipeline = []
 
+    # if restricting to particular subreddits
     if filter_subreddits:
-        pipeline.append(
-            {
-                "$match": {
-                    "$expr": {
-                        "$in": [
-                            {"$toLower": "$subreddit"},
-                            [s.lower() for s in filter_subreddits],
-                        ]
-                    }
+        pipeline.append({
+            "$match": {
+                "$expr": {
+                    "$in": [
+                        {"$toLower": "$subreddit"},
+                        [s.lower() for s in filter_subreddits],
+                    ]
                 }
             }
-        )
+        })
 
+    # if restricting to particular users
+    if filter_users:
+        pipeline.append({
+            "$match": {
+                "author": {"$in": filter_users}
+            }
+        })
+
+    # group by author and count posts
     pipeline.append({"$group": {"_id": "$author", "post_count": {"$sum": 1}}})
 
+    # apply minimum‐posts filter
     if min_posts is not None:
         pipeline.append({"$match": {"post_count": {"$gte": int(min_posts)}}})
 
@@ -433,9 +446,10 @@ def write_users_posts_by_subreddit(
         logging.warning("No authors meet the criteria — nothing to write.")
         return
 
-    # ───────────── 2. fetch their posts (apply sub filter again) ──────
-    query = {"author": {"$in": authors}}
+    # ───────────── 2. fetch their posts (re‐apply filters) ─────────
+    query: dict[str, Any] = {"author": {"$in": authors}}
     if filter_subreddits:
+        # note: case-sensitivity depends on your data; adjust as needed
         query["subreddit"] = {"$in": filter_subreddits}
 
     posts_by_author = defaultdict(list)
@@ -443,7 +457,9 @@ def write_users_posts_by_subreddit(
         posts_by_author[post["author"]].append(post)
 
     sorted_authors = sorted(
-        posts_by_author, key=lambda a: len(posts_by_author[a]), reverse=True
+        posts_by_author,
+        key=lambda a: len(posts_by_author[a]),
+        reverse=True
     )
 
     # ───────────── 3. write to disk ──────────────────────────────────
@@ -471,9 +487,7 @@ def write_users_posts_by_subreddit(
             for p in author_posts:
                 ts = p.get("created_utc")
                 if isinstance(ts, (int, float)):
-                    ts = datetime.fromtimestamp(ts).strftime(
-                        "%Y-%m-%d %H:%M:%S"
-                    )
+                    ts = datetime.fromtimestamp(ts).strftime("%Y-%m-%d %H:%M:%S")
                 elif isinstance(ts, datetime):
                     ts = ts.strftime("%Y-%m-%d %H:%M:%S")
                 else:
@@ -484,7 +498,7 @@ def write_users_posts_by_subreddit(
                 fout.write(f"Time     : {ts}\n")
 
                 if body := p.get("body"):
-                    fout.write("body :\n")
+                    fout.write("Body     :\n")
                     fout.write(body + "\n")
                 else:
                     fout.write(f"Title    : {p.get('title', 'N/A')}\n")
@@ -696,7 +710,8 @@ if __name__ == "__main__":
     write_users_posts_by_subreddit(
         db_name="reddit",
         collection_name="noburp_all",
-        output_file="user_posts_all.txt",
+        filter_users=["freddiethecalathea", "Many_Pomegranate_566", "rpesce518", "kinglgw", "mjh59"],
+        output_file="manual_users.txt",
         filter_subreddits=["noburp"],
         min_posts=3,
     )

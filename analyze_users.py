@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 import re
+import json
 import logging
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -10,11 +11,13 @@ from lifelines import KaplanMeierFitter
 from datetime import datetime
 import query_mongo as query
 import text_processing as text
-from rcpd_terms import rcpd_terms
+with open('rcpd_terms.json', encoding="utf-8") as _f:
+    TERM_CATEGORY_DICT = json.load(_f)
+import query_mongo as query
 
 manually_analyzed_users = ['ThinkSuccotash', 'ScratchGolfer1976', 'Mobile-Breakfast-526', 'Wrob88', 'tornteddie', 'AmazingAd5243', ]
 
-term_categories = rcpd_terms
+term_categories = TERM_CATEGORY_DICT
 
 log = logging.getLogger("bot")
 log.setLevel(logging.INFO)
