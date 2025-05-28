@@ -10,7 +10,7 @@ import sys
 import html
 import random
 from typing import Any
-
+import json 
 
 def get_posts_by_subreddit(subreddit_name, db_name="reddit", collection_name="noburp_posts", mongo_uri="mongodb://localhost:27017/"):
     """
@@ -555,6 +555,12 @@ def generate_post_samples_and_write_output(
     batch1_users = list(other_sample1 | botox_sample1)
     batch2_users = list(other_sample2 | botox_sample2)
 
+    # === Write user lists to JSON files if paths are provided ===
+    
+    with open('output_annotation_batches/batch1_users.json', "w", encoding="utf-8") as f:
+        json.dump(batch1_users, f, indent=2)
+    with open('output_annotation_batches/batch2_users.json', "w", encoding="utf-8") as f:
+        json.dump(batch2_users, f, indent=2)
     # === Write each batch to output ===
     write_selected_users_posts(
         db_name=db_name,
@@ -707,20 +713,20 @@ def return_documents(
 
 
 if __name__ == "__main__":
-    write_users_posts_by_subreddit(
-        db_name="reddit",
-        collection_name="noburp_all",
-        filter_users=["freddiethecalathea", "Many_Pomegranate_566", "rpesce518", "kinglgw", "mjh59"],
-        output_file="manual_users.txt",
-        filter_subreddits=["noburp"],
-        min_posts=3,
-    )
-    sys.exit(0)
+    # write_users_posts_by_subreddit(
+    #     db_name="reddit",
+    #     collection_name="noburp_all",
+    #     filter_users=["freddiethecalathea", "Many_Pomegranate_566", "rpesce518", "kinglgw", "mjh59"],
+    #     output_file="manual_users.txt",
+    #     filter_subreddits=["noburp"],
+    #     min_posts=3,
+    # )
+    # sys.exit(0)
     # filter_subreddits = ["noburp", "emetophobia", "anxiety", "gerd", "ibs", "sibo", "emetophobiarecovery", "pots", "gastritis", "healthanxiety", "trees", "advice", "supplements"]
     filter_subreddits = ["noburp"]
     # write_all_users_posts("reddit", "noburp_all", "vocabulary_evaluation/mjh59.txt", filter_subreddits, None, "mjh59" )
-    other_users_csv = "other_users.csv"
-    botox_csv = "user_botox_dates_fixed.csv"
+    other_users_csv = "annotated_users/other_users.csv"
+    botox_csv = "annotated_users/user_botox_dates_fixed.csv"
     output_path_batch1 = "output_annotation_batches/user_posts_batch1.txt"
     output_path_batch2 = "output_annotation_batches/user_posts_batch2.txt"
     generate_post_samples_and_write_output(
