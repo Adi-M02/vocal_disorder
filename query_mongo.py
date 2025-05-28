@@ -618,30 +618,32 @@ def return_documents(
     db_name: str,
     collection_name: str,
     filter_subreddits: list[str] | None = None,
+    filter_users: list[str] | None = None,
     min_docs: int | None = None,
     mongo_uri: str = "mongodb://localhost:27017/",
 ) -> list[str]:
     """
     Returns a flat list of text documents from MongoDB:
     - If a document has `body`, it's returned as one document.
-    - Otherwise, `title` and `selftext` (if present) are treated as separate documents.
+    - Otherwise, `title` and `selftext` (if present) are separate documents.
+    - If `filter_subreddits` is given, only posts in those subreddits are returned.
+    - If `filter_users` is given, only posts by those authors are returned.
+    - If `min_docs` is given, only authors with >= min_docs posts
+      (optionally pre-filtered by `filter_subreddits`) are included.
     """
     logging.info("Connecting to MongoDB at %s", mongo_uri)
     coll = pymongo.MongoClient(mongo_uri)[db_name][collection_name]
 
-    # Step 1: If min_docs is set, get authors who meet the threshold
+    query: dict[str, Any] = {}
+
+    # Step 1: If min_docs is set, compute eligible authors
     if min_docs is not None:
-        pipeline = []
+        pipeline: list[dict] = []
 
         if filter_subreddits:
             pipeline.append({
                 "$match": {
-                    "$expr": {
-                        "$in": [
-                            {"$toLower": "$subreddit"},
-                            [s.lower() for s in filter_subreddits],
-                        ]
-                    }
+                    "subreddit": {"$in": [s.lower() for s in filter_subreddits]}
                 }
             })
 
@@ -651,29 +653,39 @@ def return_documents(
         ]
 
         authors = [doc["_id"] for doc in coll.aggregate(pipeline)]
-        logging.info("Qualified authors: %d", len(authors))
+        logging.info("Authors with ≥ %d posts: %d", min_docs, len(authors))
 
         if not authors:
             logging.warning("No authors meet the criteria — returning empty list.")
             return []
 
-        query = {"author": {"$in": authors}}
-    else:
-        query = {}
+        # If user list also provided, intersect
+        if filter_users:
+            authors = [a for a in authors if a in filter_users]
+            logging.info("After filtering to specified users: %d", len(authors))
+            if not authors:
+                logging.warning("No authors remain after user‐filter — returning empty list.")
+                return []
 
-    # Step 2: Apply subreddit filter if needed
+        query["author"] = {"$in": authors}
+
+    # Step 2: If no min_docs but filter_users specified
+    elif filter_users:
+        query["author"] = {"$in": filter_users}
+
+    # Step 3: Subreddit filtering
     if filter_subreddits:
         query["subreddit"] = {"$in": filter_subreddits}
 
-    # Step 3: Fetch and extract text documents
-    documents = []
+    # Step 4: Fetch and extract text
+    documents: list[str] = []
     for doc in coll.find(query):
-        if "body" in doc and doc["body"].strip():
+        if doc.get("body", "").strip():
             documents.append(doc["body"].strip())
         else:
-            if "title" in doc and doc["title"].strip():
+            if doc.get("title", "").strip():
                 documents.append(doc["title"].strip())
-            if "selftext" in doc and doc["selftext"].strip():
+            if doc.get("selftext", "").strip():
                 documents.append(doc["selftext"].strip())
 
     logging.info("Total text documents returned: %d", len(documents))
