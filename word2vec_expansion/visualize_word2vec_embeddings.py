@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 import sys
 import os
 import json
@@ -10,6 +9,10 @@ from gensim.models import Word2Vec
 from sklearn.decomposition import PCA
 import plotly.express as px
 from sklearn.manifold import TSNE
+from sklearn.manifold import trustworthiness
+from sklearn.metrics import pairwise_distances, silhouette_score
+from sklearn.neighbors import NearestNeighbors
+from scipy.stats import spearmanr
 import umap
 
 sys.path.append('../vocal_disorder')
@@ -50,99 +53,152 @@ def extract_embeddings(model: Word2Vec, terms_map: dict[str, list[str]]) -> pd.D
     return pd.DataFrame(rows)
 
 
-def reduce_PCA(df: pd.DataFrame, pca_components: int = 2) -> pd.DataFrame:
-    """
-    Reduce the 'dim*' columns of df down to 2 or 3 PCA components.
-
-    Prints:
-      - Explained variance ratio (sum of the top components) and the lost variance
-      - Reconstruction MSE
-
-    Returns a new DataFrame with 'x','y' (and 'z' if pca_components==3) columns added.
-    """
+def reduce_PCA(df: pd.DataFrame, pca_components: int = 2) -> tuple[pd.DataFrame, dict]:
     if pca_components not in (2, 3):
         raise ValueError(f"pca_components must be 2 or 3, got {pca_components}")
 
-    # 1) Pull out your high-dimensional data
     dim_cols = [c for c in df.columns if c.startswith('dim')]
     X = df[dim_cols].values
 
-    # 2) Fit PCA
     pca = PCA(n_components=pca_components, random_state=42)
     coords = pca.fit_transform(X)
 
-    # 3) Print variance capture
     explained = float(pca.explained_variance_ratio_.sum())
-    lost = 1.0 - explained
-    print(f"PCA: {pca_components} components explain {explained:.2%} of the variance, losing {lost:.2%}")
+    lost      = 1.0 - explained
 
-    # 4) Print reconstruction MSE
     X_recon = pca.inverse_transform(coords)
     mse = np.mean((X - X_recon) ** 2)
-    print(f"PCA reconstruction MSE: {mse:.6f}")
 
-    # 5) Attach coords (x,y, and z if requested)
+    metrics = {
+        'explained_variance_ratio': explained,
+        'lost_variance':            lost,
+        'reconstruction_mse':       mse
+    }
+
     out = df.copy()
     out['x'] = coords[:, 0]
     out['y'] = coords[:, 1]
     if pca_components == 3:
         out['z'] = coords[:, 2]
-    return out
+
+    return out, metrics
 
 
-def reduce_tsne(df: pd.DataFrame, n_components: int = 2, **tsne_kwargs) -> pd.DataFrame:
-    """
-    Runs t-SNE on the 'dim*' columns of df, producing 2D or 3D coordinates.
-    Prints KL divergence and an embedding‐variance ratio so you can compare how
-    much of the original spread is captured.
-    """
+def reduce_tsne(df: pd.DataFrame, n_components: int = 2, **tsne_kwargs) -> tuple[pd.DataFrame, dict]:
     dim_cols = [c for c in df.columns if c.startswith('dim')]
     X = df[dim_cols].values
 
     tsne = TSNE(n_components=n_components, random_state=42, **tsne_kwargs)
     coords = tsne.fit_transform(X)
 
-    # Print error metrics
-    if hasattr(tsne, 'kl_divergence_'):
-        print(f"t-SNE KL divergence: {tsne.kl_divergence_:.4f}")
-    # variance‐ratio proxy: sum var(embedding)/sum var(original)
+    kl = tsne.kl_divergence_ if hasattr(tsne, 'kl_divergence_') else None
     orig_var = np.var(X, axis=0).sum()
     emb_var  = np.var(coords, axis=0).sum()
     ratio    = emb_var / orig_var
-    print(f"t-SNE embedding variance ratio: {ratio:.2%}")
 
-    # Attach coords
+    metrics = {
+        'kl_divergence':      kl,
+        'variance_ratio':     ratio
+    }
+
     out = df.copy()
     out['x'] = coords[:, 0]
     out['y'] = coords[:, 1]
     if n_components == 3:
         out['z'] = coords[:, 2]
-    return out
+
+    return out, metrics
 
 
-def reduce_umap(df: pd.DataFrame, n_components: int = 2, **umap_kwargs) -> pd.DataFrame:
+def reduce_umap(
+    df: pd.DataFrame,
+    n_components: int = 2,
+    n_neighbors: int = 15,
+    min_dist: float = 0.1,
+    eval_neighbors: int = 10,
+    **umap_kwargs
+) -> tuple[pd.DataFrame, dict]:
     """
-    Runs UMAP on the 'dim*' columns of df, producing 2D or 3D coordinates.
-    Prints a variance‐ratio proxy so you can see how it compares to PCA and t-SNE.
+    Runs UMAP, returns (df_with_xyz, metrics_dict) where metrics_dict contains:
+      - variance_ratio
+      - trustworthiness
+      - continuity
+      - dist_corr (Spearman)
+      - silhouette (requires df['category'])
     """
+    # 1) High-dim data
     dim_cols = [c for c in df.columns if c.startswith('dim')]
     X = df[dim_cols].values
 
-    um = umap.UMAP(n_components=n_components, random_state=42, **umap_kwargs)
+    # 2) UMAP fit
+    um = umap.UMAP(
+        n_components=n_components,
+        n_neighbors=n_neighbors,
+        min_dist=min_dist,
+        random_state=42,
+        **umap_kwargs
+    )
     coords = um.fit_transform(X)
 
-    # variance‐ratio proxy
+    # 3) variance-ratio proxy
     orig_var = np.var(X, axis=0).sum()
     emb_var  = np.var(coords, axis=0).sum()
-    ratio    = emb_var / orig_var
-    print(f"UMAP embedding variance ratio: {ratio:.2%}")
+    variance_ratio = emb_var / orig_var
 
+    # 4) trustworthiness
+    tw = trustworthiness(X, coords, n_neighbors=eval_neighbors)
+
+    # 5) continuity using full low-D ranking
+    def continuity_full(X_hd, X_ld, k):
+        # neighbors in high-D (including self), only need indices
+        nbrs_hd = NearestNeighbors(n_neighbors=k+1).fit(X_hd)
+        idx_hd  = nbrs_hd.kneighbors(X_hd, return_distance=False)
+
+        # full low-D distance matrix → full ranking
+        D_ld = pairwise_distances(X_ld)
+        ranks_ld = np.argsort(D_ld, axis=1)
+
+        N = X_hd.shape[0]
+        cont_sum = 0.0
+
+        for i in range(N):
+            true_nb = set(idx_hd[i, 1:k+1])        # true neighbors in HD
+            missing = true_nb - set(ranks_ld[i, 1:k+1])  # those not in top-k LD
+
+            for j in missing:
+                # position of j in the full low-D ranking
+                r = np.where(ranks_ld[i] == j)[0][0]
+                cont_sum += (r - k)
+
+        return 1 - (2 / (N * k * (2*N - 3*k - 1))) * cont_sum
+
+    cont = continuity_full(X, coords, eval_neighbors)
+
+    # 6) distance-correlation (Spearman over upper triangle)
+    D_hd = pairwise_distances(X)
+    D_ld = pairwise_distances(coords)
+    iu   = np.triu_indices_from(D_hd, k=1)
+    dist_corr, _ = spearmanr(D_hd[iu], D_ld[iu])
+
+    # 7) silhouette (requires labels)
+    sil = silhouette_score(coords, df['category'].values)
+
+    metrics = {
+        'variance_ratio': variance_ratio,
+        'trustworthiness': tw,
+        'continuity': cont,
+        'dist_corr': dist_corr,
+        'silhouette': sil
+    }
+
+    # 8) attach coords for plotting
     out = df.copy()
     out['x'] = coords[:, 0]
     out['y'] = coords[:, 1]
     if n_components == 3:
         out['z'] = coords[:, 2]
-    return out
+
+    return out, metrics
 
 
 def plot_and_save(df: pd.DataFrame, title: str, out_html: str):
@@ -174,43 +230,68 @@ if __name__ == "__main__":
     # === Configuration ===
     TERMS_PATH     = 'rcpd_terms.json'
     MODEL_DIR      = "word2vec_expansion/word2vec_05_26_16_04"
-    # Timestamp for output folder
     ts             = datetime.now().strftime("%m_%d_%H_%M")
     viz_dir        = os.path.join(MODEL_DIR, f"embedding_visualization_{ts}")
-    SIM_THRESHOLD  = 0.4    # unused here but available for future filtering
-    FREQ_THRESHOLD = 0.09   # unused here but available for future filtering
-
-    # Ensure necessary files/folders exist
-    cbow_path = os.path.join(MODEL_DIR, "word2vec_cbow.model")
-    skip_path = os.path.join(MODEL_DIR, "word2vec_skipgram.model")
-    for path in (TERMS_PATH, cbow_path, skip_path):
-        if not os.path.exists(path):
-            raise FileNotFoundError(f"Required file not found: {path}")
-
-    # Create output directory
     os.makedirs(viz_dir, exist_ok=True)
-    print(f"Writing visualization HTML into: {viz_dir}\n")
 
-    # Load terms and give feedback
+    # Prepare metrics file
+    metrics_path = os.path.join(viz_dir, 'metrics.txt')
+    with open(metrics_path, 'w', encoding='utf-8') as mf:
+        mf.write(f"Embedding reduction metrics — run at {datetime.now()}\n\n")
+
+    # Load terms
     terms_map   = load_terms(TERMS_PATH)
     total_terms = sum(len(v) for v in terms_map.values())
+    print(f"Writing visualizations & metrics into: {viz_dir}")
     print(f"Loaded {total_terms} terms across {len(terms_map)} categories\n")
 
     # Process each model
-    for model_path, label in [(cbow_path, "CBOW"), (skip_path, "SkipGram")]:
-        print(f"[{label}] Loading model from {model_path} …")
+    for model_path, label in [(os.path.join(MODEL_DIR, "word2vec_cbow.model"), "CBOW"),
+                              (os.path.join(MODEL_DIR, "word2vec_skipgram.model"), "SkipGram")]:
+        print(f"[{label}] Loading model …")
         model = Word2Vec.load(model_path)
+        df    = extract_embeddings(model, terms_map)
 
-        print(f"[{label}] Extracting embeddings with mean-pooling …")
-        df = extract_embeddings(model, terms_map)
-        print(f"  → Embedded {len(df)} / {total_terms} terms")
+        #–– PCA 2D & 3D
+        for k in (2, 3):
+            print(f"[{label}] Reducing to {k}D via PCA …")
+            df_pca, m_pca = reduce_PCA(df, pca_components=k)
+            out_html = os.path.join(viz_dir, f"pca{k}d_{label.lower()}.html")
+            plot_and_save(df_pca, f"{label} embeddings ({k}D PCA)", out_html)
 
-        print(f"[{label}] Reducing to 2D via PCA …")
-        df2 = reduce_PCA(df, pca_components=3)
+            with open(metrics_path, 'a', encoding='utf-8') as mf:
+                mf.write(f"[{label}] PCA {k}D — explained: {m_pca['explained_variance_ratio']:.2%}, "
+                         f"lost: {m_pca['lost_variance']:.2%}, "
+                         f"recon MSE: {m_pca['reconstruction_mse']:.6f}\n")
 
-        out_html = os.path.join(viz_dir, f"embeddings_{label.lower()}.html")
-        print(f"[{label}] Building interactive plot …")
-        plot_and_save(df2, f"{label} embeddings (2D PCA)", out_html)
+        #–– t-SNE 2D & 3D
+        for k in (2, 3):
+            print(f"[{label}] Reducing to {k}D via t-SNE …")
+            df_tsne, m_tsne = reduce_tsne(df, n_components=k, perplexity=30, learning_rate=200)
+            out_html = os.path.join(viz_dir, f"tsne{k}d_{label.lower()}.html")
+            plot_and_save(df_tsne, f"{label} embeddings ({k}D t-SNE)", out_html)
+
+            with open(metrics_path, 'a', encoding='utf-8') as mf:
+                mf.write(f"[{label}] t-SNE {k}D — KL: {m_tsne['kl_divergence']:.4f}, "
+                         f"var ratio: {m_tsne['variance_ratio']:.2%}\n")
+
+        #–– UMAP 2D & 3D
+        for k in (2, 3):
+            print(f"[{label}] Reducing to {k}D via UMAP …")
+            df_um, m_um = reduce_umap(df, n_components=k, n_neighbors=15, min_dist=0.1)
+            out_html = os.path.join(viz_dir, f"umap{k}d_{label.lower()}.html")
+            plot_and_save(df_um, f"{label} embeddings ({k}D UMAP)", out_html)
+
+            with open(metrics_path, 'a', encoding='utf-8') as mf:
+                mf.write(
+                    f"[{label}] UMAP {k}D — "
+                    f"var ratio:   {m_um['variance_ratio']:.2%}, "
+                    f"trust:       {m_um['trustworthiness']:.4f}, "
+                    f"cont:        {m_um['continuity']:.4f}, "
+                    f"dist_corr:   {m_um['dist_corr']:.4f}, "
+                    f"silhouette:  {m_um['silhouette']:.4f}\n"
+                )
+
         print()
 
-    print("Done.")
+    print(f"All done! Metrics written to {metrics_path}")
