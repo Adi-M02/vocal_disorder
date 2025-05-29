@@ -9,8 +9,9 @@ import pandas as pd
 from gensim.models import Word2Vec
 from sklearn.decomposition import PCA
 import plotly.express as px
+from sklearn.manifold import TSNE
+import umap
 
-# adjust path as needed so we can import your tokenizer
 sys.path.append('../vocal_disorder')
 from tokenizer import clean_and_tokenize
 
@@ -49,38 +50,122 @@ def extract_embeddings(model: Word2Vec, terms_map: dict[str, list[str]]) -> pd.D
     return pd.DataFrame(rows)
 
 
-def reduce_to_2d(df: pd.DataFrame) -> pd.DataFrame:
+def reduce_PCA(df: pd.DataFrame, pca_components: int = 2) -> pd.DataFrame:
+    """
+    Reduce the 'dim*' columns of df down to 2 or 3 PCA components.
+
+    Prints:
+      - Explained variance ratio (sum of the top components) and the lost variance
+      - Reconstruction MSE
+
+    Returns a new DataFrame with 'x','y' (and 'z' if pca_components==3) columns added.
+    """
+    if pca_components not in (2, 3):
+        raise ValueError(f"pca_components must be 2 or 3, got {pca_components}")
+
+    # 1) Pull out your high-dimensional data
     dim_cols = [c for c in df.columns if c.startswith('dim')]
     X = df[dim_cols].values
 
-    pca = PCA(n_components=2)
+    # 2) Fit PCA
+    pca = PCA(n_components=pca_components, random_state=42)
     coords = pca.fit_transform(X)
 
-    # 1) Explained-variance “error”
+    # 3) Print variance capture
     explained = float(pca.explained_variance_ratio_.sum())
     lost = 1.0 - explained
-    print(f"PCA: 2 components explain {explained:.2%} of the variance, losing {lost:.2%}")
+    print(f"PCA: {pca_components} components explain {explained:.2%} of the variance, losing {lost:.2%}")
 
-    # 2) Reconstruction MSE
+    # 4) Print reconstruction MSE
     X_recon = pca.inverse_transform(coords)
     mse = np.mean((X - X_recon) ** 2)
     print(f"PCA reconstruction MSE: {mse:.6f}")
 
-    # attach the 2D coords back to your dataframe
-    df = df.copy()
-    df['x'], df['y'] = coords[:, 0], coords[:, 1]
-    return df
+    # 5) Attach coords (x,y, and z if requested)
+    out = df.copy()
+    out['x'] = coords[:, 0]
+    out['y'] = coords[:, 1]
+    if pca_components == 3:
+        out['z'] = coords[:, 2]
+    return out
+
+
+def reduce_tsne(df: pd.DataFrame, n_components: int = 2, **tsne_kwargs) -> pd.DataFrame:
+    """
+    Runs t-SNE on the 'dim*' columns of df, producing 2D or 3D coordinates.
+    Prints KL divergence and an embedding‐variance ratio so you can compare how
+    much of the original spread is captured.
+    """
+    dim_cols = [c for c in df.columns if c.startswith('dim')]
+    X = df[dim_cols].values
+
+    tsne = TSNE(n_components=n_components, random_state=42, **tsne_kwargs)
+    coords = tsne.fit_transform(X)
+
+    # Print error metrics
+    if hasattr(tsne, 'kl_divergence_'):
+        print(f"t-SNE KL divergence: {tsne.kl_divergence_:.4f}")
+    # variance‐ratio proxy: sum var(embedding)/sum var(original)
+    orig_var = np.var(X, axis=0).sum()
+    emb_var  = np.var(coords, axis=0).sum()
+    ratio    = emb_var / orig_var
+    print(f"t-SNE embedding variance ratio: {ratio:.2%}")
+
+    # Attach coords
+    out = df.copy()
+    out['x'] = coords[:, 0]
+    out['y'] = coords[:, 1]
+    if n_components == 3:
+        out['z'] = coords[:, 2]
+    return out
+
+
+def reduce_umap(df: pd.DataFrame, n_components: int = 2, **umap_kwargs) -> pd.DataFrame:
+    """
+    Runs UMAP on the 'dim*' columns of df, producing 2D or 3D coordinates.
+    Prints a variance‐ratio proxy so you can see how it compares to PCA and t-SNE.
+    """
+    dim_cols = [c for c in df.columns if c.startswith('dim')]
+    X = df[dim_cols].values
+
+    um = umap.UMAP(n_components=n_components, random_state=42, **umap_kwargs)
+    coords = um.fit_transform(X)
+
+    # variance‐ratio proxy
+    orig_var = np.var(X, axis=0).sum()
+    emb_var  = np.var(coords, axis=0).sum()
+    ratio    = emb_var / orig_var
+    print(f"UMAP embedding variance ratio: {ratio:.2%}")
+
+    out = df.copy()
+    out['x'] = coords[:, 0]
+    out['y'] = coords[:, 1]
+    if n_components == 3:
+        out['z'] = coords[:, 2]
+    return out
 
 
 def plot_and_save(df: pd.DataFrame, title: str, out_html: str):
-    fig = px.scatter(
-        df,
-        x='x', y='y',
-        color='category',
-        hover_data=['term'],
-        title=title,
-        width=800, height=600
-    )
+    dims = ['x', 'y', 'z']
+    has = [d for d in dims if d in df.columns]
+
+    if 'z' in has:
+        fig = px.scatter_3d(
+            df, x='x', y='y', z='z',
+            color='category',
+            hover_data=['term'],
+            title=title,
+            width=800, height=600
+        )
+    else:
+        fig = px.scatter(
+            df, x='x', y='y',
+            color='category',
+            hover_data=['term'],
+            title=title,
+            width=800, height=600
+        )
+
     fig.write_html(out_html)
     print(f" → saved {out_html}")
 
@@ -121,7 +206,7 @@ if __name__ == "__main__":
         print(f"  → Embedded {len(df)} / {total_terms} terms")
 
         print(f"[{label}] Reducing to 2D via PCA …")
-        df2 = reduce_to_2d(df)
+        df2 = reduce_PCA(df, pca_components=3)
 
         out_html = os.path.join(viz_dir, f"embeddings_{label.lower()}.html")
         print(f"[{label}] Building interactive plot …")
