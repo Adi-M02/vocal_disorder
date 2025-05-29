@@ -1,0 +1,26 @@
+Embedding reduction metrics — run at 2025-05-29 17:57:13.802203
+
+[BERT-base] PCA 2D — explained: 25.55%, lost: 74.45%, recon MSE: 0.036860
+[BERT-base] PCA 3D — explained: 30.39%, lost: 69.61%, recon MSE: 0.034461
+[BERT-base] t-SNE 2D — KL: 0.6067, var ratio: 542.29%
+[BERT-base] t-SNE 3D — KL: 2.0390, var ratio: 48752.73%
+[BERT-base] UMAP 2D — var ratio:   16.61%, trust:       0.8871, cont:        0.9163, dist_corr:   0.6233, silhouette:  -0.1566
+[BERT-base] UMAP 3D — var ratio:   14.36%, trust:       0.8975, cont:        0.9249, dist_corr:   0.6284, silhouette:  -0.1487
+[BERTweet] PCA 2D — explained: 39.74%, lost: 60.26%, recon MSE: 0.008428
+[BERTweet] PCA 3D — explained: 44.54%, lost: 55.46%, recon MSE: 0.007756
+[BERTweet] t-SNE 2D — KL: 0.4587, var ratio: 2019.45%
+[BERTweet] t-SNE 3D — KL: 1.7004, var ratio: 146746.21%
+[BERTweet] UMAP 2D — var ratio:   81.72%, trust:       0.8939, cont:        0.9363, dist_corr:   0.4250, silhouette:  -0.1627
+[BERTweet] UMAP 3D — var ratio:   69.32%, trust:       0.8989, cont:        0.9418, dist_corr:   0.4553, silhouette:  -0.1565
+[ClinicalBERT] PCA 2D — explained: 23.68%, lost: 76.32%, recon MSE: 0.031525
+[ClinicalBERT] PCA 3D — explained: 29.54%, lost: 70.46%, recon MSE: 0.029103
+[ClinicalBERT] t-SNE 2D — KL: 0.6469, var ratio: 686.31%
+[ClinicalBERT] t-SNE 3D — KL: 1.7501, var ratio: 53777.40%
+[ClinicalBERT] UMAP 2D — var ratio:   20.31%, trust:       0.8887, cont:        0.9169, dist_corr:   0.5304, silhouette:  -0.0600
+[ClinicalBERT] UMAP 3D — var ratio:   18.46%, trust:       0.9066, cont:        0.9237, dist_corr:   0.5507, silhouette:  -0.0585
+[PubMedBERT] PCA 2D — explained: 22.35%, lost: 77.65%, recon MSE: 0.013919
+[PubMedBERT] PCA 3D — explained: 27.32%, lost: 72.68%, recon MSE: 0.013028
+[PubMedBERT] t-SNE 2D — KL: 0.6365, var ratio: 2967.27%
+[PubMedBERT] t-SNE 3D — KL: 2.0022, var ratio: 126748.86%
+[PubMedBERT] UMAP 2D — var ratio:   35.95%, trust:       0.8926, cont:        0.9076, dist_corr:   0.5659, silhouette:  -0.1828
+[PubMedBERT] UMAP 3D — var ratio:   29.37%, trust:       0.9106, cont:        0.9182, dist_corr:   0.6004, silhouette:  -0.1646
