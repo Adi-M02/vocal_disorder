@@ -36,14 +36,27 @@ def load_terms(path: str) -> dict[str, list[str]]:
 def extract_embeddings(terms_map: dict[str, list[str]], embed_fn) -> pd.DataFrame:
     rows = []
     for category, terms in terms_map.items():
+        # include the category itself as a “term” at the end
         for term in terms + [category]:
-            vec = embed_fn(term)
-            if vec is None:
+            # 1) clean & tokenize with your custom rules
+            tokens = clean_and_tokenize(term)
+            if not tokens:
                 continue
-            row = {'term': term, 'category': category}
+
+            # 2) join and embed non unigram terms
+            text_to_embed = " ".join(tokens)
+            vec = embed_fn(text_to_embed)
+
+            if vec is None:
+                print(f"Warning: embedding for term '{term}' returned None, skipping.")
+                continue
+
+            # 4) record
+            row = {"term": term, "category": category}
             for i, val in enumerate(vec):
-                row[f'dim{i}'] = float(val)
+                row[f"dim{i}"] = float(val)
             rows.append(row)
+
     return pd.DataFrame(rows)
 
 # ————————————————————————————————————————————————
