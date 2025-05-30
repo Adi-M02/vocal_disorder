@@ -11,7 +11,8 @@ from transformers import (
     AutoModelForMaskedLM,
     DataCollatorForLanguageModeling,
     Trainer,
-    TrainingArguments
+    TrainingArguments,
+    RobertaTokenizerFast
 )
 
 sys.path.append('../vocal_disorder')
@@ -20,16 +21,16 @@ from tokenizer import clean_and_tokenize
 
 # List of (short name, model checkpoint)
 MODELS = [
-    ("bert-base",      "bert-base-uncased"),
+    # ("bert-base",      "bert-base-uncased"),
     ("bertweet",       "vinai/bertweet-base"),
     ("clinical-bert",  "emilyalsentzer/Bio_ClinicalBERT"),
     ("pubmed-bert",    "microsoft/BiomedNLP-BiomedBERT-base-uncased-abstract-fulltext"),
 ]
 
 def prepare_dataset(cleaned_docs: list[list[str]]) -> Dataset:
-    # Re-join tokens into text strings
     texts = [" ".join(tokens) for tokens in cleaned_docs]
     return Dataset.from_dict({"text": texts})
+
 
 def fine_tune_mlm(
     model_name: str,
@@ -40,38 +41,36 @@ def fine_tune_mlm(
     max_length: int = 512,
     mlm_probability: float = 0.15
 ):
-    # 0) Decide device
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-    # 1) Load tokenizer & model
+    # Load tokenizer & model
     tokenizer = AutoTokenizer.from_pretrained(model_name, use_fast=True)
     model     = AutoModelForMaskedLM.from_pretrained(model_name)
 
-    # 1a) Ensure there's a real mask_token and pad_token
+    # Ensure mask and pad tokens
     special_tokens = {}
-    # RoBERTa-style models (e.g. BERTweet) use "<mask>"
     if tokenizer.mask_token is None:
-        special_tokens["mask_token"] = (
-            "<mask>" if "roberta" in model_name or "bertweet" in model_name.lower()
-            else "[MASK]"
-        )
+        special_tokens["mask_token"] = tokenizer.mask_token or "<mask>"
     if tokenizer.pad_token is None:
         special_tokens["pad_token"] = tokenizer.eos_token or "<pad>"
     if special_tokens:
         tokenizer.add_special_tokens(special_tokens)
         model.resize_token_embeddings(len(tokenizer))
 
-    # 1b) Add all corpus tokens to tokenizer & resize again
+    # Add corpus tokens safely for different tokenizers
     unique_tokens = set(tok for text in dataset["text"] for tok in text.split())
-    new_tokens    = [tok for tok in unique_tokens if tok not in tokenizer.get_vocab()]
+    new_tokens = [tok for tok in unique_tokens if tok not in tokenizer.get_vocab()]
     if new_tokens:
-        tokenizer.add_tokens(new_tokens)
+        # Detect Roberta-based tokenizers automatically
+        if isinstance(tokenizer, RobertaTokenizerFast):
+            tokenizer.add_special_tokens({"additional_special_tokens": new_tokens})
+        else:
+            tokenizer.add_tokens(new_tokens)
         model.resize_token_embeddings(len(tokenizer))
 
-    # 1c) Move model to device *after* resizing embeddings
     model.to(device)
 
-    # 2) Tokenize and split into train/eval
+    # Tokenize and split
     def tokenize_fn(examples):
         return tokenizer(
             examples["text"],
@@ -82,16 +81,16 @@ def fine_tune_mlm(
 
     splits   = dataset.train_test_split(test_size=0.1)
     train_ds = splits["train"].map(tokenize_fn, batched=True, remove_columns=["text"])
-    eval_ds  = splits["test"].map(tokenize_fn,  batched=True, remove_columns=["text"])
+    eval_ds  = splits["test"].map(tokenize_fn, batched=True, remove_columns=["text"])
 
-    # 3) Data collator for dynamic masking
+    # Data collator
     data_collator = DataCollatorForLanguageModeling(
         tokenizer=tokenizer,
         mlm=True,
         mlm_probability=mlm_probability
     )
 
-    # 4) Training arguments
+    # Training args
     args = TrainingArguments(
         output_dir=output_dir,
         overwrite_output_dir=True,
@@ -109,7 +108,7 @@ def fine_tune_mlm(
         report_to="none",
     )
 
-    # 5) Trainer
+    # Trainer
     trainer = Trainer(
         model=model,
         args=args,
@@ -118,12 +117,12 @@ def fine_tune_mlm(
         data_collator=data_collator,
     )
 
-    # 6) Train + save
+    # Train + save
     trainer.train()
     trainer.save_model(output_dir)
     tokenizer.save_pretrained(output_dir)
 
-    # 7) Save eval‐loss history
+    # Save eval loss history
     log_history  = trainer.state.log_history
     eval_entries = [e for e in log_history if "eval_loss" in e]
     csv_path     = os.path.join(output_dir, "eval_loss.csv")
@@ -134,66 +133,17 @@ def fine_tune_mlm(
             writer.writerow([entry.get("epoch"), entry.get("eval_loss")])
 
 if __name__ == "__main__":
-    # 1) Fetch Reddit docs
     raw = return_documents("reddit", "noburp_all", ["noburp"])
-    texts = []
-    for doc in raw:
-        if isinstance(doc, list):
-            # Join tokens back into a raw text string
-            text = " ".join(doc)
-        else:
-            text = str(doc)
-        if text:
-            texts.append(text)
-    print(f"Total examples fetched: {len(texts)}")
-
-    # 2) Clean & tokenize with custom tokenizer
+    texts = [" ".join(doc) if isinstance(doc, list) else str(doc) for doc in raw if doc]
     cleaned = [clean_and_tokenize(t) for t in texts]
-    joined = [" ".join(tokens) for tokens in cleaned]
+    ds = prepare_dataset(cleaned)
 
-    # 3) Prepare Dataset
-    ds = prepare_dataset(joined)
-
-    # 4) Timestamped output directory
     timestamp = datetime.now().strftime("%m_%d_%H_%M")
-    SELF_DIR   = os.path.dirname(os.path.abspath(__file__))
-    base_dir = os.path.join(SELF_DIR, f"finetuned_{timestamp}")
+    base_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), f"finetuned_{timestamp}")
     os.makedirs(base_dir, exist_ok=True)
 
-    # 5) Fine-tune each model
     for short_name, checkpoint in MODELS:
         outdir = os.path.join(base_dir, short_name)
         os.makedirs(outdir, exist_ok=True)
         print(f"Fine-tuning {checkpoint} → {outdir}")
-        fine_tune_mlm(
-            model_name=checkpoint,
-            dataset=ds,
-            output_dir=outdir
-        )
-    # 6) Consolidate and visualize evaluation losses
-    loss_data = {}
-    for short_name, _ in MODELS:
-        csv_path = os.path.join(base_dir, short_name, "eval_loss.csv")
-        if os.path.exists(csv_path):
-            df = pd.read_csv(csv_path)
-            loss_data[short_name] = df
-
-    # 7) Build interactive line chart
-    fig = go.Figure()
-    for name, df in loss_data.items():
-        fig.add_trace(go.Scatter(
-            x=df["epoch"],
-            y=df["eval_loss"],
-            mode="lines+markers",
-            name=name
-        ))
-    fig.update_layout(
-        title="Evaluation Loss per Epoch for All Models",
-        xaxis_title="Epoch",
-        yaxis_title="Eval Loss"
-    )
-
-    # 8) Save HTML to base_dir
-    html_path = os.path.join(base_dir, "all_eval_losses.html")
-    fig.write_html(html_path)
-    print(f"Saved consolidated loss plot to {html_path}")
+        fine_tune_mlm(checkpoint, ds, outdir)

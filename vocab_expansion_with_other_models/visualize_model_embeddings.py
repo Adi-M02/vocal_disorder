@@ -204,10 +204,11 @@ if __name__ == "__main__":
     terms_map  = load_terms(TERMS_PATH)
 
     MODELS = [
-        ("BERT-base",      lambda: bert_embedder('bert-base-uncased')),
-        ("BERTweet",       lambda: bert_embedder('vinai/bertweet-base')),
-        ("ClinicalBERT",   lambda: bert_embedder('emilyalsentzer/Bio_ClinicalBERT')),
-        ("PubMedBERT",     lambda: bert_embedder('microsoft/BiomedNLP-BiomedBERT-base-uncased-abstract-fulltext')),
+        ("finetuned base BERT", lambda: bert_embedder('/local/disk2/not_backed_up/amukundan/research/vocal_disorder/vocab_expansion_with_other_models/finetuned_base_bert/bert-base')),
+        # ("BERT-base",      lambda: bert_embedder('bert-base-uncased')),
+        # ("BERTweet",       lambda: bert_embedder('vinai/bertweet-base')),
+        # ("ClinicalBERT",   lambda: bert_embedder('emilyalsentzer/Bio_ClinicalBERT')),
+        # ("PubMedBERT",     lambda: bert_embedder('microsoft/BiomedNLP-BiomedBERT-base-uncased-abstract-fulltext')),
     ]
 
     ts      = datetime.now().strftime("%m_%d_%H_%M")
