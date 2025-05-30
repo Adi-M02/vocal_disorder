@@ -4,6 +4,7 @@ import sys
 from datetime import datetime
 from datasets import Dataset
 import pandas as pd
+import torch
 import plotly.graph_objects as go
 from transformers import (
     AutoTokenizer,
@@ -30,7 +31,6 @@ def prepare_dataset(cleaned_docs: list[list[str]]) -> Dataset:
     texts = [" ".join(tokens) for tokens in cleaned_docs]
     return Dataset.from_dict({"text": texts})
 
-
 def fine_tune_mlm(
     model_name: str,
     dataset: Dataset,
@@ -40,18 +40,36 @@ def fine_tune_mlm(
     max_length: int = 512,
     mlm_probability: float = 0.15
 ):
+    # 0) Decide device
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+
     # 1) Load tokenizer & model
     tokenizer = AutoTokenizer.from_pretrained(model_name, use_fast=True)
-    model = AutoModelForMaskedLM.from_pretrained(model_name)
+    model     = AutoModelForMaskedLM.from_pretrained(model_name)
 
-    # 1.5) Add all corpus tokens to tokenizer
-    unique_tokens = set()
-    for text in dataset["text"]:
-        unique_tokens.update(text.split())
-    new_tokens = [tok for tok in unique_tokens if tok not in tokenizer.get_vocab()]
+    # 1a) Ensure there's a real mask_token and pad_token
+    special_tokens = {}
+    # RoBERTa-style models (e.g. BERTweet) use "<mask>"
+    if tokenizer.mask_token is None:
+        special_tokens["mask_token"] = (
+            "<mask>" if "roberta" in model_name or "bertweet" in model_name.lower()
+            else "[MASK]"
+        )
+    if tokenizer.pad_token is None:
+        special_tokens["pad_token"] = tokenizer.eos_token or "<pad>"
+    if special_tokens:
+        tokenizer.add_special_tokens(special_tokens)
+        model.resize_token_embeddings(len(tokenizer))
+
+    # 1b) Add all corpus tokens to tokenizer & resize again
+    unique_tokens = set(tok for text in dataset["text"] for tok in text.split())
+    new_tokens    = [tok for tok in unique_tokens if tok not in tokenizer.get_vocab()]
     if new_tokens:
         tokenizer.add_tokens(new_tokens)
         model.resize_token_embeddings(len(tokenizer))
+
+    # 1c) Move model to device *after* resizing embeddings
+    model.to(device)
 
     # 2) Tokenize and split into train/eval
     def tokenize_fn(examples):
@@ -62,9 +80,9 @@ def fine_tune_mlm(
             return_special_tokens_mask=True
         )
 
-    splits = dataset.train_test_split(test_size=0.1)
+    splits   = dataset.train_test_split(test_size=0.1)
     train_ds = splits["train"].map(tokenize_fn, batched=True, remove_columns=["text"])
-    eval_ds = splits["test"].map(tokenize_fn, batched=True, remove_columns=["text"])
+    eval_ds  = splits["test"].map(tokenize_fn,  batched=True, remove_columns=["text"])
 
     # 3) Data collator for dynamic masking
     data_collator = DataCollatorForLanguageModeling(
@@ -73,7 +91,7 @@ def fine_tune_mlm(
         mlm_probability=mlm_probability
     )
 
-    # 4) Training arguments optimized for 4090 + 128GB RAM
+    # 4) Training arguments
     args = TrainingArguments(
         output_dir=output_dir,
         overwrite_output_dir=True,
@@ -91,7 +109,7 @@ def fine_tune_mlm(
         report_to="none",
     )
 
-    # 5) Trainer with train and eval datasets
+    # 5) Trainer
     trainer = Trainer(
         model=model,
         args=args,
@@ -100,20 +118,20 @@ def fine_tune_mlm(
         data_collator=data_collator,
     )
 
-    # 6) Launch training
+    # 6) Train + save
     trainer.train()
     trainer.save_model(output_dir)
+    tokenizer.save_pretrained(output_dir)
 
-    # 7) Save evaluation loss history
-    log_history = trainer.state.log_history
+    # 7) Save eval‐loss history
+    log_history  = trainer.state.log_history
     eval_entries = [e for e in log_history if "eval_loss" in e]
-    csv_path = os.path.join(output_dir, "eval_loss.csv")
+    csv_path     = os.path.join(output_dir, "eval_loss.csv")
     with open(csv_path, "w", newline="") as f:
         writer = csv.writer(f)
         writer.writerow(["epoch", "eval_loss"])
         for entry in eval_entries:
             writer.writerow([entry.get("epoch"), entry.get("eval_loss")])
-
 
 if __name__ == "__main__":
     # 1) Fetch Reddit docs
