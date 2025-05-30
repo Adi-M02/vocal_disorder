@@ -637,7 +637,7 @@ def return_multiple_users_entries(
 def return_documents(
     db_name: str,
     collection_name: str,
-    filter_subreddits: list[str] | None = None,
+    filter_subreddits: list[str] = ["noburp"],
     filter_users: list[str] | None = None,
     min_docs: int | None = None,
     mongo_uri: str = "mongodb://localhost:27017/",
