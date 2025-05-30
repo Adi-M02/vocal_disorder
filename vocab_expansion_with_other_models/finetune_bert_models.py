@@ -11,8 +11,7 @@ from transformers import (
     AutoModelForMaskedLM,
     DataCollatorForLanguageModeling,
     Trainer,
-    TrainingArguments,
-    RobertaTokenizerFast
+    TrainingArguments
 )
 
 sys.path.append('../vocal_disorder')
@@ -23,14 +22,13 @@ from tokenizer import clean_and_tokenize
 MODELS = [
     # ("bert-base",      "bert-base-uncased"),
     ("bertweet",       "vinai/bertweet-base"),
-    ("clinical-bert",  "emilyalsentzer/Bio_ClinicalBERT"),
-    ("pubmed-bert",    "microsoft/BiomedNLP-BiomedBERT-base-uncased-abstract-fulltext"),
+    # ("clinical-bert",  "emilyalsentzer/Bio_ClinicalBERT"),
+    # ("pubmed-bert",    "microsoft/BiomedNLP-BiomedBERT-base-uncased-abstract-fulltext"),
 ]
 
 def prepare_dataset(cleaned_docs: list[list[str]]) -> Dataset:
     texts = [" ".join(tokens) for tokens in cleaned_docs]
     return Dataset.from_dict({"text": texts})
-
 
 def fine_tune_mlm(
     model_name: str,
@@ -41,36 +39,34 @@ def fine_tune_mlm(
     max_length: int = 512,
     mlm_probability: float = 0.15
 ):
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    
+    device = torch.device("cuda" if torch.cuda.is_available() else "mps" if torch.backends.mps.is_available() else "cpu")
 
-    # Load tokenizer & model
+    # 1) Load tokenizer & model
     tokenizer = AutoTokenizer.from_pretrained(model_name, use_fast=True)
     model     = AutoModelForMaskedLM.from_pretrained(model_name)
 
-    # Ensure mask and pad tokens
+    # 2) Ensure mask and pad tokens exist
     special_tokens = {}
     if tokenizer.mask_token is None:
-        special_tokens["mask_token"] = tokenizer.mask_token or "<mask>"
+        special_tokens["mask_token"] = "[MASK]"
     if tokenizer.pad_token is None:
-        special_tokens["pad_token"] = tokenizer.eos_token or "<pad>"
+        special_tokens["pad_token"]  = tokenizer.eos_token or "<pad>"
     if special_tokens:
         tokenizer.add_special_tokens(special_tokens)
         model.resize_token_embeddings(len(tokenizer))
 
-    # Add corpus tokens safely for different tokenizers
+    # 3) Add all new corpus tokens via add_tokens()
     unique_tokens = set(tok for text in dataset["text"] for tok in text.split())
-    new_tokens = [tok for tok in unique_tokens if tok not in tokenizer.get_vocab()]
+    new_tokens    = [tok for tok in unique_tokens if tok not in tokenizer.get_vocab()]
     if new_tokens:
-        # Detect Roberta-based tokenizers automatically
-        if isinstance(tokenizer, RobertaTokenizerFast):
-            tokenizer.add_special_tokens({"additional_special_tokens": new_tokens})
-        else:
-            tokenizer.add_tokens(new_tokens)
+        tokenizer.add_tokens(new_tokens)
         model.resize_token_embeddings(len(tokenizer))
 
+    # 4) Move model to device
     model.to(device)
 
-    # Tokenize and split
+    # 5) Tokenize & split
     def tokenize_fn(examples):
         return tokenizer(
             examples["text"],
@@ -78,19 +74,18 @@ def fine_tune_mlm(
             max_length=max_length,
             return_special_tokens_mask=True
         )
-
     splits   = dataset.train_test_split(test_size=0.1)
     train_ds = splits["train"].map(tokenize_fn, batched=True, remove_columns=["text"])
-    eval_ds  = splits["test"].map(tokenize_fn, batched=True, remove_columns=["text"])
+    eval_ds  = splits["test"].map(tokenize_fn,  batched=True, remove_columns=["text"])
 
-    # Data collator
+    # 6) Data collator for MLM
     data_collator = DataCollatorForLanguageModeling(
         tokenizer=tokenizer,
         mlm=True,
         mlm_probability=mlm_probability
     )
 
-    # Training args
+    # 7) Training arguments
     args = TrainingArguments(
         output_dir=output_dir,
         overwrite_output_dir=True,
@@ -108,7 +103,7 @@ def fine_tune_mlm(
         report_to="none",
     )
 
-    # Trainer
+    # 8) Trainer
     trainer = Trainer(
         model=model,
         args=args,
@@ -117,12 +112,11 @@ def fine_tune_mlm(
         data_collator=data_collator,
     )
 
-    # Train + save
+    # 9) Train, save model + tokenizer, and export eval losses
     trainer.train()
     trainer.save_model(output_dir)
     tokenizer.save_pretrained(output_dir)
 
-    # Save eval loss history
     log_history  = trainer.state.log_history
     eval_entries = [e for e in log_history if "eval_loss" in e]
     csv_path     = os.path.join(output_dir, "eval_loss.csv")
@@ -131,6 +125,7 @@ def fine_tune_mlm(
         writer.writerow(["epoch", "eval_loss"])
         for entry in eval_entries:
             writer.writerow([entry.get("epoch"), entry.get("eval_loss")])
+
 
 if __name__ == "__main__":
     raw = return_documents("reddit", "noburp_all", ["noburp"])
