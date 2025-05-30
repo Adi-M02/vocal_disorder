@@ -66,9 +66,6 @@ def fine_tune_mlm(
     train_ds = splits["train"].map(tokenize_fn, batched=True, remove_columns=["text"])
     eval_ds = splits["test"].map(tokenize_fn, batched=True, remove_columns=["text"])
 
-    print(eval_ds)
-    sys.exit(0)
-
     # 3) Data collator for dynamic masking
     data_collator = DataCollatorForLanguageModeling(
         tokenizer=tokenizer,
@@ -120,13 +117,24 @@ def fine_tune_mlm(
 
 if __name__ == "__main__":
     # 1) Fetch Reddit docs
-    all_texts = return_documents("reddit", "noburp_all", ["noburp"])
+    raw = return_documents("reddit", "noburp_all", ["noburp"])
+    texts = []
+    for doc in raw:
+        if isinstance(doc, list):
+            # Join tokens back into a raw text string
+            text = " ".join(doc)
+        else:
+            text = str(doc)
+        if text:
+            texts.append(text)
+    print(f"Total examples fetched: {len(texts)}")
 
     # 2) Clean & tokenize with custom tokenizer
-    cleaned_docs = [clean_and_tokenize(doc) for doc in all_texts]
+    cleaned = [clean_and_tokenize(t) for t in texts]
+    joined = [" ".join(tokens) for tokens in cleaned]
 
-    # 3) Build dataset
-    ds = prepare_dataset(cleaned_docs)
+    # 3) Prepare Dataset
+    ds = prepare_dataset(joined)
 
     # 4) Timestamped output directory
     timestamp = datetime.now().strftime("%m_%d_%H_%M")

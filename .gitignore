@@ -182,3 +182,7 @@ bioclinicalbert_noburp_all/
 
 # nltk data
 nltk_data/
+
+# finetuned bert models
+finetuned_*/
+finetuned_*
