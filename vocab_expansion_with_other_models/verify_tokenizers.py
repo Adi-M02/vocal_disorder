@@ -9,10 +9,7 @@ from transformers import AutoTokenizer
 
 # Four models to check
 MODELS = [
-    ("bert-base",      "bert-base-uncased"),
-    ("bertweet",       "vinai/bertweet-base"),
-    ("clinical-bert",  "emilyalsentzer/Bio_ClinicalBERT"),
-    ("pubmed-bert",    "microsoft/BiomedNLP-BiomedBERT-base-uncased-abstract-fulltext"),
+    ("bertweet",       "vinai/bertweet-base")
 ]
 
 # Suppress tokenizer parallelism warning
