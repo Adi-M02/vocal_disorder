@@ -18,10 +18,10 @@ from query_mongo import return_documents
 
 # List of (short name, model checkpoint)
 MODELS = [
-    # ("bert-base",      "bert-base-uncased"),
     ("bertweet",      "vinai/bertweet-base"),
-    ("clinical-bert",  "emilyalsentzer/Bio_ClinicalBERT"),
-    ("pubmed-bert",    "microsoft/BiomedNLP-BiomedBERT-base-uncased-abstract-fulltext"),
+    # ("bert-base",      "bert-base-uncased"),
+    # ("clinical-bert",  "emilyalsentzer/Bio_ClinicalBERT"),
+    # ("pubmed-bert",    "microsoft/BiomedNLP-BiomedBERT-base-uncased-abstract-fulltext"),
 ]
 
 def prepare_dataset(raw_texts: list[str]) -> Dataset:
@@ -34,9 +34,8 @@ def fine_tune_mlm(
     model_name: str,
     dataset: Dataset,
     output_dir: str,
-    epochs: int = 5,
+    epochs: int = 15,
     batch_size: int = 16,
-    max_length: int = 512,
     mlm_probability: float = 0.15
 ):
     device = torch.device(
@@ -45,7 +44,7 @@ def fine_tune_mlm(
         else "cpu"
     )
 
-    # 1) Load tokenizer & model (with normalization for Bertweet)
+    # ─── 1) Load tokenizer & model ────────────────────────────────────────────
     if "bertweet" in model_name.lower():
         tokenizer = AutoTokenizer.from_pretrained(
             model_name,
@@ -54,17 +53,29 @@ def fine_tune_mlm(
         )
     else:
         tokenizer = AutoTokenizer.from_pretrained(model_name, use_fast=True)
-    model = AutoModelForMaskedLM.from_pretrained(model_name)
 
-    # 3) Move model to device
+    model = AutoModelForMaskedLM.from_pretrained(model_name)
     model.to(device)
 
-    # 4) Tokenize and split into train/eval
+    # ─── 2) Set max_length based on model type ────────────────────────────────
+    # For BERTweet and Clinical‐BERT, use 128; for Bert‐base and PubMed‐BERT, use 512.
+    lc_name = model_name.lower()
+    if "bertweet" in lc_name or "clinical-bert" in lc_name:
+        max_length = 128
+    else:
+        max_length = 512
+
+    tokenizer.model_max_length = max_length
+    stride = 64  # overlap for sliding‐window
+
+    # ─── 3) Tokenize with sliding‐window stride ────────────────────────────────
     def tokenize_fn(examples):
         return tokenizer(
             examples["text"],
             truncation=True,
             max_length=max_length,
+            stride=stride,
+            return_overflowing_tokens=True,
             return_special_tokens_mask=True
         )
 
@@ -82,24 +93,25 @@ def fine_tune_mlm(
         )
     })
 
-    # 5) Sanity check: no token ID >= vocab_size
+    # ─── 4) ensure no token ID ≥ vocab_size ────────────────────
     for split_name in ("train", "eval"):
-        all_ids = tokenized[split_name]["input_ids"]
-        max_id = max(max(seq) for seq in all_ids)
-        if max_id >= model.config.vocab_size:
-            raise ValueError(
-                f"Token index {max_id} ≥ vocab_size {model.config.vocab_size}. "
-                "Check tokenizer–model mismatch."
-            )
+        for i, seq in enumerate(tokenized[split_name]["input_ids"]):
+            bad_ids = [tok for tok in seq if tok >= model.config.vocab_size or tok < 0]
+            if bad_ids:
+                raise ValueError(
+                    f"Out‐of‐range token(s) {bad_ids} in split='{split_name}', index={i}; "
+                    f"vocab_size={model.config.vocab_size}"
+                )
 
-    # 6) Data collator for MLM
+    # ─── 5) Data collator for MLM (pad to multiple of 8) ─────────────────────
     data_collator = DataCollatorForLanguageModeling(
         tokenizer=tokenizer,
         mlm=True,
-        mlm_probability=mlm_probability
+        mlm_probability=mlm_probability,
+        pad_to_multiple_of=8
     )
 
-    # 7) Training arguments
+    # ─── 6) Training arguments ─────────────────────────────────────────────────
     has_cuda = torch.cuda.is_available()
     args = TrainingArguments(
         output_dir=output_dir,
@@ -111,7 +123,7 @@ def fine_tune_mlm(
         dataloader_num_workers=4,
         learning_rate=3e-5,
         weight_decay=0.01,
-        evaluation_strategy="epoch",
+        eval_strategy="epoch",
         save_strategy="epoch",
         logging_strategy="epoch",
         save_total_limit=2,
@@ -120,7 +132,7 @@ def fine_tune_mlm(
         seed=42
     )
 
-    # 8) Trainer
+    # ─── 7) Trainer setup ──────────────────────────────────────────────────────
     trainer = Trainer(
         model=model,
         args=args,
@@ -129,26 +141,18 @@ def fine_tune_mlm(
         data_collator=data_collator,
     )
 
-    # 9) Train, save model & tokenizer
+    # ─── 8) Train, then save model & tokenizer ────────────────────────────────
     trainer.train()
     trainer.save_model(output_dir)
     tokenizer.save_pretrained(output_dir)
 
-    # 10) Extract log history
+    # ─── 9) Extract log history & plot losses ─────────────────────────────────
     log_history = trainer.state.log_history
-
-    # Separate training-loss and eval-loss entries
     train_entries = [e for e in log_history if "loss" in e and "eval_loss" not in e]
     eval_entries  = [e for e in log_history if "eval_loss" in e]
 
-    # 13) Aggregate losses by epoch for plotting
-    train_by_epoch = {}
-    for entry in train_entries:
-        ep = entry.get("epoch")
-        loss = entry.get("loss")
-        train_by_epoch[ep] = loss
-
-    eval_by_epoch = {entry.get("epoch"): entry.get("eval_loss") for entry in eval_entries}
+    train_by_epoch = {entry["epoch"]: entry["loss"] for entry in train_entries}
+    eval_by_epoch  = {entry["epoch"]: entry["eval_loss"] for entry in eval_entries}
 
     train_epochs = sorted(train_by_epoch.keys())
     eval_epochs  = sorted(eval_by_epoch.keys())
@@ -156,7 +160,6 @@ def fine_tune_mlm(
     train_losses = [train_by_epoch[ep] for ep in train_epochs]
     eval_losses  = [eval_by_epoch[ep] for ep in eval_epochs]
 
-    # 14) Build Plotly chart for both
     fig = go.Figure()
     fig.add_trace(go.Scatter(
         x=train_epochs,
@@ -176,10 +179,8 @@ def fine_tune_mlm(
         yaxis_title="Loss"
     )
 
-    # 15) Save Plotly chart as HTML
     fig_path = os.path.join(output_dir, "loss_plot.html")
     fig.write_html(fig_path)
-
 
 if __name__ == "__main__":
     # 1) Fetch raw documents (no custom cleaning)
@@ -188,6 +189,7 @@ if __name__ == "__main__":
 
     # 2) Create a Dataset from raw texts
     ds = prepare_dataset(texts)
+    print("Raw dataset size (before split):", len(ds))   
 
     # 3) Generate a timestamp string
     timestamp = datetime.now().strftime("%m_%d_%H_%M")

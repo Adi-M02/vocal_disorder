@@ -69,7 +69,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Load models and query nearest neighbors in full vocab.")
     parser.add_argument('-d', '--model_dir', type=str, default='word2vec_expansion/word2vec_05_26_16_04', help='Directory containing Word2Vec models')
     parser.add_argument('--query', type=str, help='Single unigram to query nearest neighbors')
-    parser.add_argument('-k', type=int, default=5, help='Number of nearest neighbors for vocab query')
+    parser.add_argument('-k', type=int, default=15, help='Number of nearest neighbors for vocab query')
     args = parser.parse_args()
 
     MODEL_DIR  = args.model_dir
