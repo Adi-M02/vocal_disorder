@@ -1,7 +1,7 @@
 import os
 import sys
 from datetime import datetime
-
+import json
 import torch
 from datasets import Dataset, DatasetDict
 from transformers import (
@@ -18,10 +18,10 @@ from query_mongo import return_documents
 
 # List of (short name, model checkpoint)
 MODELS = [
-    # ("bert-base",      "bert-base-uncased"),
-    ("bertweet",      "vinai/bertweet-base"),
+    ("bert-base",      "bert-base-uncased"),
+    # ("bertweet",      "vinai/bertweet-base"),
     ("clinical-bert",  "emilyalsentzer/Bio_ClinicalBERT"),
-    ("pubmed-bert",    "microsoft/BiomedNLP-BiomedBERT-base-uncased-abstract-fulltext"),
+    # ("pubmed-bert",    "microsoft/BiomedNLP-BiomedBERT-base-uncased-abstract-fulltext"),
 ]
 
 def prepare_dataset(raw_texts: list[str]) -> Dataset:
@@ -34,9 +34,9 @@ def fine_tune_mlm(
     model_name: str,
     dataset: Dataset,
     output_dir: str,
-    epochs: int = 5,
-    batch_size: int = 16,
-    max_length: int = 512,
+    epochs: int = 25,
+    batch_size: int = 32,
+    max_length: int = 128,
     mlm_probability: float = 0.15
 ):
     device = torch.device(
@@ -56,10 +56,10 @@ def fine_tune_mlm(
         tokenizer = AutoTokenizer.from_pretrained(model_name, use_fast=True)
     model = AutoModelForMaskedLM.from_pretrained(model_name)
 
-    # 3) Move model to device
+    # 2) Move model to device
     model.to(device)
 
-    # 4) Tokenize and split into train/eval
+    # 3) Tokenize and split into train/eval
     def tokenize_fn(examples):
         return tokenizer(
             examples["text"],
@@ -82,7 +82,7 @@ def fine_tune_mlm(
         )
     })
 
-    # 5) Sanity check: no token ID >= vocab_size
+    # 4) Sanity check: no token ID >= vocab_size
     for split_name in ("train", "eval"):
         all_ids = tokenized[split_name]["input_ids"]
         max_id = max(max(seq) for seq in all_ids)
@@ -92,14 +92,14 @@ def fine_tune_mlm(
                 "Check tokenizer–model mismatch."
             )
 
-    # 6) Data collator for MLM
+    # 5) Data collator for MLM
     data_collator = DataCollatorForLanguageModeling(
         tokenizer=tokenizer,
         mlm=True,
         mlm_probability=mlm_probability
     )
 
-    # 7) Training arguments
+    # 6) Training arguments
     has_cuda = torch.cuda.is_available()
     args = TrainingArguments(
         output_dir=output_dir,
@@ -111,7 +111,7 @@ def fine_tune_mlm(
         dataloader_num_workers=4,
         learning_rate=3e-5,
         weight_decay=0.01,
-        evaluation_strategy="epoch",
+        eval_strategy="epoch",
         save_strategy="epoch",
         logging_strategy="epoch",
         save_total_limit=2,
@@ -120,7 +120,20 @@ def fine_tune_mlm(
         seed=42
     )
 
-    # 8) Trainer
+    # ─── Write hyperparameters and training args to config.json ─────────────────
+    config = {
+        "model_name": model_name,
+        "epochs": epochs,
+        "batch_size": batch_size,
+        "max_length": max_length,
+        "mlm_probability": mlm_probability,
+        "training_arguments": args.to_dict()
+    }
+    config_path = os.path.join(output_dir, "config.json")
+    with open(config_path, "w", encoding="utf-8") as f:
+        json.dump(config, f, indent=4)
+
+    # 7) Trainer
     trainer = Trainer(
         model=model,
         args=args,
@@ -129,19 +142,19 @@ def fine_tune_mlm(
         data_collator=data_collator,
     )
 
-    # 9) Train, save model & tokenizer
+    # 8) Train, save model & tokenizer
     trainer.train()
     trainer.save_model(output_dir)
     tokenizer.save_pretrained(output_dir)
 
-    # 10) Extract log history
+    # 9) Extract log history
     log_history = trainer.state.log_history
 
     # Separate training-loss and eval-loss entries
     train_entries = [e for e in log_history if "loss" in e and "eval_loss" not in e]
     eval_entries  = [e for e in log_history if "eval_loss" in e]
 
-    # 13) Aggregate losses by epoch for plotting
+    # 10) Aggregate losses by epoch for plotting
     train_by_epoch = {}
     for entry in train_entries:
         ep = entry.get("epoch")
@@ -156,7 +169,7 @@ def fine_tune_mlm(
     train_losses = [train_by_epoch[ep] for ep in train_epochs]
     eval_losses  = [eval_by_epoch[ep] for ep in eval_epochs]
 
-    # 14) Build Plotly chart for both
+    # 11) Build Plotly chart for both
     fig = go.Figure()
     fig.add_trace(go.Scatter(
         x=train_epochs,
@@ -176,7 +189,7 @@ def fine_tune_mlm(
         yaxis_title="Loss"
     )
 
-    # 15) Save Plotly chart as HTML
+    # 12) Save Plotly chart as HTML
     fig_path = os.path.join(output_dir, "loss_plot.html")
     fig.write_html(fig_path)
 
