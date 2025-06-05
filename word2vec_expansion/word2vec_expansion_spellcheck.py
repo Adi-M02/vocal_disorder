@@ -15,12 +15,7 @@ from nltk.corpus import stopwords
 sys.path.append('../vocal_disorder')
 from tokenizer import clean_and_tokenize
 from query_mongo import return_documents
-
-# Attempt to import the spellcheck version
-try:
-    from spellchecker_folder.spellchecker import clean_and_tokenize_spellcheck
-except ImportError:
-    clean_and_tokenize_spellcheck = None
+from spellchecker_folder.spellchecker import clean_and_tokenize_spellcheck
 
 
 # helper function to extract frequent bigrams
