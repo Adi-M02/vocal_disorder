@@ -1,10 +1,10 @@
-
 import sys
 import os
 import json
 import logging
 import argparse
 from collections import Counter
+from typing import Optional
 
 # allow importing your project's tokenizer
 sys.path.append("../vocal_disorder")
@@ -17,35 +17,38 @@ except ImportError:
     clean_and_tokenize_spellcheck = None
 
 from query_mongo import return_documents
+import datetime
 
 
-def load_expansion_terms(path: str) -> list[str]:
+def load_expansion_terms(path: str, ngram: Optional[int]) -> list[str]:
     """
     Load expansion terms from a JSON file, flatten values into a list,
-    tokenize each term with TOK_FN, and join tokens back into a string.
+    tokenize each term with TOK_FN, optionally filter by token length == ngram,
+    and return a list of cleaned strings.
+    If ngram is None, accept all lengths.
     """
     with open(path, 'r', encoding='utf-8') as f:
         data = json.load(f)
 
     terms: list[str] = []
     for value in data.values():
-        # value may be a list of terms or a single term string
         if isinstance(value, list):
             for term in value:
                 tokens = TOK_FN(term)
-                if tokens:
+                if tokens and (ngram is None or len(tokens) == ngram):
                     terms.append(' '.join(tokens))
         else:
             tokens = TOK_FN(value)
-            if tokens:
+            if tokens and (ngram is None or len(tokens) == ngram):
                 terms.append(' '.join(tokens))
     return terms
 
 
-def load_manual_terms(path: str) -> list[str]:
+def load_manual_terms(path: str, ngram: Optional[int]) -> list[str]:
     """
-    Load comma-separated manual terms from a TXT file,
-    tokenize each term with TOK_FN, and return a list of cleaned strings.
+    Load comma-separated manual terms from a TXT file, tokenize each term with TOK_FN,
+    optionally filter by token length == ngram, and return a list of cleaned strings.
+    If ngram is None, accept all lengths.
     """
     with open(path, 'r', encoding='utf-8') as f:
         content = f.read()
@@ -54,7 +57,7 @@ def load_manual_terms(path: str) -> list[str]:
     cleaned_terms: list[str] = []
     for term in raw_terms:
         tokens = TOK_FN(term)
-        if tokens:
+        if tokens and (ngram is None or len(tokens) == ngram):
             cleaned_terms.append(' '.join(tokens))
     return cleaned_terms
 
@@ -72,23 +75,23 @@ def load_user_list(path: str) -> list[str]:
 def evaluate_terms_performance(
     docs: list[str],
     manual_terms_path: str,
-    expansion_terms_path: str
+    expansion_terms_path: str,
+    ngram: Optional[int]
 ) -> None:
     """
     For each document, tokenize and detect manual vs expansion terms.
     Computes TP, FP, TN, FN across each term in the union of manual and expansion sets,
-    then aggregates totals, calculates precision, recall, accuracy,
-    and logs false positives and false negatives. Writes a summary to
-    "<expansion_terms_path>_evaluation.txt".
+    then aggregates totals, calculates precision, recall, accuracy, and logs false positives
+    and false negatives. Writes a summary to "<expansion_terms_path>_evaluation.txt".
     """
     # Normalization helper: re-tokenize a term with TOK_FN and rejoin
     def norm(term: str) -> str:
         return ' '.join(TOK_FN(term))
 
-    manual_terms = load_manual_terms(manual_terms_path)
-    expansion_terms = load_expansion_terms(expansion_terms_path)
+    manual_terms = load_manual_terms(manual_terms_path, ngram)
+    expansion_terms = load_expansion_terms(expansion_terms_path, ngram)
 
-    # Map original → normalized form
+    # Map each term to its normalized form
     manual_norm = {term: norm(term) for term in manual_terms}
     expansion_norm = {term: norm(term) for term in expansion_terms}
 
@@ -104,7 +107,7 @@ def evaluate_terms_performance(
         tokens = TOK_FN(doc)
         doc_str = ' '.join(tokens)
 
-        # Find which terms appear in the document (exact sequence match)
+        # Find which manual terms appear in the document (exact sequence match)
         manual_found = {
             term for term, n in manual_norm.items()
             if n and f" {n} " in f" {doc_str} "
@@ -142,11 +145,16 @@ def evaluate_terms_performance(
 
     # Prepare output file path
     base, _ = os.path.splitext(expansion_terms_path)
-    out_path = f"{base}_evaluation.txt"
+    timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+    out_path = f"{base}_evaluation_{timestamp}.txt"
 
     # Write summary and FP/FN lists to file
     with open(out_path, "w", encoding="utf-8") as f:
         f.write(f"Expansion JSON: {expansion_terms_path}\n")
+        if ngram is None:
+            f.write("No n-gram filtering applied to manual or expansion terms\n")
+        else:
+            f.write(f"Filtered manual and expansion terms to {ngram}-gram only\n")
         f.write(f"=== Evaluation Summary Across {len(docs)} Documents ===\n")
         f.write(f"Total terms evaluated: {total}\n")
         f.write(f"True Positives (TP): {TP}\n")
@@ -159,7 +167,8 @@ def evaluate_terms_performance(
 
         if fp_terms:
             f.write(
-                f"Unique False Positive terms {len(fp_terms)} (expansion predicted but manual not present):\n"
+                f"Unique False Positive terms {len(fp_terms)} "
+                f"(expansion predicted but manual not present):\n"
             )
             for t in sorted(fp_terms):
                 f.write(f"  {t}\n")
@@ -168,7 +177,8 @@ def evaluate_terms_performance(
 
         if fn_terms:
             f.write(
-                f"Unique False Negative terms {len(fn_terms)} (manual present but expansion missed):\n"
+                f"Unique False Negative terms {len(fn_terms)} "
+                f"(manual present but expansion missed):\n"
             )
             for t in sorted(fn_terms):
                 f.write(f"  {t}\n")
@@ -177,6 +187,10 @@ def evaluate_terms_performance(
 
     # Also print summary to console
     print(f"\n=== Evaluation Summary Across {len(docs)} Documents ===")
+    if ngram is None:
+        print("No n-gram filtering applied to manual or expansion terms")
+    else:
+        print(f"Filtered manual and expansion terms to {ngram}-gram only")
     print(f"Total terms evaluated: {total}")
     print(f"True Positives (TP): {TP}")
     print(f"False Positives (FP): {FP}")
@@ -191,7 +205,8 @@ def evaluate_terms_performance(
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Evaluate expansion JSON against manual annotations."
+        description="Evaluate expansion JSON against manual annotations, "
+                    "with optional n-gram filtering."
     )
     parser.add_argument(
         "--expansion_path",
@@ -212,6 +227,13 @@ def main():
         action="store_true",
         help="If set, use clean_and_tokenize_spellcheck(...) instead of clean_and_tokenize(...)."
     )
+    parser.add_argument(
+        "--ngram",
+        type=int,
+        choices=[1, 2, 3],
+        default=None,
+        help="Only include manual and expansion terms of this n-gram length (if omitted, accept all lengths)."
+    )
     args = parser.parse_args()
 
     # If spellcheck was requested but not available, abort:
@@ -226,7 +248,7 @@ def main():
     # Choose tokenization function
     global TOK_FN
     if args.spellcheck:
-        print("→ Using spell-checking tokenizer.")
+        print("→ Using spell‐checking tokenizer.")
         TOK_FN = clean_and_tokenize_spellcheck
     else:
         print("→ Using vanilla tokenizer (clean_and_tokenize).")
@@ -255,11 +277,12 @@ def main():
     )
     logging.info("Fetched %d documents for %d users", len(documents), len(users))
 
-    # Run evaluation
+    # Run evaluation with (optional) n-gram filtering
     evaluate_terms_performance(
         docs=documents,
         manual_terms_path=manual_terms_path,
-        expansion_terms_path=args.expansion_path
+        expansion_terms_path=args.expansion_path,
+        ngram=args.ngram
     )
 
 
