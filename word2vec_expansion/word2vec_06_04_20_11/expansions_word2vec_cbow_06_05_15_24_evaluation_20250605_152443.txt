@@ -1,0 +1,627 @@
+Expansion JSON: word2vec_expansion/word2vec_06_04_20_11/expansions_word2vec_cbow_06_05_15_24.json
+No n-gram filtering applied to manual or expansion terms
+=== Evaluation Summary Across 556 Documents ===
+Total terms evaluated: 1336068
+True Positives (TP): 936
+False Positives (FP): 697
+True Negatives (TN): 1333775
+False Negatives (FN): 660
+Precision: 0.573
+Recall: 0.586
+Accuracy: 0.999
+
+Unique False Positive terms 225 (expansion predicted but manual not present):
+  abdominal
+  able to burp
+  abs
+  aches
+  acid
+  acids
+  additional
+  air
+  alcoholic
+  anaesthesia
+  anesthetic
+  antacid
+  anxiety
+  appointments
+  appt
+  asthma
+  attacks
+  autoimmune
+  barium
+  barrier
+  beer
+  belches
+  belching
+  beverage
+  beverages
+  bloating discomfort
+  blood
+  botox injections
+  botox surgery
+  bug
+  buildup
+  burbs
+  burping
+  camera
+  can't burp
+  carbonated beverages
+  carbonated seltzers
+  carbonation
+  celiac
+  changes
+  charcoal
+  chest
+  chin
+  chronic
+  chronic nausea
+  clinic
+  cocktails
+  coffee
+  coke
+  colonoscopies
+  conditions
+  conscious
+  constant
+  cramping
+  cricopharyngeal
+  criteria
+  cure
+  damage
+  department
+  developing
+  diagnostic
+  digestive
+  disease
+  doc
+  docs
+  drinks
+  drug
+  dry heaving
+  email
+  embarrassed
+  embarrassment
+  emetephobia
+  emetephobic
+  ent doctor
+  eoe
+  esophageal
+  esophageal sphincter
+  estimate
+  excess
+  excess mucus
+  exercise
+  extreme
+  extreme nausea
+  farts
+  fear
+  feelings
+  feels
+  fizzy
+  flatulence
+  flexing
+  frustrated
+  gaggy
+  gastro
+  gin
+  ginger
+  gut
+  head
+  health
+  heartburn acid
+  heaving
+  hospital
+  hurt
+  hurts
+  hypersalivation
+  improvement
+  in office procedure
+  injection procedure
+  intense
+  intolerance
+  irritates
+  issues
+  jaw
+  lactose
+  lactose intolerance
+  lemonade
+  life
+  life changing
+  lump
+  massage
+  massaging
+  medications
+  meds
+  mental
+  methods
+  micro
+  milk
+  modified
+  modified barium
+  motions
+  movement
+  nasal
+  neck
+  needle
+  nerves
+  nhs
+  no burp
+  office
+  office botox
+  official
+  oil
+  ordered
+  otc
+  outpatient
+  pains
+  panic
+  phobia
+  physical
+  ppi
+  practicing
+  practitioner
+  prescription
+  pressure
+  probiotics
+  problems
+  procedures
+  progress
+  pseudo
+  psychological
+  puking
+  region
+  relationships
+  relief
+  relieving
+  relieving burps
+  request
+  saliva
+  salivation
+  self
+  self treatment
+  seltzers
+  sensation
+  sensations
+  shaker
+  shoulder
+  sick
+  skinny
+  slow
+  social
+  soda
+  soreness
+  spasms
+  specialists
+  speech
+  spray
+  still
+  still burping
+  stomach pains
+  stressed
+  stretching
+  study
+  symptom
+  symptoms gas
+  syndrome
+  tea
+  test
+  tested
+  tests
+  therapist
+  therapy
+  tilting
+  tongue
+  toxin
+  trapped
+  treatments
+  tube
+  tummy
+  turn
+  turning
+  twist
+  uk
+  unable to burp
+  uncomfortable
+  underlying
+  units
+  unnecessary
+  upper
+  upper esophageal
+  upset
+  visit
+  vocal
+  vodka
+  vomit
+  water
+  waters
+  wine
+Unique False Negative terms 388 (manual present but expansion missed):
+  10 units
+  100
+  100 units
+  1st dose
+  2nd dose
+  2nd injection
+  4 injections
+  50 units
+  abdominal throat muscles
+  acid reduction meds
+  activated charcoal
+  actually care
+  air i'm swallowing
+  air puking
+  air vomit
+  air vomited
+  all my life
+  already stopping working
+  always feel sick
+  amount of botox
+  annoyed
+  annoying
+  another injection
+  antihistamines
+  antispasmodic meds
+  anxiety disorders
+  anxiety inducing issue
+  asphyxiating
+  associated symptoms
+  asthma acting up
+  autoimmune condition
+  autoimmune disorders
+  automatic burps
+  avoid carbonated beverages
+  avoiding aggressors
+  avoiding triggering food
+  awake procedures
+  awake version
+  awful
+  bad stomach pains
+  bad vomiting experience
+  baffled
+  barely sleep
+  be relaxed
+  beano pills
+  become more confident
+  bending over
+  bloated
+  bloating actually hurts
+  bloating is horrid
+  blocked nose
+  blood work
+  body automatically stifling
+  botox injected
+  botox injection procedure
+  botox prescription
+  brutal hiccups
+  bubble
+  burping machine
+  burping randomly
+  burpy
+  can't wait
+  carbonated beverage
+  certain motions
+  chicken head movement
+  chronic bloating
+  cold symptoms
+  completely disregarded it
+  condition
+  condition is debilitating
+  constantly swallowing
+  consultation visit
+  contestant gurgles
+  cough
+  coughing
+  couldn't burp
+  couple small burps
+  croaky club
+  crop dust
+  crystallized ginger
+  cursed
+  daily lives
+  damaged the muscle
+  deep breaths
+  deep guttural
+  delighted
+  demographics
+  demon burps
+  desperate
+  diagnostic step
+  diagnostic tool
+  dietary adjustments
+  dietary changes
+  dietary considerations
+  dietary intolerances
+  difficult to breathe
+  digestive issues
+  disappointed
+  disinterested
+  dislodge some gas
+  disorder
+  disregarded
+  do see results
+  doesn't feel good
+  doing exercises
+  don't see results
+  dose
+  dr
+  dramamine
+  drinking soda
+  dysphagia
+  eating healthier
+  eating probiotics
+  eating slowly
+  eating smaller
+  eating tiny meals
+  effectiveness of treatment
+  elimination diet
+  elimination diets
+  embarrassing
+  emetophobe
+  ent issues
+  esophagus straight
+  excess saliva
+  excited
+  experimental drug
+  exposure therapy
+  extend my neck
+  extending my chin
+  extending my neck
+  extremely high anxiety
+  extremely nauseous
+  extremely uncomfortable
+  fairly intolerable
+  fasting
+  fear of vomit
+  fed up
+  feel air pushing
+  feel fine
+  feel horrible
+  feel so heard
+  feel something different
+  feel stiff
+  feel unrecognized
+  feeling frustrated
+  feeling so discouraged
+  feels so close
+  fennel seeds
+  few tiny burps
+  first injection
+  first round
+  fish oil supplements
+  fit the criteria
+  flexing abs
+  flustered
+  fodmap
+  fodmap diet
+  food air
+  food issues
+  forcing a croak
+  frustrates me
+  frustrating
+  full anesthesia
+  full burp out
+  full on cold
+  gag reflex
+  gas air buildup
+  gas producing
+  gastro issues
+  general anesthesia
+  general practitioner
+  get full easy
+  get stuck
+  gotten terrible
+  grateful for anything
+  greatly reduce gas
+  gulps of water
+  gurgle
+  gurgles are different
+  gurgling coming
+  gurgly
+  hard to breathe
+  health psychologist
+  helped
+  hiccup
+  high success rate
+  higher initial dose
+  highly fermentable foods
+  hold stuff in
+  holding my breath
+  hopeful
+  horrible heartburn
+  hot compresses
+  hot showers
+  hyper salivation
+  hypermobile
+  immense pressure
+  immune system
+  impressed
+  improved my life
+  in office
+  in office botox
+  in office dose
+  inconvenient
+  induce a gag
+  ingesting more air
+  initial appointment
+  insurance company
+  intolerable
+  killing the botox
+  lactose intolerant
+  larger dose
+  laughed at me
+  leaning forward
+  little hiccups
+  lot of gurgling
+  lots of pain
+  loud cough
+  lower gi problems
+  lower gi tract
+  lupus
+  lying down flat
+  make yourself gag
+  many tests
+  massaging my throat
+  massaging throat
+  medical problems
+  mental state
+  mint tea
+  modified barium swallow
+  more frequent meals
+  motrin
+  mouth just waters
+  mouth waters
+  moving your neck
+  muscle
+  natural bodily function
+  natural supplements
+  nausea daily
+  never burped again
+  never goes away
+  never scheduled anything
+  new research
+  no belching
+  no burp issues
+  no burp syndrome
+  no burpers
+  no carb diet
+  no constrictive clothing
+  non burper
+  non burping
+  not much research
+  not relaxing enough
+  not taken seriously
+  other autoimmune stuff
+  out of pocket
+  outpatient procedure
+  partially paralyzed
+  patient questionnaire
+  pepsid
+  phobia of vomiting
+  physical problem
+  pills
+  pop
+  post botox symptoms
+  practitioners
+  prescription antibiotics
+  procedure units of botox
+  pseudo burps
+  puff of air
+  push it out
+  quick jog
+  random burp
+  ranitidine
+  rcpd induced asthma
+  real bad symptoms
+  really loud gurgles
+  really skinny
+  recovery
+  refuse to believe
+  refuses to relax
+  reject botox
+  reject things
+  release most flatulence
+  releases the air
+  relief is possible
+  relieve gas
+  relieves the pressure
+  research
+  resistant to botox
+  retrain the muscle
+  retrograde cricopharyngeal dysfunction
+  retrograde cricopharyngeal dysphagia
+  rheumatologist
+  round 2
+  rubbing my stomach
+  ruining their lives
+  runny nose
+  sachets
+  salty snacks
+  scared
+  scared of vomit
+  screening
+  second round
+  second time
+  severe bloating
+  severely anxious
+  shaker approach
+  side effects
+  simple scope
+  sleepy
+  slightly sore throat
+  slim
+  small burp
+  small burps
+  small micro burps
+  smells
+  so much pain
+  so much saliva
+  so severe
+  so stubborn
+  social situations
+  sore
+  specific treatment
+  star jumps
+  stomach gurgles
+  stomach throat gurgles
+  stretching my neck
+  struggle to breathe
+  struggle to burp
+  struggles
+  struggling daily
+  suffer
+  suffering
+  super bloated
+  swallow air
+  swallow test
+  swallowing more
+  swallowing more air
+  symptom management
+  take it seriously
+  talking and eating
+  teaching yourself
+  telehealth appointment
+  telemed
+  tender
+  tense
+  tense muscle
+  throat
+  throat area
+  throat burps
+  throat is relaxed
+  throat is sore
+  throat muscles
+  throats
+  throw up air
+  tight
+  tilting neck up
+  tiny air
+  tiny micro burps
+  tired of this
+  traumatic experience
+  treatment plan
+  turning my head
+  twist my head
+  two injection sites
+  unbearable
+  under anesthesia
+  units of botox
+  unnamed condition
+  unnecessary uncomfortable tests
+  unrecognized medical condition
+  upper air
+  utter agony
+  very eager
+  very excited
+  very uncomfortable
+  virtual visit
+  vocal chords
+  waved off
+  weird personal quirk
+  weird sounds
+  without insurance
+  won't understand
+  wore off
+  worried
+  worse with age
+  worth it

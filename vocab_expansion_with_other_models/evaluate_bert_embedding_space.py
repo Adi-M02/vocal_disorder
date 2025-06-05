@@ -5,6 +5,7 @@
 • Embeds every unigram with a HuggingFace BERT model
 • Bigram score  =  1/2*(cos(query, w1) + cos(query, w2))
 • Supports either   --k  N   or   --eps  τ   (ε wins if both passed)
+usage: python vocab_expansion_with_other_models/evaluate_bert_embedding_space.py [options]
 """
 
 import os, sys, json, argparse, logging, math

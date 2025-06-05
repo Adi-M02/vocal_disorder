@@ -1,4 +1,6 @@
-#!/usr/bin/env python3
+"""
+usage: python word2vec_expansion/evaluate_embedding_space.py [options]
+"""
 import sys, os, json, argparse, logging
 from datetime import datetime
 from typing import List, Tuple, Optional, Counter
