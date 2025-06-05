@@ -1,3 +1,6 @@
+"""
+evaluate the performance of word2vec expansion terms on manual text
+usage: python word2vec_expansion/evaluate_word2vec_expansions_spellcheck.py --expansion_path <path> --manual_dir <dir> [--spellcheck] [--ngram <1|2|3>]"""
 import sys
 import os
 import json
@@ -132,10 +135,10 @@ def evaluate_terms_performance(
             else:
                 TN += 1
 
-        logging.info(
-            "Doc %d: manual_found=%d, expansion_found=%d",
-            idx, len(manual_found), len(expansion_found)
-        )
+        # logging.info(
+        #     "Doc %d: manual_found=%d, expansion_found=%d",
+        #     idx, len(manual_found), len(expansion_found)
+        # )
 
     # Compute metrics
     total = TP + FP + TN + FN

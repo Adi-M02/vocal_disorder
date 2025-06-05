@@ -1,3 +1,7 @@
+"""
+Expand categories using Word2Vec triplet vectors and frequency filtering.
+usage: python word2vec_expansion/word2vec_expansion_spellcheck.py --terms <path> --model_dir <dir> --sim_threshold <float> --freq_threshold <float> --spellcheck
+"""
 import os
 import sys
 import json
@@ -94,78 +98,27 @@ def compute_triplet_vectors(
             })
     return triplets
 
-
 def main():
     parser = argparse.ArgumentParser(
         description="Expand categories using triplet + frequency filtering"
     )
-    parser.add_argument(
-        '--terms',
-        required=True,
-        help='Path to rcpd_terms.json'
-    )
-    parser.add_argument(
-        '--model_dir',
-        required=True,
-        help='Dir with word2vec_*.model'
-    )
-    parser.add_argument(
-        '--sim_threshold',
-        type=float,
-        default=0.4,
-        help='Cosine‐sim cutoff (default 0.4)'
-    )
-    parser.add_argument(
-        '--freq_threshold',
-        type=float,
-        default=0.09,
-        help='Min fraction of triplets a term must appear in (default 0.09)'
-    )
-    parser.add_argument(
-        '--spellcheck',
-        action='store_true',
-        help='If set, use clean_and_tokenize_spellcheck(...) instead of clean_and_tokenize(...).'
-    )
+    parser.add_argument('--terms',  required=True, help='Path to rcpd_terms.json')
+    parser.add_argument('--model_dir', required=True, help='Dir with word2vec_*.model')
+    parser.add_argument('--sim_threshold', type=float, default=0.4)
+    parser.add_argument('--freq_threshold', type=float, default=0.09)
+    parser.add_argument('--spellcheck', action='store_true')
     args = parser.parse_args()
 
-    # If spellcheck requested but function not available, abort:
-    if args.spellcheck and clean_and_tokenize_spellcheck is None:
-        print(
-            "ERROR: --spellcheck was requested, but unable to import "
-            "`clean_and_tokenize_spellcheck()` from spellchecker_folder/spellchecker.py",
-            file=sys.stderr
-        )
-        sys.exit(1)
-
-    # Choose tokenizer function
+    # ── choose tokenizer ───────────────────────────────────────────────
     global TOK_FN
-    if args.spellcheck:
-        print("→ Using spell‐checking tokenizer.")
-        TOK_FN = clean_and_tokenize_spellcheck
-    else:
-        print("→ Using vanilla tokenizer (clean_and_tokenize).")
-        TOK_FN = clean_and_tokenize
+    TOK_FN = clean_and_tokenize_spellcheck if args.spellcheck else clean_and_tokenize
+    print("→ Using", "spell-checking" if args.spellcheck else "vanilla", "tokenizer")
 
-    # Save all arguments to an info.json in model_dir
-    os.makedirs(args.model_dir, exist_ok=True)
-    info = {
-        'terms_path': args.terms,
-        'model_dir': args.model_dir,
-        'sim_threshold': args.sim_threshold,
-        'freq_threshold': args.freq_threshold,
-        'spellcheck': args.spellcheck,
-        'timestamp': datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    }
-    info_path = os.path.join(args.model_dir, 'info.json')
-    with open(info_path, 'w', encoding='utf-8') as f:
-        json.dump(info, f, indent=2)
-    print(f"Wrote parameter info to {info_path}")
-
-    # 1) load seed terms
+    # ── seed terms ─────────────────────────────────────────────────────
     terms_map = load_terms(args.terms)
-    print(f"Loaded {sum(len(v) for v in terms_map.values())} terms across {len(terms_map)} categories")
+    print(f"Loaded {sum(len(v) for v in terms_map.values())} seed terms")
 
-    # Precompute frequent bigrams once from the corpus
+    # ── frequent bigrams (once) ────────────────────────────────────────
     frequent_bigrams = extract_frequent_bigrams(
         min_count=5,
         db_name="reddit",
@@ -175,86 +128,88 @@ def main():
     bigram_phrases = [' '.join(bg) for bg in frequent_bigrams]
     print(f"Extracted {len(frequent_bigrams)} frequent bigrams")
 
+    # ── iterate over models ────────────────────────────────────────────
     for model_filename in ('word2vec_cbow.model', 'word2vec_skipgram.model'):
-        model_path = os.path.join(args.model_dir, model_filename)
-        if not os.path.exists(model_path):
-            parser.error(f"Model not found: {model_path}")
-        print(f"\n>> Loading model {model_filename} …")
-        model = Word2Vec.load(model_path)
+        path = os.path.join(args.model_dir, model_filename)
+        if not os.path.exists(path):
+            parser.error(f"Model not found: {path}")
+        print(f"\n>> Loading {model_filename} …")
+        model = Word2Vec.load(path)
 
-        # precompute unigram vocab embeddings + norms
-        vocab_words  = model.wv.index_to_key
-        vocab_matrix = model.wv.vectors
-        vocab_norms  = np.linalg.norm(vocab_matrix, axis=1)
+        # Vocab & unit vectors
+        vocab_words   = model.wv.index_to_key
+        vocab_matrix  = model.wv.vectors.astype(np.float32)
+        vocab_norms   = np.linalg.norm(vocab_matrix, axis=1, keepdims=True)
+        vocab_unit    = vocab_matrix / np.clip(vocab_norms, 1e-9, None)
 
-        # precompute bigram embeddings + norms for this model
-        bigram_vecs   = [(model.wv[w1] + model.wv[w2]) / 2.0
-                        for w1, w2 in frequent_bigrams]
-        bigram_matrix = np.vstack(bigram_vecs)
-        bigram_norms  = np.linalg.norm(bigram_matrix, axis=1)
+        # Map token → row index
+        tok2idx = {tok: i for i, tok in enumerate(vocab_words)}
 
-        # compute triplet vectors
+        # Build arrays of token-indices for bigrams (skip OOV pairs)
+        idx1, idx2, bigram_keep = [], [], []
+        for (w1, w2), phrase in zip(frequent_bigrams, bigram_phrases):
+            if w1 in tok2idx and w2 in tok2idx:
+                idx1.append(tok2idx[w1])
+                idx2.append(tok2idx[w2])
+                bigram_keep.append(phrase)
+        idx1, idx2 = np.asarray(idx1), np.asarray(idx2)
+        bigram_keep = np.asarray(bigram_keep)
+        print(f"  {len(bigram_keep)} bigrams retained after OOV filtering")
+
+        # Prototype (triplet) vectors
         triplets = compute_triplet_vectors(model, terms_map)
         print(f"Computed {len(triplets)} triplet vectors")
 
-        # collect per-triplet candidate sets
-        per_triplet: dict[str, list[set[str]]] = {cat: [] for cat in terms_map}
-        for trip in triplets:
-            cat = trip['category']
-            vec = trip['vector']
-            norm = np.linalg.norm(vec)
-            if norm == 0:
+        per_triplet: dict[str, list[set[str]]] = {c: [] for c in terms_map}
+
+        for tp in triplets:
+            cat, vec = tp['category'], tp['vector']
+            vec_norm = np.linalg.norm(vec)
+            if vec_norm == 0:
                 continue
+            vec_unit = vec / vec_norm
 
-            # 1) unigrams
-            sims = vocab_matrix.dot(vec) / (vocab_norms * norm)
-            idxs = np.where(sims >= args.sim_threshold)[0]
-            candidates = {vocab_words[i] for i in idxs}
+            # ---- unigrams (vectorised) -------------------------------------
+            sims_u = vocab_unit @ vec_unit
+            uni_hits = sims_u >= args.sim_threshold
+            candidates = {vocab_words[i] for i in np.where(uni_hits)[0]}
 
-            # 2) bigrams
-            sims_bi = bigram_matrix.dot(vec) / (bigram_norms * norm)
-            bi_idxs = np.where(sims_bi >= args.sim_threshold)[0]
-            for j in bi_idxs:
-                candidates.add(bigram_phrases[j])
+            # ---- bigrams (vectorised, BOTH tokens must hit) ----------------
+            sims1 = sims_u[idx1]          # cosine for first token in each bigram
+            sims2 = sims_u[idx2]          # cosine for second token
+            mask  = (sims1 >= args.sim_threshold) & (sims2 >= args.sim_threshold)
+            candidates.update(bigram_keep[mask])
 
             per_triplet[cat].append(candidates)
 
-        # 4) frequency filtering
+        # ── frequency filtering per category ───────────────────────────
         expansions = {}
         for cat, subsets in per_triplet.items():
-            total_queries = len(subsets)
-            if total_queries == 0:
+            q = len(subsets)
+            if q == 0:
                 expansions[cat] = []
                 continue
-            # Minimum times a term must appear
-            min_count_needed = math.ceil(args.freq_threshold * total_queries)
-            # Count across all triplet‐sets
-            counter = Counter()
+            min_hits = math.ceil(args.freq_threshold * q)
+            counter  = Counter()
             for s in subsets:
                 counter.update(s)
-            # Keep those meeting both sim + freq criteria
-            kept = [term for term, cnt in counter.items() if cnt >= min_count_needed]
-            expansions[cat] = kept
+            expansions[cat] = [t for t, c in counter.items() if c >= min_hits]
             print(f"{model_filename} | {cat}: "
-                  f"{len(terms_map[cat])} seeds → +{len(kept)} expansions "
-                  f"(freq ≥ {min_count_needed}/{total_queries})")
+                  f"{len(terms_map[cat])} seeds → +{len(expansions[cat])} expansions "
+                  f"(freq ≥ {min_hits}/{q})")
 
-        # 5) merge seeds + expansions & write JSON
-        merged = {
-            cat: terms_map[cat] + expansions[cat]
-            for cat in terms_map
-        }
-        timestamp = datetime.now().strftime("%m_%d_%H_%M")
-        out_file = os.path.join(
+        # ── merge & save ------------------------------------------------
+        merged = {c: terms_map[c] + expansions[c] for c in terms_map}
+        out_path = os.path.join(
             args.model_dir,
-            f"expansions_{model_filename.replace('.model','')}_{timestamp}.json"
+            f"expansions_{model_filename.replace('.model','')}_"
+            f"{datetime.now().strftime('%m_%d_%H_%M')}.json"
         )
-        with open(out_file, 'w', encoding='utf-8') as fw:
+        with open(out_path, 'w', encoding='utf-8') as fw:
             json.dump(merged, fw, indent=2)
-        print(f"Wrote expansions to {out_file}")
+        print(f"Wrote expansions to {out_path}")
 
     print("\nDone.")
 
-
 if __name__ == '__main__':
-    main()
+    main() 
