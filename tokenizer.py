@@ -5,7 +5,10 @@ import unicodedata
 
 
 def clean_and_tokenize(text: str) -> list[str]:
-    tokeniser   = re.compile(r"[A-Za-z0-9](?:[A-Za-z0-9'/\-]*[A-Za-z0-9])?", re.I)
+    tokeniser   = re.compile(
+        r"[A-Za-z\u00C0-\u024F0-9](?:[A-Za-z\u00C0-\u024F0-9'/\-]*[A-Za-z\u00C0-\u024F0-9])?",
+        re.I
+    )
     url_pattern = re.compile(r'(?:https?://|www\.|[A-Za-z0-9\-]+\.(?:com|org|io|be)/)\S+', re.I)
     # remove everything except letters, numbers, apostrophe, hyphen, slash, or space
     junk_pattern = re.compile(r"[^A-Za-z0-9'/\- ]+")

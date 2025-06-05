@@ -1,5 +1,3 @@
-# test_spellchecking.py
-
 import json
 import sys
 import logging

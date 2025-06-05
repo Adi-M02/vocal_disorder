@@ -1,11 +1,8 @@
-import logging
 import sys
 import os
 import datetime
 import time
 import json
-import re
-import unicodedata
 
 from gensim.models import Word2Vec
 
