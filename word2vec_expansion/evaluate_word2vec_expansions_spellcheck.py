@@ -148,7 +148,7 @@ def evaluate_terms_performance(
 
     # Prepare output file path
     base, _ = os.path.splitext(expansion_terms_path)
-    timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+    timestamp = datetime.datetime.now().strftime("%m_%d_%H_%M")
     out_path = f"{base}_evaluation_{timestamp}.txt"
 
     # Write summary and FP/FN lists to file

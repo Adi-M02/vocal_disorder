@@ -8,8 +8,7 @@ import pandas as pd
 from gensim.models import Word2Vec
 from sklearn.decomposition import PCA
 import plotly.express as px
-from sklearn.manifold import TSNE
-from sklearn.manifold import trustworthiness
+from sklearn.manifold import TSNE, MDS, trustworthiness
 from sklearn.metrics import pairwise_distances, silhouette_score
 from sklearn.neighbors import NearestNeighbors
 from scipy.stats import spearmanr
@@ -201,6 +200,89 @@ def reduce_umap(
     return out, metrics
 
 
+def reduce_mds(
+    df: pd.DataFrame,
+    n_components: int = 2,
+    eval_neighbors: int = 10,
+    **mds_kwargs
+) -> tuple[pd.DataFrame, dict]:
+    """
+    Runs MDS, returns (df_with_xyz, metrics_dict) where metrics_dict contains:
+      - stress
+      - variance_ratio
+      - trustworthiness
+      - continuity
+      - dist_corr (Spearman)
+      - silhouette (requires df['category'])
+    """
+    dim_cols = [c for c in df.columns if c.startswith('dim')]
+    X = df[dim_cols].values
+
+    # 1) MDS fit
+    mds = MDS(
+        n_components=n_components,
+        random_state=42,
+        **mds_kwargs
+    )
+    coords = mds.fit_transform(X)
+    stress = mds.stress_
+
+    # 2) variance-ratio proxy
+    orig_var = np.var(X, axis=0).sum()
+    emb_var  = np.var(coords, axis=0).sum()
+    variance_ratio = emb_var / orig_var
+
+    # 3) trustworthiness
+    tw = trustworthiness(X, coords, n_neighbors=eval_neighbors)
+
+    # 4) continuity using full low-D ranking
+    def continuity_full(X_hd, X_ld, k):
+        nbrs_hd = NearestNeighbors(n_neighbors=k+1).fit(X_hd)
+        idx_hd  = nbrs_hd.kneighbors(X_hd, return_distance=False)
+
+        D_ld = pairwise_distances(X_ld)
+        ranks_ld = np.argsort(D_ld, axis=1)
+
+        N = X_hd.shape[0]
+        cont_sum = 0.0
+
+        for i in range(N):
+            true_nb = set(idx_hd[i, 1:k+1])
+            missing = true_nb - set(ranks_ld[i, 1:k+1])
+            for j in missing:
+                r = np.where(ranks_ld[i] == j)[0][0]
+                cont_sum += (r - k)
+        return 1 - (2 / (N * k * (2*N - 3*k - 1))) * cont_sum
+
+    cont = continuity_full(X, coords, eval_neighbors)
+
+    # 5) distance-correlation (Spearman over upper triangle)
+    D_hd = pairwise_distances(X)
+    D_ld = pairwise_distances(coords)
+    iu   = np.triu_indices_from(D_hd, k=1)
+    dist_corr, _ = spearmanr(D_hd[iu], D_ld[iu])
+
+    # 6) silhouette (requires labels)
+    sil = silhouette_score(coords, df['category'].values)
+
+    metrics = {
+        'stress': stress,
+        'variance_ratio': variance_ratio,
+        'trustworthiness': tw,
+        'continuity': cont,
+        'dist_corr': dist_corr,
+        'silhouette': sil
+    }
+
+    out = df.copy()
+    out['x'] = coords[:, 0]
+    out['y'] = coords[:, 1]
+    if n_components == 3:
+        out['z'] = coords[:, 2]
+
+    return out, metrics
+
+
 def plot_and_save(df: pd.DataFrame, title: str, out_html: str):
     dims = ['x', 'y', 'z']
     has = [d for d in dims if d in df.columns]
@@ -228,8 +310,8 @@ def plot_and_save(df: pd.DataFrame, title: str, out_html: str):
 
 if __name__ == "__main__":
     # === Configuration ===
-    TERMS_PATH     = 'rcpd_terms.json'
-    MODEL_DIR      = "word2vec_expansion/word2vec_05_26_16_04"
+    TERMS_PATH     = 'rcpd_terms_6_5.json'
+    MODEL_DIR      = "word2vec_expansion/word2vec_06_04_20_11"
     ts             = datetime.now().strftime("%m_%d_%H_%M")
     viz_dir        = os.path.join(MODEL_DIR, f"embedding_visualization_{ts}")
     os.makedirs(viz_dir, exist_ok=True)
@@ -246,8 +328,10 @@ if __name__ == "__main__":
     print(f"Loaded {total_terms} terms across {len(terms_map)} categories\n")
 
     # Process each model
-    for model_path, label in [(os.path.join(MODEL_DIR, "word2vec_cbow.model"), "CBOW"),
-                              (os.path.join(MODEL_DIR, "word2vec_skipgram.model"), "SkipGram")]:
+    for model_path, label in [
+        (os.path.join(MODEL_DIR, "word2vec_cbow.model"), "CBOW"),
+        (os.path.join(MODEL_DIR, "word2vec_skipgram.model"), "SkipGram")
+    ]:
         print(f"[{label}] Loading model …")
         model = Word2Vec.load(model_path)
         df    = extract_embeddings(model, terms_map)
@@ -260,25 +344,33 @@ if __name__ == "__main__":
             plot_and_save(df_pca, f"{label} embeddings ({k}D PCA)", out_html)
 
             with open(metrics_path, 'a', encoding='utf-8') as mf:
-                mf.write(f"[{label}] PCA {k}D — explained: {m_pca['explained_variance_ratio']:.2%}, "
-                         f"lost: {m_pca['lost_variance']:.2%}, "
-                         f"recon MSE: {m_pca['reconstruction_mse']:.6f}\n")
+                mf.write(
+                    f"[{label}] PCA {k}D — explained: {m_pca['explained_variance_ratio']:.2%}, "
+                    f"lost: {m_pca['lost_variance']:.2%}, "
+                    f"recon MSE: {m_pca['reconstruction_mse']:.6f}\n"
+                )
 
         #–– t-SNE 2D & 3D
         for k in (2, 3):
             print(f"[{label}] Reducing to {k}D via t-SNE …")
-            df_tsne, m_tsne = reduce_tsne(df, n_components=k, perplexity=30, learning_rate=200)
+            df_tsne, m_tsne = reduce_tsne(
+                df, n_components=k, perplexity=30, learning_rate=200
+            )
             out_html = os.path.join(viz_dir, f"tsne{k}d_{label.lower()}.html")
             plot_and_save(df_tsne, f"{label} embeddings ({k}D t-SNE)", out_html)
 
             with open(metrics_path, 'a', encoding='utf-8') as mf:
-                mf.write(f"[{label}] t-SNE {k}D — KL: {m_tsne['kl_divergence']:.4f}, "
-                         f"var ratio: {m_tsne['variance_ratio']:.2%}\n")
+                mf.write(
+                    f"[{label}] t-SNE {k}D — KL: {m_tsne['kl_divergence']:.4f}, "
+                    f"var ratio: {m_tsne['variance_ratio']:.2%}\n"
+                )
 
         #–– UMAP 2D & 3D
         for k in (2, 3):
             print(f"[{label}] Reducing to {k}D via UMAP …")
-            df_um, m_um = reduce_umap(df, n_components=k, n_neighbors=15, min_dist=0.1)
+            df_um, m_um = reduce_umap(
+                df, n_components=k, n_neighbors=15, min_dist=0.1
+            )
             out_html = os.path.join(viz_dir, f"umap{k}d_{label.lower()}.html")
             plot_and_save(df_um, f"{label} embeddings ({k}D UMAP)", out_html)
 
@@ -290,6 +382,25 @@ if __name__ == "__main__":
                     f"cont:        {m_um['continuity']:.4f}, "
                     f"dist_corr:   {m_um['dist_corr']:.4f}, "
                     f"silhouette:  {m_um['silhouette']:.4f}\n"
+                )
+
+        #–– MDS 2D & 3D
+        for k in (2, 3):
+            print(f"[{label}] Reducing to {k}D via MDS …")
+            df_mds, m_mds = reduce_mds(
+                df, n_components=k, eval_neighbors=10, normalized_stress="auto"
+            )
+            out_html = os.path.join(viz_dir, f"mds{k}d_{label.lower()}.html")
+            plot_and_save(df_mds, f"{label} embeddings ({k}D MDS)", out_html)
+
+            with open(metrics_path, 'a', encoding='utf-8') as mf:
+                mf.write(
+                    f"[{label}] MDS {k}D — stress: {m_mds['stress']:.4f}, "
+                    f"var ratio: {m_mds['variance_ratio']:.2%}, "
+                    f"trust: {m_mds['trustworthiness']:.4f}, "
+                    f"cont: {m_mds['continuity']:.4f}, "
+                    f"dist_corr: {m_mds['dist_corr']:.4f}, "
+                    f"silhouette: {m_mds['silhouette']:.4f}\n"
                 )
 
         print()

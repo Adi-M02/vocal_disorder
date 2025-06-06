@@ -1,3 +1,6 @@
+"""
+usage python word2vec_expansion/create_word2vec_spellcheck.py 
+"""
 import sys
 import os
 import datetime
