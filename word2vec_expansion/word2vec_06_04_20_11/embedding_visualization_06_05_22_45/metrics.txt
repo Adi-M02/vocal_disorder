@@ -1,0 +1,18 @@
+Embedding reduction metrics — run at 2025-06-05 22:45:31.420123
+
+[CBOW] PCA 2D — explained: 25.14%, lost: 74.86%, recon MSE: 0.432254
+[CBOW] PCA 3D — explained: 33.01%, lost: 66.99%, recon MSE: 0.386805
+[CBOW] t-SNE 2D — KL: 0.4483, var ratio: 865.89%
+[CBOW] t-SNE 3D — KL: 1.0977, var ratio: 15506.43%
+[CBOW] UMAP 2D — var ratio:   1.66%, trust:       0.7861, cont:        0.8715, dist_corr:   0.4710, silhouette:  0.0940
+[CBOW] UMAP 3D — var ratio:   1.45%, trust:       0.7873, cont:        0.8725, dist_corr:   0.4407, silhouette:  0.0922
+[CBOW] MDS 2D — stress: 135630.0151, var ratio: 92.62%, trust: 0.7834, cont: 0.8935, dist_corr: 0.8408, silhouette: -0.0750
+[CBOW] MDS 3D — stress: 72487.1259, var ratio: 96.06%, trust: 0.8610, cont: 0.9285, dist_corr: 0.8944, silhouette: -0.0449
+[SkipGram] PCA 2D — explained: 16.95%, lost: 83.05%, recon MSE: 0.020919
+[SkipGram] PCA 3D — explained: 22.40%, lost: 77.60%, recon MSE: 0.019547
+[SkipGram] t-SNE 2D — KL: 0.4636, var ratio: 15255.09%
+[SkipGram] t-SNE 3D — KL: 1.4433, var ratio: 450644.40%
+[SkipGram] UMAP 2D — var ratio:   38.65%, trust:       0.7785, cont:        0.8420, dist_corr:   0.3554, silhouette:  0.1119
+[SkipGram] UMAP 3D — var ratio:   30.98%, trust:       0.8183, cont:        0.8569, dist_corr:   0.3561, silhouette:  0.1272
+[SkipGram] MDS 2D — stress: 8854.0905, var ratio: 88.96%, trust: 0.7760, cont: 0.8620, dist_corr: 0.6928, silhouette: -0.0209
+[SkipGram] MDS 3D — stress: 4913.8922, var ratio: 93.87%, trust: 0.8460, cont: 0.9074, dist_corr: 0.7541, silhouette: 0.0529

@@ -1,0 +1,1667 @@
+Expansion JSON: word2vec_expansion/word2vec_06_06_14_32/expansions_skipgram_06_06_14_46.json
+No n-gram filtering applied to manual or expansion terms
+=== Evaluation Summary Across 556 Documents ===
+Total terms evaluated: 10479488
+True Positives (TP): 1206
+False Positives (FP): 4344
+True Negatives (TN): 10473559
+False Negatives (FN): 379
+Precision: 0.217
+Recall: 0.761
+Accuracy: 1.000
+
+Unique False Positive terms 1360 (expansion predicted but manual not present):
+  000
+  10000
+  1100
+  1300
+  1k
+  1st
+  2
+  2 botox
+  2 injections
+  2 months
+  2 weeks
+  20's
+  200
+  2014
+  20k
+  20s
+  25
+  250
+  26f
+  273
+  273 8255
+  2k
+  2nd
+  2nd botox
+  2nd round
+  3
+  3 months
+  3 weeks
+  300
+  30th
+  3k
+  4k
+  50
+  500
+  5th
+  6
+  6 months
+  60
+  600
+  72h
+  789
+  800
+  800 273
+  8255
+  850
+  911
+  999
+  abc's
+  abdominal
+  abroad
+  abs
+  absorbed
+  accepting
+  accessible
+  account
+  accurate
+  aches
+  acid
+  acid reduction
+  acids
+  acknowledged
+  acting
+  action
+  activated
+  address
+  adjust
+  adjusted
+  adjustments
+  administered
+  adorable
+  affairs
+  afford
+  affordable
+  agony
+  agreed
+  agrees
+  aid
+  aim
+  aimlee
+  aimlee iu
+  air
+  air buildup
+  album
+  alcohol drinking
+  alcoholic
+  alcoholic drinks
+  alleviating
+  alongside
+  also
+  ama
+  amazon
+  america
+  american
+  among
+  amongst
+  amplifies
+  anaesthesia
+  analysis
+  analyze
+  anderson
+  anesthetic
+  anonymous
+  antacid
+  anticipated
+  anxiety
+  anxiety inducing
+  appears
+  application
+  applications
+  appointments
+  approach
+  approved
+  appt
+  area
+  areas
+  articles
+  askreddit
+  aspect
+  assess
+  associated
+  assumption
+  assumptions
+  asthma
+  attached
+  attack
+  attacking
+  attacks
+  august
+  august 5th
+  australia
+  autoimmune
+  autoimmune disorder
+  automatic
+  automatically
+  availability
+  avoiding
+  awaiting
+  awake
+  awful feeling
+  backpacking
+  baker
+  barium
+  barrier
+  bases
+  basic
+  bastian
+  bastian however
+  bastian published
+  bastian's
+  bastian's office
+  bastion's
+  beano
+  bearable
+  bearing
+  beer
+  before
+  belches
+  belching
+  below
+  beneficial
+  beverage
+  beverages
+  bi
+  bloated gassy
+  bloating discomfort
+  bloating worse
+  blocked
+  bodies
+  bodily
+  bodily function
+  body
+  body automatically
+  book
+  botox injections
+  botox privately
+  botox procedures
+  botox recovery
+  botox round
+  botox surgery
+  brd
+  breakthrough
+  breath
+  breathe
+  broken
+  brutal
+  bs
+  budget
+  build
+  buildup
+  burbs
+  burner
+  burp issues
+  burp symptoms
+  burping
+  burping exercises
+  calling
+  calling dr
+  camera
+  campus
+  canada
+  canadian
+  canadian doctors
+  candidate
+  candy
+  cannabis
+  carb
+  carb diet
+  carbonated beverages
+  carbonated seltzers
+  carbonation
+  carbs
+  care
+  care provider
+  cash
+  cause
+  cause ibs
+  caused
+  causes
+  causes constipation
+  causing
+  caution
+  cavities
+  center
+  chalky
+  challenge
+  charcoal
+  chat
+  cheaper
+  cheers
+  chelsea
+  chest
+  chicago
+  chicago illinois
+  child
+  childhood
+  chime
+  chin
+  chop
+  chords
+  chronic
+  chronic nausea
+  chubby
+  chunky
+  circumstance
+  citizen
+  claimed
+  clarity
+  classic
+  classic symptoms
+  classified
+  cleared
+  cleveland
+  cleveland clinic
+  clicks
+  cliff
+  clinic
+  closest
+  closest doctor
+  closing
+  co
+  cocktails
+  codes
+  coffee
+  coke
+  collaborate
+  colleagues
+  colonoscopies
+  combination
+  comfort
+  commiserating
+  common
+  common symptoms
+  commonly
+  company
+  compiling
+  completion
+  compounded
+  compounds
+  comprehensive
+  comprehensive list
+  compresses
+  concerns
+  conclusion
+  concur
+  condition exists
+  conditions
+  conjunction
+  connected
+  connection
+  conscientious
+  conscious
+  consent
+  consequences
+  considerate
+  considerations
+  constant
+  consume
+  contact
+  contact info
+  contacted
+  containing
+  content
+  contents
+  contributing
+  copy
+  correlates
+  correlation
+  correlations
+  cosmetic
+  cosmetic botox
+  cosmetic procedure
+  cosmetic surgery
+  cosmetically
+  cost
+  costing
+  costly
+  costs
+  counselor
+  country
+  cover
+  coverage
+  covered
+  covers
+  cpd
+  cpd diagnosed
+  cpd symptoms
+  cramping
+  cranberry
+  creamer
+  creating
+  cricopharyngeal
+  cricopharyngeal dysfunction
+  cricopharyngeal dysphagia
+  criteria
+  croak
+  croaky
+  crop
+  cross
+  crystallized
+  cure
+  curve
+  dab
+  damage
+  damaged
+  data
+  deals
+  dealt
+  december
+  decreased
+  deductible
+  deductible insurance
+  deductibles
+  deleted
+  delightful
+  demographic
+  demon
+  demons
+  department
+  depend
+  description
+  designated
+  detect
+  detrimental
+  develop
+  developed
+  developing
+  diagnose
+  diagnose r
+  diagnostic
+  dialogue
+  diet
+  dietary
+  diets
+  digested
+  digestive
+  direct
+  directed
+  direction
+  disabilities
+  disappointing
+  disappointment
+  discreetly
+  discuss
+  discussed
+  discussing
+  discussion
+  disease
+  dislodge
+  disorders
+  dissipated
+  doc
+  docs
+  doctor bastian
+  doctor said
+  doctor's
+  doctors appointments
+  doctors however
+  doing
+  done
+  done 2
+  doozy
+  doses
+  dr anderson
+  dr bastian
+  dr bastian's
+  dr bastion's
+  dr hicklin
+  dr hicklin's
+  dr john
+  dr karagama
+  dr paul
+  dr said
+  dr spiegel
+  dragon
+  drink
+  drink carbonated
+  drink fizzy
+  drink tea
+  drinking
+  drinking carbonated
+  drinking fizzy
+  drinking water
+  drinks
+  drug
+  drunken
+  dry
+  dry heaving
+  duplicate
+  dust
+  dysphasia
+  earliest
+  eases
+  ect
+  edibles
+  edited
+  edu
+  effective
+  effectiveness
+  effects
+  electrodes
+  eliminate
+  eliminated
+  elimination
+  elite
+  email
+  embarrassment
+  emphasize
+  encourage
+  endless
+  endoscopy done
+  endoscopy showed
+  endured
+  enjoyed
+  ensuring
+  ent doctor
+  entered
+  entries
+  entry
+  eoe
+  equate
+  equivalent
+  esophageal
+  esophageal sphincter
+  established
+  estimate
+  european
+  event
+  everyday
+  evidence
+  examples
+  exasperated
+  excess
+  excess mucus
+  excessive
+  exercise
+  exerting
+  exhibit
+  exists
+  exit
+  expanded
+  expensive
+  experience
+  experience nausea
+  experienced
+  experiences
+  experiencing
+  experimental
+  explains
+  exposure
+  expressed
+  extend
+  extending
+  extreme
+  extreme nausea
+  facility
+  failed
+  fam
+  familiar
+  families
+  farting
+  farts
+  fault
+  fear
+  fearful
+  feature
+  feel
+  feel air
+  feel gaggy
+  feel sick
+  feeling
+  feeling nauseous
+  feelings
+  fennel
+  fermentable
+  fillers
+  filter
+  finances
+  fish
+  fish oil
+  fizzy
+  fizzy drink
+  flair
+  flatulence
+  flexing
+  flown
+  focusing
+  fodmaps
+  force
+  forceful
+  forcing
+  foreign
+  forming
+  forms
+  forwarded
+  frankly
+  freeze
+  frequency
+  frequent
+  froth
+  frother
+  frustrates
+  fuller
+  function
+  fyi
+  gaggy
+  gang
+  garage
+  garlic
+  gastro
+  gay
+  gender
+  general
+  genetic
+  geographical
+  george
+  george washington
+  gi problems
+  gi tract
+  gin
+  ginger
+  gluten
+  goal
+  goldfish
+  gourmet
+  grabbing
+  granola
+  groups
+  guardian
+  gun
+  gut
+  guttural
+  hah
+  handstand
+  harming
+  he
+  head
+  head movement
+  health
+  healthcare
+  healthier
+  heartburn acid
+  heartburn worse
+  heaving
+  help
+  hicklin
+  hicklin's
+  higher
+  highmark
+  him
+  himself
+  hmmmm
+  hometown
+  horrendous
+  horrible
+  horrible emetophobia
+  horrid
+  hospital
+  hot
+  however
+  humans
+  hydrate
+  hyper
+  hypersalivation
+  idek
+  identical
+  identify
+  illinois
+  images
+  immense
+  immune
+  improved
+  in
+  in office procedure
+  inability
+  included
+  includes
+  incorporate
+  incorporating
+  indeed
+  indication
+  individuals
+  induce
+  induced
+  induced asthma
+  inducing
+  influx
+  info
+  informal
+  information
+  informative
+  ingesting
+  inherent
+  initial
+  initial consultation
+  initial dose
+  injected
+  injection done
+  injection procedure
+  injection scheduled
+  injection sites
+  input
+  inserted
+  institute
+  institution
+  insurance
+  insurance costs
+  insurance cover
+  insurance plan
+  insurance purposes
+  intelligent
+  intended
+  intense
+  intensely
+  interest
+  internal
+  internet
+  internship
+  interpreted
+  intolerance
+  intolerances
+  intolerant
+  introduction
+  invaluable
+  involuntarily
+  irl
+  irrelevant
+  irritates
+  issue
+  issues
+  it
+  italy
+  itself
+  iu
+  iu edu
+  jar
+  jaw
+  jean
+  jefferson
+  jefferson hospital
+  jog
+  john
+  journal
+  journalist
+  journals
+  jumping
+  jumps
+  karagama
+  karate
+  karybrie
+  kidding
+  killer
+  known
+  known specialists
+  knows
+  label
+  labels
+  lactose
+  lactose intolerance
+  largely
+  las
+  laser
+  laundry
+  lauren
+  lead
+  leads
+  leaning
+  learned
+  learning
+  legendary
+  legitimate
+  lemonade
+  lessened
+  lessening
+  lesson
+  levels
+  life
+  lifeline
+  linked
+  links
+  list
+  literature
+  lives
+  locate
+  located
+  location
+  locked
+  logical
+  london
+  lookout
+  loud
+  loud burps
+  loud gurgles
+  louder
+  lower
+  lower gi
+  lucy
+  lucy hicklin
+  lump
+  malnourished
+  management
+  manifest
+  map
+  march
+  marked
+  marketing
+  massage
+  massaging
+  match
+  maximum
+  meaningful
+  mechanics
+  medical
+  medical care
+  medical condition
+  medical doctor
+  medical journals
+  medical professionals
+  medications
+  meds
+  meeting
+  melt
+  members
+  mental
+  messaging
+  messy
+  methods
+  micro
+  microburst
+  milk
+  mint
+  misleading
+  mod
+  moderators
+  modern
+  modified
+  modified barium
+  mods
+  momentum
+  money
+  months
+  montreal
+  motion
+  motions
+  move
+  movement
+  ms
+  ms hicklin
+  mutation
+  names
+  nasal
+  national
+  navel
+  nearest
+  necessity
+  neck
+  needle
+  nerves
+  newcomers
+  nhs
+  nicely
+  noburp
+  noise
+  noticeable
+  noticing
+  notification
+  novel
+  nutella
+  objective
+  objects
+  occasional
+  occasional burp
+  offered
+  offering
+  office
+  office botox
+  office injections
+  official
+  officially
+  officially diagnosed
+  often
+  ohio
+  ohip
+  oil
+  ongoing
+  onion
+  ontario
+  ooh
+  ooo
+  op
+  open
+  ophthalmologist
+  opinions
+  opt
+  option
+  ordered
+  organized
+  original
+  originally
+  otc
+  other's
+  other's experiences
+  otolaryngology
+  ounce
+  outcomes
+  outpatient
+  overwhelming
+  owe
+  page
+  paid
+  painful
+  pains
+  panic
+  paper
+  participants
+  participated
+  participation
+  patches
+  patients
+  paul
+  pay
+  paying
+  pen
+  pennsylvania
+  peoples
+  perform
+  period
+  permanent
+  petite
+  philadelphia
+  philly
+  phobia
+  physical
+  pictures
+  pierced
+  pinned
+  pinning
+  plan
+  pls
+  pocket
+  points
+  poison
+  poked
+  poorly
+  popular
+  position
+  positions
+  possibly
+  post
+  post op
+  powder
+  ppi
+  practiced
+  practicing
+  practitioner
+  prefers
+  preoccupied
+  preparing
+  prepped
+  prescribe
+  prescription
+  presented
+  press
+  pressing
+  pressure
+  pretzels
+  prevention
+  previous
+  prices
+  pricing
+  primary
+  primary care
+  prior
+  private
+  privately
+  probiotics
+  problem
+  problems
+  procedure 2
+  procedure costs
+  procedure done
+  procedures
+  prodded
+  producing
+  product
+  professional
+  professionals
+  project
+  projectile
+  projectile vomit
+  proof
+  properly
+  prove
+  providers
+  pseudo
+  psychological
+  psychologist
+  publication
+  publicly
+  published
+  puff
+  puking
+  punched
+  purposes
+  pursue
+  pursue treatment
+  push
+  pushing
+  qc
+  quarterly
+  quebec
+  questioned
+  questionnaire
+  quirk
+  quote
+  r
+  r cpd
+  r's
+  r/noburp
+  r/noburp wiki
+  races
+  raft
+  ramq
+  ratio
+  received
+  received treatment
+  receptionist
+  recognized
+  recognized condition
+  recommendation
+  records
+  reduce
+  reduced
+  reduction
+  refer
+  referred
+  reflex
+  reflux gourmet
+  reflux worse
+  refuses
+  regard
+  regarding
+  regarding symptoms
+  region
+  reintroducing
+  reject
+  rejected
+  rejects
+  related
+  relationships
+  relax
+  relaxed
+  relaxing
+  release
+  released
+  releases
+  releasing
+  relevant
+  relieve
+  relieves
+  relive
+  reminder
+  remindme
+  removal
+  removing
+  replace
+  repost
+  reposted
+  reposting
+  request
+  requests
+  require
+  required
+  requires
+  requiring
+  research study
+  researcher
+  resistance
+  resistant
+  resources
+  respected
+  responder
+  responders
+  responses
+  responsible
+  result
+  results
+  retrain
+  retrograde
+  retrograde cricopharyngeal
+  retrograde cricopharyngeal dysfunction
+  review
+  ringer
+  ripped
+  rising
+  risks
+  rosen
+  round
+  rounds
+  route
+  rubbing
+  ruining
+  rule
+  runny
+  safety
+  said
+  sake
+  salivation
+  salty
+  salvia
+  samaritan
+  schedule
+  scheduled
+  scheduling
+  screens
+  script
+  search
+  searching
+  second
+  second dose
+  second injection
+  second surgery
+  secondly
+  secret
+  sections
+  seeds
+  seeking
+  sees
+  self
+  self treatment
+  seltzers
+  send
+  sensation
+  sensations
+  service
+  services
+  severe
+  severely
+  shaken
+  shaker
+  sheet
+  shield
+  ship
+  shoulder
+  shout
+  shouted
+  shoutout
+  showed
+  showers
+  showing
+  sick
+  sickness
+  sidebar
+  signs
+  sites
+  situation
+  situations
+  slow
+  slower
+  smart
+  snacks
+  sneaking
+  sniff
+  social
+  soda
+  someone
+  someone familiar
+  sometimes
+  soreness
+  source
+  spa
+  spam
+  spasms
+  specialists
+  specialize
+  specialized
+  specify
+  speech
+  spiegel
+  spiegel's
+  spiegel's office
+  spike
+  splurge
+  spooky
+  spoon
+  spots
+  spray
+  starter
+  state
+  statements
+  status
+  steps
+  stickied
+  stiff
+  stomach contents
+  stomach issues
+  stomach pains
+  stomach throat
+  stone
+  story
+  stragglers
+  straightforward
+  strains
+  stressful
+  stretching
+  struggle
+  stubborn
+  study
+  subject
+  submit
+  submitted
+  subreddit's
+  subreddit's wiki
+  subs
+  subs wiki
+  substantial
+  substitute
+  subtle
+  success
+  sucking
+  suddenly
+  suffered
+  suicide
+  sum
+  suppose
+  surgeries
+  surgery center
+  surgery scheduled
+  surveys
+  suspect
+  suspicion
+  swallow
+  swallow done
+  symptom
+  symptoms gas
+  symptoms thoughts
+  syndrome
+  system
+  takeaway
+  taking
+  taper
+  tattoo
+  taught
+  tea
+  teaching
+  team
+  teen
+  telehealth
+  temporarily
+  test
+  tested
+  testing done
+  tests
+  textures
+  that
+  thc
+  the
+  themselves
+  theory
+  therapist
+  therapy
+  this
+  thoughts
+  threads
+  threat
+  threshold
+  throat feel
+  throat massage
+  throat swallowing
+  throw
+  thus
+  tied
+  tik
+  tik tok
+  tilting
+  tipsy
+  to
+  tok
+  tolerate
+  tomato
+  tomatoes
+  tongue
+  tool
+  tools
+  topic
+  toronto
+  total
+  tourism
+  town
+  toxin
+  tracking
+  tracks
+  tract
+  traffic
+  trapped
+  traumatic
+  travels
+  treat
+  treated
+  treatment via
+  treatments
+  treats
+  trickling
+  tricks
+  tried
+  triggering
+  triggers
+  triple
+  tummy
+  turkey
+  turn
+  turning
+  turtleneck
+  tweaking
+  twist
+  ty
+  u/karybrie
+  uk
+  uk lucy
+  uk's
+  uncomfortable
+  under
+  underlying
+  underlying issue
+  unexpectedly
+  unfortunate
+  unintentionally
+  union
+  unique
+  unit
+  united
+  united healthcare
+  units
+  university
+  unknown
+  unlike
+  unlikely
+  unnecessary
+  unpaid
+  unpleasant
+  unrecognized
+  unusual
+  upper
+  upper esophageal
+  upset
+  upsides
+  upvote
+  urge
+  usa
+  user
+  users
+  usual
+  usual gurgles
+  utter
+  vague
+  validate
+  variety
+  various
+  vegas
+  velociraptor
+  verbatim
+  versa
+  veterans
+  via
+  vice
+  vice versa
+  vid
+  videos
+  viewing
+  vile
+  violent
+  violent burp
+  violently
+  virtual
+  visibility
+  visit
+  visited
+  visits
+  vocal
+  vodka
+  vodka cranberry
+  voluntary
+  vomit
+  vomited
+  vomiting experience
+  waitlist
+  walks
+  wall
+  washington
+  washington university
+  water
+  waters
+  waved
+  websites
+  weeks
+  weeks post
+  welcoming
+  whatnot
+  whistle
+  who
+  who's
+  who've
+  whopping
+  wiki
+  willing
+  wine
+  wines
+  wonders
+  worker
+  worse
+  worse symptoms
+  worse temporarily
+  worsening
+  worthy
+  write
+  written
+  youtube
+  yummy
+  z
+  zealand
+  zoom
+Unique False Negative terms 293 (manual present but expansion missed):
+  10 units
+  4 injections
+  abdominal throat muscles
+  acid reduction meds
+  actually care
+  air i'm swallowing
+  all my life
+  already stopping working
+  always feel sick
+  amount of botox
+  annoyed
+  annoying
+  another injection
+  antispasmodic meds
+  anxiety inducing issue
+  asphyxiating
+  asthma acting up
+  autoimmune condition
+  autoimmune disorders
+  automatic burps
+  avoid carbonated beverages
+  avoiding aggressors
+  avoiding triggering food
+  awake procedures
+  awake version
+  bad stomach pains
+  bad vomiting experience
+  barely sleep
+  be relaxed
+  beano pills
+  become more confident
+  bending over
+  bloating actually hurts
+  bloating is horrid
+  blocked nose
+  blood work
+  body automatically stifling
+  botox injection procedure
+  brutal hiccups
+  burper
+  burping machine
+  burping randomly
+  can't wait
+  certain motions
+  chicken head movement
+  coeliac disease
+  cold symptoms
+  completely disregarded it
+  condition is debilitating
+  constantly swallowing
+  consultation visit
+  contestant gurgles
+  couldn't burp
+  couple small burps
+  croaky club
+  crop dust
+  daily lives
+  damaged the muscle
+  deep breaths
+  deep guttural
+  desperate
+  diagnostic step
+  dietary adjustments
+  dietary changes
+  dietary considerations
+  dietary intolerances
+  difficult to breathe
+  disinterested
+  dislodge some gas
+  do see results
+  doesn't feel good
+  doing exercises
+  don't see results
+  dramammine
+  eating healthier
+  eating probiotics
+  eating slowly
+  eating smaller
+  eating tiny meals
+  effectiveness of treatment
+  esophagus straight
+  excess saliva
+  excited
+  experimental drug
+  exposure therapy
+  extend my neck
+  extending my chin
+  extending my neck
+  extremely high anxiety
+  extremely nauseous
+  extremely uncomfortable
+  fairly intolerable
+  fear of vomit
+  fed up
+  feel air pushing
+  feel fine
+  feel horrible
+  feel so heard
+  feel something different
+  feel stiff
+  feel unrecognized
+  feeling frustrated
+  feeling so discouraged
+  feels so close
+  fennel seeds
+  few tiny burps
+  first injection
+  first round
+  fish oil supplements
+  fit the criteria
+  food air
+  food issues
+  forcing a croak
+  frustrates me
+  frustrating
+  full anesthesia
+  full burp out
+  full of air
+  full on cold
+  gas air buildup
+  gas x
+  get full easy
+  get stuck
+  gotten terrible
+  grateful for anything
+  greatly reduce gas
+  gulps of water
+  gurgles are different
+  gurgling coming
+  hard to breathe
+  health psychologist
+  high success rate
+  higher initial dose
+  highly fermentable foods
+  hold stuff in
+  holding my breath
+  hopeful
+  hot compresses
+  immense pressure
+  impressed
+  improved my life
+  in office
+  in office botox
+  in office dose
+  inability to burp
+  inconvenient
+  induce a gag
+  ingesting more air
+  killing the botox
+  larger dose
+  laughed at me
+  leaning forward
+  little hiccups
+  lot of gurgling
+  lots of pain
+  loud cough
+  lower gi problems
+  lower gi tract
+  lowfod map diet
+  lupus
+  lying down flat
+  make yourself gag
+  many tests
+  massaging my throat
+  massaging throat
+  medical problems
+  mental state
+  modified barium swallow
+  more frequent meals
+  mouth just waters
+  mouth waters
+  moving your neck
+  natural bodily function
+  natural supplements
+  nausea daily
+  nervous
+  never burped again
+  never goes away
+  never scheduled anything
+  new research
+  no belching
+  no burp issues
+  no burp syndrome
+  no burpers
+  no carb diet
+  no constrictive clothing
+  non burper
+  non burping
+  not much research
+  not relaxing enough
+  not taken seriously
+  other autoimmune stuff
+  out of pocket
+  partially paralysed
+  patient questionnaire
+  phobia of vomiting
+  pills
+  pop
+  post botox symptoms
+  prescription antibiotics
+  procedure units of botox
+  pseudo burps
+  puff of air
+  push it out
+  quick jog
+  random burp
+  rcpd induced asthma
+  real bad symptoms
+  really loud gurgles
+  really skinny
+  refuse to believe
+  refuses to relax
+  reject botox
+  reject things
+  release most flatulence
+  releases the air
+  relief is possible
+  relieves the pressure
+  resistant to botox
+  retrain the muscle
+  retrograde cricopharyngeal dysphagia
+  rubbing my stomach
+  ruining their lives
+  runny nose
+  sachets
+  salty snacks
+  scared
+  scared of vomit
+  second time
+  severely anxious
+  shaker approach
+  side effects
+  simple scope
+  slightly sore throat
+  slim
+  small burp
+  small burps
+  small micro burps
+  so much pain
+  so much saliva
+  so severe
+  so stubborn
+  sore
+  sore throat
+  specific treatment
+  star jumps
+  stomach throat gurgles
+  stretching my neck
+  struggle to breathe
+  struggle to burp
+  struggling daily
+  super bloated
+  swallow air
+  swallowing air
+  swallowing more
+  swallowing more air
+  take it seriously
+  talking and eating
+  teaching yourself
+  tender
+  throat is relaxed
+  throat is sore
+  throw up air
+  tilting neck up
+  tiny air
+  tiny micro burps
+  tired of this
+  turning my head
+  twist my head
+  two injection sites
+  under anesthesia
+  underweight
+  unhelped
+  units of botox
+  unnamed condition
+  unnecessary uncomfortable tests
+  unrecognized medical condition
+  upper air
+  upper esophageal sphincter
+  utter agony
+  very eager
+  very excited
+  very uncomfortable
+  virtual visit
+  waved off
+  weird personal quirk
+  weird sounds
+  without insurance
+  won't understand
+  wore off
+  worried
+  worse with age
+  worth it

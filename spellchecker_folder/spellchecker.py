@@ -32,7 +32,7 @@ atexit.register(_disk_cache.close)
 _with_custom = SCRIPT_DIR / "testing" / "custom_terms.txt"
 
 # Load the JSON mapping from categories → [list of terms]
-with open('rcpd_terms.json', encoding="utf-8") as f:
+with open('rcpd_terms_6_5.json', encoding="utf-8") as f:
     TERM_CATEGORY_DICT = json.load(f)
 
 # Load a flat list of custom terms from the txt (comma‐separated)

@@ -200,10 +200,10 @@ def main():
 
         # ── merge & save ------------------------------------------------
         merged = {c: terms_map[c] + expansions[c] for c in terms_map}
+        model_type = "cbow" if "cbow" in model_filename else "skipgram"
         out_path = os.path.join(
             args.model_dir,
-            f"expansions_{model_filename.replace('.model','')}_"
-            f"{datetime.now().strftime('%m_%d_%H_%M')}.json"
+            f"expansions_{model_type}_{datetime.now().strftime('%m_%d_%H_%M')}.json"
         )
         with open(out_path, 'w', encoding='utf-8') as fw:
             json.dump(merged, fw, indent=2)
