@@ -7,10 +7,6 @@ This version:
   • Adds lemmatization via a precomputed lookup table before training.
   • Supports both vanilla and spell-checked tokenization.
   • Injects custom domain terms into the vocab.
-
-Dependencies:
-  pip install gensim stanza tqdm
-  python -m stanza.download en
 """
 import sys
 import os
@@ -137,8 +133,9 @@ def main():
     cbow.build_vocab(cleaned_docs)
     cbow.build_vocab(custom_token_lists*5, update=True)
     cbow.train(cleaned_docs, total_examples=len(cleaned_docs), epochs=5)
-    cbow.save(out_dir / "word2vec_cbow.model")
-    logging(f"CBOW training took {time.time()-start_cb:.2f}s")
+    cbow_path = out_dir / "word2vec_cbow.model"
+    cbow.save(str(cbow_path))
+    logging(f"CBOW training took {time.time()-start_cb:.2f}s → saved to {cbow_path}")
 
     # 8) Train Skip-gram
     start_sg = time.time()
@@ -152,10 +149,9 @@ def main():
     skipgram.build_vocab(cleaned_docs)
     skipgram.build_vocab(custom_token_lists*5, update=True)
     skipgram.train(cleaned_docs, total_examples=len(cleaned_docs), epochs=5)
-    skipgram.save(out_dir / "word2vec_skipgram.model")
-    logging(f"Skip-gram training took {time.time()-start_sg:.2f}s")
-
-    logging(f"All models saved under {out_dir}")
+    skipgram_path = out_dir / "word2vec_skipgram.model"
+    skipgram.save(str(skipgram_path))
+    logging(f"Skip-gram training took {time.time()-start_sg:.2f}s → saved to {skipgram_path}")
 
 if __name__ == "__main__":
     main()
