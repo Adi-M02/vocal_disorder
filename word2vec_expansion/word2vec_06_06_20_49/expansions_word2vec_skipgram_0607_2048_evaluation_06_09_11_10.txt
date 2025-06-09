@@ -1,0 +1,962 @@
+Expansion JSON: word2vec_expansion/word2vec_06_06_20_49/expansions_word2vec_skipgram_0607_2048.json
+Filtered terms to n-grams in [1, 2]
+=== Evaluation Across 178 Documents ===
+Total terms evaluated: 5207746
+TP: 434, FP: 2618, TN: 5204644, FN: 50
+Precision: 0.142
+Recall:    0.897
+Accuracy:  0.999
+
+Unique False Positives (910):
+1 800
+16th
+200
+20s
+26f
+273
+273 8255
+3x
+40
+40 year
+500
+60
+700
+800 273
+8255
+999
+a
+ab
+abdominal
+accept new
+accidentally
+ache
+acid
+action
+activate
+actual
+actual vomit
+actually
+adjustment
+adorable
+advice
+affair
+affect
+afraid
+aim
+aimlee
+aimlee iu
+air
+air bounce
+air come
+album
+alleviate
+already
+also
+also add
+also feel
+also refer
+also say
+always
+always feel
+always say
+ama
+amazing
+america
+american
+amongst
+amp
+anaesthesia
+anesthesia procedure
+anesthetic
+anonymous
+anyone post
+appeal
+application
+approach
+approve
+appt
+area
+asap
+askreddit
+aspect
+assess
+associate
+australia
+available
+awake
+baby
+backpacking
+backup
+bad
+bad case
+bad temporarily
+barium
+basically
+bastian
+bastian he
+bastian last
+bastian publish
+bastian say
+bastian tell
+bastian tomorrow
+be
+beer
+bi
+bloating discomfort
+body
+botox 10
+botox cause
+botox dr
+botox last
+botox loosen
+botox one
+botox seem
+botox symptom
+botox tomorrow
+botox wear
+brd
+breath
+build
+building
+burb
+burp botox
+burp cause
+burp come
+burp cough
+burp exercise
+burp group
+burp he
+burp here
+burp like
+burp sound
+burp symptom
+burp syndrome
+burp there
+burp though
+burp would
+bvi
+calorie dense
+can
+can't escape
+canada
+canadian
+canadian doctor
+cancer
+carb
+carb diet
+care provider
+case
+cause
+cause excessive
+cause swallow
+certain symptom
+charcoal
+cheap
+chime
+chop
+chronic
+citizen
+classic
+classic symptom
+clear
+cliff
+clueless
+coffee
+coffee never
+collaborate
+colleague
+comfort
+comment
+commiserate
+common symptom
+compile
+complete
+complication
+comprehensive
+comprehensive list
+compress
+concern
+conjunction
+consent
+consider
+consider self
+considerate
+constant
+constant reflux
+constantly
+contact info
+content
+content come
+contort
+contract
+control
+cop
+correct
+cost
+cough burp
+counselor
+country
+cover
+cpd
+cpd anyway
+cpd cause
+cpd diagnose
+cpd symptom
+creamer
+cricopharyngeal
+cricopharyngeal dysfunction
+crisis text
+croak
+croaky
+crystallize
+cure
+current
+curve
+date
+datum
+day eat
+deal
+deep
+defective
+delete
+dementia
+demographic
+demon
+dense food
+department
+describe
+description
+designate
+detailed
+detailed information
+detect
+detrimental
+develop
+diagnostic
+dialogue
+diet
+diet help
+dietary
+different perspective
+different treatment
+difficulty
+difficulty swallow
+digestive
+dilate
+direction
+discomfort hope
+discuss
+discussion
+dislodge
+doc
+doctor appointment
+doctor he
+doctor however
+doctor near
+doctor say
+doctor start
+doozy
+dr bastian
+dr bielamowicz
+dr john
+dr spiegel
+dragon
+drink
+drink carbonated
+drink practice
+drink tea
+drink use
+drug
+due
+duplicate
+eat
+eat right
+edu
+effect
+effective
+effective way
+effectiveness
+eliminate
+elimination
+embarrassment
+emetophobia etc.
+enjoyment
+ent want
+entrie
+entry
+eoe
+escape
+esophageal
+esophageal cancer
+esophageal motility
+esophagus get
+esophagus would
+european
+evidence
+excellent please
+except
+excessive
+exhibit
+experience
+extra
+extra weight
+fail
+fail miserably
+fall
+fam
+family
+fart
+feature
+feedback
+feel
+feel bloating
+feel really
+fennel
+fill
+filter
+finally schedule
+find
+first appt
+first post
+fish oil
+fizzy
+flare
+flare up
+flatulence
+flatulent
+force
+form
+forum
+frankly
+frequent
+frequent meal
+frequently
+friendly
+fuller
+future burp
+gas move
+gas release
+gas try
+gay
+gender
+general
+general question
+geographical
+george
+george washington
+get
+get bad
+get botox
+get burp
+get louder
+get microburp
+get refer
+get way
+ginger
+go
+goal
+good case
+good faith
+good information
+great doctor
+group
+guardian
+gurgle also
+gurgle go
+gurgle sound
+gut
+gw
+gw hospital
+handstand
+happen
+happen involuntarily
+harm
+have
+head
+head back
+healing
+health
+heartburn bad
+heartburn since
+height
+help person
+help reduce
+hernia
+hernia fix
+hernia repair
+hernia surgery
+hiatal
+hiatal hernia
+homie
+hope
+horrendous
+horrible
+horrible bloating
+hospital
+hot
+hotline
+however
+human body
+hurt
+identical
+identify
+improve since
+inability
+include
+incorporate
+increase
+individual
+influx
+info
+informal
+information
+inherent
+initial
+initial appt
+input
+insight
+instead
+institution
+insurance
+insurance cover
+internal
+internet
+internship
+interpret
+intolerance
+intolerant
+introduction
+invaluable
+involuntarily
+irl
+isolate
+issue
+issue bad
+it
+italy
+iu
+iu edu
+jar
+jaw
+jet
+job
+jog
+john
+journal
+journalist
+karate
+karybrie
+kid
+kid think
+killer
+kind
+know specialist
+lactose
+lactose intolerance
+laryngopedia
+laser
+laugh burp
+leak
+learn
+les
+less
+lesson
+level
+life
+lifelong
+like carbonated
+like dr
+like force
+like mucus
+like vomit
+likely due
+list
+literature
+little extra
+location
+lot
+loud
+louder
+low
+management
+manometry
+many experience
+many response
+many treatment
+many unit
+map
+maryland
+massage
+match
+mattress
+may contribute
+maybe
+md
+meaningful
+medical
+medical care
+medical condition
+medical doctor
+medical professional
+medical thing
+medication
+meet
+meet one
+method
+might
+might find
+milk
+minor
+mint
+minute
+mod
+moderator
+momentum
+montreal
+mostly drink
+motility
+motility problem
+mouth
+move
+move around
+movement
+mucusy
+multiple
+muscle need
+my
+myotomy
+myself
+national
+near
+neck
+neck rather
+neck surgery
+need
+need surgery
+needle
+never occur
+new
+new zealand
+newcomer
+next round
+no one
+noburp
+normal amount
+nose
+notice
+notification
+novel
+nutella
+objective
+occur
+office
+official
+ohip
+oil
+oil supplement
+old
+one
+one condition
+ontario
+op
+op test
+open
+opinion
+option
+organize
+original
+original comment
+original post
+otolaryngology
+otolaryngology head
+outcome
+overall
+painful
+pandemic
+participation
+partner
+party trick
+patient
+perform
+permanent
+permanent side
+permanently
+person say
+person search
+personable
+personal
+perspective
+physical
+please
+please chime
+please consider
+please elaborate
+please go
+please suggest
+please take
+please try
+position
+positive
+possible
+post
+post feel
+post get
+post link
+potential
+ppi
+ppi use
+practice practice
+practice try
+pre
+pre op
+pregnancy
+preop
+prescription
+press
+pressure
+pretty typical
+pretzel
+prevention
+previous
+previous one
+previous post
+primary
+primary care
+prior
+probably work
+probiotics
+problem
+problem though
+procedure dr
+procedure would
+product
+progress
+prohibitive
+proper
+proper burp
+pseudo
+psychologist
+publication
+publicly
+publish
+puke
+push
+push air
+q
+quarterly
+quebec
+question post
+question regard
+question symptom
+questionnaire
+r/noburp
+r/noburp wiki
+ramq
+ratio
+read
+read online
+real name
+really
+really burp
+really help
+really tight
+receive
+receive treatment
+recent
+recognize
+recognize condition
+recommend
+recommendation
+reddit
+reddit username
+reduce
+reduce bloating
+reduce gas
+refer
+reflex
+reflux bad
+reflux worse
+refluxe
+regain
+regard
+regard symptom
+region
+regularly
+related
+relax
+relaxed
+release
+release trap
+relieve
+remain
+reminder
+remindme
+reminiscent
+removal
+reopen
+repair
+reply
+repost
+request
+require
+research study
+research team
+researcher
+resource
+responder
+response
+responsible
+result
+result come
+retrograde
+retrograde cricopharyngeal
+review
+round
+round next
+route
+rub
+safety
+salty
+samaritan
+say there
+schedule
+schedule surgery
+search
+seat
+second
+second opinion
+see dr
+see many
+see what
+seed
+seek
+self
+self harm
+self treatment
+sense
+service
+share experience
+shot
+shoutout
+show
+sidebar
+significant
+significant issue
+simplify
+since
+since birth
+since dr
+sing voice
+situation
+small
+soda
+sometimes
+soreness
+sound
+sound like
+spam filter
+specialized
+specific
+specific doctor
+specify
+spiegel
+spike
+squish
+stage
+start
+start burp
+start work
+statement
+sticky
+still burp
+stomach cause
+stomach content
+stomach put
+stomach seem
+stop
+strengthen
+stretch
+stuck
+study
+study look
+study please
+sub
+sub wiki
+submit
+subreddit
+subreddit make
+subreddit wiki
+substitute
+success
+suddenly
+suggestion
+suspect
+swallow difficulty
+swallow would
+symptom get
+symptom include
+symptom post
+syndrome
+take
+take ppis
+take thing
+taper
+taste
+taste bad
+taste burp
+te
+tea
+teach
+team
+temporarily
+term complication
+term ppi
+test
+test like
+test one
+the
+themselves
+there treatment
+therefore
+thing
+thing happen
+think
+think gurgle
+this
+thread
+throat make
+throat one
+tik
+tik tok
+time
+time find
+tip
+tiredness
+title
+tl dr
+tok
+tok video
+tomato
+tool
+topic
+toronto
+torso
+total
+totally uncontrollable
+track
+tract
+trail
+train
+trap
+treat
+treatment instead
+treatment there
+treatment unfortunately
+trick
+trickle
+trigger
+trivial
+trouble
+try
+tube
+turn
+turn 30
+twist
+typical
+uncomfortable
+under
+unexpectedly
+unfortunately
+unicorn
+unintentionally
+union
+unit
+unpaid
+unpleasant
+unrecognized
+up
+upset
+upside
+upvote
+usa
+use
+useful thing
+usually
+usually taste
+velociraptor
+verbatim
+very
+veteran
+video
+visibility
+visit
+waitlist
+washington university
+way bad
+website
+week
+week post
+weight
+weird gas
+welcoming
+who've
+whole issue
+whose
+wiki
+woman
+work
+worse
+worthy
+would affect
+would burp
+would help
+x
+y'all
+year
+yes
+young person
+yourself
+zealand
+zombie
+
+Unique False Negatives (40):
+avoid aggressor
+awake version
+be relaxed
+brutal hiccup
+crazy tight
+croaky club
+diagnostic step
+dietary adjustment
+dietary consideration
+dietary intolerance
+do exercise
+dysphagia issue
+eat probiotics
+esophagus straight
+fast
+feel unrecognized
+fennel seed
+gagg
+health psychologist
+hot compress
+in office
+massage throat
+mess up
+mucusy feel
+no anesthesia
+no burper
+non burp
+patient questionnaire
+pop
+quick jog
+salty snack
+scared
+sleepy
+specific treatment
+star jump
+teach yourself
+tight
+under anesthesia
+wear off
+worth it
