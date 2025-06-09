@@ -1,0 +1,215 @@
+Expansion JSON: word2vec_expansion/word2vec_06_06_20_49/expansions_word2vec_cbow_0607_1751.json
+Filtered terms to n-grams in [1, 2]
+=== Evaluation Across 178 Documents ===
+Total terms evaluated: 744218
+TP: 546, FP: 376, TN: 743168, FN: 128
+Precision: 0.592
+Recall:    0.810
+Accuracy:  0.999
+
+Unique False Positives (114):
+aim
+appeal
+application
+approach
+approve
+appt
+area
+aspect
+assess
+associate
+awake
+bad
+colleague
+comfort
+comment
+consider
+constant
+content
+contort
+contract
+cop
+deal
+describe
+drink practice
+find
+fizzy
+goal
+happen
+head
+hernia
+hiatal hernia
+information
+initial
+input
+involuntarily
+it
+learn
+les
+location
+low
+meet
+method
+mod
+moderator
+move
+national
+need
+notice
+occur
+office
+official
+ohip
+oil supplement
+option
+outcome
+pandemic
+permanent
+permanently
+physical
+position
+post
+potential
+previous
+problem
+product
+progress
+push
+quebec
+questionnaire
+recognize
+region
+relax
+release
+request
+resource
+response
+responsible
+result
+review
+round
+schedule
+search
+seek
+self
+service
+situation
+sometimes
+sticky
+study
+submit
+success
+suggestion
+team
+themselves
+thing
+think
+tip
+title
+train
+treat
+trick
+trouble
+tube
+turn
+twist
+typical
+union
+unit
+upset
+usa
+visit
+website
+who've
+yourself
+
+Unique False Negatives (89):
+10 unit
+100
+activate charcoal
+annoying
+avoid aggressor
+awake version
+awful
+bastian' laryngopedia
+be relaxed
+brutal hiccup
+chronic heartburn
+crazy tight
+croaky club
+deep breath
+demographics
+demon burp
+diagnostic step
+diagnostic tool
+dietary adjustment
+dietary change
+dietary consideration
+dietary intolerance
+digestive issue
+digestive tract
+do exercise
+dramamine
+dysphagia issue
+eat probiotics
+eat slowly
+eat small
+elimination diet
+embarrassing
+ent issue
+esophagus straight
+excessive bloating
+fast
+feel unrecognized
+fennel seed
+first round
+flustered
+fodmap
+food issue
+general practitioner
+gurgle come
+health psychologist
+help
+horrible heartburn
+hot compress
+hot shower
+lactose intolerant
+little hiccup
+massage throat
+mess up
+mucus feel
+mucusy feel
+no anesthesia
+no burper
+non burp
+non burper
+patient questionnaire
+phlegmy
+pop
+pseudo burp
+quick jog
+ranitidine
+release gas
+relieve gas
+research
+round 2
+round 3
+salty snack
+scared
+second round
+side effect
+sleepy
+sore
+specific treatment
+star jump
+swallow issue
+teach yourself
+tight
+trouble swallow
+ues
+unbearable
+uncontrollable burp
+under anesthesia
+wear off
+weird sound
+worth it

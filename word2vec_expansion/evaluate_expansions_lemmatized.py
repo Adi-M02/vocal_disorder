@@ -110,16 +110,28 @@ def evaluate_terms_performance(
 
     for idx, doc in enumerate(docs, start=1):
         tokens = TOK_FN(doc)
-        doc_str = " " + " ".join(tokens) + " "
-
-        manual_found = {
-            term for term, n in manual_norm.items()
-            if n and f" {n} " in doc_str
-        }
-        expansion_found = {
-            term for term, n in expansion_norm.items()
-            if n and f" {n} " in doc_str
-        }
+        # Build a map from term → list of start-indices where it appears
+        positions = {}
+        for term in universe:
+            term_toks = term.split()
+            L = len(term_toks)
+            for i in range(len(tokens)-L+1):
+                if tokens[i:i+L] == term_toks:
+                    positions.setdefault(term, []).append((i, i+L))
+        # Now pick non-overlapping matches:
+        used = [False]*len(tokens)
+        final_matched = set()
+        # Sort by longest first
+        for term in sorted(positions, key=lambda t: -len(t.split())):
+            for (start, end) in positions[term]:
+                if not any(used[start:end]):
+                    final_matched.add(term)
+                    for j in range(start, end):
+                        used[j] = True
+                    break
+                
+        manual_found    = {t for t in final_matched if t in manual_norm}
+        expansion_found = {t for t in final_matched if t in expansion_norm}
 
         for term in universe:
             m = term in manual_found
