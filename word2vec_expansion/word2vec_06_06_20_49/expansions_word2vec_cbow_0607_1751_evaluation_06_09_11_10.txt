@@ -1,0 +1,376 @@
+Expansion JSON: word2vec_expansion/word2vec_06_06_20_49/expansions_word2vec_cbow_0607_1751.json
+Filtered terms to n-grams in [1, 2]
+=== Evaluation Across 178 Documents ===
+Total terms evaluated: 744218
+TP: 357, FP: 713, TN: 743021, FN: 127
+Precision: 0.334
+Recall:    0.738
+Accuracy:  0.999
+
+Unique False Positives (274):
+ab
+abdominal
+ache
+acid
+action
+activate
+adjustment
+aim
+air
+anaesthesia
+anesthesia procedure
+anesthetic
+appeal
+application
+approach
+approve
+appt
+area
+aspect
+assess
+associate
+awake
+bad
+barium
+beer
+bloating discomfort
+body
+breath
+burp cough
+burp exercise
+burp symptom
+burp syndrome
+bvi
+canadian
+canadian doctor
+cancer
+case
+charcoal
+chronic
+classic
+classic symptom
+coffee
+colleague
+comfort
+comment
+complication
+concern
+consider
+consider self
+constant
+content
+contort
+contract
+cop
+cost
+cough burp
+country
+cover
+cpd
+creamer
+cricopharyngeal
+cricopharyngeal dysfunction
+croak
+cure
+deal
+defective
+department
+describe
+description
+detect
+develop
+diagnostic
+difficulty
+difficulty swallow
+digestive
+discussion
+doc
+doctor appointment
+doctor however
+drink
+drink carbonated
+drink practice
+drink tea
+drug
+eat
+effect
+embarrassment
+emetophobia etc.
+eoe
+escape
+esophageal
+esophageal cancer
+esophageal motility
+european
+evidence
+excessive
+experience
+fart
+feedback
+feel
+fennel
+find
+fizzy
+flare up
+flatulence
+force
+frequent
+ginger
+goal
+gut
+happen
+head
+hernia
+hernia fix
+hernia repair
+hernia surgery
+hiatal
+hiatal hernia
+hospital
+inability
+information
+initial
+input
+insurance
+insurance cover
+internet
+involuntarily
+issue
+it
+jaw
+leak
+learn
+les
+literature
+location
+loud
+louder
+low
+management
+manometry
+map
+massage
+md
+medication
+meet
+method
+milk
+mint
+mod
+moderator
+motility
+mouth
+move
+movement
+myotomy
+national
+neck
+neck surgery
+need
+needle
+noburp
+notice
+occur
+office
+official
+ohip
+oil
+oil supplement
+ontario
+op
+option
+outcome
+painful
+pandemic
+patient
+permanent
+permanently
+physical
+position
+post
+potential
+ppi
+prescription
+press
+pressure
+previous
+primary
+probiotics
+problem
+product
+progress
+pseudo
+publication
+puke
+push
+quebec
+questionnaire
+receive
+receive treatment
+recognize
+reflex
+region
+relax
+release
+repair
+request
+resource
+response
+responsible
+result
+retrograde
+retrograde cricopharyngeal
+review
+round
+schedule
+search
+seek
+self
+self harm
+self treatment
+service
+shot
+situation
+soda
+sometimes
+soreness
+sound
+sticky
+strengthen
+stretch
+stuck
+study
+submit
+success
+suggestion
+swallow difficulty
+syndrome
+taste
+tea
+teach
+team
+test
+themselves
+thing
+think
+tip
+title
+tool
+torso
+tract
+train
+trap
+treat
+treatment instead
+treatment unfortunately
+trick
+trigger
+trouble
+tube
+turn
+twist
+typical
+uncomfortable
+union
+unit
+upset
+usa
+visit
+waitlist
+website
+who've
+wiki
+worse
+yourself
+
+Unique False Negatives (90):
+10 unit
+100
+activate charcoal
+annoying
+avoid aggressor
+awake version
+awful
+be relaxed
+brutal hiccup
+chronic heartburn
+crazy tight
+croaky club
+deep breath
+demographics
+demon burp
+diagnostic step
+diagnostic tool
+dietary adjustment
+dietary change
+dietary consideration
+dietary intolerance
+digestive issue
+digestive tract
+do exercise
+dramamine
+dysphagia issue
+eat probiotics
+eat slowly
+eat small
+elimination diet
+embarrassing
+ent issue
+esophagus straight
+excessive bloating
+fast
+feel unrecognized
+fennel seed
+first round
+flustered
+fodmap
+food issue
+gagg
+general practitioner
+gurgle come
+health psychologist
+help
+horrible heartburn
+hot compress
+hot shower
+in office
+lactose intolerant
+little hiccup
+massage throat
+mess up
+mucus feel
+mucusy feel
+no anesthesia
+no burper
+non burp
+non burper
+patient questionnaire
+phlegmy
+pop
+pseudo burp
+quick jog
+ranitidine
+release gas
+relieve gas
+research
+round 2
+round 3
+salty snack
+scared
+second round
+side effect
+sleepy
+sore
+specific treatment
+star jump
+swallow issue
+teach yourself
+tense
+tight
+trouble swallow
+unbearable
+uncontrollable burp
+under anesthesia
+wear off
+weird sound
+worth it
