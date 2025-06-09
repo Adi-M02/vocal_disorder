@@ -2,7 +2,7 @@
 Expand categories using Word2Vec triplet vectors and frequency filtering
 with optional lemmatization and KNN, fully vectorized for speed.
 
-usage: python word2vec_expansion/word2vec_expansion_spellcheck.py \
+usage: python word2vec_expansion/word2vec_expansion_lemmatized.py \
        --terms <path> \
        --model_dir <dir> \
        [--sim_threshold <float>] \
@@ -126,7 +126,22 @@ def main():
     parser.add_argument('--lookup',      default='testing/lemma_lookup.json')
     parser.add_argument('--topk',        type=int, default=None,
                         help="Use top-k KNN instead of cosine threshold")
+    parser.add_argument('--manual_dir', help="if set automatically evaluate the expansion against manual terms in this dir")
+    parser.add_argument('--eval_ngram', type=str, default="<=2")
     args = parser.parse_args()
+
+    # ─── Prepare output folder ─────────────────────────────────────────────
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    timestamp  = datetime.now().strftime("%m_%d_%H_%M")
+    out_root   = os.path.join(args.model_dir, f"expansion_{timestamp}")
+    os.makedirs(out_root, exist_ok=True)
+
+    # Write run arguments to info.json
+    run_info = vars(args)
+    info_path = os.path.join(out_root, "info.json")
+    with open(info_path, 'w', encoding='utf-8') as f_info:
+        json.dump(run_info, f_info, indent=2)
+    print(f"→ Run info written to {info_path}")
 
     # pick tokenizer + lemma lookup
     TOK_FN = clean_and_tokenize_spellcheck if args.spellcheck else clean_and_tokenize
@@ -213,12 +228,44 @@ def main():
             print(f"{model_file} | {cat}: +{len(ex)} expansions (>= {mhits}/{q})")
             terms_map[cat].extend(ex)
 
-        out_name = f"expansions_{os.path.splitext(model_file)[0]}_" \
-                   f"{datetime.now().strftime('%m%d_%H%M')}.json"
-        out_path = os.path.join(args.model_dir, out_name)
+        # write expansion JSON into our run folder
+        model_type = "cbow" if "cbow" in model_file.lower() else "skipgram"
+        out_name = f"expansions_{model_type}_{timestamp}.json"
+        out_path = os.path.join(out_root, out_name)
         with open(out_path, 'w', encoding='utf-8') as fw:
             json.dump(terms_map, fw, indent=2)
         print(f"Wrote expansions to {out_path}")
+        if args.manual_dir:
+            # import
+            from evaluate_expansions_lemmatized import evaluate_terms_performance, load_user_list, parse_ngram_filter
+
+            # locate manual_terms.txt and users.txt
+            manual_terms_path = os.path.join(args.manual_dir, "manual_terms.txt")
+            users_path        = os.path.join(args.manual_dir, "users.txt")
+            ngram_filter = parse_ngram_filter(args.eval_ngram)
+            if not os.path.isfile(manual_terms_path):
+                sys.exit(f"ERROR: manual_terms.txt not found in {args.manual_dir}")
+            if not os.path.isfile(users_path):
+                sys.exit(f"ERROR: users.txt not found in {args.manual_dir}")
+
+            # load users and fetch docs
+            users = load_user_list(users_path)
+            documents = return_documents(
+                db_name="reddit",
+                collection_name="noburp_all",
+                filter_subreddits=["noburp"],
+                filter_users=users
+            )
+            print("Fetched %d docs for evaluation", len(documents))
+
+            # run evaluation
+            evaluate_terms_performance(
+                docs=documents,
+                manual_terms_path=manual_terms_path,
+                expansion_terms_path=out_path,
+                ngram_filter=ngram_filter, 
+                tok_fn=TOK_FN
+            )
 
     print("\nDone.")
 

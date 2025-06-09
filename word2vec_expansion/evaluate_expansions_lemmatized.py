@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """
 evaluate the performance of word2vec expansion terms on manual text
 usage:
@@ -30,6 +29,7 @@ except ImportError:
 from query_mongo import return_documents
 import datetime
 
+
 def parse_ngram_filter(arg: Optional[str]) -> Optional[Tuple[int, int]]:
     """
     Parse the --ngram argument into a (min_ngram, max_ngram) pair.
@@ -46,7 +46,12 @@ def parse_ngram_filter(arg: Optional[str]) -> Optional[Tuple[int, int]]:
         n = int(arg)
         return (n, n)
 
-def load_expansion_terms(path: str, ngram_filter: Optional[Tuple[int,int]]) -> List[str]:
+
+def load_expansion_terms(
+    path: str,
+    ngram_filter: Optional[Tuple[int,int]],
+    tok_fn
+) -> List[str]:
     """
     Load and tokenize expansion terms, filtering by ngram_filter if provided.
     """
@@ -57,7 +62,7 @@ def load_expansion_terms(path: str, ngram_filter: Optional[Tuple[int,int]]) -> L
     for value in data.values():
         candidates = value if isinstance(value, list) else [value]
         for term in candidates:
-            tokens = TOK_FN(term)
+            tokens = tok_fn(term)
             if not tokens:
                 continue
             L = len(tokens)
@@ -65,7 +70,12 @@ def load_expansion_terms(path: str, ngram_filter: Optional[Tuple[int,int]]) -> L
                 terms.append(" ".join(tokens))
     return terms
 
-def load_manual_terms(path: str, ngram_filter: Optional[Tuple[int,int]]) -> List[str]:
+
+def load_manual_terms(
+    path: str,
+    ngram_filter: Optional[Tuple[int,int]],
+    tok_fn
+) -> List[str]:
     """
     Load comma-separated manual terms, tokenize and filter by ngram_filter.
     """
@@ -75,7 +85,7 @@ def load_manual_terms(path: str, ngram_filter: Optional[Tuple[int,int]]) -> List
 
     cleaned: List[str] = []
     for term in candidates:
-        tokens = TOK_FN(term)
+        tokens = tok_fn(term)
         if not tokens:
             continue
         L = len(tokens)
@@ -83,34 +93,36 @@ def load_manual_terms(path: str, ngram_filter: Optional[Tuple[int,int]]) -> List
             cleaned.append(" ".join(tokens))
     return cleaned
 
+
 def load_user_list(path: str) -> List[str]:
     with open(path, 'r', encoding='utf-8') as f:
         raw = f.read().lower()
     return [u.strip() for u in raw.split(",") if u.strip()]
 
+
 def evaluate_terms_performance(
     docs: List[str],
     manual_terms_path: str,
     expansion_terms_path: str,
-    ngram_filter: Optional[Tuple[int,int]]
+    ngram_filter: Optional[Tuple[int,int]],
+    tok_fn
 ) -> None:
     def norm(term: str) -> str:
-        return " ".join(TOK_FN(term))
+        return " ".join(tok_fn(term))
 
-    manual_terms = load_manual_terms(manual_terms_path, ngram_filter)
-    expansion_terms = load_expansion_terms(expansion_terms_path, ngram_filter)
+    manual_terms    = load_manual_terms(manual_terms_path, ngram_filter, tok_fn)
+    expansion_terms = load_expansion_terms(expansion_terms_path, ngram_filter, tok_fn)
 
-    manual_norm = {t: norm(t) for t in manual_terms}
+    manual_norm    = {t: norm(t) for t in manual_terms}
     expansion_norm = {t: norm(t) for t in expansion_terms}
-    universe = set(manual_terms) | set(expansion_terms)
+    universe       = set(manual_terms) | set(expansion_terms)
 
     TP = FP = TN = FN = 0
     fp_terms = set()
     fn_terms = set()
 
-    for idx, doc in enumerate(docs, start=1):
-        tokens = TOK_FN(doc)
-        # Build a map from term → list of start-indices where it appears
+    for doc in docs:
+        tokens = tok_fn(doc)
         positions = {}
         for term in universe:
             term_toks = term.split()
@@ -118,20 +130,19 @@ def evaluate_terms_performance(
             for i in range(len(tokens)-L+1):
                 if tokens[i:i+L] == term_toks:
                     positions.setdefault(term, []).append((i, i+L))
-        # Now pick non-overlapping matches:
+
         used = [False]*len(tokens)
-        final_matched = set()
-        # Sort by longest first
+        matched = set()
         for term in sorted(positions, key=lambda t: -len(t.split())):
             for (start, end) in positions[term]:
                 if not any(used[start:end]):
-                    final_matched.add(term)
+                    matched.add(term)
                     for j in range(start, end):
                         used[j] = True
                     break
-                
-        manual_found    = {t for t in final_matched if t in manual_norm}
-        expansion_found = {t for t in final_matched if t in expansion_norm}
+
+        manual_found    = matched & set(manual_norm)
+        expansion_found = matched & set(expansion_norm)
 
         for term in universe:
             m = term in manual_found
@@ -147,7 +158,7 @@ def evaluate_terms_performance(
             else:
                 TN += 1
 
-    total = TP + FP + TN + FN
+    total     = TP + FP + TN + FN
     precision = TP / (TP + FP) if (TP + FP) else 0.0
     recall    = TP / (TP + FN) if (TP + FN) else 0.0
     accuracy  = (TP + TN) / total if total else 0.0
@@ -168,7 +179,6 @@ def evaluate_terms_performance(
         f.write(f"Precision: {precision:.3f}\n")
         f.write(f"Recall:    {recall:.3f}\n")
         f.write(f"Accuracy:  {accuracy:.3f}\n\n")
-
         if fp_terms:
             f.write(f"Unique False Positives ({len(fp_terms)}):\n")
             f.write("\n".join(sorted(fp_terms)) + "\n\n")
@@ -178,6 +188,7 @@ def evaluate_terms_performance(
 
     print(f"\nResults -- Precision: {precision:.3f}, Recall: {recall:.3f}, Accuracy: {accuracy:.3f}")
     print(f"Details written to {out_path}")
+
 
 def main():
     parser = argparse.ArgumentParser(
@@ -189,8 +200,8 @@ def main():
         help="Directory with manual_terms.txt and users.txt")
     parser.add_argument("--spellcheck", action="store_true",
         help="Use the spell-checking tokenizer.")
-    parser.add_argument("--lookup", type=str, default='testing/lemma_lookup.json',
-        help="Path to lemma-lookup JSON; if set, lemmatize all tokens via this mapping.")
+    parser.add_argument("--lookup", type=str, default=None,
+        help="Path to lemma-lookup JSON; if set, lemmatize tokens via this mapping.")
     parser.add_argument("--ngram", type=str, default=None,
         help="Filter by n-gram length. Use 'N' for exactly N or '<=N' for up to N.")
 
@@ -199,35 +210,32 @@ def main():
     if args.spellcheck and clean_and_tokenize_spellcheck is None:
         parser.error("Spell-checking tokenizer requested but not available.")
 
-    # set base tokenizer
-    global TOK_FN
-    TOK_FN = clean_and_tokenize_spellcheck if args.spellcheck else clean_and_tokenize
-    if args.spellcheck:
-        print("→ Using spell-checking tokenizer.")
-    else:
-        print("→ Using vanilla tokenizer.")
+    # choose base tokenizer
+    tok_fn = clean_and_tokenize_spellcheck if args.spellcheck else clean_and_tokenize
+    print(f"→ Using {'spell-checking' if args.spellcheck else 'vanilla'} tokenizer")
 
-    # apply lemma lookup if requested
+    # optionally wrap with lemma lookup
     if args.lookup:
         with open(args.lookup, 'r', encoding='utf-8') as f:
             lemma_map = json.load(f)
-        orig = TOK_FN
+        base_fn = tok_fn
         def tok_lemmatize(text: str):
-            return [ lemma_map.get(tok, tok) for tok in orig(text) ]
-        TOK_FN = tok_lemmatize
-        print(f"→ Applying lemmatization via lookup: {args.lookup}")
+            return [lemma_map.get(tok, tok) for tok in base_fn(text)]
+        tok_fn = tok_lemmatize
+        print(f"→ Applying lemma lookup from {args.lookup}")
 
     ngram_filter = parse_ngram_filter(args.ngram)
 
-    # load users
+    # verify manual_dir
     manual_terms_path = os.path.join(args.manual_dir, "manual_terms.txt")
     users_path        = os.path.join(args.manual_dir, "users.txt")
     for p in (manual_terms_path, users_path):
         if not os.path.isfile(p):
             parser.error(f"{p} not found.")
+
     users = load_user_list(users_path)
     if not users:
-        parser.error("No users in users.txt")
+        parser.error("No users listed in users.txt")
 
     docs = return_documents(
         db_name="reddit",
@@ -238,8 +246,13 @@ def main():
     logging.info("Fetched %d documents for %d users", len(docs), len(users))
 
     evaluate_terms_performance(
-        docs, manual_terms_path, args.expansion_path, ngram_filter
+        docs,
+        manual_terms_path,
+        args.expansion_path,
+        ngram_filter,
+        tok_fn
     )
+
 
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO)
