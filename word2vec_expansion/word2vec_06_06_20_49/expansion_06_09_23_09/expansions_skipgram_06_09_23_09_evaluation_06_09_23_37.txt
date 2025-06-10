@@ -1,0 +1,233 @@
+Expansion JSON: word2vec_expansion/word2vec_06_06_20_49/expansion_06_09_23_09/expansions_skipgram_06_09_23_09.json
+Filtered terms to n-grams in [1, 2]
+=== Evaluation Across 178 Documents ===
+Total terms evaluated: 694200
+TP: 365, FP: 162, TN: 693449, FN: 224
+Precision: 0.693
+Recall:    0.620
+Accuracy:  0.999
+
+Unique False Positives (77):
+approach
+brd
+canadian
+care provider
+citizen
+comment
+contort
+deal
+dementia
+describe
+diagnose
+difficulty
+doctor he
+european
+exhibit
+feeling
+finding
+group
+happen
+head
+hernia
+hiatal hernia
+inherent
+initial
+institution
+issue
+journalist
+learn
+les
+location
+map
+national
+objective
+office
+official
+ohip
+oil
+ontario
+permanent
+practitioner
+problem
+procedure dr
+product
+prohibitive
+quebec
+relax
+repair
+request
+result
+round
+search
+self
+service
+situation
+sticky
+struggle
+study
+suggestion
+swallow
+swallow tests
+symptom
+themselves
+thing
+thought
+tiredness
+train
+treat
+trick
+twist
+unit
+units
+up
+usa
+visit
+vomit
+week
+working
+
+Unique False Negatives (144):
+10 units
+100
+abdominal
+abs
+activated charcoal
+air puking
+annoying
+avoiding aggressors
+awake version
+awful
+bastian's laryngopedia
+be relaxed
+bloating discomfort
+botox prescription
+breath
+brutal hiccups
+burp cough
+burp syndrome
+burps
+carbonated drinks
+chronic heartburn
+coughing
+cover
+crazy tight
+creamer
+croaky club
+crystallized ginger
+deep breaths
+demographics
+demon burps
+diagnosed
+diagnostic step
+dietary adjustments
+dietary changes
+dietary considerations
+dietary intolerances
+digestive
+digestive issues
+digestive tract
+doctors
+dramamine
+drink tea
+drinking soda
+dysphagia issues
+eating probiotics
+eating slowly
+eating smaller
+elimination diet
+embarrassing
+ent issues
+escape
+esophagus dilates
+esophagus straight
+excessive bloating
+fasting
+feel
+feel unrecognized
+fennel seeds
+first round
+flare up
+flustered
+fodmap
+food issues
+force
+frequent
+gag reflex
+gagging
+general practitioner
+gurgly
+health psychologist
+helped
+horrible heartburn
+hot compresses
+hot showers
+hypermobile
+in office
+inability
+issues
+lactose intolerant
+little hiccups
+loud
+louder
+massaging throat
+md
+messed up
+microburps
+mucus feeling
+mucusy feeling
+muscles
+neck exercises
+neck surgery
+needle
+no burpers
+non burper
+non burping
+op
+painful
+patient questionnaire
+phlegmy
+pop
+practitioners
+press
+pseudo burps
+publication
+quick jog
+release gas
+relieve gas
+research
+round 2
+round 3
+salty snacks
+scared
+second round
+side effects
+sleepy
+sore
+soreness
+sound
+specific treatment
+star jumps
+supplements
+swallowing
+swallowing issues
+teaching yourself
+tense muscle
+throats
+tight
+trapped air
+trapped gas
+treatment instead
+trouble swallowing
+tums
+ues
+unbearable
+uncomfortable
+uncontrollable
+uncontrollable burping
+under anesthesia
+vomiting
+vomiting air
+waitlist
+weird sounds
+wiki
+worth it
