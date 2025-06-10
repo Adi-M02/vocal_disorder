@@ -311,7 +311,7 @@ def plot_and_save(df: pd.DataFrame, title: str, out_html: str):
 if __name__ == "__main__":
     # === Configuration ===
     TERMS_PATH     = 'rcpd_terms_6_5.json'
-    MODEL_DIR      = "word2vec_expansion/word2vec_06_04_20_11"
+    MODEL_DIR      = "word2vec_expansion/word2vec_06_06_20_49"
     ts             = datetime.now().strftime("%m_%d_%H_%M")
     viz_dir        = os.path.join(MODEL_DIR, f"embedding_visualization_{ts}")
     os.makedirs(viz_dir, exist_ok=True)

@@ -1,0 +1,11 @@
+{
+  "terms": "rcpd_terms_6_5.json",
+  "model_dir": "word2vec_expansion/word2vec_06_06_20_49",
+  "sim_threshold": 0.4,
+  "freq_threshold": 0.03,
+  "spellcheck": true,
+  "lookup": "testing/lemma_lookup.json",
+  "topk": 40,
+  "manual_dir": "vocabulary_evaluation/updated_manual_terms_6_3",
+  "eval_ngram": "<=2"
+}

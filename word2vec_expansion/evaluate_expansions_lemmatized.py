@@ -162,6 +162,7 @@ def evaluate_terms_performance(
     precision = TP / (TP + FP) if (TP + FP) else 0.0
     recall    = TP / (TP + FN) if (TP + FN) else 0.0
     accuracy  = (TP + TN) / total if total else 0.0
+    f1        = 2 * precision * recall / (precision + recall) if (precision + recall) else 0.0
 
     base, _ = os.path.splitext(expansion_terms_path)
     ts = datetime.datetime.now().strftime("%m_%d_%H_%M")
@@ -178,6 +179,7 @@ def evaluate_terms_performance(
         f.write(f"TP: {TP}, FP: {FP}, TN: {TN}, FN: {FN}\n")
         f.write(f"Precision: {precision:.3f}\n")
         f.write(f"Recall:    {recall:.3f}\n")
+        f.write(f"F1 Score:  {f1:.3f}\n")
         f.write(f"Accuracy:  {accuracy:.3f}\n\n")
         if fp_terms:
             f.write(f"Unique False Positives ({len(fp_terms)}):\n")
@@ -186,7 +188,7 @@ def evaluate_terms_performance(
             f.write(f"Unique False Negatives ({len(fn_terms)}):\n")
             f.write("\n".join(sorted(fn_terms)) + "\n")
 
-    print(f"\nResults -- Precision: {precision:.3f}, Recall: {recall:.3f}, Accuracy: {accuracy:.3f}")
+    print(f"\nResults -- Precision: {precision:.3f}, Recall: {recall:.3f}, F1: {f1:.3f}, Accuracy: {accuracy:.3f}")
     print(f"Details written to {out_path}")
 
 
