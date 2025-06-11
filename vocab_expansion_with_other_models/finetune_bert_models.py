@@ -18,9 +18,10 @@ from query_mongo import return_documents
 
 # List of (short name, model checkpoint)
 MODELS = [
-    ("bert-base",      "bert-base-uncased"),
+    ("moderBERT-base", "answerdotai/ModernBERT-base")
+    # ("bert-base",      "bert-base-uncased"),
     # ("bertweet",      "vinai/bertweet-base"),
-    ("clinical-bert",  "emilyalsentzer/Bio_ClinicalBERT"),
+    # ("clinical-bert",  "emilyalsentzer/Bio_ClinicalBERT"),
     # ("pubmed-bert",    "microsoft/BiomedNLP-BiomedBERT-base-uncased-abstract-fulltext"),
 ]
 
@@ -34,9 +35,9 @@ def fine_tune_mlm(
     model_name: str,
     dataset: Dataset,
     output_dir: str,
-    epochs: int = 25,
-    batch_size: int = 32,
-    max_length: int = 128,
+    epochs: int = 4,
+    batch_size: int = 8,
+    max_length: int = 8192,
     mlm_probability: float = 0.15
 ):
     device = torch.device(
@@ -69,6 +70,9 @@ def fine_tune_mlm(
         )
 
     splits = dataset.train_test_split(test_size=0.1, seed=42)
+    # Shuffle both train and test splits with seed 42
+    splits["train"] = splits["train"].shuffle(seed=42)
+    splits["test"] = splits["test"].shuffle(seed=42)
     tokenized = DatasetDict({
         "train": splits["train"].map(
             tokenize_fn,
@@ -110,10 +114,14 @@ def fine_tune_mlm(
         fp16=has_cuda,
         dataloader_num_workers=4,
         learning_rate=3e-5,
+        lr_scheduler_type="linear",
+        warmup_steps=1000,
+        load_best_model_at_end=True,
         weight_decay=0.01,
         eval_strategy="epoch",
         save_strategy="epoch",
-        logging_strategy="epoch",
+        logging_strategy="steps",
+        logging_steps=5000,
         save_total_limit=2,
         logging_dir=os.path.join(output_dir, "logs"),
         report_to="none",
