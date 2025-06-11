@@ -96,7 +96,7 @@ def main():
     logging(f"Tokenized & lemmatized {len(cleaned_docs)} documents")
 
     # 4) Load & lemmatize custom terms
-    custom_terms_map = load_terms("rcpd_terms.json")
+    custom_terms_map = load_terms("rcpd_terms_6_5.json")
     custom_token_lists = []
     for category, terms in custom_terms_map.items():
         for term in terms:
