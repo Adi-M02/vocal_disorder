@@ -10,8 +10,8 @@ def clean_and_tokenize(text: str) -> list[str]:
         re.I
     )
     url_pattern = re.compile(r'(?:https?://|www\.|[A-Za-z0-9\-]+\.(?:com|org|io|be)/)\S+', re.I)
-    # remove everything except letters, numbers, apostrophe, hyphen, slash, or space
-    junk_pattern = re.compile(r"[^A-Za-z0-9'/\- ]+")
+    # remove everything except letters, numbers, hyphen, slash, or space
+    junk_pattern = re.compile(r"[^A-Za-z0-9/\- ]+")
     """
     Apply URL removal, slash preservation for r/ and u/, junk stripping, then extract tokens.
     """
