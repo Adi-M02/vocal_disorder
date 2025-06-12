@@ -22,6 +22,9 @@ from transformers import AutoTokenizer, AutoModel
 sys.path.append('../vocal_disorder')
 from tokenizer import clean_and_tokenize
 
+import torch._dynamo
+torch._dynamo.disable()
+
 # ————————————————————————————————————————————————
 # 1) term loading (unchanged)
 def load_terms(path: str) -> dict[str, list[str]]:
@@ -186,25 +189,29 @@ def plot_and_save(df: pd.DataFrame, title: str, out_html: str):
 # ————————————————————————————————————————————————
 # 5) BERT embedder factory
 def bert_embedder(model_name_or_path: str):
+    device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     tok   = AutoTokenizer.from_pretrained(model_name_or_path)
     model = AutoModel.from_pretrained(model_name_or_path)
     model.eval()
+    model.to(device)
     def fn(term: str):
-        toks = tok(term, return_tensors='pt', truncation=True)
+        toks = tok(term, return_tensors='pt', truncation=True).to(device)
         with torch.no_grad():
             out = model(**toks, output_hidden_states=True)
-        h = out.hidden_states[-1].squeeze(0).mean(dim=0).numpy()
+        # move to CPU before converting to NumPy
+        h = out.hidden_states[-1].squeeze(0).mean(dim=0).detach().cpu().numpy()
         return h
     return fn
 
 # ————————————————————————————————————————————————
 if __name__ == "__main__":
     SELF_DIR   = os.path.dirname(os.path.abspath(__file__))
-    TERMS_PATH = 'rcpd_terms.json'
+    TERMS_PATH = 'rcpd_terms_6_5.json'
     terms_map  = load_terms(TERMS_PATH)
 
     MODELS = [
-        ("finetuned base BERT", lambda: bert_embedder('/local/disk2/not_backed_up/amukundan/research/vocal_disorder/vocab_expansion_with_other_models/finetuned_base_bert/bert-base')),
+        ('finetuned modernBERT', lambda: bert_embedder('vocab_expansion_with_other_models/finetuned_modernBERT-base_06_11_13_48')),
+        # ("finetuned base BERT", lambda: bert_embedder('/local/disk2/not_backed_up/amukundan/research/vocal_disorder/vocab_expansion_with_other_models/finetuned_base_bert/bert-base')),
         # ("BERT-base",      lambda: bert_embedder('bert-base-uncased')),
         # ("BERTweet",       lambda: bert_embedder('vinai/bertweet-base')),
         # ("ClinicalBERT",   lambda: bert_embedder('emilyalsentzer/Bio_ClinicalBERT')),

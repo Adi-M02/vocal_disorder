@@ -1,0 +1,373 @@
+Expansion JSON: word2vec_expansion/word2vec_06_12_08_30/grid_0612_1037/word2vec_cbow_k120_f1/expansions.json
+Filtered terms to n-grams in [1, 2]
+=== Evaluation Across 178 Documents ===
+Total terms evaluated: 1243152
+TP: 436, FP: 876, TN: 1241692, FN: 148
+Precision: 0.332
+Recall:    0.747
+F1 Score:  0.460
+Accuracy:  0.999
+
+Unique False Positives (261):
+000
+16th
+200
+2020
+273 8255
+60
+789
+800
+account
+action
+active
+actually
+address
+advice
+age
+agree
+aim
+american
+answer
+application
+approach doctor
+appt
+asap
+aspect
+assess
+attempt
+australia
+available
+awake
+bad
+be
+botox tomorrow
+bvi
+canada
+canadian
+carb
+care provider
+citizen
+classic
+clear
+co
+comment
+compare
+conclusion
+consent
+consider
+constant reflux
+constantly
+contact
+content
+continue
+contort
+contract
+contribute
+conversation
+correct
+cough burp
+current
+damage
+dc
+deal
+december
+demon
+describe
+detail
+diagnose
+diet
+difficulty
+direct
+discuss
+dislodge
+effect
+effective
+effectiveness
+email
+encourage
+european
+feeling
+final
+finding
+fish oil
+fix
+food
+forum
+frequently
+gas release
+general
+goal
+greatly
+happen
+have
+he
+head
+hear
+here
+hernia
+hiatal hernia
+holiday
+hurt
+identify
+incorporate
+info
+information
+initial
+input
+inside
+insight
+involuntarily
+issue
+it
+italy
+iu
+july
+kid
+laryngopedia
+learn
+les
+life
+lifelong
+list
+location
+look
+map
+match
+medical
+medical doctor
+meet
+monday
+move
+national
+need
+news
+norm
+nose
+notice
+objective
+october
+office
+official
+ohip
+ongoing
+ontario
+open
+opportunity
+option
+originally
+perform
+permanent
+permanently
+personal
+perspective
+phone
+physical
+plan
+post
+potential
+practitioner
+pregnancy
+previous
+problem
+procedure dr
+product
+professional
+progress
+prove
+publicly
+push
+quebec
+question
+questionnaire
+r/noburp
+read
+refer
+region
+regularly
+relate
+relax
+relaxed
+release
+relief
+repair
+reply
+request
+require
+reschedule
+responsible
+result
+review
+risk
+roll
+round
+route
+schedule surgery
+search
+second
+self
+service
+show
+situation
+sometimes
+source
+spiegel
+starter
+sticky
+struggle
+study
+sub
+submit
+subreddit
+success
+suddenly
+suggestion
+suspect
+swallow
+swallow tests
+symptom
+team
+temporarily
+test one
+the
+themselves
+thing
+thought
+thread
+tip
+title
+tomato
+topic
+toronto
+train
+treat
+trick
+trouble
+try
+tube
+twist
+typical
+uk
+unaware
+under
+union
+unit
+units
+unknown
+unpleasant
+up
+upset
+usa
+user
+usually
+video
+visit
+vomit
+wall
+way
+willing
+work
+worse
+you
+young
+yourself
+
+Unique False Negatives (99):
+10 units
+abs
+activated charcoal
+air puking
+annoying
+avoiding aggressors
+awake version
+awful
+be relaxed
+brutal hiccups
+burps
+carbonated drinks
+coughing
+crazy tight
+croaky club
+crystallized ginger
+deep breaths
+demographics
+demon burps
+diagnosed
+diagnostic step
+dietary adjustments
+dietary changes
+dietary considerations
+dietary intolerances
+digestive issues
+digestive tract
+doctors
+drinking soda
+dysphagia issues
+eating probiotics
+eating slowly
+eating smaller
+elimination diet
+embarrassing
+ent issues
+esophagus dilates
+esophagus straight
+fasting
+feel unrecognized
+fennel seeds
+first round
+flare up
+flustered
+food issues
+gagging
+health psychologist
+helped
+horrible heartburn
+hot compresses
+hot showers
+in office
+issues
+lactose intolerant
+little hiccups
+massaging throat
+messed up
+microburps
+mucus feeling
+mucusy feeling
+muscles
+neck exercises
+no anesthesia
+no burpers
+non burper
+non burping
+patient questionnaire
+phlegmy
+practitioners
+pseudo burps
+publication
+quick jog
+ranitidine
+relieve gas
+round 2
+round 3
+salty snacks
+scared
+second round
+side effects
+sleepy
+sore
+specific treatment
+star jumps
+supplements
+swallowing
+swallowing issues
+teaching yourself
+throats
+trapped air
+trapped gas
+trouble swallowing
+tums
+uncontrollable burping
+under anesthesia
+vomiting
+vomiting air
+weird sounds
+worth it
