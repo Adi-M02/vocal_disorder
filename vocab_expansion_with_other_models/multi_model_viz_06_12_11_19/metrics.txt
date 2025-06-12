@@ -1,0 +1,8 @@
+Embedding reduction metrics — run at 2025-06-12 11:19:38.335298
+
+[finetuned modernBERT] PCA 2D — explained: 99.15%, lost: 0.85%, recon MSE: 16.871872
+[finetuned modernBERT] PCA 3D — explained: 99.23%, lost: 0.77%, recon MSE: 15.300493
+[finetuned modernBERT] t-SNE 2D — KL: 0.0688, var ratio: 0.00%
+[finetuned modernBERT] t-SNE 3D — KL: 0.9872, var ratio: 1.32%
+[finetuned modernBERT] UMAP 2D — var ratio:   0.00%, trust:       0.9899, cont:        0.9902, dist_corr:   0.9122, silhouette:  -0.2336
+[finetuned modernBERT] UMAP 3D — var ratio:   0.00%, trust:       0.9906, cont:        0.9878, dist_corr:   0.8652, silhouette:  -0.2314

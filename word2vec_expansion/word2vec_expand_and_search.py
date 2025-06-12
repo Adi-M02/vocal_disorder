@@ -20,11 +20,24 @@ from spellchecker_folder.spellchecker import clean_and_tokenize_spellcheck
 from nltk.corpus import stopwords
 
 
-def load_terms(path: str) -> Dict[str, list[str]]:
+def load_terms(path: str, tok_fn=None, lookup_map=None) -> Dict[str, list[str]]:
     with open(path, 'r', encoding='utf-8') as f:
         data = json.load(f)
-    return {cat.replace('_',' '): [t.replace('_',' ') for t in terms]
-            for cat, terms in data.items()}
+    result = {}
+    for cat, terms in data.items():
+        cat_clean = cat.replace('_', ' ')
+        if tok_fn and lookup_map is not None:
+            cat_tokens = [lookup_map.get(t, t) for t in tok_fn(cat_clean)]
+            cat_clean = ' '.join(cat_tokens)
+            terms_clean = []
+            for t in terms:
+                t_clean = t.replace('_', ' ')
+                t_tokens = [lookup_map.get(tok, tok) for tok in tok_fn(t_clean)]
+                terms_clean.append(' '.join(t_tokens))
+        else:
+            terms_clean = [t.replace('_', ' ') for t in terms]
+        result[cat_clean] = terms_clean
+    return result
 
 
 def load_lookup(path: str) -> Dict[str, str]:
@@ -54,6 +67,7 @@ def embed_phrase(model: Word2Vec, phrase: str, tok_fn, lookup_map: dict) -> np.n
     tokens = [lookup_map.get(t,t) for t in tok_fn(phrase)]
     vecs = [model.wv[t] for t in tokens if t in model.wv.key_to_index]
     if not vecs:
+        print(f"Warning: No valid tokens found for phrase '{phrase}'")
         return None
     return np.mean(vecs, axis=0)
 
@@ -66,6 +80,7 @@ def compute_triplets(model: Word2Vec,
     for category, terms in terms_map.items():
         cat_vec = embed_phrase(model, category, tok_fn, lookup_map)
         if cat_vec is None:
+            print(f"Warning: Category '{category}' has no valid embedding.")
             continue
         for t1, t2 in itertools.combinations(terms, 2):
             v1 = embed_phrase(model, t1, tok_fn, lookup_map)
@@ -113,7 +128,7 @@ if __name__ == '__main__':
 
     tok_fn = clean_and_tokenize_spellcheck if args.spellcheck else clean_and_tokenize
     lookup = load_lookup(args.lookup)
-    orig_map = load_terms(args.terms)
+    orig_map = load_terms(args.terms, lookup_map=lookup)
 
     timestamp = datetime.now().strftime("%m%d_%H%M")
     out_root = args.out_root or os.path.join(args.model_dir, f"grid_{timestamp}")
