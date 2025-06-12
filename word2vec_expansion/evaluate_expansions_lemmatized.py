@@ -106,7 +106,7 @@ def evaluate_terms_performance(
     expansion_terms_path: str,
     ngram_filter: Optional[Tuple[int,int]],
     tok_fn
-) -> None:
+) -> dict:
     def norm(term: str) -> str:
         return " ".join(tok_fn(term))
 
@@ -190,6 +190,7 @@ def evaluate_terms_performance(
 
     print(f"\nResults -- Precision: {precision:.3f}, Recall: {recall:.3f}, F1: {f1:.3f}, Accuracy: {accuracy:.3f}")
     print(f"Details written to {out_path}")
+    return {"precision": precision, "recall": recall, "f1": f1, "accuracy": accuracy}
 
 
 def main():

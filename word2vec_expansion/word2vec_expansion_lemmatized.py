@@ -128,6 +128,7 @@ def main():
                         help="Use top-k KNN instead of cosine threshold")
     parser.add_argument('--manual_dir', help="if set automatically evaluate the expansion against manual terms in this dir")
     parser.add_argument('--eval_ngram', type=str, default="<=2")
+    parser.add_argument("--metrics_output", type=str, help="Path to a JSON file where all run‐metrics will be collected (appends each run).")
     args = parser.parse_args()
 
     # ─── Prepare output folder ─────────────────────────────────────────────
@@ -143,6 +144,9 @@ def main():
         json.dump(run_info, f_info, indent=2)
     print(f"→ Run info written to {info_path}")
 
+    # store metrics from evaluation 
+    all_metrics: List[dict] = []
+    
     # pick tokenizer + lemma lookup
     TOK_FN = clean_and_tokenize_spellcheck if args.spellcheck else clean_and_tokenize
     lookup_map = load_lookup(args.lookup)
@@ -258,15 +262,45 @@ def main():
             )
             print("Fetched %d docs for evaluation", len(documents))
 
-            # run evaluation
-            evaluate_terms_performance(
-                docs=documents,
-                manual_terms_path=manual_terms_path,
-                expansion_terms_path=out_path,
-                ngram_filter=ngram_filter, 
-                tok_fn=TOK_FN
-            )
-
+            # optional evaluation & metrics capture
+            if args.manual_dir:
+                from evaluate_expansions_lemmatized import (
+                    evaluate_terms_performance,
+                    load_user_list,
+                    parse_ngram_filter
+                )
+                manual_terms_path = os.path.join(args.manual_dir, "manual_terms.txt")
+                users_path        = os.path.join(args.manual_dir, "users.txt")
+                ngram_filter      = parse_ngram_filter(args.eval_ngram)
+                users = load_user_list(users_path)
+                documents = return_documents(
+                    db_name="reddit", collection_name="noburp_all",
+                    filter_subreddits=["noburp"], filter_users=users
+                )
+                metrics = evaluate_terms_performance(
+                    docs=documents,
+                    manual_terms_path=manual_terms_path,
+                    expansion_terms_path=out_path,
+                    ngram_filter=ngram_filter,
+                    tok_fn=TOK_FN
+                )
+                # record this run's metrics + params
+                record = {
+                    "model": model_type,
+                    "topk": args.topk,
+                    "freq_threshold": args.freq_threshold,
+                    **metrics
+                }
+                all_metrics.append(record)
+    if args.metrics_output:
+        try:
+            existing = json.load(open(args.metrics_output, "r", encoding="utf-8"))
+        except FileNotFoundError:
+            existing = []
+        existing.extend(all_metrics)
+        with open(args.metrics_output, "w", encoding="utf-8") as mf:
+            json.dump(existing, mf, indent=2)
+        print(f"→ Appended {len(all_metrics)} records to {args.metrics_output}")
     print("\nDone.")
 
 
