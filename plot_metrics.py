@@ -5,7 +5,7 @@ import plotly.express as px
 
 def main():
     parser = argparse.ArgumentParser(description="Plot Word2Vec gridsearch metrics with interactive dropdowns")
-    parser.add_argument('--metrics_json', required=True, help="Path to metrics JSON file")
+    parser.add_argument('metrics_json', help="Path to metrics JSON file")
     args = parser.parse_args()
 
     # Load metrics into DataFrame
@@ -15,7 +15,9 @@ def main():
 
     # Initial axes
     x0, y0 = 'recall', 'precision'
-    axis_options = ['precision', 'recall', 'f1', 'accuracy', 'topk', 'freq_threshold']
+    # Extract possible axis options from DataFrame columns, excluding non-numeric and identifier columns
+    exclude_cols = {'model'}
+    axis_options = [col for col in df.columns if col not in exclude_cols and pd.api.types.is_numeric_dtype(df[col])]
 
     # Create initial scatter
     fig = px.scatter(

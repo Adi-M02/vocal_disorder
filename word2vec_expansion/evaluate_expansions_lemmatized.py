@@ -21,11 +21,7 @@ from typing import Optional, Tuple, List, Dict
 sys.path.append("../vocal_disorder")
 from tokenizer import clean_and_tokenize
 
-# Attempt to import spell‐checking tokenizer (if user requested)
-try:
-    from spellchecker_folder.spellchecker import clean_and_tokenize_spellcheck
-except ImportError:
-    clean_and_tokenize_spellcheck = None
+from spellchecker_folder.spellchecker import spellcheck_token_list
 
 from query_mongo import return_documents
 import datetime
@@ -138,9 +134,7 @@ def evaluate_terms_performance(
 
     manual_terms    = load_manual_terms(manual_terms_path, ngram_filter, tok)
     expansion_terms = load_expansion_terms(expansion_terms_path, ngram_filter, tok)
-
-    manual_norm    = {t: norm(t) for t in manual_terms}
-    expansion_norm = {t: norm(t) for t in expansion_terms}
+    
     universe       = set(manual_terms) | set(expansion_terms)
 
     TP = FP = TN = FN = 0
@@ -167,8 +161,22 @@ def evaluate_terms_performance(
                         used[j] = True
                     break
 
-        manual_found    = matched & set(manual_norm)
-        expansion_found = matched & set(expansion_norm)
+        # --- new coverage logic ---
+        def covers(matched_terms: set[str], target: str) -> bool:
+            t_toks = target.split()
+            L = len(t_toks)
+            for m in matched_terms:
+                m_toks = m.split()
+                if len(m_toks) == L and m == target:
+                    return True
+                if len(m_toks) > L:
+                    for k in range(len(m_toks) - L + 1):
+                        if m_toks[k:k+L] == t_toks:
+                            return True
+            return False
+
+        manual_found    = {t for t in manual_terms    if covers(matched, t)}
+        expansion_found = {t for t in expansion_terms if covers(matched, t)}
 
         for term in universe:
             m = term in manual_found
@@ -243,11 +251,12 @@ def main():
 
     args = parser.parse_args()
 
-    if args.spellcheck and clean_and_tokenize_spellcheck is None:
-        parser.error("Spell-checking tokenizer requested but not available.")
-
-    # choose base tokenizer
-    tok_fn = clean_and_tokenize_spellcheck if args.spellcheck else clean_and_tokenize
+    if args.spellcheck:
+        print("Using spell-checking tokenizer")
+        def tok_fn(text):
+            return spellcheck_token_list(clean_and_tokenize(text))
+    else:
+        tok_fn = clean_and_tokenize
     print(f"→ Using {'spell-checking' if args.spellcheck else 'vanilla'} tokenizer")
 
     # optionally wrap with lemma lookup
