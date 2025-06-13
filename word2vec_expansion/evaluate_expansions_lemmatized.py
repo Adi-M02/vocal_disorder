@@ -10,6 +10,7 @@ usage:
 """
 import sys
 import os
+import re
 import json
 import logging
 import argparse
@@ -30,21 +31,33 @@ from query_mongo import return_documents
 import datetime
 
 
+
 def parse_ngram_filter(arg: Optional[str]) -> Optional[Tuple[int, int]]:
     """
     Parse the --ngram argument into a (min_ngram, max_ngram) pair.
-     - "3"   → (3, 3)
-     - "<=2" → (1, 2)
+      * "3"    → (3, 3)
+      * "<=2"  → (1, 2)
+      * "<= 3" → (1, 3)
     """
     if arg is None:
         return None
-    arg = arg.strip()
-    if arg.startswith("<="):
-        n = int(arg[2:])
+
+    s = arg.strip()
+    # <=N  (allow a space after <=)
+    m = re.match(r'^<=\s*(\d+)$', s)
+    if m:
+        n = int(m.group(1))
         return (1, n)
-    else:
-        n = int(arg)
+
+    # exactly N
+    m = re.match(r'^(\d+)$', s)
+    if m:
+        n = int(m.group(1))
         return (n, n)
+
+    raise argparse.ArgumentTypeError(
+        f"Invalid --ngram value: '{arg}'.  Use 'N' or '<=N'."
+    )
 
 
 def load_expansion_terms(
