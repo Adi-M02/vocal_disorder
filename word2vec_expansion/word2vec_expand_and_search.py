@@ -20,6 +20,7 @@ from spellchecker_folder.spellchecker import spellcheck_token_list
 from evaluate_expansions_lemmatized import evaluate_terms_performance, load_user_list, parse_ngram_filter
 from nltk.corpus import stopwords
 
+STOPWORDS = set(stopwords.words('english'))
 
 def load_terms(path: str, tok_fn=None, lookup_map=None) -> Dict[str, list[str]]:
     with open(path, 'r', encoding='utf-8') as f:
@@ -61,10 +62,9 @@ def extract_frequent_ngrams(
     )
     
     counts = Counter()
-    stops = set(stopwords.words('english'))
     
     # slide an n-length window over each doc’s token list
-    for doc in tqdm(docs, desc=f"Loading docs for 2..{max_ngram}-grams"):
+    for doc in tqdm(docs, desc=f"Loading docs for ngrams"):
         tokens = [lookup_map.get(t, t) for t in tok_fn(doc)]
         L = len(tokens)
         for n in range(2, max_ngram + 1):
@@ -72,8 +72,8 @@ def extract_frequent_ngrams(
                 break
             for i in range(L - n + 1):
                 gram = tuple(tokens[i:i + n])
-                # skip if any token is a stopword
-                if any(t in stops for t in gram):
+                # skip if first or last token is a stopword
+                if gram[0] in STOPWORDS or gram[-1] in STOPWORDS:
                     continue
                 counts[gram] += 1
 
@@ -128,16 +128,12 @@ if __name__ == '__main__':
     parser.add_argument('--model_dir',     required=True)
     parser.add_argument('--lookup',        default='testing/lemma_lookup.json')
     parser.add_argument('--spellcheck',    action='store_true')
-    parser.add_argument('--sim_threshold', type=float, default=0.4,
-                        help="Cosine threshold when not using topk")
-    parser.add_argument('--kmin',          type=int, required=True,
-                        help="Minimum top-k for grid search (step=5)")
-    parser.add_argument('--kmax',          type=int, required=True,
-                        help="Maximum top-k for grid search (step=5)")
-    parser.add_argument('--freq_min',      type=float, required=True,
-                        help="Minimum freq threshold (step=0.01)")
-    parser.add_argument('--freq_max',      type=float, required=True,
-                        help="Maximum freq threshold (step=0.01)")
+    parser.add_argument('--kmin', default=None, type=int)
+    parser.add_argument('--kmax', default=None, type=int)
+    parser.add_argument('--cos_min',      type=float, default=None)
+    parser.add_argument('--cos_max',      type=float, default=None)
+    parser.add_argument('--freq_min',      type=float, required=True, help="Minimum freq threshold (step=0.01)")
+    parser.add_argument('--freq_max',      type=float, required=True)
     # parser.add_argument('--ngram_min',    type=int, default=5,
     #                     help="Min count for ngram inclusion")
     parser.add_argument('--manual_dir',    help="Dir with manual_terms.txt and users.txt for evaluation")
@@ -161,9 +157,16 @@ if __name__ == '__main__':
     os.makedirs(out_root, exist_ok=True)
     if not args.metrics_output:
         args.metrics_output = os.path.join(out_root, 'metrics.json')
+    # Write run arguments to info.json in out_root
+    info_path = os.path.join(out_root, 'info.json')
+    with open(info_path, 'w', encoding='utf-8') as f_info:
+        json.dump(vars(args), f_info, indent=2)
 
     # prepare grid
-    k_values = list(range(args.kmin, args.kmax+1, 5))
+    if args.kmin and args.kmax:
+        k_values = list(range(args.kmin, args.kmax+1, 5))
+    elif args.cos_min and args.cos_max:
+        cos_values = np.arange(args.cos_min, args.cos_max + 0.01, 0.05)
     freq_values = list(np.arange(args.freq_min, args.freq_max+1e-8, 0.01))
     all_metrics: List[Dict] = []
 
@@ -196,62 +199,127 @@ if __name__ == '__main__':
         valid_idx = [i for i,v in enumerate(ngram_vecs) if v is not None]
         ngram_phrases = [frequent_ngrams[i] for i in valid_idx]
         ngram_matrix = np.vstack([ngram_vecs[i] for i in valid_idx]) if valid_idx else np.zeros((0, vocab_mat.shape[1]), dtype=np.float32)
-
-        for topk, freq in itertools.product(k_values, freq_values):
-            # expansion logic
-            per_cat = {c: [] for c in orig_map}
-            for vec, cat in zip(triplet_vecs, triplet_cats):
-                n = np.linalg.norm(vec)
-                if n==0:
-                    continue
-                unit = vec / n
-                # unigram
-                if topk:
+        # k nearest neighbors gridsearch
+        if args.kmin and args.kmax:
+            for topk, freq in itertools.product(k_values, freq_values):
+                # expansion logic
+                per_cat = {c: [] for c in orig_map}
+                for vec, cat in zip(triplet_vecs, triplet_cats):
+                    n = np.linalg.norm(vec)
+                    if n==0:
+                        continue
+                    unit = vec / n
+                    # unigram
                     uni_hits = {w for w,_ in model.wv.similar_by_vector(unit, topn=topk)}
-                else:
-                    sims_u = vocab_unit @ unit
-                    uni_hits = {vocab_words[i] for i,v in enumerate(sims_u) if v>=args.sim_threshold}
-                # ngram
-                if topk:
+                    uni_hits = {w for w in uni_hits if w not in STOPWORDS}
+                    # ngram
                     sims_ng = ngram_matrix @ unit
                     topn = np.argsort(-sims_ng)[:topk]
                     ng_hits = {ngram_phrases[i] for i in topn}
-                # else:
-                #     sims_u = vocab_unit @ unit
-                #     idx1 = np.array([model.wv.key_to_index.get(w1, -1) for w1,_ in frequent_bigrams])
-                #     idx2 = np.array([model.wv.key_to_index.get(w2, -1) for _,w2 in frequent_bigrams])
-                #     m1 = sims_u[idx1]>=args.sim_threshold
-                #     m2 = sims_u[idx2]>=args.sim_threshold
-                #     bg_hits = set(np.array(frequent_bigrams)[m1 & m2])
-                per_cat[cat].append(uni_hits | ng_hits)
-            # freq filter
-            exp_map = {}
-            for cat, subsets in per_cat.items():
-                q = len(subsets)
-                cnt = Counter(itertools.chain.from_iterable(subsets))
-                need = math.ceil(freq * q)
-                exp_map[cat] = [t for t,c in cnt.items() if c>=need]
-            # write expansion
-            run_map = {cat: orig_map[cat] + exp_map.get(cat, []) for cat in orig_map}
-            combo = f"{model_file.replace('.model','')}_k{topk}_f{int(freq*100)}"
-            run_dir = os.path.join(out_root, combo)
-            os.makedirs(run_dir, exist_ok=True)
-            out_path = os.path.join(run_dir, 'expansions.json')
-            with open(out_path,'w',encoding='utf-8') as fw:
-                json.dump(run_map, fw, indent=2)
-            print(f"Wrote {combo} → categories: {len(run_map)}")
-            # evaluation
-            if args.manual_dir:
-                from evaluate_expansions_lemmatized import evaluate_terms_performance, load_user_list, parse_ngram_filter
-                manual_terms = os.path.join(args.manual_dir,'manual_terms.txt')
-                users_file = os.path.join(args.manual_dir,'users.txt')
-                ngram_filter = args.eval_ngram
-                users = load_user_list(users_file)
-                docs = return_documents(db_name='reddit',collection_name='noburp_all',filter_subreddits=['noburp'],filter_users=users)
-                metrics = evaluate_terms_performance(docs=docs,manual_terms_path=manual_terms,expansion_terms_path=out_path,ngram_filter=ngram_filter,tok_fn=tok_fn, lemmatize=True, lemma_map=lookup)
-                model_type = 'cbow' if 'cbow' in model_file else 'skipgram'
-                record = {'model':model_type,'topk':topk,'freq_threshold':freq,**metrics}
-                all_metrics.append(record)
+                    per_cat[cat].append(uni_hits | ng_hits)
+                # freq filter
+                exp_map = {}
+                for cat, subsets in per_cat.items():
+                    q = len(subsets)
+                    cnt = Counter(itertools.chain.from_iterable(subsets))
+                    need = math.ceil(freq * q)
+                    exp_map[cat] = [t for t,c in cnt.items() if c>=need]
+                # write expansion
+                run_map = {cat: orig_map[cat] + exp_map.get(cat, []) for cat in orig_map}
+                combo = f"{model_file.replace('.model','')}_k{topk}_f{int(freq * 100)}"
+                run_dir = os.path.join(out_root, combo)
+                os.makedirs(run_dir, exist_ok=True)
+                out_path = os.path.join(run_dir, 'expansions.json')
+                with open(out_path,'w',encoding='utf-8') as fw:
+                    json.dump(run_map, fw, indent=2)
+                print(f"Wrote {combo} → categories: {len(run_map)}")
+                # evaluation
+                if args.manual_dir:
+                    from evaluate_expansions_lemmatized import evaluate_terms_performance, load_user_list, parse_ngram_filter
+                    manual_terms = os.path.join(args.manual_dir,'manual_terms.txt')
+                    users_file = os.path.join(args.manual_dir,'users.txt')
+                    ngram_filter = args.eval_ngram
+                    users = load_user_list(users_file)
+                    docs = return_documents(db_name='reddit',collection_name='noburp_all',filter_subreddits=['noburp'],filter_users=users)
+                    metrics = evaluate_terms_performance(docs=docs,manual_terms_path=manual_terms,expansion_terms_path=out_path,ngram_filter=ngram_filter,tok_fn=tok_fn, lemmatize=True, lemma_map=lookup)
+                    model_type = 'cbow' if 'cbow' in model_file else 'skipgram'
+                    record = {'model':model_type,'topk':topk,'freq_threshold':freq,**metrics}
+                    all_metrics.append(record)
+        #cosine similarity gridsearch
+        elif args.cos_min and args.cos_max:
+            for cos_thresh, freq in itertools.product(cos_values, freq_values):
+                per_cat = {c: [] for c in orig_map}
+                for vec, cat in zip(triplet_vecs, triplet_cats):
+                    norm = np.linalg.norm(vec)
+                    if norm == 0:
+                        continue
+                    unit = vec / norm
+
+                    # unigram by cosine threshold
+                    sims_u  = vocab_unit @ unit                   # shape (V,)
+                    uni_hits = {
+                        vocab_words[i]
+                        for i, v in enumerate(sims_u)
+                        if v >= cos_thresh and vocab_words[i] not in STOPWORDS
+                    }
+
+                    # n‐gram by cosine threshold
+                    sims_ng  = ngram_matrix @ unit                 # shape (N,)
+                    ng_hits  = {
+                        ngram_phrases[i]
+                        for i, v in enumerate(sims_ng)
+                        if v >= cos_thresh
+                    }
+
+                    per_cat[cat].append(uni_hits | ng_hits)
+
+                # frequency filter (unchanged)
+                exp_map = {}
+                for cat, subsets in per_cat.items():
+                    q    = len(subsets)
+                    cnt  = Counter(itertools.chain.from_iterable(subsets))
+                    need = math.ceil(freq * q)
+                    exp_map[cat] = [t for t, c in cnt.items() if c >= need]
+
+                # write expansion JSON
+                run_map = {cat: orig_map[cat] + exp_map.get(cat, []) for cat in orig_map}
+                combo   = f"{model_file.replace('.model','')}_cos{int(cos_thresh * 100)}_f{int(freq * 100)}"
+                run_dir = os.path.join(out_root, combo)
+                os.makedirs(run_dir, exist_ok=True)
+                out_path = os.path.join(run_dir, 'expansions.json')
+                with open(out_path, 'w', encoding='utf-8') as fw:
+                    json.dump(run_map, fw, indent=2)
+                print(f"Wrote {combo} → categories: {len(run_map)}")
+
+                # evaluation (unchanged, but record 'cos' instead of 'topk')
+                if args.manual_dir:
+                    users = load_user_list(os.path.join(args.manual_dir, 'users.txt'))
+                    docs  = return_documents(
+                        db_name='reddit',
+                        collection_name='noburp_all',
+                        filter_subreddits=['noburp'],
+                        filter_users=users
+                    )
+                    metrics = evaluate_terms_performance(
+                        docs=docs,
+                        manual_terms_path=os.path.join(args.manual_dir,'manual_terms.txt'),
+                        expansion_terms_path=out_path,
+                        ngram_filter=args.eval_ngram,
+                        tok_fn=tok_fn,
+                        lemmatize=True,
+                        lemma_map=lookup
+                    )
+                    model_type = 'cbow' if 'cbow' in model_file else 'skipgram'
+                    record = {
+                        'model': model_type,
+                        'cos': cos_thresh,
+                        'freq_threshold': freq,
+                        **metrics
+                    }
+                    all_metrics.append(record)
+        else:
+            print("Error: Must specify either kmin/kmax or cos_min/cos_max for gridsearch.")
+            sys.exit(1)
 
     # write metrics
     try:
