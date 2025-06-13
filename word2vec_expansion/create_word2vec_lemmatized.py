@@ -21,7 +21,7 @@ from gensim.models import Word2Vec
 sys.path.append('../vocal_disorder')
 from query_mongo import return_documents
 from tokenizer import clean_and_tokenize
-from spellchecker_folder.spellchecker import clean_and_tokenize_spellcheck
+from spellchecker_folder.spellchecker import spellcheck_token_list
 
 
 def load_terms(path: str) -> dict[str, list[str]]:
@@ -70,11 +70,12 @@ def main():
     logging = print  # simple print for progress
 
     # Choose tokenizer
-    if args.spellcheck and clean_and_tokenize_spellcheck:
-        logging("→ Using spell-checking tokenizer.")
-        token_fn = clean_and_tokenize_spellcheck
+    if args.spellcheck:
+        print("Using spell-checking tokenizer")
+        def token_fn(text):
+            return spellcheck_token_list(clean_and_tokenize(text))
     else:
-        logging("→ Using vanilla tokenizer.")
+        print("Using vanilla tokenizer")
         token_fn = clean_and_tokenize
 
     # 2) Fetch raw Reddit docs
