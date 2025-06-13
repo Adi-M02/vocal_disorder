@@ -16,7 +16,7 @@ from tqdm import tqdm
 sys.path.append('../vocal_disorder')
 from tokenizer import clean_and_tokenize
 from query_mongo import return_documents
-from spellchecker_folder.spellchecker import clean_and_tokenize_spellcheck
+from spellchecker_folder.spellchecker import spellcheck_token_list
 from evaluate_expansions_lemmatized import evaluate_terms_performance, load_user_list, parse_ngram_filter
 from nltk.corpus import stopwords
 
@@ -148,7 +148,11 @@ if __name__ == '__main__':
                         help="Directory for outputs")
     args = parser.parse_args()
 
-    tok_fn = clean_and_tokenize_spellcheck if args.spellcheck else clean_and_tokenize
+    if args.spellcheck:
+        def tok_fn(text):
+            return spellcheck_token_list(clean_and_tokenize(text))
+    else:
+        tok_fn = clean_and_tokenize
     lookup = load_lookup(args.lookup)
     orig_map = load_terms(args.terms, lookup_map=lookup)
 
@@ -244,7 +248,7 @@ if __name__ == '__main__':
                 ngram_filter = args.eval_ngram
                 users = load_user_list(users_file)
                 docs = return_documents(db_name='reddit',collection_name='noburp_all',filter_subreddits=['noburp'],filter_users=users)
-                metrics = evaluate_terms_performance(docs=docs,manual_terms_path=manual_terms,expansion_terms_path=out_path,ngram_filter=ngram_filter,tok_fn=tok_fn)
+                metrics = evaluate_terms_performance(docs=docs,manual_terms_path=manual_terms,expansion_terms_path=out_path,ngram_filter=ngram_filter,tok_fn=tok_fn, lemmatize=True, lemma_map=lookup)
                 model_type = 'cbow' if 'cbow' in model_file else 'skipgram'
                 record = {'model':model_type,'topk':topk,'freq_threshold':freq,**metrics}
                 all_metrics.append(record)

@@ -15,7 +15,7 @@ import json
 import logging
 import argparse
 from collections import Counter
-from typing import Optional, Tuple, List
+from typing import Optional, Tuple, List, Dict
 
 # allow importing your project's tokenizer
 sys.path.append("../vocal_disorder")
@@ -118,13 +118,26 @@ def evaluate_terms_performance(
     manual_terms_path: str,
     expansion_terms_path: str,
     ngram_filter: Optional[Tuple[int,int]],
-    tok_fn
+    tok_fn,
+    lemmatize: bool = False,
+    lemma_map: Optional[Dict[str,str]] = None
 ) -> dict:
-    def norm(term: str) -> str:
-        return " ".join(tok_fn(term))
+    """
+    Evaluate precision/recall/F1/accuracy of expansion terms vs. manual terms.
+    """
+    # wrap tokenizer if lemmatization requested
+    if lemmatize and lemma_map:
+        base_tok = tok_fn
+        def tok(text: str) -> List[str]:
+            return [ lemma_map.get(t, t) for t in base_tok(text) ]
+    else:
+        tok = tok_fn
 
-    manual_terms    = load_manual_terms(manual_terms_path, ngram_filter, tok_fn)
-    expansion_terms = load_expansion_terms(expansion_terms_path, ngram_filter, tok_fn)
+    def norm(term: str) -> str:
+        return " ".join(tok(term))
+
+    manual_terms    = load_manual_terms(manual_terms_path, ngram_filter, tok)
+    expansion_terms = load_expansion_terms(expansion_terms_path, ngram_filter, tok)
 
     manual_norm    = {t: norm(t) for t in manual_terms}
     expansion_norm = {t: norm(t) for t in expansion_terms}
@@ -135,7 +148,7 @@ def evaluate_terms_performance(
     fn_terms = set()
 
     for doc in docs:
-        tokens = tok_fn(doc)
+        tokens = tok(doc)
         positions = {}
         for term in universe:
             term_toks = term.split()
