@@ -15,7 +15,7 @@ def main():
 
     # Initial axes
     x0, y0 = 'recall', 'precision'
-    axis_options = ['precision', 'recall', 'f1', 'accuracy']
+    axis_options = ['precision', 'recall', 'f1', 'accuracy', 'topk', 'freq_threshold']
 
     # Create initial scatter
     fig = px.scatter(
