@@ -144,8 +144,8 @@ def evaluate_terms_performance(
     universe       = set(manual_terms) | set(expansion_terms)
 
     TP = FP = TN = FN = 0
-    fp_terms = set()
-    fn_terms = set()
+    fp_counter = Counter()
+    fn_counter = Counter()
 
     for doc in docs:
         tokens = tok(doc)
@@ -177,10 +177,10 @@ def evaluate_terms_performance(
                 TP += 1
             elif not m and e:
                 FP += 1
-                fp_terms.add(term)
+                fp_counter[term] += 1
             elif m and not e:
                 FN += 1
-                fn_terms.add(term)
+                fn_counter[term] += 1
             else:
                 TN += 1
 
@@ -207,12 +207,19 @@ def evaluate_terms_performance(
         f.write(f"Recall:    {recall:.3f}\n")
         f.write(f"F1 Score:  {f1:.3f}\n")
         f.write(f"Accuracy:  {accuracy:.3f}\n\n")
-        if fp_terms:
-            f.write(f"Unique False Positives ({len(fp_terms)}):\n")
-            f.write("\n".join(sorted(fp_terms)) + "\n\n")
-        if fn_terms:
-            f.write(f"Unique False Negatives ({len(fn_terms)}):\n")
-            f.write("\n".join(sorted(fn_terms)) + "\n")
+        if fp_counter:
+            total_fp = sum(fp_counter.values())
+            f.write(f"False Positives ({total_fp} occurrences across {len(fp_counter)} terms):\n")
+            for term, cnt in fp_counter.most_common():
+                f.write(f"{term}: {cnt}\n")
+            f.write("\n")
+
+        if fn_counter:
+            total_fn = sum(fn_counter.values())
+            f.write(f"False Negatives ({total_fn} occurrences across {len(fn_counter)} terms):\n")
+            for term, cnt in fn_counter.most_common():
+                f.write(f"{term}: {cnt}\n")
+            f.write("\n")
 
     print(f"\nResults -- Precision: {precision:.3f}, Recall: {recall:.3f}, F1: {f1:.3f}, Accuracy: {accuracy:.3f}")
     print(f"Details written to {out_path}")
