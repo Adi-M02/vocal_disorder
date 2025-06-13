@@ -1,0 +1,436 @@
+Expansion JSON: word2vec_expansion/word2vec_06_12_08_30/grid_0612_1237/word2vec_cbow_k50_f13/expansions.json
+Filtered terms to n-grams in [1, 2]
+=== Evaluation Across 400 Documents ===
+Total terms evaluated: 1026800
+TP: 661, FP: 242, TN: 1025271, FN: 626
+Precision: 0.732
+Recall:    0.514
+F1 Score:  0.604
+Accuracy:  0.999
+
+Unique False Positives (91):
+200
+alcoholic
+anxiety
+approach doctor
+appt
+assess
+asthma
+attitude
+awake
+bout
+breathe
+canadian
+chest
+comment
+contract
+cover
+deal
+describe
+description
+diagnose
+diagnostic
+european
+exercise
+extreme
+fear
+feeling
+gp
+happen
+hear
+hernia
+hiatal hernia
+hunger
+inhale
+initial
+input
+insurance
+june
+kaiser
+les
+location
+map
+match
+method
+national
+office
+official
+ohip
+perspective
+practitioner
+pregnancy
+problem
+quebec
+receptionist
+repair
+report
+request
+response
+result
+round
+search
+self
+service
+severe
+silent
+sip
+situation
+starter
+sticky
+story
+submit
+successfully
+suggestion
+swallow
+swallow tests
+symptom
+themselves
+thought
+throw
+throwing up
+tongue
+toronto
+treat
+trial
+trick
+unit
+units
+up
+usa
+visit
+vomit
+weak
+
+Unique False Negatives (332):
+10 units
+100 units
+50 units
+abs
+activated charcoal
+actual vomit
+air pressure
+air puking
+air vomit
+albuterol
+alcohol
+alone
+anecdotal evidence
+annoying
+avoid alcohol
+avoiding aggressors
+awake version
+awful
+be relaxed
+bearable
+become farts
+beer
+before surgery
+being nervous
+big bubbles
+bloating discomfort
+botox covered
+botox journey
+botox prescription
+botox treatment
+breaking down
+breath in
+brutal hiccups
+burp cough
+burp syndrome
+burps
+cannot walk
+carbonated drinks
+certain age
+chest pains
+chronic heartburn
+clothing issues
+coffee
+community
+concerned
+consultations
+controlled
+convinced
+cost prohibitive
+coughing
+crazy tight
+crippling
+croaky club
+crystallized ginger
+curious
+current stressors
+daily misery
+deep breath
+deep breaths
+defective
+demographics
+demon burps
+depressing
+devastated
+diagnosed
+diagnostic step
+diagnostic tool
+diary
+dietary adjustments
+dietary changes
+dietary considerations
+dietary intolerances
+digestive
+digestive issues
+digestive system
+digestive tract
+disgusting
+doctor suggestions
+doctors
+downward dog
+dr
+dramamine
+drink carbonated
+drink tea
+drinking soda
+dysphagia issues
+easily manageable
+eat
+eating disorders
+eating probiotics
+eating slowly
+eating smaller
+effectively induces
+elimination diet
+embarrassing
+ensure drinks
+ent issues
+escape
+esophageal sphincter
+esophagus dilates
+esophagus straight
+evidence
+exaggerating
+excessive bloating
+excited
+experienced
+explode
+extra gurgles
+fake bloat
+fart
+farting
+fast
+fasting
+feel unrecognized
+feeling terrible
+felt weird
+fennel seeds
+finger method
+finger thing
+first burp
+first round
+flare up
+flat stomach
+flustered
+fodmap
+food issues
+for years
+force
+frequent
+gag reflex
+gagging
+gas expanding
+gas x
+gastroenteritis
+general anesthesia
+general practitioner
+genetic linkage
+get older
+gi tests
+gurgling sound
+gurgly
+gut
+health psychologist
+helped
+hiccups randomly
+hopeful
+horrible condition
+horrible heartburn
+hot compresses
+hot showers
+hot soups
+hunger cues
+hungry
+hypermobile
+hypnosis
+in public
+in tears
+inability
+incident
+incredible
+inhalers
+internet
+intubation
+investigate
+involuntary
+issues
+lactose intolerant
+laryngopedia
+laughed
+learned behavior
+letting go
+light headed
+literature
+little gurgles
+little hiccups
+liver problems
+look pregnant
+losing weight
+loud
+louder
+lying down
+main symptom
+massaging throat
+mental health
+messed up
+micro burps
+microburps
+milk
+mint tea
+mocking us
+more forcefully
+mouth
+mucus feeling
+mucusy feeling
+muscles
+muscles forgot
+neck exercises
+neck surgery
+needle
+no burpers
+non burper
+non burping
+non carbonated
+normal injection
+normal people
+nose allergies
+not normal
+op
+overeating
+painless
+patient questionnaire
+patients
+phlegmy
+physiological explanation
+pills
+pop
+post op
+practice burping
+practicing
+practitioners
+press
+proper burps
+pseudo burps
+publication
+push
+quick jog
+quiet burps
+randomly burping
+ranitidine
+realistic expectation
+recovery
+related
+release gas
+relieve gas
+research
+research papers
+round 2
+round 3
+rule out
+salad
+salty snacks
+scared
+second round
+self harm
+shaker exercises
+side effects
+sleepy
+slightly painful
+slightly strange
+slightly worried
+slow swallow
+slurping noodles
+small burps
+sniffing
+so excited
+so miserable
+social aspect
+some relief
+sore
+sore voice
+soreness
+sound
+soupy noodles
+specific treatment
+spicy foods
+star jumps
+statistics
+stomach
+stomach gas
+stomach hurt
+stressed
+stretching
+sucking
+sudden gasp
+suffered
+suffering
+super easy
+supplements
+surprise
+surprised
+swallow air
+swallowed
+swallowing
+swallowing air
+swallowing issues
+swallowing pills
+symptoms resolved
+taking pills
+taste
+teaching yourself
+thing
+this misery
+throat botox
+throats
+tight
+to swallow
+toothbrush method
+torso
+trapped air
+trapped gas
+treatment instead
+treatment service
+trigger
+trigger it
+triggers gas
+trouble swallowing
+tube
+tums
+unbearable
+uncomfortable
+uncontrollable
+uncontrollable burping
+uncoordinated
+under anesthesia
+underweight
+unnatural
+unusual gurgles
+very worried
+violent vomiting
+vocal issues
+vomit reflex
+vomiting
+vomiting air
+waitlist
+weird sounds
+while exercising
+whole life
+wiki
+without insurance
+worsening symptoms
+worth it
+yoga stretches
