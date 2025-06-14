@@ -1,13 +1,17 @@
 # outline_pipeline.py
-# Modular pipeline for BERT‑based vocabulary expansion with two‑phase extraction, gridsearch, and evaluation
+# Modular pipeline for BERT‑based vocabulary expansion with batching, logging, sampling, gridsearch, and evaluation
 
 import argparse
 import json
 import os
 import itertools
-import sys 
+import sys
 import datetime
+import logging
+import math
+import random
 from collections import defaultdict
+import pickle
 import numpy as np
 import torch
 import torch.nn.functional as F
@@ -15,28 +19,41 @@ from transformers import AutoTokenizer, AutoModel
 import nltk
 from nltk.corpus import stopwords
 
+# Add project path
 sys.path.append('../vocal_disorder')
 from query_mongo import return_documents
 from tokenizer import clean_and_tokenize
-from word2vec_expansion.evaluate_expansions_lemmatized import evaluate_terms_performance, load_user_list
+from word2vec_expansion.evaluate_expansions_lemmatized import (
+    evaluate_terms_performance,
+    load_user_list
+)
+
+# Configure logging
+def setup_logging():
+    logging.basicConfig(
+        format='%(asctime)s %(levelname)s: %(message)s',
+        level=logging.INFO,
+        datefmt='%H:%M:%S'
+    )
 
 # Ensure NLTK stopwords are available
-try:
-    STOPWORDS = set(stopwords.words("english"))
-except LookupError:
-    nltk.download('stopwords')
-    STOPWORDS = set(stopwords.words("english"))
+def get_stopwords():
+    try:
+        return set(stopwords.words('english'))
+    except LookupError:
+        nltk.download('stopwords')
+        return set(stopwords.words('english'))
+
+STOPWORDS = get_stopwords()
 
 
 def compute_centroids(cat_json_path, model, tokenizer, device):
-    """
-    Load category -> term lists from JSON and compute centroid for each category.
-    JSON format: {"cat1": ["term1", ...], ...}
-    """
+    logging.info('Computing centroids from category JSON: %s', cat_json_path)
     with open(cat_json_path, 'r', encoding='utf-8') as f:
         cat_terms = json.load(f)
     centroids = {}
     for cat, terms in cat_terms.items():
+        logging.info('  Category `%s`: %d terms', cat, len(terms))
         embs = []
         for term in terms:
             inputs = tokenizer(term, return_tensors='pt', truncation=True).to(device)
@@ -44,152 +61,228 @@ def compute_centroids(cat_json_path, model, tokenizer, device):
             emb = out.last_hidden_state.mean(dim=1).squeeze(0).cpu()
             embs.append(emb)
         centroids[cat] = torch.stack(embs).mean(dim=0)
+    logging.info('Finished computing centroids')
     return centroids
 
 
-def extract_doc_candidates(centroids, model, tokenizer, device):
-    """
-    Process all documents once, extract 1/2/3‑grams, filter n‑grams that start/end with stopwords, compute cosine sims to centroids.
-    Returns list of dicts: {phrase, category, count, avg_score} and list of raw documents.
-    """
-    # Load and clean documents
-    raw = return_documents("reddit", "noburp_all", ["noburp"])
-    texts = [str(doc) for doc in raw if doc]
+def extract_doc_candidates(centroids, model, tokenizer, device, sample_size=0, batch_size=8):
+    logging.info('Loading documents from MongoDB')
+    raw = return_documents('reddit', 'noburp_all', ['noburp'])
+    all_texts = [str(doc) for doc in raw if doc]
+    total_docs = len(all_texts)
+    logging.info('Retrieved %d documents', total_docs)
+    # Random sample
+    if  sample_size > 0:
+        texts = random.sample(all_texts, sample_size)
+        logging.info('Sampled %d documents for extraction', sample_size)
+    else:
+        texts = all_texts
+        logging.info('Using all %d documents (<= sample_size)', total_docs)
 
     stats = defaultdict(lambda: {'count': 0, 'scores': []})
-    for text in texts:
-        tokens = clean_and_tokenize(text)
-        if not tokens:
+    num_batches = math.ceil(len(texts) / batch_size)
+
+    for bidx in range(num_batches):
+        start = bidx * batch_size
+        batch_texts = texts[start: start + batch_size]
+        logging.info('Processing batch %d/%d', bidx + 1, num_batches)
+
+        # Pre-tokenize each text
+        tok_lists = []
+        valid_indices = []
+        for idx, text in enumerate(batch_texts):
+            toks = clean_and_tokenize(text)
+            if toks:
+                tok_lists.append(toks)
+                valid_indices.append(idx)
+        if not tok_lists:
             continue
-        joined = tokenizer.convert_tokens_to_string(tokens)
-        inputs = tokenizer(joined, return_tensors='pt', truncation=True).to(device)
+        logging.info('  %d/%d docs have tokens', len(tok_lists), len(batch_texts))
+
+        # Convert back to strings for BERT tokenization
+        joined_texts = [tokenizer.convert_tokens_to_string(toks) for toks in tok_lists]
+        inputs = tokenizer(
+            joined_texts,
+            return_tensors='pt',
+            padding=True,
+            truncation=True,
+            max_length=512
+        ).to(device)
         with torch.no_grad():
             out = model(**inputs)
-        embeddings = out.last_hidden_state.squeeze(0).cpu()
+        batch_embs = out.last_hidden_state.cpu()  # shape [B, L, H]
 
-        # extract n-grams and skip those starting or ending with a stopword
-        for n in (1, 2, 3):
-            for i in range(len(tokens) - n + 1):
-                ngram_tokens = tokens[i:i+n]
-                # skip if starts or ends with stopword
-                if ngram_tokens[0].lower() in STOPWORDS or ngram_tokens[-1].lower() in STOPWORDS:
-                    continue
-                phrase = " ".join(ngram_tokens)
-                emb_ng = embeddings[i:i+n].mean(dim=0)
-                for cat, centroid in centroids.items():
-                    sim = F.cosine_similarity(
-                        emb_ng.unsqueeze(0), centroid.unsqueeze(0)
-                    ).item()
-                    key = (phrase, cat)
-                    stats[key]['count'] += 1
-                    stats[key]['scores'].append(sim)
+        for doc_i, toks in enumerate(tok_lists):
+            emb = batch_embs[doc_i]
+            # n-gram extraction
+            for n in (1, 2, 3):
+                for i in range(len(toks) - n + 1):
+                    ngram = toks[i:i + n]
+                    # skip ngrams starting/ending with stopwords
+                    if ngram[0].lower() in STOPWORDS or ngram[-1].lower() in STOPWORDS:
+                        continue
+                    phrase = ' '.join(ngram)
+                    # approximate alignment: use same index slice
+                    emb_ng = emb[i:i + n].mean(dim=0)
+                    for cat, centroid in centroids.items():
+                        sim = F.cosine_similarity(
+                            emb_ng.unsqueeze(0), centroid.unsqueeze(0)
+                        ).item()
+                        key = (phrase, cat)
+                        stats[key]['count'] += 1
+                        stats[key]['scores'].append(sim)
 
+    # Assemble candidates
     candidates = []
     for (phrase, cat), v in stats.items():
         avg_score = sum(v['scores']) / len(v['scores'])
-        candidates.append({'phrase': phrase, 'category': cat,
-                           'count': v['count'], 'avg_score': avg_score})
+        candidates.append({
+            'phrase': phrase,
+            'category': cat,
+            'count': v['count'],
+            'avg_score': avg_score
+        })
+    logging.info('Extraction complete: %d unique phrase-category pairs', len(candidates))
     return candidates, texts
 
 
 def filter_candidates(candidates, sim_thresh, freq_thresh):
     """
-    Filter candidate dicts by similarity & frequency thresholds.
+    Filter candidate dicts by:
+      1) cosine sim ≥ sim_thresh
+      2) count ≥ (freq_thresh * total_count_for_that_category)  if freq_thresh ≤ 1.0
+         or count ≥ freq_thresh  if freq_thresh > 1.0
     """
-    return [c for c in candidates if c['avg_score'] >= sim_thresh and c['count'] >= freq_thresh]
+    logging.info('Filtering candidates with sim ≥ %.3f and freq ≥ %s', sim_thresh, freq_thresh)
+
+    # 1) first compute total counts per category
+    total_per_cat = defaultdict(int)
+    for c in candidates:
+        total_per_cat[c['category']] += c['count']
+
+    filtered = []
+    for c in candidates:
+        if c['avg_score'] < sim_thresh:
+            continue
+
+        total_count = total_per_cat[c['category']]
+
+        # if freq_thresh is a fraction ≤1, treat it as percentage of total_count
+        if 0 < freq_thresh <= 1.0:
+            required = freq_thresh * total_count
+
+        if c['count'] >= required:
+            filtered.append(c)
+
+    logging.info('  %d candidates passed filtering', len(filtered))
+    return filtered
 
 
 def main():
+    setup_logging()
     parser = argparse.ArgumentParser(
-        description='BERT vocab expansion gridsearch + evaluation'
+        description='BERT vocab expansion pipeline'
     )
-    parser.add_argument('--categories',     required=True, help='JSON of category -> terms')
-    parser.add_argument('--manual_dir',   required=True, help='Manual terms directory')
-    parser.add_argument('--model_dir',      required=True, help='Fine-tuned BERT directory')
-    parser.add_argument('--sim_min',    type=float, required=True, help='Min cosine sim')
-    parser.add_argument('--sim_max',    type=float, required=True, help='Max cosine sim')
-    parser.add_argument('--sim_step',   type=float, default=0.02)
-    parser.add_argument('--freq_min',   type=float,   required=True, help='Min frequency')
-    parser.add_argument('--freq_max',   type=float,   required=True, help='Max frequency')
-    parser.add_argument('--freq_step',  type=float,   default=0.01)
+    parser.add_argument('--categories',   required=True, help='JSON of category->terms')
+    parser.add_argument('--manual_dir',   required=True, help='Dir with manual_terms.txt and users.txt')
+    parser.add_argument('--model_dir',    required=True, help='Fine-tuned BERT model dir')
+    parser.add_argument('--sim_min',   type=float, required=True, help='Min cosine sim')
+    parser.add_argument('--sim_max',   type=float, required=True, help='Max cosine sim')
+    parser.add_argument('--sim_step',  type=float, default=0.02, help='Step size for sim grid')
+    parser.add_argument('--freq_min',  type=float, required=True, help='Min frequency')
+    parser.add_argument('--freq_max',  type=float, required=True, help='Max frequency')
+    parser.add_argument('--freq_step', type=float, default=0.01,  help='Step size for freq grid')
+    parser.add_argument('--sample_size', type=int, default=5000, help='Number of docs to sample, 0 for all docs')
+    parser.add_argument('--batch_size',  type=int, default=8,   help='Batch size for BERT inference')
     args = parser.parse_args()
 
     # Device selection
-    if torch.cuda.is_available(): device = torch.device('cuda')
+    if torch.cuda.is_available():
+        device = torch.device('cuda')
     elif getattr(torch.backends, 'mps', None) and torch.backends.mps.is_available():
         device = torch.device('mps')
     else:
-        raise RuntimeError("No supported GPU (CUDA or MPS) available.")
+        raise RuntimeError('No supported GPU (CUDA or MPS) available')
+    logging.info('Using device: %s', device)
 
-    # Load model/tokenizer
+    # Load tokenizer & model
     tokenizer = AutoTokenizer.from_pretrained(args.model_dir)
     model     = AutoModel.from_pretrained(args.model_dir).to(device)
 
-    # Phase 1: compute centroids & candidates
-    centroids, docs = None, None
+    # Phase 1: compute centroids & extract candidates
     centroids = compute_centroids(args.categories, model, tokenizer, device)
-    candidates, docs = extract_doc_candidates(centroids, model, tokenizer, device)
+    candidates, docs = extract_doc_candidates(
+        centroids, model, tokenizer, device,
+        sample_size=args.sample_size,
+        batch_size=args.batch_size
+    )
 
-    # Build grids
+    # Build threshold grids
     sim_vals = []
     cur = args.sim_min
     while cur <= args.sim_max + 1e-8:
-        sim_vals.append(round(cur, 6)); cur += args.sim_step
-    freq_vals = np.arange(args.freq_min, args.freq_max + 1e-8, args.freq_step).tolist()
+        sim_vals.append(round(cur, 6))
+        cur += args.sim_step
+    freq_vals = []
+    cur = args.freq_min
+    while cur <= args.freq_max + 1e-8:
+        freq_vals.append(cur)
+        cur += args.freq_step
 
-    # Create root folder
-    ts = datetime.datetime.now().strftime("%m%d_%H%M")
-    script_dir = os.path.dirname(os.path.abspath(__file__))
-    root_dir = os.path.join(script_dir, 'gridsearch', ts)
-    os.makedirs(root_dir, exist_ok=True)
+    # Create root output folder
+    ts = datetime.datetime.now().strftime('%m%d_%H%M')
+    out_root = os.path.join(os.path.dirname(__file__), 'gridsearch', ts)
+    os.makedirs(out_root, exist_ok=True)
+    logging.info('Output root: %s', out_root)
 
     all_metrics = []
-    # Gridsearch
-    for sim_t, freq_t in itertools.product(sim_vals, freq_vals):
-        run_name = f"result_sim{sim_t}_freq{freq_t}"
-        run_dir  = os.path.join(root_dir, run_name)
-        os.makedirs(run_dir, exist_ok=True)
+    users = load_user_list(os.path.join(args.manual_dir, 'users.txt'))
+    manual_docs = return_documents(
+        db_name='reddit', collection_name='noburp_all',
+        filter_subreddits=['noburp'], filter_users=users
+    )
 
-        # Filter expansions
+    # Phase 2: gridsearch + evaluation
+    for sim_t, freq_t in itertools.product(sim_vals, freq_vals):
+        run_name = f'result_sim{sim_t}_freq{freq_t}'
+        run_dir  = os.path.join(out_root, run_name)
+        os.makedirs(run_dir, exist_ok=True)
+        logging.info('Running grid step: %s', run_name)
+
         filtered = filter_candidates(candidates, sim_t, freq_t)
-        # Group by category
         expansions = defaultdict(list)
         for c in filtered:
             expansions[c['category']].append(c['phrase'])
-        # Write expansions.json
+
         exp_path = os.path.join(run_dir, 'expansions.json')
-        with open(exp_path, 'w', encoding='utf-8') as ew:
-            json.dump(dict(expansions), ew, indent=2)
-        manual_terms_path = os.path.join(args.manual_dir,'manual_terms.txt')
-        users_file = os.path.join(args.manual_dir,'users.txt')    
-        users = load_user_list(users_file)
-        manual_docs = return_documents(db_name='reddit',collection_name='noburp_all',filter_subreddits=['noburp'],filter_users=users)   
-        # Evaluate
-        metrics = evaluate_terms_performance(
-            docs=manual_docs,
-            manual_terms_path=manual_terms_path,
-            expansion_terms_path=exp_path,
-            ngram_filter=None,
-            tok_fn=clean_and_tokenize,
-            lemmatize=False,
-            lemma_map=None
-        )
-        # Write evaluation.txt
-        eval_path = os.path.join(run_dir, 'evaluation.txt')
-        with open(eval_path, 'w', encoding='utf-8') as ef:
-            for k,v in metrics.items(): ef.write(f"{k}: {v}\n")
+        with open(exp_path, 'w', encoding='utf-8') as f:
+            json.dump(dict(expansions), f, indent=2)
 
-        # Record metrics
-        record = {'sim': sim_t, 'freq': freq_t}
-        record.update(metrics)
-        all_metrics.append(record)
-        print(f"Completed {run_name} → {len(filtered)} phrases, metrics: {metrics}")
+    #     # Evaluate
+    #     metrics = evaluate_terms_performance(
+    #         docs=manual_docs,
+    #         manual_terms_path=os.path.join(args.manual_dir, 'manual_terms.txt'),
+    #         expansion_terms_path=exp_path,
+    #         ngram_filter=None,
+    #         tok_fn=clean_and_tokenize,
+    #         lemmatize=False,
+    #         lemma_map=None
+    #     )
+    #     eval_path = os.path.join(run_dir, 'evaluation.txt')
+    #     with open(eval_path, 'w', encoding='utf-8') as f:
+    #         for k, v in metrics.items():
+    #             f.write(f'{k}: {v}\n')
 
-    # Save all metrics
-    mpath = os.path.join(root_dir, 'metrics.json')
-    with open(mpath, 'w', encoding='utf-8') as mf:
-        json.dump(all_metrics, mf, indent=2)
-    print(f"Gridsearch complete. Metrics written to {mpath}")
+    #     record = {'sim': float(sim_t), 'freq': float(freq_t)}
+    #     record.update(metrics)
+    #     all_metrics.append(record)
+    #     logging.info('Completed %s → %d phrases', run_name, len(filtered))
+
+    # # Save all metrics
+    # metrics_path = os.path.join(out_root, 'metrics.json')
+    # with open(metrics_path, 'w', encoding='utf-8') as f:
+    #     json.dump(all_metrics, f, indent=2)
+    # logging.info('Gridsearch complete. Metrics at: %s', metrics_path)
 
 
 if __name__ == '__main__':

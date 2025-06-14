@@ -10,85 +10,110 @@ def main():
 
     # Load metrics into DataFrame
     df = pd.read_json(args.metrics_json)
-    df['freq_threshold'] = df['freq_threshold'].astype(float)
-    df['topk'] = df['topk'].astype(int)
 
-    # Initial axes
-    x0, y0 = 'recall', 'precision'
-    # Extract possible axis options from DataFrame columns, excluding non-numeric and identifier columns
+    # Try casting types only if columns exist
+    # if 'freq_threshold' in df.columns:
+    #     df['freq_threshold'] = df['freq_threshold'].astype(float)
+    # if 'topk' in df.columns:
+    #     df['topk'] = df['topk'].astype(int)
+    # if 'cos' in df.columns:
+    #     df['cos'] = df['cos'].astype(float)
+
+    # Exclude known non-numeric, identifier-like columns
     exclude_cols = {'model'}
     axis_options = [col for col in df.columns if col not in exclude_cols and pd.api.types.is_numeric_dtype(df[col])]
 
-    # Create initial scatter
+    # Default x and y axes — use any available numeric columns
+    x0 = 'recall' if 'recall' in df.columns else axis_options[0]
+    y0 = 'precision' if 'precision' in df.columns else axis_options[1]
+
+    # Choose hover columns based on availability
+    default_hover = ['topk', 'freq_threshold', 'cos', 'accuracy']
+    hover_cols = [col for col in default_hover if col in df.columns]
+
+    # Initial figure
     fig = px.scatter(
         df,
         x=x0,
         y=y0,
-        color='model',
-        symbol='model',
-        size='f1',
-        hover_data=['topk', 'freq_threshold', 'accuracy'],
+        color='model' if 'model' in df.columns else None,
+        symbol='model' if 'model' in df.columns else None,
+        size='f1' if 'f1' in df.columns else None,
+        hover_data=hover_cols,
         title=f"Gridsearch Metrics: {y0.capitalize()} vs {x0.capitalize()}"
     )
 
     # Dropdown for filtering by model
-    models = df['model'].unique().tolist()
-    filter_buttons = [
-        dict(
-            label='All',
-            method='update',
-            args=[{'visible': [True]*len(fig.data)},
-                  {'title': f"All Models: {y0.capitalize()} vs {x0.capitalize()}"}]
-        )
-    ]
-    for model in models:
-        visibility = [trace.name == model for trace in fig.data]
-        filter_buttons.append(dict(
-            label=model,
-            method='update',
-            args=[{'visible': visibility},
-                  {'title': f"Model: {model} - {y0.capitalize()} vs {x0.capitalize()}"}]
-        ))
+    if 'model' in df.columns:
+        models = df['model'].unique().tolist()
+        filter_buttons = [
+            dict(
+                label='All',
+                method='update',
+                args=[{'visible': [True]*len(fig.data)},
+                      {'title': f"All Models: {y0.capitalize()} vs {x0.capitalize()}"}]
+            )
+        ]
+        for model in models:
+            visibility = [trace.name == model for trace in fig.data]
+            filter_buttons.append(dict(
+                label=model,
+                method='update',
+                args=[{'visible': visibility},
+                      {'title': f"Model: {model} - {y0.capitalize()} vs {x0.capitalize()}"}]
+            ))
+    else:
+        filter_buttons = []
 
-    # Dropdown for x-axis
+    # Axis dropdowns
     x_buttons = [
         dict(label=f"X: {opt}",
              method='restyle',
-             args=[{'x': [df[df.model == trace.name][opt].tolist() for trace in fig.data]},
+             args=[{'x': [df[df.model == trace.name][opt].tolist()
+                          if 'model' in df.columns else df[opt].tolist()
+                          for trace in fig.data]},
                    {'xaxis.title.text': opt.capitalize(),
                     'title.text': f"Gridsearch Metrics: {y0.capitalize()} vs {opt.capitalize()}"}]
         )
         for opt in axis_options
     ]
-    # Dropdown for y-axis
+
     y_buttons = [
         dict(label=f"Y: {opt}",
              method='restyle',
-             args=[{'y': [df[df.model == trace.name][opt].tolist() for trace in fig.data]},
+             args=[{'y': [df[df.model == trace.name][opt].tolist()
+                          if 'model' in df.columns else df[opt].tolist()
+                          for trace in fig.data]},
                    {'yaxis.title.text': opt.capitalize(),
                     'title.text': f"Gridsearch Metrics: {opt.capitalize()} vs {x0.capitalize()}"}]
         )
         for opt in axis_options
     ]
 
-    # Combine all updatemenus with labels via annotations
+    # Assemble layout with conditional annotations and menus
+    annotations = [
+        dict(text="X-axis:", x=0, y=1.15, xref='paper', yref='paper', showarrow=False),
+        dict(text="Y-axis:", x=0.3, y=1.15, xref='paper', yref='paper', showarrow=False)
+    ]
+    if 'model' in df.columns:
+        annotations.insert(0, dict(text="Model:", x=1.05, y=1.15, xref='paper', yref='paper', showarrow=False))
+
+    updatemenus = [
+        dict(buttons=x_buttons, direction='down', x=0, y=1.15, xanchor='left', yanchor='top', showactive=True),
+        dict(buttons=y_buttons, direction='down', x=0.3, y=1.15, xanchor='left', yanchor='top', showactive=True)
+    ]
+    if filter_buttons:
+        updatemenus.insert(0, dict(active=0, buttons=filter_buttons, x=1.15, y=1.15, xanchor='left', yanchor='top'))
+
     fig.update_layout(
-        annotations=[
-            dict(text="Model:", x=1.05, y=1.15, xref='paper', yref='paper', showarrow=False),
-            dict(text="X-axis:", x=0,    y=1.15, xref='paper', yref='paper', showarrow=False),
-            dict(text="Y-axis:", x=0.3,  y=1.15, xref='paper', yref='paper', showarrow=False)
-        ],
-        updatemenus=[
-            dict(active=0, buttons=filter_buttons, x=1.15, y=1.15, xanchor='left', yanchor='top'),
-            dict(buttons=x_buttons, direction='down', x=0,    y=1.15, xanchor='left', yanchor='top', showactive=True),
-            dict(buttons=y_buttons, direction='down', x=0.3, y=1.15, xanchor='left', yanchor='top', showactive=True)
-        ],
-        # Hide axis titles and tick labels by default
+        annotations=annotations,
+        updatemenus=updatemenus,
         xaxis=dict(title='', showticklabels=False),
         yaxis=dict(title='', showticklabels=False)
     )
 
     fig.show()
+
 
 if __name__ == '__main__':
     main()
