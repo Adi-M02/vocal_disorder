@@ -65,14 +65,14 @@ def compute_centroids(cat_json_path, model, tokenizer, device):
     return centroids
 
 
-def extract_doc_candidates(centroids, model, tokenizer, device, sample_size=0, batch_size=8):
+def extract_doc_candidates(centroids, model, tokenizer, device, sample_size=5000, batch_size=8):
     logging.info('Loading documents from MongoDB')
     raw = return_documents('reddit', 'noburp_all', ['noburp'])
     all_texts = [str(doc) for doc in raw if doc]
     total_docs = len(all_texts)
     logging.info('Retrieved %d documents', total_docs)
     # Random sample
-    if  sample_size > 0:
+    if total_docs > sample_size:
         texts = random.sample(all_texts, sample_size)
         logging.info('Sampled %d documents for extraction', sample_size)
     else:
@@ -106,7 +106,7 @@ def extract_doc_candidates(centroids, model, tokenizer, device, sample_size=0, b
             return_tensors='pt',
             padding=True,
             truncation=True,
-            max_length=512
+            max_length=8196
         ).to(device)
         with torch.no_grad():
             out = model(**inputs)
@@ -147,33 +147,8 @@ def extract_doc_candidates(centroids, model, tokenizer, device, sample_size=0, b
 
 
 def filter_candidates(candidates, sim_thresh, freq_thresh):
-    """
-    Filter candidate dicts by:
-      1) cosine sim ≥ sim_thresh
-      2) count ≥ (freq_thresh * total_count_for_that_category)  if freq_thresh ≤ 1.0
-         or count ≥ freq_thresh  if freq_thresh > 1.0
-    """
-    logging.info('Filtering candidates with sim ≥ %.3f and freq ≥ %s', sim_thresh, freq_thresh)
-
-    # 1) first compute total counts per category
-    total_per_cat = defaultdict(int)
-    for c in candidates:
-        total_per_cat[c['category']] += c['count']
-
-    filtered = []
-    for c in candidates:
-        if c['avg_score'] < sim_thresh:
-            continue
-
-        total_count = total_per_cat[c['category']]
-
-        # if freq_thresh is a fraction ≤1, treat it as percentage of total_count
-        if 0 < freq_thresh <= 1.0:
-            required = freq_thresh * total_count
-
-        if c['count'] >= required:
-            filtered.append(c)
-
+    logging.info('Filtering candidates with sim >= %.3f and freq >= %.3f', sim_thresh, freq_thresh)
+    filtered = [c for c in candidates if c['avg_score'] >= sim_thresh and c['count'] >= freq_thresh]
     logging.info('  %d candidates passed filtering', len(filtered))
     return filtered
 
@@ -209,13 +184,39 @@ def main():
     tokenizer = AutoTokenizer.from_pretrained(args.model_dir)
     model     = AutoModel.from_pretrained(args.model_dir).to(device)
 
-    # Phase 1: compute centroids & extract candidates
+    # Phase 1: compute centroids
     centroids = compute_centroids(args.categories, model, tokenizer, device)
-    candidates, docs = extract_doc_candidates(
-        centroids, model, tokenizer, device,
-        sample_size=args.sample_size,
-        batch_size=args.batch_size
-    )
+
+    # Create output root and cache path
+    ts = datetime.datetime.now().strftime('%m%d_%H%M')
+    out_root = os.path.join(os.path.dirname(__file__), 'gridsearch', ts)
+    os.makedirs(out_root, exist_ok=True)
+    logging.info('Output root: %s', out_root)
+    stats_cache = os.path.join(out_root, 'extraction_cache.pkl')
+
+    # Load or run extraction
+    if os.path.exists(stats_cache):
+        logging.info('Loading cached candidates/docs from %s', stats_cache)
+        with open(stats_cache, 'rb') as f:
+            candidates, docs = pickle.load(f)
+    else:
+        candidates, docs = extract_doc_candidates(
+            centroids, model, tokenizer, device,
+            sample_size=args.sample_size,
+            batch_size=args.batch_size
+        )
+        with open(stats_cache, 'wb') as f:
+            pickle.dump((candidates, docs), f)
+        logging.info('Cached extraction to %s', stats_cache)
+
+    # Build stats_counts dict for inspection
+    stats_counts = defaultdict(dict)
+    for c in candidates:
+        stats_counts[c['category']][c['phrase']] = c['count']
+    stats_path = os.path.join(out_root, 'stats_counts.json')
+    with open(stats_path, 'w', encoding='utf-8') as f:
+        json.dump(stats_counts, f, indent=2)
+    logging.info('Saved stats_counts to %s', stats_path)
 
     # Build threshold grids
     sim_vals = []
@@ -229,20 +230,7 @@ def main():
         freq_vals.append(cur)
         cur += args.freq_step
 
-    # Create root output folder
-    ts = datetime.datetime.now().strftime('%m%d_%H%M')
-    out_root = os.path.join(os.path.dirname(__file__), 'gridsearch', ts)
-    os.makedirs(out_root, exist_ok=True)
-    logging.info('Output root: %s', out_root)
-
-    all_metrics = []
-    users = load_user_list(os.path.join(args.manual_dir, 'users.txt'))
-    manual_docs = return_documents(
-        db_name='reddit', collection_name='noburp_all',
-        filter_subreddits=['noburp'], filter_users=users
-    )
-
-    # Phase 2: gridsearch + evaluation
+    # Phase 2: gridsearch + (commented) evaluation
     for sim_t, freq_t in itertools.product(sim_vals, freq_vals):
         run_name = f'result_sim{sim_t}_freq{freq_t}'
         run_dir  = os.path.join(out_root, run_name)
@@ -271,7 +259,8 @@ def main():
     #     eval_path = os.path.join(run_dir, 'evaluation.txt')
     #     with open(eval_path, 'w', encoding='utf-8') as f:
     #         for k, v in metrics.items():
-    #             f.write(f'{k}: {v}\n')
+    #             f.write(f'{k}: {v}
+# ')
 
     #     record = {'sim': float(sim_t), 'freq': float(freq_t)}
     #     record.update(metrics)
@@ -283,7 +272,6 @@ def main():
     # with open(metrics_path, 'w', encoding='utf-8') as f:
     #     json.dump(all_metrics, f, indent=2)
     # logging.info('Gridsearch complete. Metrics at: %s', metrics_path)
-
 
 if __name__ == '__main__':
     main()
