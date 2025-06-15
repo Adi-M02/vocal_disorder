@@ -231,10 +231,13 @@ def main():
         filter_subreddits=['noburp'], filter_users=users
     )
     all_metrics = []
-    out_root = os.path.dirname(cache_path)
+
+    timestamp = datetime.datetime.now().strftime('%Y%m%d_%H%M%S')
+    out_root = os.path.join(os.path.dirname(__file__), f'gridsearch_{timestamp}')
+    os.makedirs(out_root, exist_ok=True)
 
     for sim_t in sim_vals:
-        run_name = f'result_sim{sim_t}'
+        run_name = f'result_sim_{sim_t}'
         run_dir = os.path.join(out_root, run_name)
         os.makedirs(run_dir, exist_ok=True)
         logging.info('Running grid step: %s', run_name)
@@ -267,7 +270,7 @@ def main():
         all_metrics.append(record)
         logging.info('Completed %s → %d phrases', run_name, len(filtered))
 
-    metrics_path = os.path.join(os.path.dirname(cache_path), 'metrics.json')
+    metrics_path = os.path.join(out_root, 'metrics.json')
     with open(metrics_path, 'w', encoding='utf-8') as f:
         json.dump(all_metrics, f, indent=2)
     logging.info('Gridsearch complete. Metrics at: %s', metrics_path)
