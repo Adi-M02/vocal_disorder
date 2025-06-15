@@ -10,8 +10,9 @@ import datetime
 import logging
 import math
 import random
-from collections import defaultdict
 import pickle
+from collections import defaultdict
+
 import numpy as np
 import torch
 import torch.nn.functional as F
@@ -89,12 +90,10 @@ def extract_doc_candidates(centroids, model, tokenizer, device, sample_size=5000
 
         # Pre-tokenize each text
         tok_lists = []
-        valid_indices = []
-        for idx, text in enumerate(batch_texts):
+        for text in batch_texts:
             toks = clean_and_tokenize(text)
             if toks:
                 tok_lists.append(toks)
-                valid_indices.append(idx)
         if not tok_lists:
             continue
         logging.info('  %d/%d docs have tokens', len(tok_lists), len(batch_texts))
@@ -122,7 +121,6 @@ def extract_doc_candidates(centroids, model, tokenizer, device, sample_size=5000
                     if ngram[0].lower() in STOPWORDS or ngram[-1].lower() in STOPWORDS:
                         continue
                     phrase = ' '.join(ngram)
-                    # approximate alignment: use same index slice
                     emb_ng = emb[i:i + n].mean(dim=0)
                     for cat, centroid in centroids.items():
                         sim = F.cosine_similarity(
@@ -148,7 +146,22 @@ def extract_doc_candidates(centroids, model, tokenizer, device, sample_size=5000
 
 def filter_candidates(candidates, sim_thresh, freq_thresh):
     logging.info('Filtering candidates with sim >= %.3f and freq >= %.3f', sim_thresh, freq_thresh)
-    filtered = [c for c in candidates if c['avg_score'] >= sim_thresh and c['count'] >= freq_thresh]
+    # compute raw total counts per category
+    total_per_cat = defaultdict(int)
+    for c in candidates:
+        total_per_cat[c['category']] += c['count']
+    filtered = []
+    for c in candidates:
+        if c['avg_score'] < sim_thresh:
+            continue
+        total_count = total_per_cat[c['category']]
+        # fractional vs absolute
+        if 0 < freq_thresh <= 1.0:
+            required = math.ceil(freq_thresh * total_count)
+        else:
+            required = freq_thresh
+        if c['count'] >= required:
+            filtered.append(c)
     logging.info('  %d candidates passed filtering', len(filtered))
     return filtered
 
@@ -187,17 +200,13 @@ def main():
     # Phase 1: compute centroids
     centroids = compute_centroids(args.categories, model, tokenizer, device)
 
-    # Create output root and cache path
-    ts = datetime.datetime.now().strftime('%m%d_%H%M')
-    out_root = os.path.join(os.path.dirname(__file__), 'gridsearch', ts)
-    os.makedirs(out_root, exist_ok=True)
-    logging.info('Output root: %s', out_root)
-    stats_cache = os.path.join(out_root, 'extraction_cache.pkl')
+    # Determine cache path alongside model_dir
+    cache_path = os.path.join(args.model_dir, 'extraction_cache.pkl')
 
     # Load or run extraction
-    if os.path.exists(stats_cache):
-        logging.info('Loading cached candidates/docs from %s', stats_cache)
-        with open(stats_cache, 'rb') as f:
+    if os.path.exists(cache_path):
+        logging.info('Loading cached candidates/docs from %s', cache_path)
+        with open(cache_path, 'rb') as f:
             candidates, docs = pickle.load(f)
     else:
         candidates, docs = extract_doc_candidates(
@@ -205,15 +214,15 @@ def main():
             sample_size=args.sample_size,
             batch_size=args.batch_size
         )
-        with open(stats_cache, 'wb') as f:
+        with open(cache_path, 'wb') as f:
             pickle.dump((candidates, docs), f)
-        logging.info('Cached extraction to %s', stats_cache)
+        logging.info('Cached extraction to %s', cache_path)
 
     # Build stats_counts dict for inspection
     stats_counts = defaultdict(dict)
     for c in candidates:
         stats_counts[c['category']][c['phrase']] = c['count']
-    stats_path = os.path.join(out_root, 'stats_counts.json')
+    stats_path = os.path.join(args.model_dir, 'stats_counts.json')
     with open(stats_path, 'w', encoding='utf-8') as f:
         json.dump(stats_counts, f, indent=2)
     logging.info('Saved stats_counts to %s', stats_path)
@@ -230,7 +239,16 @@ def main():
         freq_vals.append(cur)
         cur += args.freq_step
 
-    # Phase 2: gridsearch + (commented) evaluation
+    # Prepare manual evaluation data
+    users = load_user_list(os.path.join(args.manual_dir, 'users.txt'))
+    manual_docs = return_documents(
+        db_name='reddit', collection_name='noburp_all',
+        filter_subreddits=['noburp'], filter_users=users
+    )
+    all_metrics = []
+
+    # Phase 2: gridsearch + evaluation
+    out_root = os.path.dirname(cache_path)
     for sim_t, freq_t in itertools.product(sim_vals, freq_vals):
         run_name = f'result_sim{sim_t}_freq{freq_t}'
         run_dir  = os.path.join(out_root, run_name)
@@ -246,32 +264,31 @@ def main():
         with open(exp_path, 'w', encoding='utf-8') as f:
             json.dump(dict(expansions), f, indent=2)
 
-    #     # Evaluate
-    #     metrics = evaluate_terms_performance(
-    #         docs=manual_docs,
-    #         manual_terms_path=os.path.join(args.manual_dir, 'manual_terms.txt'),
-    #         expansion_terms_path=exp_path,
-    #         ngram_filter=None,
-    #         tok_fn=clean_and_tokenize,
-    #         lemmatize=False,
-    #         lemma_map=None
-    #     )
-    #     eval_path = os.path.join(run_dir, 'evaluation.txt')
-    #     with open(eval_path, 'w', encoding='utf-8') as f:
-    #         for k, v in metrics.items():
-    #             f.write(f'{k}: {v}
-# ')
+        # Evaluate
+        metrics = evaluate_terms_performance(
+            docs=manual_docs,
+            manual_terms_path=os.path.join(args.manual_dir, 'manual_terms.txt'),
+            expansion_terms_path=exp_path,
+            ngram_filter=None,
+            tok_fn=clean_and_tokenize,
+            lemmatize=False,
+            lemma_map=None
+        )
+        eval_path = os.path.join(run_dir, 'evaluation.txt')
+        with open(eval_path, 'w', encoding='utf-8') as f:
+            for k, v in metrics.items():
+                f.write(f'{k}: {v}\n')
 
-    #     record = {'sim': float(sim_t), 'freq': float(freq_t)}
-    #     record.update(metrics)
-    #     all_metrics.append(record)
-    #     logging.info('Completed %s → %d phrases', run_name, len(filtered))
+        record = {'sim': float(sim_t), 'freq': float(freq_t)}
+        record.update(metrics)
+        all_metrics.append(record)
+        logging.info('Completed %s → %d phrases', run_name, len(filtered))
 
-    # # Save all metrics
-    # metrics_path = os.path.join(out_root, 'metrics.json')
-    # with open(metrics_path, 'w', encoding='utf-8') as f:
-    #     json.dump(all_metrics, f, indent=2)
-    # logging.info('Gridsearch complete. Metrics at: %s', metrics_path)
+    # Save all metrics
+    metrics_path = os.path.join(os.path.dirname(cache_path), 'metrics.json')
+    with open(metrics_path, 'w', encoding='utf-8') as f:
+        json.dump(all_metrics, f, indent=2)
+    logging.info('Gridsearch complete. Metrics at: %s', metrics_path)
 
 if __name__ == '__main__':
     main()
