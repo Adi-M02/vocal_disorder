@@ -52,16 +52,25 @@ def compute_centroids(cat_json_path, model, tokenizer, device):
     logging.info('Computing centroids from category JSON: %s', cat_json_path)
     with open(cat_json_path, 'r', encoding='utf-8') as f:
         cat_terms = json.load(f)
+
     centroids = {}
     for cat, terms in cat_terms.items():
-        logging.info('  Category `%s`: %d terms', cat, len(terms))
+        logging.info('  Category `%s`: %d seed terms', cat, len(terms))
         embs = []
         for term in terms:
-            inputs = tokenizer(term, return_tensors='pt', truncation=True).to(device)
-            with torch.no_grad(): out = model(**inputs)
+            # Embed the category name together with the term
+            text = f"{cat} {term}"
+            inputs = tokenizer(text, return_tensors='pt', truncation=True).to(device)
+            with torch.no_grad():
+                out = model(**inputs)
+            # Mean-pool over tokens
             emb = out.last_hidden_state.mean(dim=1).squeeze(0).cpu()
             embs.append(emb)
+
+        # Average all the (cat + term) embeddings to get the centroid
         centroids[cat] = torch.stack(embs).mean(dim=0)
+        logging.info('    Centroid for `%s` computed', cat)
+
     logging.info('Finished computing centroids')
     return centroids
 
@@ -73,12 +82,10 @@ def extract_doc_candidates(centroids, model, tokenizer, device, sample_size=5000
     total_docs = len(all_texts)
     logging.info('Retrieved %d documents', total_docs)
     # Random sample
-    if total_docs > sample_size:
+    if sample_size > 0 and total_docs > sample_size:
         texts = random.sample(all_texts, sample_size)
-        logging.info('Sampled %d documents for extraction', sample_size)
     else:
         texts = all_texts
-        logging.info('Using all %d documents (<= sample_size)', total_docs)
 
     stats = defaultdict(lambda: {'count': 0, 'scores': []})
     num_batches = math.ceil(len(texts) / batch_size)
@@ -144,23 +151,11 @@ def extract_doc_candidates(centroids, model, tokenizer, device, sample_size=5000
     return candidates, texts
 
 
-def filter_candidates(candidates, sim_thresh, freq_thresh):
-    logging.info('Filtering candidates with sim >= %.3f and freq >= %.3f', sim_thresh, freq_thresh)
-    # compute raw total counts per category
-    total_per_cat = defaultdict(int)
-    for c in candidates:
-        total_per_cat[c['category']] += c['count']
+def filter_candidates(candidates, sim_thresh):
+    logging.info('Filtering candidates with sim >= %.3f ', sim_thresh)
     filtered = []
     for c in candidates:
-        if c['avg_score'] < sim_thresh:
-            continue
-        total_count = total_per_cat[c['category']]
-        # fractional vs absolute
-        if 0 < freq_thresh <= 1.0:
-            required = math.ceil(freq_thresh * total_count)
-        else:
-            required = freq_thresh
-        if c['count'] >= required:
+        if c['avg_score'] >= sim_thresh:
             filtered.append(c)
     logging.info('  %d candidates passed filtering', len(filtered))
     return filtered
@@ -176,12 +171,10 @@ def main():
     parser.add_argument('--model_dir',    required=True, help='Fine-tuned BERT model dir')
     parser.add_argument('--sim_min',   type=float, required=True, help='Min cosine sim')
     parser.add_argument('--sim_max',   type=float, required=True, help='Max cosine sim')
-    parser.add_argument('--sim_step',  type=float, default=0.02, help='Step size for sim grid')
-    parser.add_argument('--freq_min',  type=float, required=True, help='Min frequency')
-    parser.add_argument('--freq_max',  type=float, required=True, help='Max frequency')
-    parser.add_argument('--freq_step', type=float, default=0.01,  help='Step size for freq grid')
-    parser.add_argument('--sample_size', type=int, default=5000, help='Number of docs to sample, 0 for all docs')
+    parser.add_argument('--sim_step',  type=float, default=0.01, help='Step size for sim grid')
+    parser.add_argument('--sample_size', type=int, default=5000, help='Number of docs to sample, -1 for all docs')
     parser.add_argument('--batch_size',  type=int, default=8,   help='Batch size for BERT inference')
+    parser.add_argument('--del_cache', action='store_true', help='Delete cache if exists')
     args = parser.parse_args()
 
     # Device selection
@@ -202,6 +195,11 @@ def main():
 
     # Determine cache path alongside model_dir
     cache_path = os.path.join(args.model_dir, 'extraction_cache.pkl')
+
+    # If requested, delete the old cache
+    if args.del_cache and os.path.exists(cache_path):
+        os.remove(cache_path)
+        logging.info('Deleted existing cache at %s', cache_path)
 
     # Load or run extraction
     if os.path.exists(cache_path):
@@ -233,11 +231,6 @@ def main():
     while cur <= args.sim_max + 1e-8:
         sim_vals.append(round(cur, 6))
         cur += args.sim_step
-    freq_vals = []
-    cur = args.freq_min
-    while cur <= args.freq_max + 1e-8:
-        freq_vals.append(cur)
-        cur += args.freq_step
 
     # Prepare manual evaluation data
     users = load_user_list(os.path.join(args.manual_dir, 'users.txt'))
@@ -249,13 +242,13 @@ def main():
 
     # Phase 2: gridsearch + evaluation
     out_root = os.path.dirname(cache_path)
-    for sim_t, freq_t in itertools.product(sim_vals, freq_vals):
-        run_name = f'result_sim{sim_t}_freq{freq_t}'
+    for sim_t in sim_vals:
+        run_name = f'result_sim{sim_t}'
         run_dir  = os.path.join(out_root, run_name)
         os.makedirs(run_dir, exist_ok=True)
         logging.info('Running grid step: %s', run_name)
 
-        filtered = filter_candidates(candidates, sim_t, freq_t)
+        filtered = filter_candidates(candidates, sim_t)
         expansions = defaultdict(list)
         for c in filtered:
             expansions[c['category']].append(c['phrase'])
@@ -279,7 +272,7 @@ def main():
             for k, v in metrics.items():
                 f.write(f'{k}: {v}\n')
 
-        record = {'sim': float(sim_t), 'freq': float(freq_t)}
+        record = {'sim': float(sim_t)}
         record.update(metrics)
         all_metrics.append(record)
         logging.info('Completed %s → %d phrases', run_name, len(filtered))
