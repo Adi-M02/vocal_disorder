@@ -118,7 +118,7 @@ def extract_doc_candidates(index, cat_names, model, tokenizer, device,
             return_tensors='pt',
             padding=True,
             truncation=True,
-            max_length=512
+            max_length=8196
         ).to(device)
         with torch.no_grad():
             out = model(**inputs)
