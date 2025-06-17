@@ -1,0 +1,241 @@
+category,term,count,share_within_category
+experience,cpd,6955,0.15279669581264554
+experience,experience,5887,0.12933345050309766
+experience,rcpd,5493,0.12067753416230942
+experience,condition,4693,0.1031020695109627
+experience,anxiety,2656,0.05835054264247111
+experience,noburp,2441,0.05362713651742168
+experience,emetophobia,1459,0.032053253657893584
+experience,gerd,1057,0.023221582670591854
+experience,phobia,507,0.011138450722790984
+experience,else experience,480,0.010545278790808032
+experience,similar experience,421,0.009249088272771211
+experience,rcpd symptom,306,0.0067226152291401204
+experience,cpd symptom,270,0.005931719319829518
+experience,treat be cpd,242,0.005316578057032383
+experience,emetephobia,209,0.00459159014016433
+experience,treat rcpd,192,0.0042181115163232126
+experience,never experience,151,0.0033173689529416932
+experience,personal experience,140,0.003075706313985676
+experience,social anxiety,136,0.0029878289907289426
+experience,social situation,136,0.0029878289907289426
+experience,million experience,132,0.0028999516674722086
+experience,anyone have experience,129,0.0028340436750296585
+experience,noburp symptom,128,0.002812074344215475
+experience,severe emetophobia,114,0.0025045037128169074
+experience,bad experience,112,0.002460565051188541
+experience,person experience,103,0.0022628410738608903
+experience,also experience,102,0.002240871743046707
+experience,else have experience,96,0.0021090557581616063
+experience,ever experience,94,0.0020651170965332397
+experience,symptom of rcpd,94,0.0020651170965332397
+symptoms,burp,48969,0.23521641601060586
+symptoms,throat,10358,0.04975334675075773
+symptoms,air,6799,0.0326581390768876
+symptoms,gurgle,5762,0.02767704035314405
+symptoms,symptom,4841,0.023253133000619635
+symptoms,vomit,4409,0.021178075480217304
+symptoms,pain,3896,0.01871394467473954
+symptoms,gas,2396,0.011508883840009223
+symptoms,air vomit,2373,0.011398406240543358
+symptoms,reflux,2239,0.01075475413930745
+symptoms,bloating,2142,0.010288826871994889
+symptoms,nausea,2036,0.009779669239673947
+symptoms,chest,2015,0.009678798387987722
+symptoms,acid reflux,1994,0.009577927536301498
+symptoms,gag,1853,0.00890065181783685
+symptoms,micro burp,1665,0.007997617526550649
+symptoms,pressure,1643,0.007891943300974605
+symptoms,discomfort,1566,0.007522083511458448
+symptoms,inability to burp,1478,0.00709938660915427
+symptoms,emetophobia,1459,0.007008122505247686
+symptoms,hiccup,1457,0.006998515757468045
+symptoms,cough,1451,0.006969695514129124
+symptoms,noise,1313,0.006306829917333935
+symptoms,regurgitation,1233,0.005922560006148318
+symptoms,gerd,1057,0.005077166201539962
+symptoms,ibs,929,0.004462334343642974
+symptoms,puke,893,0.004289412883609447
+symptoms,acid,893,0.004289412883609447
+symptoms,croak,884,0.004246182518601065
+symptoms,heartburn,812,0.00390033959853401
+self treatment,drink,5298,0.08191854531960294
+self treatment,turn,3270,0.05056127655626681
+self treatment,treatment,2902,0.04487120017317624
+self treatment,cure,2430,0.037573058725299195
+self treatment,neck,1973,0.030506849738689428
+self treatment,exercise,1848,0.028574079228128768
+self treatment,beer,1460,0.022574759563348486
+self treatment,botox treatment,1209,0.018693756378142686
+self treatment,shaker exercise,1189,0.01838451309645298
+self treatment,teach,950,0.014689055880261
+self treatment,alcohol,925,0.01430250177814887
+self treatment,medication,873,0.013498469245755635
+self treatment,technique,797,0.012323344775334756
+self treatment,carbonation,793,0.012261496118996814
+self treatment,soda,740,0.011442001422519096
+self treatment,eat or drink,712,0.011009060828153509
+self treatment,fizzy drink,634,0.009803012029563657
+self treatment,coffee,594,0.009184525466184246
+self treatment,medicine,589,0.009107214645761821
+self treatment,self,574,0.008875282184494541
+self treatment,drink water,564,0.00872066054364969
+self treatment,med,559,0.008643349723227263
+self treatment,omeprazole,521,0.008055787488016823
+self treatment,carbonated drink,519,0.008024863159847852
+self treatment,eat and drink,492,0.00760738472956675
+self treatment,antacid,439,0.006787890033089031
+self treatment,shaker,422,0.0065250332436527815
+self treatment,larynx,422,0.0065250332436527815
+self treatment,ppi,404,0.006246714290132047
+self treatment,tum,346,0.005349908773231902
+doctor interventions,botox,24444,0.1881291752609057
+doctor interventions,procedure,9425,0.07253794292399102
+doctor interventions,doctor,6301,0.04849459717390635
+doctor interventions,dr bastian,4232,0.03257088323122864
+doctor interventions,surgery,3663,0.028191669488655605
+doctor interventions,treatment,2902,0.02233475972046917
+doctor interventions,office,2235,0.01720130529815596
+doctor interventions,ent,1844,0.014192038912662007
+doctor interventions,botox procedure,1787,0.013753347905058031
+doctor interventions,injection,1562,0.01202167287504233
+doctor interventions,hospital,1554,0.011960102207308438
+doctor interventions,dose,1469,0.01130591386263584
+doctor interventions,anesthesia,1219,0.009381830495951728
+doctor interventions,botox treatment,1209,0.009304867161284364
+doctor interventions,round,1164,0.008958532155281224
+doctor interventions,gp,1159,0.008920050487947542
+doctor interventions,botox injection,1154,0.00888156882061386
+doctor interventions,specialist,1090,0.008389003478742727
+doctor interventions,endoscopy,1047,0.00805806113967306
+doctor interventions,consultation,1046,0.008050364806206323
+doctor interventions,doc,1026,0.007896438136871594
+doctor interventions,post botox,1025,0.007888741803404858
+doctor interventions,50,1020,0.007850260136071176
+doctor interventions,month post botox,728,0.005602930763784133
+doctor interventions,week post botox,725,0.005579841763383924
+doctor interventions,ga,709,0.005456700427916141
+doctor interventions,100 unit,679,0.005225810423914047
+doctor interventions,general anesthesia,609,0.004687067081242496
+doctor interventions,gastroenterologist,596,0.004587014746174923
+doctor interventions,pre botox,576,0.004433088076840193
+comorbidities,cpd,6955,0.1092900468273673
+comorbidities,rcpd,5493,0.08631635186523776
+comorbidities,anxiety,2656,0.04173606964392344
+comorbidities,noburp,2441,0.0383575850906691
+comorbidities,reflux,2239,0.03518338099877432
+comorbidities,acid reflux,1994,0.031333479996228666
+comorbidities,emetophobia,1459,0.022926553317200414
+comorbidities,fear,1367,0.021480876206040417
+comorbidities,gerd,1057,0.016609572896696942
+comorbidities,ibs,929,0.014598196046387379
+comorbidities,acid,893,0.014032496307237814
+comorbidities,heartburn,812,0.012759671894151293
+comorbidities,disorder,788,0.01238253873471825
+comorbidities,gi,679,0.010669725635626513
+comorbidities,constipation,615,0.00966403721047173
+comorbidities,hiatal hernia,592,0.009302617932681731
+comorbidities,phobia,507,0.007966937993023037
+comorbidities,hernia,404,0.00634840818378956
+comorbidities,bowel,397,0.006238411012288256
+comorbidities,sibo,372,0.005845563971212169
+comorbidities,dysfunction,334,0.005248436468776517
+comorbidities,gastro,312,0.004902731072629561
+comorbidities,rcpd symptom,306,0.0048084477827713005
+comorbidities,gi doctor,295,0.004635595084697822
+comorbidities,cpd symptom,270,0.004242748043621736
+comorbidities,disease,259,0.004069895345548257
+comorbidities,treat be cpd,242,0.0038027593576165186
+comorbidities,gastroscopy,240,0.0037713315943304314
+comorbidities,silent reflux,231,0.0036299066595430404
+comorbidities,illness,221,0.0034727678431126056
+healthcare resources,doctor,6301,0.10364168695308902
+healthcare resources,ent,1844,0.030330942825185867
+healthcare resources,cost,1804,0.029673004802947562
+healthcare resources,referral,1504,0.024738469636160273
+healthcare resources,insurance,1498,0.024639778932824527
+healthcare resources,cover,1485,0.02442594907559708
+healthcare resources,gp,1159,0.019063754194354892
+healthcare resources,specialist,1090,0.017928811105993814
+healthcare resources,nhs,1044,0.017172182380419763
+healthcare resources,doc,1026,0.016876110270412525
+healthcare resources,gi,679,0.01116849792749523
+healthcare resources,country,678,0.011152049476939272
+healthcare resources,gastroenterologist,596,0.009803276531350746
+healthcare resources,surgeon,534,0.008783472596881373
+healthcare resources,clinic,521,0.008569642739653924
+healthcare resources,map,460,0.007566287255740509
+healthcare resources,doctor say,383,0.006299756562931772
+healthcare resources,private,348,0.0057240607934732545
+healthcare resources,local,334,0.005493782485689848
+healthcare resources,bill,326,0.005362194881242187
+healthcare resources,see a ent,319,0.005247055727350483
+healthcare resources,letter,312,0.00513191657345878
+healthcare resources,gastro,312,0.00513191657345878
+healthcare resources,request,301,0.004950983617343246
+healthcare resources,gi doctor,295,0.0048522929140075
+healthcare resources,kaiser,276,0.004539772353444305
+healthcare resources,deductible,275,0.0045233239028883475
+healthcare resources,pcp,273,0.004490427001776432
+healthcare resources,consultant,269,0.004424633199552602
+healthcare resources,provider,269,0.004424633199552602
+diagnostic procedures,procedure,9425,0.16861671675969658
+diagnostic procedures,surgery,3663,0.06553241734650064
+diagnostic procedures,treatment,2902,0.05191784743094318
+diagnostic procedures,swallow,2480,0.044368112208387
+diagnostic procedures,test,2386,0.042686417632746526
+diagnostic procedures,botox procedure,1787,0.03197008730499499
+diagnostic procedures,injection,1562,0.02794475454415343
+diagnostic procedures,hospital,1554,0.027801631601545727
+diagnostic procedures,study,1234,0.022076713897237726
+diagnostic procedures,botox treatment,1209,0.021629454701588665
+diagnostic procedures,botox injection,1154,0.020645484471160727
+diagnostic procedures,endoscopy,1047,0.01873121511378274
+diagnostic procedures,consultation,1046,0.018713324745956775
+diagnostic procedures,scope,695,0.012433805639043938
+diagnostic procedures,visit,659,0.011789752397309288
+diagnostic procedures,manometry,573,0.010251180764276514
+diagnostic procedures,testing,445,0.007961213682553312
+diagnostic procedures,operation,430,0.007692858165163876
+diagnostic procedures,barium swallow,400,0.007156147130385
+diagnostic procedures,bill,326,0.005832259911263776
+diagnostic procedures,trouble swallow,261,0.004669386002576213
+diagnostic procedures,difficulty swallow,244,0.004365249749534851
+diagnostic procedures,gastroscopy,240,0.004293688278231
+diagnostic procedures,botox surgery,237,0.004240017174753113
+diagnostic procedures,barium swallow test,212,0.0037927579791040503
+diagnostic procedures,swallow issue,206,0.0036854157721482755
+diagnostic procedures,first injection,193,0.003452840990410763
+diagnostic procedures,anesthesiologist,193,0.003452840990410763
+diagnostic procedures,perform the procedure,191,0.0034170602547588377
+diagnostic procedures,fee,190,0.0033991698869328753
+physiology,throat,10358,0.15943233591922176
+physiology,slow swallow,2887,0.04443726142100726
+physiology,esophagus,2667,0.041050978943479866
+physiology,swallow,2480,0.038172638837581575
+physiology,muscle,2038,0.03136928949636744
+physiology,neck,1973,0.030368796946188895
+physiology,ues,967,0.014884250708040881
+physiology,les,711,0.010943849279645364
+physiology,gi,679,0.010451299101095924
+physiology,diaphragm,645,0.009927964536387144
+physiology,gastroenterologist,596,0.009173747075483315
+physiology,sphincter,470,0.007234330747444896
+physiology,throat gurgle,459,0.007065016623568526
+physiology,abdomen,425,0.006541682058859746
+physiology,larynx,422,0.006495505479620737
+physiology,swallow air,406,0.0062492303903460165
+physiology,barium swallow,400,0.006156877231867997
+physiology,jaw,385,0.0059259943356729464
+physiology,massage,346,0.005325698805565817
+physiology,dysfunction,334,0.005140992488609777
+physiology,tension,317,0.004879325206255387
+physiology,gastro,312,0.004802364240857037
+physiology,gi doctor,295,0.004540696958502647
+physiology,throat feel,288,0.004432951606944958
+physiology,throat nausea,288,0.004432951606944958
+physiology,upper esophageal sphincter,286,0.0044021672207856175
+physiology,trouble swallow,261,0.004017362393793867
+physiology,low esophageal sphincter,259,0.003986578007634528
+physiology,difficulty swallow,244,0.0037556951114394777
+physiology,cricopharyngeus,240,0.003694126339120798
