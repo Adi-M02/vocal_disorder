@@ -15,6 +15,7 @@ from collections import defaultdict
 
 import numpy as np
 import torch
+import torch.nn as nn
 from transformers import AutoTokenizer, AutoModel
 import faiss
 import nltk
@@ -78,9 +79,7 @@ def build_faiss_index(centroids):
     # Normalize
     mat /= np.linalg.norm(mat, axis=1, keepdims=True) + 1e-12
     dim = mat.shape[1]
-    # GPU resources and index
-    res = faiss.StandardGpuResources()
-    index = faiss.GpuIndexFlatIP(res, dim)
+    index = faiss.IndexFlatIP(dim)
     index.add(mat)
     return index, cat_names
 
@@ -118,7 +117,7 @@ def extract_doc_candidates(index, cat_names, model, tokenizer, device,
             return_tensors='pt',
             padding=True,
             truncation=True,
-            max_length=8196
+            max_length=1024
         ).to(device)
         with torch.no_grad():
             out = model(**inputs)

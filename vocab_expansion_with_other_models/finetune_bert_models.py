@@ -12,6 +12,7 @@ from transformers import (
     TrainingArguments
 )
 import plotly.graph_objects as go
+from torch.utils.data import DataLoader
 
 sys.path.append('../vocal_disorder')
 from query_mongo import return_documents
@@ -36,7 +37,7 @@ def fine_tune_mlm(
     dataset: Dataset,
     output_dir: str,
     epochs: int = 4,
-    batch_size: int = 8,
+    batch_size: int = 2,
     max_length: int = 8192,
     mlm_probability: float = 0.15
 ):
@@ -96,11 +97,15 @@ def fine_tune_mlm(
                 "Check tokenizer–model mismatch."
             )
 
-    # 5) Data collator for MLM
-    data_collator = DataCollatorForLanguageModeling(
+    # 5) separate training and eval  collators
+    train_collator = DataCollatorForLanguageModeling(
         tokenizer=tokenizer,
         mlm=True,
         mlm_probability=mlm_probability
+    )
+    eval_collator = DataCollatorForLanguageModeling(
+        tokenizer=tokenizer,
+        mlm=False
     )
 
     # 6) Training arguments
@@ -112,6 +117,7 @@ def fine_tune_mlm(
         per_device_train_batch_size=batch_size,
         per_device_eval_batch_size=batch_size,
         fp16=has_cuda,
+		ddp_find_unused_parameters=None,
         dataloader_num_workers=4,
         learning_rate=3e-5,
         lr_scheduler_type="linear",
@@ -121,7 +127,7 @@ def fine_tune_mlm(
         eval_strategy="epoch",
         save_strategy="epoch",
         logging_strategy="steps",
-        logging_steps=5000,
+        logging_steps=2500,
         save_total_limit=2,
         logging_dir=os.path.join(output_dir, "logs"),
         report_to="none",
@@ -141,13 +147,25 @@ def fine_tune_mlm(
     with open(config_path, "w", encoding="utf-8") as f:
         json.dump(config, f, indent=4)
 
-    # 7) Trainer
-    trainer = Trainer(
+    # 7) Trainer and eval collator helper
+    class MLMEvalTrainer(Trainer):
+        def get_eval_dataloader(self, eval_dataset):
+            eval_sampler = self._get_eval_sampler(eval_dataset)
+            return DataLoader(
+                eval_dataset,
+                batch_size=self.args.per_device_eval_batch_size,
+                sampler=eval_sampler,
+                collate_fn=eval_collator,
+                drop_last=self.args.dataloader_drop_last,
+                num_workers=self.args.dataloader_num_workers,
+                pin_memory=self.args.dataloader_pin_memory,
+            )
+    trainer = MLMEvalTrainer(
         model=model,
         args=args,
         train_dataset=tokenized["train"],
         eval_dataset=tokenized["eval"],
-        data_collator=data_collator,
+        data_collator=train_collator,        # train→masking
     )
 
     # 8) Train, save model & tokenizer
