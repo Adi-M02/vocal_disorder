@@ -1,0 +1,1742 @@
+Expansion JSON: /data/not_backed_up/amukundan/vocal_disorder/vocab_expansion_with_other_models/gridsearch_20250615_190849/result_sim_0.66/expansions.json
+No n-gram filtering applied
+=== Evaluation Across 400 Documents ===
+Total terms evaluated: 229594000
+TP: 43, FP: 1355, TN: 229590996, FN: 1606
+Precision: 0.031
+Recall:    0.026
+F1 Score:  0.028
+Accuracy:  1.000
+
+False Positives (1355 occurrences across 1172 terms):
+thank: 22
+thanks: 18
+yes: 18
+hi: 9
+hey: 8
+symptoms thoughts: 8
+already started putting: 8
+welcome: 7
+yeah: 7
+excellent please: 7
+suggest any questions: 7
+thanks so much: 6
+wow: 6
+2019 r/noburp: 5
+hello: 5
+oh: 4
+omg: 4
+good luck: 4
+stragglers monday morning: 4
+closing for real: 4
+2019 r/noburp survey: 3
+condition is serious: 3
+statements of anonymous: 3
+call your location: 3
+got the botox: 3
+lots of gagging: 2
+like for dr: 2
+please suggest: 2
+state s medicaid: 2
+around clothing: 2
+sub feedback: 2
+bloating and normal: 2
+google forms sheet: 2
+remaining active: 2
+work in putting: 2
+help people search: 2
+map of providers: 2
+hello everyone: 2
+going to become: 2
+hello everyone wishing: 2
+remaining active mod: 2
+far this seems: 2
+tools for tracking: 2
+group chat: 2
+yoo at kaiser: 2
+reveal r cpd: 2
+getting the botox: 2
+dr bastian says: 2
+due to r: 2
+apples raw carrots: 2
+apples raw: 2
+weight after botox: 2
+congrats: 2
+one week ago: 2
+friendly reminder: 2
+oh my god: 2
+official reddit: 2
+tests at bvi: 1
+survey sorry: 1
+questions or symptoms: 1
+group how many: 1
+demographics i would: 1
+happy to set: 1
+survey and analyze: 1
+commented got: 1
+reply notification: 1
+sorry results coming: 1
+sorry results: 1
+update tl: 1
+update tl dr: 1
+data in getting: 1
+promise thanks: 1
+results this weekend: 1
+month promise: 1
+side projects: 1
+also been working: 1
+month promise thanks: 1
+results i took: 1
+2019 r/noburp official: 1
+effectively air vomit: 1
+effectively air: 1
+pregnancy is making: 1
+induces an air: 1
+making the nausea: 1
+methods that effectively: 1
+anyone else vomit: 1
+could the force: 1
+nose it burns: 1
+nose for hours: 1
+else is experiencing: 1
+nose sorry: 1
+ends up shooting: 1
+17 i definitely: 1
+people here always: 1
+age incident: 1
+certain age incident: 1
+started noticing gurgles: 1
+noticing gurgles: 1
+r/noburp update: 1
+2019 r/noburp update: 1
+taken the survey: 1
+least another week: 1
+yet please: 1
+whopping 565 replies: 1
+analyse the results: 1
+meant to title: 1
+seen dr bielamowicz: 1
+bielamowicz in dc: 1
+driving 700 miles: 1
+700 miles: 1
+botox i went: 1
+anyone seen dr: 1
+driving 700: 1
+loved dr bastian: 1
+posts related: 1
+hate it also: 1
+always take things: 1
+unrecognized and unhelped: 1
+life are hard: 1
+start this post: 1
+keep your esophagus: 1
+treatments as opposed: 1
+dr john: 1
+sure to update: 1
+questions about treatment: 1
+describe the weird: 1
+fun party trick: 1
+cute they call: 1
+cliff would help: 1
+eliminated any duplicate: 1
+elite humans dragon: 1
+read frankly people: 1
+thinking about harming: 1
+introduction i would: 1
+condition and asked: 1
+forgot to include: 1
+condition and came: 1
+forever to get: 1
+several people mentioned: 1
+alone first: 1
+think my little: 1
+age gender height: 1
+responses is basic: 1
+people suggested: 1
+read frankly: 1
+found my people: 1
+final edit closed: 1
+time to reply: 1
+piece so hold: 1
+window the survey: 1
+sections probably: 1
+responses each however: 1
+final edit: 1
+edit due: 1
+longer accepting new: 1
+responses the replies: 1
+bunch of requests: 1
+may break: 1
+influx from askreddit: 1
+edit closed: 1
+decided to close: 1
+anymore just posting: 1
+night i end: 1
+botox very soon: 1
+wished i never: 1
+makes a gurgling: 1
+burping having never: 1
+telling my friend: 1
+rpcd and vomiting: 1
+botox find vomiting: 1
+though i wanted: 1
+contracting my throat: 1
+bout of gastroenteritis: 1
+close up everything: 1
+burped your whole: 1
+always have r: 1
+class i thought: 1
+remember very clearly: 1
+weird this makes: 1
+early in high: 1
+pre reddit days: 1
+point they remember: 1
+tik tok designated: 1
+tok designated: 1
+video so welcome: 1
+wish you many: 1
+rather than clutter: 1
+spike in traffic: 1
+questions post: 1
+burps are weird: 1
+really burp sounds: 1
+walking dead: 1
+heard the show: 1
+office or around: 1
+husband are reminiscent: 1
+anyone post botox: 1
+consultation day: 1
+hoping everything goes: 1
+tomorrow morning wish: 1
+bastian voice institute: 1
+bastian less: 1
+dr bastian less: 1
+surgery is today: 1
+told to stay: 1
+anyone have food: 1
+drink recommendations: 1
+microburps have started: 1
+microburps have slowly: 1
+72 hours post: 1
+4 day post: 1
+botox update: 1
+usually just come: 1
+lot like obnoxiously: 1
+expect so like: 1
+hey everyone: 1
+last question: 1
+botox does anyone: 1
+bloating like post: 1
+bloating before surgery: 1
+imagine looking like: 1
+symptom i look: 1
+medicaid cover botox: 1
+medicaid cover: 1
+bloating go away: 1
+view poll: 1
+anyone else misdiagnosed: 1
+exercise induced asthma: 1
+breathing while exercising: 1
+never did anything: 1
+easier post botox: 1
+find running: 1
+kid swimming made: 1
+sounds after botox: 1
+else have weird: 1
+matter what weird: 1
+like my ues: 1
+actually so much: 1
+kind of stuck: 1
+tight but air: 1
+week with dr: 1
+dr bastian tomorrow: 1
+time is amazing: 1
+already had botox: 1
+getting my botox: 1
+hi guys: 1
+botox treatment affects: 1
+treatment affects: 1
+august my band: 1
+practicing stage: 1
+said to try: 1
+sure any advice: 1
+gurgley at times: 1
+burping dr bastian: 1
+breath out lots: 1
+started to practice: 1
+little quiet burps: 1
+practice doing bigger: 1
+question about treatment: 1
+would cause issues: 1
+effects may cause: 1
+dr hinklins treatment: 1
+service and really: 1
+opinions of people: 1
+dr hinklins: 1
+tips for getting: 1
+know what steps: 1
+finally have figured: 1
+diary and stay: 1
+looking for participants: 1
+washington university study: 1
+university study: 1
+better understand retrograde: 1
+love to see: 1
+getting done: 1
+treatment for rcpd: 1
+complete the survey: 1
+regarding your experiences: 1
+better understand: 1
+sub details thank: 1
+study please reach: 1
+sub details: 1
+consent to participate: 1
+reposting their survey: 1
+post and description: 1
+department of otolaryngology: 1
+sake of visibility: 1
+details thank: 1
+new year celebration: 1
+vomiting just wondering: 1
+explode and air: 1
+drinking and celebration: 1
+feeling terrible like: 1
+gas x like: 1
+usually get super: 1
+flight eat: 1
+let this horrible: 1
+constipated on flights: 1
+entire flight except: 1
+length unfortunately: 1
+think has anything: 1
+able to fart: 1
+drinking the day: 1
+maybe the last: 1
+already tried calling: 1
+suggestions in michigan: 1
+page but let: 1
+plan for especially: 1
+appointment with dr: 1
+tickets as well: 1
+book a hotel: 1
+helpful figuring: 1
+time to come: 1
+future but since: 1
+looking to make: 1
+unsure what day: 1
+hang your head: 1
+exercises on bastian: 1
+ever achieved relief: 1
+anyone else get: 1
+change how clothes: 1
+vacation coming: 1
+clothing issues get: 1
+lately the r: 1
+feel little gurgles: 1
+soon as humanly: 1
+botox would change: 1
+depressing to think: 1
+may be visible: 1
+side head exercise: 1
+weeks of shaker: 1
+flex or force: 1
+first burp yesterday: 1
+scheduled for november: 1
+bvi so excited: 1
+hey my botox: 1
+anderson in toronto: 1
+sounds like dr: 1
+procedure in montreal: 1
+hicklin s paper: 1
+awake asleep: 1
+seeing dr leclerc: 1
+nice to know: 1
+ongoing dialogue: 1
+procedure i mentioned: 1
+scheduling my botox: 1
+botox diary: 1
+one the injection: 1
+injection i felt: 1
+minutes my throat: 1
+weird and unnatural: 1
+drinks to see: 1
+however my voice: 1
+hicklin on monday: 1
+felt slightly strange: 1
+units from dr: 1
+drinks to trigger: 1
+started feels like: 1
+diary so far: 1
+voice after botox: 1
+10 days ago: 1
+waiting game thanks: 1
+gig in 7: 1
+songs i used: 1
+game thanks: 1
+said that exercises: 1
+botox the discoverer: 1
+say burp 10: 1
+first i swore: 1
+oh wow: 1
+hypermobile with r: 1
+people can upvote: 1
+open a week: 1
+questions prepped: 1
+time and look: 1
+pants that used: 1
+get them every: 1
+laying upside: 1
+works every single: 1
+way i get: 1
+chronic case: 1
+u/lovemyslf your comment: 1
+removed by reddit: 1
+thanks let: 1
+yep: 1
+fear is inhibited: 1
+focusing on loosening: 1
+tiny tiny ones: 1
+really sorry: 1
+salmon chicken yogurt: 1
+soups and ramen: 1
+swallow currently ensure: 1
+surprisingly difficult: 1
+well with water: 1
+good the noodles: 1
+nose though: 1
+lot of vomit: 1
+association i almost: 1
+emetophobia and rcpd: 1
+lot of sounds: 1
+uni commented: 1
+non burpers might: 1
+lot more gentle: 1
+association like: 1
+disgusting it sounded: 1
+lots of people: 1
+vomit just comes: 1
+though not exclusive: 1
+lot when drunk: 1
+never experienced vomiting: 1
+spoken to never: 1
+experienced this though: 1
+ages to blow: 1
+sharing my experience: 1
+everyone has vomit: 1
+nauseous the last: 1
+pregnancy potentially due: 1
+pregnancy potentially: 1
+area happy: 1
+potentially due: 1
+lot more severe: 1
+think your story: 1
+help people r: 1
+mute the phone: 1
+voice from intubation: 1
+get treatment unfortunately: 1
+gurgling 24: 1
+live with pressure: 1
+place r cpd: 1
+gurgling 24 7: 1
+always avoided tomatoes: 1
+avoided tomatoes: 1
+cut out every: 1
+groups that upset: 1
+cut out certain: 1
+developed dietary intolerances: 1
+containing product: 1
+tomato containing product: 1
+elimination diet last: 1
+tomato containing: 1
+help with symptom: 1
+fodmap or otherwise: 1
+intolerances as well: 1
+intolerances in general: 1
+burping on accident: 1
+stressed i started: 1
+burp about every: 1
+notice them tense: 1
+shoot the subreddit: 1
+good idea unfortunately: 1
+internal message around: 1
+anyone else knows: 1
+mods a message: 1
+idea unfortunately: 1
+sees this post: 1
+chat and see: 1
+need to show: 1
+trigger the air: 1
+drunk the air: 1
+courage to try: 1
+manage avoiding stomach: 1
+gurgles chest pains: 1
+lying down used: 1
+hours the gas: 1
+manage avoiding: 1
+eventually the gas: 1
+avoiding stomach: 1
+pregnant no matter: 1
+live in hong: 1
+doctors with experience: 1
+hong: 1
+fly to dr: 1
+procedure how long: 1
+eat for also: 1
+visiting her soon: 1
+still feeling uncomfortable: 1
+experiences in dc: 1
+botox with dr: 1
+bastian last week: 1
+bielamowicz is good: 1
+burps come right: 1
+torso burp anything: 1
+dead ues due: 1
+reschedule one: 1
+laugh burp cough: 1
+burping which happened: 1
+burp twist: 1
+seemed to push: 1
+dead ues: 1
+trivial but people: 1
+thanks hope: 1
+entire first week: 1
+next round next: 1
+dr spiegel said: 1
+uncomfortable just thinking: 1
+whoops yes: 1
+mean dr hicklin: 1
+bits go: 1
+tiny bits go: 1
+pills i put: 1
+got it thank: 1
+burp some stomach: 1
+muscle is already: 1
+botox 3x: 1
+done it regularly: 1
+yes i still: 1
+granted i got: 1
+half lives: 1
+imagine how awful: 1
+surgery this year: 1
+okay i got: 1
+swallow to rule: 1
+swallow cannot: 1
+agreed my ent: 1
+swallow cannot detect: 1
+cannot detect: 1
+one a friendly: 1
+accidentally also deleted: 1
+posts is available: 1
+replace the original: 1
+also deleted: 1
+bastian publication post: 1
+two announcements posted: 1
+time i meant: 1
+accidentally also: 1
+two announcements: 1
+kind of list: 1
+botox i definitely: 1
+hernia had gotten: 1
+causing more discomfort: 1
+chicago in december: 1
+gerd and r: 1
+caused esophagel motility: 1
+hoping after botox: 1
+insides can heal: 1
+escape through burps: 1
+repair in terms: 1
+hernias potentially: 1
+cpd causing: 1
+r cpd causing: 1
+dr bastian talks: 1
+soon people: 1
+fremont soon people: 1
+soon with dr: 1
+fremont soon: 1
+milk straight coffee: 1
+coffee with lactose: 1
+though i mostly: 1
+explain my situation: 1
+kid less: 1
+heartburn has improved: 1
+persistent and messaged: 1
+referral transferred specifically: 1
+transferred specifically: 1
+studies and articles: 1
+emphasized how testing: 1
+exciting good: 1
+exciting good luck: 1
+meant by number: 1
+myotomy by mistake: 1
+old age: 1
+botox at age: 1
+finally schedule surgery: 1
+burping after botox: 1
+49 year old: 1
+fix my digestive: 1
+offer a different: 1
+botox dr bastian: 1
+2020 i thought: 1
+pressure the gas: 1
+finally schedule: 1
+49 year: 1
+opportunity to get: 1
+cream and yoghurt: 1
+recommended i stay: 1
+sounds constipation: 1
+pain difficulty breathing: 1
+sudden gasp gurgling: 1
+bad bloating farting: 1
+hiccups randomly throughout: 1
+day nausea almost: 1
+little inhale: 1
+full any alcohol: 1
+til the surgery: 1
+hopeful i need: 1
+need a hobby: 1
+medicaid is covering: 1
+ikr: 1
+ikr this page: 1
+qc last: 1
+except for maybe: 1
+qc last week: 1
+aches or soreness: 1
+well that night: 1
+sleepy the day: 1
+botox gang: 1
+friday botox gang: 1
+friday botox: 1
+likely acid reflux: 1
+much also swallowing: 1
+works spicy foods: 1
+e g drinking: 1
+works spicy: 1
+soup slurping noodles: 1
+air vomit still: 1
+2nd this time: 1
+pregnancy i said: 1
+brutal hiccups way: 1
+drinks i think: 1
+doctor canada: 1
+doctor canada told: 1
+units which seems: 1
+canada told: 1
+dose of 10: 1
+carefully control: 1
+spicy food hot: 1
+air when consuming: 1
+eg at home: 1
+course one slip: 1
+leandro soon: 1
+could probably search: 1
+getting mine: 1
+san leandro soon: 1
+getting mine done: 1
+also seen people: 1
+probably search: 1
+someone at ucsf: 1
+system in san: 1
+exercises and relaxing: 1
+botox because nothing: 1
+near how much: 1
+yeah tbh: 1
+condition worsening: 1
+barely had symptoms: 1
+sort of crippling: 1
+system into thinking: 1
+full or full: 1
+botox yet: 1
+hungry i feel: 1
+aspect of randomly: 1
+burps now controlled: 1
+procedure under anaesthesia: 1
+risks with going: 1
+main risk: 1
+likely not due: 1
+botox can also: 1
+heartburn worse temporarily: 1
+apparently not great: 1
+year before botox: 1
+much fuller: 1
+satisfying afterward: 1
+agree with u/emcorn: 1
+provider the doctor: 1
+planning my procedure: 1
+yes depends: 1
+without anesthetic: 1
+people will tell: 1
+confirms our theory: 1
+nearly positive: 1
+100 agree: 1
+full are really: 1
+stop being stretched: 1
+feel what hungry: 1
+tell what full: 1
+contributes to overeating: 1
+lot and food: 1
+help which also: 1
+torso and head: 1
+learned the best: 1
+helpful description: 1
+weirdly helpful description: 1
+weirdly helpful: 1
+literally counting: 1
+hell yeah: 1
+wise after mine: 1
+wrong they sucked: 1
+sort of comfort: 1
+female 5 1: 1
+100u from dr: 1
+burps fine: 1
+q a check: 1
+family burps fine: 1
+rule out genetic: 1
+59 he gives: 1
+lot dr: 1
+lot dr bastian: 1
+suggests it might: 1
+toothbrush method seems: 1
+properly for fear: 1
+method from someone: 1
+horrible i learned: 1
+trigger your vomit: 1
+treatment many times: 1
+many treatments: 1
+bad get botox: 1
+bastian for mine: 1
+yay: 1
+yay congrats: 1
+michigan as well: 1
+went to dr: 1
+check the mod: 1
+constantly chase every: 1
+worth it knowing: 1
+yes definitely: 1
+roll my r: 1
+cancel i suppose: 1
+procedure worst: 1
+gigs 3: 1
+gigs 3 4: 1
+procedure worst comes: 1
+exciting congrats: 1
+good to know: 1
+within a bell: 1
+bodies vary people: 1
+kind to people: 1
+never had emetophobia: 1
+curve so please: 1
+year they would: 1
+r cpd diagnosed: 1
+considerate welcoming: 1
+looking for help: 1
+throat every day: 1
+continue to relax: 1
+pops actually: 1
+day the biggest: 1
+turn into micro: 1
+remember it helps: 1
+multiple small burps: 1
+comments are definitely: 1
+visit the uk: 1
+feelings or considering: 1
+examples 4: 1
+potential medications: 1
+examples 4 follow: 1
+3 these symptoms: 1
+think i expressed: 1
+call to action: 1
+symptoms for period: 1
+following detrimental effects: 1
+forget to include: 1
+life give specific: 1
+symptoms x: 1
+life give: 1
+week but felt: 1
+whenever i think: 1
+people with r: 1
+throat tighter: 1
+led to burps: 1
+trapped gas showing: 1
+gas showing: 1
+ct one time: 1
+ct one: 1
+yes everyone: 1
+yes everyone thinks: 1
+yes yes: 1
+yes yes yes: 1
+weeks this wednesday: 1
+great thanks: 1
+anxiety in quotes: 1
+resolved i want: 1
+kaiser goes: 1
+stop mocking us: 1
+stfu: 1
+stop mocking: 1
+pain and sometimes: 1
+relief it would: 1
+tbh even: 1
+fabulous great doctor: 1
+fabulous great: 1
+burping over one: 1
+sitting there longer: 1
+probably 15 minutes: 1
+recovery maybe 30: 1
+therefore the swallowing: 1
+messed up since: 1
+causes swallowing issues: 1
+difficulty while waiting: 1
+scheduled an appt: 1
+bastian he told: 1
+believed to slowly: 1
+burp the esophagus: 1
+esophageal valuvulplasty: 1
+valuvulplasty: 1
+typical to everyone: 1
+symptoms post botox: 1
+12 weeks prior: 1
+regurgitation and phlegm: 1
+else release: 1
+week under anesthesia: 1
+bastian did say: 1
+procedure the needles: 1
+botox last: 1
+free to edit: 1
+remove this post: 1
+acid is horrendous: 1
+year so maybe: 1
+apparently the waitlist: 1
+2 and 4: 1
+accident and took: 1
+flatluent either: 1
+overly flatluent either: 1
+esteem is awful: 1
+botox this year: 1
+clothes only til: 1
+dr bastians videos: 1
+esophagus of people: 1
+shows big bubbles: 1
+purposely stopped: 1
+maybe your muscles: 1
+contacted dr bastian: 1
+wanted to say: 1
+bed a lot: 1
+best of luck: 1
+small world: 1
+yeah small: 1
+yeah small world: 1
+botox before getting: 1
+ask what aspects: 1
+awful after drinking: 1
+non carbonated strictly: 1
+carbonated strictly: 1
+idk man: 1
+risk of vocal: 1
+normal though hope: 1
+okay thanks: 1
+wow okay: 1
+wow okay thanks: 1
+fart every couple: 1
+lasts my whole: 1
+oh trust: 1
+extreme constipation: 1
+bloating constipation pain: 1
+expanding which plugs: 1
+normal 4 hours: 1
+takes 1: 1
+takes 1 3: 1
+sure that would: 1
+incredible i want: 1
+experienced if bloating: 1
+previous posts got: 1
+spam filter sorry: 1
+posts got: 1
+gets the gurgles: 1
+sometimes my partner: 1
+going intensely: 1
+wow guessing: 1
+hopefully it comes: 1
+way out like: 1
+sometimes i find: 1
+affect your life: 1
+insurance do anything: 1
+drastically but luckily: 1
+could have sex: 1
+discovered this literally: 1
+get that procedure: 1
+albuterol does nothing: 1
+hey just wondering: 1
+know it changes: 1
+22 and 100: 1
+equivalent to ramq: 1
+caused many: 1
+caused many issues: 1
+fixed then go: 1
+causing your liver: 1
+necessary and see: 1
+treated it sounds: 1
+answered by people: 1
+procedure already hearing: 1
+getting the basic: 1
+dr bastians website: 1
+bastians website: 1
+research before scheduling: 1
+expect post op: 1
+hoping to lose: 1
+makes me able: 1
+people my size: 1
+salad is one: 1
+round 2 practice: 1
+feeling for several: 1
+mark because everything: 1
+however my ability: 1
+week afterwards: 1
+us have welcome: 1
+year definitely get: 1
+symptoms lately like: 1
+step is botox: 1
+year definitely: 1
+referral and first: 1
+long the wait: 1
+soon after referral: 1
+yeah i feel: 1
+weeks post botox: 1
+sometimes i cough: 1
+meals around meetings: 1
+anything that might: 1
+pandemic like: 1
+us do maybe: 1
+weeks and relax: 1
+burp or laugh: 1
+hand of course: 1
+gas during pregnancy: 1
+system i started: 1
+relief what trimester: 1
+due to slower: 1
+yes i think: 1
+sure anywhere: 1
+pretty sure anywhere: 1
+without insurance covering: 1
+6500 anywhere else: 1
+rework the 2019: 1
+wanted to collaborate: 1
+survey and reissue: 1
+torso hanging: 1
+lay upside: 1
+works every time: 1
+help with burping: 1
+swallowing would affect: 1
+terms of physically: 1
+seat burp: 1
+cpd is real: 1
+like a week: 1
+nothing preventing: 1
+issues walking around: 1
+years going back: 1
+throat for maybe: 1
+nothing preventing travel: 1
+burp cough burp: 1
+least afterwards: 1
+botox 10: 1
+preventing travel: 1
+holiday remember: 1
+someone else physically: 1
+stomach to force: 1
+symptoms and definitely: 1
+wants to give: 1
+one she wants: 1
+ate but still: 1
+cues this gives: 1
+excited for botox: 1
+like 200: 1
+people s esophageal: 1
+like 200 times: 1
+probably mostly silent: 1
+people s throat: 1
+forget the study: 1
+consider these burps: 1
+one that showed: 1
+still burping highly: 1
+burping highly: 1
+botox was actually: 1
+3 of botox: 1
+botox in december: 1
+chicago this week: 1
+actually headed back: 1
+actually headed: 1
+less it might: 1
+fizzy drinks practice: 1
+trying to isolate: 1
+got the first: 1
+faced the facts: 1
+week it started: 1
+diaphragm so much: 1
+round good luck: 1
+lying down helps: 1
+helps different parts: 1
+example downward dog: 1
+moving in certain: 1
+example downward: 1
+helps different: 1
+alternation of laying: 1
+anesthesia or without: 1
+band size changes: 1
+day cannot wait: 1
+drastically throughout: 1
+size changes: 1
+omg i feel: 1
+like my bra: 1
+band size: 1
+posted a study: 1
+time that showed: 1
+person s esophageal: 1
+go of air: 1
+papers and statistics: 1
+easier for visualization: 1
+think people say: 1
+bastian s papers: 1
+say specifically: 1
+send your doctors: 1
+site laryngopedia: 1
+tomorrow at gw: 1
+first appt: 1
+look into medicaid: 1
+completely botox could: 1
+completely botox: 1
+painless get botox: 1
+yes it used: 1
+help your mental: 1
+seeing this im: 1
+eating disorders anxiety: 1
+explain how severe: 1
+depression that would: 1
+suffering it caused: 1
+least a lot: 1
+go to dr: 1
+hopeful i hope: 1
+situation and bloating: 1
+stress about hiding: 1
+anyways yes: 1
+glad people relate: 1
+stressors i hope: 1
+r cpd people: 1
+much anyways yes: 1
+botox i think: 1
+cause more air: 1
+drinks soups: 1
+sometimes plain white: 1
+stomach hurt avoid: 1
+alcohol and fizzy: 1
+liquid and sipping: 1
+pretty bad due: 1
+done than regret: 1
+tums makes: 1
+tums makes things: 1
+turn into real: 1
+soon and im: 1
+well recognized condition: 1
+condition can cause: 1
+love you calling: 1
+welcome here regardless: 1
+31 dietary changes: 1
+food issues growing: 1
+reduced the overall: 1
+excessive bloating turned: 1
+stayed fairly consistent: 1
+stayed fairly: 1
+used to drink: 1
+digestive issues worst: 1
+think you might: 1
+issues worst: 1
+fix that side: 1
+helped me identify: 1
+case you identify: 1
+though gurgling also: 1
+voice really weird: 1
+makes my singing: 1
+fraternal: 1
+identical or fraternal: 1
+esophagus please elaborate: 1
+cause a hole: 1
+hole was caused: 1
+temporary or permanent: 1
+treatment which doctor: 1
+real medical thing: 1
+glad i found: 1
+related to noburp: 1
+else have horrible: 1
+mine is awful: 1
+would you mind: 1
+incorporating the information: 1
+building a list: 1
+always the best: 1
+doctors who perform: 1
+helpful and well: 1
+near you section: 1
+regularly being updated: 1
+done please suggest: 1
+questions symptoms thoughts: 1
+old surveys: 1
+suggestions included: 1
+canadian or american: 1
+mod to ask: 1
+wiki to include: 1
+done for acid: 1
+acid reflux worse: 1
+fill the sails: 1
+26f i could: 1
+removal downstairs: 1
+gotten louder since: 1
+coming i go: 1
+room and try: 1
+louder since: 1
+hair removal downstairs: 1
+account the survey: 1
+peoples real: 1
+peoples real names: 1
+reddit usernames attached: 1
+want it tied: 1
+real names: 1
+posted soon: 1
+data publicly: 1
+one to prove: 1
+burp a baby: 1
+guess that might: 1
+somewhat secret marketing: 1
+demographics to compare: 1
+secret marketing: 1
+recent official reddit: 1
+recent official: 1
+information however: 1
+lot more women: 1
+somewhat secret: 1
+hard time finding: 1
+totally was questions: 1
+published his paper: 1
+standardize: 1
+reddit demographic: 1
+find anything still: 1
+official reddit demographic: 1
+thing to put: 1
+data to compare: 1
+responses as possible: 1
+analysing the data: 1
+post they really: 1
+helped this come: 1
+alright everyone: 1
+either as long: 1
+specify the unit: 1
+going really: 1
+going really well: 1
+already over 60: 1
+127 and counting: 1
+cheers fam: 1
+sections as well: 1
+later about teaching: 1
+like to answer: 1
+wiki something: 1
+provide more detailed: 1
+going to use: 1
+information about noburp: 1
+already started working: 1
+information to subreddit: 1
+improve this subreddit: 1
+absolutely shoot: 1
+upset your gut: 1
+question what drinks: 1
+suggested by someone: 1
+asked for input: 1
+responses so far: 1
+keep them coming: 1
+got over 500: 1
+horrible reviews online: 1
+match your experience: 1
+reviews online: 1
+wow the account: 1
+good catch: 1
+sub wiki: 1
+links and contact: 1
+covers the bases: 1
+basic questions newcomers: 1
+provided by u/silverbird4: 1
+improve this wiki: 1
+take this chance: 1
+questions newcomers: 1
+pimp the r/noburp: 1
+still in progress: 1
+currently being expanded: 1
+gurgly croaky club: 1
+someone in qc: 1
+quebec is close: 1
+list of known: 1
+nutella is one: 1
+long distance backpacking: 1
+ratio is important: 1
+calorie to weight: 1
+posted an update: 1
+days ago results: 1
+analyze and post: 1
+still trickling: 1
+survey taper: 1
+longer once responses: 1
+remindme two: 1
+remindme two weeks: 1
+remindme: 1
+
+False Negatives (1606 occurrences across 556 terms):
+botox: 85
+burp: 51
+dr: 40
+air: 31
+cpd: 29
+symptoms: 27
+feel: 26
+doctor: 22
+procedure: 22
+burps: 20
+subreddit: 19
+throat: 19
+bloating: 19
+stomach: 18
+gas: 18
+vomit: 17
+condition: 16
+pain: 15
+treatment: 15
+surgery: 15
+gurgles: 13
+doctors: 13
+thing: 13
+wiki: 13
+issues: 12
+eat: 12
+pressure: 9
+vomiting: 9
+experience: 9
+exercises: 8
+reddit: 8
+swallow: 8
+get the botox: 8
+r/noburp: 7
+air vomit: 7
+cough: 7
+trigger: 7
+pregnancy: 7
+excited: 7
+insurance: 7
+digestive: 7
+appointment: 6
+case: 6
+able to burp: 6
+gurgle: 6
+carbonated: 6
+microburps: 6
+experienced: 6
+practice: 6
+neck: 6
+awful: 6
+discomfort: 6
+swallowing: 6
+reflux: 6
+issue: 6
+op: 5
+related: 5
+esophagus: 5
+sound: 5
+nauseous: 5
+gurgling: 5
+drink: 5
+worth it: 5
+medicaid: 5
+anesthesia: 5
+units: 5
+acid: 5
+demographics: 4
+trigger it: 4
+force: 4
+noburp: 4
+hiccups: 4
+cannot burp: 4
+botox treatment: 4
+muscles: 4
+internet: 4
+discussion: 4
+hospital: 4
+provider: 4
+so excited: 4
+push: 4
+symptom: 4
+diagnosed: 4
+tight: 4
+100: 4
+side effects: 4
+study: 4
+uncomfortable: 4
+cost: 4
+pills: 4
+gerd: 4
+hiatal: 4
+hiatal hernia: 4
+hernia: 4
+kaiser: 4
+heartburn: 4
+referral: 4
+esophageal: 4
+bloated: 4
+gagging: 3
+pre op: 3
+as a baby: 3
+dr bielamowicz: 3
+carbonated drinks: 3
+emetophobia: 3
+muscle: 3
+tense: 3
+lying down: 3
+breath: 3
+primary: 3
+primary care provider: 3
+substitute: 3
+medical care: 3
+care provider: 3
+pop: 3
+ues: 3
+diary: 3
+research: 3
+feedback: 3
+rcpd: 3
+fart: 3
+botox procedure: 3
+slow: 3
+painful: 3
+could burp: 3
+sore: 3
+drunk: 3
+throw: 3
+severe: 3
+digestive system: 3
+torso: 3
+constipation: 3
+alcohol: 3
+hopeful: 3
+acid reflux: 3
+fizzy drinks: 3
+hungry: 3
+get botox: 3
+specialist: 3
+trouble swallowing: 3
+bvi: 2
+test: 2
+tube: 2
+no burpers: 2
+nausea: 2
+trapped air: 2
+air vomiting: 2
+treatment unfortunately: 2
+farting: 2
+suffered: 2
+throats: 2
+tums: 2
+country: 2
+taste: 2
+laughed: 2
+coughing: 2
+unit: 2
+patient: 2
+frequent: 2
+gag: 2
+worried: 2
+consultation: 2
+post op: 2
+turning my head: 2
+louder: 2
+evidence: 2
+trapped gas: 2
+mucus: 2
+practicing: 2
+deep breath: 2
+no burp syndrome: 2
+burp syndrome: 2
+gp: 2
+department: 2
+worse than ever: 2
+fast: 2
+out of state: 2
+train: 2
+laryngopedia: 2
+treatment instead: 2
+first burp: 2
+curious: 2
+under anesthesia: 2
+annoying: 2
+chronic: 2
+throwing up: 2
+to swallow: 2
+association: 2
+violent: 2
+fodmap: 2
+elimination diet: 2
+stressed: 2
+actual vomit: 2
+loud: 2
+cost prohibitive: 2
+second round: 2
+burp cough: 2
+uncontrollable: 2
+md: 2
+mouth: 2
+barium: 2
+inability to burp: 2
+inability: 2
+myotomy: 2
+hernia surgery: 2
+manometry: 2
+hiatal hernia surgery: 2
+ppis: 2
+nose allergies: 2
+theory: 2
+relax: 2
+appt: 2
+dr yoo: 2
+doc: 2
+as a kid: 2
+units of botox: 2
+stretching: 2
+round 2: 2
+gi: 2
+sphincter: 2
+air vomiting helps: 1
+gassy: 1
+certain age: 1
+incident: 1
+first round: 1
+forcing a croak: 1
+teaching yourself: 1
+throat is relaxed: 1
+no carb diet: 1
+health psychologist: 1
+practitioner: 1
+crystallized ginger: 1
+gag reflex: 1
+eating slowly: 1
+vomiting air: 1
+hot showers: 1
+holding my breath: 1
+fish oil supplements: 1
+more frequent meals: 1
+release most flatulence: 1
+eating smaller: 1
+simethicone: 1
+ranitidine: 1
+hot compresses: 1
+tense muscle: 1
+relieves the pressure: 1
+unhelped: 1
+dramammine: 1
+throat muscles: 1
+massaging throat: 1
+alone: 1
+abdominal: 1
+croak: 1
+take it seriously: 1
+supplements: 1
+non burper: 1
+literature: 1
+star jumps: 1
+dislodge some gas: 1
+abdominal throat muscles: 1
+avoiding aggressors: 1
+self treatment: 1
+general practitioner: 1
+antacids: 1
+mint: 1
+quick jog: 1
+drug: 1
+mint tea: 1
+fasting: 1
+rubbing my stomach: 1
+eating probiotics: 1
+salty snacks: 1
+activated charcoal: 1
+demon burps: 1
+suffer: 1
+drinking soda: 1
+ruining their lives: 1
+be relaxed: 1
+lying down flat: 1
+gasx: 1
+fennel seeds: 1
+deep breaths: 1
+relieve gas: 1
+sucking: 1
+burper: 1
+no constrictive clothing: 1
+flatulence: 1
+very worried: 1
+mental health: 1
+so much pain: 1
+release the pressure: 1
+cough extra hard: 1
+gastroenteritis: 1
+uncoordinated: 1
+couldn t burp: 1
+whole life: 1
+life will change: 1
+push out burps: 1
+been through botox: 1
+in public: 1
+anecdotal evidence: 1
+flat stomached after: 1
+before surgery: 1
+flat stomach: 1
+inhalers: 1
+while exercising: 1
+phlegmy: 1
+release gas: 1
+stuck: 1
+changing my voice: 1
+crazy tight: 1
+botox loosened it: 1
+scared: 1
+quiet burps: 1
+trial and error: 1
+slightly worried: 1
+for years: 1
+throat botox: 1
+local gp: 1
+patient questionnaire: 1
+dysfunction: 1
+cricopharyngeal dysfunction: 1
+effectiveness of treatment: 1
+develop: 1
+neck surgery: 1
+retrograde: 1
+diagnostic tool: 1
+explode: 1
+feeling terrible: 1
+gas x: 1
+patients: 1
+neck exercises: 1
+bearable: 1
+breaking down: 1
+book my procedure: 1
+depressing: 1
+little gurgles: 1
+clothing issues: 1
+could taste it: 1
+flex: 1
+practice burping: 1
+awake version: 1
+choke: 1
+will get worse: 1
+swallowed: 1
+normal injection: 1
+unnatural: 1
+slightly painful: 1
+injection: 1
+light headed: 1
+small involuntary microburps: 1
+involuntary: 1
+slightly strange: 1
+feel very full: 1
+easily manageable: 1
+slow swallow: 1
+drink carbonated: 1
+proper burps: 1
+can t sing: 1
+sore and weak: 1
+hypermobile: 1
+laying upside down: 1
+hiccup: 1
+hate throwing up: 1
+finger thing: 1
+disgusting: 1
+violent vomiting: 1
+more forcefully: 1
+couldn t breathe properly: 1
+air pressure: 1
+intubation: 1
+worse with age: 1
+dietary intolerances: 1
+cure: 1
+relaxing my throat: 1
+finger method: 1
+chest pains: 1
+become farts: 1
+effect your voice: 1
+needle: 1
+office procedure: 1
+in office: 1
+in office procedure: 1
+dr hicklin: 1
+taking pills: 1
+swallowing air: 1
+strengthen: 1
+ent issues: 1
+detect: 1
+diagnose: 1
+ent: 1
+publication: 1
+escape: 1
+milk: 1
+coffee: 1
+drink tea: 1
+lactose intolerant: 1
+chronic heartburn: 1
+consultations: 1
+testing: 1
+permanently on ppis: 1
+ppi: 1
+to believe you: 1
+dysphagia: 1
+flare up: 1
+les: 1
+shot: 1
+long term complications: 1
+dysphagia issues: 1
+all my life: 1
+esophageal cancer: 1
+defective: 1
+esophagus doesn t contract: 1
+air bouncing up: 1
+cancer: 1
+sudden gasp: 1
+difficulty breathing: 1
+hiccups randomly: 1
+hypnosis: 1
+botox prescription: 1
+sleepy: 1
+ga: 1
+soreness: 1
+slurping noodles: 1
+swallow air: 1
+swallowing pills: 1
+alcoholic: 1
+spicy foods: 1
+2nd: 1
+brutal hiccups: 1
+dose: 1
+being nervous: 1
+nervous: 1
+sniffing: 1
+soupy noodles: 1
+triggers gas: 1
+learned to burp: 1
+crippling: 1
+convinced: 1
+out of nowhere: 1
+concerned: 1
+controlled: 1
+anaesthesia: 1
+anesthetic: 1
+stomach is stretched: 1
+overeating: 1
+i ve tried everything: 1
+100u: 1
+learned behavior: 1
+rule out: 1
+toothbrush method: 1
+improved my life: 1
+bloating discomfort: 1
+small burps: 1
+focus on relaxing: 1
+mind at ease: 1
+community: 1
+self harm: 1
+specific treatment: 1
+press: 1
+treat: 1
+flustered: 1
+ct: 1
+mocking us: 1
+in tears: 1
+cannot walk: 1
+recovery: 1
+regain its movement: 1
+swallow tests: 1
+surprised: 1
+movement: 1
+swallowing issues: 1
+messed up: 1
+phlegm: 1
+regurgitation: 1
+hernia repair: 1
+hiatal hernia repair: 1
+through the neck: 1
+through the mouth: 1
+no anesthesia: 1
+waitlist: 1
+endoscopy: 1
+surprise: 1
+microburp: 1
+big bubbles: 1
+willing to travel: 1
+non carbonated: 1
+position: 1
+incredible: 1
+some relief: 1
+not normal: 1
+pseudo burps: 1
+misery: 1
+daily misery: 1
+normal people: 1
+take out loans: 1
+get older: 1
+this misery: 1
+albuterol: 1
+ohip: 1
+nhs: 1
+worst trigger foods: 1
+salad: 1
+starts wearing off: 1
+gi tests: 1
+used to stretching: 1
+without insurance: 1
+mucusy feeling: 1
+unbearable: 1
+push air out: 1
+push my stomach: 1
+abs: 1
+investigate: 1
+fake bloat: 1
+extra gurgles: 1
+so miserable: 1
+jaw: 1
+diaphragm: 1
+downward dog: 1
+yoga stretches: 1
+gas move around: 1
+speak their language: 1
+statistics: 1
+barium swallow: 1
+consult: 1
+super easy: 1
+painless: 1
+have to pee: 1
+suffering: 1
+depression: 1
+underweight: 1
+full of air: 1
+huge bloated belly: 1
+eating disorders: 1
+devastated: 1
+8 months pregnant: 1
+stress: 1
+exaggerating: 1
+no clear pattern: 1
+stomach hurt: 1
+severely affected daily: 1
+worse over time: 1
+able to learn: 1
+non burping: 1
+struggle to burp: 1
+dietary changes: 1
+dietary adjustments: 1
+digestive issues: 1
+excessive bloating: 1
+food issues: 1
+beer: 1
+feel so heard: 1
+eoe: 1
+gut: 1
+practitioners: 1
+gurgly: 1
+
