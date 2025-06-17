@@ -1,0 +1,687 @@
+Expansion JSON: word2vec_expansion/word2vec_06_13_12_28/grid_0615_1857/word2vec_cbow_cos60_f17/expansions.json
+Filtered terms to n-grams in [1, 3]
+=== Evaluation Across 400 Documents ===
+Total terms evaluated: 3887200
+TP: 632, FP: 185, TN: 3885032, FN: 1351
+Precision: 0.774
+Recall:    0.319
+F1 Score:  0.451
+Accuracy:  1.000
+
+False Positives (185 occurrences across 134 terms):
+cover: 9
+question symptom: 8
+request: 6
+anxiety: 5
+self: 3
+experience the statement: 3
+doctor this subreddit: 3
+diagnostic: 3
+submit: 3
+op test: 2
+test the tube: 2
+test one: 2
+national: 2
+tea: 2
+cover botox: 2
+service: 2
+syndrome: 2
+list of doctor: 2
+doctor however: 2
+canadian: 2
+never experience: 2
+cpd cause: 2
+repair: 2
+great doctor: 2
+sphincter open: 2
+esophageal sphincter open: 2
+certain symptom: 1
+else be experience: 1
+appeal: 1
+common symptom: 1
+symptom which make: 1
+medical doctor: 1
+symptom include: 1
+burp botox treatment: 1
+throat to release: 1
+procedure tomorrow morning: 1
+procedure tomorrow: 1
+misdiagnose: 1
+exercise induce: 1
+asthma: 1
+botox treatment affect: 1
+local: 1
+regard symptom: 1
+experience with rcpd: 1
+questionnaire regard symptom: 1
+treatment for rcpd: 1
+bloating pain discomfort: 1
+bloating pain: 1
+pain discomfort: 1
+shaker: 1
+botox be schedule: 1
+doctor say: 1
+colleague: 1
+botox diary: 1
+swallow have definitely: 1
+swallow be still: 1
+slow swallow currently: 1
+difficult to swallow: 1
+swallow currently: 1
+thing to swallow: 1
+emetophobia and rcpd: 1
+symptom get: 1
+symptom get bad: 1
+doctor with experience: 1
+many experience: 1
+procedure dr: 1
+office procedure dr: 1
+swallow something: 1
+swallow it back: 1
+muscle be already: 1
+diagnose be cpd: 1
+swallow cannot detect: 1
+ent want: 1
+motility: 1
+message my doctor: 1
+horrible bloating: 1
+lifelong be cpd: 1
+botox dr bastian: 1
+schedule surgery: 1
+even have gerd: 1
+esophagus be stretch: 1
+botox dr: 1
+experience the symptom: 1
+pain anxiety: 1
+know doctor: 1
+likely acid reflux: 1
+manage to swallow: 1
+also swallow: 1
+also swallow air: 1
+doctor in italy: 1
+get symptom: 1
+avoid the symptom: 1
+kaiser system: 1
+another doctor: 1
+botox asap: 1
+cpd diagnose: 1
+doctor s appointment: 1
+relax the throat: 1
+throat tight: 1
+quote: 1
+cause swallow: 1
+swallow difficult: 1
+burp the esophagus: 1
+symptom post: 1
+procedure the needle: 1
+diagnose with gerd: 1
+contact dr: 1
+contact dr bastian: 1
+cpd symptom: 1
+bloating constipation: 1
+approve: 1
+symptom only get: 1
+doctor who discover: 1
+dr karagama: 1
+procedure already: 1
+dr bastian website: 1
+test be necessary: 1
+appointment and surgery: 1
+without insurance cover: 1
+swallow would: 1
+botox symptom: 1
+throat just open: 1
+insurance to cover: 1
+doctor bastian: 1
+botox tomorrow: 1
+air swallow: 1
+million experience: 1
+doctor tell: 1
+doctor who perform: 1
+doctor near: 1
+procedure would: 1
+acid reflux bad: 1
+know specialist: 1
+quebec: 1
+
+False Negatives (1351 occurrences across 539 terms):
+burp: 69
+dr: 40
+feel: 40
+air: 31
+cpd: 29
+help: 26
+thing: 20
+subreddit: 19
+stomach: 18
+eat: 18
+drink: 17
+pain: 16
+condition: 16
+get the botox: 16
+sound: 14
+issue: 14
+wiki: 13
+trigger: 9
+reddit: 8
+appointment: 7
+burper: 7
+r/noburp: 7
+pregnancy: 7
+excited: 7
+microburp: 7
+practice: 7
+digestive: 7
+case: 6
+able to burp: 6
+carbonated: 6
+fart: 6
+suck: 6
+push: 6
+study: 6
+neck: 6
+awful: 6
+discomfort: 6
+throw: 6
+get botox: 6
+op: 5
+related: 5
+laugh: 5
+carbonated drink: 5
+lie down: 5
+nauseous: 5
+worsen: 5
+so excited: 5
+worth it: 5
+medicaid: 5
+diagnose: 5
+tight: 5
+relax: 5
+digestive system: 5
+control: 5
+acid: 5
+demographics: 4
+trigger it: 4
+force: 4
+noburp: 4
+dr bielamowicz: 4
+weird sound: 4
+internet: 4
+non burper: 4
+cannot burp: 4
+struggle: 4
+discussion: 4
+hospital: 4
+wear off: 4
+pop: 4
+100: 4
+dr hicklin: 4
+side effect: 4
+uncomfortable: 4
+slow: 4
+vomit come: 4
+cost: 4
+pill: 4
+dr yoo: 4
+heartburn: 4
+stretch: 4
+treat: 4
+bloated: 4
+pre op: 3
+as a baby: 3
+fast: 3
+breath: 3
+gurgle sound: 3
+tense: 3
+suffer: 3
+patient: 3
+substitute: 3
+primary: 3
+turn my head: 3
+as a kid: 3
+diary: 3
+research: 3
+feedback: 3
+receive: 3
+train: 3
+could burp: 3
+painful: 3
+sore: 3
+get pregnant: 3
+drunk: 3
+to swallow: 3
+severe: 3
+fodmap: 3
+stress: 3
+actual vomit: 3
+torso: 3
+constipation: 3
+alcohol: 3
+hopeful: 3
+hungry: 3
+progress: 3
+bvi: 2
+tube: 2
+no burper: 2
+trap air: 2
+frequent: 2
+teach: 2
+teach yourself: 2
+tum: 2
+taste: 2
+press: 2
+throat make: 2
+deep breath: 2
+eat small: 2
+mental health: 2
+worried: 2
+never burp: 2
+whole life: 2
+post op: 2
+louder: 2
+evidence: 2
+mucus: 2
+trap gas: 2
+practice burp: 2
+burp syndrome: 2
+no burp syndrome: 2
+develop: 2
+bad than ever: 2
+out of state: 2
+laryngopedia: 2
+anxiety around clothing: 2
+worry: 2
+treatment instead: 2
+first burp: 2
+curious: 2
+under anesthesia: 2
+drink carbonated drink: 2
+drink carbonated: 2
+proper burp: 2
+learn to burp: 2
+lay upside down: 2
+annoying: 2
+chronic: 2
+association: 2
+violent: 2
+elimination diet: 2
+dietary intolerance: 2
+loud: 2
+slow digestive system: 2
+second round: 2
+cost prohibitive: 2
+uncontrollable: 2
+burp cough: 2
+md: 2
+needle: 2
+mouth: 2
+take pill: 2
+rule out: 2
+gas move around: 2
+inability: 2
+inability to burp: 2
+myotomy: 2
+ppis: 2
+complication: 2
+normal person: 2
+spicy food: 2
+nose allergy: 2
+sniff: 2
+hot soup: 2
+full of air: 2
+lose weight: 2
+theory: 2
+organ: 2
+some relief: 2
+surprise: 2
+appt: 2
+position: 2
+unit of botox: 2
+round 2: 2
+push my stomach: 2
+dietary consideration: 1
+effectively induce: 1
+stick my finger: 1
+air vomit help: 1
+burn: 1
+certain age: 1
+incident: 1
+first round: 1
+eat probiotics: 1
+teach themselves: 1
+eat slowly: 1
+hot shower: 1
+embarrassment: 1
+unrecognized medical condition: 1
+drug: 1
+simethicone: 1
+massage throat: 1
+star jump: 1
+mint tea: 1
+fennel seed: 1
+lie down flat: 1
+health psychologist: 1
+do exercise: 1
+dramamine: 1
+concern: 1
+relieve gas: 1
+supplement: 1
+rub my stomach: 1
+abdominal: 1
+burp exercise: 1
+quick jog: 1
+drink soda: 1
+hot compress: 1
+hold my breath: 1
+crystallize ginger: 1
+demon burp: 1
+no carb diet: 1
+avoid aggressor: 1
+force a croak: 1
+mint: 1
+dislodge some gas: 1
+salty snack: 1
+ranitidine: 1
+gag reflex: 1
+be relaxed: 1
+take it seriously: 1
+fish oil supplement: 1
+little hiccup: 1
+activate charcoal: 1
+air puke: 1
+relieve the pressure: 1
+no constrictive clothing: 1
+literature: 1
+ruin their life: 1
+more frequent meal: 1
+general practitioner: 1
+esophagus straight: 1
+release most flatulence: 1
+feel unrecognized: 1
+alone: 1
+abdominal throat muscle: 1
+very worried: 1
+so much pain: 1
+release the pressure: 1
+stomach be contract: 1
+uncoordinated: 1
+struggle to vomit: 1
+cough extra hard: 1
+gastroenteritis: 1
+couldn't t burp: 1
+embarrassing: 1
+botox wear off: 1
+lot of emotion: 1
+pre surgery consultation: 1
+life will change: 1
+lot of pain: 1
+slowly but surely: 1
+push out burp: 1
+in public: 1
+turn your head: 1
+be through botox: 1
+flat stomach after: 1
+before surgery: 1
+anecdotal evidence: 1
+look pregnant: 1
+flat stomach: 1
+get it cover: 1
+inhaler: 1
+while exercising: 1
+release trap gas: 1
+stuck: 1
+release gas: 1
+phlegmy: 1
+leak: 1
+weird gas release: 1
+change my voice: 1
+crazy tight: 1
+scared: 1
+botox loosen it: 1
+breath in: 1
+trial and error: 1
+quiet burp: 1
+treatment service: 1
+slightly worried: 1
+for year: 1
+throat botox: 1
+diagnostic tool: 1
+dysfunction: 1
+retrograde: 1
+effectiveness of treatment: 1
+cricopharyngeal dysfunction: 1
+neck surgery: 1
+explode: 1
+feel terrible: 1
+horrible condition: 1
+eat gas x: 1
+gas x: 1
+doctor suggestion: 1
+attitude and sass: 1
+bastian s laryngopedia: 1
+leave the house: 1
+bearable: 1
+book my procedure: 1
+change my life: 1
+depressing: 1
+clothing issue: 1
+little gurgle: 1
+break down: 1
+flex: 1
+could taste it: 1
+awake version: 1
+post botox diary: 1
+unusual gurgle: 1
+easily manageable: 1
+50 unit: 1
+involuntary: 1
+eat feel normal: 1
+feel weird: 1
+small involuntary microburp: 1
+feel very full: 1
+unnatural: 1
+will get bad: 1
+voice feel weak: 1
+light head: 1
+choke: 1
+slightly strange: 1
+normal injection: 1
+slightly painful: 1
+sore and weak: 1
+can t sing: 1
+hypermobile: 1
+hate throw up: 1
+finger thing: 1
+loosen my throat: 1
+ensure drink: 1
+physiological explanation: 1
+violent vomit: 1
+disgusting: 1
+more forcefully: 1
+air pressure: 1
+start burp: 1
+intubation: 1
+sore voice: 1
+finger method: 1
+control my diet: 1
+stomach gas: 1
+become fart: 1
+effect your voice: 1
+uncontrollable burp: 1
+strengthen: 1
+diagnostic step: 1
+detect: 1
+publication: 1
+esophageal motility problem: 1
+escape: 1
+drink tea: 1
+coffee: 1
+lactose intolerant: 1
+milk: 1
+article: 1
+to believe you: 1
+permanently on ppis: 1
+shot: 1
+air bounce up: 1
+long term complication: 1
+dysphagia issue: 1
+sweat: 1
+ppi: 1
+defective: 1
+digestive tract: 1
+dysphagia: 1
+all my life: 1
+sudden gasp: 1
+little inhale burp: 1
+hiccup randomly: 1
+hypnosis: 1
+ache: 1
+sleepy: 1
+ga: 1
+soreness: 1
+slurp noodle: 1
+alcoholic: 1
+eat too much: 1
+alcoholic drink: 1
+drink hot soup: 1
+2nd: 1
+no burp issue: 1
+brutal hiccup: 1
+dose: 1
+10 unit: 1
+trigger gas: 1
+nervous: 1
+be nervous: 1
+soupy noodle: 1
+cripple: 1
+pain and torture: 1
+convince: 1
+concerned: 1
+social aspect: 1
+randomly burp: 1
+out of nowhere: 1
+anaesthesia: 1
+anesthetic: 1
+stomach be stretch: 1
+overeating: 1
+slowly go away: 1
+100u: 1
+learn behavior: 1
+genetic linkage: 1
+vomit reflex: 1
+toothbrush method: 1
+chase every bite: 1
+body: 1
+improve my life: 1
+micro burp: 1
+focus on relax: 1
+small burp: 1
+mind at ease: 1
+community: 1
+medication: 1
+flustered: 1
+specific treatment: 1
+ct: 1
+weirdest thing ever: 1
+affect your anxiety: 1
+mocking we: 1
+cause we pain: 1
+cannot walk: 1
+in tear: 1
+recovery: 1
+mess up: 1
+movement: 1
+regain its movement: 1
+phlegm: 1
+through the neck: 1
+through the mouth: 1
+no anesthesia: 1
+waitlist: 1
+not overly flatulent: 1
+wear baggy clothes: 1
+bubble: 1
+big bubble: 1
+muscle forget: 1
+willing to travel: 1
+non carbonated: 1
+vocal issue: 1
+gas expand: 1
+plug everything up: 1
+incredible: 1
+not normal: 1
+gurgle come: 1
+pseudo burp: 1
+this misery: 1
+take out loan: 1
+get old: 1
+misery: 1
+daily misery: 1
+albuterol: 1
+100 unit: 1
+nhs: 1
+liver problem: 1
+realistic expectation: 1
+salad: 1
+bad trigger food: 1
+mucus feel: 1
+start wear off: 1
+use to stretch: 1
+cough and burp: 1
+laugh and burp: 1
+talk and burp: 1
+without insurance: 1
+unbearable: 1
+mucusy feel: 1
+ab: 1
+push air out: 1
+force it out: 1
+investigate: 1
+hunger cue: 1
+fake bloat: 1
+extra gurgle: 1
+be sick: 1
+so miserable: 1
+round 3: 1
+fizzy drink practice: 1
+contort my neck: 1
+jaw: 1
+yoga stretche: 1
+child s pose: 1
+downward dog: 1
+general anesthesia: 1
+let go: 1
+speak their language: 1
+research paper: 1
+statistic: 1
+consult: 1
+super easy: 1
+painless: 1
+have to pee: 1
+underweight: 1
+disorder: 1
+eat disorder: 1
+huge bloated belly: 1
+devastate: 1
+8 month pregnant: 1
+exaggerate: 1
+current stressor: 1
+no clear pattern: 1
+avoid alcohol: 1
+stomach hurt: 1
+bad over time: 1
+severely affect daily: 1
+able to learn: 1
+non burp: 1
+struggle to burp: 1
+food issue: 1
+digestive issue: 1
+dietary adjustment: 1
+beer: 1
+dietary change: 1
+feel so hear: 1
+weird personal quirk: 1
+horrible heartburn: 1
+gut: 1
+gurgly: 1
+croaky club: 1
+
