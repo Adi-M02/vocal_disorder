@@ -166,8 +166,10 @@ if __name__ == '__main__':
     if args.kmin and args.kmax:
         k_values = list(range(args.kmin, args.kmax+1, 5))
     elif args.cos_min and args.cos_max:
-        cos_values = np.arange(args.cos_min, args.cos_max + 0.01, 0.05)
-    freq_values = list(np.arange(args.freq_min, args.freq_max+1e-8, 0.01))
+        n_steps = int(round((args.cos_max - args.cos_min) / 0.05)) + 1
+        cos_values = np.linspace(args.cos_min, args.cos_max, n_steps).tolist()
+    n_steps = int(round((args.freq_max - args.freq_min) / 0.01)) + 1
+    freq_values = np.linspace(args.freq_min, args.freq_max, n_steps).tolist()
     all_metrics: List[Dict] = []
 
     for model_file in ['word2vec_cbow.model','word2vec_skipgram.model']:
