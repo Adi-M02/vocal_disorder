@@ -140,6 +140,7 @@ def evaluate_terms_performance(
     TP = FP = TN = FN = 0
     fp_counter = Counter()
     fn_counter = Counter()
+    tp_counter = Counter()
 
     for doc in docs:
         tokens = tok(doc)
@@ -183,6 +184,7 @@ def evaluate_terms_performance(
             e = term in expansion_found
             if m and e:
                 TP += 1
+                tp_counter[term] += 1
             elif not m and e:
                 FP += 1
                 fp_counter[term] += 1
@@ -215,6 +217,12 @@ def evaluate_terms_performance(
         f.write(f"Recall:    {recall:.3f}\n")
         f.write(f"F1 Score:  {f1:.3f}\n")
         f.write(f"Accuracy:  {accuracy:.3f}\n\n")
+        if tp_counter:
+            total_tp = sum(tp_counter.values())
+            f.write(f"True Positives ({total_tp} occurrences across {len(tp_counter)} terms):\n")
+            for term, cnt in tp_counter.most_common():
+                f.write(f"{term}: {cnt}\n")
+            f.write("\n")
         if fp_counter:
             total_fp = sum(fp_counter.values())
             f.write(f"False Positives ({total_fp} occurrences across {len(fp_counter)} terms):\n")
