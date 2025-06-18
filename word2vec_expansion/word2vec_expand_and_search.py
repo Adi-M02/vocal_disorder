@@ -305,12 +305,6 @@ if __name__ == '__main__':
                         filter_subreddits=['noburp'],
                         filter_users=users
                     )
-                    # Write docs to a txt file for inspection
-                    docs_txt_path = os.path.join(run_dir, 'user_docs.txt')
-                    with open(docs_txt_path, 'w', encoding='utf-8') as f_docs:
-                        for doc in docs:
-                            f_docs.write(doc.replace('\n', ' ') + '\n')
-                    sys.exit(0)
                     metrics = evaluate_terms_performance(
                         docs=docs,
                         manual_terms_path=os.path.join(args.manual_dir,'manual_terms.txt'),
