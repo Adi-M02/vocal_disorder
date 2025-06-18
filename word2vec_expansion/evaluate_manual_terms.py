@@ -131,13 +131,12 @@ def main():
     # Apply lemma lookup to all manual terms
     manual_terms = [ " ".join([lookup_map.get(tok, tok) for tok in term.split()]) for term in manual_terms ]
 
-    # Write only manual terms with count > 0 to a comma-separated txt file
-    present_terms = [term for term in manual_terms if term_counter.get(term, 0) > 0]
-    with open("vocabulary_evaluation/preprocessed_manual_terms_6_17/manual_terms.txt", "w", encoding="utf-8") as f:
-        f.write(",".join(present_terms))
-
-    for term in present_terms:
-        print(term, term_counter[term])
+    for term in manual_terms:
+        if term in term_counter:
+            if term_counter[term] < 3: 
+                print(term, term_counter[term])
+        else:
+            print(term, 0)
 
 if __name__ == "__main__":
     main()
