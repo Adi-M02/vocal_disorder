@@ -1,0 +1,9 @@
+{
+  "spellcheck": false,
+  "lookup": "testing/lemma_lookup.json",
+  "vector_size": 100,
+  "window": 7,
+  "min_count": 3,
+  "outdir": "word2vec_expansion/word2vec_vector_sizes/size_100",
+  "timestamp": "2025-06-18T13:15:22.776494"
+}

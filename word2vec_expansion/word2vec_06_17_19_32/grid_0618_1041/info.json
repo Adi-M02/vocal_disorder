@@ -1,0 +1,19 @@
+{
+  "terms": "rcpd_terms_6_5.json",
+  "model_dir": "word2vec_expansion/word2vec_06_17_19_32",
+  "lookup": "testing/lemma_lookup.json",
+  "spellcheck": true,
+  "kmin": 50,
+  "kmax": 100,
+  "cos_min": null,
+  "cos_max": null,
+  "freq_min": 0.15,
+  "freq_max": 0.15,
+  "manual_dir": "vocabulary_evaluation/preprocessed_manual_terms_6_17",
+  "eval_ngram": [
+    1,
+    3
+  ],
+  "metrics_output": "word2vec_expansion/word2vec_06_17_19_32/grid_0618_1041/metrics.json",
+  "out_root": null
+}

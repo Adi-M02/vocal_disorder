@@ -60,8 +60,12 @@ def main():
         help="Context window size."
     )
     parser.add_argument(
-        "--min_count", type=int, default=5,
+        "--min_count", type=int, default=3,
         help="Ignore tokens with total frequency lower than this."
+    )
+    parser.add_argument(
+        "--outdir", type=str, default=None,
+        help="Output directory to save models and info."
     )
     args = parser.parse_args()
 
@@ -114,7 +118,8 @@ def main():
 
     # 5) Build output directory
     now = datetime.datetime.now()
-    out_dir = Path("word2vec_expansion") / now.strftime("word2vec_%m_%d_%H_%M")
+    base_outdir = Path(args.outdir) if args.outdir else Path("word2vec_expansion")
+    out_dir = base_outdir / now.strftime("word2vec_%m_%d_%H_%M")
     out_dir.mkdir(parents=True, exist_ok=True)
 
     # 6) Save run info
