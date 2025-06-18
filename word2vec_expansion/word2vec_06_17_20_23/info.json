@@ -1,0 +1,8 @@
+{
+  "spellcheck": false,
+  "lookup": "testing/lemma_lookup.json",
+  "vector_size": 300,
+  "window": 25,
+  "min_count": 3,
+  "timestamp": "2025-06-17T20:23:34.162973"
+}
