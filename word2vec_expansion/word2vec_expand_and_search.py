@@ -72,18 +72,18 @@ def extract_frequent_ngrams(
                 break
             for i in range(L - n + 1):
                 gram = tuple(tokens[i:i + n])
-                # skip if first or last token is a stopword
-                if gram[0] in STOPWORDS or gram[-1] in STOPWORDS:
-                    continue
+                # # skip if first or last token is a stopword
+                # if gram[0] in STOPWORDS or gram[-1] in STOPWORDS:
+                #     continue
                 counts[gram] += 1
 
     # hardcoded min_count for 2-gram and 3-gram
     result = []
     for gram, cnt in counts.items():
         n = len(gram)
-        if n == 2 and cnt >= 5:
+        if n == 2 and cnt >= 1:
             result.append(" ".join(gram))
-        elif n == 3 and cnt >= 3:
+        elif n == 3 and cnt >= 1:
             result.append(" ".join(gram))
     return result
 
@@ -184,14 +184,16 @@ if __name__ == '__main__':
         vocab_unit = vocab_mat / np.linalg.norm(vocab_mat, axis=1, keepdims=True)
 
         frequent_ngrams = extract_frequent_ngrams(args.eval_ngram[1], tok_fn, lookup)
-        # embed ngrams
+        print(f"Found {len(frequent_ngrams)} frequent ngrams for evaluation.")
+        # embed ngrams with tqdm
         ngram_vecs = []
-        for ng in frequent_ngrams:
+        
+        for ng in tqdm(frequent_ngrams, desc="Embedding ngrams"):
             v = embed_phrase(model, ng, tok_fn, lookup)
             if v is not None:
                 n = np.linalg.norm(v)
-                if n>0:
-                    ngram_vecs.append(v/n)
+                if n > 0:
+                    ngram_vecs.append(v / n)
                 else:
                     ngram_vecs.append(None)
             else:
