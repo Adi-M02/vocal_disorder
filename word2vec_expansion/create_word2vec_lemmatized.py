@@ -100,22 +100,6 @@ def main():
         cleaned_docs.append(lemtoks)
     logging(f"Tokenized & lemmatized {len(cleaned_docs)} documents")
 
-    # 4) Load & lemmatize custom terms
-    custom_terms_map = load_terms("rcpd_terms_6_5.json")
-    custom_token_lists = []
-    for category, terms in custom_terms_map.items():
-        for term in terms:
-            tok_list = token_fn(term)
-            if tok_list:
-                custom_token_lists.append([lookup_map.get(tok, tok) for tok in tok_list])
-        cat_toks = token_fn(category)
-        if cat_toks:
-            custom_token_lists.append([lookup_map.get(tok, tok) for tok in cat_toks])
-    total_custom = sum(len(v) for v in custom_terms_map.values())
-    logging(
-        f"Loaded {total_custom} custom terms → {len(custom_token_lists)} lists"
-    )
-
     # 5) Build output directory
     now = datetime.datetime.now()
     base_outdir = Path(args.outdir) if args.outdir else Path("word2vec_expansion")
@@ -137,7 +121,6 @@ def main():
         workers=max(1, os.cpu_count()-1)
     )
     cbow.build_vocab(cleaned_docs)
-    cbow.build_vocab(custom_token_lists*5, update=True)
     cbow.train(cleaned_docs, total_examples=len(cleaned_docs), epochs=5)
     cbow_path = out_dir / "word2vec_cbow.model"
     cbow.save(str(cbow_path))
@@ -153,7 +136,6 @@ def main():
         workers=max(1, os.cpu_count()-1)
     )
     skipgram.build_vocab(cleaned_docs)
-    skipgram.build_vocab(custom_token_lists*5, update=True)
     skipgram.train(cleaned_docs, total_examples=len(cleaned_docs), epochs=5)
     skipgram_path = out_dir / "word2vec_skipgram.model"
     skipgram.save(str(skipgram_path))
