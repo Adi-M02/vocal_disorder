@@ -149,7 +149,7 @@ if __name__ == "__main__":
                         help="MongoDB collection")
     parser.add_argument("--filter_subreddits", default=["noburp"],
                         help="Comma-sep list; restrict bigram mining")
-    parser.add_argument("--min_bigram_count", type=int, default=5,
+    parser.add_argument("--min_bigram_count", type=int, default=0,
                         help="Frequency cut-off for bigrams")
     parser.add_argument("--exclude_terms_json", default=None,
                         help="JSON of phrases to exclude entirely")
