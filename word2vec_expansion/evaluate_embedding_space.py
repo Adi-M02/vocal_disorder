@@ -29,6 +29,7 @@ def embed_phrase(model: Word2Vec, phrase: str) -> Optional[np.ndarray]:
 # ─────────────────────────────────────────────────────────────
 def extract_frequent_ngrams(
     max_ngram: 3,
+    query: str,
     tok_fn,
     lookup_map: dict
 ) -> list[str]:
@@ -42,19 +43,18 @@ def extract_frequent_ngrams(
     counts = Counter()
     
     # slide an n-length window over each doc’s token list
+    if max_ngram <= 1:
+        return []
     for doc in tqdm(docs, desc=f"Loading docs for ngrams"):
         tokens = [lookup_map.get(t, t) for t in tok_fn(doc)]
         L = len(tokens)
-        if max_ngram <= 1:
-            return []
         for n in range(2, max_ngram + 1):
             if L < n:
                 break
             for i in range(L - n + 1):
+                if any(term for term in query.split() in tokens[i:i + n]):
+                    continue
                 gram = tuple(tokens[i:i + n])
-                # # skip if first or last token is a stopword
-                # if gram[0] in STOPWORDS or gram[-1] in STOPWORDS:
-                #     continue
                 counts[gram] += 1
 
     # hardcoded min_count for 2-gram and 3-gram
@@ -185,7 +185,7 @@ if __name__ == "__main__":
     # Load lemma lookup map
     lookup = json.load(open("testing/lemma_lookup.json", "r", encoding="utf-8"))
     # Mine ngrams once (shared by both models)
-    ngrams = extract_frequent_ngrams(args.ngram_count, tok_fn, lookup)
+    ngrams = extract_frequent_ngrams(args.ngram_count, args.query, tok_fn, lookup)
 
     for fname, label in [("word2vec_cbow.model",  "CBOW"),
                          ("word2vec_skipgram.model", "SkipGram")]:
