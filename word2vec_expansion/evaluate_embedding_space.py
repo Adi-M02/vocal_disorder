@@ -8,11 +8,13 @@ from typing import List, Tuple, Optional, Counter
 import numpy as np
 import pandas as pd
 from gensim.models import Word2Vec
+from tqdm import tqdm
 from nltk.corpus import stopwords
 
 sys.path.append("../vocal_disorder")
 from tokenizer import clean_and_tokenize
 from query_mongo import return_documents
+from spellchecker_folder.spellchecker import spellcheck_token_list
 
 # ─────────────────────────────────────────────────────────────
 # Helper: embed any phrase (1- or 2-tokens) by mean-pooling
@@ -23,66 +25,82 @@ def embed_phrase(model: Word2Vec, phrase: str) -> Optional[np.ndarray]:
     return None if not vecs else np.mean(vecs, axis=0)
 
 # ─────────────────────────────────────────────────────────────
-# Helper: extract frequent bigrams from Mongo, filter stop-words
+# Helper: extract frequent n-grams
 # ─────────────────────────────────────────────────────────────
-def extract_frequent_bigrams(
-    min_count: int,
-    db_name: str,
-    collection_name: str,
-    filter_subreddits: Optional[List[str]] = None,
-    mongo_uri: str = "mongodb://localhost:27017/"
-) -> List[Tuple[str, str]]:
-    docs = return_documents(db_name, collection_name,
-                            filter_subreddits, mongo_uri=mongo_uri)
-    from collections import Counter
-    bigram_counts: Counter[Tuple[str, str]] = Counter()
-    for doc in docs:
-        tokens = clean_and_tokenize(doc)
-        for w1, w2 in zip(tokens, tokens[1:]):
-            bigram_counts[(w1, w2)] += 1
+def extract_frequent_ngrams(
+    max_ngram: 3,
+    tok_fn,
+    lookup_map: dict
+) -> list[str]:
+    # fetch all documents
+    docs = return_documents(
+        db_name="reddit",
+        collection_name="noburp_all",
+        mongo_uri="mongodb://localhost:27017/"
+    )
+    
+    counts = Counter()
+    
+    # slide an n-length window over each doc’s token list
+    for doc in tqdm(docs, desc=f"Loading docs for ngrams"):
+        tokens = [lookup_map.get(t, t) for t in tok_fn(doc)]
+        L = len(tokens)
+        if max_ngram <= 1:
+            return []
+        for n in range(2, max_ngram + 1):
+            if L < n:
+                break
+            for i in range(L - n + 1):
+                gram = tuple(tokens[i:i + n])
+                # # skip if first or last token is a stopword
+                # if gram[0] in STOPWORDS or gram[-1] in STOPWORDS:
+                #     continue
+                counts[gram] += 1
 
-    stopset = set(stopwords.words("english"))
-    return [
-        bigram for bigram, cnt in bigram_counts.items()
-        if cnt >= min_count and bigram[0] not in stopset
-                           and bigram[1] not in stopset
-    ]
+    # hardcoded min_count for 2-gram and 3-gram
+    result = []
+    for gram, cnt in counts.items():
+        n = len(gram)
+        if n == 2 and cnt >= 1:
+            result.append(" ".join(gram))
+        elif n == 3 and cnt >= 1:
+            result.append(" ".join(gram))
+    return result
 
 # ─────────────────────────────────────────────────────────────
-# Build phrase list & embedding matrix (unigrams + bigrams)
+# Build phrase list & embedding matrix (unigrams + ngrams)
 # ─────────────────────────────────────────────────────────────
 def build_phrase_embeddings(
     model: Word2Vec,
-    bigrams: List[Tuple[str, str]],
-    exclude_terms: set[str] | None = None
-):
+    ngrams: List[str]
+) -> tuple[List[str], np.ndarray]:
     phrase_list: List[str] = []
-    emb_rows     : List[np.ndarray] = []
+    emb_rows: List[np.ndarray] = []
 
     # 1) unigrams straight from the model vocab
     for tok in model.wv.key_to_index.keys():
-        if exclude_terms and tok in exclude_terms:
-            continue
         phrase_list.append(tok)
         emb_rows.append(model.wv[tok])
 
-    # 2) space-joined bigrams (token_a token_b)
-    for w1, w2 in bigrams:
-        if w1 not in model.wv.key_to_index or w2 not in model.wv.key_to_index:
-            continue                           # skip OOV components
-        phrase = f"{w1} {w2}"
-        if exclude_terms and phrase in exclude_terms:
+    # 2) space-joined ngrams (each ngram is a string like "token_a token_b")
+    for phrase in ngrams:
+        tokens = phrase.split()
+        # skip if any component is out-of-vocab
+        if any(tok not in model.wv.key_to_index for tok in tokens):
             continue
         phrase_list.append(phrase)
-        emb_rows.append((model.wv[w1] + model.wv[w2]) / 2)
+        # average the embeddings of each token
+        emb_rows.append(np.mean([model.wv[tok] for tok in tokens], axis=0))
 
+    # stack into matrix and normalize to unit length
     emb_matrix = np.vstack(emb_rows)
-    norms      = np.linalg.norm(emb_matrix, axis=1, keepdims=True)
-    emb_matrix = emb_matrix / np.clip(norms, 1e-9, None)  # unit-norm
+    norms = np.linalg.norm(emb_matrix, axis=1, keepdims=True)
+    emb_matrix = emb_matrix / np.clip(norms, 1e-9, None)
+
     return phrase_list, emb_matrix
 
 # ─────────────────────────────────────────────────────────────
-# Neighbour search (handles uni- *and* bi-gram queries)
+# Neighbour search (handles uni- *and* n gram queries)
 # ─────────────────────────────────────────────────────────────
 def find_vocab_neighbors(
     model: Word2Vec,
@@ -102,21 +120,21 @@ def find_vocab_neighbors(
     # -------- 1. similarity for every phrase ---
     sims: List[float] = []
     for phrase in phrase_list:
-        if " " not in phrase:                         # unigram
-            sims.append(np.dot(model.wv[phrase] /
-                               np.linalg.norm(model.wv[phrase]), q_vec))
-        else:                                         # bigram
-            t1, t2 = phrase.split()
-            sim1 = np.dot(model.wv[t1] / np.linalg.norm(model.wv[t1]), q_vec)
-            sim2 = np.dot(model.wv[t2] / np.linalg.norm(model.wv[t2]), q_vec)
-            sims.append(0.5 * (sim1 + sim2))          # arithmetic mean
+        tokens = phrase.split()
+        # skip if any token is OOV
+        if any(t not in model.wv.key_to_index for t in tokens):
+            sims.append(-1.0)
+            continue
+        # mean of normalized token vectors
+        phrase_vec = np.mean([model.wv[t] / np.linalg.norm(model.wv[t]) for t in tokens], axis=0)
+        sim = np.dot(phrase_vec, q_vec)
+        sims.append(sim)
 
     sims = np.asarray(sims)
 
     # -------- 2. choose indices -----------------
     if eps is not None:
         keep = np.where(sims >= eps)[0]
-        # sort by similarity descending
         idx_order = keep[np.argsort(-sims[keep])]
         header = f"Neighbours with sim ≥ {eps}"
     else:
@@ -128,33 +146,31 @@ def find_vocab_neighbors(
     for idx in idx_order:
         phrase = phrase_list[idx]
         sim    = sims[idx]
-        if " " not in phrase:
+        tokens = phrase.split()
+        if len(tokens) == 1:
             print(f"  {phrase:<25} sim {sim:.4f}")
         else:
-            t1, t2 = phrase.split()
-            sim1 = np.dot(model.wv[t1] / np.linalg.norm(model.wv[t1]), q_vec)
-            sim2 = np.dot(model.wv[t2] / np.linalg.norm(model.wv[t2]), q_vec)
-            print(f"  {phrase:<25} avg {sim:.4f} ; {t1}:{sim1:.4f} , {t2}:{sim2:.4f}")
+            # show sim for each token as well as mean
+            token_sims = [np.dot(model.wv[t] / np.linalg.norm(model.wv[t]), q_vec) for t in tokens]
+            token_str = " , ".join(f"{t}:{s:.4f}" for t, s in zip(tokens, token_sims))
+            print(f"  {phrase:<25} avg {sim:.4f} ; {token_str}")
 
 # ─────────────────────────────────────────────────────────────
 # Main
 # ─────────────────────────────────────────────────────────────
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
-        description="Query nearest neighbours (uni + frequent bi-grams).")
+        description="Query nearest neighbours (uni + frequent n-grams).")
     parser.add_argument("-d", "--model_dir", required=True,
                         help="Directory containing .model files")
+    parser.add_argument("--ngram_count", type=int, default=3)
     parser.add_argument("--db", default="reddit", help="MongoDB database")
     parser.add_argument("--coll", default="noburp_all",
                         help="MongoDB collection")
     parser.add_argument("--filter_subreddits", default=["noburp"],
-                        help="Comma-sep list; restrict bigram mining")
-    parser.add_argument("--min_bigram_count", type=int, default=0,
-                        help="Frequency cut-off for bigrams")
-    parser.add_argument("--exclude_terms_json", default=None,
-                        help="JSON of phrases to exclude entirely")
+                        help="Comma-sep list; restrict ngram mining")
     parser.add_argument("--query", required=True,
-                        help="Unigram or bigram to query")
+                        help="Unigram or ngram to query")
     parser.add_argument("-k", type=int, default=15,
                         help="Number of neighbours to show")
     parser.add_argument("--eps", type=float, default=None,
@@ -164,16 +180,12 @@ if __name__ == "__main__":
     fsr = (args.filter_subreddits
            if args.filter_subreddits else None)
 
-    # optional exclusion set (e.g. rcpd_terms.json)
-    exclude_set = set()
-    if args.exclude_terms_json:
-        with open(args.exclude_terms_json, encoding="utf-8") as f:
-            for cat, terms in json.load(f).items():
-                exclude_set.update(term.lower().strip() for term in terms)
-
-    # Mine bigrams once (shared by both models)
-    bigrams = extract_frequent_bigrams(args.min_bigram_count,
-                                       args.db, args.coll, fsr)
+    def tok_fn(text):
+        return spellcheck_token_list(clean_and_tokenize(text))
+    # Load lemma lookup map
+    lookup = json.load(open("testing/lemma_lookup.json", "r", encoding="utf-8"))
+    # Mine ngrams once (shared by both models)
+    ngrams = extract_frequent_ngrams(args.ngram_count, tok_fn, lookup)
 
     for fname, label in [("word2vec_cbow.model",  "CBOW"),
                          ("word2vec_skipgram.model", "SkipGram")]:
@@ -182,7 +194,7 @@ if __name__ == "__main__":
         model = Word2Vec.load(path)
 
         phrase_list, emb_matrix = build_phrase_embeddings(
-            model, bigrams, exclude_set
+            model, ngrams
         )
 
         find_vocab_neighbors(
