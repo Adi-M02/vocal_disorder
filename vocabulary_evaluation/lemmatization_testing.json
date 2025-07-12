@@ -2,6 +2,7 @@
   "vocab_bins": {
     "barium swallow": [
       "barium swallow"
+<<<<<<< Updated upstream
     ],
     "biopsy": [
       "biopsied",
@@ -384816,6 +384817,3552 @@
     "zofran feel gaggy": [
       "zofran feel gaggy",
       "zofran feeling gaggy"
+=======
+    ],
+    "biopsy": [
+      "biopsied",
+      "biopsies",
+      "biopsy",
+      "biopsying"
+    ],
+    "emdr": [
+      "emdr"
+    ],
+    "ent": [
+      "ent"
+    ],
+    "endoscopy": [
+      "endoscopy"
+    ],
+    "esophageal dilation": [
+      "esophageal dilation"
+    ],
+    "fee": [
+      "fee",
+      "fee'd",
+      "feed",
+      "feeing",
+      "fees"
+    ],
+    "fee test": [
+      "fee test",
+      "fees test"
+    ],
+    "fluoroscopy": [
+      "fluoroscopy"
+    ],
+    "gastroenterologist": [
+      "gastroenterologist"
+    ],
+    "hrm": [
+      "hrm"
+    ],
+    "image": [
+      "image",
+      "imaged",
+      "images",
+      "imaging"
+    ],
+    "insurance": [
+      "insurance"
+    ],
+    "laryngologist": [
+      "laryngologist"
+    ],
+    "manometry": [
+      "manometry"
+    ],
+    "misdiagnosis": [
+      "misdiagnosis"
+    ],
+    "nasoendoscopy": [
+      "nasoendoscopy"
+    ],
+    "otolaryngologist": [
+      "otolaryngologist"
+    ],
+    "pcp": [
+      "pcp"
+    ],
+    "specialist": [
+      "specialist"
+    ],
+    "stoma": [
+      "stoma"
+    ],
+    "swallow test": [
+      "swallow test",
+      "swallow tests"
+    ],
+    "upper gi endoscope": [
+      "upper gi endoscope"
+    ],
+    "xray of colon": [
+      "xray of colon",
+      "xrays of colon"
+    ],
+    "acid": [
+      "acid"
+    ],
+    "acid reflux": [
+      "acid reflux"
+    ],
+    "antacid": [
+      "antacid",
+      "antacids"
+    ],
+    "anti": [
+      "anti"
+    ],
+    "barium swallow motility": [
+      "barium swallow motility"
+    ],
+    "barium swallow study": [
+      "barium swallow study"
+    ],
+    "burn": [
+      "burn",
+      "burned",
+      "burning",
+      "burns",
+      "burnt"
+    ],
+    "burp gastro": [
+      "burp gastro"
+    ],
+    "clear endoscopy": [
+      "clear endoscopy"
+    ],
+    "colonoscopy": [
+      "colonoscopied",
+      "colonoscopies",
+      "colonoscopy",
+      "colonoscopying"
+    ],
+    "concern": [
+      "concern",
+      "concerned",
+      "concerning",
+      "concerns"
+    ],
+    "constipate": [
+      "constipate",
+      "constipated",
+      "constipates",
+      "constipating"
+    ],
+    "convince": [
+      "convince",
+      "convinced",
+      "convinces",
+      "convincing"
+    ],
+    "course": [
+      "course",
+      "coursed",
+      "courses",
+      "coursing"
+    ],
+    "daily": [
+      "daily"
+    ],
+    "doc": [
+      "doc"
+    ],
+    "endoscopy appointment": [
+      "endoscopy appointment"
+    ],
+    "endoscopy awake": [
+      "endoscopy awake"
+    ],
+    "endoscopy ent": [
+      "endoscopy ent"
+    ],
+    "endoscopy everything": [
+      "endoscopy everything"
+    ],
+    "endoscopy go": [
+      "endoscopy go"
+    ],
+    "endoscopy never": [
+      "endoscopy never"
+    ],
+    "endoscopy nothing": [
+      "endoscopy nothing"
+    ],
+    "endoscopy swallow": [
+      "endoscopy swallow"
+    ],
+    "endoscopy test": [
+      "endoscopy test",
+      "endoscopy tests"
+    ],
+    "endoscopy use scope": [
+      "endoscopy use scope",
+      "endoscopy uses scope"
+    ],
+    "esomeprazole": [
+      "esomeprazole"
+    ],
+    "esophageal examination": [
+      "esophageal examination"
+    ],
+    "esophageal sphincter": [
+      "esophageal sphincter",
+      "esophageal sphincters"
+    ],
+    "excessive air swallow": [
+      "excessive air swallow",
+      "excessive air swallowing"
+    ],
+    "famotidine": [
+      "famotidine"
+    ],
+    "gas tummy": [
+      "gas tummy"
+    ],
+    "gastritis": [
+      "gastritis"
+    ],
+    "gastro": [
+      "gastro"
+    ],
+    "give": [
+      "gave",
+      "give",
+      "given",
+      "gives",
+      "giving"
+    ],
+    "gaviscon": [
+      "gaviscon"
+    ],
+    "gaviscon advance": [
+      "gaviscon advance"
+    ],
+    "gaviscon etc": [
+      "gaviscon etc"
+    ],
+    "gaviscon extra": [
+      "gaviscon extra"
+    ],
+    "gaviscon go": [
+      "gaviscon go"
+    ],
+    "gaviscon meal": [
+      "gaviscon meal",
+      "gaviscon meals"
+    ],
+    "gaviscon night": [
+      "gaviscon night"
+    ],
+    "gaviscon try": [
+      "gaviscon try"
+    ],
+    "gavison": [
+      "gavison"
+    ],
+    "gi": [
+      "gi"
+    ],
+    "gi endoscopy": [
+      "gi endoscopy"
+    ],
+    "heartburn": [
+      "heartburn"
+    ],
+    "ibs also endoscopy": [
+      "ibs also endoscopy"
+    ],
+    "ibs colonoscopy": [
+      "ibs colonoscopy"
+    ],
+    "indigestion": [
+      "indigestion"
+    ],
+    "inflammation": [
+      "inflammation"
+    ],
+    "inhibitor": [
+      "inhibitor",
+      "inhibitors"
+    ],
+    "lansoprazole": [
+      "lansoprazole"
+    ],
+    "laryngoscopy direct": [
+      "laryngoscopy direct"
+    ],
+    "laryngoscopy office": [
+      "laryngoscopy office"
+    ],
+    "medication": [
+      "medication",
+      "medications"
+    ],
+    "medicine": [
+      "medicine"
+    ],
+    "med": [
+      "med",
+      "meds"
+    ],
+    "mg": [
+      "mg"
+    ],
+    "muscle operation": [
+      "muscle operation"
+    ],
+    "nasal gastric": [
+      "nasal gastric"
+    ],
+    "nasal gastric tube": [
+      "nasal gastric tube"
+    ],
+    "nexium": [
+      "nexium"
+    ],
+    "omeprazole": [
+      "omeprazole"
+    ],
+    "oscopy barium swallow": [
+      "oscopy barium swallow"
+    ],
+    "ph impedance": [
+      "ph impedance"
+    ],
+    "ph‐impedance monitor": [
+      "phimpedance monitoring",
+      "ph‐impedance monitor"
+    ],
+    "pantoprazole": [
+      "pantoprazole"
+    ],
+    "pepcid": [
+      "pepcid"
+    ],
+    "ppi": [
+      "ppi",
+      "ppis"
+    ],
+    "prescribe": [
+      "prescribe",
+      "prescribed",
+      "prescribes",
+      "prescribing"
+    ],
+    "prilosec": [
+      "prilosec"
+    ],
+    "proton": [
+      "proton"
+    ],
+    "protonix": [
+      "protonix"
+    ],
+    "pump": [
+      "pump",
+      "pumped",
+      "pumping",
+      "pumps"
+    ],
+    "pylori": [
+      "pylori"
+    ],
+    "reducer": [
+      "reducer",
+      "reducers"
+    ],
+    "reflux": [
+      "reflux"
+    ],
+    "sample": [
+      "sample",
+      "sampled",
+      "samples",
+      "sampling"
+    ],
+    "show": [
+      "show",
+      "showed",
+      "showing",
+      "shown",
+      "shows"
+    ],
+    "silent": [
+      "silent"
+    ],
+    "speech therapy": [
+      "speech therapy"
+    ],
+    "sucralfate": [
+      "sucralfate"
+    ],
+    "suggest": [
+      "suggest",
+      "suggested",
+      "suggesting",
+      "suggests"
+    ],
+    "supplement": [
+      "supplement",
+      "supplemented",
+      "supplementing",
+      "supplements"
+    ],
+    "take": [
+      "take",
+      "taken",
+      "takes",
+      "taking",
+      "took"
+    ],
+    "tum": [
+      "tum",
+      "tums"
+    ],
+    "ulcer": [
+      "ulcer",
+      "ulcered",
+      "ulcering",
+      "ulcers"
+    ],
+    "upper esophageal sphincter": [
+      "upper esophageal sphincter"
+    ],
+    "want": [
+      "want",
+      "wanted",
+      "wanting",
+      "wants"
+    ],
+    "zofran": [
+      "zofran"
+    ],
+    "anesthesia": [
+      "anesthesia"
+    ],
+    "injection": [
+      "injection",
+      "injections"
+    ],
+    "ondansetron": [
+      "ondansetron"
+    ],
+    "throat tightness": [
+      "throat tightness"
+    ],
+    "unit": [
+      "unit",
+      "units"
+    ],
+    "actual": [
+      "actual"
+    ],
+    "also nervous procedure": [
+      "also nervous procedure"
+    ],
+    "although": [
+      "although"
+    ],
+    "amazing": [
+      "amazing"
+    ],
+    "anaesthesia": [
+      "anaesthesia"
+    ],
+    "anti nausea medication": [
+      "anti nausea medication"
+    ],
+    "anxiety procedure actually": [
+      "anxiety procedure actually"
+    ],
+    "barely": [
+      "barely"
+    ],
+    "botox": [
+      "botox"
+    ],
+    "botox drink": [
+      "botox drink"
+    ],
+    "botox procedure": [
+      "botox procedure"
+    ],
+    "botox swallow": [
+      "botox swallow",
+      "botox swallowing"
+    ],
+    "bubble in throat": [
+      "bubble in throat"
+    ],
+    "burp mini": [
+      "burp mini"
+    ],
+    "center": [
+      "center",
+      "centered",
+      "centering",
+      "centers"
+    ],
+    "definitely": [
+      "definitely"
+    ],
+    "ear pain": [
+      "ear pain"
+    ],
+    "early": [
+      "early"
+    ],
+    "end": [
+      "end",
+      "ended",
+      "ending",
+      "ends"
+    ],
+    "expect": [
+      "expect",
+      "expected",
+      "expecting",
+      "expects"
+    ],
+    "fully": [
+      "fully"
+    ],
+    "general anaesthetic": [
+      "general anaesthetic"
+    ],
+    "groggy": [
+      "groggy"
+    ],
+    "hopefully": [
+      "hopefully"
+    ],
+    "huge": [
+      "huge"
+    ],
+    "hurt": [
+      "hurt",
+      "hurting",
+      "hurts"
+    ],
+    "hyper I I salivation": [
+      "hyper   salivation",
+      "hyper I I salivation"
+    ],
+    "hypersalvation": [
+      "hypersalvation"
+    ],
+    "in office procedure": [
+      "in office procedure"
+    ],
+    "insurance provider": [
+      "insurance provider"
+    ],
+    "ish": [
+      "ish"
+    ],
+    "later": [
+      "later"
+    ],
+    "liquid ibuprofen": [
+      "liquid ibuprofen"
+    ],
+    "long procedure start": [
+      "long procedure start"
+    ],
+    "long procedure think": [
+      "long procedure think"
+    ],
+    "lump": [
+      "lump",
+      "lumped",
+      "lumping",
+      "lumps"
+    ],
+    "major": [
+      "major",
+      "majored",
+      "majoring",
+      "majors"
+    ],
+    "manageable": [
+      "manageable"
+    ],
+    "micro burp": [
+      "micro burp"
+    ],
+    "microburpe": [
+      "microburpe",
+      "microburped"
+    ],
+    "microburps": [
+      "microburps"
+    ],
+    "mild": [
+      "mild"
+    ],
+    "mini burp": [
+      "mini burp"
+    ],
+    "minimal": [
+      "minimal"
+    ],
+    "minor": [
+      "minor",
+      "minored",
+      "minoring",
+      "minors"
+    ],
+    "mostly": [
+      "mostly"
+    ],
+    "nearly": [
+      "nearly"
+    ],
+    "need": [
+      "need",
+      "needed",
+      "needing",
+      "needs"
+    ],
+    "nervous procedure": [
+      "nervous procedure"
+    ],
+    "nervous procedure actually": [
+      "nervous procedure actually"
+    ],
+    "nice": [
+      "nice"
+    ],
+    "nurse": [
+      "nurse",
+      "nursed",
+      "nurses",
+      "nursing"
+    ],
+    "okay": [
+      "o.k.'d",
+      "o.k.'ing",
+      "o.k.'s",
+      "ok'd",
+      "ok'ing",
+      "ok's",
+      "okay",
+      "okayed",
+      "okaying",
+      "okays"
+    ],
+    "otherwise": [
+      "otherwise"
+    ],
+    "overall": [
+      "overall"
+    ],
+    "pain": [
+      "pain",
+      "pained",
+      "paining",
+      "pains"
+    ],
+    "part": [
+      "part",
+      "parted",
+      "parting",
+      "parts"
+    ],
+    "post botox": [
+      "post botox"
+    ],
+    "post botox burper": [
+      "post botox burper",
+      "post botox burpers"
+    ],
+    "post anaesthetic nausea": [
+      "post anaesthetic nausea"
+    ],
+    "pre": [
+      "pre"
+    ],
+    "prior procedure think": [
+      "prior procedure think"
+    ],
+    "procedure": [
+      "procedure"
+    ],
+    "procedure afraid": [
+      "procedure afraid"
+    ],
+    "procedure always": [
+      "procedure always"
+    ],
+    "procedure come": [
+      "procedure come",
+      "procedure comes"
+    ],
+    "procedure constantly": [
+      "procedure constantly"
+    ],
+    "procedure doctor": [
+      "procedure doctor"
+    ],
+    "procedure do year": [
+      "procedure do year",
+      "procedure done year"
+    ],
+    "procedure first": [
+      "procedure first"
+    ],
+    "procedure get": [
+      "procedure get"
+    ],
+    "procedure give": [
+      "procedure give"
+    ],
+    "procedure happy": [
+      "procedure happy"
+    ],
+    "procedure hard": [
+      "procedure hard"
+    ],
+    "procedure help": [
+      "procedure help"
+    ],
+    "procedure hope": [
+      "procedure hope"
+    ],
+    "procedure idea": [
+      "procedure idea"
+    ],
+    "procedure monday get": [
+      "procedure monday get",
+      "procedure monday got"
+    ],
+    "procedure obviously": [
+      "procedure obviously"
+    ],
+    "procedure often": [
+      "procedure often"
+    ],
+    "procedure often get": [
+      "procedure often get"
+    ],
+    "procedure real": [
+      "procedure real"
+    ],
+    "procedure really": [
+      "procedure really"
+    ],
+    "procedure say": [
+      "procedure said",
+      "procedure say",
+      "procedure saying"
+    ],
+    "procedure seem": [
+      "procedure seem",
+      "procedure seems"
+    ],
+    "procedure something": [
+      "procedure something"
+    ],
+    "procedure sometimes": [
+      "procedure sometimes"
+    ],
+    "procedure soon worry": [
+      "procedure soon worried",
+      "procedure soon worry"
+    ],
+    "procedure sore": [
+      "procedure sore"
+    ],
+    "procedure talk": [
+      "procedure talk",
+      "procedure talking"
+    ],
+    "procedure thing": [
+      "procedure thing"
+    ],
+    "procedure think": [
+      "procedure think",
+      "procedure thinking"
+    ],
+    "procedure tell": [
+      "procedure tell",
+      "procedure told"
+    ],
+    "procedure try": [
+      "procedure try",
+      "procedure trying"
+    ],
+    "procedure we": [
+      "procedure us",
+      "procedure we"
+    ],
+    "procedure wait": [
+      "procedure wait",
+      "procedure waited"
+    ],
+    "procedure week say": [
+      "procedure week say",
+      "procedure weeks say"
+    ],
+    "procedure worry": [
+      "procedure worried",
+      "procedure worry"
+    ],
+    "procedure worry get": [
+      "procedure worry get"
+    ],
+    "progress": [
+      "progress",
+      "progressed",
+      "progresses",
+      "progressing"
+    ],
+    "quick": [
+      "quick"
+    ],
+    "quickly": [
+      "quickly"
+    ],
+    "relieve": [
+      "relieve",
+      "relieved",
+      "relieves",
+      "relieving"
+    ],
+    "relieve bloat": [
+      "relieve bloat",
+      "relieving bloating"
+    ],
+    "rest": [
+      "rest",
+      "rested",
+      "resting",
+      "rests"
+    ],
+    "seem": [
+      "seem",
+      "seemed",
+      "seeming",
+      "seems"
+    ],
+    "since procedure think": [
+      "since procedure think"
+    ],
+    "sleeve surgery afraid": [
+      "sleeve surgery afraid"
+    ],
+    "slight": [
+      "slight",
+      "slighted",
+      "slighting",
+      "slights"
+    ],
+    "slightly": [
+      "slightly"
+    ],
+    "sore throat": [
+      "sore throat"
+    ],
+    "sore throat etc": [
+      "sore throat etc"
+    ],
+    "sort": [
+      "sort",
+      "sorted",
+      "sorting",
+      "sorts"
+    ],
+    "staff": [
+      "staff",
+      "staffed",
+      "staffing",
+      "staffs"
+    ],
+    "surgery": [
+      "surgery"
+    ],
+    "surgery always": [
+      "surgery always"
+    ],
+    "surgery diary": [
+      "surgery diaries",
+      "surgery diary"
+    ],
+    "surgery mean": [
+      "surgery mean",
+      "surgery meant"
+    ],
+    "three": [
+      "three"
+    ],
+    "throat": [
+      "throat"
+    ],
+    "tiny": [
+      "tiny"
+    ],
+    "ton": [
+      "ton"
+    ],
+    "total": [
+      "total",
+      "totaled",
+      "totaling",
+      "totalled",
+      "totalling",
+      "totals"
+    ],
+    "truly": [
+      "truly"
+    ],
+    "tylenol": [
+      "tylenol"
+    ],
+    "uncontrollable belch": [
+      "uncontrollable belch",
+      "uncontrollable belching"
+    ],
+    "unfortunately": [
+      "unfortunately"
+    ],
+    "update": [
+      "update",
+      "updated",
+      "updates",
+      "updating"
+    ],
+    "usual": [
+      "usual"
+    ],
+    "wet burp": [
+      "wet burp",
+      "wet burps"
+    ],
+    "within": [
+      "within"
+    ],
+    "wake": [
+      "wake",
+      "waked",
+      "wakes",
+      "waking",
+      "woke",
+      "woken"
+    ],
+    "apd": [
+      "apd"
+    ],
+    "abdomino phrenic dyssynergia": [
+      "abdomino phrenic dyssynergia"
+    ],
+    "sibo": [
+      "sibo"
+    ],
+    "small intestine bacterial overgroeth": [
+      "small intestine bacterial overgroeth"
+    ],
+    "small intestine bacterial overgrowth": [
+      "small intestine bacterial overgrowth"
+    ],
+    "achalasia supragastric belch": [
+      "achalasia supragastric belch",
+      "achalasia supragastric belching"
+    ],
+    "acid reflux botox": [
+      "acid reflux botox"
+    ],
+    "acid reflux burp": [
+      "acid reflux burp",
+      "acid reflux burps"
+    ],
+    "acid reflux esophageal": [
+      "acid reflux esophageal"
+    ],
+    "acid reflux esophagitis": [
+      "acid reflux esophagitis"
+    ],
+    "acid reflux gaviscon": [
+      "acid reflux gaviscon"
+    ],
+    "acid reflux night": [
+      "acid reflux night"
+    ],
+    "acid reflux surgery": [
+      "acid reflux surgery"
+    ],
+    "aerophagia on swallow": [
+      "aerophagia on swallow",
+      "aerophagia on swallowing"
+    ],
+    "alternate": [
+      "alternate",
+      "alternated",
+      "alternates",
+      "alternating"
+    ],
+    "bacteria": [
+      "bacteria"
+    ],
+    "blood": [
+      "blood",
+      "blooded",
+      "blooding",
+      "bloods"
+    ],
+    "bowel": [
+      "bowel"
+    ],
+    "bowel paralysis": [
+      "bowel paralysis"
+    ],
+    "celiac": [
+      "celiac"
+    ],
+    "checkup": [
+      "checkup"
+    ],
+    "chey": [
+      "chey"
+    ],
+    "coeliac": [
+      "coeliac"
+    ],
+    "colonic pressure gas": [
+      "colonic pressure gas"
+    ],
+    "complaint": [
+      "complaint",
+      "complaints"
+    ],
+    "constipation": [
+      "constipation"
+    ],
+    "correlate": [
+      "correlate"
+    ],
+    "crohns": [
+      "crohns"
+    ],
+    "diagnose": [
+      "diagnose",
+      "diagnosed",
+      "diagnoses",
+      "diagnosing"
+    ],
+    "diagnosis": [
+      "diagnosis"
+    ],
+    "diarrhea": [
+      "diarrhea"
+    ],
+    "diet": [
+      "diet",
+      "dieted",
+      "dieting",
+      "diets"
+    ],
+    "difference": [
+      "difference",
+      "differences"
+    ],
+    "digestive": [
+      "digestive"
+    ],
+    "disease": [
+      "disease"
+    ],
+    "ehler danlo syndrome": [
+      "ehler danlo syndrome",
+      "ehlers danlos syndrome"
+    ],
+    "elimination": [
+      "elimination"
+    ],
+    "endometriosis": [
+      "endometriosis"
+    ],
+    "exasperate": [
+      "exasperate",
+      "exasperated",
+      "exasperates",
+      "exasperating"
+    ],
+    "fiber": [
+      "fiber"
+    ],
+    "firsthand": [
+      "firsthand"
+    ],
+    "fodmap": [
+      "fodmap",
+      "fodmaps"
+    ],
+    "gas stomach burp": [
+      "gas stomach burp"
+    ],
+    "gastric colonic volvulus": [
+      "gastric colonic volvulus"
+    ],
+    "gastric motility": [
+      "gastric motility"
+    ],
+    "gastric reflux": [
+      "gastric reflux"
+    ],
+    "gastritis ibs": [
+      "gastritis ibs"
+    ],
+    "gastroesophageal gas reflux": [
+      "gastroesophageal gas reflux"
+    ],
+    "gastrointestinal": [
+      "gastrointestinal"
+    ],
+    "gastroparesis": [
+      "gastroparesis"
+    ],
+    "gaviscon acid reflux": [
+      "gaviscon acid reflux"
+    ],
+    "gi disorder": [
+      "gi disorder"
+    ],
+    "gluten": [
+      "gluten"
+    ],
+    "gut": [
+      "gut",
+      "guts",
+      "gutted",
+      "gutting"
+    ],
+    "hernia gerd likely": [
+      "hernia gerd likely"
+    ],
+    "hiatal hernia": [
+      "hiatal hernia"
+    ],
+    "hiatal hernia apparently": [
+      "hiatal hernia apparently"
+    ],
+    "hiatal hernia even": [
+      "hiatal hernia even"
+    ],
+    "hiccup acid reflux": [
+      "hiccup acid reflux",
+      "hiccups acid reflux"
+    ],
+    "histological": [
+      "histological"
+    ],
+    "history": [
+      "history"
+    ],
+    "ibs": [
+      "ibs"
+    ],
+    "intolerance": [
+      "intolerance",
+      "intolerances"
+    ],
+    "invalidate": [
+      "invalidate",
+      "invalidated",
+      "invalidates",
+      "invalidating"
+    ],
+    "irritable": [
+      "irritable"
+    ],
+    "irritable bowel syndrome": [
+      "irritable bowel syndrome"
+    ],
+    "lactose": [
+      "lactose"
+    ],
+    "main": [
+      "main"
+    ],
+    "methane small intestine": [
+      "methane small intestine"
+    ],
+    "misdiagnose": [
+      "misdiagnose",
+      "misdiagnosed",
+      "misdiagnoses",
+      "misdiagnosing"
+    ],
+    "myriad": [
+      "myriad"
+    ],
+    "nutritionist": [
+      "nutritionist"
+    ],
+    "obstruction": [
+      "obstruction"
+    ],
+    "obvious": [
+      "obvious"
+    ],
+    "orlov": [
+      "orlov"
+    ],
+    "reflux acid burp": [
+      "reflux acid burp",
+      "reflux acid burps"
+    ],
+    "reflux back botox": [
+      "reflux back botox"
+    ],
+    "reflux gaviscon": [
+      "reflux gaviscon"
+    ],
+    "reflux know botox": [
+      "reflux know botox"
+    ],
+    "reflux surgery lot": [
+      "reflux surgery lot"
+    ],
+    "reflux symptom botox": [
+      "reflux symptom botox",
+      "reflux symptoms botox"
+    ],
+    "reflux upper endoscopy": [
+      "reflux upper endoscopy"
+    ],
+    "regularity": [
+      "regularity"
+    ],
+    "remission": [
+      "remission"
+    ],
+    "sibo gastritis": [
+      "sibo gastritis"
+    ],
+    "sibo small intestinal": [
+      "sibo small intestinal"
+    ],
+    "sibo small intestine": [
+      "sibo small intestine"
+    ],
+    "stool": [
+      "stool",
+      "stooled",
+      "stooling",
+      "stools"
+    ],
+    "strict": [
+      "strict"
+    ],
+    "supra gastric belch": [
+      "supra gastric belch",
+      "supra gastric belching"
+    ],
+    "supra gastric burp": [
+      "supra gastric burp",
+      "supra gastric burps"
+    ],
+    "supragastric belch": [
+      "supragastric belch",
+      "supragastric belching"
+    ],
+    "supragastric belch aerophagia": [
+      "supragastric belch aerophagia",
+      "supragastric belching aerophagia"
+    ],
+    "tell": [
+      "tell",
+      "telling",
+      "tells",
+      "told"
+    ],
+    "acidic": [
+      "acidic"
+    ],
+    "blocker": [
+      "blocker",
+      "blockers"
+    ],
+    "chew": [
+      "chew",
+      "chewed",
+      "chewing",
+      "chews"
+    ],
+    "counter": [
+      "counter",
+      "countered",
+      "countering",
+      "counters"
+    ],
+    "dino": [
+      "dino"
+    ],
+    "discontinue": [
+      "discontinue",
+      "discontinued",
+      "discontinues",
+      "discontinuing"
+    ],
+    "famotadine": [
+      "famotadine"
+    ],
+    "flare": [
+      "flare",
+      "flared",
+      "flares",
+      "flaring"
+    ],
+    "flavour": [
+      "flavour"
+    ],
+    "help": [
+      "help",
+      "helped",
+      "helping",
+      "helps"
+    ],
+    "liquid": [
+      "liquid"
+    ],
+    "manage": [
+      "manage",
+      "managed",
+      "manages",
+      "managing"
+    ],
+    "otc": [
+      "otc"
+    ],
+    "papaya": [
+      "papaya"
+    ],
+    "past": [
+      "past"
+    ],
+    "plus": [
+      "plus"
+    ],
+    "reconsider": [
+      "reconsider",
+      "reconsidered",
+      "reconsidering",
+      "reconsiders"
+    ],
+    "tablet": [
+      "tablet",
+      "tableted",
+      "tableting",
+      "tablets",
+      "tabletted",
+      "tabletting"
+    ],
+    "temporarily": [
+      "temporarily"
+    ],
+    "temporary": [
+      "temporary"
+    ],
+    "unsafe": [
+      "unsafe"
+    ],
+    "wean": [
+      "wean",
+      "weaned",
+      "weaning",
+      "weans"
+    ],
+    "worsen": [
+      "worsen",
+      "worsened",
+      "worsening",
+      "worsens"
+    ],
+    "already cough burp": [
+      "already cough burp",
+      "already cough burping"
+    ],
+    "also fear rcpd": [
+      "also fear rcpd",
+      "also fearing rcpd"
+    ],
+    "bit like water": [
+      "bit like water"
+    ],
+    "burp relax body": [
+      "burp relax body"
+    ],
+    "cause burp year": [
+      "cause burp year",
+      "caused burp years"
+    ],
+    "childcare support people": [
+      "childcare support people"
+    ],
+    "come stomach throat": [
+      "come stomach throat"
+    ],
+    "cpd harmless quirk": [
+      "cpd harmless quirk"
+    ],
+    "difference tooth hurt": [
+      "difference teeth hurt",
+      "difference tooth hurt"
+    ],
+    "dose might help": [
+      "dose might help"
+    ],
+    "edit omg read": [
+      "edit omg read"
+    ],
+    "experience similar stomach": [
+      "experience similar stomach",
+      "experienced similar stomach"
+    ],
+    "far trip even": [
+      "far trip even"
+    ],
+    "feel odd even": [
+      "feel odd even",
+      "felt odd even"
+    ],
+    "food eat solid": [
+      "food eat solid",
+      "food eat solids"
+    ],
+    "gag reflex either": [
+      "gag reflex either"
+    ],
+    "gas come sit": [
+      "gas come sit",
+      "gas comes sits"
+    ],
+    "get good one": [
+      "get good one",
+      "get good ones"
+    ],
+    "get microburp microburpe": [
+      "get microburp microburpe",
+      "get microburp microburping"
+    ],
+    "get pregnant rant": [
+      "get pregnant rant",
+      "getting pregnant rant"
+    ],
+    "go well find": [
+      "go well find",
+      "gone well found"
+    ],
+    "gurgle completely": [
+      "gurgle completely",
+      "gurgles completely"
+    ],
+    "inability burp properly": [
+      "inability burp properly"
+    ],
+    "know another frog": [
+      "know another frog"
+    ],
+    "know treat time": [
+      "know treat time"
+    ],
+    "least general physician": [
+      "least general physician",
+      "least general physicians"
+    ],
+    "may anxiety awful": [
+      "may anxiety awful"
+    ],
+    "morning question think": [
+      "morning question think"
+    ],
+    "much small expect": [
+      "much small expect",
+      "much smaller expected"
+    ],
+    "never burp constantly": [
+      "never burp constantly",
+      "never burped constantly"
+    ],
+    "night imagine try": [
+      "night imagine try",
+      "night imagine trying"
+    ],
+    "office create new": [
+      "office create new"
+    ],
+    "outlet air mattress": [
+      "outlet air mattress"
+    ],
+    "point head slightly": [
+      "point head slightly"
+    ],
+    "preventative measure post": [
+      "preventative measure post",
+      "preventative measures posted"
+    ],
+    "procedure schedule surgery": [
+      "procedure schedule surgery",
+      "procedure scheduled surgery"
+    ],
+    "procedure realize every": [
+      "procedure realize every",
+      "procedures realized every"
+    ],
+    "question first box": [
+      "question first box",
+      "questions first box"
+    ],
+    "reason edit take": [
+      "reason edit take"
+    ],
+    "relatively non gassy": [
+      "relatively non gassy"
+    ],
+    "reply ccg hi": [
+      "reply ccg hi"
+    ],
+    "see doctor thank": [
+      "see doctor thank",
+      "see doctor thanks"
+    ],
+    "shaker time swallow": [
+      "shaker time swallow",
+      "shakers timed swallowing"
+    ],
+    "situation able turn": [
+      "situation able turn"
+    ],
+    "sort botox symptom": [
+      "sort botox symptom",
+      "sorting botox symptoms"
+    ],
+    "sound push": [
+      "sound push"
+    ],
+    "start bark sorry": [
+      "start bark sorry",
+      "start barking sorry"
+    ],
+    "stick throat": [
+      "stick throat",
+      "sticks throat"
+    ],
+    "stick soft food": [
+      "stick soft food",
+      "stuck soft foods"
+    ],
+    "symptom botox mild": [
+      "symptom botox mild",
+      "symptoms botox mild"
+    ],
+    "theory behind shaker": [
+      "theory behind shaker",
+      "theory behind shakers"
+    ],
+    "think affect throat": [
+      "think affect throat",
+      "think affecting throat"
+    ],
+    "throughout life suck": [
+      "throughout life suck",
+      "throughout life sucks"
+    ],
+    "time sure expect": [
+      "time sure expect"
+    ],
+    "vibration function help": [
+      "vibration function help",
+      "vibration function helping"
+    ],
+    "water two nice": [
+      "water two nice"
+    ],
+    "week pain free": [
+      "week pain free",
+      "weeks pain free"
+    ],
+    "whole time teacher": [
+      "whole time teacher"
+    ],
+    "without suffer take": [
+      "without suffer take",
+      "without suffering take"
+    ],
+    "year three": [
+      "year three",
+      "years three"
+    ],
+    "abdomen": [
+      "abdomen"
+    ],
+    "abdominal": [
+      "abdominal"
+    ],
+    "alleviate": [
+      "alleviate",
+      "alleviated",
+      "alleviates",
+      "alleviating"
+    ],
+    "anxiety feel": [
+      "anxiety feel",
+      "anxiety feels"
+    ],
+    "anyways": [
+      "anyways"
+    ],
+    "basically": [
+      "basically"
+    ],
+    "bloat": [
+      "bloat",
+      "bloated",
+      "bloating",
+      "bloats"
+    ],
+    "cause": [
+      "cause",
+      "caused",
+      "causes",
+      "causing"
+    ],
+    "constant": [
+      "constant"
+    ],
+    "cramping": [
+      "cramping"
+    ],
+    "debilitate": [
+      "debilitate",
+      "debilitated",
+      "debilitates",
+      "debilitating"
+    ],
+    "describe": [
+      "describe",
+      "described",
+      "describes",
+      "describing"
+    ],
+    "discomfort get": [
+      "discomfort get",
+      "discomfort got"
+    ],
+    "discomfort maybe": [
+      "discomfort maybe"
+    ],
+    "discomfort r": [
+      "discomfort r"
+    ],
+    "discomfort really": [
+      "discomfort really"
+    ],
+    "discomfort seem": [
+      "discomfort seem",
+      "discomfort seems"
+    ],
+    "discomfort talk": [
+      "discomfort talk",
+      "discomfort talking"
+    ],
+    "discomfort think": [
+      "discomfort think"
+    ],
+    "discomfort go": [
+      "discomfort go",
+      "discomfort went"
+    ],
+    "ease": [
+      "ease",
+      "eased",
+      "eases",
+      "easing"
+    ],
+    "either": [
+      "either"
+    ],
+    "er": [
+      "er"
+    ],
+    "experience": [
+      "experience",
+      "experienced",
+      "experiences",
+      "experiencing"
+    ],
+    "extreme": [
+      "extreme"
+    ],
+    "fact": [
+      "fact"
+    ],
+    "incredibly": [
+      "incredibly"
+    ],
+    "ineffective": [
+      "ineffective"
+    ],
+    "intense": [
+      "intense"
+    ],
+    "irritation": [
+      "irritation"
+    ],
+    "level": [
+      "level",
+      "leveled",
+      "leveling",
+      "levelled",
+      "levelling",
+      "levels"
+    ],
+    "light": [
+      "light",
+      "lighted",
+      "lighting",
+      "lights",
+      "lit"
+    ],
+    "lower": [
+      "lower",
+      "lowered",
+      "lowering",
+      "lowers"
+    ],
+    "middle": [
+      "middle",
+      "middled",
+      "middles",
+      "middling"
+    ],
+    "moan": [
+      "moan",
+      "moaned",
+      "moaning",
+      "moans"
+    ],
+    "nausea acid": [
+      "nausea acid"
+    ],
+    "nausea cause": [
+      "nausea cause",
+      "nausea causes"
+    ],
+    "nausea come": [
+      "nausea come",
+      "nausea comes"
+    ],
+    "nausea give": [
+      "nausea give",
+      "nausea gives"
+    ],
+    "nausea go": [
+      "nausea go",
+      "nausea goes"
+    ],
+    "nausea keep": [
+      "nausea keep",
+      "nausea kept"
+    ],
+    "nausea make": [
+      "nausea make"
+    ],
+    "nausea maybe": [
+      "nausea maybe"
+    ],
+    "nausea mean": [
+      "nausea mean"
+    ],
+    "nausea seem": [
+      "nausea seem",
+      "nausea seems"
+    ],
+    "nausea something": [
+      "nausea something"
+    ],
+    "nausea think": [
+      "nausea think"
+    ],
+    "nausea want": [
+      "nausea want"
+    ],
+    "needle": [
+      "needle",
+      "needled",
+      "needles",
+      "needling"
+    ],
+    "nervous": [
+      "nervous"
+    ],
+    "obviously": [
+      "obviously"
+    ],
+    "occasional": [
+      "occasional"
+    ],
+    "pain happen": [
+      "pain happen",
+      "pain happens"
+    ],
+    "pain know": [
+      "pain knew",
+      "pain know"
+    ],
+    "pain man": [
+      "pain man"
+    ],
+    "pain possibly": [
+      "pain possibly"
+    ],
+    "pain seem": [
+      "pain seem",
+      "pain seems"
+    ],
+    "pain seriously": [
+      "pain seriously"
+    ],
+    "pass": [
+      "pass",
+      "passed",
+      "passes",
+      "passing"
+    ],
+    "possibly": [
+      "possibly"
+    ],
+    "rib": [
+      "rib",
+      "ribbed",
+      "ribbing",
+      "ribs"
+    ],
+    "sharp": [
+      "sharp"
+    ],
+    "somewhat": [
+      "somewhat"
+    ],
+    "stab": [
+      "stab",
+      "stabbed",
+      "stabbing",
+      "stabs"
+    ],
+    "sternum": [
+      "sternum"
+    ],
+    "stomach": [
+      "stomach",
+      "stomached",
+      "stomaching",
+      "stomachs"
+    ],
+    "system": [
+      "system"
+    ],
+    "terrible": [
+      "terrible"
+    ],
+    "tldr": [
+      "tldr"
+    ],
+    "top": [
+      "top",
+      "topped",
+      "topping",
+      "tops"
+    ],
+    "type": [
+      "type",
+      "typed",
+      "types",
+      "typing"
+    ],
+    "unbearable": [
+      "unbearable"
+    ],
+    "upper": [
+      "upper"
+    ],
+    "cure": [
+      "cure",
+      "cured",
+      "cures",
+      "curing"
+    ],
+    "able to burp": [
+      "able to burp"
+    ],
+    "airvomite": [
+      "airvomite",
+      "airvomiting"
+    ],
+    "annoying": [
+      "annoying"
+    ],
+    "answer": [
+      "answer",
+      "answered",
+      "answering",
+      "answers"
+    ],
+    "anyway": [
+      "anyway"
+    ],
+    "awesome": [
+      "awesome"
+    ],
+    "begin": [
+      "began",
+      "begin",
+      "beginning",
+      "begins",
+      "begun"
+    ],
+    "burp frequently": [
+      "burp frequently"
+    ],
+    "burp gradually": [
+      "burp gradually"
+    ],
+    "burp mainly": [
+      "burp mainly"
+    ],
+    "burp mostly": [
+      "burp mostly"
+    ],
+    "burp never": [
+      "burp never",
+      "burps never"
+    ],
+    "burp try": [
+      "burp try",
+      "burp trying"
+    ],
+    "burper try": [
+      "burper try",
+      "burpers try"
+    ],
+    "burp": [
+      "burp",
+      "burped",
+      "burping",
+      "burps"
+    ],
+    "burp able": [
+      "burp able",
+      "burping able"
+    ],
+    "burp case": [
+      "burp case",
+      "burping case",
+      "burps case"
+    ],
+    "burp change": [
+      "burp change",
+      "burping change",
+      "burps change"
+    ],
+    "burp couple": [
+      "burp couple",
+      "burping couple"
+    ],
+    "burp currently": [
+      "burp currently",
+      "burping currently"
+    ],
+    "burp due": [
+      "burp due",
+      "burping due"
+    ],
+    "burp everyday": [
+      "burp everyday",
+      "burping everyday",
+      "burps everyday"
+    ],
+    "burp full": [
+      "burp full",
+      "burping full"
+    ],
+    "burp go": [
+      "burp go",
+      "burping going",
+      "burps go"
+    ],
+    "burp help": [
+      "burp help",
+      "burping helping"
+    ],
+    "burp necessary": [
+      "burp necessary",
+      "burping necessary"
+    ],
+    "burp nice": [
+      "burp nice",
+      "burping nice"
+    ],
+    "burp ok": [
+      "burp ok",
+      "burping ok"
+    ],
+    "burp okay": [
+      "burp okay",
+      "burping okay"
+    ],
+    "burp personally": [
+      "burp personally",
+      "burping personally"
+    ],
+    "burp soon keep": [
+      "burp soon keep",
+      "burping soon keep"
+    ],
+    "burp start": [
+      "burp start",
+      "burping start",
+      "burping starts"
+    ],
+    "burp stop": [
+      "burp stop",
+      "burping stop",
+      "burping stops",
+      "burps stopping"
+    ],
+    "burp turn": [
+      "burp turn",
+      "burping turned"
+    ],
+    "burp come": [
+      "burp come",
+      "burps comes"
+    ],
+    "burp drank": [
+      "burp drank",
+      "burps drank"
+    ],
+    "burp life": [
+      "burp life",
+      "burps life"
+    ],
+    "burp remember": [
+      "burp remember",
+      "burps remember"
+    ],
+    "burp sudden": [
+      "burp sudden",
+      "burps sudden"
+    ],
+    "burp tell": [
+      "burp tell",
+      "burps told"
+    ],
+    "burp trouble": [
+      "burp trouble",
+      "burps trouble"
+    ],
+    "burpy": [
+      "burpy"
+    ],
+    "cbd": [
+      "cbd"
+    ],
+    "champ": [
+      "champ",
+      "champed",
+      "champing",
+      "champs"
+    ],
+    "chance": [
+      "chance",
+      "chanced",
+      "chances",
+      "chancing"
+    ],
+    "change": [
+      "change",
+      "changed",
+      "changes",
+      "changing"
+    ],
+    "clearly": [
+      "clearly"
+    ],
+    "conscious": [
+      "conscious"
+    ],
+    "control": [
+      "control",
+      "controled",
+      "controling",
+      "controlled",
+      "controlling",
+      "controls"
+    ],
+    "duplicate": [
+      "duplicate",
+      "duplicated",
+      "duplicates",
+      "duplicating"
+    ],
+    "figure": [
+      "figure",
+      "figured",
+      "figures",
+      "figuring"
+    ],
+    "fix": [
+      "fix",
+      "fixed",
+      "fixes",
+      "fixing"
+    ],
+    "imagine": [
+      "imagine",
+      "imagined",
+      "imagines",
+      "imagining"
+    ],
+    "improve": [
+      "improve",
+      "improved",
+      "improves",
+      "improving"
+    ],
+    "journey": [
+      "journey",
+      "journeyed",
+      "journeying",
+      "journeys"
+    ],
+    "learn": [
+      "learn",
+      "learned",
+      "learning",
+      "learns",
+      "learnt"
+    ],
+    "least": [
+      "least"
+    ],
+    "life change": [
+      "life change",
+      "life changing"
+    ],
+    "lucky": [
+      "lucky"
+    ],
+    "mean": [
+      "mean",
+      "meaning",
+      "means",
+      "meant"
+    ],
+    "memory": [
+      "memory"
+    ],
+    "method": [
+      "method",
+      "methods"
+    ],
+    "natural": [
+      "natural"
+    ],
+    "naturally": [
+      "naturally"
+    ],
+    "officially": [
+      "officially"
+    ],
+    "one": [
+      "one",
+      "ones"
+    ],
+    "perhaps": [
+      "perhaps"
+    ],
+    "practice": [
+      "practice",
+      "practiced",
+      "practices",
+      "practicing"
+    ],
+    "practise": [
+      "practise",
+      "practised",
+      "practises",
+      "practising"
+    ],
+    "recommend": [
+      "recommend",
+      "recommended",
+      "recommending",
+      "recommends"
+    ],
+    "rodeo": [
+      "rodeo"
+    ],
+    "self": [
+      "self",
+      "selfed",
+      "selfing",
+      "selfs"
+    ],
+    "shaker": [
+      "shaker",
+      "shakers"
+    ],
+    "simply": [
+      "simply"
+    ],
+    "situp": [
+      "situp",
+      "situps"
+    ],
+    "solve": [
+      "solve",
+      "solved",
+      "solves",
+      "solving"
+    ],
+    "still burp": [
+      "still burp",
+      "still burping"
+    ],
+    "stop": [
+      "stop",
+      "stopped",
+      "stopping",
+      "stops"
+    ],
+    "strength": [
+      "strength"
+    ],
+    "stretch": [
+      "stretch",
+      "stretched",
+      "stretches",
+      "stretching"
+    ],
+    "train": [
+      "train",
+      "trained",
+      "training",
+      "trains"
+    ],
+    "yesterday burp": [
+      "yesterday burp",
+      "yesterday burps"
+    ],
+    "zero": [
+      "zero",
+      "zeroed",
+      "zeroes",
+      "zeroing",
+      "zeros"
+    ],
+    "anxiety": [
+      "anxiety"
+    ],
+    "sad": [
+      "sad"
+    ],
+    "social anxiety": [
+      "social anxiety"
+    ],
+    "affect": [
+      "affect",
+      "affected",
+      "affecting",
+      "affects"
+    ],
+    "anxiety acid": [
+      "anxiety acid"
+    ],
+    "anxiety bad": [
+      "anxiety bad"
+    ],
+    "anxiety basically": [
+      "anxiety basically"
+    ],
+    "anxiety cause": [
+      "anxiety cause",
+      "anxiety causes"
+    ],
+    "anxiety certain": [
+      "anxiety certain"
+    ],
+    "anxiety class": [
+      "anxiety class"
+    ],
+    "anxiety come": [
+      "anxiety come",
+      "anxiety comes"
+    ],
+    "anxiety common": [
+      "anxiety common"
+    ],
+    "anxiety crazy": [
+      "anxiety crazy"
+    ],
+    "anxiety definitely": [
+      "anxiety definitely"
+    ],
+    "anxiety due": [
+      "anxiety due"
+    ],
+    "anxiety ever": [
+      "anxiety ever"
+    ],
+    "anxiety far": [
+      "anxiety far"
+    ],
+    "anxiety go": [
+      "anxiety go",
+      "anxiety goes",
+      "anxiety gone"
+    ],
+    "anxiety happen": [
+      "anxiety happen",
+      "anxiety happens"
+    ],
+    "anxiety inability": [
+      "anxiety inability"
+    ],
+    "anxiety induce": [
+      "anxiety induce",
+      "anxiety induced"
+    ],
+    "anxiety issue": [
+      "anxiety issue"
+    ],
+    "anxiety kind": [
+      "anxiety kind"
+    ],
+    "anxiety lately": [
+      "anxiety lately"
+    ],
+    "anxiety lead": [
+      "anxiety lead"
+    ],
+    "anxiety long": [
+      "anxiety long"
+    ],
+    "anxiety mention": [
+      "anxiety mention",
+      "anxiety mentioned"
+    ],
+    "anxiety new": [
+      "anxiety new"
+    ],
+    "anxiety prior": [
+      "anxiety prior"
+    ],
+    "anxiety real": [
+      "anxiety real"
+    ],
+    "anxiety realize": [
+      "anxiety realize",
+      "anxiety realized"
+    ],
+    "anxiety remember": [
+      "anxiety remember"
+    ],
+    "anxiety ride": [
+      "anxiety ridden",
+      "anxiety ride"
+    ],
+    "anxiety tell": [
+      "anxiety tell",
+      "anxiety told"
+    ],
+    "anxiety totally": [
+      "anxiety totally"
+    ],
+    "anxiety true": [
+      "anxiety true"
+    ],
+    "anxiety use": [
+      "anxiety use",
+      "anxiety used"
+    ],
+    "anxiety usual": [
+      "anxiety usual"
+    ],
+    "anxiety vomit": [
+      "anxiety vomit"
+    ],
+    "anxiety wise": [
+      "anxiety wise"
+    ],
+    "anxiety work": [
+      "anxiety work",
+      "anxiety working"
+    ],
+    "anymore": [
+      "anymore"
+    ],
+    "become": [
+      "became",
+      "become",
+      "becomes",
+      "becoming"
+    ],
+    "bite": [
+      "bit",
+      "bite",
+      "bites",
+      "biting",
+      "bitten"
+    ],
+    "burp anxiety issue": [
+      "burp anxiety issue",
+      "burp anxiety issues"
+    ],
+    "can": [
+      "can",
+      "cant",
+      "could"
+    ],
+    "chemistry": [
+      "chemistry"
+    ],
+    "comfortably": [
+      "comfortably"
+    ],
+    "dark": [
+      "dark"
+    ],
+    "depressed": [
+      "depressed"
+    ],
+    "deserve": [
+      "deserve",
+      "deserved",
+      "deserves",
+      "deserving"
+    ],
+    "drown": [
+      "drown",
+      "drowned",
+      "drowning",
+      "drowns"
+    ],
+    "earn": [
+      "earn",
+      "earned",
+      "earning",
+      "earns"
+    ],
+    "eat": [
+      "ate",
+      "eat",
+      "eaten",
+      "eating",
+      "eats"
+    ],
+    "fast": [
+      "fast",
+      "fasted",
+      "fasting",
+      "fasts"
+    ],
+    "fear vomit": [
+      "fear vomit",
+      "fear vomiting"
+    ],
+    "frustrate": [
+      "frustrate",
+      "frustrated",
+      "frustrates",
+      "frustrating"
+    ],
+    "gathering": [
+      "gathering",
+      "gatherings"
+    ],
+    "get": [
+      "get",
+      "gets",
+      "getting",
+      "got",
+      "gotten"
+    ],
+    "hopeless": [
+      "hopeless"
+    ],
+    "importantly": [
+      "importantly"
+    ],
+    "isolate": [
+      "isolate",
+      "isolated",
+      "isolates",
+      "isolating"
+    ],
+    "isolation": [
+      "isolation"
+    ],
+    "large": [
+      "large",
+      "larger"
+    ],
+    "life": [
+      "life"
+    ],
+    "live": [
+      "live",
+      "lived",
+      "lives",
+      "living"
+    ],
+    "matter": [
+      "matter",
+      "mattered",
+      "mattering",
+      "matters"
+    ],
+    "miserable": [
+      "miserable"
+    ],
+    "miss": [
+      "miss",
+      "missed",
+      "misses",
+      "missing"
+    ],
+    "nutrient": [
+      "nutrient",
+      "nutrients"
+    ],
+    "oink": [
+      "oink",
+      "oinking"
+    ],
+    "pill": [
+      "pill",
+      "pilled",
+      "pilling",
+      "pills"
+    ],
+    "poor": [
+      "poor"
+    ],
+    "portion": [
+      "portion",
+      "portioned",
+      "portioning",
+      "portions"
+    ],
+    "properly": [
+      "properly"
+    ],
+    "reason": [
+      "reason",
+      "reasoned",
+      "reasoning",
+      "reasons"
+    ],
+    "seat": [
+      "seat",
+      "seated",
+      "seating",
+      "seats"
+    ],
+    "seemingly": [
+      "seemingly"
+    ],
+    "slowly": [
+      "slowly"
+    ],
+    "social anxiety also": [
+      "social anxiety also"
+    ],
+    "split": [
+      "split",
+      "splits",
+      "splitting"
+    ],
+    "starve": [
+      "starve",
+      "starved",
+      "starves",
+      "starving"
+    ],
+    "struggle": [
+      "struggle",
+      "struggled",
+      "struggles",
+      "struggling"
+    ],
+    "stick": [
+      "stick",
+      "sticking",
+      "sticks",
+      "stuck"
+    ],
+    "sudafe": [
+      "sudafe",
+      "sudafed"
+    ],
+    "suicidal": [
+      "suicidal"
+    ],
+    "suicide": [
+      "suicide",
+      "suicided",
+      "suicides",
+      "suiciding"
+    ],
+    "swallow": [
+      "swallow",
+      "swallowed",
+      "swallowing",
+      "swallows"
+    ],
+    "thick": [
+      "thick",
+      "thicker"
+    ],
+    "thin": [
+      "thin",
+      "thinned",
+      "thinning",
+      "thins"
+    ],
+    "tired": [
+      "tired"
+    ],
+    "trouble": [
+      "trouble",
+      "troubled",
+      "troubles",
+      "troubling"
+    ],
+    "unless": [
+      "unless"
+    ],
+    "utterly": [
+      "utterly"
+    ],
+    "whatever": [
+      "whatever"
+    ],
+    "cbt": [
+      "cbt"
+    ],
+    "chamomile": [
+      "chamomile"
+    ],
+    "exercise": [
+      "exercise",
+      "exercised",
+      "exercises",
+      "exercising"
+    ],
+    "fizzy drink": [
+      "fizzy drink",
+      "fizzy drinks"
+    ],
+    "gas x": [
+      "gas x"
+    ],
+    "mounjaro": [
+      "mounjaro"
+    ],
+    "neck turn": [
+      "neck turn",
+      "neck turning"
+    ],
+    "pat": [
+      "pat",
+      "pats",
+      "patted",
+      "patting"
+    ],
+    "pelvic tilt": [
+      "pelvic tilt"
+    ],
+    "rapid drink challenge": [
+      "rapid drink challenge"
+    ],
+    "self cure": [
+      "self cure",
+      "self cured",
+      "self curing"
+    ],
+    "self teach": [
+      "self taught",
+      "self teach"
+    ],
+    "tea": [
+      "tea"
+    ],
+    "ab": [
+      "ab",
+      "abs"
+    ],
+    "acupuncture": [
+      "acupuncture",
+      "acupunctured",
+      "acupunctures",
+      "acupuncturing"
+    ],
+    "around": [
+      "around"
+    ],
+    "back work procedure": [
+      "back work procedure"
+    ],
+    "barium pill": [
+      "barium pill"
+    ],
+    "bastian use": [
+      "bastian use"
+    ],
+    "boston medical": [
+      "boston medical"
+    ],
+    "botox feel anything": [
+      "botox feel anything"
+    ],
+    "botox pill": [
+      "botox pill",
+      "botox pills"
+    ],
+    "botox sleep": [
+      "botox sleep",
+      "botox sleeping"
+    ],
+    "botox throat": [
+      "botox throat"
+    ],
+    "botox water": [
+      "botox water"
+    ],
+    "burp lot": [
+      "burp lot",
+      "burp lots"
+    ],
+    "burp repeat": [
+      "burp repeat"
+    ],
+    "burpin": [
+      "burpin"
+    ],
+    "burp afternoon": [
+      "burp afternoon",
+      "burps afternoon"
+    ],
+    "burp carbonate": [
+      "burp carbonate",
+      "burps carbonated"
+    ],
+    "burp carbonation": [
+      "burp carbonation",
+      "burps carbonation"
+    ],
+    "carbonate water": [
+      "carbonate water",
+      "carbonated water"
+    ],
+    "chair": [
+      "chair",
+      "chaired",
+      "chairing",
+      "chairs"
+    ],
+    "chicago local": [
+      "chicago local"
+    ],
+    "chicago recommend": [
+      "chicago recommend"
+    ],
+    "chicago say": [
+      "chicago said",
+      "chicago say"
+    ],
+    "chin": [
+      "chin",
+      "chinned",
+      "chinning",
+      "chins"
+    ],
+    "clench stomach": [
+      "clench stomach"
+    ],
+    "consistently": [
+      "consistently"
+    ],
+    "continue": [
+      "continue",
+      "continued",
+      "continues",
+      "continuing"
+    ],
+    "contort": [
+      "contort",
+      "contorted",
+      "contorting",
+      "contorts"
+    ],
+    "crane neck": [
+      "crane neck",
+      "craning neck"
+    ],
+    "crane neck forward": [
+      "crane neck forward",
+      "craning neck forward"
+    ],
+    "cricoid massage": [
+      "cricoid massage"
+    ],
+    "cut": [
+      "cut",
+      "cuts",
+      "cutting"
+    ],
+    "emetic work": [
+      "emetic work",
+      "emetics work"
+    ],
+    "eventually": [
+      "eventually"
+    ],
+    "experiment": [
+      "experiment",
+      "experimented",
+      "experimenting",
+      "experiments"
+    ],
+    "fizzy water": [
+      "fizzy water"
+    ],
+    "friday slow swallow": [
+      "friday slow swallow"
+    ],
+    "front": [
+      "front",
+      "fronted",
+      "fronting",
+      "fronts"
+    ],
+    "gym": [
+      "gym"
+    ],
+    "head turn": [
+      "head turn"
+    ],
+    "herbal treatment": [
+      "herbal treatment"
+    ],
+    "hicklin treatment": [
+      "hicklin treatment"
+    ],
+    "keast": [
+      "keast"
+    ],
+    "keep": [
+      "keep",
+      "keeping",
+      "keeps",
+      "kept"
+    ],
+    "kiss the ceiling": [
+      "kiss the ceiling"
+    ],
+    "kommer": [
+      "kommer"
+    ],
+    "larynx lower exercise": [
+      "larynx lower exercise",
+      "larynx lowering exercise"
+    ],
+    "lasik eye": [
+      "lasik eye"
+    ],
+    "let": [
+      "let",
+      "lets",
+      "letting"
+    ],
+    "like other botox": [
+      "like other botox",
+      "like others botox"
+    ],
+    "live san": [
+      "live san"
+    ],
+    "massage": [
+      "massage",
+      "massaged",
+      "massages",
+      "massaging"
+    ],
+    "move": [
+      "move",
+      "moved",
+      "moves",
+      "moving"
+    ],
+    "muscle": [
+      "muscle",
+      "muscled",
+      "muscles",
+      "muscling"
+    ],
+    "open": [
+      "open",
+      "opened",
+      "opening",
+      "opens"
+    ],
+    "position": [
+      "position",
+      "positioned",
+      "positioning",
+      "positions"
+    ],
+    "pull": [
+      "pull",
+      "pulled",
+      "pulling",
+      "pulls"
+    ],
+    "push": [
+      "push",
+      "pushed",
+      "pushes",
+      "pushing"
+    ],
+    "put": [
+      "put",
+      "puts",
+      "putting"
+    ],
+    "relax": [
+      "relax",
+      "relaxed",
+      "relaxes",
+      "relaxing"
+    ],
+    "rumination": [
+      "rumination"
+    ],
+    "shaker exercise": [
+      "shaker exercise"
+    ],
+    "shoulder": [
+      "shoulder",
+      "shouldered",
+      "shouldering",
+      "shoulders"
+    ],
+    "sit": [
+      "sat",
+      "sit",
+      "sits",
+      "sitting"
+    ],
+    "spend": [
+      "spend",
+      "spending",
+      "spends",
+      "spent"
+    ],
+    "straight": [
+      "straight"
+    ],
+    "tcm herb": [
+      "tcm herb",
+      "tcm herbs"
+    ],
+    "teach": [
+      "taught",
+      "teach",
+      "teaches",
+      "teaching"
+    ],
+    "technique": [
+      "technique"
+    ],
+    "throat rest day": [
+      "throat rest day"
+    ],
+    "thursday slow swallow": [
+      "thursday slow swallow"
+    ],
+    "today burp": [
+      "today burp",
+      "today burps"
+    ],
+    "traditional chinese medicine": [
+      "traditional chinese medicine"
+    ],
+    "tummy": [
+      "tummy"
+    ],
+    "tummy drop": [
+      "tummy drop",
+      "tummy drops"
+    ],
+    "tunisia": [
+      "tunisia"
+    ],
+    "turn": [
+      "turn",
+      "turned",
+      "turning",
+      "turns"
+    ],
+    "turn head": [
+      "turn head",
+      "turning heading"
+    ],
+    "use": [
+      "use",
+      "used",
+      "uses",
+      "using"
+    ],
+    "way": [
+      "way",
+      "ways"
+    ],
+    "wedge pillow": [
+      "wedge pillow"
+    ],
+    "work": [
+      "work",
+      "worked",
+      "working",
+      "works"
+    ],
+    "abdominal pain": [
+      "abdominal pain"
+    ],
+    "air vomit": [
+      "air vomit",
+      "air vomiting"
+    ],
+    "burp stomach issue": [
+      "burp stomach issue",
+      "burp stomach issues"
+    ],
+    "chest pain": [
+      "chest pain"
+    ],
+    "croak": [
+      "croak",
+      "croaked",
+      "croaking",
+      "croaks"
+    ],
+    "difficulty breathe": [
+      "difficulty breathe",
+      "difficulty breathing"
+    ],
+    "gag": [
+      "gag",
+      "gagged",
+      "gagging",
+      "gags"
+    ],
+    "gurgle": [
+      "gurgle",
+      "gurgled",
+      "gurgles",
+      "gurgling"
+    ],
+    "hiccup": [
+      "hiccup",
+      "hiccuped",
+      "hiccuping",
+      "hiccupped",
+      "hiccupping",
+      "hiccups"
+    ],
+    "pressure": [
+      "pressure",
+      "pressured",
+      "pressures",
+      "pressuring"
+    ],
+    "regurgitation": [
+      "regurgitation"
+    ],
+    "retch": [
+      "retch",
+      "retched",
+      "retches",
+      "retching"
+    ],
+    "shortness of breath": [
+      "shortness of breath"
+    ],
+    "throat gurgle": [
+      "throat gurgle",
+      "throat gurgles"
+    ],
+    "throw up": [
+      "throw up",
+      "throwing up"
+    ],
+    "vomit": [
+      "vomit",
+      "vomited",
+      "vomiting",
+      "vomits"
+    ],
+    "vomit air": [
+      "vomit air"
+    ],
+    "air": [
+      "air",
+      "aired",
+      "airing",
+      "airs"
+    ],
+    "air vomit sound": [
+      "air vomit sound",
+      "air vomiting sound"
+    ],
+    "air vomit throat": [
+      "air vomit throat",
+      "air vomiting throat"
+    ],
+    "amount": [
+      "amount",
+      "amounted",
+      "amounting",
+      "amounts"
+    ],
+    "awful": [
+      "awful"
+    ],
+    "big": [
+      "big",
+      "biggest"
+    ],
+    "bubble feel": [
+      "bubble feel",
+      "bubble feeling"
+    ],
+    "burb": [
+      "burb",
+      "burbs"
+    ],
+    "burp vomit": [
+      "burp vomit",
+      "burp vomiting",
+      "burps vomit",
+      "burps vomiting"
+    ],
+    "burp stay": [
+      "burp stay",
+      "burps stay"
+    ],
+    "burp stomach": [
+      "burp stomach",
+      "burps stomach"
+    ],
+    "burp symptom": [
+      "burp symptom",
+      "burps symptoms"
+    ],
+    "can burp": [
+      "can burp",
+      "cant burp"
+    ],
+    "choke": [
+      "choke",
+      "choked",
+      "chokes",
+      "choking"
+    ],
+    "choke sensation": [
+      "choke sensation",
+      "choking sensation"
+    ],
+    "constantly": [
+      "constantly"
+    ],
+    "cramp gas": [
+      "cramp gas",
+      "cramps gas"
+    ],
+    "deal": [
+      "deal",
+      "dealing",
+      "deals",
+      "dealt"
+    ],
+    "despite": [
+      "despite"
+    ],
+    "distension": [
+      "distension"
+    ],
+    "dry heave y": [
+      "dry heave y"
+    ],
+    "dry heaving": [
+      "dry heaving"
+    ],
+    "early satiety": [
+      "early satiety"
+    ],
+    "easily": [
+      "easily"
+    ],
+    "except": [
+      "except",
+      "excepted",
+      "excepting",
+      "excepts"
+    ],
+    "excess": [
+      "excess"
+    ],
+    "excess wind": [
+      "excess wind"
+    ],
+    "excessive bloat": [
+      "excessive bloat",
+      "excessive bloating"
+    ],
+    "expand bubble feel": [
+      "expand bubble feel",
+      "expanding bubble feeling"
+    ],
+    "extremely": [
+      "extremely"
+    ],
+    "fear vomit r": [
+      "fear vomit r",
+      "fear vomiting r"
+    ],
+    "fit": [
+      "fit",
+      "fits",
+      "fitted",
+      "fitting"
+    ],
+    "flatulence": [
+      "flatulence"
+    ],
+    "full of air": [
+      "full of air"
+    ],
+    "gag involuntarily": [
+      "gag involuntarily",
+      "gagging involuntarily"
+    ],
+    "gaggy": [
+      "gaggy"
+    ],
+    "gas trap": [
+      "gas trap",
+      "gas trapped"
+    ],
+    "gas trap pain": [
+      "gas trap pain",
+      "gas trapped pain"
+    ],
+    "get air vomit": [
+      "get air vomit",
+      "get air vomiting"
+    ],
+    "globus": [
+      "globus"
+    ],
+    "globus sensation": [
+      "globus sensation"
+    ],
+    "heave": [
+      "heave",
+      "heaved",
+      "heaves",
+      "heaving",
+      "hove"
+    ],
+    "hiccup stomach": [
+      "hiccup stomach",
+      "hiccups stomach"
+    ],
+    "horrible": [
+      "horrible"
+    ],
+    "however": [
+      "however"
+    ],
+    "immediately": [
+      "immediately"
+    ],
+    "inability to burp": [
+      "inability to burp"
+    ],
+    "involuntarily": [
+      "involuntarily"
+    ],
+    "involuntary dry heaving": [
+      "involuntary dry heaving"
+    ],
+    "involuntary gag": [
+      "involuntary gag",
+      "involuntary gagging"
+    ],
+    "issue vomit burp": [
+      "issue vomit burp",
+      "issues vomiting burp"
+    ],
+    "like": [
+      "like",
+      "liked",
+      "likes",
+      "liking"
+    ],
+    "liquid vomit": [
+      "liquid vomit",
+      "liquid vomiting"
+    ],
+    "long": [
+      "long",
+      "longed",
+      "longer",
+      "longing",
+      "longs"
+    ],
+    "mainly": [
+      "mainly"
+    ],
+    "mention": [
+      "mention",
+      "mentioned",
+      "mentioning",
+      "mentions"
+    ],
+    "motility issue": [
+      "motility issue",
+      "motility issues"
+    ],
+    "nausea burp": [
+      "nausea burp",
+      "nausea burps"
+    ],
+    "nausea in throat": [
+      "nausea in throat"
+    ],
+    "nauseate": [
+      "nauseate",
+      "nauseated",
+      "nauseates",
+      "nauseating"
+    ],
+    "nauseous": [
+      "nauseous"
+    ],
+    "no burp": [
+      "no burp"
+    ],
+    "particularly": [
+      "particularly"
+    ],
+    "physically": [
+      "physically"
+    ],
+    "rather": [
+      "rather"
+    ],
+    "rid": [
+      "rid",
+      "ridded",
+      "ridding",
+      "rids"
+    ],
+    "sensation": [
+      "sensation"
+    ],
+    "severely": [
+      "severely"
+    ],
+    "slow swallow": [
+      "slow swallow",
+      "slow swallowing"
+    ],
+    "sorry": [
+      "sorry"
+    ],
+    "stomach nausea": [
+      "stomach nausea"
+    ],
+    "thankfully": [
+      "thankfully"
+    ],
+    "trigger": [
+      "trigger",
+      "triggered",
+      "triggering",
+      "triggers"
+    ],
+    "tummy ache": [
+      "tummy ache",
+      "tummy aches"
+    ],
+    "typical anxiety symptom": [
+      "typical anxiety symptom"
+    ],
+    "unable to burp": [
+      "unable to burp"
+    ],
+    "uncomfortable": [
+      "uncomfortable"
+    ],
+    "uncontrollable dry heaving": [
+      "uncontrollable dry heaving"
+    ],
+    "unpleasant": [
+      "unpleasant"
+    ],
+    "violently": [
+      "violently"
+    ],
+    "vomit burp": [
+      "vomit burp",
+      "vomit burps"
+    ],
+    "vomit bad": [
+      "vomit bad",
+      "vomiting bad"
+    ],
+    "vomit condition": [
+      "vomit condition",
+      "vomiting condition"
+    ],
+    "vomit dry": [
+      "vomit dry",
+      "vomiting dry"
+    ],
+    "vomit easy": [
+      "vomit easy",
+      "vomiting easy"
+    ],
+    "vomit end": [
+      "vomit end",
+      "vomiting end"
+    ],
+    "vomit fear": [
+      "vomit fear",
+      "vomiting fear"
+    ],
+    "vomit gas": [
+      "vomit gas",
+      "vomiting gas"
+    ],
+    "vomit go": [
+      "vomit go",
+      "vomiting goes"
+    ],
+    "vomit help": [
+      "vomit help",
+      "vomiting help"
+    ],
+    "vomit hold": [
+      "vomit hold",
+      "vomiting hold"
+    ],
+    "vomit issue": [
+      "vomit issue",
+      "vomiting issue",
+      "vomiting issues"
+    ],
+    "vomit keep": [
+      "vomit keep",
+      "vomiting keep"
+    ],
+    "vomit loud": [
+      "vomit loud",
+      "vomiting loud"
+    ],
+    "vomit need": [
+      "vomit need",
+      "vomiting need"
+    ],
+    "vomit pressure": [
+      "vomit pressure",
+      "vomiting pressure"
+    ],
+    "vomit problem": [
+      "vomit problem",
+      "vomiting problem"
+    ],
+    "vomit question": [
+      "vomit question",
+      "vomiting question"
+    ],
+    "vomit rare": [
+      "vomit rare",
+      "vomiting rare"
+    ],
+    "vomit rest": [
+      "vomit rest",
+      "vomiting rest"
+    ],
+    "vomit slowly help": [
+      "vomit slowly help",
+      "vomiting slowly help"
+    ],
+    "vomit sound": [
+      "vomit sound",
+      "vomiting sound",
+      "vomiting sounds"
+    ],
+    "vomit stop": [
+      "vomit stop",
+      "vomiting stop"
+    ],
+    "vomit throat": [
+      "vomit throat",
+      "vomiting throat"
+    ],
+    "vomit try": [
+      "vomit try",
+      "vomiting try"
+    ],
+    "vomit use": [
+      "vomit use",
+      "vomiting use"
+    ],
+    "vomit usually air": [
+      "vomit usually air",
+      "vomiting usually air"
+    ],
+    "vomit want": [
+      "vomit want",
+      "vomiting want"
+    ],
+    "vomit work": [
+      "vomit work",
+      "vomiting work"
+    ],
+    "vomit worry": [
+      "vomit worry",
+      "vomiting worry"
+    ],
+    "vomitte": [
+      "vomitte",
+      "vomitting"
+    ],
+    "vomitte bad": [
+      "vomitte bad",
+      "vomitting bad"
+    ],
+    "zero appetite": [
+      "zero appetite"
+>>>>>>> Stashed changes
     ]
   },
   "ground_truth_bins": {
@@ -384873,10 +388420,12 @@
     "surgery": [
       "surgery"
     ],
-    "cricopharyngeal myotomy": [
+    "cricopharyngeal myotome": [
+      "cricopharyngeal myotome",
       "cricopharyngeal myotomy"
     ],
-    "myotomy": [
+    "myotome": [
+      "myotome",
       "myotomy"
     ],
     "nasopharyngoscopy": [

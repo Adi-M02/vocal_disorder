@@ -151,14 +151,21 @@ def expand_bert(term_dict, cand2emb, top_n):
     return {c: sorted(set(term_dict[c]) | set(out[c])) for c in term_dict}
 
 def expand_lsa(term_dict, cand2vec, top_n):
-    seeds_flat = {t for ts in term_dict.values() for t in ts if t in cand2vec}
-    centroids = {c: np.mean([cand2vec[t] for t in ts if t in cand2vec], axis=0) for c, ts in term_dict.items()}
     out = {}
-    for cat, cent in centroids.items():
+    for cat, ts in term_dict.items():
+        # collect only those seeds we actually embedded
+        vecs = [cand2vec[t] for t in ts if t in cand2vec]
+        if not vecs:
+            # no seeds → leave this category untouched
+            out[cat] = list(term_dict[cat])
+            continue
+        cent = np.mean(vecs, axis=0)    # guaranteed 1-d here
+        # now np.dot(v, cent) is a scalar
         sims = [(t, float(np.dot(v, cent))) for t, v in cand2vec.items()]
         sims.sort(key=lambda x: x[1], reverse=True)
-        out[cat] = [t for t, _ in sims[:top_n]]
-    return {c: sorted(set(term_dict[c]) | set(out[c])) for c in term_dict}
+        # union your original terms with the top-n new ones
+        out[cat] = sorted(set(term_dict[cat]) | {t for t, _ in sims[:top_n]})
+    return out
 
 def expand_hybrid(term_dict, cand2bert, cand2lsa, seeds_bert, seeds_lsa, alpha=0.5, top_n=60):
     out = {}
