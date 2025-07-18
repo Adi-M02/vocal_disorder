@@ -1,0 +1,1051 @@
+original	processed 
+bloating	bloat
+chronic bloating	chronic bloat
+severe bloating	severe bloat
+couldn't burp	couldnt burp
+bloating	bloat
+bloating actually hurt	bloat actually hurt
+doesn't feel good	doesnt feel good
+bloating	bloat
+don't see result	dont see result
+bloating be horrid	bloat be horrid
+excessive bloating	excessive bloat
+bloating	bloat
+esophagus doesn't contract	esophagus doesnt contract
+severe bloating	severe bloat
+don't drink enough	dont drink enough
+still doesn't pass	still doesnt pass
+temporary bloating	temporary bloat
+doesn't come naturally	doesnt come naturally
+didn't believe i	didnt believe i
+couldn't find anything	couldnt find anything
+worsen symptom	worse symptom
+croaking	croak
+couldn't breathe properly	couldnt breathe properly
+worsen	worse
+couldn't stop gag	couldnt stop gag
+bloating discomfort	bloat discomfort
+wrong with me	wrong with i
+all those symptoms	all that symptom
+Chinese medicine	chinese medicine
+manipulated	manipulate
+gives me hope	give i hope
+long drinks	long drink
+socializing	socialize
+talking with people	talk with person
+swallowing clinic	swallow clinic
+vocal cords	vocal cord
+trapped air	trap air
+so many years	so many year
+voice chords	voice chord
+over-controlling	over control
+sticking my fingers	stick my finger
+brain stops me	brain stop i
+acids	acid
+brings me distress	bring i distress
+summoning	summon
+normal people	normal person
+body pathologies	body pathology
+strange noises	strange noise
+FEES	fees
+almost fainted	almost faint
+practicing	practice
+gentle bubbles	gentle bubble
+higher pitch	high pitch
+path to burping	path to burp
+minimize air swallowing	minimize air swallow
+letting go	let go
+don’t drink enough	dont drink enough
+social events	social event
+very tensed person	very tense person
+over-thinker	over thinker
+body’s natural tendencies	body natural tendency
+psychological conditions	psychological condition
+repressed traumas	repress trauma
+going to therapy	go to therapy
+certain positions	certain position
+manipulate them	manipulate they
+superficial breathes	superficial breathe
+mouth closed	mouth close
+breathings are changing	breathing be change
+chest is exploding	chest be explode
+avoid long drinks	avoid long drink
+gas-x pill	gas x pill
+air issues	air issue
+air slipped	air slip
+still doesn’t pass	still doesnt pass
+air leaks	air leak
+small air blisters	small air blister
+blebs	bleb
+temporary bloating	temporary bloat
+x-ray	x ray
+chest x-ray	chest x ray
+swallowing is slow	swallow be slow
+food lingers	food linger
+verge of burping	verge of burp
+wider than usual	wide than usual
+uncontrollable burps	uncontrollable burp
+turning your head	turn your head
+air builds up	air build up
+OP	op
+happily burping	happily burp
+struggling to burp	struggle to burp
+larynx lowering exercises	larynx lower exercise
+sounded different	sound different
+eliminate other issues	eliminate other issue
+slowly wore off	slowly wear off
+nothing worked anymore	nothing work anymore
+lowering my larynx	lower my larynx
+practicing that muscle	practice that muscle
+botox wore off	botox wear off
+passive techniques	passive technique
+symptoms came back	symptom come back
+chances of success	chance of success
+120 units	120 unit
+burps spilled out	burp spill out
+doesn’t come naturally	doesnt come naturally
+maneuvers	maneuver
+small sips	small sip
+avoid eating	avoid eat
+higher dose	high dose
+strange burps	strange burp
+panic moments	panic moment
+throat is closing	throat be close
+make funny gestures	make funny gesture
+body is learning	body be learn
+squeeze them out	squeeze they out
+camera showed	camera show
+changed my life	change my life
+raised the quantity	raise the quantity
+easier with time	easy with time
+actively squeezing	actively squeez
+two actions together	two action together
+practicing with videos	practice with video
+opening the door	open the door
+teaching my body	teach my body
+actively pushing	actively push
+convince you GP	convince you gp
+didn’t believe me	didnt believe i
+laughed	laugh
+GP offices	gp office
+extreme pains	extreme pain
+got ignored	get ignore
+couldn’t find anything	couldnt find anything
+just ignore me	just ignore i
+laugh at me	laugh at i
+discussing the condition	discuss the condition
+thinking we’re alone	think be alone
+feeling unwell	feel unwell
+going outside	go outside
+severe panic attacks	severe panic attack
+will get worse	will get bad
+sucking	suck
+subdue the symptoms	subdue the symptom
+news articles	news article
+medical reports	medical report
+other tests	other test
+common conditions	common condition
+frequent panic attacks	frequent panic attack
+leaving the house	leave the house
+progressed	progress
+failing dramatically	fail dramatically
+unusual cases	unusual case
+struggling	struggle
+PIP payment	pip payment
+being sick	be sick
+diagnosed tourettes	diagnose tourettes
+diagnosed OCD	diagnose ocd
+getting into position	get into position
+inflated	inflate
+sharp pains	sharp pain
+feels like phlegm	feel like phlegm
+caught a bug	catch a bug
+air is escaping	air be escape
+random points	random point
+can’t taste anything	cant taste anything
+first few burps	first few burp
+mini panic attacks	mini panic attack
+big releaving burps	big releaving burp
+feel air escaping	feel air escape
+slight vibrating	slight vibrate
+supragastric burps	supragastric burp
+accept the consequences	accept the consequence
+downsides	downside
+swallowing with liquid	swallow with liquid
+CT	ct
+trapped gas	trap gas
+symptoms resolved	symptom resolve
+flat stomached after	flat stomach after
+Medicaid	medicaid
+gotten it covered	get it cover
+mocking us	mocking we
+causes us pain	cause we pain
+in tears	in tear
+experienced	experience
+inhalers	inhaler
+used to stretching	use to stretch
+extra gurgles	extra gurgle
+breaking down	break down
+little gurgles	little gurgle
+clothing issues	clothing issue
+devastated	devastate
+exaggerating	exaggerate
+8 months pregnant	8 month pregnant
+current stressors	current stressor
+wearing baggy clothes	wear baggy clothes
+feeling terrible	feel terrible
+big bubbles	big bubble
+muscles forgot	muscle forget
+worse than ever	bad than ever
+limit drinking water	limit drink water
+gas expanding	gas expand
+plugs everything up	plug everything up
+take out loans	take out loan
+get older	get old
+liver problems	liver problem
+botox covered	botox cover
+NHS	nhs
+stretching	stretch
+worst trigger foods	bad trigger food
+worsening symptoms	worsen symptom
+GI tests	gi test
+hunger cues	hunger cue
+yoga stretches	yoga stretch
+child’s pose	child pose
+research papers	research paper
+statistics	statistic
+eating disorders	eat disorder
+worse over time	bad over time
+severely affected daily	severely affect daily
+learned to burp	learn to burp
+relaxing my throat	relax my throat
+crippling	cripple
+losing weight	lose weight
+stomach is stretched	stomach be stretch
+I’ve tried everything	have try everything
+focus on relaxing	focus on relax
+throat is tighter	throat be tight
+stressed	stress
+laying upside down	lay upside down
+loosening my throat	loosen my throat
+consultations	consultation
+hiccups randomly	hiccup randomly
+farting	fart
+little inhale burps	little inhale burp
+ensure drinks	ensure drink
+phobia of vomiting	phobia of vomit
+phobia developed	phobia develop
+GI issues	gi issue
+countless patients	countless patient
+some cases	some case
+burping function	burp function
+diagnosed with anxiety	diagnose with anxiety
+started real early	start real early
+bad symptoms	bad symptom
+early symptoms	early symptom
+developed emetophobia	develop emetophobia
+farted a lot	fart a lot
+croaking	croak
+tasted like vomit	taste like vomit
+ADHD	adhd
+20 min procedure	20 minute procedure
+body feels empty	body feel empty
+deflated	deflate
+touching each other	touch each other
+recovery is hell	recovery be hell
+hEDS	heds
+closest ENT	close ent
+GI doctor	gi doctor
+paralyzing it once	paralyze it once
+paralysis is temporary	paralysis be temporary
+did the research	do the research
+I could cry	i could cry
+child’s condition	child condition
+someone believes me	someone believe i
+living in pain	live in pain
+skipped meals	skip meal
+heartburn meds	heartburn med
+stomach cramps	stomach cramp
+frog noises	frog noise
+missing outings	miss outing
+coughing	cough
+controlling my diet	control my diet
+chest pains	chest pain
+lying down	lie down
+become farts	become fart
+spicy foods	spicy food
+hot soups	hot soup
+soupy noodles	soupy noodle
+being nervous	be nervous
+nose allergies	nose allergy
+sniffing	sniff
+triggers gas	trigger gas
+air vomiting helps	air vomit help
+effectively induces	effectively induce
+hate throwing up	hate throw up
+violent vomiting	violent vomit
+couldn’t breathe properly	couldnt breathe properly
+taking pills	take pill
+gurgling sound	gurgle sound
+eating too much	eat too much
+drinking hot soup	drink hot soup
+slurping noodles	slurp noodle
+swallowing pills	swallow pill
+learned behavior	learn behavior
+struggled to vomit	struggle to vomit
+stomach was contracting	stomach be contract
+suffered	suffer
+local GP	local gp
+vocal issues	vocal issue
+50 units	50 unit
+controlled	control
+randomly burping	randomly burp
+felt weird	feel weird
+light headed	light head
+swallowed	swallow
+voice feels weak	voice feel weak
+eating feels normal	eat feel normal
+unusual gurgles	unusual gurgle
+small involuntary microburps	small involuntary microburp
+proper burps	proper burp
+can’t sing	cant sing
+seen hundreds	see hundred
+similar symptoms	similar symptom
+treats them symptomatically	treat they symptomatically
+GI issue	gi issue
+GI specialist	gi specialist
+convinced	convince
+numbing spray	numb spray
+administered	administer
+numbing injection	numb injection
+injecting the botox	inject the botox
+sweating	sweat
+turned pale	turn pale
+COVID	covid
+worsened	worsen
+experience small burps	experience small burp
+constant micro burps	constant micro burp
+become lighter	become light
+full deep breaths	full deep breath
+bothering me	bother i
+breathing issues	breathing issue
+gas trapped inside	gas trap inside
+surprised	surprise
+doctor suggestions	doctor suggestion
+patients	patient
+practice burping	practice burp
+lot of emotions	lot of emotion
+slowly going away	slowly go away
+been through botox	be through botox
+push out burps	push out burp
+turning my head	turn my head
+quiet burps	quiet burp
+for years	for year
+heart issues	heart issue
+chest x-ray	chest x ray
+gas built up	gas build up
+choking	choke
+records and tests	record and test
+any further testing	any far testing
+negative reactions	negative reaction
+freaking myself out	freak myself out
+gagging	gag
+invasive procedures	invasive procedure
+numbing needles	numb needle
+couldn’t stop gagging	couldnt stop gag
+becomes so painful	become so painful
+lasts for hours	last for hour
+gas pains	gas pain
+health issues	health issue
+untreated for years	untreated for year
+unusual throat gurgles	unusual throat gurgle
+researching	research
+whenever I laugh	whenever i laugh
+usual RCPD symptoms	usual rcpd symptom
+life changing	life change
+symptoms went away	symptom go away
+huge burps	huge burp
+horrible RCPD symptoms	horrible rcpd symptom
+ate too much	eat too much
+holding in gas	hold in gas
+tears of joy	tear of joy
+changed my life	change my life
+medical articles	medical article
+RCPD is real	rcpd be real
+shitty side effects	shitty side effect
+carbonated seltzers	carbonated seltzer
+researching doctors	research doctor
+extremely bad bloating	extremely bad bloat
+feel so validated	feel so validate
+prevent bloating	prevent bloat
+bad triggers	bad trigger
+alcoholic seltzers	alcoholic seltzer
+implementing more cardio	implement more cardio
+digestion aiding	digestion aid
+yoga poses	yoga pose
+insane bloating	insane bloat
+stops the gurgles	stop the gurgle
+compress my gurgles	compress my gurgle
+encourage gurgling	encourage gurgle
+air is trapped	air be trap
+painful hiccups	painful hiccup
+croaking	croak
+certain foods triggered	certain food trigger
+sick and drained	sick and drain
+soul crushing	soul crush
+ruining my life	ruin my life
+denied the claim	deny the claim
+feel really discouraged	feel really discourage
+denied	deny
+small stages	small stage
+can’t afford it	cant afford it
+BCBS	bcbs
+worse with age	bad with age
+stomach growing	stomach grow
+6 months pregnant	6 month pregnant
+drastically worsen emetophobia	drastically worse emetophobia
+RCPD related	rcpd related
+terrible painful hiccups	terrible painful hiccup
+lost most hope	lose most hope
+suffered	suffer
+symptoms worsening	symptom worsen
+feeling overall unwell	feel overall unwell
+still here suffering	still here suffer
+never worked	never work
+wasn’t normal	wasnt normal
+experiencing gurgling	experience gurgle
+leaning backward	lean backward
+coming forward	come forward
+cramps	cramp
+general GI discomfort	general gi discomfort
+recommended physicians	recommend physician
+don’t burp normally	dont burp normally
+UES	ues
+accompanied by flatulence	accompany by flatulence
+not relieving	not relieve
+always hated eating	always hate eat
+administering medication	administer medication
+improved with medication	improve with medication
+dry heaving	dry heave
+sensory issues	sensory issue
+exacerbated the condition	exacerbate the condition
+flatulence got worse	flatulence get bad
+constantly farting	constantly fart
+stomach distended	stomach distend
+look distended	look distend
+bubbles	bubble
+ED treatment	ed treatment
+contributing factor	contribute factor
+ADHD meds	adhd med
+active ED	active ed
+silent refluxes	silent refluxe
+problem swallowing	problem swallow
+supragastric belching	supragastric belch
+different mechanisms	different mechanism
+silent fluxes	silent fluxe
+failed burp	fail burp
+nothing comes out	nothing come out
+excessive microburps	excessive microburp
+existing conditions	exist condition
+temporary slow swallowing	temporary slow swallow
+longstanding issues	longstanding issue
+start choking	start choke
+gurgling sound	gurgle sound
+CP botox	cp botox
+ACPD	acpd
+70 units	70 unit
+palpates	palpate
+paralyzed in pain	paralyze in pain
+ER	er
+complications	complication
+succinylcholine-induced postoperative	succinylcholine induce postoperative
+ck levels	ck level
+diagnosed	diagnose
+elevated ck levels	elevate ck level
+ER doctor	er doctor
+rapidly caused damaged	rapidly cause damage
+muscle breaks down	muscle break down
+CP dysfunction	cp dysfunction
+voice changed	voice change
+feels kinda numb	feel kinda numb
+spicy foods	spicy food
+painful hiccups	painful hiccup
+neuromuscular blocking agent	neuromuscular block agent
+relax my muscles	relax my muscle
+caused damage	cause damage
+released toxins	release toxin
+IV fluids	iv fluid
+nauseous feeling	nauseous feel
+head is back	head be back
+no more gurgles	no more gurgle
+gagging myself	gag myself
+swallowing the barf	swallow the barf
+carbonated beverages	carbonated beverage
+choked on food	choke on food
+problems swallowing	problem swallow
+smallest bites	small bite
+Botox injection	botox injection
+sliding hiatal hernia	slide hiatal hernia
+UES squeezing	ues squeez
+modified barium swallow	modify barium swallow
+carbonated drinks	carbonated drink
+talking	talk
+eating	eat
+drinking water	drink water
+sleeping	sleep
+existing	exist
+Valium zombie	valium zombie
+“slow swallowing” afterward	slow swallow afterward
+Dilation	dilation
+gurgles	gurgle
+getting stuck	get stuck
+require me to cough	require i to cough
+tapping base of throat	tap base of throat
+full-spectrum cannabis	full spectrum cannabis
+gummies	gummie
+burp is stuck	burp be stuck
+air vomiting	air vomit
+accidentally throwing up	accidental throw up
+MS	ms
+Emetophobia	emetophobia
+carbonated beverages	carbonated beverage
+felt horrible	feel horrible
+GERD	gerd
+microburps	microburp
+air trapped	air trap
+shaker exercises	shaker exercise
+Acid reflux	acid reflux
+excessive burping	excessive burp
+allergies have improved	allergy have improve
+Botox	botox
+strep throat feeling	strep throat feel
+choking	choke
+threw up	throw up
+liquid Tylenol	liquid tylenol
+reduced vocal range	reduce vocal range
+laughing fit	laugh fit
+R-CPD	r cpd
+throwing up	throw up
+embarrassed	embarrass
+uncontrollable burping	uncontrollable burp
+IBS	ibs
+Water handy	water handy
+couldn’t do socializing	couldnt do socialize
+absolutely starving	absolutely starve
+Botox	botox
+RCPD symptoms	rcpd symptom
+Shaker exercises	shaker exercise
+burps	burp
+muscle has tightened	muscle have tighten
+horrible old symptoms	horrible old symptom
+triggers	trigger
+forward-facing burp	forward face burp
+8.5 weeks post-Botox	8 5 week post botox
+bloating symptoms	bloat symptom
+50 units of botox	50 unit of botox
+socializing was tricky	socialize be tricky
+microburps	microburp
+RCPD	rcpd
+ADHD	adhd
+high protein meals	high protein meal
+nervous/anxious tummy	nervous anxious tummy
+dreaded air vomiting	dread air vomit
+UES	ues
+50 units	50 unit
+painkillers beforehand	painkiller beforehand
+gurgles	gurgle
+IBS	ibs
+sticking my fingers	stick my finger
+air-vomiting	air vomit
+Gasonex	gasonex
+gas-ex	gas ex
+RCPD	rcpd
+stomach issues	stomach issue
+bloating	bloat
+gurgling	gurgle
+smoking physically hurts	smoking physically hurt
+getting sore	get sore
+inhaling the smoke	inhal the smoke
+Hiccups are painful	hiccup be painful
+made me bloated	make i bloated
+going to vomit	go to vomit
+gurgles	gurgle
+mimic heart palpitations	mimic heart palpitation
+chugging	chugg
+skipping a beat	skip a beat
+occipitofrontalis muscle	occipitofrontallis muscle
+R-CPD	r cpd
+nerve pains	nerve pain
+continually adjust my ribs	continually adjust my rib
+cricopharyngeal muscles	cricopharyngeal muscle
+shoulders	shoulder
+no carbonated drinks	no carbonated drink
+gurgles	gurgle
+cracking my jaw	crack my jaw
+hiccups pretty frequently	hiccup pretty frequently
+throat gurgles	throat gurgle
+stop hiccups	stop hiccup
+stretching the stomach	stretch the stomach
+GI movement	gi movement
+verge of burping	verge of burp
+Procedure	procedure
+correct electical  feedback	correct electical feedback
+Stop the gurgling	stop the gurgle
+hard time throwing up	hard time throw up
+less painful?	less painful
+experience any vomiting	experience any vomit
+R-CPD	r cpd
+saliva was really thing	saliva be really thing
+swallowing my spit	swallow my spit
+not drooling	not drool
+liquid coming up	liquid come up
+doesn’t burn	doesnt burn
+feels like water	feel like water
+don’t have heartburn	dont have heartburn
+irritates the throat	irritate the throat
+indigestion/sour stomach	indigestion sour stomach
+taking antacids	take antacid
+scares me	scare i
+afraid of vomiting	afraid of vomit
+ENT’s	ent
+no doctors near	no doctor near
+hiccups are extremely painful	hiccup be extremely painful
+multiple times	multiple time
+impossible ot ignore	impossible to ignore
+gurgling noise	gurgle noise
+choking	choke
+after eating	after eat
+spicier	spicy
+really distressing	really distress
+not dying	not die
+not actually choking	not actually choke
+drinking water	drink water
+uncontrollable burping	uncontrollable burp
+slow swallowing	slow swallow
+quality of life improved	quality of life improve
+multiple quick bites	multiple quick bite
+more gurgles	more gurgle
+would’ve destroyed me	wouldve destroy i
+I hit puberty	i hit puberty
+symptoms were debilitating	symptom be debilitating
+gurgles and pain	gurgle and pain
+humiliate me	humiliate i
+2 whole meals worth	2 whole meal worth
+skipping breakfast	skip breakfast
+R-CPD symptoms	r cpd symptom
+post-botox	post botox
+more food eaten	more food eat
+enjoy eating again	enjoy eat again
+without worrying	without worry
+no longer hyperfixating	no long hyperfixate
+can’t burp voluntarily	cant burp voluntarily
+let out small burps	let out small burp
+didn’t get ARFID	didnt get arfid
+eating ridiculously slow	eat ridiculously slow
+air trapped	air trap
+constantly burping	constantly burp
+struggling to eat	struggle to eat
+botox wearing off	botox wear off
+occasional noises	occasional noise
+not like the gurgles	not like the gurgle
+thraot noises	thraot noise
+IV	iv
+Pepsid	pepsid
+excess gas/bloating/pain	excess gas bloat pain
+trigger the gurgles	trigger the gurgle
+safe foods	safe food
+belch-like noises	belch like noise
+curing yourselves	cure yourselves
+slouching down	slouch down
+sitting up striaight	sit up striaight
+minimizing the gurgles	minimize the gurgle
+exhaling more often	exhal more often
+moving more quickly	move more quickly
+Repeat botox	repeat botox
+keeping a burp in	keep a burp in
+burping like a champ	burp like a champ
+uncontrollably coming out	uncontrollably come out
+mini burps	mini burp
+burps were flying	burp be fly
+6 days in	6 day in
+coming when I yawn	come when i yawn
+lots of gurgling	lot of gurgle
+80 units	80 unit
+GERD	gerd
+burp connected	burp connect
+uncomfortable after meals	uncomfortable after meal
+frog noises	frog noise
+sounds awful	sound awful
+trapped gas pose	trap gas pose
+clothes feeling so tight	clothes feel so tight
+series of farts	series of fart
+1000 firecrackers	1000 firecracker
+burp-door opens	burp door open
+extended periods	extend period
+gas getting trapped	gas get trap
+feel bigger	feel big
+wearing tighter clothes	wear tight clothes
+belly is popping	belly be pop
+everything is puffy	everything be puffy
+stomach is distended	stomach be distend
+like I'm pregnant	like be pregnant
+taking GasZ	take gasz
+chest/esophagus	chest esophagus
+can’t breathe	cant breathe
+first start swimming	first start swim
+gradually gets better	gradually get good
+air bubble bobbing	air bubble bob
+carbonated drinks	carbonated drink
+discomfort has passed	discomfort have pass
+Basic stretching exercises	basic stretch exercise
+typical stretching	typical stretch
+rotating nmy neck	rotate nmy neck
+shrugging my shoulders	shrugg my shoulder
+do them anywhere	do they anywhere
+air bubbles	air bubble
+mini burps	mini burp
+bubbles getting unstuck	bubble get unstuck
+your croaking worse	your croak bad
+after meals	after meal
+so many hiccups	so many hiccup
+update u guys	update u guy
+mystery for me	mystery for i
+adam’s apple	adam apple
+learned to burp	learn to burp
+after meals	after meal
+shaker chin ups	shaker chin up
+neck sit ups	neck sit up
+shaker exercises	shaker exercise
+release my air bubbles	release my air bubble
+croaking noises	croak noise
+3 times per day	3 time per day
+treatment is available	treatment be available
+stomach aches	stomach ache
+bloating	bloat
+trying out everything	try out everything
+gut issues	gut issue
+lot of this burping	lot of this burp
+last for hours	last for hour
+trapped gas	trap gas
+sometimes it helps	sometimes it help
+Bubbling feeling	bubble feel
+full feeling	full feel
+throat gargles	throat gargle
+throat gargles	throat gargle
+noises	noise
+built up air	build up air
+throat gargles	throat gargle
+RCPD	rcpd
+feeling poorly	feel poorly
+panicking	panic
+Impact of botox	impact of botox
+issues with swallowing	issue with swallow
+suffer from TMJ	suffer from tmj
+realized any connections	realize any connection
+being tense	be tense
+botox wears off	botox wear off
+fear of side effects	fear of side effect
+vomiting	vomit
+severe side effects	severe side effect
+doesn’t get better	doesnt get good
+gurgling	gurgle
+rumbling in throat	rumble in throat
+Low motility	low motility
+body’s reaction to the reflux	body reaction to the reflux
+bravo pH monitor	bravo ph monitor
+my worst reflux	my bad reflux
+experiencing reflux	experience reflux
+normal burps	normal burp
+brought acid	bring acid
+no answers	no answer
+GERD	gerd
+endoscopies	endoscopy
+regurgitating acid	regurgitate acid
+gurgle burps	gurgle burp
+travels further up	travel far up
+daily PPIs	daily ppis
+Gaviscon Advance	gaviscon advance
+consulted with GI	consult with gi
+PPIs stop working	ppis stop work
+Botox	botox
+0 regrets	0 regret
+suffered from regurgitation	suffer from regurgitation
+push-ups and crunches	push up and crunch
+I now burp	i now burp
+14 weeks post-procedure	14 week post procedure
+elevated pillow	elevate pillow
+reflux meds	reflux med
+doing physical things	do physical thing
+learning burping techniques	learn burp technique
+getting harder	get hard
+sleeping more upright	sleep more upright
+burps are involuntary	burp be involuntary
+trigger burps	trigger burp
+sat up	sit up
+procedure is a godsend	procedure be a godsend
+pinching myself	pinch myself
+croaks	croak
+Throw up	throw up
+goes back down	go back down
+extremely frequent burps	extremely frequent burp
+swallowing water helps	swallow water help
+relieved air and pressure	relieve air and pressure
+similar to gurgles	similar to gurgle
+made me anxious	make i anxious
+had to relax	have to relax
+decreased since then	decrease since then
+higher dosage eventually	high dosage eventually
+air still getting stuck	air still get stuck
+learning new ways	learn new way
+food feels stuck	food feel stuck
+more relieving	more relieve
+related symptoms	related symptom
+changes in bloating	change in bloat
+gagging myself	gag myself
+university bathrooms	university bathroom
+GERD	gerd
+Inability to burp	inability to burp
+able to tolerate sodas	able to tolerate soda
+trapped	trap
+haven’t eaten	havent eat
+swallowing spit	swallow spit
+getting older	get old
+muscles in my throat	muscle in my throat
+trapped air	trap air
+force/speed	force speed
+don’t want to die	dont want to die
+gagging myself	gag myself
+actually thrown up	actually throw up
+acidic feeling	acidic feel
+previusly eaten food	previusly eat food
+digested enough	digest enough
+brushing my teeth	brush my tooth
+stomach is basically empty	stomach be basically empty
+feeling nauseous	feel nauseous
+unable ot breath	unable to breath
+Pepcid	pepcid
+stop taking omeprazole	stop take omeprazole
+long-term side effects	long term side effect
+GERD improve	gerd improve
+get off meds	get off med
+LES	les
+UES normalizes	ues normalize
+permanently abnormal LES	permanently abnormal les
+EDG	edg
+shrugged his shoulders	shrugg his shoulder
+ENT	ent
+Botox another go	botox another go
+omeprazole 2x/day	omeprazole 2x day
+don’t experience heartburn	dont experience heartburn
+gurgling	gurgle
+Nissen	nissen
+excessive belching	excessive belch
+GERD-related	gerd related
+R-CPD related	r cpd related
+floppy LES	floppy les
+relentless croaks and gurgles	relentless croak and gurgle
+microburps	microburp
+don’t feel relief	dont feel relief
+second found	second find
+higher dose	high dose
+tiniest of gurgles	tiniest of gurgle
+tubes	tube
+smaller in diameter	small in diameter
+minimizing damage	minimize damage
+more paralyzed	more paralyze
+inhaling	inhal
+holding my breath	hold my breath
+pushing air upward	push air upward
+UES then pops	ues then pop
+dissipates instead of exiting	dissipate instead of exite
+close my ribs	close my rib
+ENT	ent
+needs some imaging	need some imaging
+swallowing disorders	swallow disorder
+GI specialists	gi specialist
+affect burping	affect burp
+needle is attached	needle be attach
+scope also has camera	scope also have camera
+breathing patterns	breathing pattern
+biofeedback methods	biofeedback method
+breathing techniques	breathing technique
+sores	sore
+40 years worth of abnormal patterns	40 year worth of abnormal pattern
+diaphragmatic/belly breathing	diaphragmatic belly breathing
+briskly walking uphill	briskly walk uphill
+sitting around	sit around
+changes and adjustments	change and adjustment
+LES tone	les tone
+bacterial levels	bacterial level
+metabolic waste products	metabolic waste product
+CO2	co2
+gaping LES	gape les
+esophageal ulcers	esophageal ulcer
+Reflux Gourmet to help with the reflux	reflux gourmet to help with the reflux
+works really well	work really well
+pressure dynamics	pressure dynamic
+singing voice	sing voice
+vocals	vocal
+unstable joints	unstable joint
+chronically tight muscles	chronically tight muscle
+hypertonicity of UES	hypertonicity of ues
+Birth defect	birth defect
+throwing up	throw up
+doesn't’ come out	doesnt come out
+gagging	gag
+carbonation messes you	carbonation messe you
+lying flat	lie flat
+way worse	way bad
+28 weeks pregnant	28 week pregnant
+relaxin injections	relaxin injection
+cause me pain	cause i pain
+core muscles	core muscle
+chugging liquids	chugg liquid
+distended stomach	distend stomach
+ribcage sticks out	ribcage stick out
+strengthens the throat	strengthen the throat
+make things worse	make thing bad
+throat is very loose	throat be very loose
+sitting	sit
+CBD	cbd
+inducing burping	induce burp
+pushes the air	push the air
+creating a sound	create a sound
+pressurized tube	pressurize tube
+don’t force yourself	dont force yourself
+fasting	fast
+stomach pains	stomach pain
+growling	growl
+having hiccups currently	have hiccup currently
+chin to your knees	chin to your knee
+water is swallowed	water be swallow
+new diseases	new disease
+disorders	disorder
+people with dysfunction	person with dysfunction
+farting frequency	fart frequency
+otolaryngologists	otolaryngollistis
+GP	gp
+get the surgeries	get the surgery
+throat/recovery process	throat recovery process
+permanent results	permanent result
+Botox surgery	botox surgery
+difficulty swallowing	difficulty swallow
+small burps	small burp
+stomach pains	stomach pain
+periods of bloating	period of bloat
+mini-burp sounds	mini burp sound
+tons of air	ton of air
+frog noises	frog noise
+yawning a lot	yawn a lot
+bad gurgling	bad gurgle
+feeling pretty sick	feel pretty sick
+harder in the afternoon	hard in the afternoon
+growling	growl
+stomach gurgles	stomach gurgle
+r-cpd	r cpd
+air-bubble sensation	air bubble sensation
+singing negatively effects	sing negatively effect
+singing voice strong	sing voice strong
+choking	choke
+Bloating settles	bloat settle
+health issues	health issue
+occasional bloating	occasional bloat
+best procedure	good procedure
+ADHD meds	adhd med
+best decision	good decision
+money well spent	money well spend
+bloat has settles	bloat have settle
+relief from burping	relief from burp
+weeks post botox	week post botox
+bloating/distension	bloat distension
+confidence has raised	confidence have raise
+quieter burps	quiet burp
+smalelr burps	smalelr burp
+haven’t vomited	havent vomit
+made me sick	make i sick
+reflux feels different	reflux feel different
+forcing burps	force burp
+feeling of burps	feel of burp
+confidence to force burps	confidence to force burp
+coping mechanisms	coping mechanism
+fears come true	fear come true
+GERD	gerd
+reflux meds	reflux med
+numbing spray	numb spray
+learned how to burp	learn how to burp
+non corrosive GERD	non corrosive gerd
+burping while eating	burp while eat
+burp breaks	burp break
+tried singing	try sing
+higher range	high range
+drinking water normally	drink water normally
+microburps	microburp
+esophagus is floppy	esophagus be floppy
+Panadol	panadol
+needed additional doses	need additional dose
+shaker exercises	shaker exercise
+pelvic floor muscles	pelvic floor muscle
+Methane	methane
+night-terrors	night terror
+constant cold-sweats	constant cold sweat
+hold my burps in	hold my burp in
+avoid burping	avoid burp
+GERD	gerd
+trapped the air	trap the air
+don’t have gurgles	dont have gurgle
+still boated	still boat
+harder to push	hard to push
+microburps	microburp
+extension of gurgles	extension of gurgle
+smaller portions	small portion
+changed my eating	change my eat
+don’t have h. pylori	dont have h pylori
+r-cpd	r cpd
+controlled microburps	control microburp
+forcing these gurgles	force this gurgle
+feels tight sometimes	feel tight sometimes
+deep breaths	deep breath
+releases stress	release stress
+relaxes the body	relax the body
+improving posture	improve posture
+doing shakers	do shaker
+tensing unnecessary muscles	tens unnecessary muscle
+scared of vomiting	scared of vomit
+gurgles	gurgle
+panic attacks	panic attack
+trapped air	trap air
+painkillers	painkiller
+mimicking nausea	mimick nausea
+coping strategies	coping strategy
+horrendous painful hiccups	horrendous painful hiccup
+hormone changes	hormone change
+contraceptives	contraceptive
+nothing helped	nothing help
+eat throat is gurgling	eat throat be gurgle
+fatty foods	fatty food
+two months out	two month out
+burping nonstop	burp nonstop
+ballooned up	balloon up
+neck exercises	neck exercise
+deferred pain	defer pain
+gastroenterologists	gastroenterolloggs
+IBS	ibs
+PPI	ppi
+barrett’s esophagus	barrett esophagus
+distended abdomen	distend abdomen
+gurgling noises	gurgle noise
+projectile-vomiting	projectile vomit
+semi-chewed food	semi chew food
+multiple OTC meds	multiple otc med
+croaking	croak
+constant sore throats	constant sore throat
+constnatly overloaded	constnatly overload
+still couldn’t burp	still couldnt burp
+practice my burping	practice my burp
+weight may have fluctuated	weight may have fluctuate
+bloating	bloat
+stretch marks	stretch mark
+10 gallons of gas	10 gallon of gas
+bubbly drinks	bubbly drink
+side effects	side effect
+vocal chords	vocal chord

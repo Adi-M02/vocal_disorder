@@ -62,11 +62,10 @@ for term in CUSTOM_TERMS:
 
 
 # ─────────────────────────────────────────────────────────────────────────────
-# 5) Instantiate a SpellChecker that only knows our “custom_tokens” by default.
-#    (language=None → blank English base, then we load only our words.)
+# 5) Instantiate SpellChecker
 # ─────────────────────────────────────────────────────────────────────────────
-SPELL = SpellChecker(language=None)
-SPELL.word_frequency.load_words(custom_tokens)
+SPELL = SpellChecker(language="en")
+# SPELL.word_frequency.load_words(custom_tokens)
 
 
 

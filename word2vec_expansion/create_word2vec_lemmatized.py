@@ -6,7 +6,6 @@ Train Word2Vec on Reddit posts with optional spell-checking and lemmatization lo
 This version:
   • Adds lemmatization via a precomputed lookup table before training.
   • Supports both vanilla and spell-checked tokenization.
-  • Injects custom domain terms into the vocab.
 """
 import sys
 import os
@@ -22,15 +21,6 @@ sys.path.append('../vocal_disorder')
 from query_mongo import return_documents
 from tokenizer import clean_and_tokenize
 from spellchecker_folder.spellchecker import spellcheck_token_list
-
-
-def load_terms(path: str) -> dict[str, list[str]]:
-    with open(path, 'r', encoding='utf-8') as f:
-        terms_map = json.load(f)
-    return {
-        category.replace('_', ' '): [term.replace('_', ' ') for term in terms]
-        for category, terms in terms_map.items()
-    }
 
 
 def load_lookup(path: str) -> dict[str, str]:
