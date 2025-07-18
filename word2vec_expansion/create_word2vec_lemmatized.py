@@ -33,10 +33,6 @@ def main():
         description="Train Word2Vec on r/noburp Reddit posts with lemmatization lookup."
     )
     parser.add_argument(
-        "--spellcheck", action="store_true",
-        help="Use clean_and_tokenize_spellcheck instead of clean_and_tokenize."
-    )
-    parser.add_argument(
         "--lookup", type=str,
         default="testing/lemma_lookup.json",
         help="Path to JSON lemma lookup table."
@@ -63,15 +59,6 @@ def main():
     lookup_map = load_lookup(args.lookup)
     logging = print  # simple print for progress
 
-    # Choose tokenizer
-    if args.spellcheck:
-        print("Using spell-checking tokenizer")
-        def token_fn(text):
-            return spellcheck_token_list(clean_and_tokenize(text))
-    else:
-        print("Using vanilla tokenizer")
-        token_fn = clean_and_tokenize
-
     # 2) Fetch raw Reddit docs
     docs = return_documents(
         db_name="reddit",
@@ -81,13 +68,14 @@ def main():
     )
     logging(f"Number of documents fetched: {len(docs)}")
 
-    # 3) Tokenize + apply lookup
+    # 3) Tokenize lemmatize -> spellcheck -> lemmatize
     cleaned_docs = []
     for text in docs:
-        toks = token_fn(text)
-        # apply lemma lookup
-        lemtoks = [ lookup_map.get(tok, tok) for tok in toks ]
-        cleaned_docs.append(lemtoks)
+        toks = clean_and_tokenize(text)
+        toks = [lookup_map.get(tok, tok) for tok in toks]
+        toks = spellcheck_token_list(toks)
+        toks = [lookup_map.get(tok, tok) for tok in toks]
+        cleaned_docs.append(toks)
     logging(f"Tokenized & lemmatized {len(cleaned_docs)} documents")
 
     # 5) Build output directory

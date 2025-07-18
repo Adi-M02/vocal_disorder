@@ -3,7 +3,7 @@ import json
 import re
 import shelve
 import atexit
-import unicodedata
+import pickle
 
 from pathlib import Path
 from spellchecker import SpellChecker
@@ -103,7 +103,12 @@ def _correct_token(token: str) -> str:
 
     # 2) If we’ve already corrected this token before, grab it from disk
     if token in _disk_cache:
-        return _disk_cache[token]
+        try:
+            return _disk_cache[token]
+        except (pickle.UnpicklingError, EOFError):
+            # corrupted entry—remove and fall back to fresh correction
+            print(f"Warning: corrupted cache entry for token '{token}', removing it.")
+            del _disk_cache[token]
 
     # 3) If it has any digit (e.g. “h2o”, “2025”), skip correction
     if any(ch.isdigit() for ch in token):
