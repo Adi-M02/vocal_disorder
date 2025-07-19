@@ -6,13 +6,10 @@ import argparse
 import itertools
 from collections import Counter
 from typing import List, Dict
-
 import numpy as np
 from gensim.models import Word2Vec
 from datetime import datetime
 from tqdm import tqdm
-
-# Add your project paths here
 sys.path.append('../vocal_disorder')
 from tokenizer import clean_and_tokenize
 from query_mongo import return_documents
@@ -23,24 +20,12 @@ from nltk.corpus import stopwords
 STOPWORDS = set(stopwords.words('english'))
 
 def load_terms(path: str, tok_fn=None, lookup_map=None) -> Dict[str, list[str]]:
+    def clean_phrase(phrase):
+        tokens = tok_fn(phrase.replace('_', ' '))
+        return ' '.join(tokens)
     with open(path, 'r', encoding='utf-8') as f:
         data = json.load(f)
-    result = {}
-    for cat, terms in data.items():
-        cat_clean = cat.replace('_', ' ')
-        if tok_fn and lookup_map is not None:
-            cat_tokens = [lookup_map.get(t, t) for t in tok_fn(cat_clean)]
-            cat_clean = ' '.join(cat_tokens)
-            terms_clean = []
-            for t in terms:
-                t_clean = t.replace('_', ' ')
-                t_tokens = [lookup_map.get(tok, tok) for tok in tok_fn(t_clean)]
-                terms_clean.append(' '.join(t_tokens))
-        else:
-            terms_clean = [t.replace('_', ' ') for t in terms]
-        result[cat_clean] = terms_clean
-    return result
-
+    return {clean_phrase(cat): [clean_phrase(t) for t in terms] for cat, terms in data.items()}
 
 def load_lookup(path: str) -> Dict[str, str]:
     if not os.path.exists(path):
@@ -48,7 +33,6 @@ def load_lookup(path: str) -> Dict[str, str]:
     with open(path, 'r', encoding='utf-8') as f:
         return json.load(f)
     
-
 def extract_frequent_ngrams(
     max_ngram: int,
     tok_fn,
@@ -60,9 +44,7 @@ def extract_frequent_ngrams(
         collection_name="noburp_all",
         mongo_uri="mongodb://localhost:27017/"
     )
-    
-    counts = Counter()
-    
+    result = set()
     # slide an n-length window over each doc’s token list
     for doc in tqdm(docs, desc=f"Loading docs for ngrams"):
         tokens = [lookup_map.get(t, t) for t in tok_fn(doc)]
@@ -72,20 +54,8 @@ def extract_frequent_ngrams(
                 break
             for i in range(L - n + 1):
                 gram = tuple(tokens[i:i + n])
-                # # skip if first or last token is a stopword
-                # if gram[0] in STOPWORDS or gram[-1] in STOPWORDS:
-                #     continue
-                counts[gram] += 1
-
-    # hardcoded min_count for 2-gram and 3-gram
-    result = []
-    for gram, cnt in counts.items():
-        n = len(gram)
-        if n == 2 and cnt >= 1:
-            result.append(" ".join(gram))
-        elif n == 3 and cnt >= 1:
-            result.append(" ".join(gram))
-    return result
+                result.add(" ".join(gram))
+    return list(result)
 
 
 def embed_phrase(model: Word2Vec, phrase: str, tok_fn, lookup_map: dict) -> np.ndarray | None:
@@ -95,7 +65,6 @@ def embed_phrase(model: Word2Vec, phrase: str, tok_fn, lookup_map: dict) -> np.n
         print(f"Warning: No valid tokens found for phrase '{phrase}'")
         return None
     return np.mean(vecs, axis=0)
-
 
 def compute_triplets(model: Word2Vec,
                      terms_map: Dict[str,list[str]],
@@ -126,8 +95,6 @@ if __name__ == '__main__':
     )
     parser.add_argument('--terms',         required=True)
     parser.add_argument('--model_dir',     required=True)
-    parser.add_argument('--lookup',        default='testing/lemma_lookup.json')
-    parser.add_argument('--spellcheck',    action='store_true')
     parser.add_argument('--kmin', default=None, type=int)
     parser.add_argument('--kmax', default=None, type=int)
     parser.add_argument('--cos_min',      type=float, default=None)
@@ -144,13 +111,18 @@ if __name__ == '__main__':
                         help="Directory for outputs")
     args = parser.parse_args()
 
-    if args.spellcheck:
-        def tok_fn(text):
-            return spellcheck_token_list(clean_and_tokenize(text))
-    else:
-        tok_fn = clean_and_tokenize
+
+    
     lookup = load_lookup(args.lookup)
     orig_map = load_terms(args.terms, lookup_map=lookup)
+
+    def tok_fn(text):
+        # Tokenize -> lemmatize -> spellcheck -> lemmatize -> tokens
+        tokens = clean_and_tokenize(text)
+        tokens = [lookup.get(t, t) for t in tokens]
+        tokens = spellcheck_token_list(tokens)
+        tokens = [lookup.get(t, t) for t in tokens]
+        return tokens
 
     timestamp = datetime.now().strftime("%m%d_%H%M")
     out_root = args.out_root or os.path.join(args.model_dir, f"grid_{timestamp}")
@@ -187,7 +159,6 @@ if __name__ == '__main__':
         vocab_unit = vocab_mat / np.linalg.norm(vocab_mat, axis=1, keepdims=True)
 
         frequent_ngrams = extract_frequent_ngrams(args.eval_ngram[1], tok_fn, lookup)
-        print(f"Found {len(frequent_ngrams)} frequent ngrams for evaluation.")
         # embed ngrams with tqdm
         ngram_vecs = []
         

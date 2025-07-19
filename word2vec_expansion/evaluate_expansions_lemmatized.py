@@ -114,26 +114,14 @@ def evaluate_terms_performance(
     manual_terms_path: str,
     expansion_terms_path: str,
     ngram_filter: Optional[Tuple[int,int]],
-    tok_fn,
-    lemmatize: bool = False,
-    lemma_map: Optional[Dict[str,str]] = None
+    tok_fn
 ) -> dict:
     """
     Evaluate precision/recall/F1/accuracy of expansion terms vs. manual terms.
     """
-    # wrap tokenizer if lemmatization requested
-    if lemmatize and lemma_map:
-        base_tok = tok_fn
-        def tok(text: str) -> List[str]:
-            return [ lemma_map.get(t, t) for t in base_tok(text) ]
-    else:
-        tok = tok_fn
 
-    def norm(term: str) -> str:
-        return " ".join(tok(term))
-
-    manual_terms    = load_manual_terms(manual_terms_path, ngram_filter, tok)
-    expansion_terms = load_expansion_terms(expansion_terms_path, ngram_filter, tok)
+    manual_terms    = load_manual_terms(manual_terms_path, ngram_filter, tok_fn)
+    expansion_terms = load_expansion_terms(expansion_terms_path, ngram_filter, tok_fn)
     
     universe       = set(manual_terms) | set(expansion_terms)
 
@@ -143,7 +131,7 @@ def evaluate_terms_performance(
     tp_counter = Counter()
 
     for doc in docs:
-        tokens = tok(doc)
+        tokens = tok_fn(doc)
         positions = {}
         for term in universe:
             term_toks = term.split()
@@ -205,7 +193,7 @@ def evaluate_terms_performance(
     out_path = f"{base}_evaluation_{ts}.txt"
 
     with open(out_path, "w", encoding="utf-8") as f:
-        f.write(f"Expansion JSON: {expansion_terms_path}\n")
+        f.write(f"Expansion JSON:m {expansion_terms_path}\n")
         if ngram_filter is None:
             f.write("No n-gram filtering applied\n")
         else:
