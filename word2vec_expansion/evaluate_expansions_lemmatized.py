@@ -297,4 +297,21 @@ def main():
 
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO)
-    main()
+    # main()
+    def load_lookup(path: str) -> Dict[str, str]:
+        if not os.path.exists(path):
+            return {}
+        with open(path, 'r', encoding='utf-8') as f:
+            return json.load(f)
+    LOOKUP = load_lookup("testing/lemma_lookup.json")
+    def tokenize(text: str) -> List[str]:
+        tokens = clean_and_tokenize(text)
+        tokens = [LOOKUP.get(t, t) for t in tokens]
+        tokens = spellcheck_token_list(tokens)
+        return [LOOKUP.get(t, t) for t in tokens]
+    users = load_user_list(os.path.join('vocabulary_evaluation/manual_terms_7_12/', 'users.txt'))
+    DOCS = return_documents(
+        db_name='reddit', collection_name='noburp_all',
+        filter_subreddits=['noburp'], filter_users=users
+    )
+    evaluate_terms_performance(DOCS, 'vocabulary_evaluation/manual_terms_7_12/manual_terms.txt', 'rcpd_terms_6_5.json', (1,3), tokenize)
