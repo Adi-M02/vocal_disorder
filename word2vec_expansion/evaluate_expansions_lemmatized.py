@@ -105,7 +105,7 @@ def load_manual_terms(
 
 def load_user_list(path: str) -> List[str]:
     with open(path, 'r', encoding='utf-8') as f:
-        raw = f.read().lower()
+        raw = f.read()
     return [u.strip() for u in raw.split(",") if u.strip()]
 
 
@@ -309,7 +309,7 @@ if __name__ == "__main__":
         tokens = [LOOKUP.get(t, t) for t in tokens]
         tokens = spellcheck_token_list(tokens)
         return [LOOKUP.get(t, t) for t in tokens]
-    users = load_user_list(os.path.join('vocabulary_evaluation/manual_terms_7_12/', 'users.txt'))
+    users = load_user_list('vocabulary_evaluation/manual_terms_7_12/users.txt')
     DOCS = return_documents(
         db_name='reddit', collection_name='noburp_all',
         filter_subreddits=['noburp'], filter_users=users
