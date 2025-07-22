@@ -1,6 +1,7 @@
 import argparse
 import pandas as pd
 import plotly.express as px
+import plotly.io as pio
 
 def main():
     parser = argparse.ArgumentParser(
@@ -8,6 +9,8 @@ def main():
     )
     parser.add_argument('metrics_json', help="Path to metrics JSON file")
     args = parser.parse_args()
+    
+    pio.renderers.default = "browser"
 
     # 1) Load JSON unambiguously as a list of records
     df = pd.read_json(args.metrics_json, orient='records')

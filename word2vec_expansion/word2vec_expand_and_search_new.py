@@ -111,7 +111,7 @@ if __name__ == '__main__':
 
     all_metrics: List[Dict] = []
 
-    for model_file in ['word2vec_cbow.model']:
+    for model_file in ['word2vec_skipgram.model']:
         mpath = os.path.join(args.model_dir, model_file)
         if not os.path.exists(mpath):
             continue
