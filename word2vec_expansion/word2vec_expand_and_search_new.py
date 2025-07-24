@@ -64,7 +64,7 @@ def embed_phrase(model: Word2Vec, phrase: str, tok_fn, lookup_map: dict) -> np.n
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Gridsearch term-level neighbors")
-    parser.add_argument('--terms',      default="rcpd_terms_6_5.json", help="Path to JSON with original terms map")
+    parser.add_argument('--seed_terms',      default="rcpd_terms_6_5.json", help="Path to JSON with original terms map")
     parser.add_argument('--lookup',     default="testing/lemma_lookup.json", help="Path to JSON lookup for normalization")
     parser.add_argument('--model_dir',  required=True)
     parser.add_argument('--kmin',       type=int, help="Min number of neighbors to retrieve")
@@ -88,7 +88,7 @@ if __name__ == '__main__':
         tokens = [lookup.get(t, t) for t in tokens]
         return tokens
 
-    orig_map = load_terms(args.terms, tok_fn=tok_fn)
+    orig_map = load_terms(args.seed_terms, tok_fn=tok_fn)
 
     timestamp = datetime.now().strftime("%m%d_%H%M")
     out_root  = args.out_root or os.path.join(args.model_dir, f"term_grid_{timestamp}")
@@ -111,7 +111,7 @@ if __name__ == '__main__':
 
     all_metrics: List[Dict] = []
 
-    for model_file in ['word2vec_skipgram.model']:
+    for model_file in ['word2vec_skipgram.model', 'word2vec_cbow.model']:
         mpath = os.path.join(args.model_dir, model_file)
         if not os.path.exists(mpath):
             continue
