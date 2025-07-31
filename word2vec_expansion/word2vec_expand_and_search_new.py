@@ -155,17 +155,37 @@ if __name__ == '__main__':
             k_values = list(range(args.kmin, args.kmax + 1, 5))
             max_k = max(k_values)
             exp_maps: Dict[int, Dict[str, List[str]]] = {k: {} for k in k_values}
+
             for term, unit in term_vecs:
-                # get top max_k unigrams once
-                uni_max = model.wv.similar_by_vector(unit, topn=max_k)
-                uni_terms = [w for w,_ in uni_max if w not in STOPWORDS]
-                # get top max_k ngrams once
+                # split the seed phrase into tokens
+                seed_tokens = set(tok_fn(term))
+
+                # compute and mask unigram similarities
+                sims_u = vocab_unit @ unit
+                for i, w in enumerate(vocab_words):
+                    if w in STOPWORDS or w in seed_tokens:
+                        sims_u[i] = -np.inf
+
+                # compute n-gram similarities
                 sims_ng = ngram_matrix @ unit
-                sorted_ng = np.argsort(-sims_ng)
+
                 for k in k_values:
-                    uni_hits = set(uni_terms[:k])
-                    ng_hits = {ngram_phrases[i] for i in sorted_ng[:k]}
-                    exp_maps[k][term] = list(uni_hits | ng_hits)
+                    # top-k unigrams (sorted by descending cos-sim)
+                    uni_idxs = np.argpartition(-sims_u, k-1)[:k]
+                    uni_idxs = uni_idxs[np.argsort(-sims_u[uni_idxs])]
+                    uni_cands = [(vocab_words[i], sims_u[i]) for i in uni_idxs]
+
+                    # top-k n-grams (sorted by descending cos-sim)
+                    ng_idxs = np.argpartition(-sims_ng, k-1)[:k]
+                    ng_idxs = ng_idxs[np.argsort(-sims_ng[ng_idxs])]
+                    ng_cands = [(ngram_phrases[i], sims_ng[i]) for i in ng_idxs]
+
+                    # combine both lists and sort by score
+                    combined = uni_cands + ng_cands
+                    combined_sorted = sorted(combined, key=lambda x: x[1], reverse=True)
+
+                    # store just the terms, in descending similarity order
+                    exp_maps[k][term] = [term for term, _ in combined_sorted]
 
             # write and evaluate per k
             for k, exp_map in exp_maps.items():
