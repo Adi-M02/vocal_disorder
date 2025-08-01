@@ -23,9 +23,7 @@ from tokenizer import clean_and_tokenize
 from spellchecker_folder.spellchecker import spellcheck_token_list
 
 
-def load_lookup(path: str) -> dict[str, str]:
-    with open(path, 'r', encoding='utf-8') as f:
-        return json.load(f)
+from utils.load_lemmatizer import load_lookup
 
 
 def main():

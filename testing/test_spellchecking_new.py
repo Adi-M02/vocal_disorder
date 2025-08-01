@@ -16,10 +16,7 @@ logging.basicConfig(
     handlers=[logging.StreamHandler(sys.stdout)],
 )
 
-def load_lookup(path: str) -> dict[str, str]:
-    """Load your lemma_lookup.json into a dict."""
-    with open(path, encoding="utf-8") as f:
-        return json.load(f)
+from utils.load_lemmatizer import load_lookup
 
 def main():
     parser = argparse.ArgumentParser(
