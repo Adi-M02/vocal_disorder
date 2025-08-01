@@ -157,6 +157,7 @@ def test_correct_spellings_unchanged(monkeypatch, token):
     ('nausee','nausea'),
     ('gurgiling','gurgling'),
     ('heartburnn','heartburn'),
+    ('naurea','nausea'),
 ])
 def test_extended_misspellings_rcpd(monkeypatch, token, expected):
     monkeypatch.setattr(sc, 'custom_tokens', set())

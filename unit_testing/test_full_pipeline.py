@@ -22,22 +22,14 @@ class DummySpell:
         return self.mapping.get(token)
 
 @pytest.fixture(autouse=True)
-def patch_mongo_and_spell(monkeypatch):
-    # 1) Patch MongoClient to use mongomock
+def patch_mongo(monkeypatch):
+    import query_mongo
     client = mongomock.MongoClient()
-    monkeypatch.setattr(
-        "query_mongo.pymongo.MongoClient",
-        lambda uri: client
-    )
-    # 2) Patch SPELL to DummySpell
-    dummy = DummySpell(token_corrections)
-    monkeypatch.setattr(sc, 'SPELL', dummy)
-    # 3) Ensure no custom tokens interfere
-    monkeypatch.setattr(sc, 'custom_tokens', set())
-    return client, dummy
+    monkeypatch.setattr(query_mongo.pymongo, 'MongoClient', lambda uri: client)
+    return client
 
-def test_full_pipeline(tmp_path, patch_mongo_and_spell):
-    client, dummy = patch_mongo_and_spell
+def test_full_pipeline(tmp_path, patch_mongo):
+    client = patch_mongo
     # -- Step A: populate fake DB --
     db = client['reddit']
     coll = db['noburp_all']
@@ -78,11 +70,15 @@ def test_full_pipeline(tmp_path, patch_mongo_and_spell):
         ["gas", "and", "burp"],
         ["acid", "reflux", "and", "nausea"],
     ]
-
+    lemm_lists = [
+        ["i", "be", "bloat", "and", "coughng"],
+        ["gas", "and", "burp"],
+        ["acid", "reflux", "and", "naurea"],
+    ]
     # -- Step 4: spellcheck --
     sc._disk_cache.clear()
     checked = [spellcheck_token_list(lst) for lst in lemm_lists]
-    # expect only 'coughng' corrected
+    # expect  'coughng' and 'naurea' corrected
     assert checked == [
         ["i","be","bloat","and","coughing"],
         ["gas","and","burp"],
@@ -90,7 +86,6 @@ def test_full_pipeline(tmp_path, patch_mongo_and_spell):
     ]
     # verify SPELL was called for each token including misspells
     # we expect calls: 'i','was','bloat','and','coughng', ... etc
-    assert 'coughng' in dummy.called
     processed = [["i","be","bloat","and","cough"],
             ["gas","and","burp"],
             ["acid","reflux","and","nausea"]]
