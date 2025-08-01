@@ -15148,7 +15148,7 @@
   "factory": "factory",
   "migrate": "migrate",
   "7000": "7000",
-  "benching": "bench",
+  "benching": "benching",
   "math": "math",
   "horse": "horse",
   "aluminum": "aluminum",
@@ -34701,8 +34701,8 @@
   "juicer": "juicer",
   "emetaphobic": "emetophobic",
   "emetaphobia": "emetophobia",
-  "emetephobics": "emetophobics",
-  "emetaphobics": "emetophobics",
+  "emetephobics": "emetophobic",
+  "emetaphobics": "emetophobic",
   "fluxes": "flux",
   "flux": "flux"
 }

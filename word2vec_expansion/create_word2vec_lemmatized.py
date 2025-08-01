@@ -3,9 +3,8 @@ usage python word2vec_expansion/create_word2vec_spellcheck.py
 
 Train Word2Vec on Reddit posts with optional spell-checking and lemmatization lookup.
 
-This version:
-  • Adds lemmatization via a precomputed lookup table before training.
-  • Supports both vanilla and spell-checked tokenization.
+Adds lemmatization via a precomputed lookup table before training.
+Uses the spellchecker to correct tokens 
 """
 import sys
 import os
@@ -21,9 +20,66 @@ sys.path.append('../vocal_disorder')
 from query_mongo import return_documents
 from tokenizer import clean_and_tokenize
 from spellchecker_folder.spellchecker import spellcheck_token_list
-
-
 from utils.load_lemmatizer import load_lookup
+
+
+def make_outdir(base_outdir: str, now: datetime.datetime) -> Path:
+    """Create and return a timestamped output directory."""
+    root = Path(base_outdir) if base_outdir else Path("word2vec_expansion")
+    folder = root / now.strftime("word2vec_%m_%d_%H_%M")
+    folder.mkdir(parents=True, exist_ok=True)
+    return folder
+
+
+def write_info(out_dir: Path, args: argparse.Namespace, now: datetime.datetime) -> None:
+    """Write a JSON file with run arguments and timestamp."""
+    info = {**vars(args), "timestamp": now.isoformat()}
+    with open(out_dir / "info.json", 'w', encoding='utf-8') as f:
+        json.dump(info, f, indent=2)
+
+
+def train_one_model(
+    cleaned_docs: list[list[str]],
+    out_dir: Path,
+    args: argparse.Namespace,
+    sg_flag: int,
+    w2v_cls=Word2Vec,
+    epochs: int = 5,
+) -> Word2Vec:
+    """Train and save a single Word2Vec model (CBOW or Skip-gram)."""
+    model = w2v_cls(
+        vector_size=args.vector_size,
+        window=args.window,
+        min_count=args.min_count,
+        sg=sg_flag,
+        workers=max(1, os.cpu_count() - 1)
+    )
+    model.build_vocab(cleaned_docs)
+    model.train(cleaned_docs, total_examples=len(cleaned_docs), epochs=epochs)
+
+    name = "word2vec_cbow.model" if sg_flag == 0 else "word2vec_skipgram.model"
+    path = out_dir / name
+    model.save(str(path))
+    return model
+
+
+def run_training_pipeline(
+    cleaned_docs: list[list[str]],
+    args: argparse.Namespace,
+    now: datetime.datetime | None = None,
+    w2v_cls=Word2Vec,
+) -> tuple[Word2Vec, Word2Vec, Path]:
+    """
+    Orchestrate directory creation, info writing, and training of CBOW and Skip-gram models.
+    Returns the two trained models and the output directory.
+    """
+    now = now or datetime.datetime.now()
+    out_dir = make_outdir(args.outdir, now)
+    write_info(out_dir, args, now)
+
+    cbow = train_one_model(cleaned_docs, out_dir, args, sg_flag=0, w2v_cls=w2v_cls)
+    skipgram = train_one_model(cleaned_docs, out_dir, args, sg_flag=1, w2v_cls=w2v_cls)
+    return cbow, skipgram, out_dir
 
 
 def main():
@@ -66,8 +122,8 @@ def main():
     )
     logging(f"Number of documents fetched: {len(docs)}")
 
-    # 3) Tokenize lemmatize -> spellcheck -> lemmatize
-    cleaned_docs = []
+    # 3) Tokenize → lemmatize → spellcheck → lemmatize
+    cleaned_docs: list[list[str]] = []
     for text in docs:
         toks = clean_and_tokenize(text)
         toks = [lookup_map.get(tok, tok) for tok in toks]
@@ -76,46 +132,10 @@ def main():
         cleaned_docs.append(toks)
     logging(f"Tokenized & lemmatized {len(cleaned_docs)} documents")
 
-    # 5) Build output directory
-    now = datetime.datetime.now()
-    base_outdir = Path(args.outdir) if args.outdir else Path("word2vec_expansion")
-    out_dir = base_outdir / now.strftime("word2vec_%m_%d_%H_%M")
-    out_dir.mkdir(parents=True, exist_ok=True)
+    # 5‑8) Run the training pipeline
+    cbow, skipgram, out_dir = run_training_pipeline(cleaned_docs, args)
+    logging(f"Training complete. Models saved in {out_dir}")
 
-    # 6) Save run info
-    info = {**vars(args), "timestamp": now.isoformat()}
-    with open(out_dir / "info.json", 'w', encoding='utf-8') as f:
-        json.dump(info, f, indent=2)
-
-    # 7) Train CBOW
-    start_cb = time.time()
-    cbow = Word2Vec(
-        vector_size=args.vector_size,
-        window=args.window,
-        min_count=args.min_count,
-        sg=0,
-        workers=max(1, os.cpu_count()-1)
-    )
-    cbow.build_vocab(cleaned_docs)
-    cbow.train(cleaned_docs, total_examples=len(cleaned_docs), epochs=5)
-    cbow_path = out_dir / "word2vec_cbow.model"
-    cbow.save(str(cbow_path))
-    logging(f"CBOW training took {time.time()-start_cb:.2f}s → saved to {cbow_path}")
-
-    # 8) Train Skip-gram
-    start_sg = time.time()
-    skipgram = Word2Vec(
-        vector_size=args.vector_size,
-        window=args.window,
-        min_count=args.min_count,
-        sg=1,
-        workers=max(1, os.cpu_count()-1)
-    )
-    skipgram.build_vocab(cleaned_docs)
-    skipgram.train(cleaned_docs, total_examples=len(cleaned_docs), epochs=5)
-    skipgram_path = out_dir / "word2vec_skipgram.model"
-    skipgram.save(str(skipgram_path))
-    logging(f"Skip-gram training took {time.time()-start_sg:.2f}s → saved to {skipgram_path}")
 
 if __name__ == "__main__":
     main()
