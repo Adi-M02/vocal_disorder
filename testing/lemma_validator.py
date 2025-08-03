@@ -28,6 +28,7 @@ class LemmaValidator:
         )
 
     def validate(self, term: str, lemma: str) -> dict:
+        # 1. Build the user prompt
         user_prompt = (
             f"Word: \"{term}\"\n"
             f"Proposed lemma: \"{lemma}\"\n\n"
@@ -39,22 +40,33 @@ class LemmaValidator:
             "{ \"agree\": false, \"correct_lemma\": null }\n"
         )
 
+        # 2. Create the payload
         payload = self.default_data.copy()
         payload["messages"] = [
-            {"role": "system", "content": self.system_message},
-            {"role": "user",   "content": user_prompt}
+            {"role": "system",  "content": self.system_message},
+            {"role": "user",    "content": user_prompt}
         ]
 
+        # 3. Send the request (with a timeout so it won't hang forever)
         resp = requests.post(self.url, headers=self.headers, json=payload, timeout=30)
         resp.raise_for_status()
         body = resp.json()
 
-        # Handle both structured and legacy formats
+        # 4. Unwrap any legacy "choices" container
         if "choices" in body:
             content = body["choices"][0]["message"]["content"]
             return json.loads(content)
-        return body
 
+        # 5. Unwrap the new top-level "message" container
+        if "message" in body and isinstance(body["message"], dict):
+            content = body["message"].get("content", "")
+            try:
+                return json.loads(content)
+            except json.JSONDecodeError:
+                pass
+
+        # 6. Otherwise assume it's already the structured JSON
+        return body
 
 def append_to_json(path: Path, key: str, value):
     """Load existing JSON (or start new), append key/value, and write back."""
