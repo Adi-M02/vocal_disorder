@@ -31,6 +31,8 @@ def verify_lemma_coverage():
     for text in docs:
         tokens = clean_and_tokenize(text)
         tokens = [lookup_map.get(tok, tok) for tok in tokens]
+        text = ' '.join(tokens)
+        tokens = clean_and_tokenize(text)
         tokens = spellcheck_token_list(tokens)
         for token in tokens:
             if token not in lookup_map:
