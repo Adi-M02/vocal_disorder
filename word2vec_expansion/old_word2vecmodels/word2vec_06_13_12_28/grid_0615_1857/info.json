@@ -1,0 +1,19 @@
+{
+  "terms": "word2vec_expansion/word2vec_06_13_12_28/grid_0613_1635/word2vec_cbow_cos75_f25/expansions.json",
+  "model_dir": "word2vec_expansion/word2vec_06_13_12_28",
+  "lookup": "testing/lemma_lookup.json",
+  "spellcheck": true,
+  "kmin": null,
+  "kmax": null,
+  "cos_min": 0.6,
+  "cos_max": 0.9,
+  "freq_min": 0.01,
+  "freq_max": 0.3,
+  "manual_dir": "vocabulary_evaluation/updated_manual_terms_6_12",
+  "eval_ngram": [
+    1,
+    3
+  ],
+  "metrics_output": "word2vec_expansion/word2vec_06_13_12_28/grid_0615_1857/metrics.json",
+  "out_root": null
+}

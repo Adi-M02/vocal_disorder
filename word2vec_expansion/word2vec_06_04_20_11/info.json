@@ -1,8 +1,0 @@
-{
-  "terms_path": "rcpd_terms.json",
-  "model_dir": "word2vec_expansion/word2vec_06_04_20_11",
-  "sim_threshold": 0.4,
-  "freq_threshold": 0.09,
-  "spellcheck": true,
-  "timestamp": "2025-06-05 13:33:15"
-}

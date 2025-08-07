@@ -1,1 +1,0 @@
-expand and search with 1/2 manual terms as seed terms and with k=10 to k=70 gridsearch. 

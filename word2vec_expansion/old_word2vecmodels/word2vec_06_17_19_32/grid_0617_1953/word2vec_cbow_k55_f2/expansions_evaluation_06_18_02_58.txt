@@ -1,0 +1,386 @@
+Expansion JSON: word2vec_expansion/word2vec_06_17_19_32/grid_0617_1953/word2vec_cbow_k55_f2/expansions.json
+Filtered terms to n-grams in [1, 3]
+=== Evaluation Across 178 Documents ===
+Total terms evaluated: 1207908
+TP: 583, FP: 390, TN: 1206630, FN: 305
+Precision: 0.599
+Recall:    0.657
+F1 Score:  0.627
+Accuracy:  0.999
+
+False Positives (390 occurrences across 151 terms):
+post: 22
+think: 17
+say: 17
+r: 13
+result: 11
+sub: 10
+information: 10
+datum: 9
+response: 9
+hear: 8
+round: 8
+need: 8
+happen: 6
+thing: 6
+request: 6
+location: 5
+sometimes: 5
+previous: 5
+thread: 5
+comment: 4
+whole: 4
+consider: 4
+release: 4
+schedule: 4
+official: 3
+refer: 3
+suspect: 3
+age: 3
+search: 3
+usa: 3
+opinion: 3
+statement: 3
+union: 3
+office: 3
+head: 3
+tool: 3
+submit: 3
+available: 3
+problem: 3
+fix: 3
+food: 3
+success: 2
+identify: 2
+general: 2
+national: 2
+low: 2
+self: 2
+initial: 2
+move: 2
+tea: 2
+sticky: 2
+trap: 2
+washington: 2
+description: 2
+diagnostic: 2
+website: 2
+map: 2
+procedure organize: 2
+user: 2
+application: 2
+canadian: 2
+situation: 2
+twist: 2
+repair: 2
+difficulty: 2
+fizzy: 2
+ontario: 2
+cover: 2
+account: 2
+review: 2
+area: 1
+appeal: 1
+ginger: 1
+puke: 1
+massage: 1
+activate: 1
+punch: 1
+tea fennel: 1
+describe: 1
+tea fennel seed: 1
+soda: 1
+oil: 1
+read: 1
+antacid ranitidine: 1
+method: 1
+fennel: 1
+clear: 1
+reflex: 1
+self treatment suggestion: 1
+relaxed: 1
+trick: 1
+exercise treatment: 1
+burb: 1
+probiotics: 1
+200: 1
+effectiveness: 1
+syndrome: 1
+team: 1
+researcher: 1
+insight: 1
+assess: 1
+cricopharyngeal: 1
+retrograde cricopharyngeal: 1
+toronto: 1
+colleague: 1
+awake: 1
+product: 1
+management: 1
+motility: 1
+creamer: 1
+permanently: 1
+aspect: 1
+lifelong: 1
+constant: 1
+tract: 1
+flare: 1
+contract: 1
+physical: 1
+prescription: 1
+asap: 1
+moderator: 1
+service: 1
+visit: 1
+outcome: 1
+action: 1
+address: 1
+associate: 1
+approach: 1
+forum: 1
+approve: 1
+pseudo: 1
+learn: 1
+build: 1
+deal: 1
+contort: 1
+option: 1
+occur: 1
+classic: 1
+recognize: 1
+excessive: 1
+turn: 1
+permanent: 1
+perform: 1
+starter: 1
+tip: 1
+citizen: 1
+american: 1
+60: 1
+seek: 1
+match: 1
+quebec: 1
+
+False Negatives (305 occurrences across 221 terms):
+help: 10
+sound: 8
+demographics: 4
+able to burp: 4
+weird sound: 4
+laugh: 4
+wear off: 4
+botox procedure: 4
+pre op: 3
+op: 3
+botox treatment: 3
+carbonated drink: 3
+medical care: 3
+primary care provider: 3
+medical professional: 3
+fodmap: 3
+side effect: 3
+trouble swallow: 3
+progress: 3
+pre op test: 2
+no burper: 2
+related: 2
+suck: 2
+cannot burp: 2
+lie down: 2
+teach yourself: 2
+non burper: 2
+pop: 2
+neck exercise: 2
+treatment instead: 2
+under anesthesia: 2
+elimination diet: 2
+dietary intolerance: 2
+second round: 2
+uncontrollable: 2
+burp cough: 2
+awful: 2
+hernia repair: 2
+hiatal hernia surgery: 2
+hernia surgery: 2
+could burp: 2
+control: 2
+surprise: 2
+round 2: 2
+push my stomach: 2
+struggle: 2
+as a baby: 2
+dietary consideration: 1
+first round: 1
+alone: 1
+taste: 1
+relieve gas: 1
+quick jog: 1
+air puke: 1
+be relaxed: 1
+fish oil supplement: 1
+esophagus straight: 1
+throat be relaxed: 1
+emetophobia etc.: 1
+do exercise: 1
+demon burp: 1
+take it seriously: 1
+throat make: 1
+fennel seed: 1
+eat probiotics: 1
+release most flatulence: 1
+teach themselves: 1
+hot shower: 1
+fast: 1
+feel unrecognized: 1
+gurgle sound: 1
+hot compress: 1
+unrecognized medical condition: 1
+ruin their life: 1
+rub my stomach: 1
+drink soda: 1
+tense muscle: 1
+gag reflex: 1
+hold my breath: 1
+no constrictive clothing: 1
+lie down flat: 1
+start burp: 1
+deep breath: 1
+star jump: 1
+little hiccup: 1
+salty snack: 1
+treatment unfortunately: 1
+dramamine: 1
+dislodge some gas: 1
+relieve the pressure: 1
+general practitioner: 1
+burp exercise: 1
+more frequent meal: 1
+massage throat: 1
+health psychologist: 1
+avoid aggressor: 1
+activate charcoal: 1
+crystallize ginger: 1
+ranitidine: 1
+force a croak: 1
+eat small: 1
+no carb diet: 1
+eat slowly: 1
+botox wear off: 1
+embarrassing: 1
+phlegmy: 1
+release gas: 1
+botox loosen it: 1
+release trap gas: 1
+change my voice: 1
+weird gas release: 1
+crazy tight: 1
+scared: 1
+trap gas: 1
+receive treatment: 1
+effectiveness of treatment: 1
+no burp syndrome: 1
+patient questionnaire: 1
+research: 1
+diagnostic tool: 1
+burp syndrome: 1
+neck surgery: 1
+laryngopedia: 1
+canadian doctor: 1
+awake version: 1
+bad with age: 1
+symptom management: 1
+cost prohibitive: 1
+uncontrollable burp: 1
+in office: 1
+office procedure: 1
+actual vomit: 1
+ent issue: 1
+rule out: 1
+diagnostic step: 1
+publication: 1
+hiatal hernia fix: 1
+esophageal motility problem: 1
+hernia fix: 1
+esophageal motility: 1
+gas move around: 1
+lactose intolerant: 1
+drink tea: 1
+chronic heartburn: 1
+to believe you: 1
+esophagus doesn't contract: 1
+all my life: 1
+sweat: 1
+long term complication: 1
+defective: 1
+dysphagia issue: 1
+permanently on ppis: 1
+digestive tract: 1
+esophageal cancer: 1
+normal person: 1
+worth it: 1
+air bounce up: 1
+botox prescription: 1
+sleepy: 1
+drink carbonated drink: 1
+drink carbonated: 1
+brutal hiccup: 1
+10 unit: 1
+specific doctor: 1
+inability to burp: 1
+bloating discomfort: 1
+improve my life: 1
+inability: 1
+self harm: 1
+worry: 1
+community: 1
+flustered: 1
+doctor appointment: 1
+specific treatment: 1
+swallow difficulty: 1
+regain its movement: 1
+swallow issue: 1
+esophagus dilate: 1
+mess up: 1
+symptom post botox: 1
+trap air: 1
+needle of botox: 1
+through the neck: 1
+through the mouth: 1
+waitlist: 1
+not overly flatulent: 1
+proper burp: 1
+some relief: 1
+gurgle come: 1
+pseudo burp: 1
+mucus feel: 1
+start wear off: 1
+talk and burp: 1
+laugh and burp: 1
+cough and burp: 1
+post botox symptom: 1
+unbearable: 1
+mucusy feel: 1
+difficulty swallow: 1
+annoying: 1
+push air out: 1
+force it out: 1
+round 3: 1
+unit of botox: 1
+sore: 1
+contort my neck: 1
+isolate the muscle: 1
+classic symptom: 1
+non burp: 1
+struggle to burp: 1
+dietary change: 1
+excessive bloating: 1
+dietary adjustment: 1
+digestive issue: 1
+food issue: 1
+feel so hear: 1
+weird personal quirk: 1
+horrible heartburn: 1
+insurance cover: 1
+louder: 1
+croaky club: 1
+

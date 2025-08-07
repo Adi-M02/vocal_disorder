@@ -21,6 +21,7 @@ from query_mongo import return_documents
 from tokenizer import clean_and_tokenize
 from spellchecker_folder.spellchecker import spellcheck_token_list
 from utils.load_lemmatizer import load_lookup
+from utils.text_pipeline import process_text
 
 
 def make_outdir(base_outdir: str, now: datetime.datetime) -> Path:
@@ -125,10 +126,7 @@ def main():
     # 3) Tokenize → lemmatize → spellcheck → lemmatize
     cleaned_docs: list[list[str]] = []
     for text in docs:
-        toks = clean_and_tokenize(text)
-        toks = [lookup_map.get(tok, tok) for tok in toks]
-        toks = spellcheck_token_list(toks)
-        toks = [lookup_map.get(tok, tok) for tok in toks]
+        toks = process_text(text, lookup_path=args.lookup)
         cleaned_docs.append(toks)
     logging(f"Tokenized & lemmatized {len(cleaned_docs)} documents")
 

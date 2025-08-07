@@ -8,6 +8,7 @@ sys.path.append('../vocal_disorder')
 from query_mongo import return_documents
 from tokenizer import clean_and_tokenize
 from utils.load_lemmatizer import load_lookup
+from utils.text_pipeline import process_text
 import spellchecker_folder.spellchecker as sc
 from spellchecker_folder.spellchecker import spellcheck_token_list
 
@@ -100,3 +101,15 @@ def test_full_pipeline(tmp_path, patch_mongo):
     final = [[lm.get(tok, tok) for tok in lst] for lst in checked]
 
     assert final == processed  # no further changes
+
+    # -- Step 6: test end to end pipeline --
+    processed_docs = [
+        process_text(doc, lookup_path='testing/combined_lemmas.json')
+        for doc in docs
+    ]
+    assert processed_docs == [
+        ["i", "be", "bloat", "and", "cough"],
+        ["gas", "and", "burp"],
+        ["acid", "reflux", "and", "nausea"],
+        ["test", "text", "r", "cpd", "112", "3burps", "yo"],
+    ]
