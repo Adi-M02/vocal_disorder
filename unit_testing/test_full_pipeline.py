@@ -37,6 +37,7 @@ def test_full_pipeline(tmp_path, patch_mongo):
         {"body": "I was bloated and coughng", "subreddit": "noburp", "author": "u1"},
         {"title": "Gas and burping", "selftext": "Acid reflux and nausea", "subreddit": "noburp", "author": "u2"},
         {"body": "Ignore me if wrong sub", "subreddit": "other", "author": "u3"},
+        {"body": "test text r-cpd, 112, 3burps, yo", "subreddit": "noburp", "author": "u4"},
     ])
 
     # -- Step 1: fetch documents --
@@ -50,6 +51,7 @@ def test_full_pipeline(tmp_path, patch_mongo):
         "I was bloated and coughng",
         "Gas and burping",
         "Acid reflux and nausea",
+        "test text r-cpd, 112, 3burps, yo"
     ]
 
     # -- Step 2: clean & tokenize --
@@ -58,6 +60,7 @@ def test_full_pipeline(tmp_path, patch_mongo):
         ["i","was","bloated","and","coughng"],
         ["gas","and","burping"],
         ["acid","reflux","and","nausea"],
+        ["test","text","r", "cpd","112","3burps","yo"]
     ]
 
     # -- Step 3: lemmatize via lookup using real lemma_lookup.json --
@@ -69,11 +72,13 @@ def test_full_pipeline(tmp_path, patch_mongo):
         ["i", "be", "bloat", "and", "coughng"],
         ["gas", "and", "burp"],
         ["acid", "reflux", "and", "nausea"],
+        ["test","text","r", "cpd","112","3burps","yo"]
     ]
     lemm_lists = [
         ["i", "be", "bloat", "and", "coughng"],
         ["gas", "and", "burp"],
         ["acid", "reflux", "and", "naurea"],
+        ["test","text","r", "cpd","112","3burps","yo"]
     ]
     # -- Step 4: spellcheck --
     sc._disk_cache.clear()
@@ -83,12 +88,14 @@ def test_full_pipeline(tmp_path, patch_mongo):
         ["i","be","bloat","and","coughing"],
         ["gas","and","burp"],
         ["acid","reflux","and","nausea"],
+        ["test","text","r", "cpd","112","3burps","yo"]
     ]
     # verify SPELL was called for each token including misspells
     # we expect calls: 'i','was','bloat','and','coughng', ... etc
     processed = [["i","be","bloat","and","cough"],
             ["gas","and","burp"],
-            ["acid","reflux","and","nausea"]]
+            ["acid","reflux","and","nausea"],
+            ["test","text","r", "cpd","112","3burps","yo"]]
     # -- Step 5: re-lemmatize spellchecked tokens --
     final = [[lm.get(tok, tok) for tok in lst] for lst in checked]
 

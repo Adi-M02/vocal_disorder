@@ -128,6 +128,7 @@ def test_mixed_behaviors_rcpd(monkeypatch):
     ("cricopharyngal", "cricopharyngeal"),
     ("dysphagiaa", "dysphagia"),
     ("gasx", "gasx"),  # unknown, fallback to itself
+    ("badly", "badly"),
 ])
 def test_common_misspellings_rcpd(monkeypatch, token, expected):
     monkeypatch.setattr(sc, 'custom_tokens', set())
