@@ -9,18 +9,13 @@ Uses the spellchecker to correct tokens
 import sys
 import os
 import datetime
-import time
 import json
 import argparse
 from pathlib import Path
-
 from gensim.models import Word2Vec
 
 sys.path.append('../vocal_disorder')
 from query_mongo import return_documents
-from tokenizer import clean_and_tokenize
-from spellchecker_folder.spellchecker import spellcheck_token_list
-from utils.load_lemmatizer import load_lookup
 from utils.text_pipeline import process_text
 
 
@@ -71,7 +66,7 @@ def run_training_pipeline(
     w2v_cls=Word2Vec,
 ) -> tuple[Word2Vec, Word2Vec, Path]:
     """
-    Orchestrate directory creation, info writing, and training of CBOW and Skip-gram models.
+    directory creation, info writing, and training of CBOW and Skip-gram models.
     Returns the two trained models and the output directory.
     """
     now = now or datetime.datetime.now()
@@ -88,11 +83,6 @@ def main():
         description="Train Word2Vec on r/noburp Reddit posts with lemmatization lookup."
     )
     parser.add_argument(
-        "--lookup", type=str,
-        default="testing/lemma_lookup.json",
-        help="Path to JSON lemma lookup table."
-    )
-    parser.add_argument(
         "--vector_size", type=int, default=300,
         help="Embedding dimensionality."
     )
@@ -101,7 +91,7 @@ def main():
         help="Context window size."
     )
     parser.add_argument(
-        "--min_count", type=int, default=3,
+        "--min_count", type=int, default=5,
         help="Ignore tokens with total frequency lower than this."
     )
     parser.add_argument(
@@ -110,11 +100,9 @@ def main():
     )
     args = parser.parse_args()
 
-    # Load lemma lookup map
-    lookup_map = load_lookup(args.lookup)
-    logging = print  # simple print for progress
+    logging = print  # print for progress
 
-    # 2) Fetch raw Reddit docs
+    # fetch Reddit docs
     docs = return_documents(
         db_name="reddit",
         collection_name="noburp_all",
@@ -123,14 +111,14 @@ def main():
     )
     logging(f"Number of documents fetched: {len(docs)}")
 
-    # 3) Tokenize → lemmatize → spellcheck → lemmatize
+    # process text
     cleaned_docs: list[list[str]] = []
     for text in docs:
-        toks = process_text(text, lookup_path=args.lookup)
+        toks = process_text(text)
         cleaned_docs.append(toks)
     logging(f"Tokenized & lemmatized {len(cleaned_docs)} documents")
 
-    # 5‑8) Run the training pipeline
+    # run the training pipeline
     cbow, skipgram, out_dir = run_training_pipeline(cleaned_docs, args)
     logging(f"Training complete. Models saved in {out_dir}")
 
