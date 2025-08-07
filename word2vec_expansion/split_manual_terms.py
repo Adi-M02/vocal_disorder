@@ -6,25 +6,7 @@ import json
 from pathlib import Path
 import random
 sys.path.append('../vocal_disorder')
-from tokenizer import clean_and_tokenize
-from spellchecker_folder.spellchecker import spellcheck_token_list
-
-def load_lookup(path: str) -> dict[str, str]:
-    with open(path, 'r', encoding='utf-8') as f:
-        return json.load(f)
-
-lookup = load_lookup("testing/lemma_lookup.json")
-
-def normalize_term(term: str) -> str:
-    """
-    Split term into tokens, apply lookup+spellcheck, then re-join
-    so we preserve multi-word phrases as single items.
-    """
-    toks = clean_and_tokenize(term)
-    toks = [lookup.get(t, t) for t in toks]
-    toks = spellcheck_token_list(toks)
-    toks = [lookup.get(t, t) for t in toks]
-    return " ".join(toks)
+from utils.text_pipeline import process_text
 
 
 def main():
@@ -37,6 +19,8 @@ def main():
                    help="Directory to write `seed_terms.json` and `eval_terms.txt`")
     p.add_argument('--seed_percent', '-s', type=float, required=True,
                    help="Fraction (0.0–1.0) of terms to include in the seed JSON")
+    p.add_argument('--max_ngram', '-m', type=int, required=True,
+                   help="Maximum number of tokens per term (after normalization)")
     args = p.parse_args()
 
     if not 0.0 <= args.seed_percent <= 1.0:
@@ -47,24 +31,30 @@ def main():
     raw_terms = [t.strip() for t in text.split(',') if t.strip()]
 
     # 2) normalize each phrase but keep it as one unit
-    normalized_terms = [normalize_term(term) for term in raw_terms]
+    processed_terms = [process_text(term) for term in raw_terms]
 
+    # 2b) filter out anything longer than max_ngram tokens
+    processed_terms = [
+        toks for toks in processed_terms
+        if len(toks) <= args.max_ngram
+    ]
     # 3) shuffle & split by seed_percent *of terms*, not tokens
-    random.shuffle(normalized_terms)
-    n_seed = int(len(normalized_terms) * args.seed_percent)
-    seed_terms = normalized_terms[:n_seed]
+    random.shuffle(processed_terms)
+    n_seed = int(len(processed_terms) * args.seed_percent)
+    seed_terms = processed_terms[:n_seed]
 
     # 4) ensure outdir exists
     outdir = Path(args.outdir)
     outdir.mkdir(parents=True, exist_ok=True)
 
-    # 5) write seed_terms.json
-    seed_path = outdir / "seed_terms.json"
-    with open(seed_path, 'w', encoding='utf-8') as f:
-        json.dump({'seed_terms': seed_terms},
-                  f, ensure_ascii=False, indent=2)
+    # 5) convert each token list into a space-joined phrase
+    seed_strings = [" ".join(tokens) for tokens in seed_terms]
 
-    print(f"Wrote {len(seed_terms)} seed terms to {seed_path}")
+    # 6) write seed_terms.json
+    seed_path = outdir / f"{args.max_ngram}_gram_seed_terms.json"
+    with open(seed_path, 'w', encoding='utf-8') as f:
+        json.dump({'seed_terms': seed_strings},
+                  f, ensure_ascii=False, indent=2)
 
 
 if __name__ == "__main__":
