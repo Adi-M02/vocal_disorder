@@ -58,8 +58,9 @@ def verify_lemma_coverage():
             if token not in lookup_map:
                 missing_lemmas.add(token)
     print(f"Missing lemmas: {len(missing_lemmas)}")
-    with open('testing/missing_lemmas.json', 'w') as f:
-        json.dump({token: token for token in missing_lemmas}, f, indent=2)
+    # with open('testing/missing_lemmas.json', 'w') as f:
+    #     json.dump({token: token for token in missing_lemmas}, f, indent=2)
 
 if __name__ == "__main__":
-    combine_lemma_jsons('testing/combined_lemmas_new.json', 'testing/combined_lemmas.json', 'testing/combined_lemmas_new_new.json')
+    # combine_lemma_jsons('testing/combined_lemmas_new.json', 'testing/combined_lemmas.json', 'testing/combined_lemmas_new_new.json')
+    verify_lemma_coverage()
