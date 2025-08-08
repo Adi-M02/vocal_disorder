@@ -38,6 +38,7 @@ def main():
         toks for toks in processed_terms
         if len(toks) <= args.max_ngram
     ]
+    processed_terms = [list(t) for t in {tuple(t) for t in processed_terms}] # remove duplicates
     # 3) shuffle & split by seed_percent *of terms*, not tokens
     random.shuffle(processed_terms)
     n_seed = int(len(processed_terms) * args.seed_percent)
