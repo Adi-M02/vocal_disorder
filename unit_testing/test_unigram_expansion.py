@@ -13,7 +13,7 @@ from gensim.models import Word2Vec
 # Import the module under test (adjust the path if needed)
 # ─────────────────────────────────────────────────────────────
 sys.path.append('../vocal_disorder')
-import word2vec_expansion.expand_unigrams as script
+import word2vec_expansion.unigram_expansion.expand_unigrams as script
 
 # ─────────────────────────────────────────────────────────────
 # Fixtures

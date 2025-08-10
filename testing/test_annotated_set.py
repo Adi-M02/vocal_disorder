@@ -31,5 +31,13 @@ def test_annotated_set():
             if term not in terms:
                 print(term)
 
+def check_for_empty_docs():
+    docs = return_documents("reddit", "noburp_all", filter_users=user_list)
+    for text in docs:
+        text = process_text(text)
+        if len(text) == 0:
+            print("Empty document found:", text)
+    print("No empty documents found.")
+    
 if __name__ == "__main__":
-    test_annotated_set()
+    check_for_empty_docs()
