@@ -18,18 +18,24 @@ def get_arch(model_path: Path, model: Word2Vec):
         return m.group(1)
     return "skipgram" if model.sg == 1 else "cbow"
 
-def most_similar_k(model: Word2Vec, term: str, k: int):
-    """Return top-k neighbours (cosine) for one term.  Empty list if OOV."""
+def most_similar(model: Word2Vec, term: str, k: int, min_cos: float):
+    """
+    Return top-k neighbours (cosine) for one term.  Empty list if OOV.
+    if min_cos is set, filter results to only include those with cosine >= min_cos."""
     if term not in model.wv:
         return []
-    sims = model.wv.most_similar(term, topn=k)
-    return [t for t, _ in sims]
+    sims = model.wv.most_similar(positive=[term], topn=k)
+    if min_cos is None:
+        return [t for t, _ in sims]
+    return [t for t, cos in sims if cos > min_cos]
 
 def build_output_path(model_dir: Path, arch: str, k: int) -> Path:
     ts   = datetime.now().strftime("%m_%d_%H_%M")
     outd = model_dir / f"{ts}_expansion{arch}"   # ← include arch
     outd.mkdir(parents=True, exist_ok=True)
-    return outd / f"topk_{k}.json"
+    if args.min_cos is None:
+        return outd / f"topk_{k}.json"
+    return outd / f"topk_{k}_min_cos_{args.min_cos}.json"
 
 def main(args):
     model_file = Path(args.model).expanduser()
@@ -43,7 +49,7 @@ def main(args):
                    else seeds_obj )
     seed_terms = [" ".join(process_text(t)) for t in seed_terms]
 
-    results = {s: most_similar_k(model, s, args.topk) for s in seed_terms}
+    results = {s: most_similar(model, s, args.topk, args.min_cos) for s in seed_terms}
     out_dir  = model_file.parent 
     out_path = build_output_path(out_dir, arch, args.topk)
     out_path.write_text(json.dumps(results, indent=2))
@@ -57,5 +63,6 @@ if __name__ == "__main__":
     p.add_argument("--seed_json",  required=True,
                    help="JSON with seed terms (list or {cat: [terms]})")
     p.add_argument("--topk", type=int, default=20)
+    p.add_argument("--min_cos", type=float)
     args = p.parse_args()
     main(args)

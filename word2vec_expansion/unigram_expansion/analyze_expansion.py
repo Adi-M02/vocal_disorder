@@ -74,11 +74,13 @@ def get_arch(model_path: Path, model: Word2Vec) -> str:
     return "skipgram" if getattr(model, "sg", 0) == 1 else "cbow"
 
 
-def build_output_path(model_dir: Path, arch: str, k: int) -> Path:
+def build_output_path(model_dir: Path, arch: str, k: int, min_cos: float) -> Path:
     ts   = datetime.now().strftime("%m_%d_%H_%M")
     outd = model_dir / f"{ts}_expansion{arch}"
     outd.mkdir(parents=True, exist_ok=True)
-    return outd / f"analysis_topk_{k}.json"
+    if min_cos is None:
+        return outd / f"analysis_topk_{k}.json"
+    return outd / f"analysis_topk_{k}_min_cos_{min_cos}.json"
 
 
 def seed_list_from_json(path: str) -> List[str]:
@@ -100,10 +102,12 @@ def safe_get_count(model: Word2Vec, term: str):
         return None
 
 
-def expansions_with_cos(model: Word2Vec, seed: str, k: int) -> List[Tuple[str, float]]:
+def expansions_with_cos(model: Word2Vec, seed: str, k: int, min_cos: float) -> List[Tuple[str, float]]:
     if seed not in model.wv:
         return []
     # gensim returns (term, cosine) already sorted desc
+    if min_cos is not None:
+        return [(t, c) for t, c in model.wv.most_similar(seed, topn=k) if c > min_cos]
     return model.wv.most_similar(seed, topn=k)
 
 
@@ -123,8 +127,8 @@ def desc_stats(values: List[float]) -> Dict[str, float]:
     return out
 
 
-def analyze_seed(model: Word2Vec, seed: str, k: int, seed_set: set) -> Dict[str, Any]:
-    exps = expansions_with_cos(model, seed, k)
+def analyze_seed(model: Word2Vec, seed: str, k: int, seed_set: set, min_cos: float) -> Dict[str, Any]:
+    exps = expansions_with_cos(model, seed, k, min_cos=min_cos)
     cos_vals = [c for _, c in exps]
     # micro-stats
     stats = desc_stats(cos_vals)
@@ -203,7 +207,7 @@ def main(args):
     term_hub_seeds: Dict[str, List[str]] = {}
 
     for s in seed_terms:
-        entry = analyze_seed(model, s, args.topk, seed_set)
+        entry = analyze_seed(model, s, args.topk, seed_set, min_cos=args.min_cos)
         seeds_out[s] = entry
         # aggregate for global stats
         for d in entry["expansions"]:
@@ -255,7 +259,7 @@ def main(args):
         "seeds": seeds_out,
     }
 
-    out_path = build_output_path(model_path.parent, arch, args.topk)
+    out_path = build_output_path(model_path.parent, arch, args.topk, args.min_cos)
     out_path.write_text(json.dumps(out, indent=2, default=_to_jsonable))
 
     # console summary
@@ -292,5 +296,6 @@ if __name__ == "__main__":
     p.add_argument("--model", required=True, help="Path to Word2Vec .model file")
     p.add_argument("--seed_json", required=True, help="JSON list or {cat: [terms]}")
     p.add_argument("--topk", type=int, default=20, help="Top-k neighbors per seed")
+    p.add_argument("--min_cos", type=float, default=None, help="Minimum cosine similarity")
     args = p.parse_args()
     main(args)
