@@ -233,7 +233,8 @@ def main():
 
     results = evaluate_token_level(docs_raw, exp_terms, gt_terms)
 
-    Path(args.out).write_text(json.dumps(results, indent=2), encoding="utf-8")
+    out_path = Path(args.expanded_json).parent / Path(args.out).name
+    out_path.write_text(json.dumps(results, indent=2), encoding="utf-8")
     print(f"[saved] {args.out}")
     m = results["metrics"]; c = results["counts"]
     print(f"[done] tokens={results['meta']['tokens_seen']}  tp={c['tp']} fp={c['fp']} fn={c['fn']} tn={c['tn']}")
