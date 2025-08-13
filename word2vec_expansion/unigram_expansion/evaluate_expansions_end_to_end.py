@@ -390,7 +390,7 @@ def main():
     p.add_argument("--collection_name", default="noburp_all")
     p.add_argument("--users", required=False, help="Optional CSV of users: u1,u2,...")
     # Extras
-    p.add_argument("--credit_mode", choices=["fractional","duplicate"], default="fractional")
+    p.add_argument("--credit_mode", choices=["fractional","duplicate"], default="duplicate")
     p.add_argument("--include_seeds", action="store_true", help="Include original seeds as detector terms (OFF by default to match original)")
     args = p.parse_args()
 
@@ -447,6 +447,7 @@ def main():
     out_obj = {
         "meta": {
             "model": str(model_path),
+            "ground_json": args.ground_json,
             "arch": arch,
             "generated_at": datetime.now().isoformat(timespec='seconds'),
             "topk": int(args.topk),
