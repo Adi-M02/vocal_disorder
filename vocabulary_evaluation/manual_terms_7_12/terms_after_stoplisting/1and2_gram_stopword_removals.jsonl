@@ -1,0 +1,4 @@
+{"raw_term": "didn't believe i", "processed_tokens": ["did", "not", "believe"], "removed_stopwords": ["did"], "after_removal": ["not", "believe"], "note": "ok"}
+{"raw_term": "didn’t believe me", "processed_tokens": ["did", "not", "believe"], "removed_stopwords": ["did"], "after_removal": ["not", "believe"], "note": "ok"}
+{"raw_term": "would’ve destroyed me", "processed_tokens": ["would", "have", "destroy"], "removed_stopwords": ["have"], "after_removal": ["would", "destroy"], "note": "ok"}
+{"raw_term": "didn’t get ARFID", "processed_tokens": ["did", "not", "get", "arfid"], "removed_stopwords": ["did"], "after_removal": ["not", "get", "arfid"], "note": "ok"}
