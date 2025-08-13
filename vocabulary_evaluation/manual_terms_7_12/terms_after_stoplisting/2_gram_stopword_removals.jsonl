@@ -1,0 +1,661 @@
+{"raw_term": "difficult to breathe", "processed_tokens": ["difficult", "to", "breathe"], "removed_stopwords": ["to"], "after_removal": ["difficult", "breathe"], "note": "ok"}
+{"raw_term": "extend my neck", "processed_tokens": ["extend", "my", "neck"], "removed_stopwords": ["my"], "after_removal": ["extend", "neck"], "note": "ok"}
+{"raw_term": "move your neck", "processed_tokens": ["move", "your", "neck"], "removed_stopwords": ["your"], "after_removal": ["move", "neck"], "note": "ok"}
+{"raw_term": "extend my neck", "processed_tokens": ["extend", "my", "neck"], "removed_stopwords": ["my"], "after_removal": ["extend", "neck"], "note": "ok"}
+{"raw_term": "stretch my neck", "processed_tokens": ["stretch", "my", "neck"], "removed_stopwords": ["my"], "after_removal": ["stretch", "neck"], "note": "ok"}
+{"raw_term": "extend my chin", "processed_tokens": ["extend", "my", "chin"], "removed_stopwords": ["my"], "after_removal": ["extend", "chin"], "note": "ok"}
+{"raw_term": "refuse to relax", "processed_tokens": ["refuse", "to", "relax"], "removed_stopwords": ["to"], "after_removal": ["refuse", "relax"], "note": "ok"}
+{"raw_term": "puff of air", "processed_tokens": ["puff", "of", "air"], "removed_stopwords": ["of"], "after_removal": ["puff", "air"], "note": "ok"}
+{"raw_term": "laugh at i", "processed_tokens": ["laugh", "at", "i"], "removed_stopwords": ["at", "i"], "after_removal": ["laugh"], "note": "ok"}
+{"raw_term": "completely disregard it", "processed_tokens": ["complete", "disregard", "it"], "removed_stopwords": ["it"], "after_removal": ["complete", "disregard"], "note": "ok"}
+{"raw_term": "gulp of water", "processed_tokens": ["gulp", "of", "water"], "removed_stopwords": ["of"], "after_removal": ["gulp", "water"], "note": "ok"}
+{"raw_term": "inability to burp", "processed_tokens": ["inability", "to", "burp"], "removed_stopwords": ["to"], "after_removal": ["inability", "burp"], "note": "ok"}
+{"raw_term": "phobia of vomit", "processed_tokens": ["phobia", "of", "vomit"], "removed_stopwords": ["of"], "after_removal": ["phobia", "vomit"], "note": "ok"}
+{"raw_term": "lot of pain", "processed_tokens": ["lot", "of", "pain"], "removed_stopwords": ["of"], "after_removal": ["lot", "pain"], "note": "ok"}
+{"raw_term": "wont understand", "processed_tokens": ["will", "understand"], "removed_stopwords": ["will"], "after_removal": ["understand"], "note": "ok"}
+{"raw_term": "damage the muscle", "processed_tokens": ["damage", "the", "muscle"], "removed_stopwords": ["the"], "after_removal": ["damage", "muscle"], "note": "ok"}
+{"raw_term": "doesn't feel good", "processed_tokens": ["do", "not", "feel", "good"], "removed_stopwords": ["do"], "after_removal": ["not", "feel", "good"], "note": "ok"}
+{"raw_term": "tired of this", "processed_tokens": ["tired", "of", "this"], "removed_stopwords": ["of", "this"], "after_removal": ["tired"], "note": "ok"}
+{"raw_term": "air be swallow", "processed_tokens": ["air", "be", "swallow"], "removed_stopwords": ["be"], "after_removal": ["air", "swallow"], "note": "ok"}
+{"raw_term": "talk and eat", "processed_tokens": ["talk", "and", "eat"], "removed_stopwords": ["and"], "after_removal": ["talk", "eat"], "note": "ok"}
+{"raw_term": "retrain the muscle", "processed_tokens": ["retrain", "the", "muscle"], "removed_stopwords": ["the"], "after_removal": ["retrain", "muscle"], "note": "ok"}
+{"raw_term": "out of pocket", "processed_tokens": ["out", "of", "pocket"], "removed_stopwords": ["of"], "after_removal": ["out", "pocket"], "note": "ok"}
+{"raw_term": "twist my head", "processed_tokens": ["twist", "my", "head"], "removed_stopwords": ["my"], "after_removal": ["twist", "head"], "note": "ok"}
+{"raw_term": "in office botox", "processed_tokens": ["in", "office", "botox"], "removed_stopwords": ["in"], "after_removal": ["office", "botox"], "note": "ok"}
+{"raw_term": "in office", "processed_tokens": ["in", "office"], "removed_stopwords": ["in"], "after_removal": ["office"], "note": "ok"}
+{"raw_term": "full on cold", "processed_tokens": ["full", "on", "cold"], "removed_stopwords": ["on"], "after_removal": ["full", "cold"], "note": "ok"}
+{"raw_term": "turn my head", "processed_tokens": ["turn", "my", "head"], "removed_stopwords": ["my"], "after_removal": ["turn", "head"], "note": "ok"}
+{"raw_term": "learn to burp", "processed_tokens": ["learn", "to", "burp"], "removed_stopwords": ["to"], "after_removal": ["learn", "burp"], "note": "ok"}
+{"raw_term": "hold stuff in", "processed_tokens": ["hold", "stuff", "in"], "removed_stopwords": ["in"], "after_removal": ["hold", "stuff"], "note": "ok"}
+{"raw_term": "worth it", "processed_tokens": ["worth", "it"], "removed_stopwords": ["it"], "after_removal": ["worth"], "note": "ok"}
+{"raw_term": "do see result", "processed_tokens": ["do", "see", "result"], "removed_stopwords": ["do"], "after_removal": ["see", "result"], "note": "ok"}
+{"raw_term": "amount of botox", "processed_tokens": ["amount", "of", "botox"], "removed_stopwords": ["of"], "after_removal": ["amount", "botox"], "note": "ok"}
+{"raw_term": "in office dose", "processed_tokens": ["in", "office", "dose"], "removed_stopwords": ["in"], "after_removal": ["office", "dose"], "note": "ok"}
+{"raw_term": "locate the muscle", "processed_tokens": ["locate", "the", "muscle"], "removed_stopwords": ["the"], "after_removal": ["locate", "muscle"], "note": "ok"}
+{"raw_term": "resistant to botox", "processed_tokens": ["resist", "to", "botox"], "removed_stopwords": ["to"], "after_removal": ["resist", "botox"], "note": "ok"}
+{"raw_term": "kill the botox", "processed_tokens": ["kill", "the", "botox"], "removed_stopwords": ["the"], "after_removal": ["kill", "botox"], "note": "ok"}
+{"raw_term": "release the air", "processed_tokens": ["release", "the", "air"], "removed_stopwords": ["the"], "after_removal": ["release", "air"], "note": "ok"}
+{"raw_term": "relief be possible", "processed_tokens": ["relief", "be", "possible"], "removed_stopwords": ["be"], "after_removal": ["relief", "possible"], "note": "ok"}
+{"raw_term": "throat be sore", "processed_tokens": ["throat", "be", "sore"], "removed_stopwords": ["be"], "after_removal": ["throat", "sore"], "note": "ok"}
+{"raw_term": "gurgle be different", "processed_tokens": ["gurgle", "be", "different"], "removed_stopwords": ["be"], "after_removal": ["gurgle", "different"], "note": "ok"}
+{"raw_term": "turn my head", "processed_tokens": ["turn", "my", "head"], "removed_stopwords": ["my"], "after_removal": ["turn", "head"], "note": "ok"}
+{"raw_term": "grateful for anything", "processed_tokens": ["grateful", "for", "anything"], "removed_stopwords": ["for"], "after_removal": ["grateful", "anything"], "note": "ok"}
+{"raw_term": "fit the criterion", "processed_tokens": ["fit", "the", "criterion"], "removed_stopwords": ["the"], "after_removal": ["fit", "criterion"], "note": "ok"}
+{"raw_term": "frustrate i", "processed_tokens": ["frustrate", "i"], "removed_stopwords": ["i"], "after_removal": ["frustrate"], "note": "ok"}
+{"raw_term": "refuse to believe", "processed_tokens": ["refuse", "to", "believe"], "removed_stopwords": ["to"], "after_removal": ["refuse", "believe"], "note": "ok"}
+{"raw_term": "bloating be horrid", "processed_tokens": ["bloat", "be", "horrid"], "removed_stopwords": ["be"], "after_removal": ["bloat", "horrid"], "note": "ok"}
+{"raw_term": "make yourself gag", "processed_tokens": ["make", "yourself", "gag"], "removed_stopwords": ["yourself"], "after_removal": ["make", "gag"], "note": "ok"}
+{"raw_term": "induce a gag", "processed_tokens": ["induce", "a", "gag"], "removed_stopwords": ["a"], "after_removal": ["induce", "gag"], "note": "ok"}
+{"raw_term": "teach yourself", "processed_tokens": ["teach", "yourself"], "removed_stopwords": ["yourself"], "after_removal": ["teach"], "note": "ok"}
+{"raw_term": "be relaxed", "processed_tokens": ["be", "relax"], "removed_stopwords": ["be"], "after_removal": ["relax"], "note": "ok"}
+{"raw_term": "force a croak", "processed_tokens": ["force", "a", "croak"], "removed_stopwords": ["a"], "after_removal": ["force", "croak"], "note": "ok"}
+{"raw_term": "throat be relaxed", "processed_tokens": ["throat", "be", "relax"], "removed_stopwords": ["be"], "after_removal": ["throat", "relax"], "note": "ok"}
+{"raw_term": "hold my breath", "processed_tokens": ["hold", "my", "breath"], "removed_stopwords": ["my"], "after_removal": ["hold", "breath"], "note": "ok"}
+{"raw_term": "release most flatulence", "processed_tokens": ["release", "most", "flatulence"], "removed_stopwords": ["most"], "after_removal": ["release", "flatulence"], "note": "ok"}
+{"raw_term": "relieve the pressure", "processed_tokens": ["relieve", "the", "pressure"], "removed_stopwords": ["the"], "after_removal": ["relieve", "pressure"], "note": "ok"}
+{"raw_term": "rub my stomach", "processed_tokens": ["rub", "my", "stomach"], "removed_stopwords": ["my"], "after_removal": ["rub", "stomach"], "note": "ok"}
+{"raw_term": "take it seriously", "processed_tokens": ["take", "it", "serious"], "removed_stopwords": ["it"], "after_removal": ["take", "serious"], "note": "ok"}
+{"raw_term": "ruin their life", "processed_tokens": ["ruin", "their", "life"], "removed_stopwords": ["their"], "after_removal": ["ruin", "life"], "note": "ok"}
+{"raw_term": "struggle to burp", "processed_tokens": ["struggle", "to", "burp"], "removed_stopwords": ["to"], "after_removal": ["struggle", "burp"], "note": "ok"}
+{"raw_term": "improve my life", "processed_tokens": ["improve", "my", "life"], "removed_stopwords": ["my"], "after_removal": ["improve", "life"], "note": "ok"}
+{"raw_term": "effectiveness of treatment", "processed_tokens": ["effectiveness", "of", "treatment"], "removed_stopwords": ["of"], "after_removal": ["effectiveness", "treatment"], "note": "ok"}
+{"raw_term": "botox loosen it", "processed_tokens": ["botox", "loosen", "it"], "removed_stopwords": ["it"], "after_removal": ["botox", "loosen"], "note": "ok"}
+{"raw_term": "change my voice", "processed_tokens": ["change", "my", "voice"], "removed_stopwords": ["my"], "after_removal": ["change", "voice"], "note": "ok"}
+{"raw_term": "regain its movement", "processed_tokens": ["regain", "its", "movement"], "removed_stopwords": ["its"], "after_removal": ["regain", "movement"], "note": "ok"}
+{"raw_term": "needle of botox", "processed_tokens": ["needle", "of", "botox"], "removed_stopwords": ["of"], "after_removal": ["needle", "botox"], "note": "ok"}
+{"raw_term": "through the neck", "processed_tokens": ["through", "the", "neck"], "removed_stopwords": ["the"], "after_removal": ["through", "neck"], "note": "ok"}
+{"raw_term": "through the mouth", "processed_tokens": ["through", "the", "mouth"], "removed_stopwords": ["the"], "after_removal": ["through", "mouth"], "note": "ok"}
+{"raw_term": "cough and burp", "processed_tokens": ["cough", "and", "burp"], "removed_stopwords": ["and"], "after_removal": ["cough", "burp"], "note": "ok"}
+{"raw_term": "laugh and burp", "processed_tokens": ["laugh", "and", "burp"], "removed_stopwords": ["and"], "after_removal": ["laugh", "burp"], "note": "ok"}
+{"raw_term": "talk and burp", "processed_tokens": ["talk", "and", "burp"], "removed_stopwords": ["and"], "after_removal": ["talk", "burp"], "note": "ok"}
+{"raw_term": "push my stomach", "processed_tokens": ["push", "my", "stomach"], "removed_stopwords": ["my"], "after_removal": ["push", "stomach"], "note": "ok"}
+{"raw_term": "unit of botox", "processed_tokens": ["unit", "of", "botox"], "removed_stopwords": ["of"], "after_removal": ["unit", "botox"], "note": "ok"}
+{"raw_term": "contort my neck", "processed_tokens": ["contort", "my", "neck"], "removed_stopwords": ["my"], "after_removal": ["contort", "neck"], "note": "ok"}
+{"raw_term": "isolate the muscle", "processed_tokens": ["isolate", "the", "muscle"], "removed_stopwords": ["the"], "after_removal": ["isolate", "muscle"], "note": "ok"}
+{"raw_term": "esophagus doesn't contract", "processed_tokens": ["esophagus", "do", "not", "contract"], "removed_stopwords": ["do"], "after_removal": ["esophagus", "not", "contract"], "note": "ok"}
+{"raw_term": "permanently on ppis", "processed_tokens": ["permanent", "on", "ppis"], "removed_stopwords": ["on"], "after_removal": ["permanent", "ppis"], "note": "ok"}
+{"raw_term": "do exercise", "processed_tokens": ["do", "exercise"], "removed_stopwords": ["do"], "after_removal": ["exercise"], "note": "ok"}
+{"raw_term": "massage my throat", "processed_tokens": ["massage", "my", "throat"], "removed_stopwords": ["my"], "after_removal": ["massage", "throat"], "note": "ok"}
+{"raw_term": "push it out", "processed_tokens": ["push", "it", "out"], "removed_stopwords": ["it"], "after_removal": ["push", "out"], "note": "ok"}
+{"raw_term": "lot of gurgle", "processed_tokens": ["lot", "of", "gurgle"], "removed_stopwords": ["of"], "after_removal": ["lot", "gurgle"], "note": "ok"}
+{"raw_term": "full of air", "processed_tokens": ["full", "of", "air"], "removed_stopwords": ["of"], "after_removal": ["full", "air"], "note": "ok"}
+{"raw_term": "mouth just water", "processed_tokens": ["mouth", "just", "water"], "removed_stopwords": ["just"], "after_removal": ["mouth", "water"], "note": "ok"}
+{"raw_term": "fear of vomit", "processed_tokens": ["fear", "of", "vomit"], "removed_stopwords": ["of"], "after_removal": ["fear", "vomit"], "note": "ok"}
+{"raw_term": "scared of vomit", "processed_tokens": ["scared", "of", "vomit"], "removed_stopwords": ["of"], "after_removal": ["scared", "vomit"], "note": "ok"}
+{"raw_term": "all my life", "processed_tokens": ["all", "my", "life"], "removed_stopwords": ["my"], "after_removal": ["all", "life"], "note": "ok"}
+{"raw_term": "condition be debilitating", "processed_tokens": ["condition", "be", "debilitate"], "removed_stopwords": ["be"], "after_removal": ["condition", "debilitate"], "note": "ok"}
+{"raw_term": "struggle to breathe", "processed_tokens": ["struggle", "to", "breathe"], "removed_stopwords": ["to"], "after_removal": ["struggle", "breathe"], "note": "ok"}
+{"raw_term": "hard to breathe", "processed_tokens": ["hard", "to", "breathe"], "removed_stopwords": ["to"], "after_removal": ["hard", "breathe"], "note": "ok"}
+{"raw_term": "wrong with i", "processed_tokens": ["wrong", "with", "i"], "removed_stopwords": ["i"], "after_removal": ["wrong", "with"], "note": "ok"}
+{"raw_term": "all that symptom", "processed_tokens": ["all", "that", "symptom"], "removed_stopwords": ["that"], "after_removal": ["all", "symptom"], "note": "ok"}
+{"raw_term": "practice the exercise", "processed_tokens": ["practice", "the", "exercise"], "removed_stopwords": ["the"], "after_removal": ["practice", "exercise"], "note": "ok"}
+{"raw_term": "force it out", "processed_tokens": ["force", "it", "out"], "removed_stopwords": ["it"], "after_removal": ["force", "out"], "note": "ok"}
+{"raw_term": "give i hope", "processed_tokens": ["give", "i", "hope"], "removed_stopwords": ["i"], "after_removal": ["give", "hope"], "note": "ok"}
+{"raw_term": "to release air", "processed_tokens": ["to", "release", "air"], "removed_stopwords": ["to"], "after_removal": ["release", "air"], "note": "ok"}
+{"raw_term": "to swallow", "processed_tokens": ["to", "swallow"], "removed_stopwords": ["to"], "after_removal": ["swallow"], "note": "ok"}
+{"raw_term": "stick my finger", "processed_tokens": ["stick", "my", "finger"], "removed_stopwords": ["my"], "after_removal": ["stick", "finger"], "note": "ok"}
+{"raw_term": "brain stop i", "processed_tokens": ["brain", "stop", "i"], "removed_stopwords": ["i"], "after_removal": ["brain", "stop"], "note": "ok"}
+{"raw_term": "bring i distress", "processed_tokens": ["bring", "i", "distress"], "removed_stopwords": ["i"], "after_removal": ["bring", "distress"], "note": "ok"}
+{"raw_term": "to squeeze it", "processed_tokens": ["to", "squeeze", "it"], "removed_stopwords": ["to", "it"], "after_removal": ["squeeze"], "note": "ok"}
+{"raw_term": "push it outside", "processed_tokens": ["push", "it", "outside"], "removed_stopwords": ["it"], "after_removal": ["push", "outside"], "note": "ok"}
+{"raw_term": "control the breathing", "processed_tokens": ["control", "the", "breathe"], "removed_stopwords": ["the"], "after_removal": ["control", "breathe"], "note": "ok"}
+{"raw_term": "in public", "processed_tokens": ["in", "public"], "removed_stopwords": ["in"], "after_removal": ["public"], "note": "ok"}
+{"raw_term": "path to burp", "processed_tokens": ["path", "to", "burp"], "removed_stopwords": ["to"], "after_removal": ["path", "burp"], "note": "ok"}
+{"raw_term": "relax your breathing", "processed_tokens": ["relax", "your", "breathe"], "removed_stopwords": ["your"], "after_removal": ["relax", "breathe"], "note": "ok"}
+{"raw_term": "teach themselves", "processed_tokens": ["teach", "themselves"], "removed_stopwords": ["themselves"], "after_removal": ["teach"], "note": "ok"}
+{"raw_term": "go to therapy", "processed_tokens": ["go", "to", "therapy"], "removed_stopwords": ["to"], "after_removal": ["go", "therapy"], "note": "ok"}
+{"raw_term": "trigger it", "processed_tokens": ["trigger", "it"], "removed_stopwords": ["it"], "after_removal": ["trigger"], "note": "ok"}
+{"raw_term": "manipulate they", "processed_tokens": ["manipulate", "they"], "removed_stopwords": ["they"], "after_removal": ["manipulate"], "note": "ok"}
+{"raw_term": "breathing be change", "processed_tokens": ["breathe", "be", "change"], "removed_stopwords": ["be"], "after_removal": ["breathe", "change"], "note": "ok"}
+{"raw_term": "chest be explode", "processed_tokens": ["chest", "be", "explode"], "removed_stopwords": ["be"], "after_removal": ["chest", "explode"], "note": "ok"}
+{"raw_term": "still doesn't pass", "processed_tokens": ["still", "do", "not", "pass"], "removed_stopwords": ["do"], "after_removal": ["still", "not", "pass"], "note": "ok"}
+{"raw_term": "swallow be slow", "processed_tokens": ["swallow", "be", "slow"], "removed_stopwords": ["be"], "after_removal": ["swallow", "slow"], "note": "ok"}
+{"raw_term": "out of control", "processed_tokens": ["out", "of", "control"], "removed_stopwords": ["of"], "after_removal": ["out", "control"], "note": "ok"}
+{"raw_term": "verge of burp", "processed_tokens": ["verge", "of", "burp"], "removed_stopwords": ["of"], "after_removal": ["verge", "burp"], "note": "ok"}
+{"raw_term": "wide than usual", "processed_tokens": ["wide", "than", "usual"], "removed_stopwords": ["than"], "after_removal": ["wide", "usual"], "note": "ok"}
+{"raw_term": "release the pressure", "processed_tokens": ["release", "the", "pressure"], "removed_stopwords": ["the"], "after_removal": ["release", "pressure"], "note": "ok"}
+{"raw_term": "turn your head", "processed_tokens": ["turn", "your", "head"], "removed_stopwords": ["your"], "after_removal": ["turn", "head"], "note": "ok"}
+{"raw_term": "struggle to burp", "processed_tokens": ["struggle", "to", "burp"], "removed_stopwords": ["to"], "after_removal": ["struggle", "burp"], "note": "ok"}
+{"raw_term": "lower my larynx", "processed_tokens": ["lower", "my", "larynx"], "removed_stopwords": ["my"], "after_removal": ["lower", "larynx"], "note": "ok"}
+{"raw_term": "practice that muscle", "processed_tokens": ["practice", "that", "muscle"], "removed_stopwords": ["that"], "after_removal": ["practice", "muscle"], "note": "ok"}
+{"raw_term": "chance of success", "processed_tokens": ["chance", "of", "success"], "removed_stopwords": ["of"], "after_removal": ["chance", "success"], "note": "ok"}
+{"raw_term": "doesn't come naturally", "processed_tokens": ["do", "not", "come", "natural"], "removed_stopwords": ["do"], "after_removal": ["not", "come", "natural"], "note": "ok"}
+{"raw_term": "throat be close", "processed_tokens": ["throat", "be", "close"], "removed_stopwords": ["be"], "after_removal": ["throat", "close"], "note": "ok"}
+{"raw_term": "squeeze my chest", "processed_tokens": ["squeeze", "my", "chest"], "removed_stopwords": ["my"], "after_removal": ["squeeze", "chest"], "note": "ok"}
+{"raw_term": "body be learn", "processed_tokens": ["body", "be", "learn"], "removed_stopwords": ["be"], "after_removal": ["body", "learn"], "note": "ok"}
+{"raw_term": "squeeze they out", "processed_tokens": ["squeeze", "they", "out"], "removed_stopwords": ["they"], "after_removal": ["squeeze", "out"], "note": "ok"}
+{"raw_term": "change my life", "processed_tokens": ["change", "my", "life"], "removed_stopwords": ["my"], "after_removal": ["change", "life"], "note": "ok"}
+{"raw_term": "raise the quantity", "processed_tokens": ["raise", "the", "quantity"], "removed_stopwords": ["the"], "after_removal": ["raise", "quantity"], "note": "ok"}
+{"raw_term": "low your voice", "processed_tokens": ["low", "your", "voice"], "removed_stopwords": ["your"], "after_removal": ["low", "voice"], "note": "ok"}
+{"raw_term": "open the door", "processed_tokens": ["open", "the", "door"], "removed_stopwords": ["the"], "after_removal": ["open", "door"], "note": "ok"}
+{"raw_term": "teach my body", "processed_tokens": ["teach", "my", "body"], "removed_stopwords": ["my"], "after_removal": ["teach", "body"], "note": "ok"}
+{"raw_term": "didn't believe i", "processed_tokens": ["did", "not", "believe", "i"], "removed_stopwords": ["did", "i"], "after_removal": ["not", "believe"], "note": "ok"}
+{"raw_term": "just ignore i", "processed_tokens": ["just", "ignore", "i"], "removed_stopwords": ["just", "i"], "after_removal": ["ignore"], "note": "ok"}
+{"raw_term": "laugh at i", "processed_tokens": ["laugh", "at", "i"], "removed_stopwords": ["at", "i"], "after_removal": ["laugh"], "note": "ok"}
+{"raw_term": "discuss the condition", "processed_tokens": ["discuss", "the", "condition"], "removed_stopwords": ["the"], "after_removal": ["discuss", "condition"], "note": "ok"}
+{"raw_term": "think be alone", "processed_tokens": ["think", "be", "alone"], "removed_stopwords": ["be"], "after_removal": ["think", "alone"], "note": "ok"}
+{"raw_term": "will get bad", "processed_tokens": ["will", "get", "bad"], "removed_stopwords": ["will"], "after_removal": ["get", "bad"], "note": "ok"}
+{"raw_term": "subdue the symptom", "processed_tokens": ["subdue", "the", "symptom"], "removed_stopwords": ["the"], "after_removal": ["subdue", "symptom"], "note": "ok"}
+{"raw_term": "leave the house", "processed_tokens": ["leave", "the", "house"], "removed_stopwords": ["the"], "after_removal": ["leave", "house"], "note": "ok"}
+{"raw_term": "be sick", "processed_tokens": ["be", "sick"], "removed_stopwords": ["be"], "after_removal": ["sick"], "note": "ok"}
+{"raw_term": "get into position", "processed_tokens": ["get", "into", "position"], "removed_stopwords": ["into"], "after_removal": ["get", "position"], "note": "ok"}
+{"raw_term": "catch a bug", "processed_tokens": ["catch", "a", "bug"], "removed_stopwords": ["a"], "after_removal": ["catch", "bug"], "note": "ok"}
+{"raw_term": "hard to swallow", "processed_tokens": ["hard", "to", "swallow"], "removed_stopwords": ["to"], "after_removal": ["hard", "swallow"], "note": "ok"}
+{"raw_term": "swallow a lot", "processed_tokens": ["swallow", "a", "lot"], "removed_stopwords": ["a"], "after_removal": ["swallow", "lot"], "note": "ok"}
+{"raw_term": "air be escape", "processed_tokens": ["air", "be", "escape"], "removed_stopwords": ["be"], "after_removal": ["air", "escape"], "note": "ok"}
+{"raw_term": "breath in", "processed_tokens": ["breath", "in"], "removed_stopwords": ["in"], "after_removal": ["breath"], "note": "ok"}
+{"raw_term": "could taste it", "processed_tokens": ["could", "taste", "it"], "removed_stopwords": ["it"], "after_removal": ["could", "taste"], "note": "ok"}
+{"raw_term": "accept the consequence", "processed_tokens": ["accept", "the", "consequence"], "removed_stopwords": ["the"], "after_removal": ["accept", "consequence"], "note": "ok"}
+{"raw_term": "affect your anxiety", "processed_tokens": ["affect", "your", "anxiety"], "removed_stopwords": ["your"], "after_removal": ["affect", "anxiety"], "note": "ok"}
+{"raw_term": "get it cover", "processed_tokens": ["get", "it", "cover"], "removed_stopwords": ["it"], "after_removal": ["get", "cover"], "note": "ok"}
+{"raw_term": "mocking we", "processed_tokens": ["mock", "we"], "removed_stopwords": ["we"], "after_removal": ["mock"], "note": "ok"}
+{"raw_term": "cause we pain", "processed_tokens": ["cause", "we", "pain"], "removed_stopwords": ["we"], "after_removal": ["cause", "pain"], "note": "ok"}
+{"raw_term": "in tear", "processed_tokens": ["in", "tear"], "removed_stopwords": ["in"], "after_removal": ["tear"], "note": "ok"}
+{"raw_term": "while exercising", "processed_tokens": ["while", "exercise"], "removed_stopwords": ["while"], "after_removal": ["exercise"], "note": "ok"}
+{"raw_term": "as a kid", "processed_tokens": ["as", "a", "kid"], "removed_stopwords": ["as", "a"], "after_removal": ["kid"], "note": "ok"}
+{"raw_term": "use to stretch", "processed_tokens": ["use", "to", "stretch"], "removed_stopwords": ["to"], "after_removal": ["use", "stretch"], "note": "ok"}
+{"raw_term": "have to pee", "processed_tokens": ["have", "to", "pee"], "removed_stopwords": ["have", "to"], "after_removal": ["pee"], "note": "ok"}
+{"raw_term": "change my life", "processed_tokens": ["change", "my", "life"], "removed_stopwords": ["my"], "after_removal": ["change", "life"], "note": "ok"}
+{"raw_term": "book my procedure", "processed_tokens": ["book", "my", "procedure"], "removed_stopwords": ["my"], "after_removal": ["book", "procedure"], "note": "ok"}
+{"raw_term": "able to learn", "processed_tokens": ["able", "to", "learn"], "removed_stopwords": ["to"], "after_removal": ["able", "learn"], "note": "ok"}
+{"raw_term": "willing to travel", "processed_tokens": ["willing", "to", "travel"], "removed_stopwords": ["to"], "after_removal": ["willing", "travel"], "note": "ok"}
+{"raw_term": "bad than ever", "processed_tokens": ["bad", "than", "ever"], "removed_stopwords": ["than"], "after_removal": ["bad", "ever"], "note": "ok"}
+{"raw_term": "this misery", "processed_tokens": ["this", "misery"], "removed_stopwords": ["this"], "after_removal": ["misery"], "note": "ok"}
+{"raw_term": "speak their language", "processed_tokens": ["speak", "their", "language"], "removed_stopwords": ["their"], "after_removal": ["speak", "language"], "note": "ok"}
+{"raw_term": "learn to burp", "processed_tokens": ["learn", "to", "burp"], "removed_stopwords": ["to"], "after_removal": ["learn", "burp"], "note": "ok"}
+{"raw_term": "relax my throat", "processed_tokens": ["relax", "my", "throat"], "removed_stopwords": ["my"], "after_removal": ["relax", "throat"], "note": "ok"}
+{"raw_term": "pain and torture", "processed_tokens": ["pain", "and", "torture"], "removed_stopwords": ["and"], "after_removal": ["pain", "torture"], "note": "ok"}
+{"raw_term": "stomach be stretch", "processed_tokens": ["stomach", "be", "stretch"], "removed_stopwords": ["be"], "after_removal": ["stomach", "stretch"], "note": "ok"}
+{"raw_term": "have try everything", "processed_tokens": ["have", "try", "everything"], "removed_stopwords": ["have"], "after_removal": ["try", "everything"], "note": "ok"}
+{"raw_term": "focus on relax", "processed_tokens": ["focus", "on", "relax"], "removed_stopwords": ["on"], "after_removal": ["focus", "relax"], "note": "ok"}
+{"raw_term": "throat be tight", "processed_tokens": ["throat", "be", "tight"], "removed_stopwords": ["be"], "after_removal": ["throat", "tight"], "note": "ok"}
+{"raw_term": "loosen my throat", "processed_tokens": ["loosen", "my", "throat"], "removed_stopwords": ["my"], "after_removal": ["loosen", "throat"], "note": "ok"}
+{"raw_term": "phobia of vomit", "processed_tokens": ["phobia", "of", "vomit"], "removed_stopwords": ["of"], "after_removal": ["phobia", "vomit"], "note": "ok"}
+{"raw_term": "out of pocket", "processed_tokens": ["out", "of", "pocket"], "removed_stopwords": ["of"], "after_removal": ["out", "pocket"], "note": "ok"}
+{"raw_term": "fart a lot", "processed_tokens": ["fart", "a", "lot"], "removed_stopwords": ["a"], "after_removal": ["fart", "lot"], "note": "ok"}
+{"raw_term": "change my life", "processed_tokens": ["change", "my", "life"], "removed_stopwords": ["my"], "after_removal": ["change", "life"], "note": "ok"}
+{"raw_term": "recovery be hell", "processed_tokens": ["recovery", "be", "hell"], "removed_stopwords": ["be"], "after_removal": ["recovery", "hell"], "note": "ok"}
+{"raw_term": "inject a syringe", "processed_tokens": ["inject", "a", "syringe"], "removed_stopwords": ["a"], "after_removal": ["inject", "syringe"], "note": "ok"}
+{"raw_term": "paralyze it once", "processed_tokens": ["paralyze", "it", "once"], "removed_stopwords": ["it"], "after_removal": ["paralyze", "once"], "note": "ok"}
+{"raw_term": "reset the function", "processed_tokens": ["reset", "the", "function"], "removed_stopwords": ["the"], "after_removal": ["reset", "function"], "note": "ok"}
+{"raw_term": "paralysis be temporary", "processed_tokens": ["paralysis", "be", "temporary"], "removed_stopwords": ["be"], "after_removal": ["paralysis", "temporary"], "note": "ok"}
+{"raw_term": "do the research", "processed_tokens": ["do", "the", "research"], "removed_stopwords": ["do", "the"], "after_removal": ["research"], "note": "ok"}
+{"raw_term": "i could cry", "processed_tokens": ["i", "could", "cry"], "removed_stopwords": ["i"], "after_removal": ["could", "cry"], "note": "ok"}
+{"raw_term": "someone believe i", "processed_tokens": ["someone", "believe", "i"], "removed_stopwords": ["i"], "after_removal": ["someone", "believe"], "note": "ok"}
+{"raw_term": "live in pain", "processed_tokens": ["live", "in", "pain"], "removed_stopwords": ["in"], "after_removal": ["live", "pain"], "note": "ok"}
+{"raw_term": "pain and fear", "processed_tokens": ["pain", "and", "fear"], "removed_stopwords": ["and"], "after_removal": ["pain", "fear"], "note": "ok"}
+{"raw_term": "control my diet", "processed_tokens": ["control", "my", "diet"], "removed_stopwords": ["my"], "after_removal": ["control", "diet"], "note": "ok"}
+{"raw_term": "as a baby", "processed_tokens": ["as", "a", "baby"], "removed_stopwords": ["as", "a"], "after_removal": ["baby"], "note": "ok"}
+{"raw_term": "be nervous", "processed_tokens": ["be", "nervous"], "removed_stopwords": ["be"], "after_removal": ["nervous"], "note": "ok"}
+{"raw_term": "struggle to vomit", "processed_tokens": ["struggle", "to", "vomit"], "removed_stopwords": ["to"], "after_removal": ["struggle", "vomit"], "note": "ok"}
+{"raw_term": "stomach be contract", "processed_tokens": ["stomach", "be", "contract"], "removed_stopwords": ["be"], "after_removal": ["stomach", "contract"], "note": "ok"}
+{"raw_term": "effect your voice", "processed_tokens": ["effect", "your", "voice"], "removed_stopwords": ["your"], "after_removal": ["effect", "voice"], "note": "ok"}
+{"raw_term": "out of nowhere", "processed_tokens": ["out", "of", "nowhere"], "removed_stopwords": ["of"], "after_removal": ["out", "nowhere"], "note": "ok"}
+{"raw_term": "sore and weak", "processed_tokens": ["sore", "and", "weak"], "removed_stopwords": ["and"], "after_removal": ["sore", "weak"], "note": "ok"}
+{"raw_term": "treat they symptomatically", "processed_tokens": ["treat", "they", "symptomatic"], "removed_stopwords": ["they"], "after_removal": ["treat", "symptomatic"], "note": "ok"}
+{"raw_term": "inject the botox", "processed_tokens": ["inject", "the", "botox"], "removed_stopwords": ["the"], "after_removal": ["inject", "botox"], "note": "ok"}
+{"raw_term": "locate the muscle", "processed_tokens": ["locate", "the", "muscle"], "removed_stopwords": ["the"], "after_removal": ["locate", "muscle"], "note": "ok"}
+{"raw_term": "bother i", "processed_tokens": ["bother", "i"], "removed_stopwords": ["i"], "after_removal": ["bother"], "note": "ok"}
+{"raw_term": "about to burst", "processed_tokens": ["about", "to", "burst"], "removed_stopwords": ["about", "to"], "after_removal": ["burst"], "note": "ok"}
+{"raw_term": "explore the connection", "processed_tokens": ["explore", "the", "connection"], "removed_stopwords": ["the"], "after_removal": ["explore", "connection"], "note": "ok"}
+{"raw_term": "attitude and sass", "processed_tokens": ["attitude", "and", "sass"], "removed_stopwords": ["and"], "after_removal": ["attitude", "sass"], "note": "ok"}
+{"raw_term": "out of state", "processed_tokens": ["out", "of", "state"], "removed_stopwords": ["of"], "after_removal": ["out", "state"], "note": "ok"}
+{"raw_term": "mind at ease", "processed_tokens": ["mind", "at", "ease"], "removed_stopwords": ["at"], "after_removal": ["mind", "ease"], "note": "ok"}
+{"raw_term": "lot of emotion", "processed_tokens": ["lot", "of", "emotion"], "removed_stopwords": ["of"], "after_removal": ["lot", "emotion"], "note": "ok"}
+{"raw_term": "life will change", "processed_tokens": ["life", "will", "change"], "removed_stopwords": ["will"], "after_removal": ["life", "change"], "note": "ok"}
+{"raw_term": "slowly but surely", "processed_tokens": ["slow", "but", "surely"], "removed_stopwords": ["but"], "after_removal": ["slow", "surely"], "note": "ok"}
+{"raw_term": "be through botox", "processed_tokens": ["be", "through", "botox"], "removed_stopwords": ["be"], "after_removal": ["through", "botox"], "note": "ok"}
+{"raw_term": "turn my head", "processed_tokens": ["turn", "my", "head"], "removed_stopwords": ["my"], "after_removal": ["turn", "head"], "note": "ok"}
+{"raw_term": "trial and error", "processed_tokens": ["trial", "and", "error"], "removed_stopwords": ["and"], "after_removal": ["trial", "error"], "note": "ok"}
+{"raw_term": "for year", "processed_tokens": ["for", "year"], "removed_stopwords": ["for"], "after_removal": ["year"], "note": "ok"}
+{"raw_term": "up the nose", "processed_tokens": ["up", "the", "nose"], "removed_stopwords": ["the"], "after_removal": ["up", "nose"], "note": "ok"}
+{"raw_term": "record and test", "processed_tokens": ["record", "and", "test"], "removed_stopwords": ["and"], "after_removal": ["record", "test"], "note": "ok"}
+{"raw_term": "in office", "processed_tokens": ["in", "office"], "removed_stopwords": ["in"], "after_removal": ["office"], "note": "ok"}
+{"raw_term": "freak myself out", "processed_tokens": ["freak", "myself", "out"], "removed_stopwords": ["myself"], "after_removal": ["freak", "out"], "note": "ok"}
+{"raw_term": "most painful", "processed_tokens": ["most", "pain"], "removed_stopwords": ["most"], "after_removal": ["pain"], "note": "ok"}
+{"raw_term": "gag a lot", "processed_tokens": ["gag", "a", "lot"], "removed_stopwords": ["a"], "after_removal": ["gag", "lot"], "note": "ok"}
+{"raw_term": "urge to swallow", "processed_tokens": ["urge", "to", "swallow"], "removed_stopwords": ["to"], "after_removal": ["urge", "swallow"], "note": "ok"}
+{"raw_term": "through the neck", "processed_tokens": ["through", "the", "neck"], "removed_stopwords": ["the"], "after_removal": ["through", "neck"], "note": "ok"}
+{"raw_term": "in office procedure", "processed_tokens": ["in", "office", "procedure"], "removed_stopwords": ["in"], "after_removal": ["office", "procedure"], "note": "ok"}
+{"raw_term": "in public", "processed_tokens": ["in", "public"], "removed_stopwords": ["in"], "after_removal": ["public"], "note": "ok"}
+{"raw_term": "last for hour", "processed_tokens": ["last", "for", "hour"], "removed_stopwords": ["for"], "after_removal": ["last", "hour"], "note": "ok"}
+{"raw_term": "untreated for year", "processed_tokens": ["untreated", "for", "year"], "removed_stopwords": ["for"], "after_removal": ["untreated", "year"], "note": "ok"}
+{"raw_term": "whenever i laugh", "processed_tokens": ["whenever", "i", "laugh"], "removed_stopwords": ["i"], "after_removal": ["whenever", "laugh"], "note": "ok"}
+{"raw_term": "constantly in discomfort", "processed_tokens": ["constant", "in", "discomfort"], "removed_stopwords": ["in"], "after_removal": ["constant", "discomfort"], "note": "ok"}
+{"raw_term": "hold in gas", "processed_tokens": ["hold", "in", "gas"], "removed_stopwords": ["in"], "after_removal": ["hold", "gas"], "note": "ok"}
+{"raw_term": "tear of joy", "processed_tokens": ["tear", "of", "joy"], "removed_stopwords": ["of"], "after_removal": ["tear", "joy"], "note": "ok"}
+{"raw_term": "change my life", "processed_tokens": ["change", "my", "life"], "removed_stopwords": ["my"], "after_removal": ["change", "life"], "note": "ok"}
+{"raw_term": "rcpd be real", "processed_tokens": ["rcpd", "be", "real"], "removed_stopwords": ["be"], "after_removal": ["rcpd", "real"], "note": "ok"}
+{"raw_term": "request a referral", "processed_tokens": ["request", "a", "referral"], "removed_stopwords": ["a"], "after_removal": ["request", "referral"], "note": "ok"}
+{"raw_term": "able to burp", "processed_tokens": ["able", "to", "burp"], "removed_stopwords": ["to"], "after_removal": ["able", "burp"], "note": "ok"}
+{"raw_term": "wrong with me", "processed_tokens": ["wrong", "with", "i"], "removed_stopwords": ["i"], "after_removal": ["wrong", "with"], "note": "ok"}
+{"raw_term": "all those symptoms", "processed_tokens": ["all", "those", "symptom"], "removed_stopwords": ["those"], "after_removal": ["all", "symptom"], "note": "ok"}
+{"raw_term": "practice the exercise", "processed_tokens": ["practice", "the", "exercise"], "removed_stopwords": ["the"], "after_removal": ["practice", "exercise"], "note": "ok"}
+{"raw_term": "force it out", "processed_tokens": ["force", "it", "out"], "removed_stopwords": ["it"], "after_removal": ["force", "out"], "note": "ok"}
+{"raw_term": "gives me hope", "processed_tokens": ["give", "i", "hope"], "removed_stopwords": ["i"], "after_removal": ["give", "hope"], "note": "ok"}
+{"raw_term": "to release air", "processed_tokens": ["to", "release", "air"], "removed_stopwords": ["to"], "after_removal": ["release", "air"], "note": "ok"}
+{"raw_term": "to swallow", "processed_tokens": ["to", "swallow"], "removed_stopwords": ["to"], "after_removal": ["swallow"], "note": "ok"}
+{"raw_term": "sticking my fingers", "processed_tokens": ["stick", "my", "finger"], "removed_stopwords": ["my"], "after_removal": ["stick", "finger"], "note": "ok"}
+{"raw_term": "brain stops me", "processed_tokens": ["brain", "stop", "i"], "removed_stopwords": ["i"], "after_removal": ["brain", "stop"], "note": "ok"}
+{"raw_term": "brings me distress", "processed_tokens": ["bring", "i", "distress"], "removed_stopwords": ["i"], "after_removal": ["bring", "distress"], "note": "ok"}
+{"raw_term": "to squeeze it", "processed_tokens": ["to", "squeeze", "it"], "removed_stopwords": ["to", "it"], "after_removal": ["squeeze"], "note": "ok"}
+{"raw_term": "push it outside", "processed_tokens": ["push", "it", "outside"], "removed_stopwords": ["it"], "after_removal": ["push", "outside"], "note": "ok"}
+{"raw_term": "control the breathing", "processed_tokens": ["control", "the", "breathe"], "removed_stopwords": ["the"], "after_removal": ["control", "breathe"], "note": "ok"}
+{"raw_term": "in public", "processed_tokens": ["in", "public"], "removed_stopwords": ["in"], "after_removal": ["public"], "note": "ok"}
+{"raw_term": "path to burping", "processed_tokens": ["path", "to", "burp"], "removed_stopwords": ["to"], "after_removal": ["path", "burp"], "note": "ok"}
+{"raw_term": "relax your breathing", "processed_tokens": ["relax", "your", "breathe"], "removed_stopwords": ["your"], "after_removal": ["relax", "breathe"], "note": "ok"}
+{"raw_term": "teach themselves", "processed_tokens": ["teach", "themselves"], "removed_stopwords": ["themselves"], "after_removal": ["teach"], "note": "ok"}
+{"raw_term": "going to therapy", "processed_tokens": ["go", "to", "therapy"], "removed_stopwords": ["to"], "after_removal": ["go", "therapy"], "note": "ok"}
+{"raw_term": "trigger it", "processed_tokens": ["trigger", "it"], "removed_stopwords": ["it"], "after_removal": ["trigger"], "note": "ok"}
+{"raw_term": "manipulate them", "processed_tokens": ["manipulate", "them"], "removed_stopwords": ["them"], "after_removal": ["manipulate"], "note": "ok"}
+{"raw_term": "breathings are changing", "processed_tokens": ["breathe", "be", "change"], "removed_stopwords": ["be"], "after_removal": ["breathe", "change"], "note": "ok"}
+{"raw_term": "chest is exploding", "processed_tokens": ["chest", "be", "explode"], "removed_stopwords": ["be"], "after_removal": ["chest", "explode"], "note": "ok"}
+{"raw_term": "still doesn’t pass", "processed_tokens": ["still", "do", "not", "pass"], "removed_stopwords": ["do"], "after_removal": ["still", "not", "pass"], "note": "ok"}
+{"raw_term": "swallowing is slow", "processed_tokens": ["swallow", "be", "slow"], "removed_stopwords": ["be"], "after_removal": ["swallow", "slow"], "note": "ok"}
+{"raw_term": "out of control", "processed_tokens": ["out", "of", "control"], "removed_stopwords": ["of"], "after_removal": ["out", "control"], "note": "ok"}
+{"raw_term": "verge of burping", "processed_tokens": ["verge", "of", "burp"], "removed_stopwords": ["of"], "after_removal": ["verge", "burp"], "note": "ok"}
+{"raw_term": "wider than usual", "processed_tokens": ["wide", "than", "usual"], "removed_stopwords": ["than"], "after_removal": ["wide", "usual"], "note": "ok"}
+{"raw_term": "release the pressure", "processed_tokens": ["release", "the", "pressure"], "removed_stopwords": ["the"], "after_removal": ["release", "pressure"], "note": "ok"}
+{"raw_term": "turning your head", "processed_tokens": ["turn", "your", "head"], "removed_stopwords": ["your"], "after_removal": ["turn", "head"], "note": "ok"}
+{"raw_term": "struggling to burp", "processed_tokens": ["struggle", "to", "burp"], "removed_stopwords": ["to"], "after_removal": ["struggle", "burp"], "note": "ok"}
+{"raw_term": "lowering my larynx", "processed_tokens": ["lower", "my", "larynx"], "removed_stopwords": ["my"], "after_removal": ["lower", "larynx"], "note": "ok"}
+{"raw_term": "practicing that muscle", "processed_tokens": ["practice", "that", "muscle"], "removed_stopwords": ["that"], "after_removal": ["practice", "muscle"], "note": "ok"}
+{"raw_term": "chances of success", "processed_tokens": ["chance", "of", "success"], "removed_stopwords": ["of"], "after_removal": ["chance", "success"], "note": "ok"}
+{"raw_term": "doesn’t come naturally", "processed_tokens": ["do", "not", "come", "natural"], "removed_stopwords": ["do"], "after_removal": ["not", "come", "natural"], "note": "ok"}
+{"raw_term": "throat is closing", "processed_tokens": ["throat", "be", "close"], "removed_stopwords": ["be"], "after_removal": ["throat", "close"], "note": "ok"}
+{"raw_term": "squeeze my chest", "processed_tokens": ["squeeze", "my", "chest"], "removed_stopwords": ["my"], "after_removal": ["squeeze", "chest"], "note": "ok"}
+{"raw_term": "body is learning", "processed_tokens": ["body", "be", "learn"], "removed_stopwords": ["be"], "after_removal": ["body", "learn"], "note": "ok"}
+{"raw_term": "squeeze them out", "processed_tokens": ["squeeze", "them", "out"], "removed_stopwords": ["them"], "after_removal": ["squeeze", "out"], "note": "ok"}
+{"raw_term": "changed my life", "processed_tokens": ["change", "my", "life"], "removed_stopwords": ["my"], "after_removal": ["change", "life"], "note": "ok"}
+{"raw_term": "raised the quantity", "processed_tokens": ["raise", "the", "quantity"], "removed_stopwords": ["the"], "after_removal": ["raise", "quantity"], "note": "ok"}
+{"raw_term": "lower your voice", "processed_tokens": ["lower", "your", "voice"], "removed_stopwords": ["your"], "after_removal": ["lower", "voice"], "note": "ok"}
+{"raw_term": "opening the door", "processed_tokens": ["open", "the", "door"], "removed_stopwords": ["the"], "after_removal": ["open", "door"], "note": "ok"}
+{"raw_term": "teaching my body", "processed_tokens": ["teach", "my", "body"], "removed_stopwords": ["my"], "after_removal": ["teach", "body"], "note": "ok"}
+{"raw_term": "convince you GP", "processed_tokens": ["convince", "you", "gp"], "removed_stopwords": ["you"], "after_removal": ["convince", "gp"], "note": "ok"}
+{"raw_term": "to believe you", "processed_tokens": ["to", "believe", "you"], "removed_stopwords": ["to", "you"], "after_removal": ["believe"], "note": "ok"}
+{"raw_term": "didn’t believe me", "processed_tokens": ["did", "not", "believe", "i"], "removed_stopwords": ["did", "i"], "after_removal": ["not", "believe"], "note": "ok"}
+{"raw_term": "just ignore me", "processed_tokens": ["just", "ignore", "i"], "removed_stopwords": ["just", "i"], "after_removal": ["ignore"], "note": "ok"}
+{"raw_term": "laugh at me", "processed_tokens": ["laugh", "at", "i"], "removed_stopwords": ["at", "i"], "after_removal": ["laugh"], "note": "ok"}
+{"raw_term": "discussing the condition", "processed_tokens": ["discuss", "the", "condition"], "removed_stopwords": ["the"], "after_removal": ["discuss", "condition"], "note": "ok"}
+{"raw_term": "thinking we’re alone", "processed_tokens": ["think", "be", "alone"], "removed_stopwords": ["be"], "after_removal": ["think", "alone"], "note": "ok"}
+{"raw_term": "will get worse", "processed_tokens": ["will", "get", "worse"], "removed_stopwords": ["will"], "after_removal": ["get", "worse"], "note": "ok"}
+{"raw_term": "subdue the symptoms", "processed_tokens": ["subdue", "the", "symptom"], "removed_stopwords": ["the"], "after_removal": ["subdue", "symptom"], "note": "ok"}
+{"raw_term": "leaving the house", "processed_tokens": ["leave", "the", "house"], "removed_stopwords": ["the"], "after_removal": ["leave", "house"], "note": "ok"}
+{"raw_term": "being sick", "processed_tokens": ["be", "sick"], "removed_stopwords": ["be"], "after_removal": ["sick"], "note": "ok"}
+{"raw_term": "getting into position", "processed_tokens": ["get", "into", "position"], "removed_stopwords": ["into"], "after_removal": ["get", "position"], "note": "ok"}
+{"raw_term": "caught a bug", "processed_tokens": ["catch", "a", "bug"], "removed_stopwords": ["a"], "after_removal": ["catch", "bug"], "note": "ok"}
+{"raw_term": "hard to swallow", "processed_tokens": ["hard", "to", "swallow"], "removed_stopwords": ["to"], "after_removal": ["hard", "swallow"], "note": "ok"}
+{"raw_term": "swallow a lot", "processed_tokens": ["swallow", "a", "lot"], "removed_stopwords": ["a"], "after_removal": ["swallow", "lot"], "note": "ok"}
+{"raw_term": "air is escaping", "processed_tokens": ["air", "be", "escape"], "removed_stopwords": ["be"], "after_removal": ["air", "escape"], "note": "ok"}
+{"raw_term": "breath in", "processed_tokens": ["breath", "in"], "removed_stopwords": ["in"], "after_removal": ["breath"], "note": "ok"}
+{"raw_term": "could taste it", "processed_tokens": ["could", "taste", "it"], "removed_stopwords": ["it"], "after_removal": ["could", "taste"], "note": "ok"}
+{"raw_term": "accept the consequences", "processed_tokens": ["accept", "the", "consequence"], "removed_stopwords": ["the"], "after_removal": ["accept", "consequence"], "note": "ok"}
+{"raw_term": "affect your anxiety", "processed_tokens": ["affect", "your", "anxiety"], "removed_stopwords": ["your"], "after_removal": ["affect", "anxiety"], "note": "ok"}
+{"raw_term": "gotten it covered", "processed_tokens": ["get", "it", "cover"], "removed_stopwords": ["it"], "after_removal": ["get", "cover"], "note": "ok"}
+{"raw_term": "in tears", "processed_tokens": ["in", "tears"], "removed_stopwords": ["in"], "after_removal": ["tears"], "note": "ok"}
+{"raw_term": "while exercising", "processed_tokens": ["while", "exercise"], "removed_stopwords": ["while"], "after_removal": ["exercise"], "note": "ok"}
+{"raw_term": "as a kid", "processed_tokens": ["as", "a", "kid"], "removed_stopwords": ["as", "a"], "after_removal": ["kid"], "note": "ok"}
+{"raw_term": "used to stretching", "processed_tokens": ["use", "to", "stretch"], "removed_stopwords": ["to"], "after_removal": ["use", "stretch"], "note": "ok"}
+{"raw_term": "have to pee", "processed_tokens": ["have", "to", "pee"], "removed_stopwords": ["have", "to"], "after_removal": ["pee"], "note": "ok"}
+{"raw_term": "change my life", "processed_tokens": ["change", "my", "life"], "removed_stopwords": ["my"], "after_removal": ["change", "life"], "note": "ok"}
+{"raw_term": "book my procedure", "processed_tokens": ["book", "my", "procedure"], "removed_stopwords": ["my"], "after_removal": ["book", "procedure"], "note": "ok"}
+{"raw_term": "able to learn", "processed_tokens": ["able", "to", "learn"], "removed_stopwords": ["to"], "after_removal": ["able", "learn"], "note": "ok"}
+{"raw_term": "willing to travel", "processed_tokens": ["willing", "to", "travel"], "removed_stopwords": ["to"], "after_removal": ["willing", "travel"], "note": "ok"}
+{"raw_term": "worse than ever", "processed_tokens": ["worse", "than", "ever"], "removed_stopwords": ["than"], "after_removal": ["worse", "ever"], "note": "ok"}
+{"raw_term": "this misery", "processed_tokens": ["this", "misery"], "removed_stopwords": ["this"], "after_removal": ["misery"], "note": "ok"}
+{"raw_term": "speak their language", "processed_tokens": ["speak", "their", "language"], "removed_stopwords": ["their"], "after_removal": ["speak", "language"], "note": "ok"}
+{"raw_term": "learned to burp", "processed_tokens": ["learn", "to", "burp"], "removed_stopwords": ["to"], "after_removal": ["learn", "burp"], "note": "ok"}
+{"raw_term": "relaxing my throat", "processed_tokens": ["relax", "my", "throat"], "removed_stopwords": ["my"], "after_removal": ["relax", "throat"], "note": "ok"}
+{"raw_term": "pain and torture", "processed_tokens": ["pain", "and", "torture"], "removed_stopwords": ["and"], "after_removal": ["pain", "torture"], "note": "ok"}
+{"raw_term": "stomach is stretched", "processed_tokens": ["stomach", "be", "stretch"], "removed_stopwords": ["be"], "after_removal": ["stomach", "stretch"], "note": "ok"}
+{"raw_term": "I’ve tried everything", "processed_tokens": ["have", "try", "everything"], "removed_stopwords": ["have"], "after_removal": ["try", "everything"], "note": "ok"}
+{"raw_term": "focus on relaxing", "processed_tokens": ["focus", "on", "relax"], "removed_stopwords": ["on"], "after_removal": ["focus", "relax"], "note": "ok"}
+{"raw_term": "throat is tighter", "processed_tokens": ["throat", "be", "tight"], "removed_stopwords": ["be"], "after_removal": ["throat", "tight"], "note": "ok"}
+{"raw_term": "loosening my throat", "processed_tokens": ["loosen", "my", "throat"], "removed_stopwords": ["my"], "after_removal": ["loosen", "throat"], "note": "ok"}
+{"raw_term": "phobia of vomiting", "processed_tokens": ["phobia", "of", "vomit"], "removed_stopwords": ["of"], "after_removal": ["phobia", "vomit"], "note": "ok"}
+{"raw_term": "out of pocket", "processed_tokens": ["out", "of", "pocket"], "removed_stopwords": ["of"], "after_removal": ["out", "pocket"], "note": "ok"}
+{"raw_term": "farted a lot", "processed_tokens": ["fart", "a", "lot"], "removed_stopwords": ["a"], "after_removal": ["fart", "lot"], "note": "ok"}
+{"raw_term": "change my life", "processed_tokens": ["change", "my", "life"], "removed_stopwords": ["my"], "after_removal": ["change", "life"], "note": "ok"}
+{"raw_term": "recovery is hell", "processed_tokens": ["recovery", "be", "hell"], "removed_stopwords": ["be"], "after_removal": ["recovery", "hell"], "note": "ok"}
+{"raw_term": "inject a syringe", "processed_tokens": ["inject", "a", "syringe"], "removed_stopwords": ["a"], "after_removal": ["inject", "syringe"], "note": "ok"}
+{"raw_term": "paralyzing it once", "processed_tokens": ["paralyze", "it", "once"], "removed_stopwords": ["it"], "after_removal": ["paralyze", "once"], "note": "ok"}
+{"raw_term": "reset the function", "processed_tokens": ["reset", "the", "function"], "removed_stopwords": ["the"], "after_removal": ["reset", "function"], "note": "ok"}
+{"raw_term": "paralysis is temporary", "processed_tokens": ["paralysis", "be", "temporary"], "removed_stopwords": ["be"], "after_removal": ["paralysis", "temporary"], "note": "ok"}
+{"raw_term": "did the research", "processed_tokens": ["do", "the", "research"], "removed_stopwords": ["do", "the"], "after_removal": ["research"], "note": "ok"}
+{"raw_term": "I could cry", "processed_tokens": ["i", "could", "cry"], "removed_stopwords": ["i"], "after_removal": ["could", "cry"], "note": "ok"}
+{"raw_term": "someone believes me", "processed_tokens": ["someone", "believe", "i"], "removed_stopwords": ["i"], "after_removal": ["someone", "believe"], "note": "ok"}
+{"raw_term": "living in pain", "processed_tokens": ["live", "in", "pain"], "removed_stopwords": ["in"], "after_removal": ["live", "pain"], "note": "ok"}
+{"raw_term": "pain and fear", "processed_tokens": ["pain", "and", "fear"], "removed_stopwords": ["and"], "after_removal": ["pain", "fear"], "note": "ok"}
+{"raw_term": "controlling my diet", "processed_tokens": ["control", "my", "diet"], "removed_stopwords": ["my"], "after_removal": ["control", "diet"], "note": "ok"}
+{"raw_term": "as a baby", "processed_tokens": ["as", "a", "baby"], "removed_stopwords": ["as", "a"], "after_removal": ["baby"], "note": "ok"}
+{"raw_term": "being nervous", "processed_tokens": ["be", "nervous"], "removed_stopwords": ["be"], "after_removal": ["nervous"], "note": "ok"}
+{"raw_term": "struggled to vomit", "processed_tokens": ["struggle", "to", "vomit"], "removed_stopwords": ["to"], "after_removal": ["struggle", "vomit"], "note": "ok"}
+{"raw_term": "stomach was contracting", "processed_tokens": ["stomach", "be", "contract"], "removed_stopwords": ["be"], "after_removal": ["stomach", "contract"], "note": "ok"}
+{"raw_term": "effect your voice", "processed_tokens": ["effect", "your", "voice"], "removed_stopwords": ["your"], "after_removal": ["effect", "voice"], "note": "ok"}
+{"raw_term": "out of nowhere", "processed_tokens": ["out", "of", "nowhere"], "removed_stopwords": ["of"], "after_removal": ["out", "nowhere"], "note": "ok"}
+{"raw_term": "sore and weak", "processed_tokens": ["sore", "and", "weak"], "removed_stopwords": ["and"], "after_removal": ["sore", "weak"], "note": "ok"}
+{"raw_term": "treats them symptomatically", "processed_tokens": ["treat", "them", "symptomatic"], "removed_stopwords": ["them"], "after_removal": ["treat", "symptomatic"], "note": "ok"}
+{"raw_term": "injecting the botox", "processed_tokens": ["inject", "the", "botox"], "removed_stopwords": ["the"], "after_removal": ["inject", "botox"], "note": "ok"}
+{"raw_term": "locate the muscle", "processed_tokens": ["locate", "the", "muscle"], "removed_stopwords": ["the"], "after_removal": ["locate", "muscle"], "note": "ok"}
+{"raw_term": "bothering me", "processed_tokens": ["bother", "i"], "removed_stopwords": ["i"], "after_removal": ["bother"], "note": "ok"}
+{"raw_term": "about to burst", "processed_tokens": ["about", "to", "burst"], "removed_stopwords": ["about", "to"], "after_removal": ["burst"], "note": "ok"}
+{"raw_term": "explore the connection", "processed_tokens": ["explore", "the", "connection"], "removed_stopwords": ["the"], "after_removal": ["explore", "connection"], "note": "ok"}
+{"raw_term": "attitude and sass", "processed_tokens": ["attitude", "and", "sass"], "removed_stopwords": ["and"], "after_removal": ["attitude", "sass"], "note": "ok"}
+{"raw_term": "out of state", "processed_tokens": ["out", "of", "state"], "removed_stopwords": ["of"], "after_removal": ["out", "state"], "note": "ok"}
+{"raw_term": "mind at ease", "processed_tokens": ["mind", "at", "ease"], "removed_stopwords": ["at"], "after_removal": ["mind", "ease"], "note": "ok"}
+{"raw_term": "lot of emotions", "processed_tokens": ["lot", "of", "emotion"], "removed_stopwords": ["of"], "after_removal": ["lot", "emotion"], "note": "ok"}
+{"raw_term": "life will change", "processed_tokens": ["life", "will", "change"], "removed_stopwords": ["will"], "after_removal": ["life", "change"], "note": "ok"}
+{"raw_term": "slowly but surely", "processed_tokens": ["slow", "but", "surely"], "removed_stopwords": ["but"], "after_removal": ["slow", "surely"], "note": "ok"}
+{"raw_term": "been through botox", "processed_tokens": ["be", "through", "botox"], "removed_stopwords": ["be"], "after_removal": ["through", "botox"], "note": "ok"}
+{"raw_term": "turning my head", "processed_tokens": ["turn", "my", "head"], "removed_stopwords": ["my"], "after_removal": ["turn", "head"], "note": "ok"}
+{"raw_term": "trial and error", "processed_tokens": ["trial", "and", "error"], "removed_stopwords": ["and"], "after_removal": ["trial", "error"], "note": "ok"}
+{"raw_term": "for years", "processed_tokens": ["for", "year"], "removed_stopwords": ["for"], "after_removal": ["year"], "note": "ok"}
+{"raw_term": "up the nose", "processed_tokens": ["up", "the", "nose"], "removed_stopwords": ["the"], "after_removal": ["up", "nose"], "note": "ok"}
+{"raw_term": "records and tests", "processed_tokens": ["record", "and", "test"], "removed_stopwords": ["and"], "after_removal": ["record", "test"], "note": "ok"}
+{"raw_term": "in office", "processed_tokens": ["in", "office"], "removed_stopwords": ["in"], "after_removal": ["office"], "note": "ok"}
+{"raw_term": "freaking myself out", "processed_tokens": ["freak", "myself", "out"], "removed_stopwords": ["myself"], "after_removal": ["freak", "out"], "note": "ok"}
+{"raw_term": "most painful", "processed_tokens": ["most", "pain"], "removed_stopwords": ["most"], "after_removal": ["pain"], "note": "ok"}
+{"raw_term": "gag a lot", "processed_tokens": ["gag", "a", "lot"], "removed_stopwords": ["a"], "after_removal": ["gag", "lot"], "note": "ok"}
+{"raw_term": "urge to swallow", "processed_tokens": ["urge", "to", "swallow"], "removed_stopwords": ["to"], "after_removal": ["urge", "swallow"], "note": "ok"}
+{"raw_term": "through the neck", "processed_tokens": ["through", "the", "neck"], "removed_stopwords": ["the"], "after_removal": ["through", "neck"], "note": "ok"}
+{"raw_term": "in office procedure", "processed_tokens": ["in", "office", "procedure"], "removed_stopwords": ["in"], "after_removal": ["office", "procedure"], "note": "ok"}
+{"raw_term": "in public", "processed_tokens": ["in", "public"], "removed_stopwords": ["in"], "after_removal": ["public"], "note": "ok"}
+{"raw_term": "lasts for hours", "processed_tokens": ["last", "for", "hour"], "removed_stopwords": ["for"], "after_removal": ["last", "hour"], "note": "ok"}
+{"raw_term": "untreated for years", "processed_tokens": ["untreated", "for", "year"], "removed_stopwords": ["for"], "after_removal": ["untreated", "year"], "note": "ok"}
+{"raw_term": "whenever I laugh", "processed_tokens": ["whenever", "i", "laugh"], "removed_stopwords": ["i"], "after_removal": ["whenever", "laugh"], "note": "ok"}
+{"raw_term": "constantly in discomfort", "processed_tokens": ["constant", "in", "discomfort"], "removed_stopwords": ["in"], "after_removal": ["constant", "discomfort"], "note": "ok"}
+{"raw_term": "holding in gas", "processed_tokens": ["hold", "in", "gas"], "removed_stopwords": ["in"], "after_removal": ["hold", "gas"], "note": "ok"}
+{"raw_term": "tears of joy", "processed_tokens": ["tears", "of", "joy"], "removed_stopwords": ["of"], "after_removal": ["tears", "joy"], "note": "ok"}
+{"raw_term": "changed my life", "processed_tokens": ["change", "my", "life"], "removed_stopwords": ["my"], "after_removal": ["change", "life"], "note": "ok"}
+{"raw_term": "RCPD is real", "processed_tokens": ["rcpd", "be", "real"], "removed_stopwords": ["be"], "after_removal": ["rcpd", "real"], "note": "ok"}
+{"raw_term": "request a referral", "processed_tokens": ["request", "a", "referral"], "removed_stopwords": ["a"], "after_removal": ["request", "referral"], "note": "ok"}
+{"raw_term": "get the botox", "processed_tokens": ["get", "the", "botox"], "removed_stopwords": ["the"], "after_removal": ["get", "botox"], "note": "ok"}
+{"raw_term": "move the gas", "processed_tokens": ["move", "the", "gas"], "removed_stopwords": ["the"], "after_removal": ["move", "gas"], "note": "ok"}
+{"raw_term": "stops the gurgles", "processed_tokens": ["stop", "the", "gurgle"], "removed_stopwords": ["the"], "after_removal": ["stop", "gurgle"], "note": "ok"}
+{"raw_term": "about to burst", "processed_tokens": ["about", "to", "burst"], "removed_stopwords": ["about", "to"], "after_removal": ["burst"], "note": "ok"}
+{"raw_term": "compress my gurgles", "processed_tokens": ["compress", "my", "gurgle"], "removed_stopwords": ["my"], "after_removal": ["compress", "gurgle"], "note": "ok"}
+{"raw_term": "air is trapped", "processed_tokens": ["air", "be", "trap"], "removed_stopwords": ["be"], "after_removal": ["air", "trap"], "note": "ok"}
+{"raw_term": "sick and drained", "processed_tokens": ["sick", "and", "drain"], "removed_stopwords": ["and"], "after_removal": ["sick", "drain"], "note": "ok"}
+{"raw_term": "space to vent", "processed_tokens": ["space", "to", "vent"], "removed_stopwords": ["to"], "after_removal": ["space", "vent"], "note": "ok"}
+{"raw_term": "ruining my life", "processed_tokens": ["ruin", "my", "life"], "removed_stopwords": ["my"], "after_removal": ["ruin", "life"], "note": "ok"}
+{"raw_term": "denied the claim", "processed_tokens": ["deny", "the", "claim"], "removed_stopwords": ["the"], "after_removal": ["deny", "claim"], "note": "ok"}
+{"raw_term": "appeal the claim", "processed_tokens": ["appeal", "the", "claim"], "removed_stopwords": ["the"], "after_removal": ["appeal", "claim"], "note": "ok"}
+{"raw_term": "can’t afford it", "processed_tokens": ["can", "not", "afford", "it"], "removed_stopwords": ["it"], "after_removal": ["can", "not", "afford"], "note": "ok"}
+{"raw_term": "related to emetophobia", "processed_tokens": ["related", "to", "emetophobia"], "removed_stopwords": ["to"], "after_removal": ["related", "emetophobia"], "note": "ok"}
+{"raw_term": "use the bathroom", "processed_tokens": ["use", "the", "bathroom"], "removed_stopwords": ["the"], "after_removal": ["use", "bathroom"], "note": "ok"}
+{"raw_term": "cover the procedure", "processed_tokens": ["cover", "the", "procedure"], "removed_stopwords": ["the"], "after_removal": ["cover", "procedure"], "note": "ok"}
+{"raw_term": "lost most hope", "processed_tokens": ["lose", "most", "hope"], "removed_stopwords": ["most"], "after_removal": ["lose", "hope"], "note": "ok"}
+{"raw_term": "still here suffering", "processed_tokens": ["still", "here", "suffer"], "removed_stopwords": ["here"], "after_removal": ["still", "suffer"], "note": "ok"}
+{"raw_term": "consider the procedure", "processed_tokens": ["consider", "the", "procedure"], "removed_stopwords": ["the"], "after_removal": ["consider", "procedure"], "note": "ok"}
+{"raw_term": "wasn’t normal", "processed_tokens": ["be", "not", "normal"], "removed_stopwords": ["be"], "after_removal": ["not", "normal"], "note": "ok"}
+{"raw_term": "movement of regurgitation", "processed_tokens": ["movement", "of", "regurgitation"], "removed_stopwords": ["of"], "after_removal": ["movement", "regurgitation"], "note": "ok"}
+{"raw_term": "same muscle", "processed_tokens": ["same", "muscle"], "removed_stopwords": ["same"], "after_removal": ["muscle"], "note": "ok"}
+{"raw_term": "to swallow", "processed_tokens": ["to", "swallow"], "removed_stopwords": ["to"], "after_removal": ["swallow"], "note": "ok"}
+{"raw_term": "throat and chest", "processed_tokens": ["throat", "and", "chest"], "removed_stopwords": ["and"], "after_removal": ["throat", "chest"], "note": "ok"}
+{"raw_term": "accompanied by flatulence", "processed_tokens": ["accompany", "by", "flatulence"], "removed_stopwords": ["by"], "after_removal": ["accompany", "flatulence"], "note": "ok"}
+{"raw_term": "exacerbated the condition", "processed_tokens": ["exacerbate", "the", "condition"], "removed_stopwords": ["the"], "after_removal": ["exacerbate", "condition"], "note": "ok"}
+{"raw_term": "shortness of breath", "processed_tokens": ["shortness", "of", "breath"], "removed_stopwords": ["of"], "after_removal": ["shortness", "breath"], "note": "ok"}
+{"raw_term": "fix the issue", "processed_tokens": ["fix", "the", "issue"], "removed_stopwords": ["the"], "after_removal": ["fix", "issue"], "note": "ok"}
+{"raw_term": "movement of regurgitation", "processed_tokens": ["movement", "of", "regurgitation"], "removed_stopwords": ["of"], "after_removal": ["movement", "regurgitation"], "note": "ok"}
+{"raw_term": "lot of water", "processed_tokens": ["lot", "of", "water"], "removed_stopwords": ["of"], "after_removal": ["lot", "water"], "note": "ok"}
+{"raw_term": "hurt a bit", "processed_tokens": ["hurt", "a", "bit"], "removed_stopwords": ["a"], "after_removal": ["hurt", "bit"], "note": "ok"}
+{"raw_term": "paralyzed in pain", "processed_tokens": ["paralyze", "in", "pain"], "removed_stopwords": ["in"], "after_removal": ["paralyze", "pain"], "note": "ok"}
+{"raw_term": "after the botox", "processed_tokens": ["after", "the", "botox"], "removed_stopwords": ["the"], "after_removal": ["after", "botox"], "note": "ok"}
+{"raw_term": "choke on water", "processed_tokens": ["choke", "on", "water"], "removed_stopwords": ["on"], "after_removal": ["choke", "water"], "note": "ok"}
+{"raw_term": "relax my muscles", "processed_tokens": ["relax", "my", "muscle"], "removed_stopwords": ["my"], "after_removal": ["relax", "muscle"], "note": "ok"}
+{"raw_term": "down my throat", "processed_tokens": ["down", "my", "throat"], "removed_stopwords": ["my"], "after_removal": ["down", "throat"], "note": "ok"}
+{"raw_term": "head is back", "processed_tokens": ["head", "be", "back"], "removed_stopwords": ["be"], "after_removal": ["head", "back"], "note": "ok"}
+{"raw_term": "gagging myself", "processed_tokens": ["gag", "myself"], "removed_stopwords": ["myself"], "after_removal": ["gag"], "note": "ok"}
+{"raw_term": "swallowing the barf", "processed_tokens": ["swallow", "the", "barf"], "removed_stopwords": ["the"], "after_removal": ["swallow", "barf"], "note": "ok"}
+{"raw_term": "choked on food", "processed_tokens": ["choke", "on", "food"], "removed_stopwords": ["on"], "after_removal": ["choke", "food"], "note": "ok"}
+{"raw_term": "require me to cough", "processed_tokens": ["require", "i", "to", "cough"], "removed_stopwords": ["i", "to"], "after_removal": ["require", "cough"], "note": "ok"}
+{"raw_term": "tapping base of throat", "processed_tokens": ["tap", "base", "of", "throat"], "removed_stopwords": ["of"], "after_removal": ["tap", "base", "throat"], "note": "ok"}
+{"raw_term": "burp is stuck", "processed_tokens": ["burp", "be", "stuck"], "removed_stopwords": ["be"], "after_removal": ["burp", "stuck"], "note": "ok"}
+{"raw_term": "reluctant to eat", "processed_tokens": ["reluctant", "to", "eat"], "removed_stopwords": ["to"], "after_removal": ["reluctant", "eat"], "note": "ok"}
+{"raw_term": "inability to burp", "processed_tokens": ["inability", "to", "burp"], "removed_stopwords": ["to"], "after_removal": ["inability", "burp"], "note": "ok"}
+{"raw_term": "allergies have improved", "processed_tokens": ["allergy", "have", "improve"], "removed_stopwords": ["have"], "after_removal": ["allergy", "improve"], "note": "ok"}
+{"raw_term": "hard to swallow", "processed_tokens": ["hard", "to", "swallow"], "removed_stopwords": ["to"], "after_removal": ["hard", "swallow"], "note": "ok"}
+{"raw_term": "tension and inflammation", "processed_tokens": ["tension", "and", "inflammation"], "removed_stopwords": ["and"], "after_removal": ["tension", "inflammation"], "note": "ok"}
+{"raw_term": "couldn’t do socializing", "processed_tokens": ["could", "not", "do", "socialize"], "removed_stopwords": ["do"], "after_removal": ["could", "not", "socialize"], "note": "ok"}
+{"raw_term": "muscle has tightened", "processed_tokens": ["muscle", "have", "tighten"], "removed_stopwords": ["have"], "after_removal": ["muscle", "tighten"], "note": "ok"}
+{"raw_term": "food and coffee", "processed_tokens": ["food", "and", "coffee"], "removed_stopwords": ["and"], "after_removal": ["food", "coffee"], "note": "ok"}
+{"raw_term": "50 units of botox", "processed_tokens": ["50", "unit", "of", "botox"], "removed_stopwords": ["of"], "after_removal": ["50", "unit", "botox"], "note": "ok"}
+{"raw_term": "socializing was tricky", "processed_tokens": ["socialize", "be", "tricky"], "removed_stopwords": ["be"], "after_removal": ["socialize", "tricky"], "note": "ok"}
+{"raw_term": "bubble in my throat", "processed_tokens": ["bubble", "in", "my", "throat"], "removed_stopwords": ["in", "my"], "after_removal": ["bubble", "throat"], "note": "ok"}
+{"raw_term": "sticking my fingers", "processed_tokens": ["stick", "my", "finger"], "removed_stopwords": ["my"], "after_removal": ["stick", "finger"], "note": "ok"}
+{"raw_term": "have to fart", "processed_tokens": ["have", "to", "fart"], "removed_stopwords": ["have", "to"], "after_removal": ["fart"], "note": "ok"}
+{"raw_term": "inhaling the smoke", "processed_tokens": ["inhale", "the", "smoke"], "removed_stopwords": ["the"], "after_removal": ["inhale", "smoke"], "note": "ok"}
+{"raw_term": "Hiccups are painful", "processed_tokens": ["hiccup", "be", "pain"], "removed_stopwords": ["be"], "after_removal": ["hiccup", "pain"], "note": "ok"}
+{"raw_term": "made me bloated", "processed_tokens": ["make", "i", "bloat"], "removed_stopwords": ["i"], "after_removal": ["make", "bloat"], "note": "ok"}
+{"raw_term": "going to vomit", "processed_tokens": ["go", "to", "vomit"], "removed_stopwords": ["to"], "after_removal": ["go", "vomit"], "note": "ok"}
+{"raw_term": "pressure in my chest", "processed_tokens": ["pressure", "in", "my", "chest"], "removed_stopwords": ["in", "my"], "after_removal": ["pressure", "chest"], "note": "ok"}
+{"raw_term": "skipping a beat", "processed_tokens": ["skip", "a", "beat"], "removed_stopwords": ["a"], "after_removal": ["skip", "beat"], "note": "ok"}
+{"raw_term": "continually adjust my ribs", "processed_tokens": ["continual", "adjust", "my", "rib"], "removed_stopwords": ["my"], "after_removal": ["continual", "adjust", "rib"], "note": "ok"}
+{"raw_term": "cut your gut", "processed_tokens": ["cut", "your", "gut"], "removed_stopwords": ["your"], "after_removal": ["cut", "gut"], "note": "ok"}
+{"raw_term": "cracking my jaw", "processed_tokens": ["crack", "my", "jaw"], "removed_stopwords": ["my"], "after_removal": ["crack", "jaw"], "note": "ok"}
+{"raw_term": "stretching the stomach", "processed_tokens": ["stretch", "the", "stomach"], "removed_stopwords": ["the"], "after_removal": ["stretch", "stomach"], "note": "ok"}
+{"raw_term": "verge of burping", "processed_tokens": ["verge", "of", "burp"], "removed_stopwords": ["of"], "after_removal": ["verge", "burp"], "note": "ok"}
+{"raw_term": "Stop the gurgling", "processed_tokens": ["stop", "the", "gurgle"], "removed_stopwords": ["the"], "after_removal": ["stop", "gurgle"], "note": "ok"}
+{"raw_term": "painful and traumatic", "processed_tokens": ["pain", "and", "traumatic"], "removed_stopwords": ["and"], "after_removal": ["pain", "traumatic"], "note": "ok"}
+{"raw_term": "happen daily now", "processed_tokens": ["happen", "daily", "now"], "removed_stopwords": ["now"], "after_removal": ["happen", "daily"], "note": "ok"}
+{"raw_term": "saliva was really thin", "processed_tokens": ["saliva", "be", "really", "thin"], "removed_stopwords": ["be"], "after_removal": ["saliva", "really", "thin"], "note": "ok"}
+{"raw_term": "lot of saliva", "processed_tokens": ["lot", "of", "saliva"], "removed_stopwords": ["of"], "after_removal": ["lot", "saliva"], "note": "ok"}
+{"raw_term": "swallowing my spit", "processed_tokens": ["swallow", "my", "spit"], "removed_stopwords": ["my"], "after_removal": ["swallow", "spit"], "note": "ok"}
+{"raw_term": "doesn’t burn", "processed_tokens": ["do", "not", "burn"], "removed_stopwords": ["do"], "after_removal": ["not", "burn"], "note": "ok"}
+{"raw_term": "don’t have heartburn", "processed_tokens": ["not", "have", "heartburn"], "removed_stopwords": ["have"], "after_removal": ["not", "heartburn"], "note": "ok"}
+{"raw_term": "irritates the throat", "processed_tokens": ["irritate", "the", "throat"], "removed_stopwords": ["the"], "after_removal": ["irritate", "throat"], "note": "ok"}
+{"raw_term": "scares me", "processed_tokens": ["scare", "i"], "removed_stopwords": ["i"], "after_removal": ["scare"], "note": "ok"}
+{"raw_term": "afraid of vomiting", "processed_tokens": ["afraid", "of", "vomit"], "removed_stopwords": ["of"], "after_removal": ["afraid", "vomit"], "note": "ok"}
+{"raw_term": "hiccups are extremely painful", "processed_tokens": ["hiccup", "be", "extreme", "pain"], "removed_stopwords": ["be"], "after_removal": ["hiccup", "extreme", "pain"], "note": "ok"}
+{"raw_term": "want it to stop", "processed_tokens": ["want", "it", "to", "stop"], "removed_stopwords": ["it", "to"], "after_removal": ["want", "stop"], "note": "ok"}
+{"raw_term": "2 or 3 layngospasms", "processed_tokens": ["2", "or", "3", "layngospasms"], "removed_stopwords": ["or"], "after_removal": ["2", "3", "layngospasms"], "note": "ok"}
+{"raw_term": "hard to swallow", "processed_tokens": ["hard", "to", "swallow"], "removed_stopwords": ["to"], "after_removal": ["hard", "swallow"], "note": "ok"}
+{"raw_term": "quality of life improved", "processed_tokens": ["quality", "of", "life", "improve"], "removed_stopwords": ["of"], "after_removal": ["quality", "life", "improve"], "note": "ok"}
+{"raw_term": "would’ve destroyed me", "processed_tokens": ["would", "have", "destroy", "i"], "removed_stopwords": ["have", "i"], "after_removal": ["would", "destroy"], "note": "ok"}
+{"raw_term": "I hit puberty", "processed_tokens": ["i", "hit", "puberty"], "removed_stopwords": ["i"], "after_removal": ["hit", "puberty"], "note": "ok"}
+{"raw_term": "symptoms were debilitating", "processed_tokens": ["symptom", "be", "debilitate"], "removed_stopwords": ["be"], "after_removal": ["symptom", "debilitate"], "note": "ok"}
+{"raw_term": "gurgles and pain", "processed_tokens": ["gurgle", "and", "pain"], "removed_stopwords": ["and"], "after_removal": ["gurgle", "pain"], "note": "ok"}
+{"raw_term": "humiliate me", "processed_tokens": ["humiliate", "i"], "removed_stopwords": ["i"], "after_removal": ["humiliate"], "note": "ok"}
+{"raw_term": "more likely to burp", "processed_tokens": ["more", "likely", "to", "burp"], "removed_stopwords": ["to"], "after_removal": ["more", "likely", "burp"], "note": "ok"}
+{"raw_term": "more air in the body", "processed_tokens": ["more", "air", "in", "the", "body"], "removed_stopwords": ["in", "the"], "after_removal": ["more", "air", "body"], "note": "ok"}
+{"raw_term": "understand this pain", "processed_tokens": ["understand", "this", "pain"], "removed_stopwords": ["this"], "after_removal": ["understand", "pain"], "note": "ok"}
+{"raw_term": "didn’t get ARFID", "processed_tokens": ["did", "not", "get", "arfid"], "removed_stopwords": ["did"], "after_removal": ["not", "get", "arfid"], "note": "ok"}
+{"raw_term": "focus on schoolwork", "processed_tokens": ["focus", "on", "schoolwork"], "removed_stopwords": ["on"], "after_removal": ["focus", "schoolwork"], "note": "ok"}
+{"raw_term": "struggling to eat", "processed_tokens": ["struggle", "to", "eat"], "removed_stopwords": ["to"], "after_removal": ["struggle", "eat"], "note": "ok"}
+{"raw_term": "feel in my chest", "processed_tokens": ["feel", "in", "my", "chest"], "removed_stopwords": ["in", "my"], "after_removal": ["feel", "chest"], "note": "ok"}
+{"raw_term": "more than average perosn", "processed_tokens": ["more", "than", "average", "person"], "removed_stopwords": ["than"], "after_removal": ["more", "average", "person"], "note": "ok"}
+{"raw_term": "not like the gurgles", "processed_tokens": ["not", "like", "the", "gurgle"], "removed_stopwords": ["the"], "after_removal": ["not", "like", "gurgle"], "note": "ok"}
+{"raw_term": "trigger the gurgles", "processed_tokens": ["trigger", "the", "gurgle"], "removed_stopwords": ["the"], "after_removal": ["trigger", "gurgle"], "note": "ok"}
+{"raw_term": "curing yourselves", "processed_tokens": ["cure", "yourself"], "removed_stopwords": ["yourself"], "after_removal": ["cure"], "note": "ok"}
+{"raw_term": "shoulder and tongue", "processed_tokens": ["shoulder", "and", "tongue"], "removed_stopwords": ["and"], "after_removal": ["shoulder", "tongue"], "note": "ok"}
+{"raw_term": "minimizing the gurgles", "processed_tokens": ["minimize", "the", "gurgle"], "removed_stopwords": ["the"], "after_removal": ["minimize", "gurgle"], "note": "ok"}
+{"raw_term": "microburp on command", "processed_tokens": ["microburp", "on", "command"], "removed_stopwords": ["on"], "after_removal": ["microburp", "command"], "note": "ok"}
+{"raw_term": "prevent the croak", "processed_tokens": ["prevent", "the", "croak"], "removed_stopwords": ["the"], "after_removal": ["prevent", "croak"], "note": "ok"}
+{"raw_term": "keeping a burp in", "processed_tokens": ["keep", "a", "burp", "in"], "removed_stopwords": ["a", "in"], "after_removal": ["keep", "burp"], "note": "ok"}
+{"raw_term": "burping like a champ", "processed_tokens": ["burp", "like", "a", "champ"], "removed_stopwords": ["a"], "after_removal": ["burp", "like", "champ"], "note": "ok"}
+{"raw_term": "burps were flying", "processed_tokens": ["burp", "be", "fly"], "removed_stopwords": ["be"], "after_removal": ["burp", "fly"], "note": "ok"}
+{"raw_term": "6 days in", "processed_tokens": ["6", "day", "in"], "removed_stopwords": ["in"], "after_removal": ["6", "day"], "note": "ok"}
+{"raw_term": "coming when I yawn", "processed_tokens": ["come", "when", "i", "yawn"], "removed_stopwords": ["i"], "after_removal": ["come", "when", "yawn"], "note": "ok"}
+{"raw_term": "turn my head", "processed_tokens": ["turn", "my", "head"], "removed_stopwords": ["my"], "after_removal": ["turn", "head"], "note": "ok"}
+{"raw_term": "lots of gurgling", "processed_tokens": ["lot", "of", "gurgle"], "removed_stopwords": ["of"], "after_removal": ["lot", "gurgle"], "note": "ok"}
+{"raw_term": "insecure and miserable", "processed_tokens": ["insecure", "and", "miserable"], "removed_stopwords": ["and"], "after_removal": ["insecure", "miserable"], "note": "ok"}
+{"raw_term": "series of farts", "processed_tokens": ["series", "of", "fart"], "removed_stopwords": ["of"], "after_removal": ["series", "fart"], "note": "ok"}
+{"raw_term": "afraid to vomit", "processed_tokens": ["afraid", "to", "vomit"], "removed_stopwords": ["to"], "after_removal": ["afraid", "vomit"], "note": "ok"}
+{"raw_term": "bloated on plane", "processed_tokens": ["bloat", "on", "plane"], "removed_stopwords": ["on"], "after_removal": ["bloat", "plane"], "note": "ok"}
+{"raw_term": "my body look", "processed_tokens": ["my", "body", "look"], "removed_stopwords": ["my"], "after_removal": ["body", "look"], "note": "ok"}
+{"raw_term": "belly is popping", "processed_tokens": ["belly", "be", "pop"], "removed_stopwords": ["be"], "after_removal": ["belly", "pop"], "note": "ok"}
+{"raw_term": "everything is puffy", "processed_tokens": ["everything", "be", "puffy"], "removed_stopwords": ["be"], "after_removal": ["everything", "puffy"], "note": "ok"}
+{"raw_term": "stomach is distended", "processed_tokens": ["stomach", "be", "distend"], "removed_stopwords": ["be"], "after_removal": ["stomach", "distend"], "note": "ok"}
+{"raw_term": "like I'm pregnant", "processed_tokens": ["like", "i", "be", "pregnant"], "removed_stopwords": ["i", "be"], "after_removal": ["like", "pregnant"], "note": "ok"}
+{"raw_term": "able to fart", "processed_tokens": ["able", "to", "fart"], "removed_stopwords": ["to"], "after_removal": ["able", "fart"], "note": "ok"}
+{"raw_term": "fetal for awhile", "processed_tokens": ["fetal", "for", "awhile"], "removed_stopwords": ["for"], "after_removal": ["fetal", "awhile"], "note": "ok"}
+{"raw_term": "discomfort has passed", "processed_tokens": ["discomfort", "have", "pass"], "removed_stopwords": ["have"], "after_removal": ["discomfort", "pass"], "note": "ok"}
+{"raw_term": "brink of nausea", "processed_tokens": ["brink", "of", "nausea"], "removed_stopwords": ["of"], "after_removal": ["brink", "nausea"], "note": "ok"}
+{"raw_term": "lot of pain", "processed_tokens": ["lot", "of", "pain"], "removed_stopwords": ["of"], "after_removal": ["lot", "pain"], "note": "ok"}
+{"raw_term": "rotating nmy neck", "processed_tokens": ["rotate", "my", "neck"], "removed_stopwords": ["my"], "after_removal": ["rotate", "neck"], "note": "ok"}
+{"raw_term": "shrugging my shoulders", "processed_tokens": ["shrug", "my", "shoulder"], "removed_stopwords": ["my"], "after_removal": ["shrug", "shoulder"], "note": "ok"}
+{"raw_term": "do them anywhere", "processed_tokens": ["do", "them", "anywhere"], "removed_stopwords": ["do", "them"], "after_removal": ["anywhere"], "note": "ok"}
+{"raw_term": "stuck in my throat", "processed_tokens": ["stuck", "in", "my", "throat"], "removed_stopwords": ["in", "my"], "after_removal": ["stuck", "throat"], "note": "ok"}
+{"raw_term": "stretch my neck", "processed_tokens": ["stretch", "my", "neck"], "removed_stopwords": ["my"], "after_removal": ["stretch", "neck"], "note": "ok"}
+{"raw_term": "massage my throat", "processed_tokens": ["massage", "my", "throat"], "removed_stopwords": ["my"], "after_removal": ["massage", "throat"], "note": "ok"}
+{"raw_term": "your croaking worse", "processed_tokens": ["your", "croak", "worse"], "removed_stopwords": ["your"], "after_removal": ["croak", "worse"], "note": "ok"}
+{"raw_term": "during the week", "processed_tokens": ["during", "the", "week"], "removed_stopwords": ["the"], "after_removal": ["during", "week"], "note": "ok"}
+{"raw_term": "mystery for me", "processed_tokens": ["mystery", "for", "i"], "removed_stopwords": ["for", "i"], "after_removal": ["mystery"], "note": "ok"}
+{"raw_term": "pointer finger and thunb", "processed_tokens": ["pointer", "finger", "and", "thumb"], "removed_stopwords": ["and"], "after_removal": ["pointer", "finger", "thumb"], "note": "ok"}
+{"raw_term": "learned to burp", "processed_tokens": ["learn", "to", "burp"], "removed_stopwords": ["to"], "after_removal": ["learn", "burp"], "note": "ok"}
+{"raw_term": "release my air bubbles", "processed_tokens": ["release", "my", "air", "bubble"], "removed_stopwords": ["my"], "after_removal": ["release", "air", "bubble"], "note": "ok"}
+{"raw_term": "treatment is available", "processed_tokens": ["treatment", "be", "available"], "removed_stopwords": ["be"], "after_removal": ["treatment", "available"], "note": "ok"}
+{"raw_term": "how to burp", "processed_tokens": ["how", "to", "burp"], "removed_stopwords": ["how", "to"], "after_removal": ["burp"], "note": "ok"}
+{"raw_term": "lot of this burping", "processed_tokens": ["lot", "of", "this", "burp"], "removed_stopwords": ["of", "this"], "after_removal": ["lot", "burp"], "note": "ok"}
+{"raw_term": "last for hours", "processed_tokens": ["last", "for", "hour"], "removed_stopwords": ["for"], "after_removal": ["last", "hour"], "note": "ok"}
+{"raw_term": "i take simethicone", "processed_tokens": ["i", "take", "simethicone"], "removed_stopwords": ["i"], "after_removal": ["take", "simethicone"], "note": "ok"}
+{"raw_term": "sometimes it helps", "processed_tokens": ["sometimes", "it", "help"], "removed_stopwords": ["it"], "after_removal": ["sometimes", "help"], "note": "ok"}
+{"raw_term": "in my throat", "processed_tokens": ["in", "my", "throat"], "removed_stopwords": ["in", "my"], "after_removal": ["throat"], "note": "ok"}
+{"raw_term": "struggle to eat gluten", "processed_tokens": ["struggle", "to", "eat", "gluten"], "removed_stopwords": ["to"], "after_removal": ["struggle", "eat", "gluten"], "note": "ok"}
+{"raw_term": "full of air", "processed_tokens": ["full", "of", "air"], "removed_stopwords": ["of"], "after_removal": ["full", "air"], "note": "ok"}
+{"raw_term": "camera down my throat", "processed_tokens": ["camera", "down", "my", "throat"], "removed_stopwords": ["my"], "after_removal": ["camera", "down", "throat"], "note": "ok"}
+{"raw_term": "gas in throat", "processed_tokens": ["gas", "in", "throat"], "removed_stopwords": ["in"], "after_removal": ["gas", "throat"], "note": "ok"}
+{"raw_term": "Impact of botox", "processed_tokens": ["impact", "of", "botox"], "removed_stopwords": ["of"], "after_removal": ["impact", "botox"], "note": "ok"}
+{"raw_term": "tension in the neck", "processed_tokens": ["tension", "in", "the", "neck"], "removed_stopwords": ["in", "the"], "after_removal": ["tension", "neck"], "note": "ok"}
+{"raw_term": "suffer from TMJ", "processed_tokens": ["suffer", "from", "tmj"], "removed_stopwords": ["from"], "after_removal": ["suffer", "tmj"], "note": "ok"}
+{"raw_term": "being tense", "processed_tokens": ["be", "tense"], "removed_stopwords": ["be"], "after_removal": ["tense"], "note": "ok"}
+{"raw_term": "lot of physical therapy", "processed_tokens": ["lot", "of", "physical", "therapy"], "removed_stopwords": ["of"], "after_removal": ["lot", "physical", "therapy"], "note": "ok"}
+{"raw_term": "fear of side effects", "processed_tokens": ["fear", "of", "side", "effect"], "removed_stopwords": ["of"], "after_removal": ["fear", "side", "effect"], "note": "ok"}
+{"raw_term": "doesn’t get better", "processed_tokens": ["do", "not", "get", "better"], "removed_stopwords": ["do"], "after_removal": ["not", "get", "better"], "note": "ok"}
+{"raw_term": "rumbling in throat", "processed_tokens": ["rumble", "in", "throat"], "removed_stopwords": ["in"], "after_removal": ["rumble", "throat"], "note": "ok"}
+{"raw_term": "body’s reaction to the reflux", "processed_tokens": ["body", "reaction", "to", "the", "reflux"], "removed_stopwords": ["to", "the"], "after_removal": ["body", "reaction", "reflux"], "note": "ok"}
+{"raw_term": "my worst reflux", "processed_tokens": ["my", "worst", "reflux"], "removed_stopwords": ["my"], "after_removal": ["worst", "reflux"], "note": "ok"}
+{"raw_term": "no meat or dairy", "processed_tokens": ["no", "meat", "or", "dairy"], "removed_stopwords": ["or"], "after_removal": ["no", "meat", "dairy"], "note": "ok"}
+{"raw_term": "middle of the night", "processed_tokens": ["middle", "of", "the", "night"], "removed_stopwords": ["of", "the"], "after_removal": ["middle", "night"], "note": "ok"}
+{"raw_term": "quality of life increase", "processed_tokens": ["quality", "of", "life", "increase"], "removed_stopwords": ["of"], "after_removal": ["quality", "life", "increase"], "note": "ok"}
+{"raw_term": "suffered from regurgitation", "processed_tokens": ["suffer", "from", "regurgitation"], "removed_stopwords": ["from"], "after_removal": ["suffer", "regurgitation"], "note": "ok"}
+{"raw_term": "push-ups and crunches", "processed_tokens": ["push", "up", "and", "crunch"], "removed_stopwords": ["and"], "after_removal": ["push", "up", "crunch"], "note": "ok"}
+{"raw_term": "I now burp", "processed_tokens": ["i", "now", "burp"], "removed_stopwords": ["i", "now"], "after_removal": ["burp"], "note": "ok"}
+{"raw_term": "lying on left side", "processed_tokens": ["lie", "on", "left", "side"], "removed_stopwords": ["on"], "after_removal": ["lie", "left", "side"], "note": "ok"}
+{"raw_term": "doing physical things", "processed_tokens": ["do", "physical", "thing"], "removed_stopwords": ["do"], "after_removal": ["physical", "thing"], "note": "ok"}
+{"raw_term": "damage my throat", "processed_tokens": ["damage", "my", "throat"], "removed_stopwords": ["my"], "after_removal": ["damage", "throat"], "note": "ok"}
+{"raw_term": "burps are involuntary", "processed_tokens": ["burp", "be", "involuntary"], "removed_stopwords": ["be"], "after_removal": ["burp", "involuntary"], "note": "ok"}
+{"raw_term": "60 degree angle in bed", "processed_tokens": ["60", "degree", "angle", "in", "bed"], "removed_stopwords": ["in"], "after_removal": ["60", "degree", "angle", "bed"], "note": "ok"}
+{"raw_term": "pressure on the stomach", "processed_tokens": ["pressure", "on", "the", "stomach"], "removed_stopwords": ["on", "the"], "after_removal": ["pressure", "stomach"], "note": "ok"}
+{"raw_term": "procedure is a godsend", "processed_tokens": ["procedure", "be", "a", "godsend"], "removed_stopwords": ["be", "a"], "after_removal": ["procedure", "godsend"], "note": "ok"}
+{"raw_term": "pinching myself", "processed_tokens": ["pinch", "myself"], "removed_stopwords": ["myself"], "after_removal": ["pinch"], "note": "ok"}
+{"raw_term": "mouth and throat", "processed_tokens": ["mouth", "and", "throat"], "removed_stopwords": ["and"], "after_removal": ["mouth", "throat"], "note": "ok"}
+{"raw_term": "sometimes if i choke", "processed_tokens": ["sometimes", "if", "i", "choke"], "removed_stopwords": ["if", "i"], "after_removal": ["sometimes", "choke"], "note": "ok"}
+{"raw_term": "spit or water", "processed_tokens": ["spit", "or", "water"], "removed_stopwords": ["or"], "after_removal": ["spit", "water"], "note": "ok"}
+{"raw_term": "relieved air and pressure", "processed_tokens": ["relieve", "air", "and", "pressure"], "removed_stopwords": ["and"], "after_removal": ["relieve", "air", "pressure"], "note": "ok"}
+{"raw_term": "similar to gurgles", "processed_tokens": ["similar", "to", "gurgle"], "removed_stopwords": ["to"], "after_removal": ["similar", "gurgle"], "note": "ok"}
+{"raw_term": "constant need to burp", "processed_tokens": ["constant", "need", "to", "burp"], "removed_stopwords": ["to"], "after_removal": ["constant", "need", "burp"], "note": "ok"}
+{"raw_term": "made me anxious", "processed_tokens": ["make", "i", "anxious"], "removed_stopwords": ["i"], "after_removal": ["make", "anxious"], "note": "ok"}
+{"raw_term": "had to relax", "processed_tokens": ["have", "to", "relax"], "removed_stopwords": ["have", "to"], "after_removal": ["relax"], "note": "ok"}
+{"raw_term": "burp all the time", "processed_tokens": ["burp", "all", "the", "time"], "removed_stopwords": ["the"], "after_removal": ["burp", "all", "time"], "note": "ok"}
+{"raw_term": "decreased since then", "processed_tokens": ["decrease", "since", "then"], "removed_stopwords": ["then"], "after_removal": ["decrease", "since"], "note": "ok"}
+{"raw_term": "open my airway", "processed_tokens": ["open", "my", "airway"], "removed_stopwords": ["my"], "after_removal": ["open", "airway"], "note": "ok"}
+{"raw_term": "make it gurgle", "processed_tokens": ["make", "it", "gurgle"], "removed_stopwords": ["it"], "after_removal": ["make", "gurgle"], "note": "ok"}
+{"raw_term": "assist in diagnosis", "processed_tokens": ["assist", "in", "diagnosis"], "removed_stopwords": ["in"], "after_removal": ["assist", "diagnosis"], "note": "ok"}
+{"raw_term": "blow my nose", "processed_tokens": ["blow", "my", "nose"], "removed_stopwords": ["my"], "after_removal": ["blow", "nose"], "note": "ok"}
+{"raw_term": "treat the regurgitation", "processed_tokens": ["treat", "the", "regurgitation"], "removed_stopwords": ["the"], "after_removal": ["treat", "regurgitation"], "note": "ok"}
+{"raw_term": "changes in bloating", "processed_tokens": ["change", "in", "bloat"], "removed_stopwords": ["in"], "after_removal": ["change", "bloat"], "note": "ok"}
+{"raw_term": "end of the day", "processed_tokens": ["end", "of", "the", "day"], "removed_stopwords": ["of", "the"], "after_removal": ["end", "day"], "note": "ok"}
+{"raw_term": "gagging myself", "processed_tokens": ["gag", "myself"], "removed_stopwords": ["myself"], "after_removal": ["gag"], "note": "ok"}
+{"raw_term": "Inability to burp", "processed_tokens": ["inability", "to", "burp"], "removed_stopwords": ["to"], "after_removal": ["inability", "burp"], "note": "ok"}
+{"raw_term": "able to tolerate sodas", "processed_tokens": ["able", "to", "tolerate", "soda"], "removed_stopwords": ["to"], "after_removal": ["able", "tolerate", "soda"], "note": "ok"}
+{"raw_term": "haven’t eaten", "processed_tokens": ["have", "not", "eat"], "removed_stopwords": ["have"], "after_removal": ["not", "eat"], "note": "ok"}
+{"raw_term": "muscles in my throat", "processed_tokens": ["muscle", "in", "my", "throat"], "removed_stopwords": ["in", "my"], "after_removal": ["muscle", "throat"], "note": "ok"}
+{"raw_term": "force of the air", "processed_tokens": ["force", "of", "the", "air"], "removed_stopwords": ["of", "the"], "after_removal": ["force", "air"], "note": "ok"}
+{"raw_term": "don’t want to die", "processed_tokens": ["not", "want", "to", "die"], "removed_stopwords": ["to"], "after_removal": ["not", "want", "die"], "note": "ok"}
+{"raw_term": "continue to cope", "processed_tokens": ["continue", "to", "cope"], "removed_stopwords": ["to"], "after_removal": ["continue", "cope"], "note": "ok"}
+{"raw_term": "gagging myself", "processed_tokens": ["gag", "myself"], "removed_stopwords": ["myself"], "after_removal": ["gag"], "note": "ok"}
+{"raw_term": "can be risky", "processed_tokens": ["can", "be", "risky"], "removed_stopwords": ["be"], "after_removal": ["can", "risky"], "note": "ok"}
+{"raw_term": "expel the air", "processed_tokens": ["expel", "the", "air"], "removed_stopwords": ["the"], "after_removal": ["expel", "air"], "note": "ok"}
+{"raw_term": "brushing my teeth", "processed_tokens": ["brush", "my", "tooth"], "removed_stopwords": ["my"], "after_removal": ["brush", "tooth"], "note": "ok"}
+{"raw_term": "stomach is basically empty", "processed_tokens": ["stomach", "be", "basically", "empty"], "removed_stopwords": ["be"], "after_removal": ["stomach", "basically", "empty"], "note": "ok"}
+{"raw_term": "dread it", "processed_tokens": ["dread", "it"], "removed_stopwords": ["it"], "after_removal": ["dread"], "note": "ok"}
+{"raw_term": "afraid to puke", "processed_tokens": ["afraid", "to", "puke"], "removed_stopwords": ["to"], "after_removal": ["afraid", "puke"], "note": "ok"}
+{"raw_term": "do its damage", "processed_tokens": ["do", "its", "damage"], "removed_stopwords": ["do", "its"], "after_removal": ["damage"], "note": "ok"}
+{"raw_term": "shrugged his shoulders", "processed_tokens": ["shrug", "his", "shoulder"], "removed_stopwords": ["his"], "after_removal": ["shrug", "shoulder"], "note": "ok"}
+{"raw_term": "relentless croaks and gurgles", "processed_tokens": ["relentless", "croak", "and", "gurgle"], "removed_stopwords": ["and"], "after_removal": ["relentless", "croak", "gurgle"], "note": "ok"}
+{"raw_term": "tiniest of gurgles", "processed_tokens": ["tiny", "of", "gurgle"], "removed_stopwords": ["of"], "after_removal": ["tiny", "gurgle"], "note": "ok"}
+{"raw_term": "draw my chest in", "processed_tokens": ["draw", "my", "chest", "in"], "removed_stopwords": ["my", "in"], "after_removal": ["draw", "chest"], "note": "ok"}
+{"raw_term": "up my esophagus", "processed_tokens": ["up", "my", "esophagus"], "removed_stopwords": ["my"], "after_removal": ["up", "esophagus"], "note": "ok"}
+{"raw_term": "smaller in diameter", "processed_tokens": ["small", "in", "diameter"], "removed_stopwords": ["in"], "after_removal": ["small", "diameter"], "note": "ok"}
+{"raw_term": "bit of resistance", "processed_tokens": ["bit", "of", "resistance"], "removed_stopwords": ["of"], "after_removal": ["bit", "resistance"], "note": "ok"}
+{"raw_term": "holding my breath", "processed_tokens": ["hold", "my", "breath"], "removed_stopwords": ["my"], "after_removal": ["hold", "breath"], "note": "ok"}
+{"raw_term": "movement of air", "processed_tokens": ["movement", "of", "air"], "removed_stopwords": ["of"], "after_removal": ["movement", "air"], "note": "ok"}
+{"raw_term": "UES then pops", "processed_tokens": ["ues", "then", "pop"], "removed_stopwords": ["then"], "after_removal": ["ues", "pop"], "note": "ok"}
+{"raw_term": "dissipates instead of exiting", "processed_tokens": ["dissipate", "instead", "of", "exit"], "removed_stopwords": ["of"], "after_removal": ["dissipate", "instead", "exit"], "note": "ok"}
+{"raw_term": "correct my posture", "processed_tokens": ["correct", "my", "posture"], "removed_stopwords": ["my"], "after_removal": ["correct", "posture"], "note": "ok"}
+{"raw_term": "close my ribs", "processed_tokens": ["close", "my", "rib"], "removed_stopwords": ["my"], "after_removal": ["close", "rib"], "note": "ok"}
+{"raw_term": "needle is attached", "processed_tokens": ["needle", "be", "attach"], "removed_stopwords": ["be"], "after_removal": ["needle", "attach"], "note": "ok"}
+{"raw_term": "scope also has camera", "processed_tokens": ["scope", "also", "have", "camera"], "removed_stopwords": ["have"], "after_removal": ["scope", "also", "camera"], "note": "ok"}
+{"raw_term": "down your trachea", "processed_tokens": ["down", "your", "trachea"], "removed_stopwords": ["your"], "after_removal": ["down", "trachea"], "note": "ok"}
+{"raw_term": "positioning of diaphragm", "processed_tokens": ["position", "of", "diaphragm"], "removed_stopwords": ["of"], "after_removal": ["position", "diaphragm"], "note": "ok"}
+{"raw_term": "40 years worth of abnormal patterns", "processed_tokens": ["40", "year", "worth", "of", "abnormal", "pattern"], "removed_stopwords": ["of"], "after_removal": ["40", "year", "worth", "abnormal", "pattern"], "note": "ok"}
+{"raw_term": "calm the vagus", "processed_tokens": ["calm", "the", "vagus"], "removed_stopwords": ["the"], "after_removal": ["calm", "vagus"], "note": "ok"}
+{"raw_term": "changes and adjustments", "processed_tokens": ["change", "and", "adjustment"], "removed_stopwords": ["and"], "after_removal": ["change", "adjustment"], "note": "ok"}
+{"raw_term": "methane and hydrogen", "processed_tokens": ["methane", "and", "hydrogen"], "removed_stopwords": ["and"], "after_removal": ["methane", "hydrogen"], "note": "ok"}
+{"raw_term": "imbalance of bacteria", "processed_tokens": ["imbalance", "of", "bacteria"], "removed_stopwords": ["of"], "after_removal": ["imbalance", "bacteria"], "note": "ok"}
+{"raw_term": "Reflux Gourmet to help with the reflux", "processed_tokens": ["reflux", "gourmet", "to", "help", "with", "the", "reflux"], "removed_stopwords": ["to", "the"], "after_removal": ["reflux", "gourmet", "help", "with", "reflux"], "note": "ok"}
+{"raw_term": "hypertonicity of UES", "processed_tokens": ["hypertonicity", "of", "ues"], "removed_stopwords": ["of"], "after_removal": ["hypertonicity", "ues"], "note": "ok"}
+{"raw_term": "open my throat", "processed_tokens": ["open", "my", "throat"], "removed_stopwords": ["my"], "after_removal": ["open", "throat"], "note": "ok"}
+{"raw_term": "doesn't’ come out", "processed_tokens": ["do", "not", "come", "out"], "removed_stopwords": ["do"], "after_removal": ["not", "come", "out"], "note": "ok"}
+{"raw_term": "unable to burp", "processed_tokens": ["unable", "to", "burp"], "removed_stopwords": ["to"], "after_removal": ["unable", "burp"], "note": "ok"}
+{"raw_term": "carbonation messes you", "processed_tokens": ["carbonation", "mess", "you"], "removed_stopwords": ["you"], "after_removal": ["carbonation", "mess"], "note": "ok"}
+{"raw_term": "due to anxiety", "processed_tokens": ["due", "to", "anxiety"], "removed_stopwords": ["to"], "after_removal": ["due", "anxiety"], "note": "ok"}
+{"raw_term": "cause me pain", "processed_tokens": ["cause", "i", "pain"], "removed_stopwords": ["i"], "after_removal": ["cause", "pain"], "note": "ok"}
+{"raw_term": "fart it out", "processed_tokens": ["fart", "it", "out"], "removed_stopwords": ["it"], "after_removal": ["fart", "out"], "note": "ok"}
+{"raw_term": "share your pain", "processed_tokens": ["share", "your", "pain"], "removed_stopwords": ["your"], "after_removal": ["share", "pain"], "note": "ok"}
+{"raw_term": "strengthens the throat", "processed_tokens": ["strengthen", "the", "throat"], "removed_stopwords": ["the"], "after_removal": ["strengthen", "throat"], "note": "ok"}
+{"raw_term": "feel a release", "processed_tokens": ["feel", "a", "release"], "removed_stopwords": ["a"], "after_removal": ["feel", "release"], "note": "ok"}
+{"raw_term": "throat is very loose", "processed_tokens": ["throat", "be", "very", "loose"], "removed_stopwords": ["be"], "after_removal": ["throat", "very", "loose"], "note": "ok"}
+{"raw_term": "pushes the air", "processed_tokens": ["push", "the", "air"], "removed_stopwords": ["the"], "after_removal": ["push", "air"], "note": "ok"}
+{"raw_term": "creating a sound", "processed_tokens": ["create", "a", "sound"], "removed_stopwords": ["a"], "after_removal": ["create", "sound"], "note": "ok"}
+{"raw_term": "force to swallow", "processed_tokens": ["force", "to", "swallow"], "removed_stopwords": ["to"], "after_removal": ["force", "swallow"], "note": "ok"}
+{"raw_term": "don’t force yourself", "processed_tokens": ["not", "force", "yourself"], "removed_stopwords": ["yourself"], "after_removal": ["not", "force"], "note": "ok"}
+{"raw_term": "like a balloon", "processed_tokens": ["like", "a", "balloon"], "removed_stopwords": ["a"], "after_removal": ["like", "balloon"], "note": "ok"}
+{"raw_term": "having hiccups currently", "processed_tokens": ["have", "hiccup", "current"], "removed_stopwords": ["have"], "after_removal": ["hiccup", "current"], "note": "ok"}
+{"raw_term": "chin to your knees", "processed_tokens": ["chin", "to", "your", "knee"], "removed_stopwords": ["to", "your"], "after_removal": ["chin", "knee"], "note": "ok"}
+{"raw_term": "water is swallowed", "processed_tokens": ["water", "be", "swallow"], "removed_stopwords": ["be"], "after_removal": ["water", "swallow"], "note": "ok"}
+{"raw_term": "trick your esophagus", "processed_tokens": ["trick", "your", "esophagus"], "removed_stopwords": ["your"], "after_removal": ["trick", "esophagus"], "note": "ok"}
+{"raw_term": "get the surgeries", "processed_tokens": ["get", "the", "surgery"], "removed_stopwords": ["the"], "after_removal": ["get", "surgery"], "note": "ok"}
+{"raw_term": "periods of bloating", "processed_tokens": ["period", "of", "bloat"], "removed_stopwords": ["of"], "after_removal": ["period", "bloat"], "note": "ok"}
+{"raw_term": "i can burp", "processed_tokens": ["i", "can", "burp"], "removed_stopwords": ["i"], "after_removal": ["can", "burp"], "note": "ok"}
+{"raw_term": "tons of air", "processed_tokens": ["ton", "of", "air"], "removed_stopwords": ["of"], "after_removal": ["ton", "air"], "note": "ok"}
+{"raw_term": "yawning a lot", "processed_tokens": ["yawn", "a", "lot"], "removed_stopwords": ["a"], "after_removal": ["yawn", "lot"], "note": "ok"}
+{"raw_term": "harder in the afternoon", "processed_tokens": ["hard", "in", "the", "afternoon"], "removed_stopwords": ["in", "the"], "after_removal": ["hard", "afternoon"], "note": "ok"}
+{"raw_term": "mild to none", "processed_tokens": ["mild", "to", "none"], "removed_stopwords": ["to"], "after_removal": ["mild", "none"], "note": "ok"}
+{"raw_term": "able to burp", "processed_tokens": ["able", "to", "burp"], "removed_stopwords": ["to"], "after_removal": ["able", "burp"], "note": "ok"}
+{"raw_term": "naturally now", "processed_tokens": ["natural", "now"], "removed_stopwords": ["now"], "after_removal": ["natural"], "note": "ok"}
+{"raw_term": "bloat has settles", "processed_tokens": ["bloat", "have", "settle"], "removed_stopwords": ["have"], "after_removal": ["bloat", "settle"], "note": "ok"}
+{"raw_term": "relief from burping", "processed_tokens": ["relief", "from", "burp"], "removed_stopwords": ["from"], "after_removal": ["relief", "burp"], "note": "ok"}
+{"raw_term": "confidence has raised", "processed_tokens": ["confidence", "have", "raise"], "removed_stopwords": ["have"], "after_removal": ["confidence", "raise"], "note": "ok"}
+{"raw_term": "a little stuck", "processed_tokens": ["a", "little", "stuck"], "removed_stopwords": ["a"], "after_removal": ["little", "stuck"], "note": "ok"}
+{"raw_term": "haven’t vomited", "processed_tokens": ["have", "not", "vomit"], "removed_stopwords": ["have"], "after_removal": ["not", "vomit"], "note": "ok"}
+{"raw_term": "bunch of phlegm", "processed_tokens": ["bunch", "of", "phlegm"], "removed_stopwords": ["of"], "after_removal": ["bunch", "phlegm"], "note": "ok"}
+{"raw_term": "made me sick", "processed_tokens": ["make", "i", "sick"], "removed_stopwords": ["i"], "after_removal": ["make", "sick"], "note": "ok"}
+{"raw_term": "feeling of burps", "processed_tokens": ["feel", "of", "burp"], "removed_stopwords": ["of"], "after_removal": ["feel", "burp"], "note": "ok"}
+{"raw_term": "confidence to force burps", "processed_tokens": ["confidence", "to", "force", "burp"], "removed_stopwords": ["to"], "after_removal": ["confidence", "force", "burp"], "note": "ok"}
+{"raw_term": "learned how to burp", "processed_tokens": ["learn", "how", "to", "burp"], "removed_stopwords": ["how", "to"], "after_removal": ["learn", "burp"], "note": "ok"}
+{"raw_term": "burping while eating", "processed_tokens": ["burp", "while", "eat"], "removed_stopwords": ["while"], "after_removal": ["burp", "eat"], "note": "ok"}
+{"raw_term": "esophagus is floppy", "processed_tokens": ["esophagus", "be", "floppy"], "removed_stopwords": ["be"], "after_removal": ["esophagus", "floppy"], "note": "ok"}
+{"raw_term": "hold my burps in", "processed_tokens": ["hold", "my", "burp", "in"], "removed_stopwords": ["my", "in"], "after_removal": ["hold", "burp"], "note": "ok"}
+{"raw_term": "not to relapse", "processed_tokens": ["not", "to", "relapse"], "removed_stopwords": ["to"], "after_removal": ["not", "relapse"], "note": "ok"}
+{"raw_term": "trapped the air", "processed_tokens": ["trap", "the", "air"], "removed_stopwords": ["the"], "after_removal": ["trap", "air"], "note": "ok"}
+{"raw_term": "don’t have gurgles", "processed_tokens": ["not", "have", "gurgle"], "removed_stopwords": ["have"], "after_removal": ["not", "gurgle"], "note": "ok"}
+{"raw_term": "harder to push", "processed_tokens": ["hard", "to", "push"], "removed_stopwords": ["to"], "after_removal": ["hard", "push"], "note": "ok"}
+{"raw_term": "extension of gurgles", "processed_tokens": ["extension", "of", "gurgle"], "removed_stopwords": ["of"], "after_removal": ["extension", "gurgle"], "note": "ok"}
+{"raw_term": "changed my eating", "processed_tokens": ["change", "my", "eat"], "removed_stopwords": ["my"], "after_removal": ["change", "eat"], "note": "ok"}
+{"raw_term": "don’t have h. pylori", "processed_tokens": ["not", "have", "h", "pylori"], "removed_stopwords": ["have"], "after_removal": ["not", "h", "pylori"], "note": "ok"}
+{"raw_term": "forcing these gurgles", "processed_tokens": ["force", "these", "gurgle"], "removed_stopwords": ["these"], "after_removal": ["force", "gurgle"], "note": "ok"}
+{"raw_term": "in my head", "processed_tokens": ["in", "my", "head"], "removed_stopwords": ["in", "my"], "after_removal": ["head"], "note": "ok"}
+{"raw_term": "relaxes the body", "processed_tokens": ["relax", "the", "body"], "removed_stopwords": ["the"], "after_removal": ["relax", "body"], "note": "ok"}
+{"raw_term": "doing shakers", "processed_tokens": ["do", "shaker"], "removed_stopwords": ["do"], "after_removal": ["shaker"], "note": "ok"}
+{"raw_term": "scared of vomiting", "processed_tokens": ["scared", "of", "vomit"], "removed_stopwords": ["of"], "after_removal": ["scared", "vomit"], "note": "ok"}
+{"raw_term": "tightness in your throat", "processed_tokens": ["tightness", "in", "your", "throat"], "removed_stopwords": ["in", "your"], "after_removal": ["tightness", "throat"], "note": "ok"}
+{"raw_term": "afraid to vomit", "processed_tokens": ["afraid", "to", "vomit"], "removed_stopwords": ["to"], "after_removal": ["afraid", "vomit"], "note": "ok"}
+{"raw_term": "under the weather", "processed_tokens": ["under", "the", "weather"], "removed_stopwords": ["the"], "after_removal": ["under", "weather"], "note": "ok"}
+{"raw_term": "too scared to move", "processed_tokens": ["too", "scared", "to", "move"], "removed_stopwords": ["to"], "after_removal": ["too", "scared", "move"], "note": "ok"}
+{"raw_term": "eat throat is gurgling", "processed_tokens": ["eat", "throat", "be", "gurgle"], "removed_stopwords": ["be"], "after_removal": ["eat", "throat", "gurgle"], "note": "ok"}
+{"raw_term": "practice my burping", "processed_tokens": ["practice", "my", "burp"], "removed_stopwords": ["my"], "after_removal": ["practice", "burp"], "note": "ok"}
+{"raw_term": "weight may have fluctuated", "processed_tokens": ["weight", "may", "have", "fluctuate"], "removed_stopwords": ["have"], "after_removal": ["weight", "may", "fluctuate"], "note": "ok"}
+{"raw_term": "10 gallons of gas", "processed_tokens": ["10", "gallon", "of", "gas"], "removed_stopwords": ["of"], "after_removal": ["10", "gallon", "gas"], "note": "ok"}
+{"raw_term": "out of control", "processed_tokens": ["out", "of", "control"], "removed_stopwords": ["of"], "after_removal": ["out", "control"], "note": "ok"}
