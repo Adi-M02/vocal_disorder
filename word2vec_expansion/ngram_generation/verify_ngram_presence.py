@@ -1,19 +1,24 @@
 #!/usr/bin/env python3
 """
-Count 1–3-gram occurrences in a corpus with overlap diagnostics.
+Count 1–3-gram occurrences (mixed seeds) with overlap diagnostics, then
+filter by a frequency threshold and emit two outputs into --outdir:
 
-- Accepts mixed seed terms: unigrams, bigrams, trigrams (deduped after normalization)
-- Overlap-allowed counts: every match is counted
-- Non-overlapping counts: leftmost-longest greedy selection (3 > 2 > 1)
-- Overlap stats computed two ways:
-    (1) *all* matches (unigrams included)
-    (2) *excluding unigrams* (clearer view of phrase-vs-phrase overlap)
+1) <ts>_ngram_counts_min<M>.json  (evaluation; only n-grams with total_non_overlapping >= min_count)
+2) <ts>_seed_terms_min<M>.json    ({"seed_terms":[...]}; same filtered list)
+
+Key points
+- Seeds are normalized through your `process_text`.
+- Counting uses two modes internally:
+    * overlap-allowed (every sliding-window match),
+    * non-overlapping, leftmost-longest (3 > 2 > 1).
+- Filtering uses **non-overlapping** totals (closest to how phrase tokens would actually appear if merged).
 
 Usage:
   python count_ngrams.py \
       --ngrams seed_terms.json \
-      --out ngram_counts.json \
+      --outdir out/ \
       --db reddit --collection noburp_all \
+      --min_count 5 \
       [--limit 0] \
       [--save_examples 3]
 """
@@ -24,18 +29,18 @@ import sys
 from collections import Counter, defaultdict
 from datetime import datetime
 from pathlib import Path
-from typing import Dict, Iterable, List, Sequence, Tuple
+from typing import Dict, List, Sequence, Tuple
 
 # --- project imports ---
 sys.path.append("../vocal_disorder")
+from query_mongo import return_documents
+from utils.text_pipeline import process_text
 from utils.load_json import load_json
 from utils.load_and_process_docs import process_all_noburp
-from utils.text_pipeline import process_text
 
 def normalize_seed_terms(ngrams_path: str):
     """
-    Load seed terms JSON and normalize via process_text.
-    Keeps only terms of length 1–3 after normalization.
+    Normalize all seed terms via process_text and keep those with length 1..3.
     Returns:
       gram_str_to_tuple: "a b" -> ("a","b")
       grams_by_len: {1: {('a',)}, 2: {...}, 3: {...}}
@@ -50,20 +55,17 @@ def normalize_seed_terms(ngrams_path: str):
         if 1 <= len(toks) <= 3:
             key = " ".join(toks)
             tup = tuple(toks)
-            gram_str_to_tuple[key] = tup  # last wins; dedup by normalized string
+            gram_str_to_tuple[key] = tup  # dedupe by normalized string
             grams_by_len[len(tup)].add(tup)
-        # silently drop items that normalize to 0 or >3 tokens
 
     return gram_str_to_tuple, grams_by_len
 
 
 def find_all_matches(tokens: Sequence[str], grams_by_len: Dict[int, set]) -> List[Tuple[int, int, str]]:
-    """
-    Return list of all matches (start, end_exclusive, "a b" or "a b c"), allowing overlaps.
-    """
+    """Return all matches (start, end_exclusive, 'a b ...'), allowing overlaps."""
     matches: List[Tuple[int, int, str]] = []
     L = len(tokens)
-    lengths = sorted(grams_by_len.keys())  # small->large for "all" is fine
+    lengths = sorted(grams_by_len.keys())  # 1 -> 3
     for i in range(L):
         for n in lengths:
             if i + n <= L:
@@ -74,9 +76,7 @@ def find_all_matches(tokens: Sequence[str], grams_by_len: Dict[int, set]) -> Lis
 
 
 def greedy_non_overlapping_counts(tokens: Sequence[str], grams_by_len: Dict[int, set]) -> Counter:
-    """
-    Leftmost-longest greedy: prefer 3-gram over 2-gram over unigram.
-    """
+    """Leftmost-longest greedy selection: prefers 3-grams, then 2-grams, then unigrams."""
     counts = Counter()
     L = len(tokens)
     i = 0
@@ -98,9 +98,7 @@ def greedy_non_overlapping_counts(tokens: Sequence[str], grams_by_len: Dict[int,
 
 
 def _overlap_stats(matches: List[Tuple[int, int, str]], total_tokens: int):
-    """
-    Compute overlap flags + token-position overlap from a match list.
-    """
+    """Compute per-match overlap flags and token-position overlap."""
     cover = [0] * total_tokens
     for s, e, _ in matches:
         for k in range(s, e):
@@ -118,20 +116,24 @@ def _overlap_stats(matches: List[Tuple[int, int, str]], total_tokens: int):
 
 
 def main():
-    ap = argparse.ArgumentParser(description="Count 1–3-gram occurrences with overlap stats.")
-    ap.add_argument("--ngrams", required=True, help="Path to JSON with {'seed_terms': [...]} (any mix of 1/2/3-grams).")
-    ap.add_argument("--out", required=True, help="Path to write output JSON.")
+    ap = argparse.ArgumentParser(description="Count mixed 1–3-gram seeds; filter by min_count; emit evaluation + filtered seed_terms.")
+    ap.add_argument("--ngrams", required=True, help="Path to JSON with {'seed_terms': [...]} (mix of 1/2/3-grams OK).")
+    ap.add_argument("--outdir", required=True, help="Directory to write outputs.")
     ap.add_argument("--db", default="reddit", help="MongoDB database name (default: reddit).")
     ap.add_argument("--collection", default="noburp_all", help="MongoDB collection (default: noburp_all).")
-    ap.add_argument("--limit", type=int, default=0, help="If >0, only process this many docs for a quick pass.")
+    ap.add_argument("--limit", type=int, default=0, help="If >0, only process this many docs.")
     ap.add_argument("--save_examples", type=int, default=3, help="How many overlap example docs to include.")
+    ap.add_argument("--min_count", type=int, default=5, help="Minimum non-overlapping count required to include an n-gram in outputs.")
     args = ap.parse_args()
+
+    outdir = Path(args.outdir)
+    outdir.mkdir(parents=True, exist_ok=True)
 
     gram_str_to_tuple, grams_by_len = normalize_seed_terms(args.ngrams)
     if not grams_by_len:
         raise SystemExit("No 1–3-gram seed terms remained after normalization. Check your seed list and tokenization.")
 
-    # Initialize counters so zero-count keys appear in output
+    # Initialize counters so zero-count keys still exist before filtering
     base = {k: 0 for k in gram_str_to_tuple.keys()}
     overlap_allowed = Counter(base.copy())
     non_overlapping = Counter(base.copy())
@@ -139,12 +141,13 @@ def main():
     overlapped_instances_excl1 = Counter(base.copy())
     doc_freq = Counter(base.copy())
 
+    # corpus
     docs = process_all_noburp()
 
     total_docs = 0
     total_tokens = 0
 
-    # overlap summaries
+    # overlap summaries (all vs. excluding unigrams)
     docs_with_any_overlap_all = 0
     total_overlapping_match_instances_all = 0
     total_overlap_positions_all = 0
@@ -162,10 +165,9 @@ def main():
         total_docs += 1
         total_tokens += len(tokens)
 
-        # All matches (1–3 grams)
         matches_all = find_all_matches(tokens, grams_by_len)
 
-        # Counts + doc freq (all)
+        # counts + doc freq (all)
         if matches_all:
             seen = set()
             for _, _, g in matches_all:
@@ -174,7 +176,7 @@ def main():
             for g in seen:
                 doc_freq[g] += 1
 
-            # Overlap stats: ALL
+            # overlap stats: ALL
             flags_all, overlapping_count_all, overlap_pos_all = _overlap_stats(matches_all, len(tokens))
             total_overlapping_match_instances_all += overlapping_count_all
             total_overlap_positions_all += overlap_pos_all
@@ -188,17 +190,16 @@ def main():
                         "overlapping_matches": example_matches
                     })
 
-            # Per-ngram overlapped instance counts (ALL)
+            # per-ngram overlapped instance counts (ALL)
             for (s, e, g), f in zip(matches_all, flags_all):
                 if f:
                     overlapped_instances_all[g] += 1
 
-        # Overlap stats: EXCLUDING UNIGRAMS
+        # overlap stats: EXCLUDING UNIGRAMS
         if 1 in grams_by_len:
-            # filter out matches whose length==1
             matches_excl1 = [(s, e, g) for (s, e, g) in matches_all if (e - s) > 1]
         else:
-            matches_excl1 = matches_all  # no unigrams present anyway
+            matches_excl1 = matches_all
 
         if matches_excl1:
             flags_excl1, overlapping_count_excl1, overlap_pos_excl1 = _overlap_stats(matches_excl1, len(tokens))
@@ -213,19 +214,28 @@ def main():
                         "tokens": tokens,
                         "overlapping_matches": example_matches
                     })
-            # Per-ngram overlapped instance counts (EXCL 1-grams)
             for (s, e, g), f in zip(matches_excl1, flags_excl1):
                 if f:
                     overlapped_instances_excl1[g] += 1
 
-        # Non-overlapping (leftmost-longest)
+        # non-overlapping (leftmost-longest)
         nonov = greedy_non_overlapping_counts(tokens, grams_by_len)
         for g, c in nonov.items():
             non_overlapping[g] += c
 
-    # Build JSON
-    now = datetime.now().isoformat(timespec="seconds")
-    out = {
+    # --- build outputs ---
+    now = datetime.now().isoformat(timespec="seconds").replace(":", "-")
+    counts_path = outdir / f"{now}_ngram_counts_min{args.min_count}.json"
+    seeds_out_path = outdir / f"{now}_seed_terms_min{args.min_count}.json"
+
+    # filter by min_count using non-overlapping totals
+    survivors = [g for g in gram_str_to_tuple.keys() if non_overlapping[g] >= args.min_count]
+    # stable, useful ordering for downstream: by count desc, then alpha
+    survivors_sorted = sorted(survivors, key=lambda g: (-non_overlapping[g], g))
+    survivor_counts = {g: int(non_overlapping[g]) for g in survivors_sorted}
+
+    # evaluation JSON (only survivors in "counts")
+    eval_out = {
         "meta": {
             "timestamp": now,
             "db": args.db,
@@ -234,6 +244,8 @@ def main():
             "total_tokens": total_tokens,
             "seed_terms_file": str(Path(args.ngrams).resolve()),
             "limit": args.limit,
+            "min_count": args.min_count,
+            "count_basis": "total_non_overlapping"  # filtering + exported counts are based on this
         },
         "overlap_summary_all": {
             "docs_with_any_overlap": docs_with_any_overlap_all,
@@ -250,12 +262,12 @@ def main():
         "counts": {}
     }
 
-    for g in sorted(gram_str_to_tuple.keys()):
+    for g in survivors_sorted:
         tup = gram_str_to_tuple[g]
         n = len(tup)
         total_all = overlap_allowed[g]
         total_nonov = non_overlapping[g]
-        out["counts"][g] = {
+        eval_out["counts"][g] = {
             "tokens": list(tup),
             "len": n,
             "doc_freq": doc_freq[g],
@@ -267,11 +279,24 @@ def main():
             "overlap_rate_instances_excl_unigrams": (overlapped_instances_excl1[g] / total_all) if total_all else 0.0
         }
 
-    Path(args.out).write_text(json.dumps(out, indent=2), encoding="utf-8")
-    print(f"Wrote {args.out}")
+    # write files
+    counts_path.write_text(json.dumps(eval_out, indent=2), encoding="utf-8")
+
+    seeds_out = {
+        "meta": {
+            "generated_at": now,
+            "min_count": args.min_count,
+            "count_basis": "total_non_overlapping"
+        },
+        "seed_terms": survivors_sorted,          # backward-compatible list
+        "seed_term_counts": survivor_counts      # mapping for downstream computations
+    }
+    seeds_out_path.write_text(json.dumps(seeds_out, indent=2), encoding="utf-8")
+
+    print(f"Wrote evaluation: {counts_path}")
+    print(f"Wrote filtered seeds: {seeds_out_path}")
     print(f"Docs: {total_docs} | Tokens: {total_tokens}")
-    print(f"[ALL] Any-overlap docs: {docs_with_any_overlap_all} | Overlap instances: {total_overlapping_match_instances_all}")
-    print(f"[NO 1-grams] Any-overlap docs: {docs_with_any_overlap_excl1} | Overlap instances: {total_overlapping_match_instances_excl1}")
+    print(f"Survivors (min_count={args.min_count}, basis=non-overlapping): {len(survivors_sorted)}")
     print("Done.")
 
 
