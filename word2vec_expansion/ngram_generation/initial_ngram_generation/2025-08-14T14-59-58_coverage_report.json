@@ -1,0 +1,2046 @@
+{
+  "meta": {
+    "timestamp": "2025-08-14T14-59-58",
+    "N_docs": 139124,
+    "N_bigrams_total": 4075930,
+    "min_count_phrases": 5,
+    "generate_lengths": [
+      2
+    ],
+    "lambdas": {
+      "lambda_len": 0.0,
+      "lambda_idf": 1.0,
+      "lambda_diff": -1.0,
+      "lambda_boundary": 0.0,
+      "lambda_pmi": 0.0,
+      "lambda_llr": 0.0
+    },
+    "idf_selection_base": "log2(N/df)",
+    "idf_smoothing": "log((N+1)/(df+1))+1",
+    "notes": "Upper bound uses annotated terms only (not gated by min_count)."
+  },
+  "target": {
+    "num_terms": 1463,
+    "total_count": 926925
+  },
+  "scores": {
+    "achieved_sum": 956858,
+    "upper_bound_sum": 990266,
+    "coverage_ratio_vs_target": 1.0322927960730373,
+    "coverage_ratio_vs_upper_bound": 0.9662636099795409
+  },
+  "per_term": {
+    "burp": {
+      "achieved": 71916,
+      "target": 50037
+    },
+    "botox": {
+      "achieved": 40647,
+      "target": 21095
+    },
+    "feel": {
+      "achieved": 39090,
+      "target": 36223
+    },
+    "doctor": {
+      "achieved": 30127,
+      "target": 29212
+    },
+    "procedure": {
+      "achieved": 19080,
+      "target": 16296
+    },
+    "air": {
+      "achieved": 18975,
+      "target": 9503
+    },
+    "throat": {
+      "achieved": 18372,
+      "target": 11501
+    },
+    "help": {
+      "achieved": 16932,
+      "target": 16754
+    },
+    "eat": {
+      "achieved": 16115,
+      "target": 11360
+    },
+    "drink": {
+      "achieved": 15659,
+      "target": 11611
+    },
+    "swallow": {
+      "achieved": 15122,
+      "target": 6773
+    },
+    "year": {
+      "achieved": 14587,
+      "target": 14585
+    },
+    "symptom": {
+      "achieved": 14269,
+      "target": 11888
+    },
+    "thing": {
+      "achieved": 14253,
+      "target": 14220
+    },
+    "gurgle": {
+      "achieved": 13645,
+      "target": 10226
+    },
+    "pain": {
+      "achieved": 11790,
+      "target": 7852
+    },
+    "experience": {
+      "achieved": 11737,
+      "target": 11433
+    },
+    "vomit": {
+      "achieved": 11543,
+      "target": 5954
+    },
+    "bloat": {
+      "achieved": 10841,
+      "target": 9365
+    },
+    "stomach": {
+      "achieved": 10179,
+      "target": 8038
+    },
+    "issue": {
+      "achieved": 9987,
+      "target": 8357
+    },
+    "r": {
+      "achieved": 9439,
+      "target": 273
+    },
+    "cpd": {
+      "achieved": 9272,
+      "target": 106
+    },
+    "gas": {
+      "achieved": 8774,
+      "target": 6475
+    },
+    "reflux": {
+      "achieved": 8575,
+      "target": 4220
+    },
+    "food": {
+      "achieved": 8554,
+      "target": 8196
+    },
+    "rcpd": {
+      "achieved": 8352,
+      "target": 7753
+    },
+    "treatment": {
+      "achieved": 7409,
+      "target": 5935
+    },
+    "sound": {
+      "achieved": 7405,
+      "target": 6940
+    },
+    "muscle": {
+      "achieved": 6711,
+      "target": 5584
+    },
+    "slow": {
+      "achieved": 6604,
+      "target": 2421
+    },
+    "acid": {
+      "achieved": 6190,
+      "target": 2329
+    },
+    "second": {
+      "achieved": 6163,
+      "target": 3680
+    },
+    "relief": {
+      "achieved": 6024,
+      "target": 5203
+    },
+    "surgery": {
+      "achieved": 5796,
+      "target": 4853
+    },
+    "test": {
+      "achieved": 5627,
+      "target": 5186
+    },
+    "exercise": {
+      "achieved": 5539,
+      "target": 3148
+    },
+    "throw": {
+      "achieved": 5215,
+      "target": 271
+    },
+    "condition": {
+      "achieved": 5182,
+      "target": 5051
+    },
+    "body": {
+      "achieved": 5000,
+      "target": 4677
+    },
+    "injection": {
+      "achieved": 4946,
+      "target": 2943
+    },
+    "head": {
+      "achieved": 4772,
+      "target": 2721
+    },
+    "appointment": {
+      "achieved": 4714,
+      "target": 4448
+    },
+    "anxiety": {
+      "achieved": 4652,
+      "target": 4254
+    },
+    "ent": {
+      "achieved": 4616,
+      "target": 4569
+    },
+    "nausea": {
+      "achieved": 4484,
+      "target": 3818
+    },
+    "pressure": {
+      "achieved": 4371,
+      "target": 3009
+    },
+    "talk": {
+      "achieved": 4253,
+      "target": 4172
+    },
+    "unit": {
+      "achieved": 4253,
+      "target": 1634
+    },
+    "treat": {
+      "achieved": 4190,
+      "target": 4188
+    },
+    "gag": {
+      "achieved": 3943,
+      "target": 2741
+    },
+    "insurance": {
+      "achieved": 3937,
+      "target": 2888
+    },
+    "worth": {
+      "achieved": 3814,
+      "target": 3814
+    },
+    "force": {
+      "achieved": 3764,
+      "target": 2019
+    },
+    "esophagus": {
+      "achieved": 3745,
+      "target": 3227
+    },
+    "office": {
+      "achieved": 3728,
+      "target": 3091
+    },
+    "believe": {
+      "achieved": 3689,
+      "target": 2720
+    },
+    "emetophobia": {
+      "achieved": 3590,
+      "target": 3477
+    },
+    "case": {
+      "achieved": 3501,
+      "target": 3403
+    },
+    "hiccup": {
+      "achieved": 3501,
+      "target": 2978
+    },
+    "push": {
+      "achieved": 3471,
+      "target": 2646
+    },
+    "worry": {
+      "achieved": 3456,
+      "target": 3348
+    },
+    "understand": {
+      "achieved": 3433,
+      "target": 3255
+    },
+    "suffer": {
+      "achieved": 3371,
+      "target": 3267
+    },
+    "cure": {
+      "achieved": 3363,
+      "target": 3008
+    },
+    "relax": {
+      "achieved": 3334,
+      "target": 2627
+    },
+    "100": {
+      "achieved": 3327,
+      "target": 2146
+    },
+    "breathe": {
+      "achieved": 3307,
+      "target": 2810
+    },
+    "sleep": {
+      "achieved": 3176,
+      "target": 3169
+    },
+    "neck": {
+      "achieved": 3139,
+      "target": 2594
+    },
+    "noburp": {
+      "achieved": 3106,
+      "target": 3106
+    },
+    "uncomfortable": {
+      "achieved": 3087,
+      "target": 2664
+    },
+    "result": {
+      "achieved": 3085,
+      "target": 2921
+    },
+    "microburp": {
+      "achieved": 3022,
+      "target": 3003
+    },
+    "shaker": {
+      "achieved": 3014,
+      "target": 767
+    },
+    "practice": {
+      "achieved": 3012,
+      "target": 2712
+    },
+    "dose": {
+      "achieved": 2955,
+      "target": 1507
+    },
+    "sick": {
+      "achieved": 2934,
+      "target": 2184
+    },
+    "constant": {
+      "achieved": 2911,
+      "target": 2592
+    },
+    "mouth": {
+      "achieved": 2904,
+      "target": 2435
+    },
+    "patient": {
+      "achieved": 2871,
+      "target": 2867
+    },
+    "struggle": {
+      "achieved": 2805,
+      "target": 2579
+    },
+    "diagnose": {
+      "achieved": 2712,
+      "target": 2709
+    },
+    "control": {
+      "achieved": 2705,
+      "target": 2489
+    },
+    "fart": {
+      "achieved": 2687,
+      "target": 2383
+    },
+    "related": {
+      "achieved": 2601,
+      "target": 2471
+    },
+    "carbonate": {
+      "achieved": 2588,
+      "target": 732
+    },
+    "specialist": {
+      "achieved": 2567,
+      "target": 2390
+    },
+    "loud": {
+      "achieved": 2526,
+      "target": 2506
+    },
+    "anesthesia": {
+      "achieved": 2502,
+      "target": 1138
+    },
+    "gi": {
+      "achieved": 2467,
+      "target": 1423
+    },
+    "noise": {
+      "achieved": 2463,
+      "target": 1568
+    },
+    "sit": {
+      "achieved": 2421,
+      "target": 1909
+    },
+    "discomfort": {
+      "achieved": 2395,
+      "target": 2267
+    },
+    "sore": {
+      "achieved": 2375,
+      "target": 718
+    },
+    "op": {
+      "achieved": 2276,
+      "target": 667
+    },
+    "cost": {
+      "achieved": 2212,
+      "target": 2209
+    },
+    "burper": {
+      "achieved": 2192,
+      "target": 684
+    },
+    "severe": {
+      "achieved": 2186,
+      "target": 1906
+    },
+    "trigger": {
+      "achieved": 2167,
+      "target": 1997
+    },
+    "round": {
+      "achieved": 2152,
+      "target": 883
+    },
+    "stuck": {
+      "achieved": 2137,
+      "target": 1033
+    },
+    "beer": {
+      "achieved": 2130,
+      "target": 2130
+    },
+    "trap": {
+      "achieved": 2123,
+      "target": 721
+    },
+    "cough": {
+      "achieved": 2096,
+      "target": 1977
+    },
+    "nauseous": {
+      "achieved": 2025,
+      "target": 1160
+    },
+    "medication": {
+      "achieved": 2024,
+      "target": 1876
+    },
+    "breath": {
+      "achieved": 2008,
+      "target": 1097
+    },
+    "gerd": {
+      "achieved": 2001,
+      "target": 1989
+    },
+    "taste": {
+      "achieved": 1984,
+      "target": 1919
+    },
+    "croak": {
+      "achieved": 1966,
+      "target": 1835
+    },
+    "hospital": {
+      "achieved": 1956,
+      "target": 1950
+    },
+    "bubble": {
+      "achieved": 1942,
+      "target": 1205
+    },
+    "excite": {
+      "achieved": 1939,
+      "target": 983
+    },
+    "inability": {
+      "achieved": 1935,
+      "target": 406
+    },
+    "research": {
+      "achieved": 1903,
+      "target": 1765
+    },
+    "referral": {
+      "achieved": 1847,
+      "target": 1830
+    },
+    "position": {
+      "achieved": 1684,
+      "target": 1611
+    },
+    "choke": {
+      "achieved": 1678,
+      "target": 1541
+    },
+    "suck": {
+      "achieved": 1671,
+      "target": 1671
+    },
+    "baby": {
+      "achieved": 1653,
+      "target": 1653
+    },
+    "progress": {
+      "achieved": 1651,
+      "target": 1652
+    },
+    "regurgitation": {
+      "achieved": 1638,
+      "target": 1623
+    },
+    "curious": {
+      "achieved": 1637,
+      "target": 1637
+    },
+    "nervous": {
+      "achieved": 1632,
+      "target": 1630
+    },
+    "endoscopy": {
+      "achieved": 1596,
+      "target": 1596
+    },
+    "stress": {
+      "achieved": 1588,
+      "target": 1581
+    },
+    "fast": {
+      "achieved": 1580,
+      "target": 1580
+    },
+    "recovery": {
+      "achieved": 1561,
+      "target": 1469
+    },
+    "scared": {
+      "achieved": 1560,
+      "target": 1497
+    },
+    "study": {
+      "achieved": 1549,
+      "target": 1549
+    },
+    "awful": {
+      "achieved": 1543,
+      "target": 1465
+    },
+    "ibs": {
+      "achieved": 1530,
+      "target": 1530
+    },
+    "stretch": {
+      "achieved": 1523,
+      "target": 1322
+    },
+    "alone": {
+      "achieved": 1500,
+      "target": 1439
+    },
+    "doc": {
+      "achieved": 1482,
+      "target": 1284
+    },
+    "hernia": {
+      "achieved": 1473,
+      "target": 444
+    },
+    "laugh": {
+      "achieved": 1466,
+      "target": 1428
+    },
+    "gp": {
+      "achieved": 1464,
+      "target": 1429
+    },
+    "sensation": {
+      "achieved": 1459,
+      "target": 1312
+    },
+    "pill": {
+      "achieved": 1450,
+      "target": 956
+    },
+    "alcohol": {
+      "achieved": 1445,
+      "target": 1414
+    },
+    "ues": {
+      "achieved": 1445,
+      "target": 1437
+    },
+    "shot": {
+      "achieved": 1433,
+      "target": 1206
+    },
+    "consultation": {
+      "achieved": 1429,
+      "target": 1426
+    },
+    "anxious": {
+      "achieved": 1407,
+      "target": 1342
+    },
+    "esophageal": {
+      "achieved": 1400,
+      "target": 581
+    },
+    "sphincter": {
+      "achieved": 1391,
+      "target": 699
+    },
+    "train": {
+      "achieved": 1385,
+      "target": 1385
+    },
+    "natural": {
+      "achieved": 1315,
+      "target": 1300
+    },
+    "concern": {
+      "achieved": 1311,
+      "target": 1311
+    },
+    "miserable": {
+      "achieved": 1285,
+      "target": 1053
+    },
+    "nhs": {
+      "achieved": 1276,
+      "target": 1276
+    },
+    "surprise": {
+      "achieved": 1258,
+      "target": 1258
+    },
+    "develop": {
+      "achieved": 1234,
+      "target": 1198
+    },
+    "community": {
+      "achieved": 1219,
+      "target": 1210
+    },
+    "panic": {
+      "achieved": 1215,
+      "target": 696
+    },
+    "disorder": {
+      "achieved": 1208,
+      "target": 884
+    },
+    "heartburn": {
+      "achieved": 1182,
+      "target": 1113
+    },
+    "rare": {
+      "achieved": 1174,
+      "target": 1174
+    },
+    "annoy": {
+      "achieved": 1155,
+      "target": 983
+    },
+    "kid": {
+      "achieved": 1144,
+      "target": 1144
+    },
+    "tight": {
+      "achieved": 1124,
+      "target": 1107
+    },
+    "embarrass": {
+      "achieved": 1104,
+      "target": 1072
+    },
+    "manometry": {
+      "achieved": 1093,
+      "target": 1093
+    },
+    "barium": {
+      "achieved": 1088,
+      "target": 204
+    },
+    "excessive": {
+      "achieved": 1082,
+      "target": 647
+    },
+    "flatulence": {
+      "achieved": 1080,
+      "target": 795
+    },
+    "contact": {
+      "achieved": 1069,
+      "target": 1069
+    },
+    "puke": {
+      "achieved": 1028,
+      "target": 993
+    },
+    "teach": {
+      "achieved": 995,
+      "target": 947
+    },
+    "carbonation": {
+      "achieved": 987,
+      "target": 986
+    },
+    "hiatal": {
+      "achieved": 987,
+      "target": 12
+    },
+    "incredible": {
+      "achieved": 981,
+      "target": 980
+    },
+    "attack": {
+      "achieved": 978,
+      "target": 459
+    },
+    "pop": {
+      "achieved": 976,
+      "target": 969
+    },
+    "frustrate": {
+      "achieved": 969,
+      "target": 869
+    },
+    "consult": {
+      "achieved": 938,
+      "target": 938
+    },
+    "les": {
+      "achieved": 931,
+      "target": 927
+    },
+    "ga": {
+      "achieved": 923,
+      "target": 881
+    },
+    "technique": {
+      "achieved": 916,
+      "target": 876
+    },
+    "convince": {
+      "achieved": 915,
+      "target": 892
+    },
+    "permanent": {
+      "achieved": 912,
+      "target": 893
+    },
+    "escape": {
+      "achieved": 885,
+      "target": 663
+    },
+    "bother": {
+      "achieved": 882,
+      "target": 882
+    },
+    "anesthetic": {
+      "achieved": 851,
+      "target": 736
+    },
+    "intense": {
+      "achieved": 851,
+      "target": 760
+    },
+    "digestive": {
+      "achieved": 846,
+      "target": 304
+    },
+    "coffee": {
+      "achieved": 830,
+      "target": 822
+    },
+    "public": {
+      "achieved": 826,
+      "target": 821
+    },
+    "chronic": {
+      "achieved": 819,
+      "target": 621
+    },
+    "uncontrollable": {
+      "achieved": 805,
+      "target": 538
+    },
+    "posture": {
+      "achieved": 801,
+      "target": 705
+    },
+    "dysfunction": {
+      "achieved": 791,
+      "target": 642
+    },
+    "scope": {
+      "achieved": 783,
+      "target": 734
+    },
+    "constipation": {
+      "achieved": 778,
+      "target": 777
+    },
+    "bvi": {
+      "achieved": 777,
+      "target": 777
+    },
+    "receive": {
+      "achieved": 773,
+      "target": 702
+    },
+    "needle": {
+      "achieved": 769,
+      "target": 752
+    },
+    "movement": {
+      "achieved": 767,
+      "target": 755
+    },
+    "worsen": {
+      "achieved": 758,
+      "target": 557
+    },
+    "diaphragm": {
+      "achieved": 754,
+      "target": 751
+    },
+    "burn": {
+      "achieved": 749,
+      "target": 636
+    },
+    "gastroenterologist": {
+      "achieved": 745,
+      "target": 745
+    },
+    "wiki": {
+      "achieved": 740,
+      "target": 740
+    },
+    "tube": {
+      "achieved": 735,
+      "target": 734
+    },
+    "gassy": {
+      "achieved": 720,
+      "target": 699
+    },
+    "covid": {
+      "achieved": 713,
+      "target": 713
+    },
+    "frequent": {
+      "achieved": 702,
+      "target": 702
+    },
+    "country": {
+      "achieved": 701,
+      "target": 701
+    },
+    "exist": {
+      "achieved": 700,
+      "target": 638
+    },
+    "theory": {
+      "achieved": 699,
+      "target": 699
+    },
+    "gut": {
+      "achieved": 698,
+      "target": 649
+    },
+    "calm": {
+      "achieved": 684,
+      "target": 683
+    },
+    "pregnancy": {
+      "achieved": 681,
+      "target": 681
+    },
+    "damage": {
+      "achieved": 672,
+      "target": 565
+    },
+    "abdominal": {
+      "achieved": 669,
+      "target": 448
+    },
+    "lump": {
+      "achieved": 668,
+      "target": 668
+    },
+    "shoulder": {
+      "achieved": 666,
+      "target": 650
+    },
+    "tense": {
+      "achieved": 652,
+      "target": 615
+    },
+    "phobia": {
+      "achieved": 648,
+      "target": 579
+    },
+    "surgeon": {
+      "achieved": 647,
+      "target": 637
+    },
+    "article": {
+      "achieved": 636,
+      "target": 599
+    },
+    "chug": {
+      "achieved": 635,
+      "target": 624
+    },
+    "tea": {
+      "achieved": 634,
+      "target": 578
+    },
+    "camera": {
+      "achieved": 627,
+      "target": 620
+    },
+    "omeprazole": {
+      "achieved": 603,
+      "target": 603
+    },
+    "tired": {
+      "achieved": 601,
+      "target": 601
+    },
+    "smell": {
+      "achieved": 567,
+      "target": 567
+    },
+    "hungry": {
+      "achieved": 553,
+      "target": 553
+    },
+    "ache": {
+      "achieved": 541,
+      "target": 222
+    },
+    "vocal": {
+      "achieved": 539,
+      "target": 156
+    },
+    "gastro": {
+      "achieved": 536,
+      "target": 470
+    },
+    "abdomen": {
+      "achieved": 525,
+      "target": 522
+    },
+    "spit": {
+      "achieved": 525,
+      "target": 479
+    },
+    "dysphagia": {
+      "achieved": 523,
+      "target": 516
+    },
+    "antacid": {
+      "achieved": 520,
+      "target": 449
+    },
+    "involuntary": {
+      "achieved": 517,
+      "target": 389
+    },
+    "desperate": {
+      "achieved": 515,
+      "target": 513
+    },
+    "jaw": {
+      "achieved": 514,
+      "target": 495
+    },
+    "hopeful": {
+      "achieved": 513,
+      "target": 513
+    },
+    "debilitate": {
+      "achieved": 511,
+      "target": 494
+    },
+    "sibo": {
+      "achieved": 508,
+      "target": 508
+    },
+    "flare": {
+      "achieved": 507,
+      "target": 104
+    },
+    "cricopharyngeal": {
+      "achieved": 503,
+      "target": 123
+    },
+    "violent": {
+      "achieved": 499,
+      "target": 461
+    },
+    "connection": {
+      "achieved": 494,
+      "target": 493
+    },
+    "grateful": {
+      "achieved": 486,
+      "target": 485
+    },
+    "mucus": {
+      "achieved": 486,
+      "target": 465
+    },
+    "fodmap": {
+      "achieved": 482,
+      "target": 286
+    },
+    "intestine": {
+      "achieved": 482,
+      "target": 482
+    },
+    "lung": {
+      "achieved": 474,
+      "target": 473
+    },
+    "inhale": {
+      "achieved": 471,
+      "target": 457
+    },
+    "regurgitate": {
+      "achieved": 470,
+      "target": 464
+    },
+    "ppis": {
+      "achieved": 465,
+      "target": 461
+    },
+    "anywhere": {
+      "achieved": 455,
+      "target": 455
+    },
+    "200": {
+      "achieved": 448,
+      "target": 448
+    },
+    "primary": {
+      "achieved": 443,
+      "target": 443
+    },
+    "evidence": {
+      "achieved": 439,
+      "target": 418
+    },
+    "tension": {
+      "achieved": 433,
+      "target": 409
+    },
+    "phlegm": {
+      "achieved": 426,
+      "target": 423
+    },
+    "sensitive": {
+      "achieved": 422,
+      "target": 422
+    },
+    "press": {
+      "achieved": 419,
+      "target": 419
+    },
+    "spasm": {
+      "achieved": 415,
+      "target": 415
+    },
+    "drunk": {
+      "achieved": 414,
+      "target": 414
+    },
+    "er": {
+      "achieved": 414,
+      "target": 392
+    },
+    "healthcare": {
+      "achieved": 407,
+      "target": 407
+    },
+    "ab": {
+      "achieved": 405,
+      "target": 369
+    },
+    "digestion": {
+      "achieved": 405,
+      "target": 395
+    },
+    "ms": {
+      "achieved": 403,
+      "target": 403
+    },
+    "iv": {
+      "achieved": 398,
+      "target": 372
+    },
+    "retrograde": {
+      "achieved": 396,
+      "target": 396
+    },
+    "provider": {
+      "achieved": 394,
+      "target": 394
+    },
+    "kaiser": {
+      "achieved": 390,
+      "target": 390
+    },
+    "discourage": {
+      "achieved": 388,
+      "target": 388
+    },
+    "internet": {
+      "achieved": 380,
+      "target": 380
+    },
+    "motility": {
+      "achieved": 380,
+      "target": 285
+    },
+    "myotomy": {
+      "achieved": 376,
+      "target": 376
+    },
+    "cramp": {
+      "achieved": 370,
+      "target": 268
+    },
+    "swell": {
+      "achieved": 361,
+      "target": 360
+    },
+    "childhood": {
+      "achieved": 358,
+      "target": 358
+    },
+    "squeeze": {
+      "achieved": 353,
+      "target": 296
+    },
+    "emetophobe": {
+      "achieved": 349,
+      "target": 321
+    },
+    "gaviscon": {
+      "achieved": 348,
+      "target": 306
+    },
+    "cricoid": {
+      "achieved": 347,
+      "target": 154
+    },
+    "drug": {
+      "achieved": 341,
+      "target": 340
+    },
+    "dilation": {
+      "achieved": 335,
+      "target": 335
+    },
+    "unbearable": {
+      "achieved": 335,
+      "target": 335
+    },
+    "complication": {
+      "achieved": 322,
+      "target": 322
+    },
+    "ppi": {
+      "achieved": 315,
+      "target": 315
+    },
+    "therapist": {
+      "achieved": 311,
+      "target": 224
+    },
+    "scare": {
+      "achieved": 307,
+      "target": 307
+    },
+    "strengthen": {
+      "achieved": 306,
+      "target": 294
+    },
+    "deny": {
+      "achieved": 303,
+      "target": 294
+    },
+    "disgust": {
+      "achieved": 301,
+      "target": 301
+    },
+    "location": {
+      "achieved": 298,
+      "target": 298
+    },
+    "milk": {
+      "achieved": 298,
+      "target": 298
+    },
+    "indigestion": {
+      "achieved": 296,
+      "target": 296
+    },
+    "feedback": {
+      "achieved": 291,
+      "target": 291
+    },
+    "supplement": {
+      "achieved": 288,
+      "target": 283
+    },
+    "spicy": {
+      "achieved": 285,
+      "target": 136
+    },
+    "gastritis": {
+      "achieved": 280,
+      "target": 278
+    },
+    "illness": {
+      "achieved": 276,
+      "target": 276
+    },
+    "pcp": {
+      "achieved": 276,
+      "target": 276
+    },
+    "diagnostic": {
+      "achieved": 272,
+      "target": 250
+    },
+    "disappoint": {
+      "achieved": 268,
+      "target": 261
+    },
+    "gastroscopy": {
+      "achieved": 258,
+      "target": 258
+    },
+    "retch": {
+      "achieved": 258,
+      "target": 252
+    },
+    "ignore": {
+      "achieved": 255,
+      "target": 251
+    },
+    "colonoscopy": {
+      "achieved": 254,
+      "target": 254
+    },
+    "buildup": {
+      "achieved": 248,
+      "target": 248
+    },
+    "flex": {
+      "achieved": 248,
+      "target": 212
+    },
+    "statistic": {
+      "achieved": 244,
+      "target": 244
+    },
+    "laryngospasm": {
+      "achieved": 243,
+      "target": 243
+    },
+    "exhaust": {
+      "achieved": 235,
+      "target": 232
+    },
+    "dangerous": {
+      "achieved": 229,
+      "target": 229
+    },
+    "simethicone": {
+      "achieved": 229,
+      "target": 213
+    },
+    "misery": {
+      "achieved": 227,
+      "target": 217
+    },
+    "anesthesiologist": {
+      "achieved": 223,
+      "target": 223
+    },
+    "spectrum": {
+      "achieved": 222,
+      "target": 222
+    },
+    "abnormal": {
+      "achieved": 221,
+      "target": 221
+    },
+    "cancer": {
+      "achieved": 218,
+      "target": 169
+    },
+    "tears": {
+      "achieved": 214,
+      "target": 200
+    },
+    "antibiotic": {
+      "achieved": 213,
+      "target": 212
+    },
+    "scan": {
+      "achieved": 212,
+      "target": 212
+    },
+    "resource": {
+      "achieved": 211,
+      "target": 211
+    },
+    "zofran": {
+      "achieved": 206,
+      "target": 206
+    },
+    "famotidine": {
+      "achieved": 204,
+      "target": 204
+    },
+    "pepcid": {
+      "achieved": 199,
+      "target": 199
+    },
+    "diarrhea": {
+      "achieved": 198,
+      "target": 198
+    },
+    "underweight": {
+      "achieved": 196,
+      "target": 196
+    },
+    "inflammation": {
+      "achieved": 192,
+      "target": 191
+    },
+    "ct": {
+      "achieved": 189,
+      "target": 189
+    },
+    "gurgly": {
+      "achieved": 183,
+      "target": 176
+    },
+    "dread": {
+      "achieved": 181,
+      "target": 181
+    },
+    "anatomy": {
+      "achieved": 180,
+      "target": 180
+    },
+    "soreness": {
+      "achieved": 180,
+      "target": 167
+    },
+    "fee": {
+      "achieved": 175,
+      "target": 175
+    },
+    "anaesthesia": {
+      "achieved": 174,
+      "target": 174
+    },
+    "growl": {
+      "achieved": 172,
+      "target": 172
+    },
+    "100u": {
+      "achieved": 170,
+      "target": 170
+    },
+    "discussion": {
+      "achieved": 170,
+      "target": 170
+    },
+    "leak": {
+      "achieved": 170,
+      "target": 157
+    },
+    "intubation": {
+      "achieved": 169,
+      "target": 169
+    },
+    "organ": {
+      "achieved": 168,
+      "target": 168
+    },
+    "distress": {
+      "achieved": 167,
+      "target": 163
+    },
+    "aerophagia": {
+      "achieved": 166,
+      "target": 166
+    },
+    "burst": {
+      "achieved": 164,
+      "target": 164
+    },
+    "relaxation": {
+      "achieved": 163,
+      "target": 163
+    },
+    "explode": {
+      "achieved": 160,
+      "target": 157
+    },
+    "sternum": {
+      "achieved": 160,
+      "target": 160
+    },
+    "adhd": {
+      "achieved": 159,
+      "target": 119
+    },
+    "frequency": {
+      "achieved": 157,
+      "target": 155
+    },
+    "hypersalivation": {
+      "achieved": 156,
+      "target": 149
+    },
+    "mint": {
+      "achieved": 155,
+      "target": 142
+    },
+    "department": {
+      "achieved": 154,
+      "target": 154
+    },
+    "probiotics": {
+      "achieved": 154,
+      "target": 152
+    },
+    "depression": {
+      "achieved": 152,
+      "target": 152
+    },
+    "globus": {
+      "achieved": 152,
+      "target": 68
+    },
+    "diary": {
+      "achieved": 151,
+      "target": 151
+    },
+    "bcbs": {
+      "achieved": 150,
+      "target": 150
+    },
+    "investigate": {
+      "achieved": 150,
+      "target": 150
+    },
+    "achalasia": {
+      "achieved": 148,
+      "target": 148
+    },
+    "laryngologist": {
+      "achieved": 148,
+      "target": 148
+    },
+    "fees": {
+      "achieved": 147,
+      "target": 147
+    },
+    "practitioner": {
+      "achieved": 146,
+      "target": 114
+    },
+    "literature": {
+      "achieved": 145,
+      "target": 145
+    },
+    "administer": {
+      "achieved": 138,
+      "target": 137
+    },
+    "alcoholic": {
+      "achieved": 137,
+      "target": 58
+    },
+    "edge": {
+      "achieved": 137,
+      "target": 137
+    },
+    "intolerant": {
+      "achieved": 137,
+      "target": 41
+    },
+    "aggressive": {
+      "achieved": 135,
+      "target": 135
+    },
+    "inflate": {
+      "achieved": 135,
+      "target": 135
+    },
+    "torso": {
+      "achieved": 135,
+      "target": 135
+    },
+    "sweat": {
+      "achieved": 134,
+      "target": 134
+    },
+    "deflate": {
+      "achieved": 133,
+      "target": 133
+    },
+    "pantoprazole": {
+      "achieved": 131,
+      "target": 131
+    },
+    "otolaryngologist": {
+      "achieved": 130,
+      "target": 130
+    },
+    "salad": {
+      "achieved": 126,
+      "target": 126
+    },
+    "downside": {
+      "achieved": 121,
+      "target": 121
+    },
+    "incident": {
+      "achieved": 121,
+      "target": 121
+    },
+    "ocd": {
+      "achieved": 119,
+      "target": 117
+    },
+    "md": {
+      "achieved": 118,
+      "target": 118
+    },
+    "mystery": {
+      "achieved": 117,
+      "target": 117
+    },
+    "painless": {
+      "achieved": 117,
+      "target": 117
+    },
+    "embarrassment": {
+      "achieved": 115,
+      "target": 115
+    },
+    "fullness": {
+      "achieved": 115,
+      "target": 115
+    },
+    "sniff": {
+      "achieved": 115,
+      "target": 115
+    },
+    "pinch": {
+      "achieved": 111,
+      "target": 108
+    },
+    "annoyed": {
+      "achieved": 109,
+      "target": 109
+    },
+    "maneuver": {
+      "achieved": 108,
+      "target": 108
+    },
+    "chiropractor": {
+      "achieved": 107,
+      "target": 107
+    },
+    "esophagitis": {
+      "achieved": 107,
+      "target": 107
+    },
+    "bizarre": {
+      "achieved": 103,
+      "target": 103
+    },
+    "cripple": {
+      "achieved": 101,
+      "target": 101
+    },
+    "virus": {
+      "achieved": 101,
+      "target": 101
+    },
+    "bearable": {
+      "achieved": 100,
+      "target": 100
+    },
+    "tear": {
+      "achieved": 100,
+      "target": 100
+    },
+    "gasx": {
+      "achieved": 98,
+      "target": 98
+    },
+    "screen": {
+      "achieved": 93,
+      "target": 93
+    },
+    "waitlist": {
+      "achieved": 91,
+      "target": 91
+    },
+    "tender": {
+      "achieved": 90,
+      "target": 90
+    },
+    "heds": {
+      "achieved": 87,
+      "target": 87
+    },
+    "pandemic": {
+      "achieved": 84,
+      "target": 84
+    },
+    "acupuncture": {
+      "achieved": 81,
+      "target": 81
+    },
+    "inconvenient": {
+      "achieved": 81,
+      "target": 81
+    },
+    "slim": {
+      "achieved": 81,
+      "target": 81
+    },
+    "examination": {
+      "achieved": 80,
+      "target": 80
+    },
+    "inevitable": {
+      "achieved": 80,
+      "target": 80
+    },
+    "fever": {
+      "achieved": 78,
+      "target": 75
+    },
+    "imaging": {
+      "achieved": 77,
+      "target": 77
+    },
+    "exaggerate": {
+      "achieved": 73,
+      "target": 73
+    },
+    "association": {
+      "achieved": 72,
+      "target": 72
+    },
+    "pee": {
+      "achieved": 71,
+      "target": 71
+    },
+    "meditation": {
+      "achieved": 70,
+      "target": 70
+    },
+    "socialize": {
+      "achieved": 70,
+      "target": 69
+    },
+    "impress": {
+      "achieved": 69,
+      "target": 69
+    },
+    "cannabis": {
+      "achieved": 68,
+      "target": 68
+    },
+    "hypermobile": {
+      "achieved": 67,
+      "target": 67
+    },
+    "overeating": {
+      "achieved": 67,
+      "target": 67
+    },
+    "endometriosis": {
+      "achieved": 66,
+      "target": 66
+    },
+    "sleepy": {
+      "achieved": 66,
+      "target": 66
+    },
+    "medicaid": {
+      "achieved": 65,
+      "target": 65
+    },
+    "laryngopedia": {
+      "achieved": 64,
+      "target": 64
+    },
+    "publication": {
+      "achieved": 63,
+      "target": 63
+    },
+    "curse": {
+      "achieved": 62,
+      "target": 62
+    },
+    "manipulate": {
+      "achieved": 62,
+      "target": 62
+    },
+    "painkiller": {
+      "achieved": 61,
+      "target": 60
+    },
+    "inhaler": {
+      "achieved": 58,
+      "target": 58
+    },
+    "independent": {
+      "achieved": 57,
+      "target": 57
+    },
+    "roar": {
+      "achieved": 57,
+      "target": 57
+    },
+    "cbd": {
+      "achieved": 55,
+      "target": 55
+    },
+    "devastate": {
+      "achieved": 54,
+      "target": 54
+    },
+    "eoe": {
+      "achieved": 54,
+      "target": 54
+    },
+    "metabolism": {
+      "achieved": 54,
+      "target": 54
+    },
+    "confusion": {
+      "achieved": 50,
+      "target": 50
+    },
+    "psyche": {
+      "achieved": 50,
+      "target": 49
+    },
+    "detect": {
+      "achieved": 49,
+      "target": 49
+    },
+    "paracetamol": {
+      "achieved": 48,
+      "target": 48
+    },
+    "peristalsis": {
+      "achieved": 48,
+      "target": 48
+    },
+    "revelation": {
+      "achieved": 48,
+      "target": 48
+    },
+    "pathology": {
+      "achieved": 47,
+      "target": 46
+    },
+    "baffle": {
+      "achieved": 46,
+      "target": 46
+    },
+    "130": {
+      "achieved": 44,
+      "target": 44
+    },
+    "inconsistent": {
+      "achieved": 44,
+      "target": 43
+    },
+    "disregard": {
+      "achieved": 43,
+      "target": 36
+    },
+    "collarbone": {
+      "achieved": 42,
+      "target": 42
+    },
+    "disbelief": {
+      "achieved": 41,
+      "target": 41
+    },
+    "co2": {
+      "achieved": 40,
+      "target": 40
+    },
+    "pseudo": {
+      "achieved": 39,
+      "target": 31
+    },
+    "gummy": {
+      "achieved": 38,
+      "target": 38
+    },
+    "ohip": {
+      "achieved": 38,
+      "target": 38
+    },
+    "depressing": {
+      "achieved": 35,
+      "target": 35
+    },
+    "lightheaded": {
+      "achieved": 35,
+      "target": 35
+    },
+    "methane": {
+      "achieved": 35,
+      "target": 28
+    },
+    "nissen": {
+      "achieved": 35,
+      "target": 34
+    },
+    "unnatural": {
+      "achieved": 35,
+      "target": 35
+    },
+    "delight": {
+      "achieved": 33,
+      "target": 33
+    },
+    "nuisance": {
+      "achieved": 33,
+      "target": 33
+    },
+    "freaky": {
+      "achieved": 31,
+      "target": 31
+    },
+    "mock": {
+      "achieved": 30,
+      "target": 29
+    },
+    "pelvis": {
+      "achieved": 30,
+      "target": 30
+    },
+    "substitute": {
+      "achieved": 30,
+      "target": 30
+    },
+    "dramamine": {
+      "achieved": 28,
+      "target": 28
+    },
+    "hyperventilate": {
+      "achieved": 28,
+      "target": 28
+    },
+    "humiliate": {
+      "achieved": 26,
+      "target": 26
+    },
+    "hypnosis": {
+      "achieved": 26,
+      "target": 26
+    },
+    "intolerable": {
+      "achieved": 26,
+      "target": 25
+    },
+    "motrin": {
+      "achieved": 25,
+      "target": 25
+    },
+    "osteopath": {
+      "achieved": 25,
+      "target": 25
+    },
+    "antihistamine": {
+      "achieved": 23,
+      "target": 23
+    },
+    "arthritis": {
+      "achieved": 21,
+      "target": 21
+    },
+    "demographics": {
+      "achieved": 19,
+      "target": 19
+    },
+    "tachycardia": {
+      "achieved": 19,
+      "target": 18
+    },
+    "insertion": {
+      "achieved": 16,
+      "target": 16
+    },
+    "summon": {
+      "achieved": 16,
+      "target": 16
+    },
+    "unproductive": {
+      "achieved": 14,
+      "target": 14
+    },
+    "albuterol": {
+      "achieved": 13,
+      "target": 13
+    },
+    "telemed": {
+      "achieved": 12,
+      "target": 12
+    },
+    "pantoprazol": {
+      "achieved": 11,
+      "target": 11
+    },
+    "nitrogenize": {
+      "achieved": 10,
+      "target": 10
+    },
+    "yack": {
+      "achieved": 10,
+      "target": 10
+    },
+    "agoraphobic": {
+      "achieved": 9,
+      "target": 9
+    },
+    "defective": {
+      "achieved": 9,
+      "target": 9
+    },
+    "orgasm": {
+      "achieved": 9,
+      "target": 9
+    },
+    "pooch": {
+      "achieved": 9,
+      "target": 9
+    },
+    "rheumatologist": {
+      "achieved": 9,
+      "target": 9
+    },
+    "gastroenteritis": {
+      "achieved": 8,
+      "target": 8
+    },
+    "pneumothorax": {
+      "achieved": 8,
+      "target": 8
+    },
+    "ranitidine": {
+      "achieved": 8,
+      "target": 8
+    },
+    "succinylcholine": {
+      "achieved": 8,
+      "target": 8
+    },
+    "tum": {
+      "achieved": 8,
+      "target": 8
+    },
+    "uncoordinated": {
+      "achieved": 8,
+      "target": 8
+    },
+    "misalignment": {
+      "achieved": 7,
+      "target": 7
+    },
+    "asphyxiate": {
+      "achieved": 6,
+      "target": 6
+    },
+    "mirena": {
+      "achieved": 6,
+      "target": 6
+    },
+    "bleb": {
+      "achieved": 5,
+      "target": 5
+    },
+    "borborygmus": {
+      "achieved": 5,
+      "target": 5
+    },
+    "flustered": {
+      "achieved": 5,
+      "target": 5
+    },
+    "myalgia": {
+      "achieved": 5,
+      "target": 5
+    },
+    "palpate": {
+      "achieved": 5,
+      "target": 5
+    },
+    "psychotherapist": {
+      "achieved": 5,
+      "target": 5
+    },
+    "thorax": {
+      "achieved": 5,
+      "target": 5
+    }
+  }
+}
