@@ -1,4 +1,5 @@
 import sys
+from typing import List
 sys.path.append('../vocal_disorder')
 from tokenizer import clean_and_tokenize
 from utils.load_lemmatizer import load_lookup
@@ -25,3 +26,9 @@ def process_text(text, stoplist = True, lemmatize = True, lookup_path='testing/c
     text = ' '.join(toks)
     toks = clean_and_tokenize(text)
     return toks
+
+def remove_unigram_stopwords(tokens: List[str]) -> List[str]:
+    """
+    apply only unigram stopword removal from the process text function
+    """
+    return [t for t in tokens if t not in STOPWORDS]

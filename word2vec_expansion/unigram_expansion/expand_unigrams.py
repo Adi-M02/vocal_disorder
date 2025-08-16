@@ -62,7 +62,7 @@ if __name__ == "__main__":
                    help="Path to Word2Vec .model file (not just directory)")
     p.add_argument("--seed_json",  required=True,
                    help="JSON with seed terms (list or {cat: [terms]})")
-    p.add_argument("--topk", type=int, default=20)
-    p.add_argument("--min_cos", type=float)
+    p.add_argument("--topk", type=int, default=25)
+    p.add_argument("--min_cos", type=float, default=0.4)
     args = p.parse_args()
     main(args)

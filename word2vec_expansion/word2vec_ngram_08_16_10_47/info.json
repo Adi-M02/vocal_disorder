@@ -1,0 +1,8 @@
+{
+  "vector_size": 300,
+  "window": 7,
+  "min_count": 5,
+  "outdir": null,
+  "timestamp": "2025-08-16T10:47:44.927901",
+  "phraser": "word2phrase_saved_phrasers/run_20250816_102701"
+}
