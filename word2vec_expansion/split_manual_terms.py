@@ -8,8 +8,7 @@ from pathlib import Path
 import random
 
 sys.path.append('../vocal_disorder')
-from utils.text_pipeline import process_text
-
+from utils.text_pipeline import process_text, remove_unigram_stopwords
 # custom stopword list
 from utils.stopwords import STOPWORDS
 STOPWORDS = set(STOPWORDS)
@@ -36,7 +35,7 @@ def main():
                    help="Fraction (0.0–1.0) of terms to include in the seed JSON")
     p.add_argument('--max_ngram', '-m', type=int, required=True,
                    help="Maximum number of tokens per term (after normalization)")
-    p.add_argument('--min_ngram', '-n', type=int, default=None,
+    p.add_argument('--min_ngram', '-n', type=int, default=1,
                    help="Minimum number of tokens per term (after normalization)")
     args = p.parse_args()
 
@@ -49,47 +48,16 @@ def main():
     logging.info(f"Loaded {len(raw_terms)} raw terms")
 
     # 2) normalize each phrase but keep it as one unit (list of tokens per term)
-    processed_terms = [process_text(term) for term in raw_terms]
+    processed_terms = [process_text(term, stoplist=False) for term in raw_terms]
 
-    # 2a) remove stopwords BEFORE n-gram length filtering; log any changes
     outdir = Path(args.outdir)
-    outdir.mkdir(parents=True, exist_ok=True)
-    stopword_log_path = outdir / f"{args.max_ngram}_gram_stopword_removals.jsonl"
-
-    changed_count = 0
-    empty_after_removal = 0
-    with stopword_log_path.open('w', encoding='utf-8') as logf:
-        terms_no_stop = []
-        for raw, toks in zip(raw_terms, processed_terms):
-            kept, removed = remove_stopwords(toks)
-            if removed:
-                changed_count += 1
-                record = {
-                    "raw_term": raw,
-                    "processed_tokens": toks,
-                    "removed_stopwords": removed,
-                    "after_removal": kept,
-                    "note": "empty_after_removal" if len(kept) == 0 else "ok"
-                }
-                json.dump(record, logf, ensure_ascii=False)
-                logf.write("\n")
-            if len(kept) == 0:
-                empty_after_removal += 1
-            terms_no_stop.append(kept)
-
-    logging.info(f"Stopword changes: {changed_count} terms affected; "
-                 f"{empty_after_removal} became empty after removal")
-    logging.info(f"Wrote stopword-change log to {stopword_log_path}")
-
-    # Replace processed_terms with stopword-removed version
-    processed_terms = terms_no_stop
 
     # 2b) filter by n-gram length AFTER stopword removal
     #     (drop empties automatically by the length checks)
     filtered_terms = [
         toks for toks in processed_terms
         if len(toks) <= args.max_ngram
-        and (args.min_ngram is None or len(toks) > args.min_ngram)
+        and len(toks) >= args.min_ngram
     ]
 
     # remove duplicates (list-of-tokens -> tuple -> set -> list)
@@ -100,11 +68,15 @@ def main():
     n_seed = int(len(filtered_terms) * args.seed_percent)
     seed_terms = filtered_terms[:n_seed]
 
-    # 5) convert each token list into a space-joined phrase
-    seed_strings = [" ".join(tokens) for tokens in seed_terms]
+    # 5) convert each token list into a _-joined phrase
+    seed_strings = ["_".join(tokens) for tokens in seed_terms]
 
     # 6) write seed_terms.json
-    seed_path = outdir / f"{args.max_ngram}_gram_seed_terms.json"
+    if args.min_ngram != args.max_ngram:
+        seed_filename = f"{args.min_ngram}_to_{args.max_ngram}_gram_seed_terms.json"
+    else:
+        seed_filename = f"{args.max_ngram}_gram_seed_terms.json"
+    seed_path = outdir / seed_filename
     with seed_path.open('w', encoding='utf-8') as f:
         json.dump({'seed_terms': seed_strings}, f, ensure_ascii=False, indent=2)
 

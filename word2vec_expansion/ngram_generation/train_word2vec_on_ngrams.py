@@ -97,6 +97,10 @@ def main():
         help="Ignore tokens with total frequency lower than this."
     )
     parser.add_argument(
+        "--ngram_phrasers_dir", type=str, default='word2phrase_saved_phrasers/run_20250816_102701',
+        help="Directory containing n-gram phrasers."
+    )
+    parser.add_argument(
         "--outdir", type=str, default=None,
         help="Output directory to save models and info."
     )
@@ -115,7 +119,7 @@ def main():
 
     # process text and apply ngram combination
     docs = process_all_noburp(stoplist=False) # load non stoplisted docs
-    bigram, trigram = load_phrasers_from_dir('word2phrase_saved_phrasers/run_20250816_102701')
+    bigram, trigram = load_phrasers_from_dir(args.ngram_phrasers_dir)
     cleaned_docs = []
     for doc in docs:
         doc = apply_ngrams(doc, (bigram, trigram))

@@ -4,7 +4,6 @@ from datetime import datetime
 from gensim.models import Word2Vec
 
 sys.path.append("../vocal_disorder")
-from utils.text_pipeline import process_text
 from utils.load_json import load_json
 
 def get_arch(model_path: Path, model: Word2Vec):
@@ -47,7 +46,6 @@ def main(args):
     seed_terms = ( [t for lst in seeds_obj.values() for t in lst]
                    if isinstance(seeds_obj, dict)
                    else seeds_obj )
-    seed_terms = [" ".join(process_text(t)) for t in seed_terms]
 
     results = {s: most_similar(model, s, args.topk, args.min_cos) for s in seed_terms}
     out_dir  = model_file.parent 
