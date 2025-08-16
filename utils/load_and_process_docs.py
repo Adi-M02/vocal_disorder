@@ -4,6 +4,7 @@ import sys
 import logging
 from typing import Iterator, Any, Dict, List
 from concurrent.futures import ProcessPoolExecutor
+from functools import partial
 
 import pymongo
 from tqdm import tqdm
@@ -32,20 +33,23 @@ def _init_worker():
     os.environ.setdefault("OMP_NUM_THREADS", "1")
     os.environ.setdefault("MKL_NUM_THREADS", "1")
 
-def _process_one(text: str) -> List[str]:
+def _process_one(text: str, stoplist = True, lemmatize = True) -> List[str]:
     """Your process_text logic using preloaded lookup."""
     assert _LOOKUP is not None, "Worker not initialized; missing lookup."
 
     toks = clean_and_tokenize(text)
-    toks = [_LOOKUP.get(tok, tok) for tok in toks]
+    if lemmatize:
+        toks = [_LOOKUP.get(tok, tok) for tok in toks]
 
     text = " ".join(toks)
     toks = clean_and_tokenize(text)
 
     toks = spellcheck_token_list(toks)
 
-    toks = [_LOOKUP.get(tok, tok) for tok in toks]
-    toks = [tok for tok in toks if tok not in STOPWORDS]
+    if lemmatize:
+        toks = [_LOOKUP.get(tok, tok) for tok in toks]
+    if stoplist:
+        toks = [tok for tok in toks if tok not in STOPWORDS]
 
     text = " ".join(toks)
     toks = clean_and_tokenize(text)
@@ -105,6 +109,8 @@ def process_all_noburp(
     max_workers: int | None = None,
     chunksize: int = 2000,
     show_progress: bool = True,
+    stoplist: bool = True,
+    lemmatize: bool = True
 ) -> List[List[str]]:
     """End-to-end: fetch noburp docs → parallel process → collect."""
     if max_workers is None:
@@ -123,7 +129,8 @@ def process_all_noburp(
         max_workers=max_workers,
         initializer=_init_worker,
     ) as ex:
-        mapped = ex.map(_process_one, doc_iter, chunksize=chunksize)
+        worker = partial(_process_one, stoplist=stoplist, lemmatize=lemmatize)
+        mapped = ex.map(worker, doc_iter, chunksize=chunksize)
         if show_progress:
             for toks in tqdm(mapped, unit="doc"):
                 results.append(toks)
