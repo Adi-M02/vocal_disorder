@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """
 Augment seed terms using an LLM (via Ollama) to judge semantic relatedness
-between each seed and its expansion candidates.
+between each seed and its expansion candidates, with LLM-based "closure" rounds
+and a broad R-CPD-aware prompt.
 
 Response schema (LLM):
   {
@@ -18,13 +19,15 @@ Usage (normal mode):
       --expansions path/to/expansions.json \
       --outdir path/to/output_dir \
       --model llama3.3:latest \
-      [--batch_size 80] [--max_per_seed 0] [--sort]
+      [--batch_size 80] [--max_per_seed 0] [--sort] \
+      [--closure_iters 2] [--inclusion_bias lenient] \
+      [--global_context "custom domain sentence here"]
 
 Usage (debug mode; prints only one seed, writes nothing):
   python augment_seeds_with_llm.py \
       --expansions path/to/expansions.json \
       --model llama3.3:latest \
-      --debug_seed get_stuck
+      --debug_seed community
 """
 
 import argparse
@@ -67,6 +70,9 @@ class LlmSimilarityDecider:
     """
     Calls an Ollama chat model expecting:
       {"seed": "<seed>", "decisions": ["termA","termB",...]}
+    Provides two modes:
+      - initial pass (seed + candidates)
+      - closure pass (seed + anchors + remaining candidates)
     """
 
     def __init__(
@@ -76,10 +82,22 @@ class LlmSimilarityDecider:
         temperature: float = 0.0,
         timeout: int = 60,
         batch_size: int = 80,
+        inclusion_bias: str = "lenient",  # 'normal' | 'lenient'
+        global_context: str = (
+            "The domain is R-CPD (Retrograde Cricopharyngeus Dysfunction: inability to burp) on Reddit. "
+            "Expansions may include medical terminology, anatomy/physiology terms (e.g., cricopharyngeus, UES, esophagus), "
+            "diagnostics (ENT visits, manometry, FEES, barium swallow, endoscopy), interventions/treatments "
+            "(botox to cricopharyngeus/UES, dilation, therapy), related symptoms (chest pressure, bloating, gurgling, hiccups, "
+            "nausea, reflux-like sensations), patient emotions (anxiety, embarrassment, frustration, relief, validation), "
+            "actions/behaviors (massage, breathing techniques, carbonation tests, dietary changes, booking appointments), "
+            "logistics (insurance, referrals, clinic names), and community/platform references (subreddit, reddit, tiktok, instagram, threads, groups)."
+        ),
     ):
         self.url = url
         self.timeout = timeout
         self.batch_size = max(1, int(batch_size))
+        self.inclusion_bias = inclusion_bias.lower().strip()
+        self.global_context = global_context.strip()
         self.headers = {"Content-Type": "application/json"}
 
         # Strict schema: decisions are strings only
@@ -102,23 +120,73 @@ class LlmSimilarityDecider:
             "format": self.format_schema
         }
 
-        # System prompt: underscore MWEs, semantic head/variants, decisions are exact, unchanged strings
-        self.system_message = (
-            "You are a semantic similarity decision maker for short terms and underscore-separated MWEs.\n"
-            "Given a SEED and a list of CANDIDATES, return the subset of candidates that are semantically similar to "
-            "the seed in a practical vocabulary-expansion sense (near-synonyms, common paraphrases, morphological "
-            "variants, closely related alternatives, used in a similar context or MWEs that include the seed's semantic head or a close variant).\n\n"
-            "CRITICAL:\n"
-            " • Consider candidates EXACTLY as given; do NOT normalize, spell-correct, or modify text.\n"
-            " • Return STRICT JSON ONLY with keys: seed, decisions.\n"
-            " • decisions MUST be a list of the accepted candidate STRINGS, UNCHANGED from input.\n"
+        # Bias line
+        bias_line = (
+            "Err slightly on the INCLUSIVE side when a candidate would help a user find/name/describe the same concept "
+            "or closely neighboring concepts within this domain (medical terms, diagnostics, related symptoms, emotions, "
+            "actions/behaviors, logistics, and community/platform terms)."
+            if self.inclusion_bias == "lenient" else
+            "Be reasonably inclusive across the listed categories, but avoid broad unrelated associations."
         )
 
-    def _build_user_prompt(self, seed: str, candidates: List[str]) -> str:
+        # === System prompt: initial pass (broad, domain-aware) ===
+        self.system_initial = (
+            "You are a semantic similarity decision maker for short terms and underscore-separated MWEs.\n"
+            f"DOMAIN CONTEXT:\n{self.global_context}\n\n"
+            "TASK:\n"
+            "Given a SEED and a list of CANDIDATES, return the subset of candidates that are semantically similar to "
+            "the seed in a practical vocabulary-expansion sense. Accept items that a user would reasonably expect to see "
+            "in the same bucket as the seed on R-CPD discussions, including:\n"
+            " • Medical terminology and anatomy/physiology terms related to the seed\n"
+            " • Diagnostics and tests (e.g., manometry, FEES, barium swallow, endoscopy), ENT-related visits\n"
+            " • Interventions/treatments (e.g., botox injection to the cricopharyngeus/UES, dilation, therapy)\n"
+            " • Related symptoms and bodily sensations (e.g., chest pressure, bloating, gurgling, hiccups)\n"
+            " • Patient emotions/experiences (e.g., anxiety, embarrassment, frustration, relief, validation)\n"
+            " • Actions/behaviors (e.g., massage, breathing techniques, carbonation tests, diet changes, booking appointments)\n"
+            " • Logistics (e.g., referrals, insurance, clinic names) and community/platform references\n"
+            "Treat navigation phrases (e.g., this_subreddit, this_thread, find_this_community) and platform names "
+            "(reddit, tiktok, instagram) as valid when they point to the same community/topic as the seed.\n\n"
+            "CRITICAL:\n"
+            " • Consider candidates EXACTLY as given; do NOT normalize, spell-correct, or modify text (even r/noburp).\n"
+            " • Return STRICT JSON ONLY with keys: seed, decisions.\n"
+            " • decisions MUST be a list of the accepted candidate STRINGS, UNCHANGED from input.\n"
+            f" • {bias_line}\n"
+        )
+
+        # === System prompt: closure pass (seed + anchors; same broad categories) ===
+        self.system_closure = (
+            "You are expanding a concept bucket. You are given a SEED and ANCHORS (already accepted examples). "
+            "From REMAINING_CANDIDATES, select additional strings that clearly belong to the SAME bucket as the anchors "
+            "with respect to the seed within the R-CPD domain.\n\n"
+            f"DOMAIN CONTEXT:\n{self.global_context}\n\n"
+            "VALID ADDITIONS OFTEN INCLUDE:\n"
+            " • Medical/anatomy terms overlapping the seed’s concept\n"
+            " • Diagnostics/tests, encounters, specialist terms\n"
+            " • Interventions/treatments, therapy modalities\n"
+            " • Related symptoms/sensations and common lay phrasings\n"
+            " • Emotions/psychosocial terms typical in patient talk\n"
+            " • Actions/behaviors users take, daily-life impacts, self-care\n"
+            " • Logistics (insurance, referrals, clinic) and community/platform/navigation terms\n\n"
+            "CRITICAL:\n"
+            " • Choose ONLY from REMAINING_CANDIDATES and return them UNCHANGED.\n"
+            " • Return STRICT JSON ONLY with keys: seed, decisions (list of strings).\n"
+        )
+
+    def _build_user_prompt_initial(self, seed: str, candidates: List[str]) -> str:
         cand_str = "\n".join(f"- {c}" for c in candidates)
         return (
             f"SEED: {seed}\n"
             f"CANDIDATES (one per line; return accepted ones unchanged):\n{cand_str}\n\n"
+            "Respond ONLY with JSON per the enforced schema."
+        )
+
+    def _build_user_prompt_closure(self, seed: str, anchors: List[str], candidates: List[str]) -> str:
+        anc_str = "\n".join(f"- {a}" for a in anchors) if anchors else "(none)"
+        cand_str = "\n".join(f"- {c}" for c in candidates)
+        return (
+            f"SEED: {seed}\n"
+            f"ANCHORS (already accepted; examples of the bucket):\n{anc_str}\n\n"
+            f"REMAINING_CANDIDATES (choose zero or more; return unchanged):\n{cand_str}\n\n"
             "Respond ONLY with JSON per the enforced schema."
         )
 
@@ -150,50 +218,37 @@ class LlmSimilarityDecider:
         Returns (terms, schema_used)
         """
         raw = out.get("decisions", []) if isinstance(out, dict) else []
-        schema_used = "string"
-
         if not isinstance(raw, list):
             return [], "empty"
-
-        # If the model still returns objects, try to extract 'term' strings (best-effort)
-        terms: List[str] = []
         if raw and isinstance(raw[0], dict):
-            schema_used = "object->string"
+            # Be forgiving if the model still returns objects; attempt to extract 'term'
+            terms = []
             for item in raw:
                 t = item.get("term") if isinstance(item, dict) else None
                 if isinstance(t, str):
                     terms.append(t)
+            return terms, "object->string"
         else:
-            schema_used = "string"
             terms = [t for t in raw if isinstance(t, str)]
+            return terms, "string"
 
-        return terms, schema_used
-
-    def judge_batch(self, seed: str, candidates: List[str]) -> Tuple[List[str], Dict]:
-        """
-        Judge a single batch; returns (accepted_terms, verification_info).
-        """
+    # ---- initial pass ----
+    def judge_initial_batch(self, seed: str, candidates: List[str]) -> Tuple[List[str], Dict]:
         payload = dict(self.base_payload)
         payload["messages"] = [
-            {"role": "system", "content": self.system_message},
-            {"role": "user", "content": self._build_user_prompt(seed, candidates)},
+            {"role": "system", "content": self.system_initial},
+            {"role": "user", "content": self._build_user_prompt_initial(seed, candidates)},
         ]
         out = self._post(payload)
         terms, schema_used = self._coerce_terms(out)
-
-        # Verification: returned terms must be exact candidates
         ver = verify_unchanged(candidates, terms)
         ver["schema_used"] = schema_used
+        ver["phase"] = "initial"
         return terms, ver
 
-    def judge_all(self, seed: str, candidates: List[str]) -> Tuple[List[str], Dict]:
-        """
-        Batch across all candidates. Returns:
-          (all_accepted_terms, merged_verification_info)
-        """
+    def judge_initial_all(self, seed: str, candidates: List[str]) -> Tuple[List[str], Dict]:
         if not candidates:
-            return [], {"schema_used": "empty", "unknown_terms": [], "duplicates": []}
-
+            return [], {"schema_used": "empty", "unknown_terms": [], "duplicates": [], "phase": "initial"}
         all_terms: List[str] = []
         agg_unknown: Set[str] = set()
         agg_dupes: Set[str] = set()
@@ -202,7 +257,7 @@ class LlmSimilarityDecider:
         N = len(candidates)
         for i in range(0, N, self.batch_size):
             chunk = candidates[i:i + self.batch_size]
-            terms, ver = self.judge_batch(seed, chunk)
+            terms, ver = self.judge_initial_batch(seed, chunk)
             all_terms.extend(terms)
             agg_unknown |= set(ver.get("unknown_terms", []))
             agg_dupes   |= set(ver.get("duplicates", []))
@@ -212,42 +267,102 @@ class LlmSimilarityDecider:
             "schema_used": "/".join(sorted(schema_seen)) if schema_seen else "empty",
             "unknown_terms": sorted(agg_unknown),
             "duplicates": sorted(agg_dupes),
+            "phase": "initial",
+        }
+        return all_terms, merged_ver
+
+    # ---- closure pass ----
+    def judge_closure_batch(self, seed: str, anchors: List[str], candidates: List[str]) -> Tuple[List[str], Dict]:
+        payload = dict(self.base_payload)
+        payload["messages"] = [
+            {"role": "system", "content": self.system_closure},
+            {"role": "user", "content": self._build_user_prompt_closure(seed, anchors, candidates)},
+        ]
+        out = self._post(payload)
+        terms, schema_used = self._coerce_terms(out)
+        ver = verify_unchanged(candidates, terms)
+        ver["schema_used"] = schema_used
+        ver["phase"] = "closure"
+        return terms, ver
+
+    def judge_closure_all(self, seed: str, anchors: List[str], candidates: List[str]) -> Tuple[List[str], Dict]:
+        if not candidates:
+            return [], {"schema_used": "empty", "unknown_terms": [], "duplicates": [], "phase": "closure"}
+        all_terms: List[str] = []
+        agg_unknown: Set[str] = set()
+        agg_dupes: Set[str] = set()
+        schema_seen: Set[str] = set()
+
+        N = len(candidates)
+        for i in range(0, N, self.batch_size):
+            chunk = candidates[i:i + self.batch_size]
+            terms, ver = self.judge_closure_batch(seed, anchors, chunk)
+            all_terms.extend(terms)
+            agg_unknown |= set(ver.get("unknown_terms", []))
+            agg_dupes   |= set(ver.get("duplicates", []))
+            schema_seen.add(ver.get("schema_used", "unknown"))
+
+        merged_ver = {
+            "schema_used": "/".join(sorted(schema_seen)) if schema_seen else "empty",
+            "unknown_terms": sorted(agg_unknown),
+            "duplicates": sorted(agg_dupes),
+            "phase": "closure",
         }
         return all_terms, merged_ver
 
 # -----------------------------
-# Selection logic per seed (LLM-based, strings-only)
+# Selection logic per seed (LLM-based with closure)
 # -----------------------------
 def select_with_llm_for_seed(
     judge: LlmSimilarityDecider,
     seed: str,
     cand_list: List[str],
     *,
-    max_per_seed: int = 0
+    max_per_seed: int = 0,
+    closure_iters: int = 2
 ) -> Tuple[Set[str], Dict[str, str], Dict]:
     """
-    Returns (accepted, reasons_map, dbg) for a single seed using the LLM.
-    Acceptance = intersection of model-accepted strings and the original candidates (exact match).
+    Returns (accepted, reasons_map, dbg).
+    Steps:
+      1) Initial pass (seed vs candidates).
+      2) closure_iters rounds: expand from accepted anchors into remaining candidates.
     """
-    seed_n = norm(seed)
-    # IMPORTANT: send/verify EXACT forms to the model; no lowercasing here
-    cands = [t for t in cand_list if isinstance(t, str) and t.strip()]
-    cand_set = set(cands)
+    candidates = [t for t in cand_list if isinstance(t, str) and t.strip()]
+    cand_set_all = set(candidates)
 
-    accepted_terms, ver = judge.judge_all(seed_n, cands)
+    # 1) Initial
+    init_terms, ver0 = judge.judge_initial_all(seed, candidates)
+    accepted = set(t for t in init_terms if t in cand_set_all)
 
-    # Keep only exact matches
-    accepted = set(t for t in accepted_terms if t in cand_set)
+    # 2) Closure rounds
+    closure_details = []
+    verifications = [ver0]
+    anchors = sorted(accepted)
+    remaining = sorted(cand_set_all - accepted)
 
+    for round_idx in range(1, max(0, int(closure_iters)) + 1):
+        if not remaining:
+            break
+        add_terms, veri = judge.judge_closure_all(seed, anchors, remaining)
+        verifications.append(veri)
+        added = set(t for t in add_terms if t in remaining)
+        closure_details.append({"round": round_idx, "added": sorted(added)})
+        if not added:
+            break
+        accepted |= added
+        anchors = sorted(accepted)  # grow anchors
+        remaining = sorted(cand_set_all - accepted)
+
+    # Cap per seed if requested
     if max_per_seed > 0 and len(accepted) > max_per_seed:
         accepted = set(sorted(list(accepted))[:max_per_seed])
 
-    # Simple reasons map
     reasons = {t: "llm:accepted" for t in accepted}
-
     dbg = {
+        "initial_accepted": sorted(set(init_terms) & cand_set_all),
+        "closure": closure_details,
         "accepted": sorted(accepted),
-        "verification": ver,  # includes schema_used, unknown_terms, duplicates
+        "verification": verifications,  # list of per-phase verifications
     }
     return accepted, reasons, dbg
 
@@ -288,21 +403,31 @@ def log_per_seed_lines(logger: logging.Logger, added_by_seed: Dict[str, List[Tup
         right = ", ".join(f"{t}({r})" for t, r in sorted(pairs, key=lambda x: (x[1], x[0])))
         logger.info(f"{seed:<{maxw}s} -> {right}")
 
-def log_verification_issues(logger: logging.Logger, verify_map: Dict[str, Dict[str, List[str]]]):
-    any_issues = any(v.get("unknown_terms") or v.get("duplicates") for v in verify_map.values())
+def log_verification_issues(logger: logging.Logger, verify_map: Dict[str, List[Dict[str, List[str]]]]):
     logger.info("## verification issues (terms must be returned unchanged)")
+    any_issues = False
+    for seed in sorted(verify_map.keys()):
+        per_seed = verify_map[seed] or []
+        for vi in per_seed:
+            if vi.get("unknown_terms") or vi.get("duplicates"):
+                any_issues = True
+                break
     if not any_issues:
         logger.info("(none)")
         return
     for seed in sorted(verify_map.keys()):
-        v = verify_map[seed]
-        sch = v.get("schema_used", "unknown")
-        unk = v.get("unknown_terms", [])
-        dup = v.get("duplicates", [])
-        parts = [f"schema={sch}"]
-        if unk: parts.append(f"unknown={','.join(unk[:20])}{'…' if len(unk)>20 else ''}")
-        if dup: parts.append(f"duplicates={','.join(dup)}")
-        logger.info(f"{seed} :: " + " | ".join(parts))
+        per_seed = verify_map[seed] or []
+        phases_s = []
+        for vi in per_seed:
+            sch = vi.get("schema_used", "unknown")
+            phase = vi.get("phase", "?")
+            unk = vi.get("unknown_terms", [])
+            dup = vi.get("duplicates", [])
+            parts = [f"{phase}:schema={sch}"]
+            if unk: parts.append(f"unknown={','.join(unk[:20])}{'…' if len(unk)>20 else ''}")
+            if dup: parts.append(f"dupes={','.join(dup)}")
+            phases_s.append(" | ".join(parts))
+        logger.info(f"{seed} :: {' || '.join(phases_s)}")
 
 # -----------------------------
 # DEBUG printer
@@ -314,47 +439,69 @@ def print_debug(seed: str, cand_list: List[str], args):
         temperature=args.temperature,
         timeout=args.timeout,
         batch_size=args.batch_size,
+        inclusion_bias=args.inclusion_bias,
+        global_context=args.global_context,
     )
     accepted, reasons, dbg = select_with_llm_for_seed(
         judge,
         seed,
         cand_list,
-        max_per_seed=args.max_per_seed
+        max_per_seed=args.max_per_seed,
+        closure_iters=args.closure_iters
     )
 
-    print("=== DEBUG MODE (LLM) ===")
+    print("=== DEBUG MODE (LLM with closure) ===")
     print(f"Seed               : {seed}")
     print(f"Model / URL        : {args.model} / {args.url}")
     print(f"Batch size         : {args.batch_size}")
+    print(f"Inclusion bias     : {args.inclusion_bias}")
+    print(f"Closure iters      : {args.closure_iters}")
     print("")
-    print(f"Accepted [{len(accepted)}]: {join_uniq_sorted(accepted) or '(none)'}")
+    print(f"Initial accepted [{len(dbg['initial_accepted'])}]: {join_uniq_sorted(dbg['initial_accepted']) or '(none)'}")
+    for rd in dbg["closure"]:
+        print(f"Closure round {rd['round']:>2d} added [{len(rd['added'])}]: {', '.join(rd['added']) or '(none)'}")
+    print("")
+    print(f"FINAL accepted [{len(accepted)}]: {join_uniq_sorted(accepted) or '(none)'}")
     print("")
     print("Verification:")
-    v = dbg["verification"]
-    print(f"  schema_used  : {v.get('schema_used','unknown')}")
-    print(f"  unknown_terms: {', '.join(v.get('unknown_terms', [])) or '(none)'}")
-    print(f"  duplicates   : {', '.join(v.get('duplicates', [])) or '(none)'}")
+    for vi in dbg["verification"]:
+        phase = vi.get("phase","?")
+        print(f"  [{phase}] schema_used={vi.get('schema_used','unknown')}, "
+              f"unknown_terms={', '.join(vi.get('unknown_terms', [])) or '(none)'}, "
+              f"duplicates={', '.join(vi.get('duplicates', [])) or '(none)'}")
     print("")
     print("Reasons (first 25):")
     for i, (t, r) in enumerate(sorted(reasons.items())):
         if i >= 25: break
         print(f"  {t:<30s} -> {r}")
-    print("=========================")
+    print("==============================")
 
 # -----------------------------
 # Main
 # -----------------------------
 def main():
-    ap = argparse.ArgumentParser(description="Augment seed terms using an Ollama LLM to judge semantic relatedness.")
+    ap = argparse.ArgumentParser(description="Augment seed terms using an Ollama LLM to judge semantic relatedness, with closure (R-CPD aware).")
     ap.add_argument("--expansions", required=True, help="Path to expansions JSON {seed: [terms]}")
     ap.add_argument("--outdir", help="Directory for outputs (ignored in --debug_seed mode)")
     ap.add_argument("--model", type=str, default="llama3.3:latest", help="Ollama model name")
     ap.add_argument("--url", type=str, default="http://localhost:11434/api/chat", help="Ollama chat endpoint")
     ap.add_argument("--temperature", type=float, default=0.0, help="LLM temperature")
-    ap.add_argument("--timeout", type=int, default=120, help="HTTP timeout seconds")
-    ap.add_argument("--batch_size", type=int, default=1, help="Candidates per LLM call")
+    ap.add_argument("--timeout", type=int, default=60, help="HTTP timeout seconds")
+    ap.add_argument("--batch_size", type=int, default=80, help="Candidates per LLM call")
     ap.add_argument("--max_per_seed", type=int, default=0, help="Cap accepted terms per seed (0=off)")
     ap.add_argument("--sort", action="store_true", help="Sort final seed list alphabetically")
+    ap.add_argument("--closure_iters", type=int, default=2, help="Number of closure expansion rounds per seed")
+    ap.add_argument("--inclusion_bias", type=str, choices=["normal","lenient"], default="lenient",
+                    help="Bias prompts to be slightly more inclusive")
+    ap.add_argument("--global_context", type=str, default=(
+        "The domain is R-CPD (Retrograde Cricopharyngeus Dysfunction: inability to burp) on Reddit. "
+        "Expansions may include medical terminology, anatomy/physiology terms (e.g., cricopharyngeus, UES, esophagus), "
+        "diagnostics (ENT visits, manometry, FEES, barium swallow, endoscopy), interventions/treatments "
+        "(botox to cricopharyngeus/UES, dilation, therapy), related symptoms (chest pressure, bloating, gurgling, hiccups, "
+        "nausea, reflux-like sensations), patient emotions (anxiety, embarrassment, frustration, relief, validation), "
+        "actions/behaviors (massage, breathing techniques, carbonation tests, dietary changes, booking appointments), "
+        "logistics (insurance, referrals, clinic names), and community/platform references (subreddit, reddit, tiktok, instagram, threads, groups)."
+    ), help="Short domain context sentence(s) injected into prompts")
     ap.add_argument("--debug_seed", type=str, default=None,
                     help="If set, only process this seed and print results to console (no files written).")
     args = ap.parse_args()
@@ -400,13 +547,15 @@ def main():
         temperature=args.temperature,
         timeout=args.timeout,
         batch_size=args.batch_size,
+        inclusion_bias=args.inclusion_bias,
+        global_context=args.global_context,
     )
 
     base_seeds: List[str] = sorted(norm(s) for s in expansions.keys())
     augmented: Set[str] = set(base_seeds)
     added_by_seed: Dict[str, List[Tuple[str, str]]] = defaultdict(list)
     accepted_by_seed: Dict[str, List[Tuple[str, str]]] = defaultdict(list)
-    verify_by_seed: Dict[str, Dict[str, List[str]]] = {}
+    verify_by_seed: Dict[str, List[Dict[str, List[str]]]] = {}
 
     for seed, cand_list in expansions.items():
         if not isinstance(cand_list, list):
@@ -415,9 +564,10 @@ def main():
             judge,
             seed,
             cand_list,
-            max_per_seed=args.max_per_seed
+            max_per_seed=args.max_per_seed,
+            closure_iters=args.closure_iters
         )
-        verify_by_seed[norm(seed)] = dbg.get("verification", {})
+        verify_by_seed[norm(seed)] = dbg.get("verification", [])
         for t in sorted(accepted):
             accepted_by_seed[norm(seed)].append((t, reasons.get(t, "llm:accepted")))
             if t not in augmented:
@@ -428,12 +578,13 @@ def main():
     save_json(json_out_path, {"seed_terms": out_list})
 
     # ---- Log summary ----
-    logger.info("# Additions written by augment_seeds_with_llm")
+    logger.info("# Additions written by augment_seeds_with_llm (with closure, R-CPD aware)")
     logger.info(f"# Expansions: {Path(args.expansions).resolve()}")
     logger.info(f"# Output dir: {eval_dir.resolve()}")
     logger.info(f"# JSON out  : {json_out_path.resolve()}")
     logger.info(f"# Model={args.model} URL={args.url} Temp={args.temperature} Timeout={args.timeout}s")
-    logger.info(f"# BatchSize={args.batch_size} MaxPerSeed={args.max_per_seed} Sort={bool(args.sort)}")
+    logger.info(f"# BatchSize={args.batch_size} MaxPerSeed={args.max_per_seed} Sort={bool(args.sort)} "
+                f"ClosureIters={args.closure_iters} InclusionBias={args.inclusion_bias}")
     logger.info("## new to eval set")
     log_per_seed_lines(logger, added_by_seed)
     logger.info("")
