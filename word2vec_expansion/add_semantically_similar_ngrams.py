@@ -17,7 +17,7 @@ Inputs:
 
 Outputs (written under --outdir/added_terms_to_eval/):
 - new_eval_set.json : { "seed_terms": [...] }  (deduped, optionally sorted)
-- wordnet_addition_log : text log of ALL additions per seed (one line per seed)
+- wordnet_addition.log : text log of ALL additions per seed (one line per seed)
 """
 
 import argparse
@@ -31,7 +31,7 @@ from typing import Dict, Iterable, List, Set, Tuple
 import nltk
 nltk.download("wordnet", quiet=True)
 nltk.download("omw-1.4", quiet=True)
-from nltk.corpus import wordnet
+from nltk.corpus import wordnet as wn
 
 # -----------------------------
 # Normalization helpers
@@ -45,14 +45,14 @@ def to_wordnet(tok: str) -> str:
 # -----------------------------
 # WordNet graph utilities
 # -----------------------------
-def _lemma_names(synsets: Iterable[wordnet.synset]) -> Set[str]:
+def _lemma_names(synsets: Iterable[wn.synset]) -> Set[str]:
     out = set()
     for ss in synsets:
         for l in ss.lemmas():
             out.add(l.name().lower())
     return out
 
-def _derivational_from_synsets(synsets: Iterable[wordnet.synset]) -> Set[str]:
+def _derivational_from_synsets(synsets: Iterable[wn.synset]) -> Set[str]:
     out = set()
     for ss in synsets:
         for l in ss.lemmas():
@@ -60,7 +60,7 @@ def _derivational_from_synsets(synsets: Iterable[wordnet.synset]) -> Set[str]:
                 out.add(d.name().lower())
     return out
 
-def _bfs(start: Set[wordnet.synset], step_fn, depth: int) -> Set[wordnet.synset]:
+def _bfs(start: Set[wn.synset], step_fn, depth: int) -> Set[wn.synset]:
     """BFS over synset graph up to 'depth' edges; returns all visited synsets (incl. start)."""
     if depth <= 0 or not start:
         return set(start)
@@ -75,11 +75,11 @@ def _bfs(start: Set[wordnet.synset], step_fn, depth: int) -> Set[wordnet.synset]
         frontier = nxt
     return seen
 
-def synsets_any(word: str) -> List[wordnet.synset]:
-    return wordnet.synsets(to_wordnet(word))  # all POS
+def synsets_any(word: str) -> List[wn.synset]:
+    return wn.synsets(to_wordnet(word))  # all POS
 
-def synsets_pos(word: str, pos: str) -> List[wordnet.synset]:
-    return wordnet.synsets(to_wordnet(word), pos=pos)
+def synsets_pos(word: str, pos: str) -> List[wn.synset]:
+    return wn.synsets(to_wordnet(word), pos=pos)
 
 def synonyms(word: str) -> Set[str]:
     return _lemma_names(synsets_any(word))
@@ -98,7 +98,7 @@ def adjective_neighbors(seeds: Iterable[str], hops: int = 2) -> Set[str]:
     for s in seeds:
         forms = {s, f"{s}ed", f"{s}ing"} | synonyms(s)
         for f in forms:
-            for ss in synsets_pos(f, wordnet.ADJ):
+            for ss in synsets_pos(f, wn.ADJ):
                 start_synsets.add(ss)
     def step(ss):
         return list(ss.similar_tos()) + list(ss.also_sees())
@@ -135,7 +135,7 @@ def hyponyms(word: str, depth: int = 1) -> Set[str]:
 
 def holonyms(word: str, depth: int = 1) -> Set[str]:
     """Holonyms (member/part/substance) for NOUN senses up to depth hops."""
-    ssets = synsets_pos(word, wordnet.NOUN)
+    ssets = synsets_pos(word, wn.NOUN)
     if not ssets or depth <= 0:
         return set()
     def step(ss):
@@ -169,6 +169,101 @@ def cohyponyms(word: str, up: int = 1, down: int = 1, *, noun_only: bool = True,
     names = _lemma_names(desc)
     seed_lemmas = _lemma_names(ssets)
     return {w for w in names if w not in seed_lemmas}
+
+# -----------------------------
+# NEW: Semantic head & anchor helpers
+# -----------------------------
+LIGHT_VERBS = {
+    "get","be","been","being","am","is","are","was","were",
+    "have","has","had","do","does","did","make","made",
+    "go","went","gone","going","feel","feels","felt"
+}
+
+def _morphy_all_forms(tok: str) -> Set[str]:
+    """Collect lemma candidates via WordNet's morphy across POS."""
+    tok = tok.lower()
+    outs = {tok}
+    for pos in (wn.NOUN, wn.VERB, wn.ADJ, wn.ADV):
+        lem = wn.morphy(tok, pos=pos)
+        if lem:
+            outs.add(lem.lower())
+    return outs
+
+def extract_semantic_head(seed: str) -> str:
+    """
+    Heuristic semantic head extractor for underscore phrases.
+
+    Examples:
+      'get_stuck'         -> 'stuck'
+      'food_get_stuck'    -> 'stuck'
+      'something_blocked' -> 'blocked'
+      'unable_to_burp'    -> 'burp'
+      'stomach_fill_up'   -> 'fill_up' (multiword verb already in WN)
+
+    Strategy:
+      1) If the whole seed is a WN lemma, return it.
+      2) Tokenize on '_' and drop light verbs.
+      3) If a 'get_X' pattern exists, head = X.
+      4) If rightmost 2-token tail is a WN lemma (e.g. 'fill_up'), choose it.
+      5) Else choose the rightmost token with synsets (direct or morphy).
+      6) Fallback: last content token.
+    """
+    s = seed.strip().lower()
+    if wn.synsets(s):
+        return s
+
+    parts = [p for p in s.split("_") if p]
+    if not parts:
+        return s
+
+    content = [p for p in parts if p not in LIGHT_VERBS] or parts
+
+    # 'get_X' pattern anywhere
+    for i, p in enumerate(content[:-1]):
+        if p == "get":
+            return content[i+1]
+
+    # rightmost 2-token tail as MWE (e.g., fill_up)
+    if len(content) >= 2:
+        tail2 = "_".join(content[-2:])
+        if wn.synsets(tail2):
+            return tail2
+
+    # rightmost token with synsets (direct or morphy)
+    for tok in reversed(content):
+        if wn.synsets(tok):
+            return tok
+        for m in _morphy_all_forms(tok):
+            if wn.synsets(m):
+                return m
+
+    return content[-1]
+
+def seed_to_anchor_lemmas(seed: str) -> Tuple[str, Set[str]]:
+    """
+    Return (head, anchors). Anchors are used to build the WordNet neighborhood.
+    """
+    head = extract_semantic_head(seed)
+    anchors: Set[str] = set()
+
+    # If head is multiword and exists in WN, include it as-is
+    if "_" in head and wn.synsets(head):
+        anchors.add(head)
+
+    # Add head and its morphological bases
+    anchors |= _morphy_all_forms(head)
+
+    # If head looks like participle/progressive, include stripped forms too
+    if head.endswith("ed"):
+        anchors |= _morphy_all_forms(head[:-2])
+    if head.endswith("ing"):
+        anchors |= _morphy_all_forms(head[:-3])
+
+    # Safety: if anchors don't resolve to synsets, include original seed
+    if not any(wn.synsets(a) for a in anchors):
+        anchors.add(seed)
+
+    return head, {a for a in anchors if a}
 
 # -----------------------------
 # Neighborhood composer
@@ -252,7 +347,9 @@ def select_candidates_for_seed(
 ) -> Tuple[Set[str], Dict[str, str]]:
     """
     Return (accepted_terms, reasons_map) for a single seed.
-    - Optional POS gating: if the seed's dominant POS is noun, only noun candidates are considered.
+    - POS gating: if the seed's dominant POS is noun, only noun candidates are considered.
+    - Acceptance loop runs BEFORE closure (so more are admitted, then can propagate).
+    - Head-overlap rule is broad: any overlap with head or head's WN synonyms/derivations admits.
     """
     seed_n = norm(seed)
     cands = [norm(t) for t in expansion_terms]
@@ -265,9 +362,10 @@ def select_candidates_for_seed(
     accepted: Set[str] = set()
     reasons: Dict[str, str] = {}
 
-    # 1) Initial neighborhood around the seed
+    # --- Build neighborhood around head-based anchors ---
+    head, anchor_lemmas = seed_to_anchor_lemmas(seed_n)
     seed_neigh = expand_wordnet_neighborhood(
-        [seed_n],
+        anchor_lemmas,
         include_syn=True,
         include_deriv=True,
         hyper_depth=hyper_depth,
@@ -279,12 +377,36 @@ def select_candidates_for_seed(
         min_ancestor_depth=min_ancestor_depth,
     )
 
+    # --- (A) Acceptance loop BEFORE closure: admit direct WN neighbors ---
     for t in cands:
         if t in seed_neigh:
             accepted.add(t)
             reasons[t] = "seed-wordnet"
 
-    # 2) Tight semantic closure from admitted pivots (clamped to 1-hop neighborhoods)
+    # --- (B) Broad head-overlap rule: admit candidates sharing head or head's synonyms/derivations ---
+    # Build a bucket around the head (broad by request)
+    head_bucket: Set[str] = set()
+    head_bucket |= _morphy_all_forms(head)
+    for ss in synsets_any(head):
+        for l in ss.lemmas():
+            head_bucket.add(l.name().lower())
+            for d in l.derivationally_related_forms():
+                head_bucket.add(d.name().lower())
+    # expand with morphy again
+    expanded_head_bucket = set()
+    for h in list(head_bucket):
+        expanded_head_bucket |= _morphy_all_forms(h)
+    head_bucket |= expanded_head_bucket
+
+    for t in cands:
+        if t in accepted:
+            continue
+        t_parts = set(t.split("_"))
+        if t_parts & head_bucket:
+            accepted.add(t)
+            reasons[t] = "head-overlap"
+
+    # --- (C) Closure AFTER acceptance: 1-hop neighborhoods from admitted pivots (as in your original design) ---
     if closure_iters > 0 and accepted:
         frontier = deque(sorted(accepted))
         seen_frontier = set(frontier)
