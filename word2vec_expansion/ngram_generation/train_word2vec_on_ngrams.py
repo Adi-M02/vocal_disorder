@@ -32,6 +32,7 @@ def make_outdir(base_outdir: str, now: datetime.datetime) -> Path:
 def write_info(out_dir: Path, args: argparse.Namespace, now: datetime.datetime) -> None:
     """Write a JSON file with run arguments and timestamp."""
     info = {**vars(args), "timestamp": now.isoformat()}
+    out_dir = Path(out_dir)  # Ensure out_dir is a Path object
     with open(out_dir / "info.json", 'w', encoding='utf-8') as f:
         json.dump(info, f, indent=2)
 
@@ -56,6 +57,7 @@ def train_one_model(
     model.train(cleaned_docs, total_examples=len(cleaned_docs), epochs=epochs)
 
     name = "word2vec_cbow.model" if sg_flag == 0 else "word2vec_skipgram.model"
+    out_dir = Path(out_dir)  # Ensure out_dir is a Path object
     path = out_dir / name
     model.save(str(path))
     return model
@@ -72,7 +74,10 @@ def run_training_pipeline(
     Returns the two trained models and the output directory.
     """
     now = now or datetime.datetime.now()
-    out_dir = make_outdir(args.outdir, now)
+    if args.exact_path:
+        out_dir = args.exact_path
+    else:
+        out_dir = make_outdir(args.outdir, now)
     write_info(out_dir, args, now)
 
     cbow = train_one_model(cleaned_docs, out_dir, args, sg_flag=0, w2v_cls=w2v_cls)
@@ -103,6 +108,10 @@ def main():
     parser.add_argument(
         "--outdir", type=str, default=None,
         help="Output directory to save models and info."
+    )
+    parser.add_argument(
+        "--exact_path", type=str, default=None,
+        help="Exact path to the model file to use for evaluation."
     )
     args = parser.parse_args()
 

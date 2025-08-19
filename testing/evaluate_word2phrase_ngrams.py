@@ -1,12 +1,14 @@
-#!/usr/bin/env python3
-# evaluate_ngrams.py
 """
 Coverage-only evaluation (train on FULL corpus, evaluate on user slice):
 - Train Word2Phrase on the entire corpus (process_all_noburp).
 - Build produced vocabulary (apply phrasers to the entire corpus; includes unigrams & merged n-grams).
 - Load an evaluation slice (posts from --users) and count occurrences of manual terms in that slice.
 - Compute coverage (unique & weighted) overall and by n-gram length (1,2,3+), weighted by slice counts.
-- Write timestamped JSON to --metrics-json directory.
+- Save outputs under: <out-folder>/<threshold>/
+    - bigram.phraser
+    - trigram.phraser (if passes=2)
+    - metrics.json
+    - missed_terms.json
 """
 
 from __future__ import annotations
@@ -104,7 +106,7 @@ def _load_users(path: Optional[str]) -> Optional[List[str]]:
         # handle "u/username"
         if s.lower().startswith("u/"):
             s = s[2:]
-        # also allow comma-separated lines
+        # also allow comma-separated on same line
         for part in s.split(","):
             part = part.strip()
             if part:
@@ -112,25 +114,35 @@ def _load_users(path: Optional[str]) -> Optional[List[str]]:
     print(f"[info] loaded {len(users)} users from {path} (sample: {users[:5]})")
     return users or None
 
-def _parse_manual_terms(path: str) -> List[str]:
-    """Accept newline- or comma-separated manual terms; KEEP duplicates? (not used for weighting now)."""
-    txt = Path(path).read_text(encoding="utf-8")
-    out: List[str] = []
-    for line in txt.splitlines():
-        if not line.strip():
-            continue
-        out.extend([t.strip() for t in line.split(",") if t.strip()])
-    return out
+def _parse_seed_terms(path: str) -> List[str]:
+    """
+    Load seed terms from a JSON file with structure:
+      { "seed_terms": ["burp_door_open", "out_of_pocket", ...] }
+    """
+    p = Path(path)
+    if not p.exists():
+        raise FileNotFoundError(f"--seed-terms file not found: {path}")
+    data = json.loads(p.read_text(encoding="utf-8"))
+    if not isinstance(data, dict) or "seed_terms" not in data or not isinstance(data["seed_terms"], list):
+        raise ValueError("Seed terms JSON must be an object with a 'seed_terms' list.")
+    # Coerce to strings and strip
+    return [str(t).strip() for t in data["seed_terms"] if str(t).strip()]
 
 def _normalize_term_to_seq(term: str) -> Optional[List[str]]:
-    """Normalize manual term to token SEQUENCE (no underscores)."""
+    """
+    Normalize a seed term to a token SEQUENCE.
+    Supports both space-separated and underscore-joined inputs.
+    Example: 'out_of_pocket' -> ['out','of','pocket']
+    """
+    # Treat underscores as word separators before pipeline normalization
+    term = term.replace("_", " ")
     toks = process_text(term, stoplist=False)
     return toks if toks else None
 
 def _normalize_terms_to_seqs(terms_raw: List[str]) -> Dict[str, List[str]]:
     """
     Return a dict: joined_form ('able_to_burp') -> token sequence ['able','to','burp'].
-    Unique by joined_form.
+    Unique by joined_form (first occurrence wins).
     """
     joined_to_seq: Dict[str, List[str]] = {}
     for t in terms_raw:
@@ -138,7 +150,6 @@ def _normalize_terms_to_seqs(terms_raw: List[str]) -> Dict[str, List[str]]:
         if not seq:
             continue
         joined = seq[0] if len(seq) == 1 else "_".join(seq)
-        # first occurrence wins
         if joined not in joined_to_seq:
             joined_to_seq[joined] = seq
     return joined_to_seq
@@ -162,7 +173,7 @@ def _count_term_occurrences_in_docs(
 ) -> Counter:
     """
     Count how many times each manual term (normalized to sequence) occurs in the evaluation docs.
-    Matches are contiguous token sequences (exact match).
+    Matches are contiguous token sequences (exact match). Overlaps allowed.
     Returns Counter keyed by joined_form ('able_to_burp') with integer counts.
     """
     # index patterns by first token for speed
@@ -178,16 +189,13 @@ def _count_term_occurrences_in_docs(
         if n == 0:
             continue
         i = 0
-        # we allow overlapping matches; slide by one
         while i < n:
             first = toks[i]
             if first in start_index:
-                candidates = start_index[first]
-                for joined, seq in candidates:
+                for joined, seq in start_index[first]:
                     L = len(seq)
                     if L <= n - i and toks[i:i+L] == seq:
                         counts[joined] += 1
-                # continue sliding; we don't skip ahead to allow overlaps
             i += 1
     return counts
 
@@ -200,11 +208,7 @@ def _coverage_from_eval_counts(
     produced_vocab: Set[str],
 ) -> Dict[str, Any]:
     """
-    Compute coverage using only terms that actually appear in the EVAL slice (eval_counts>0).
-    - unique coverage: fraction of unique eval-present terms covered by produced_vocab
-    - weighted coverage: fraction of total eval occurrences covered
-    - by n-gram bucket (1,2,3+)
-    - top_missed: frequent eval-present terms not in produced_vocab
+    Coverage using only terms that appear in the EVAL slice (eval_counts>0).
     """
     unique_present = {t for t, c in eval_counts.items() if c > 0}
     total_unique = len(unique_present)
@@ -264,41 +268,45 @@ def _coverage_from_eval_counts(
             {"term": t, "count": c, "ngram": b}
             for (t, c, b) in missed[:200]
         ],
+        # add full missed list here for convenience (not capped)
+        "missed_all": [
+            {"term": t, "count": eval_counts[t], "ngram": _ngram_len_from_joined(t)}
+            for t in unique_present if t not in produced_vocab
+        ],
     }
-
-def _resolve_metrics_outpath(base: str, prefix: str = "ngram_coverage", ext: str = "json") -> Path:
-    p = Path(base)
-    if p.suffix.lower() == f".{ext}":
-        p.parent.mkdir(parents=True, exist_ok=True)
-        return p
-    p.mkdir(parents=True, exist_ok=True)
-    return p / f"{prefix}_{_ts()}.{ext}"
 
 # ---------- arg parsing ----------
 def parse_args():
     p = argparse.ArgumentParser(description="Coverage-only evaluation (train on full corpus, evaluate on user slice).")
     # training params (for FULL corpus)
     p.add_argument("--min-count", type=int, default=5)
-    p.add_argument("--threshold", type=float, default=5.0)
+    p.add_argument("--threshold", type=float, required=True)
     p.add_argument("--scoring", type=str, default="default", choices=["default", "npmi"])
     p.add_argument("--passes", type=int, default=2, choices=[1, 2])
     p.add_argument("--connector", type=str, default="light", choices=["none", "light", "heavy"])
     p.add_argument("--connector-file", type=str, default="")
     p.add_argument("--limit-train-docs", type=int, default=0, help="Limit full-corpus docs for training (0 = no limit)")
     # evaluation slice
-    p.add_argument("--users", type=str, default="", help="Optional path to newline- or comma-separated usernames")
+    p.add_argument("--users", type=str, default="vocabulary_evaluation/manual_terms_7_12/users.txt", help="Optional path to newline- or comma-separated usernames")
     p.add_argument("--limit-eval-docs", type=int, default=0, help="Limit docs in evaluation slice (0 = no limit)")
     # evaluation input/output
-    p.add_argument("--manual-terms", type=str, required=True, help="Path to manual terms file")
-    p.add_argument("--metrics-json", type=str, required=True, help="Directory OR .json file path for metrics output")
-    # saving phrasers (optional)
-    p.add_argument("--save-phrasers", action="store_true")
-    p.add_argument("--save-dir", type=str, default="word2phrase_saved_phrasers")
+    p.add_argument("--seed-terms", type=str, default="vocabulary_evaluation/manual_terms_7_12/all_terms/1_to_3_gram_seed_terms.json", help="Path to seed terms file")
+    p.add_argument("--out-folder", type=str, required=True, help="Base folder to write outputs into")
+    # keeping these for CLI compatibility; they are no-ops now
+    p.add_argument("--metrics-json", type=str, default="", help=argparse.SUPPRESS)
+    # saving phrasers (optional) – now always saved into out-folder
     return p.parse_args()
 
 # ---------- main ----------
 def main():
     args = parse_args()
+
+    # Prepare run dir: <out-folder>/<threshold>/
+    # Use a clean, consistent folder name for the threshold
+    thr_name = f"{args.threshold:g}"
+    run_dir = Path(args.out_folder) / thr_name
+    run_dir.mkdir(parents=True, exist_ok=True)
+    print(f"[info] output directory: {run_dir.resolve()}")
 
     # A) Load FULL corpus for training (always)
     print("[info] loading FULL corpus with process_all_noburp(stoplist=False) ...")
@@ -326,28 +334,10 @@ def main():
         passes=args.passes,
     )
 
-    # C) Optionally save phrasers
-    if args.save_phrasers:
-        run_dir = Path(args.save_dir) / f"run_{_ts()}"
-        run_dir.mkdir(parents=True, exist_ok=True)
-        bigram.save(str(run_dir / "bigram.phraser"))
-        if trigram is not None:
-            trigram.save(str(run_dir / "trigram.phraser"))
-        manifest = {
-            "created_at": _ts(),
-            "params": {
-                "min_count": args.min_count,
-                "threshold": args.threshold,
-                "scoring": args.scoring,
-                "passes": args.passes,
-                "connector_preset": args.connector,
-                "connector_file": args.connector_file or "",
-                "limit_train_docs": args.limit_train_docs,
-            },
-            "docs_info": {"n_docs_train": len(train_docs)},
-        }
-        (run_dir / "manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=2), encoding="utf-8")
-        print(f"[info] saved phrasers to: {run_dir}")
+    # C) ALWAYS save phrasers into the run dir
+    bigram.save(str(run_dir / "bigram.phraser"))
+    if trigram is not None:
+        trigram.save(str(run_dir / "trigram.phraser"))
 
     # D) Build produced vocabulary by applying to FULL corpus
     produced_vocab = _build_phraser_vocabulary_corpuswide(train_docs, bigram, trigram)
@@ -374,11 +364,12 @@ def main():
     if not eval_docs or all(len(t) == 0 for t in eval_docs):
         raise SystemExit("No EVAL documents loaded (or all empty). Check your users file / query.")
 
-    # F) Load + normalize manual terms to sequences and joined forms
-    terms_raw = _parse_manual_terms(args.manual_terms)
+    # F) Load + normalize seed terms to sequences and joined forms
+    terms_raw = _parse_seed_terms(args.seed_terms)
     joined_to_seq = _normalize_terms_to_seqs(terms_raw)
-    print(f"[info] manual terms: raw={len(terms_raw)}, normalized_unique={len(joined_to_seq)}")
+    print(f"[info] seed terms: raw={len(terms_raw)}, normalized_unique={len(joined_to_seq)}")
 
+    print(f"[info] seed terms: raw={len(terms_raw)}, normalized_unique={len(joined_to_seq)}")
     # G) Count occurrences of manual terms IN THE EVAL SLICE (sequence matching; includes unigrams)
     eval_counts = _count_term_occurrences_in_docs(eval_docs, joined_to_seq)
     total_occ = sum(eval_counts.values())
@@ -388,9 +379,8 @@ def main():
     # H) Coverage metrics: only terms present in the EVAL slice contribute to weights
     coverage = _coverage_from_eval_counts(eval_counts, produced_vocab)
 
-    # I) Write timestamped JSON
-    out_path = _resolve_metrics_outpath(args.metrics_json, prefix="ngram_coverage")
-    payload = {
+    # I) Write outputs into run dir
+    metrics_payload = {
         "created_at": _ts(),
         "args": {
             "min_count": args.min_count,
@@ -402,18 +392,34 @@ def main():
             "limit_train_docs": args.limit_train_docs,
             "users": args.users,
             "limit_eval_docs": args.limit_eval_docs,
-            "manual_terms": str(Path(args.manual_terms).resolve()),
+            "seed_terms": str(Path(args.seed_terms).resolve()),   # <-- renamed
         },
         "counts": {
             "produced_vocab_full_corpus": len(produced_vocab),
             "eval_terms_unique_present": present_terms,
             "eval_terms_total_occurrences": total_occ,
-            "manual_terms_normalized_unique": len(joined_to_seq),
+            "seed_terms_normalized_unique": len(joined_to_seq),   # <-- renamed
         },
-        "coverage": coverage,
+        "coverage": {
+            "overall": coverage["overall"],
+            "by_ngram": coverage["by_ngram"],
+            "top_missed": coverage["top_missed"],
+        },
     }
-    out_path.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
-    print(f"[info] wrote coverage metrics to: {out_path}")
+    (run_dir / "metrics.json").write_text(json.dumps(metrics_payload, ensure_ascii=False, indent=2), encoding="utf-8")
+
+    # missed_terms.json (full list, not capped)
+    missed_items = coverage.get("missed_all", [])
+    missed_payload = {
+        "created_at": _ts(),
+        "threshold": args.threshold,
+        "total_missed_unique": len(missed_items),
+        "total_missed_weighted": int(sum(item["count"] for item in missed_items)),
+        "items": missed_items,  # [{"term": ..., "count": ..., "ngram": "2"/"3+"}, ...]
+    }
+    (run_dir / "missed_terms.json").write_text(json.dumps(missed_payload, ensure_ascii=False, indent=2), encoding="utf-8")
+
+    print(f"[info] wrote outputs to: {run_dir}")
 
 if __name__ == "__main__":
     main()
