@@ -1,0 +1,40 @@
+{
+  "created_at": "20250818_151559",
+  "generator": "word2phrase_eval.py",
+  "params": {
+    "min_count": 5,
+    "threshold": 2.0,
+    "scoring": "default",
+    "passes": 2,
+    "delimiter": "_",
+    "connector_preset": "light",
+    "connector_file": "",
+    "k_samples": 100000,
+    "seed": 13,
+    "limit_docs": 0
+  },
+  "connectors": [
+    "and",
+    "as",
+    "at",
+    "for",
+    "from",
+    "in",
+    "of",
+    "on",
+    "or",
+    "per",
+    "to",
+    "with"
+  ],
+  "phrasers": {
+    "bigram": "bigram.phraser",
+    "trigram": "trigram.phraser"
+  },
+  "docs_info": {
+    "n_docs": 139124
+  },
+  "artifacts": {
+    "sample_eval_jsonl": "/local/disk2/not_backed_up/amukundan/research/vocal_disorder/testing/word2phrase_test_outputs/word2phrase_eval_20250818_151556.jsonl"
+  }
+}

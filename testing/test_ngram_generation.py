@@ -251,7 +251,7 @@ def parse_args():
     p.add_argument("--connector", type=str, default="light", choices=["none","light","heavy"],
                    help="Preset connector list (discourages merges through these words)")
     p.add_argument("--connector-file", type=str, default="", help="Optional path to custom connector list (one word per line)")
-    p.add_argument("--k-samples", type=int, default=2000, help="Number of sample docs to output")
+    p.add_argument("--k-samples", type=int, default=100000, help="Number of sample docs to output")
     p.add_argument("--seed", type=int, default=13)
     p.add_argument("--limit-docs", type=int, default=0, help="Use only first N docs (speed-up)")
     p.add_argument("--out-jsonl", type=str, default="", help="Where to write sample input/output JSONL. "
