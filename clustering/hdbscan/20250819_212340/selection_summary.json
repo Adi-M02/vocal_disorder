@@ -1,0 +1,18 @@
+{
+  "model": "word2vec_expansion/word2vec_ngram_08_16_10_47/word2vec_cbow.model",
+  "vocab": "word2vec_expansion/word2vec_ngram_08_16_10_47/cbow_08_18_13_51/output.json",
+  "embedding_dim": 300,
+  "n_terms": 7214,
+  "pca_components": 46,
+  "grid": {
+    "min_cluster_size": [
+      10,
+      20,
+      40,
+      80
+    ],
+    "min_samples_mode": "both",
+    "metric_mode": "euclidean"
+  },
+  "best_setting": "mcs10_msNone"
+}

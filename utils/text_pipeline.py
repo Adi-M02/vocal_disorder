@@ -32,3 +32,13 @@ def remove_unigram_stopwords(tokens: List[str]) -> List[str]:
     apply only unigram stopword removal from the process text function
     """
     return [t for t in tokens if t not in STOPWORDS]
+
+def ngram_and_process(document, phraser, stoplist=True, lemmatize=True, lookup_path='testing/combined_lemmas.json'):
+    """
+    process a document and return ngrams
+    """
+    toks = process_text(document, stoplist=stoplist, lemmatize=lemmatize, lookup_path=lookup_path)
+    if len(toks) == 0:
+        return []
+    ngrams = phraser[toks]
+    return ngrams

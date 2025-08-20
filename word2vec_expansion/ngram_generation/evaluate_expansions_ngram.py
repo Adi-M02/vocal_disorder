@@ -374,18 +374,18 @@ def main():
     # Expansion args (exact)
     p.add_argument("--model", required=True, help="Path to Word2Vec .model")
     p.add_argument("--seed_json", required=True, help="Seeds JSON (list or {category: [terms]})")
-    p.add_argument("--topk", type=int, default=100, help="Top-k neighbors per seed")
+    p.add_argument("--topk", type=int, default=25, help="Top-k neighbors per seed")
     p.add_argument("--min_cos", type=float, default=0.4
     , help="Min cosine; strict '>' filter after topk")
     # Evaluation args (exact)
     p.add_argument("--ground_json", required=True, help="Ground JSON with key 'seed_terms' (unigrams after normalization)")
     p.add_argument("--db_name", default="reddit")
     p.add_argument("--collection_name", default="noburp_all")
-    p.add_argument("--users", required=False, help="Optional CSV of users: u1,u2,...")
+    p.add_argument("--users", default="vocabulary_evaluation/manual_terms_7_12/users.txt", help="Optional CSV of users: u1,u2,...")
     # Extras
     p.add_argument("--credit_mode", choices=["fractional","duplicate"], default="duplicate")
     p.add_argument("--include_seeds", action="store_true", help="Include original seeds as detector terms (OFF by default to match original)")
-    p.add_argument("--ngram_phraser_dir", type=str, default='word2phrase_saved_phrasers/run_20250816_102701', help="Directory containing n-gram phrasers.")
+    p.add_argument("--ngram_phraser_dir", type=str, required=True, help="Directory containing n-gram phrasers.")
     args = p.parse_args()
 
     # Load model

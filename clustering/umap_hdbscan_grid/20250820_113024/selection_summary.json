@@ -1,0 +1,22 @@
+{
+  "50": {
+    "best_setting": "mcs10_msNone",
+    "n_clusters": 3,
+    "noise_frac": 0.0004158580537843083
+  },
+  "30": {
+    "best_setting": "mcs20_msNone",
+    "n_clusters": 2,
+    "noise_frac": 0.00249514832270585
+  },
+  "25": {
+    "best_setting": "mcs10_msNone",
+    "n_clusters": 3,
+    "noise_frac": 0.0005544774050457444
+  },
+  "10": {
+    "best_setting": "mcs40_msNone",
+    "n_clusters": 6,
+    "noise_frac": 0.1524812863875797
+  }
+}

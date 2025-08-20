@@ -186,3 +186,8 @@ nltk_data/
 # finetuned bert models
 finetuned_*/
 finetuned_*
+
+# word2vec weights
+**/word2vec_*.model.syn1neg.npy
+**/word2vec_*.model.wv.vectors.npy
+

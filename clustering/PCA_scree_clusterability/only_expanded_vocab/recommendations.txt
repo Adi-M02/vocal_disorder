@@ -1,0 +1,2 @@
+PCA: best dim=10  (silhouette=0.2050, k=25)
+RP : best dim=10  (silhouette=0.1233, k=25)

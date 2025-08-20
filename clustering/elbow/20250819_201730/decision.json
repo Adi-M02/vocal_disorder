@@ -1,0 +1,18 @@
+{
+  "model": "word2vec_expansion/word2vec_ngram_08_16_10_47/word2vec_cbow.model",
+  "vocab": "word2vec_expansion/word2vec_ngram_08_16_10_47/cbow_08_18_13_51/output.json",
+  "fit_on": "subset",
+  "fit_topn": 200000,
+  "embedding_dim": 300,
+  "n_fit_vectors": 7214,
+  "max_components": 200,
+  "method": "max_distance",
+  "drop_top": 2,
+  "k_elbow_total": 23,
+  "k_elbow_effective": 21,
+  "var_at_elbow": 0.008253181353211403,
+  "k_target_total": 200,
+  "k_target_effective": 198,
+  "target_variance_residual": 0.9,
+  "cum_var_residual_at_target": 0.7624610705729538
+}

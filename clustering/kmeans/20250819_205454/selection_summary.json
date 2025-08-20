@@ -1,0 +1,21 @@
+{
+  "model": "word2vec_expansion/word2vec_ngram_08_16_10_47/word2vec_cbow.model",
+  "vocab": "word2vec_expansion/word2vec_ngram_08_16_10_47/cbow_08_18_13_51/output.json",
+  "embedding_dim": 300,
+  "n_terms": 7214,
+  "pca_components": 46,
+  "k_range": [
+    8,
+    60
+  ],
+  "K_elbow_inertia": 26,
+  "K_silhouette_max": 8,
+  "K_composite": 8,
+  "K_final": 11,
+  "metrics_at_final": {
+    "silhouette": 0.10654705762863159,
+    "inertia": 4353.94873046875,
+    "cohesion_mean": 0.6244208812713623,
+    "size_imbalance": 0.4317425594466718
+  }
+}
