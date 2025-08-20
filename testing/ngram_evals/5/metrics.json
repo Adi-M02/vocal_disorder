@@ -1,5 +1,5 @@
 {
-  "created_at": "20250819_140136",
+  "created_at": "20250819_150613",
   "args": {
     "min_count": 5,
     "threshold": 5.0,
@@ -10,7 +10,7 @@
     "limit_train_docs": 0,
     "users": "vocabulary_evaluation/manual_terms_7_12/users.txt",
     "limit_eval_docs": 0,
-    "seed_terms": "/local/disk2/not_backed_up/amukundan/research/vocal_disorder/vocabulary_evaluation/manual_terms_7_12/all_terms/1_to_3_gram_seed_terms.json"
+    "seed_terms": "/data/not_backed_up/amukundan/vocal_disorder/vocabulary_evaluation/manual_terms_7_12/all_terms/1_to_3_gram_seed_terms.json"
   },
   "counts": {
     "produced_vocab_full_corpus": 32089,

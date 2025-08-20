@@ -1,0 +1,1075 @@
+{
+  "created_at": "20250819_151306",
+  "args": {
+    "min_count": 5,
+    "threshold": 0.5,
+    "scoring": "default",
+    "passes": 2,
+    "connector_preset": "light",
+    "connector_file": "",
+    "limit_train_docs": 0,
+    "users": "vocabulary_evaluation/manual_terms_7_12/users.txt",
+    "limit_eval_docs": 0,
+    "seed_terms": "/data/not_backed_up/amukundan/vocal_disorder/vocabulary_evaluation/manual_terms_7_12/all_terms/1_to_3_gram_seed_terms.json"
+  },
+  "counts": {
+    "produced_vocab_full_corpus": 77733,
+    "eval_terms_unique_present": 2018,
+    "eval_terms_total_occurrences": 14174,
+    "seed_terms_normalized_unique": 2074
+  },
+  "coverage": {
+    "overall": {
+      "unique": {
+        "covered": 1165,
+        "total": 2018,
+        "rate": 0.5773042616451932
+      },
+      "weighted": {
+        "covered_count": 13081,
+        "total_count": 14174,
+        "rate": 0.9228869761535206
+      }
+    },
+    "by_ngram": {
+      "1": {
+        "unique": {
+          "covered": 381,
+          "total": 381,
+          "rate": 1.0
+        },
+        "weighted": {
+          "covered_count": 10066,
+          "total_count": 10066,
+          "rate": 1.0
+        }
+      },
+      "2": {
+        "unique": {
+          "covered": 555,
+          "total": 897,
+          "rate": 0.6187290969899666
+        },
+        "weighted": {
+          "covered_count": 2348,
+          "total_count": 2785,
+          "rate": 0.8430879712746858
+        }
+      },
+      "3+": {
+        "unique": {
+          "covered": 229,
+          "total": 740,
+          "rate": 0.30945945945945946
+        },
+        "weighted": {
+          "covered_count": 667,
+          "total_count": 1323,
+          "rate": 0.5041572184429327
+        }
+      }
+    },
+    "top_missed": [
+      {
+        "term": "in_my_throat",
+        "count": 40,
+        "ngram": "3+"
+      },
+      {
+        "term": "in_office",
+        "count": 24,
+        "ngram": "2"
+      },
+      {
+        "term": "to_swallow",
+        "count": 22,
+        "ngram": "2"
+      },
+      {
+        "term": "i_can_burp",
+        "count": 13,
+        "ngram": "3+"
+      },
+      {
+        "term": "as_a_baby",
+        "count": 9,
+        "ngram": "3+"
+      },
+      {
+        "term": "in_office_procedure",
+        "count": 8,
+        "ngram": "3+"
+      },
+      {
+        "term": "gurgle_burp",
+        "count": 7,
+        "ngram": "2"
+      },
+      {
+        "term": "as_a_kid",
+        "count": 6,
+        "ngram": "3+"
+      },
+      {
+        "term": "be_not_normal",
+        "count": 5,
+        "ngram": "3+"
+      },
+      {
+        "term": "in_my_head",
+        "count": 5,
+        "ngram": "3+"
+      },
+      {
+        "term": "in_public",
+        "count": 5,
+        "ngram": "2"
+      },
+      {
+        "term": "bloat_symptom",
+        "count": 4,
+        "ngram": "2"
+      },
+      {
+        "term": "breath_in",
+        "count": 4,
+        "ngram": "2"
+      },
+      {
+        "term": "no_doctor_near",
+        "count": 4,
+        "ngram": "3+"
+      },
+      {
+        "term": "something_psychological",
+        "count": 4,
+        "ngram": "2"
+      },
+      {
+        "term": "take_it_serious",
+        "count": 4,
+        "ngram": "3+"
+      },
+      {
+        "term": "all_air",
+        "count": 3,
+        "ngram": "2"
+      },
+      {
+        "term": "bravo_ph_monitor",
+        "count": 3,
+        "ngram": "3+"
+      },
+      {
+        "term": "dietary_intolerance",
+        "count": 3,
+        "ngram": "2"
+      },
+      {
+        "term": "have_to_fart",
+        "count": 3,
+        "ngram": "3+"
+      },
+      {
+        "term": "i_could_cry",
+        "count": 3,
+        "ngram": "3+"
+      },
+      {
+        "term": "not_relax",
+        "count": 3,
+        "ngram": "2"
+      },
+      {
+        "term": "not_to_relapse",
+        "count": 3,
+        "ngram": "3+"
+      },
+      {
+        "term": "swallow_my_spit",
+        "count": 3,
+        "ngram": "3+"
+      },
+      {
+        "term": "usual_rcpd_symptom",
+        "count": 3,
+        "ngram": "3+"
+      },
+      {
+        "term": "able_to_fart",
+        "count": 2,
+        "ngram": "3+"
+      },
+      {
+        "term": "acid_feel",
+        "count": 2,
+        "ngram": "2"
+      },
+      {
+        "term": "afraid_to_puke",
+        "count": 2,
+        "ngram": "3+"
+      },
+      {
+        "term": "afraid_to_vomit",
+        "count": 2,
+        "ngram": "3+"
+      },
+      {
+        "term": "air_be_trap",
+        "count": 2,
+        "ngram": "3+"
+      },
+      {
+        "term": "all_those_symptom",
+        "count": 2,
+        "ngram": "3+"
+      },
+      {
+        "term": "anxiety_around_clothing",
+        "count": 2,
+        "ngram": "3+"
+      },
+      {
+        "term": "autoimmune_condition",
+        "count": 2,
+        "ngram": "2"
+      },
+      {
+        "term": "body_be_learn",
+        "count": 2,
+        "ngram": "3+"
+      },
+      {
+        "term": "burp_while_eat",
+        "count": 2,
+        "ngram": "3+"
+      },
+      {
+        "term": "chronic_dysphagia",
+        "count": 2,
+        "ngram": "2"
+      },
+      {
+        "term": "ck_level",
+        "count": 2,
+        "ngram": "2"
+      },
+      {
+        "term": "common_condition",
+        "count": 2,
+        "ngram": "2"
+      },
+      {
+        "term": "constant_sore_throat",
+        "count": 2,
+        "ngram": "3+"
+      },
+      {
+        "term": "cost_prohibitive",
+        "count": 2,
+        "ngram": "2"
+      },
+      {
+        "term": "could_taste_it",
+        "count": 2,
+        "ngram": "3+"
+      },
+      {
+        "term": "down_your_trachea",
+        "count": 2,
+        "ngram": "3+"
+      },
+      {
+        "term": "drink_more_water",
+        "count": 2,
+        "ngram": "3+"
+      },
+      {
+        "term": "emotional_state",
+        "count": 2,
+        "ngram": "2"
+      },
+      {
+        "term": "excessive_microburp",
+        "count": 2,
+        "ngram": "2"
+      },
+      {
+        "term": "feel_air_escape",
+        "count": 2,
+        "ngram": "3+"
+      },
+      {
+        "term": "feel_air_stuck",
+        "count": 2,
+        "ngram": "3+"
+      },
+      {
+        "term": "feel_poor",
+        "count": 2,
+        "ngram": "2"
+      },
+      {
+        "term": "feel_so_close",
+        "count": 2,
+        "ngram": "3+"
+      },
+      {
+        "term": "food_intake_disorder",
+        "count": 2,
+        "ngram": "3+"
+      },
+      {
+        "term": "frustrate_i",
+        "count": 2,
+        "ngram": "2"
+      },
+      {
+        "term": "full_burp_out",
+        "count": 2,
+        "ngram": "3+"
+      },
+      {
+        "term": "gp_office",
+        "count": 2,
+        "ngram": "2"
+      },
+      {
+        "term": "have_not_vomit",
+        "count": 2,
+        "ngram": "3+"
+      },
+      {
+        "term": "have_try_everything",
+        "count": 2,
+        "ngram": "3+"
+      },
+      {
+        "term": "high_protein_meal",
+        "count": 2,
+        "ngram": "3+"
+      },
+      {
+        "term": "highly_fermentable_food",
+        "count": 2,
+        "ngram": "3+"
+      },
+      {
+        "term": "improve_posture",
+        "count": 2,
+        "ngram": "2"
+      },
+      {
+        "term": "in_office_botox",
+        "count": 2,
+        "ngram": "3+"
+      },
+      {
+        "term": "lay_upside_down",
+        "count": 2,
+        "ngram": "3+"
+      },
+      {
+        "term": "les_tone",
+        "count": 2,
+        "ngram": "2"
+      },
+      {
+        "term": "little_nauseous",
+        "count": 2,
+        "ngram": "2"
+      },
+      {
+        "term": "little_runny",
+        "count": 2,
+        "ngram": "2"
+      },
+      {
+        "term": "long_drink",
+        "count": 2,
+        "ngram": "2"
+      },
+      {
+        "term": "make_i_anxious",
+        "count": 2,
+        "ngram": "3+"
+      },
+      {
+        "term": "minimize_the_gurgle",
+        "count": 2,
+        "ngram": "3+"
+      },
+      {
+        "term": "minor_gastritis",
+        "count": 2,
+        "ngram": "2"
+      },
+      {
+        "term": "movement_of_air",
+        "count": 2,
+        "ngram": "3+"
+      },
+      {
+        "term": "movement_of_regurgitation",
+        "count": 2,
+        "ngram": "3+"
+      },
+      {
+        "term": "mucusy_feel",
+        "count": 2,
+        "ngram": "2"
+      },
+      {
+        "term": "new_pain",
+        "count": 2,
+        "ngram": "2"
+      },
+      {
+        "term": "no_carbonate_drink",
+        "count": 2,
+        "ngram": "3+"
+      },
+      {
+        "term": "non_corrosive_gerd",
+        "count": 2,
+        "ngram": "3+"
+      },
+      {
+        "term": "nose_allergy",
+        "count": 2,
+        "ngram": "2"
+      },
+      {
+        "term": "not_quite_enough",
+        "count": 2,
+        "ngram": "3+"
+      },
+      {
+        "term": "out_more_easy",
+        "count": 2,
+        "ngram": "3+"
+      },
+      {
+        "term": "paralyze_in_pain",
+        "count": 2,
+        "ngram": "3+"
+      },
+      {
+        "term": "raise_the_quantity",
+        "count": 2,
+        "ngram": "3+"
+      },
+      {
+        "term": "reject_thing",
+        "count": 2,
+        "ngram": "2"
+      },
+      {
+        "term": "relief_from_burp",
+        "count": 2,
+        "ngram": "3+"
+      },
+      {
+        "term": "retrograde_cricopharyngeal_dysphagia",
+        "count": 2,
+        "ngram": "3+"
+      },
+      {
+        "term": "second_op",
+        "count": 2,
+        "ngram": "2"
+      },
+      {
+        "term": "shaker_chin_up",
+        "count": 2,
+        "ngram": "3+"
+      },
+      {
+        "term": "slow_digestive_system",
+        "count": 2,
+        "ngram": "3+"
+      },
+      {
+        "term": "small_in_diameter",
+        "count": 2,
+        "ngram": "3+"
+      },
+      {
+        "term": "small_micro_burp",
+        "count": 2,
+        "ngram": "3+"
+      },
+      {
+        "term": "square_one",
+        "count": 2,
+        "ngram": "2"
+      },
+      {
+        "term": "stomach_throat_gurgle",
+        "count": 2,
+        "ngram": "3+"
+      },
+      {
+        "term": "strange_burp",
+        "count": 2,
+        "ngram": "2"
+      },
+      {
+        "term": "talk_and_eat",
+        "count": 2,
+        "ngram": "3+"
+      },
+      {
+        "term": "talk_with_people",
+        "count": 2,
+        "ngram": "3+"
+      },
+      {
+        "term": "throat_be_sore",
+        "count": 2,
+        "ngram": "3+"
+      },
+      {
+        "term": "throat_burp",
+        "count": 2,
+        "ngram": "2"
+      },
+      {
+        "term": "throat_might_hurt",
+        "count": 2,
+        "ngram": "3+"
+      },
+      {
+        "term": "to_believe_you",
+        "count": 2,
+        "ngram": "3+"
+      },
+      {
+        "term": "up_the_nose",
+        "count": 2,
+        "ngram": "3+"
+      },
+      {
+        "term": "verge_of_burp",
+        "count": 2,
+        "ngram": "3+"
+      },
+      {
+        "term": "virtual_visit",
+        "count": 2,
+        "ngram": "2"
+      },
+      {
+        "term": "voice_feel_weak",
+        "count": 2,
+        "ngram": "3+"
+      },
+      {
+        "term": "0_regret",
+        "count": 1,
+        "ngram": "2"
+      },
+      {
+        "term": "1000_firecracker",
+        "count": 1,
+        "ngram": "2"
+      },
+      {
+        "term": "1_gallon_abdomen",
+        "count": 1,
+        "ngram": "3+"
+      },
+      {
+        "term": "20_min_procedure",
+        "count": 1,
+        "ngram": "3+"
+      },
+      {
+        "term": "28_week_pregnant",
+        "count": 1,
+        "ngram": "3+"
+      },
+      {
+        "term": "6_day_in",
+        "count": 1,
+        "ngram": "3+"
+      },
+      {
+        "term": "70_cc",
+        "count": 1,
+        "ngram": "2"
+      },
+      {
+        "term": "abdominal_throat_muscle",
+        "count": 1,
+        "ngram": "3+"
+      },
+      {
+        "term": "absolutely_starve",
+        "count": 1,
+        "ngram": "2"
+      },
+      {
+        "term": "accept_the_consequence",
+        "count": 1,
+        "ngram": "3+"
+      },
+      {
+        "term": "accompany_by_flatulence",
+        "count": 1,
+        "ngram": "3+"
+      },
+      {
+        "term": "acid_reduction_medication",
+        "count": 1,
+        "ngram": "3+"
+      },
+      {
+        "term": "acid_reflux_pain",
+        "count": 1,
+        "ngram": "3+"
+      },
+      {
+        "term": "active_ed",
+        "count": 1,
+        "ngram": "2"
+      },
+      {
+        "term": "active_squeeze",
+        "count": 1,
+        "ngram": "2"
+      },
+      {
+        "term": "actually_care",
+        "count": 1,
+        "ngram": "2"
+      },
+      {
+        "term": "administer_medication",
+        "count": 1,
+        "ngram": "2"
+      },
+      {
+        "term": "adult_size_dosage",
+        "count": 1,
+        "ngram": "3+"
+      },
+      {
+        "term": "affect_burp",
+        "count": 1,
+        "ngram": "2"
+      },
+      {
+        "term": "affect_your_anxiety",
+        "count": 1,
+        "ngram": "3+"
+      },
+      {
+        "term": "air_be_escape",
+        "count": 1,
+        "ngram": "3+"
+      },
+      {
+        "term": "air_bounce_up",
+        "count": 1,
+        "ngram": "3+"
+      },
+      {
+        "term": "air_bubble_bob",
+        "count": 1,
+        "ngram": "3+"
+      },
+      {
+        "term": "air_bubble_sensation",
+        "count": 1,
+        "ngram": "3+"
+      },
+      {
+        "term": "air_issue",
+        "count": 1,
+        "ngram": "2"
+      },
+      {
+        "term": "air_manipulation",
+        "count": 1,
+        "ngram": "2"
+      },
+      {
+        "term": "air_slip",
+        "count": 1,
+        "ngram": "2"
+      },
+      {
+        "term": "airplane_chair",
+        "count": 1,
+        "ngram": "2"
+      },
+      {
+        "term": "alcohol_with_food",
+        "count": 1,
+        "ngram": "3+"
+      },
+      {
+        "term": "alcoholic_seltzer",
+        "count": 1,
+        "ngram": "2"
+      },
+      {
+        "term": "almost_faint",
+        "count": 1,
+        "ngram": "2"
+      },
+      {
+        "term": "already_so_tight",
+        "count": 1,
+        "ngram": "3+"
+      },
+      {
+        "term": "already_stop_work",
+        "count": 1,
+        "ngram": "3+"
+      },
+      {
+        "term": "always_hate_eat",
+        "count": 1,
+        "ngram": "3+"
+      },
+      {
+        "term": "anterior_pelvic_tilt",
+        "count": 1,
+        "ngram": "3+"
+      },
+      {
+        "term": "antispasmodic_medication",
+        "count": 1,
+        "ngram": "2"
+      },
+      {
+        "term": "anxiety_management",
+        "count": 1,
+        "ngram": "2"
+      },
+      {
+        "term": "any_further_test",
+        "count": 1,
+        "ngram": "3+"
+      },
+      {
+        "term": "appeal_the_claim",
+        "count": 1,
+        "ngram": "3+"
+      },
+      {
+        "term": "assist_in_diagnosis",
+        "count": 1,
+        "ngram": "3+"
+      },
+      {
+        "term": "asthma_act_up",
+        "count": 1,
+        "ngram": "3+"
+      },
+      {
+        "term": "attitude_and_sass",
+        "count": 1,
+        "ngram": "3+"
+      },
+      {
+        "term": "avoid_aggressor",
+        "count": 1,
+        "ngram": "2"
+      },
+      {
+        "term": "avoid_long_drink",
+        "count": 1,
+        "ngram": "3+"
+      },
+      {
+        "term": "avoid_pasta",
+        "count": 1,
+        "ngram": "2"
+      },
+      {
+        "term": "awake_version",
+        "count": 1,
+        "ngram": "2"
+      },
+      {
+        "term": "back_up_position",
+        "count": 1,
+        "ngram": "3+"
+      },
+      {
+        "term": "bad_mechanism",
+        "count": 1,
+        "ngram": "2"
+      },
+      {
+        "term": "bad_stomach_pain",
+        "count": 1,
+        "ngram": "3+"
+      },
+      {
+        "term": "bad_trigger",
+        "count": 1,
+        "ngram": "2"
+      },
+      {
+        "term": "bad_vomit_experience",
+        "count": 1,
+        "ngram": "3+"
+      },
+      {
+        "term": "balloon_up",
+        "count": 1,
+        "ngram": "2"
+      },
+      {
+        "term": "be_through_botox",
+        "count": 1,
+        "ngram": "3+"
+      },
+      {
+        "term": "beano_pill",
+        "count": 1,
+        "ngram": "2"
+      },
+      {
+        "term": "become_fart",
+        "count": 1,
+        "ngram": "2"
+      },
+      {
+        "term": "become_light",
+        "count": 1,
+        "ngram": "2"
+      },
+      {
+        "term": "become_more_confident",
+        "count": 1,
+        "ngram": "3+"
+      },
+      {
+        "term": "become_more_natural",
+        "count": 1,
+        "ngram": "3+"
+      },
+      {
+        "term": "become_so_pain",
+        "count": 1,
+        "ngram": "3+"
+      },
+      {
+        "term": "belch_like_noise",
+        "count": 1,
+        "ngram": "3+"
+      },
+      {
+        "term": "belly_be_pop",
+        "count": 1,
+        "ngram": "3+"
+      },
+      {
+        "term": "big_pain_hiccup",
+        "count": 1,
+        "ngram": "3+"
+      },
+      {
+        "term": "big_release_burp",
+        "count": 1,
+        "ngram": "3+"
+      },
+      {
+        "term": "biofeedback_method",
+        "count": 1,
+        "ngram": "2"
+      },
+      {
+        "term": "bit_of_resistance",
+        "count": 1,
+        "ngram": "3+"
+      },
+      {
+        "term": "bloat_actually_hurt",
+        "count": 1,
+        "ngram": "3+"
+      },
+      {
+        "term": "bloat_be_horrid",
+        "count": 1,
+        "ngram": "3+"
+      },
+      {
+        "term": "bloat_have_settle",
+        "count": 1,
+        "ngram": "3+"
+      },
+      {
+        "term": "bodily_awareness",
+        "count": 1,
+        "ngram": "2"
+      },
+      {
+        "term": "body_automatic_stifle",
+        "count": 1,
+        "ngram": "3+"
+      },
+      {
+        "term": "body_confidence",
+        "count": 1,
+        "ngram": "2"
+      },
+      {
+        "term": "body_feel_empty",
+        "count": 1,
+        "ngram": "3+"
+      },
+      {
+        "term": "body_natural_tendency",
+        "count": 1,
+        "ngram": "3+"
+      },
+      {
+        "term": "body_pathology",
+        "count": 1,
+        "ngram": "2"
+      },
+      {
+        "term": "botox_another_go",
+        "count": 1,
+        "ngram": "3+"
+      },
+      {
+        "term": "botox_cover",
+        "count": 1,
+        "ngram": "2"
+      },
+      {
+        "term": "botox_injection_procedure",
+        "count": 1,
+        "ngram": "3+"
+      },
+      {
+        "term": "botox_loosen_it",
+        "count": 1,
+        "ngram": "3+"
+      },
+      {
+        "term": "bowel_cancer",
+        "count": 1,
+        "ngram": "2"
+      },
+      {
+        "term": "brain_stop_i",
+        "count": 1,
+        "ngram": "3+"
+      },
+      {
+        "term": "breathe_be_change",
+        "count": 1,
+        "ngram": "3+"
+      },
+      {
+        "term": "bring_acid",
+        "count": 1,
+        "ngram": "2"
+      },
+      {
+        "term": "bring_i_distress",
+        "count": 1,
+        "ngram": "3+"
+      },
+      {
+        "term": "brink_of_nausea",
+        "count": 1,
+        "ngram": "3+"
+      },
+      {
+        "term": "brisk_walk_uphill",
+        "count": 1,
+        "ngram": "3+"
+      },
+      {
+        "term": "brutal_hiccup",
+        "count": 1,
+        "ngram": "2"
+      },
+      {
+        "term": "bubble_get_unstuck",
+        "count": 1,
+        "ngram": "3+"
+      },
+      {
+        "term": "bunch_of_phlegm",
+        "count": 1,
+        "ngram": "3+"
+      },
+      {
+        "term": "burp_active",
+        "count": 1,
+        "ngram": "2"
+      },
+      {
+        "term": "burp_be_fly",
+        "count": 1,
+        "ngram": "3+"
+      },
+      {
+        "term": "burp_be_involuntary",
+        "count": 1,
+        "ngram": "3+"
+      },
+      {
+        "term": "burp_be_stuck",
+        "count": 1,
+        "ngram": "3+"
+      },
+      {
+        "term": "burp_break",
+        "count": 1,
+        "ngram": "2"
+      },
+      {
+        "term": "burp_door_open",
+        "count": 1,
+        "ngram": "3+"
+      },
+      {
+        "term": "burp_odd",
+        "count": 1,
+        "ngram": "2"
+      },
+      {
+        "term": "burp_spill_out",
+        "count": 1,
+        "ngram": "3+"
+      },
+      {
+        "term": "calm_the_vagus",
+        "count": 1,
+        "ngram": "3+"
+      },
+      {
+        "term": "camera_one",
+        "count": 1,
+        "ngram": "2"
+      },
+      {
+        "term": "camera_show",
+        "count": 1,
+        "ngram": "2"
+      },
+      {
+        "term": "can_be_risky",
+        "count": 1,
+        "ngram": "3+"
+      },
+      {
+        "term": "cannot_walk",
+        "count": 1,
+        "ngram": "2"
+      }
+    ]
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "vector_size": 300,
+  "window": 7,
+  "min_count": 5,
+  "ngram_phrasers_dir": "testing/ngram_evals/2",
+  "outdir": null,
+  "exact_path": "testing/ngram_evals/2",
+  "timestamp": "2025-08-19T15:10:06.437471"
+}
