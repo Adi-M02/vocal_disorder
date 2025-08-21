@@ -1,0 +1,26 @@
+{
+  "model": "clustering/test_unigram_model/word2vec_08_20_20_37/word2vec_cbow.model",
+  "vocab": "clustering/test_unigram_model/word2vec_08_20_20_37/added_eval_08_20_20_45/new_eval_set.json",
+  "embedding_dim": 300,
+  "n_terms": 1820,
+  "pca_components": 10,
+  "pca_variance_explained": 0.46704724431037903,
+  "k_range": [
+    8,
+    60
+  ],
+  "K_elbow_inertia": 22,
+  "K_silhouette_max": 11,
+  "K_composite": 11,
+  "K_final": 21,
+  "metrics_at_final": {
+    "silhouette": 0.15890942513942719,
+    "inertia": 672.0010986328125,
+    "cohesion_mean": 0.7929242253303528,
+    "size_imbalance": 0.3906937281043134
+  },
+  "docs_source": "processed_no_ngrams",
+  "ngram_phraser_dir": null,
+  "min_sim": 0.0,
+  "top_n": 50
+}

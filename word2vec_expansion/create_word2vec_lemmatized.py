@@ -16,7 +16,7 @@ from gensim.models import Word2Vec
 
 sys.path.append('../vocal_disorder')
 from query_mongo import return_documents
-from utils.text_pipeline import process_text
+from utils.load_and_process_docs import process_all_noburp
 
 
 def make_outdir(base_outdir: str, now: datetime.datetime) -> Path:
@@ -102,20 +102,8 @@ def main():
 
     logging = print  # print for progress
 
-    # fetch Reddit docs
-    docs = return_documents(
-        db_name="reddit",
-        collection_name="noburp_all",
-        filter_subreddits=["noburp"],
-        mongo_uri="mongodb://localhost:27017/",
-    )
-    logging(f"Number of documents fetched: {len(docs)}")
-
-    # process text
-    cleaned_docs: list[list[str]] = []
-    for text in docs:
-        toks = process_text(text)
-        cleaned_docs.append(toks)
+    # fetch Reddit docs and process text
+    cleaned_docs = process_all_noburp()
     logging(f"Tokenized & lemmatized {len(cleaned_docs)} documents")
 
     # run the training pipeline

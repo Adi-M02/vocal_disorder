@@ -1,0 +1,22 @@
+{
+  "model": "testing/ngram_evals/5/word2vec_cbow.model",
+  "vocab": "testing/ngram_evals/5/added_eval_08_19_15_15/new_eval_set.json",
+  "embedding_dim": 300,
+  "n_terms": 4032,
+  "pca_components": 46,
+  "pca_variance_explained": 0.9013530015945435,
+  "k_range": [
+    8,
+    60
+  ],
+  "K_elbow_inertia": 25,
+  "K_silhouette_max": 16,
+  "K_composite": 8,
+  "K_final": 17,
+  "metrics_at_final": {
+    "silhouette": 0.10959400981664658,
+    "inertia": 2195.552978515625,
+    "cohesion_mean": 0.6710724830627441,
+    "size_imbalance": 0.49678204663269976
+  }
+}

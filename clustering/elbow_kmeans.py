@@ -1,49 +1,21 @@
 #!/usr/bin/env python3
 """
-Cluster Word2Vec terms with PCA (to N dims) + L2 normalization + KMeans sweep.
+Cluster Word2Vec terms with PCA (to N dims) + L2 normalization + KMeans sweep,
+then ALWAYS count per-cluster term frequencies over a corpus.
 
-Inputs:
-  - Gensim Word2Vec/KeyedVectors model
-  - Vocab JSON/TXT (JSON supports keys: {"seed_terms"|"terms"|"vocabulary"})
+Docs source:
+  - If --ngram-phraser-dir is provided: use process_ngram_docs(ngram_phraser_dir=...)
+  - Else: fall back to process_all_noburp() (no n-gram phrasing)
 
-Pipeline:
-  1) Load model + intersect with provided vocab
-  2) Fit PCA (n_components=--pca-dim) on the *subset* vectors and transform them
-  3) L2-normalize rows (good for cosine-like clustering with k-means)
-  4) For K in [k_min..k_max]: run KMeans (n_init, max_iter), collect metrics
-     - inertia (within-cluster SSE)
-     - silhouette_score (euclidean on unit vectors ~ cosine)
-     - davies_bouldin_score (optional sanity)
-     - calinski_harabasz_score (optional sanity)
-  5) Choose K using silhouette (primary) with a tie-breaker via inertia elbow and
-     a light "interpretability" proxy (cluster cohesion)
-  6) Save cluster assignments and per-cluster top terms near centroid
-
-Outputs (timestamped directory):
-  - tokens_used.txt, oov_terms.txt
-  - pca_<D>.joblib (fitted PCA)
-  - Z_<D>_l2.npz  (tokens + <D>-dim normalized embeddings)
-  - k_scan_metrics.csv  (K, inertia, silhouette, db, ch, cohesion_mean, size_imbalance)
-  - silhouette_vs_k.png, inertia_vs_k.png (with elbow) and selection_summary.json
-  - clusters_K<best>.csv  (token, cluster, sim_to_centroid)
-  - cluster_summaries_K<best>.json (per cluster: size, mean_sim, top_terms)
-
-Usage:
-  python cluster_pca_kmeans.py \
-      --model path/to/model.model \
-      --vocab path/to/terms.json \
-      --outdir runs/cluster \
-      [--pca-dim 46] \
-      [--k-min 8 --k-max 60] \
-      [--n-init 20 --max-iter 500] \
-      [--random-state 42] \
-      [--top-terms 25]
-
-Notes:
-  - PCA is fit on the provided subset by default; if you want a global basis,
-    adapt the code to fit on kv.vectors (or add a --fit-on flag like earlier).
-  - After L2 normalization, Euclidean distances correspond to cosine distances
-    (up to a monotonic transform), making KMeans behave like spherical k-means.
+Outputs (in the timestamped run dir under --outdir) include:
+  - cluster_term_freqs_K<best>.json
+      - per cluster:
+        - top_terms_by_frequency (structured list of dicts)
+        - top_terms_by_frequency_lines (newline string: "term\\tcount\\tsim")
+  - cluster_terms_minSim_K<best>.json
+      - cluster -> [terms with sim >= --min-sim]
+  - cluster_terms_minSim_lines_K<best>.json
+      - cluster -> "term1\\nterm2\\n..."  (newline-formatted for readability)
 """
 
 from __future__ import annotations
@@ -54,6 +26,14 @@ import logging
 from pathlib import Path
 from datetime import datetime
 from typing import List, Tuple, Dict
+from collections import defaultdict, Counter
+import csv
+import os
+
+# ---- corpus loaders ----
+sys.path.append('../vocal_disorder')
+from utils.load_process_ngram_docs import process_ngram_docs
+from utils.load_and_process_docs import process_all_noburp
 
 import numpy as np
 from sklearn.decomposition import PCA
@@ -61,9 +41,13 @@ from sklearn.cluster import KMeans
 from sklearn.preprocessing import normalize
 from sklearn.metrics import silhouette_score, davies_bouldin_score, calinski_harabasz_score
 from joblib import dump
+
+# Headless matplotlib (safe with multiprocessing)
+os.environ.setdefault("MPLBACKEND", "Agg")
+import matplotlib
+matplotlib.use("Agg")
 import matplotlib.pyplot as plt
-sys.path.append("../vocal_disorder")
-from utils.load_process_ngram_docs import process_ngram_docs
+
 try:
     from gensim.models import Word2Vec, KeyedVectors
 except Exception as e:  # pragma: no cover
@@ -111,20 +95,17 @@ def load_vocab(path: Path) -> List[str]:
 def load_w2v_any(path: Path):
     """Attempt to load a Gensim model or KeyedVectors from common formats."""
     ext = path.suffix.lower()
-    # 1) Full Word2Vec model saved by Word2Vec.save
     if ext in {".model", ".w2v"}:
         try:
             m = Word2Vec.load(str(path))
             return m.wv
         except Exception:
             pass
-    # 2) KeyedVectors saved by KeyedVectors.save
     try:
         kv = KeyedVectors.load(str(path), mmap='r')
         return kv
     except Exception:
         pass
-    # 3) word2vec format (bin or txt)
     if ext in {".bin", ".txt", ".vec"}:
         try:
             binary = ext == ".bin"
@@ -136,9 +117,7 @@ def load_w2v_any(path: Path):
 
 
 def knee_max_distance(x: np.ndarray, y: np.ndarray) -> int:
-    """Return the index (into x,y) of the point farthest from the line joining
-    the first and last points. Suitable for decreasing inertia curves.
-    """
+    """Index of point farthest from the line joining first/last points."""
     assert x.ndim == y.ndim == 1 and x.size == y.size >= 3
     x1, y1 = float(x[0]), float(y[0])
     x2, y2 = float(x[-1]), float(y[-1])
@@ -151,10 +130,7 @@ def knee_max_distance(x: np.ndarray, y: np.ndarray) -> int:
 
 
 def cluster_cohesion(Z: np.ndarray, labels: np.ndarray, centroids: np.ndarray) -> Tuple[float, Dict[int, float]]:
-    """Mean cosine-like similarity of points to their (L2-normalized) centroid.
-    Returns (global_mean, per_cluster_mean_dict).
-    """
-    # Normalize centroids to unit length for cosine-like dot products
+    """Mean cosine-like similarity of points to their (L2-normalized) centroid."""
     cent = centroids / (np.linalg.norm(centroids, axis=1, keepdims=True) + 1e-12)
     sims = np.sum(Z * cent[labels], axis=1)
     means = {}
@@ -172,15 +148,9 @@ def summarize_clusters(tokens: List[str], Z: np.ndarray, labels: np.ndarray, cen
         size = int(idx.size)
         sims_k = sims_all[idx, k]
         mean_sim = float(np.mean(sims_k)) if size > 0 else 0.0
-        # Top terms in this cluster by similarity to centroid
         order = np.argsort(-sims_k)[: top_terms]
         top = [tokens[i] for i in idx[order]]
-        out.append({
-            "cluster": int(k),
-            "size": size,
-            "mean_sim": mean_sim,
-            "top_terms": top,
-        })
+        out.append({"cluster": int(k), "size": size, "mean_sim": mean_sim, "top_terms": top})
     return out
 
 
@@ -189,19 +159,26 @@ def summarize_clusters(tokens: List[str], Z: np.ndarray, labels: np.ndarray, cen
 # -------------------------
 
 def main():
-    ap = argparse.ArgumentParser(description="PCA(N) + L2 + KMeans sweep for Word2Vec vocab")
+    ap = argparse.ArgumentParser(description="PCA(N) + L2 + KMeans (+ ALWAYS: corpus term counts)")
     ap.add_argument("--model", required=True, help="Path to Gensim model or KeyedVectors")
     ap.add_argument("--vocab", required=True, help="Path to vocab (JSON or TXT)")
     ap.add_argument("--outdir", required=True, help="Directory for timestamped outputs")
 
     ap.add_argument("--pca-dim", type=int, default=46, help="PCA target dimensionality before clustering (default 46)")
-
-    ap.add_argument("--k-min", type=int, default=8, help="Minimum K to try (default 8)")
-    ap.add_argument("--k-max", type=int, default=60, help="Maximum K to try (default 60)")
+    ap.add_argument("--k-min", type=int, default=3, help="Minimum K to try")
+    ap.add_argument("--k-max", type=int, default=30, help="Maximum K to try")
     ap.add_argument("--n-init", type=int, default=20, help="KMeans n_init (default 20)")
     ap.add_argument("--max-iter", type=int, default=500, help="KMeans max_iter (default 500)")
     ap.add_argument("--random-state", type=int, default=42, help="Random seed (default 42)")
     ap.add_argument("--top-terms", type=int, default=25, help="Top terms per cluster in summary (default 25)")
+
+    # Docs source: n-gram phrasing optional; fallback to processed docs without n-grams
+    ap.add_argument("--ngram-phraser-dir", default=None,
+                    help="Directory containing trained n-gram phrasers; if omitted, fall back to process_all_noburp() (no n-grams).")
+    ap.add_argument("--top-freq", type=int, default=50,
+                    help="Top-N terms by frequency per cluster (default 50)")
+    ap.add_argument("--min-sim", type=float, default=0.0,
+                    help="Minimum sim_to_centroid to include a term (default 0.0)")
 
     args = ap.parse_args()
 
@@ -237,7 +214,7 @@ def main():
     # Build matrix for subset
     X = kv[in_vocab]  # shape: (n_tokens, emb_dim)
 
-    # PCA -> D dims (guard against n_components > min(n_samples, n_features))
+    # PCA -> D dims
     requested_d = int(args.pca_dim)
     max_d = int(min(len(in_vocab), X.shape[1]))
     if requested_d > max_d:
@@ -258,25 +235,14 @@ def main():
 
     # K sweep
     Ks = np.arange(int(args.k_min), int(args.k_max) + 1)
-    metrics = {
-        "K": [],
-        "inertia": [],
-        "silhouette": [],
-        "davies_bouldin": [],
-        "calinski_harabasz": [],
-        "cohesion_mean": [],
-        "size_imbalance": [],  # std(size)/mean(size)
-    }
+    metrics = {"K": [], "inertia": [], "silhouette": [], "davies_bouldin": [], "calinski_harabasz": [],
+               "cohesion_mean": [], "size_imbalance": []}
     label_by_k: Dict[int, np.ndarray] = {}
     kmeans_by_k: Dict[int, KMeans] = {}
 
     for K in Ks:
-        km = KMeans(
-            n_clusters=int(K),
-            n_init=int(args.n_init),
-            max_iter=int(args.max_iter),
-            random_state=args.random_state,
-        )
+        km = KMeans(n_clusters=int(K), n_init=int(args.n_init), max_iter=int(args.max_iter),
+                    random_state=args.random_state)
         lab = km.fit_predict(Z)
 
         inertia = float(km.inertia_)
@@ -289,7 +255,6 @@ def main():
             ch = float(calinski_harabasz_score(Z, lab))
         except Exception:
             ch = float("nan")
-        # Cohesion + size imbalance
         coh_mean, _ = cluster_cohesion(Z, lab, km.cluster_centers_)
         sizes = np.bincount(lab, minlength=K).astype(float)
         size_imb = float(np.std(sizes) / (np.mean(sizes) + 1e-12))
@@ -307,7 +272,6 @@ def main():
         logging.info(f"K={K:>3} | inertia={inertia:.2f} | sil={sil:.4f} | coh={coh_mean:.4f} | size_imb={size_imb:.3f}")
 
     # Save metrics CSV
-    import csv
     with open(outdir / "k_scan_metrics.csv", "w", newline="", encoding="utf-8") as f:
         w = csv.writer(f)
         w.writerow(["K","inertia","silhouette","davies_bouldin","calinski_harabasz","cohesion_mean","size_imbalance"])
@@ -328,30 +292,23 @@ def main():
     cohesion_arr = np.array(metrics["cohesion_mean"], dtype=float)
     size_imb_arr = np.array(metrics["size_imbalance"], dtype=float)
 
-    # Elbow on inertia (decreasing)
+    # Elbow + selection
     if Ks_arr.size >= 3:
         idx_knee = knee_max_distance(Ks_arr, inertia_arr)
         K_elbow = int(Ks_arr[idx_knee])
     else:
         K_elbow = int(Ks_arr[np.argmin(inertia_arr)])
-
-    # Primary choice: maximize silhouette
     K_sil = int(Ks_arr[np.nanargmax(silhouette_arr)])
-
-    # Interpretability proxy: cohesion high, size imbalance low
     def _z(a: np.ndarray) -> np.ndarray:
         m, s = np.nanmean(a), np.nanstd(a) + 1e-9
         return (a - m) / s
     comp = _z(silhouette_arr) + 0.5*_z(cohesion_arr) - 0.25*_z(size_imb_arr)
     K_comp = int(Ks_arr[np.nanargmax(comp)])
-
-    # Final rule: pick K with silhouette within 95% of best, then closest to elbow; if tie, max composite
     sil_best = np.nanmax(silhouette_arr)
     mask = silhouette_arr >= (0.95 * sil_best)
     if np.any(mask):
         Ks_cand = Ks_arr[mask]
         K_final = int(Ks_cand[np.argmin(np.abs(Ks_cand - K_elbow))])
-        # break ties by composite
         if np.sum(mask & (Ks_arr == K_final)) > 1:
             K_final = int(Ks_arr[np.nanargmax(np.where(mask, comp, -np.inf))])
     else:
@@ -362,31 +319,21 @@ def main():
     plt.plot(Ks_arr, silhouette_arr, marker='o', linewidth=1)
     plt.axvline(K_sil, linestyle='--', label=f"sil max @ {K_sil}")
     plt.axvline(K_final, linestyle=':', label=f"chosen K = {K_final}")
-    plt.xlabel("K")
-    plt.ylabel("Silhouette (euclidean)")
-    plt.title("Silhouette vs K")
-    plt.legend()
-    plt.tight_layout()
-    plt.savefig(outdir / "silhouette_vs_k.png", dpi=160)
-    plt.close()
+    plt.xlabel("K"); plt.ylabel("Silhouette (euclidean)"); plt.title("Silhouette vs K")
+    plt.legend(); plt.tight_layout(); plt.savefig(outdir / "silhouette_vs_k.png", dpi=160); plt.close()
 
     plt.figure(figsize=(7,4))
     plt.plot(Ks_arr, inertia_arr, marker='o', linewidth=1)
     plt.axvline(K_elbow, linestyle='--', label=f"elbow @ {K_elbow}")
     plt.axvline(K_final, linestyle=':', label=f"chosen K = {K_final}")
-    plt.xlabel("K")
-    plt.ylabel("Inertia (SSE)")
-    plt.title("Inertia vs K (elbow)")
-    plt.legend()
-    plt.tight_layout()
-    plt.savefig(outdir / "inertia_vs_k.png", dpi=160)
-    plt.close()
+    plt.xlabel("K"); plt.ylabel("Inertia (SSE)"); plt.title("Inertia vs K (elbow)")
+    plt.legend(); plt.tight_layout(); plt.savefig(outdir / "inertia_vs_k.png", dpi=160); plt.close()
 
     # Summaries for the chosen K
     km_best = kmeans_by_k[K_final]
     lab_best = label_by_k[K_final]
 
-    # Save assignments
+    # Save assignments (with sim to centroid) and compute sims for reuse
     with open(outdir / f"clusters_K{K_final}.csv", "w", newline="", encoding="utf-8") as f:
         w = csv.writer(f)
         w.writerow(["token", "cluster", "sim_to_centroid"])
@@ -399,6 +346,108 @@ def main():
     # Save cluster summaries
     summaries = summarize_clusters(in_vocab, Z, lab_best, km_best.cluster_centers_, top_terms=int(args.top_terms))
     (outdir / f"cluster_summaries_K{K_final}.json").write_text(json.dumps(summaries, indent=2), encoding="utf-8")
+
+    # -------------------------
+    # ALWAYS: Per-cluster term frequency over corpus
+    # -------------------------
+    if args.ngram_phraser_dir:
+        logging.info(f"Loading tokenized+phrased docs with process_ngram_docs(ngram_phraser_dir='{args.ngram_phraser_dir}')")
+        docs_iter = process_ngram_docs(ngram_phraser_dir=args.ngram_phraser_dir)
+        docs_source = "ngram_phrased"
+    else:
+        logging.info("No --ngram-phraser-dir provided; falling back to process_all_noburp() (no n-gram phrasing).")
+        # Use defaults that include lemmatization + stopword removal
+        docs_iter = process_all_noburp(show_progress=True)
+        docs_source = "processed_no_ngrams"
+
+    # map term -> (cluster, sim_to_centroid)
+    term2cluster = {t: int(c) for t, c in zip(in_vocab, lab_best.tolist())}
+    term2sim = {t: float(s) for t, s in zip(in_vocab, sims.tolist())}
+
+    per_cluster_counts: Dict[int, Counter] = defaultdict(Counter)
+    total_docs = 0
+    total_tokens_matched = 0
+    for doc in docs_iter:
+        total_docs += 1
+        if not doc:
+            continue
+        for tok in doc:
+            c = term2cluster.get(tok)
+            if c is not None:
+                per_cluster_counts[c][tok] += 1
+                total_tokens_matched += 1
+
+    logging.info(f"Counted cluster-term frequencies over {total_docs:,} docs "
+                 f"({total_tokens_matched:,} matched tokens).")
+
+    # Build JSON with top-N by frequency per cluster, filtered by min similarity
+    top_n = int(args.top_freq)
+    min_sim = float(args.min_sim)
+    clusters_out = []
+    for k in range(km_best.n_clusters):
+        cnt = per_cluster_counts.get(k, Counter())
+        # filter by similarity threshold
+        filtered_items = [(t, c) for t, c in cnt.items() if term2sim.get(t, -1.0) >= min_sim]
+        if not filtered_items:
+            logging.warning(f"Cluster {k}: 0 terms meet min-sim={min_sim:.3f}; output will be empty for this cluster.")
+        # sort by (-count, -sim, term)
+        filtered_items.sort(key=lambda kv: (-kv[1], -term2sim.get(kv[0], 0.0), kv[0]))
+
+        # structured list
+        top_struct = [
+            {"term": t, "count": int(c), "sim_to_centroid": round(term2sim.get(t, 0.0), 6)}
+            for t, c in filtered_items[:top_n]
+        ]
+        # newline-formatted list for readability
+        top_lines = [
+            f"{t}\t{c}\t{term2sim.get(t, 0.0):.6f}"
+            for t, c in filtered_items[:top_n]
+        ]
+
+        clusters_out.append({
+            "cluster": int(k),
+            "size": int(np.sum(lab_best == k)),
+            "top_terms_by_frequency": top_struct,
+            "top_terms_by_frequency_lines": "\n".join(top_lines),
+        })
+
+    freq_path = outdir / f"cluster_term_freqs_K{K_final}.json"
+    freq_payload = {
+        "model": str(model_path),
+        "vocab": str(vocab_path),
+        "K_final": int(K_final),
+        "pca_components": int(D),
+        "top_n": top_n,
+        "min_sim": min_sim,
+        "total_docs": int(total_docs),
+        "docs_source": docs_source,
+        "ngram_phraser_dir": args.ngram_phraser_dir,
+        "note": "Counts are token frequencies across all docs; includes only clustered in-vocab terms with sim_to_centroid >= min_sim.",
+        "clusters": clusters_out
+    }
+    freq_path.write_text(json.dumps(freq_payload, indent=2), encoding="utf-8")
+    logging.info(f"Wrote per-cluster term frequencies to {freq_path}")
+
+    # -------------------------
+    # NEW: Just clusters -> terms with sim_to_centroid >= min_sim
+    # -------------------------
+    clusters_terms_list = {}
+    clusters_terms_lines = {}
+    for k in range(km_best.n_clusters):
+        idx_k = np.where((lab_best == k) & (sims >= min_sim))[0]
+        order = np.argsort(-sims[idx_k])
+        idx_k = idx_k[order]
+        terms_above = [in_vocab[i] for i in idx_k]
+        clusters_terms_list[str(k)] = terms_above
+        clusters_terms_lines[str(k)] = "\n".join(terms_above)
+
+    terms_min_sim_list_path = outdir / f"cluster_terms_minSim_K{K_final}.json"
+    terms_min_sim_list_path.write_text(json.dumps(clusters_terms_list, indent=2), encoding="utf-8")
+    logging.info(f"Wrote cluster→terms (list) JSON to {terms_min_sim_list_path}")
+
+    terms_min_sim_lines_path = outdir / f"cluster_terms_minSim_lines_K{K_final}.json"
+    terms_min_sim_lines_path.write_text(json.dumps(clusters_terms_lines, indent=2), encoding="utf-8")
+    logging.info(f"Wrote cluster→terms (newline) JSON to {terms_min_sim_lines_path}")
 
     # Decision file
     selection = {
@@ -419,18 +468,20 @@ def main():
             "cohesion_mean": float(cohesion_arr[Ks_arr == K_final][0]),
             "size_imbalance": float(size_imb_arr[Ks_arr == K_final][0]),
         },
+        "docs_source": docs_source,
+        "ngram_phraser_dir": args.ngram_phraser_dir,
+        "min_sim": min_sim,
+        "top_n": top_n,
     }
     (outdir / "selection_summary.json").write_text(json.dumps(selection, indent=2), encoding="utf-8")
 
     logging.info(
         f"Chosen K = {selection['K_final']} | sil={selection['metrics_at_final']['silhouette']:.4f} "
         f"| inertia={selection['metrics_at_final']['inertia']:.2f} | cohesion={selection['metrics_at_final']['cohesion_mean']:.4f} "
-        f"| PCA D={D} (var_expl={var_expl:.4f})"
+        f"| PCA D={D} (var_expl={var_expl:.4f}) | docs_source={docs_source} | min_sim={min_sim:.3f}"
     )
     logging.info("Done.")
 
 
 if __name__ == "__main__":
-    # main()
-    docs = process_ngram_docs(ngram_phraser_dir="testing/ngram_evals/5")
-    print(docs[1:10])
+    main()
