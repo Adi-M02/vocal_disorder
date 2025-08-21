@@ -2,10 +2,10 @@
 set -euo pipefail
 
 # ---------- CONFIG ----------
-THRESHOLDS=(10 5 3 2 1 0.5 0.1)
+THRESHOLDS=(5 2)
 URLS=("http://localhost:11434/api/chat" "http://localhost:11435/api/chat" "http://localhost:11436/api/chat" "http://localhost:11437/api/chat")
 
-OUT_BASE="testing/ngram_evals"
+OUT_BASE="testing/ngram_evals_test"
 
 EVAL_SCRIPT="testing/evaluate_word2phrase_ngrams.py"
 W2V_SCRIPT="word2vec_expansion/ngram_generation/train_word2vec_on_ngrams.py"
@@ -18,36 +18,36 @@ EVAL_EXTRA_ARGS=()
 # ---------- helpers ----------
 ts() { date +"%Y-%m-%d %H:%M:%S"; }
 
-run_llm() {
-  local thr="$1"
-  local url="$2"
-  local dir="$OUT_BASE/$thr"
-  local expansions="$dir/topk_25_min_cos_0.4_cbow.json"
-  local log="$dir/llm_semantic_addition.log"
+# run_llm() {
+#   local thr="$1"
+#   local url="$2"
+#   local dir="$OUT_BASE/$thr"
+#   local expansions="$dir/topk_25_min_cos_0.4_cbow.json"
+#   local log="$dir/llm_semantic_addition.log"
 
-  if [[ ! -f "$expansions" ]]; then
-    echo "[warn $(ts)] expansions not found for threshold=$thr at $expansions" | tee -a "$log"
-    return 1
-  fi
+#   if [[ ! -f "$expansions" ]]; then
+#     echo "[warn $(ts)] expansions not found for threshold=$thr at $expansions" | tee -a "$log"
+#     return 1
+#   fi
 
-  echo "[info $(ts)] LLM start: thr=$thr url=$url" | tee -a "$log"
-  python "$LLM_SCRIPT" \
-    --expansions "$expansions" \
-    --outdir "$dir" \
-    --url "$url" \
-    >> "$log" 2>&1
-  local rc=$?
-  if [[ $rc -eq 0 ]]; then
-    echo "[info $(ts)] LLM done: thr=$thr url=$url" | tee -a "$log"
-  else
-    echo "[error $(ts)] LLM failed: thr=$thr url=$url (rc=$rc)" | tee -a "$log"
-  fi
-  return $rc
-}
+#   echo "[info $(ts)] LLM start: thr=$thr url=$url" | tee -a "$log"
+#   python "$LLM_SCRIPT" \
+#     --expansions "$expansions" \
+#     --outdir "$dir" \
+#     --url "$url" \
+#     >> "$log" 2>&1
+#   local rc=$?
+#   if [[ $rc -eq 0 ]]; then
+#     echo "[info $(ts)] LLM done: thr=$thr url=$url" | tee -a "$log"
+#   else
+#     echo "[error $(ts)] LLM failed: thr=$thr url=$url (rc=$rc)" | tee -a "$log"
+#   fi
+#   return $rc
+# }
 
-trap 'echo; echo "[info $(ts)] interrupted"; exit 130' INT
+# trap 'echo; echo "[info $(ts)] interrupted"; exit 130' INT
 
-mkdir -p "$OUT_BASE"
+# mkdir -p "$OUT_BASE"
 
 # ---------- Stage 1: build ngrams, train word2vec, expand seed terms (sequential per threshold) ----------
 for thr in "${THRESHOLDS[@]}"; do

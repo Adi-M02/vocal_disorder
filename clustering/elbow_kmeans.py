@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Cluster Word2Vec terms with PCA (to 46D) + L2 normalization + KMeans sweep.
+Cluster Word2Vec terms with PCA (to N dims) + L2 normalization + KMeans sweep.
 
 Inputs:
   - Gensim Word2Vec/KeyedVectors model
@@ -8,7 +8,7 @@ Inputs:
 
 Pipeline:
   1) Load model + intersect with provided vocab
-  2) Fit PCA (n_components=46) on the *subset* vectors and transform them
+  2) Fit PCA (n_components=--pca-dim) on the *subset* vectors and transform them
   3) L2-normalize rows (good for cosine-like clustering with k-means)
   4) For K in [k_min..k_max]: run KMeans (n_init, max_iter), collect metrics
      - inertia (within-cluster SSE)
@@ -21,8 +21,8 @@ Pipeline:
 
 Outputs (timestamped directory):
   - tokens_used.txt, oov_terms.txt
-  - pca.joblib (fitted PCA(46))
-  - Z_46_l2.npz  (tokens + 46D normalized embeddings)
+  - pca_<D>.joblib (fitted PCA)
+  - Z_<D>_l2.npz  (tokens + <D>-dim normalized embeddings)
   - k_scan_metrics.csv  (K, inertia, silhouette, db, ch, cohesion_mean, size_imbalance)
   - silhouette_vs_k.png, inertia_vs_k.png (with elbow) and selection_summary.json
   - clusters_K<best>.csv  (token, cluster, sim_to_centroid)
@@ -33,6 +33,7 @@ Usage:
       --model path/to/model.model \
       --vocab path/to/terms.json \
       --outdir runs/cluster \
+      [--pca-dim 46] \
       [--k-min 8 --k-max 60] \
       [--n-init 20 --max-iter 500] \
       [--random-state 42] \
@@ -48,6 +49,7 @@ Notes:
 from __future__ import annotations
 import argparse
 import json
+import sys
 import logging
 from pathlib import Path
 from datetime import datetime
@@ -60,7 +62,8 @@ from sklearn.preprocessing import normalize
 from sklearn.metrics import silhouette_score, davies_bouldin_score, calinski_harabasz_score
 from joblib import dump
 import matplotlib.pyplot as plt
-
+sys.path.append("../vocal_disorder")
+from utils.load_process_ngram_docs import process_ngram_docs
 try:
     from gensim.models import Word2Vec, KeyedVectors
 except Exception as e:  # pragma: no cover
@@ -85,17 +88,15 @@ def ensure_outdir(base: Path) -> Path:
 def load_vocab(path: Path) -> List[str]:
     """Load a vocabulary list from JSON or TXT.
 
-    JSON accepted keys: seed_terms | terms | vocabulary
-    TXT: one term per line
+    JSON accepted keys: 'seed_terms', 'terms', or 'vocabulary' containing a list of terms.
+    TXT: one term per non-empty, non-#-comment line.
     """
     if path.suffix.lower() == ".json":
         data = json.loads(path.read_text(encoding="utf-8"))
         for key in ("seed_terms", "terms", "vocabulary"):
             if key in data and isinstance(data[key], list):
                 return [str(t) for t in data[key]]
-        raise ValueError(
-            f"JSON {path} missing one of keys: seed_terms | terms | vocabulary"
-        )
+        raise ValueError(f"JSON {path} missing key: one of seed_terms|terms|vocabulary")
     # Treat as text file
     terms = []
     for line in path.read_text(encoding="utf-8").splitlines():
@@ -188,10 +189,12 @@ def summarize_clusters(tokens: List[str], Z: np.ndarray, labels: np.ndarray, cen
 # -------------------------
 
 def main():
-    ap = argparse.ArgumentParser(description="PCA(46) + L2 + KMeans sweep for Word2Vec vocab")
+    ap = argparse.ArgumentParser(description="PCA(N) + L2 + KMeans sweep for Word2Vec vocab")
     ap.add_argument("--model", required=True, help="Path to Gensim model or KeyedVectors")
     ap.add_argument("--vocab", required=True, help="Path to vocab (JSON or TXT)")
     ap.add_argument("--outdir", required=True, help="Directory for timestamped outputs")
+
+    ap.add_argument("--pca-dim", type=int, default=46, help="PCA target dimensionality before clustering (default 46)")
 
     ap.add_argument("--k-min", type=int, default=8, help="Minimum K to try (default 8)")
     ap.add_argument("--k-max", type=int, default=60, help="Maximum K to try (default 60)")
@@ -234,17 +237,24 @@ def main():
     # Build matrix for subset
     X = kv[in_vocab]  # shape: (n_tokens, emb_dim)
 
-    # PCA -> 46 dims
-    logging.info("Fitting PCA(n_components=46) on subset")
-    pca = PCA(n_components=46, svd_solver="auto", random_state=args.random_state)
+    # PCA -> D dims (guard against n_components > min(n_samples, n_features))
+    requested_d = int(args.pca_dim)
+    max_d = int(min(len(in_vocab), X.shape[1]))
+    if requested_d > max_d:
+        logging.warning(f"--pca-dim {requested_d} > max feasible {max_d}; using {max_d} instead.")
+    D = int(min(requested_d, max_d))
+    logging.info(f"Fitting PCA(n_components={D}) on subset")
+    pca = PCA(n_components=D, svd_solver="auto", random_state=args.random_state)
     Z = pca.fit_transform(X)
+    var_expl = float(np.sum(pca.explained_variance_ratio_))
+    logging.info(f"PCA variance explained (@{D}): {var_expl:.4f}")
 
     # L2-normalize
     Z = normalize(Z, norm="l2", axis=1)
 
-    # Persist PCA transformer and the 46D normalized embedding
-    dump(pca, outdir / "pca.joblib")
-    np.savez_compressed(outdir / "Z_46_l2.npz", tokens=np.array(in_vocab, dtype=object), Z=Z)
+    # Persist PCA transformer and the D-dim normalized embedding
+    dump(pca, outdir / f"pca_{D}.joblib")
+    np.savez_compressed(outdir / f"Z_{D}_l2.npz", tokens=np.array(in_vocab, dtype=object), Z=Z)
 
     # K sweep
     Ks = np.arange(int(args.k_min), int(args.k_max) + 1)
@@ -261,11 +271,15 @@ def main():
     kmeans_by_k: Dict[int, KMeans] = {}
 
     for K in Ks:
-        km = KMeans(n_clusters=int(K), n_init=int(args.n_init), max_iter=int(args.max_iter), random_state=args.random_state)
+        km = KMeans(
+            n_clusters=int(K),
+            n_init=int(args.n_init),
+            max_iter=int(args.max_iter),
+            random_state=args.random_state,
+        )
         lab = km.fit_predict(Z)
 
         inertia = float(km.inertia_)
-        # silhouette requires >=2 clusters
         sil = float(silhouette_score(Z, lab, metric="euclidean")) if K > 1 else float("nan")
         try:
             db = float(davies_bouldin_score(Z, lab))
@@ -276,7 +290,7 @@ def main():
         except Exception:
             ch = float("nan")
         # Cohesion + size imbalance
-        coh_mean, coh_per = cluster_cohesion(Z, lab, km.cluster_centers_)
+        coh_mean, _ = cluster_cohesion(Z, lab, km.cluster_centers_)
         sizes = np.bincount(lab, minlength=K).astype(float)
         size_imb = float(np.std(sizes) / (np.mean(sizes) + 1e-12))
 
@@ -308,46 +322,44 @@ def main():
                 f"{metrics['size_imbalance'][i]:.6f}",
             ])
 
-    Ks = np.array(metrics["K"], dtype=float)
-    inertia = np.array(metrics["inertia"], dtype=float)
-    silhouette = np.array(metrics["silhouette"], dtype=float)
-    cohesion = np.array(metrics["cohesion_mean"], dtype=float)
-    size_imbalance = np.array(metrics["size_imbalance"], dtype=float)
+    Ks_arr = np.array(metrics["K"], dtype=float)
+    inertia_arr = np.array(metrics["inertia"], dtype=float)
+    silhouette_arr = np.array(metrics["silhouette"], dtype=float)
+    cohesion_arr = np.array(metrics["cohesion_mean"], dtype=float)
+    size_imb_arr = np.array(metrics["size_imbalance"], dtype=float)
 
     # Elbow on inertia (decreasing)
-    if Ks.size >= 3:
-        idx_knee = knee_max_distance(Ks, inertia)
-        K_elbow = int(Ks[idx_knee])
+    if Ks_arr.size >= 3:
+        idx_knee = knee_max_distance(Ks_arr, inertia_arr)
+        K_elbow = int(Ks_arr[idx_knee])
     else:
-        K_elbow = int(Ks[np.argmin(inertia)])
+        K_elbow = int(Ks_arr[np.argmin(inertia_arr)])
 
     # Primary choice: maximize silhouette
-    K_sil = int(Ks[np.nanargmax(silhouette)])
+    K_sil = int(Ks_arr[np.nanargmax(silhouette_arr)])
 
     # Interpretability proxy: cohesion high, size imbalance low
-    # Build a composite z-score: S = z(sil) + 0.5*z(coh) - 0.25*z(size_imb)
     def _z(a: np.ndarray) -> np.ndarray:
         m, s = np.nanmean(a), np.nanstd(a) + 1e-9
         return (a - m) / s
-    comp = _z(silhouette) + 0.5*_z(cohesion) - 0.25*_z(size_imbalance)
-    K_comp = int(Ks[np.nanargmax(comp)])
+    comp = _z(silhouette_arr) + 0.5*_z(cohesion_arr) - 0.25*_z(size_imb_arr)
+    K_comp = int(Ks_arr[np.nanargmax(comp)])
 
     # Final rule: pick K with silhouette within 95% of best, then closest to elbow; if tie, max composite
-    sil_best = np.nanmax(silhouette)
-    mask = silhouette >= (0.95 * sil_best)
+    sil_best = np.nanmax(silhouette_arr)
+    mask = silhouette_arr >= (0.95 * sil_best)
     if np.any(mask):
-        Ks_cand = Ks[mask]
+        Ks_cand = Ks_arr[mask]
         K_final = int(Ks_cand[np.argmin(np.abs(Ks_cand - K_elbow))])
         # break ties by composite
-        if np.sum(mask & (Ks == K_final)) > 1:
-            K_final = int(Ks[np.nanargmax(np.where(mask, comp, -np.inf))])
+        if np.sum(mask & (Ks_arr == K_final)) > 1:
+            K_final = int(Ks_arr[np.nanargmax(np.where(mask, comp, -np.inf))])
     else:
-        # fallback to composite, then silhouette
         K_final = K_comp if not np.isnan(K_comp) else K_sil
 
     # Plots
     plt.figure(figsize=(7,4))
-    plt.plot(Ks, silhouette, marker='o', linewidth=1)
+    plt.plot(Ks_arr, silhouette_arr, marker='o', linewidth=1)
     plt.axvline(K_sil, linestyle='--', label=f"sil max @ {K_sil}")
     plt.axvline(K_final, linestyle=':', label=f"chosen K = {K_final}")
     plt.xlabel("K")
@@ -359,7 +371,7 @@ def main():
     plt.close()
 
     plt.figure(figsize=(7,4))
-    plt.plot(Ks, inertia, marker='o', linewidth=1)
+    plt.plot(Ks_arr, inertia_arr, marker='o', linewidth=1)
     plt.axvline(K_elbow, linestyle='--', label=f"elbow @ {K_elbow}")
     plt.axvline(K_final, linestyle=':', label=f"chosen K = {K_final}")
     plt.xlabel("K")
@@ -375,7 +387,6 @@ def main():
     lab_best = label_by_k[K_final]
 
     # Save assignments
-    import csv
     with open(outdir / f"clusters_K{K_final}.csv", "w", newline="", encoding="utf-8") as f:
         w = csv.writer(f)
         w.writerow(["token", "cluster", "sim_to_centroid"])
@@ -395,27 +406,31 @@ def main():
         "vocab": str(vocab_path),
         "embedding_dim": int(emb_dim),
         "n_terms": int(len(in_vocab)),
-        "pca_components": 46,
-        "k_range": [int(Ks[0]), int(Ks[-1])],
+        "pca_components": int(D),
+        "pca_variance_explained": float(var_expl),
+        "k_range": [int(Ks_arr[0]), int(Ks_arr[-1])],
         "K_elbow_inertia": int(K_elbow),
         "K_silhouette_max": int(K_sil),
         "K_composite": int(K_comp),
         "K_final": int(K_final),
         "metrics_at_final": {
-            "silhouette": float(silhouette[Ks == K_final][0]),
-            "inertia": float(inertia[Ks == K_final][0]),
-            "cohesion_mean": float(cohesion[Ks == K_final][0]),
-            "size_imbalance": float(size_imbalance[Ks == K_final][0]),
+            "silhouette": float(silhouette_arr[Ks_arr == K_final][0]),
+            "inertia": float(inertia_arr[Ks_arr == K_final][0]),
+            "cohesion_mean": float(cohesion_arr[Ks_arr == K_final][0]),
+            "size_imbalance": float(size_imb_arr[Ks_arr == K_final][0]),
         },
     }
     (outdir / "selection_summary.json").write_text(json.dumps(selection, indent=2), encoding="utf-8")
 
     logging.info(
         f"Chosen K = {selection['K_final']} | sil={selection['metrics_at_final']['silhouette']:.4f} "
-        f"| inertia={selection['metrics_at_final']['inertia']:.2f} | cohesion={selection['metrics_at_final']['cohesion_mean']:.4f}"
+        f"| inertia={selection['metrics_at_final']['inertia']:.2f} | cohesion={selection['metrics_at_final']['cohesion_mean']:.4f} "
+        f"| PCA D={D} (var_expl={var_expl:.4f})"
     )
     logging.info("Done.")
 
 
 if __name__ == "__main__":
-    main()
+    # main()
+    docs = process_ngram_docs(ngram_phraser_dir="testing/ngram_evals/5")
+    print(docs[1:10])

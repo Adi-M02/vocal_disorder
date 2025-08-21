@@ -84,17 +84,15 @@ def ensure_outdir(base: Path) -> Path:
 def load_vocab(path: Path) -> List[str]:
     """Load a vocabulary list from JSON or TXT.
 
-    JSON accepted keys: seed_terms | terms | vocabulary
-    TXT: one term per line
+    Assumes JSON with key 'seed_terms' containing a list of terms,
+    or TXT with one term per line.
     """
     if path.suffix.lower() == ".json":
         data = json.loads(path.read_text(encoding="utf-8"))
-        for key in ("seed_terms", "terms", "vocabulary"):
-            if key in data and isinstance(data[key], list):
-                return [str(t) for t in data[key]]
-        raise ValueError(
-            f"JSON {path} missing one of keys: seed_terms | terms | vocabulary"
-        )
+        if "seed_terms" in data and isinstance(data["seed_terms"], list):
+            print(str(t) for t in data["seed_terms"])
+            return [str(t) for t in data["seed_terms"]]
+        raise ValueError(f"JSON {path} missing key: seed_terms")
     # Treat as text file
     terms = []
     for line in path.read_text(encoding="utf-8").splitlines():
@@ -104,7 +102,6 @@ def load_vocab(path: Path) -> List[str]:
     if not terms:
         raise ValueError(f"No terms found in text file: {path}")
     return terms
-
 
 def load_w2v_any(path: Path):
     """Attempt to load a Gensim model or KeyedVectors from common formats."""

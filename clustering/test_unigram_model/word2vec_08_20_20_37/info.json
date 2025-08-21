@@ -1,0 +1,7 @@
+{
+  "vector_size": 300,
+  "window": 7,
+  "min_count": 5,
+  "outdir": "clustering/test_unigram_model",
+  "timestamp": "2025-08-20T20:37:46.480793"
+}
