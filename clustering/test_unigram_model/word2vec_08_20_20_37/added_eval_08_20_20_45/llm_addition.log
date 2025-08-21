@@ -1,0 +1,1038 @@
+# Additions written by augment_seeds_with_llm (with closure, R-CPD aware)
+# Expansions: /data/not_backed_up/amukundan/vocal_disorder/clustering/test_unigram_model/word2vec_08_20_20_37/08_20_20_41_expansioncbow/topk_25_min_cos_0.4.json
+# Output dir: /data/not_backed_up/amukundan/vocal_disorder/clustering/test_unigram_model/word2vec_08_20_20_37/added_eval_08_20_20_45
+# JSON out  : /data/not_backed_up/amukundan/vocal_disorder/clustering/test_unigram_model/word2vec_08_20_20_37/added_eval_08_20_20_45/new_eval_set.json
+# Model=llama3.3:latest URL=http://localhost:11434/api/chat Temp=0.0 Timeout=60s
+# BatchSize=80 MaxPerSeed=0 Sort=False ClosureIters=2 InclusionBias=lenient
+## new to eval set
+100u               -> 65(llm:accepted), 75u(llm:accepted), 80u(llm:accepted)
+abdomen            -> ab(llm:accepted), belly(llm:accepted), chest(llm:accepted), rib(llm:accepted), ribcage(llm:accepted), torso(llm:accepted)
+abnormal           -> abnormality(llm:accepted), ineffective(llm:accepted), inflame(llm:accepted), pharynx(llm:accepted), stricture(llm:accepted), ultrasound(llm:accepted)
+achalasia          -> cricopharyngeal(llm:accepted), cricopharyngeus(llm:accepted), dysmotility(llm:accepted), dysphonia(llm:accepted), endoflip(llm:accepted), esophagoscopy(llm:accepted), neurological(llm:accepted), neurologist(llm:accepted)
+acid               -> gastroesophageal(llm:accepted), hypersensitivity(llm:accepted), laryngopharyngeal(llm:accepted), lining(llm:accepted), lpr(llm:accepted), protect(llm:accepted), sour(llm:accepted)
+acupuncture        -> chiropractic(llm:accepted), physiotherapy(llm:accepted), reiki(llm:accepted), therapy(llm:accepted)
+adhd               -> amitriptyline(llm:accepted), antidepressant(llm:accepted), autism(llm:accepted), counseling(llm:accepted), ssri(llm:accepted), stimulant(llm:accepted)
+administer         -> anaesthesia(llm:accepted), elect(llm:accepted), local(llm:accepted), perform(llm:accepted), sedate(llm:accepted)
+aerophagia         -> dyspepsia(llm:accepted), obstruction(llm:accepted)
+alcohol            -> alcoholic(llm:accepted), booze(llm:accepted), cocktail(llm:accepted), gin(llm:accepted), lager(llm:accepted), liquor(llm:accepted)
+alone              -> lonely(llm:accepted), weirdo(llm:accepted)
+anatomy            -> ligament(llm:accepted), physiology(llm:accepted), region(llm:accepted), structure(llm:accepted), tissue(llm:accepted)
+anesthesia         -> anesthetic(llm:accepted), intubate(llm:accepted), needle(llm:accepted), propofol(llm:accepted), sedation(llm:accepted)
+anesthesiologist   -> anesthetist(llm:accepted), assistant(llm:accepted), fentanyl(llm:accepted), gown(llm:accepted), outpatient(llm:accepted), paperwork(llm:accepted), receptionist(llm:accepted), staff(llm:accepted), theatre(llm:accepted), twilight(llm:accepted)
+annoy              -> tired(llm:accepted)
+annoyed            -> ugh(llm:accepted)
+antacid            -> esomeprazole(llm:accepted), medication(llm:accepted), otc(llm:accepted), prescription(llm:accepted)
+antibiotic         -> dexilant(llm:accepted), hcl(llm:accepted), lansoprazole(llm:accepted), nexium(llm:accepted), prilosec(llm:accepted), probiotic(llm:accepted), probiotics(llm:accepted), proton(llm:accepted), zantac(llm:accepted)
+antihistamine      -> decongestant(llm:accepted), flonase(llm:accepted), rx(llm:accepted)
+anxiety            -> psychologist(llm:accepted)
+anxious            -> panicky(llm:accepted), paranoid(llm:accepted)
+appointment        -> cancellation(llm:accepted), date(llm:accepted), schedule(llm:accepted), zoom(llm:accepted)
+arthritis          -> auto(llm:accepted), fibromyalgia(llm:accepted), hypothyroidism(llm:accepted), rheumatoid(llm:accepted)
+article            -> copy(llm:accepted), printout(llm:accepted), website(llm:accepted)
+asphyxiate         -> asphyxiation(llm:accepted), pharyngeal(llm:accepted)
+association        -> afflict(llm:accepted), associate(llm:accepted), defense(llm:accepted), rational(llm:accepted)
+attack             -> palp(llm:accepted), palpitation(llm:accepted), sob(llm:accepted), spike(llm:accepted), spiral(llm:accepted), verge(llm:accepted)
+awful              -> hate(llm:accepted), worst(llm:accepted)
+baffle             -> clueless(llm:accepted), ignorant(llm:accepted), moron(llm:accepted), perplex(llm:accepted)
+bcbs               -> bupa(llm:accepted), insurer(llm:accepted)
+bearable           -> bothersome(llm:accepted), dull(llm:accepted), unpleasant(llm:accepted), unpleasantness(llm:accepted)
+bizarre            -> alien(llm:accepted), cruel(llm:accepted), disconcerting(llm:accepted), disturb(llm:accepted), horrify(llm:accepted), repulsive(llm:accepted), rude(llm:accepted), silly(llm:accepted), strange(llm:accepted), stupid(llm:accepted), unfortunate(llm:accepted), wretched(llm:accepted), yuck(llm:accepted)
+blame              -> gaslight(llm:accepted), heighten(llm:accepted), ignore(llm:accepted), label(llm:accepted), psychosomatic(llm:accepted), undiagnosed(llm:accepted)
+bleb               -> chiari(llm:accepted), costocondritis(llm:accepted), flatus(llm:accepted), gastroptosis(llm:accepted), hida(llm:accepted), ileus(llm:accepted), myotonia(llm:accepted), overactive(llm:accepted), plexus(llm:accepted)
+borborygmus        -> pectoral(llm:accepted), proximal(llm:accepted), thoracic(llm:accepted)
+breathe            -> breather(llm:accepted), shallow(llm:accepted)
+bubble             -> accumulate(llm:accepted), expel(llm:accepted), trickle(llm:accepted)
+buildup            -> build(llm:accepted), building(llm:accepted), generate(llm:accepted), produce(llm:accepted), production(llm:accepted)
+burn               -> sting(llm:accepted)
+burp               -> belch(llm:accepted), intentional(llm:accepted), release(llm:accepted)
+burper             -> gurgler(llm:accepted), noburper(llm:accepted), nonburper(llm:accepted)
+burst              -> balloon(llm:accepted), exhale(llm:accepted), expand(llm:accepted), explosion(llm:accepted), gasp(llm:accepted), rise(llm:accepted), rush(llm:accepted), upward(llm:accepted), upwards(llm:accepted)
+calm               -> distract(llm:accepted), hydrate(llm:accepted), settle(llm:accepted)
+camera             -> videoscope(llm:accepted)
+cannabis           -> cigarette(llm:accepted), drug(llm:accepted), edible(llm:accepted), marijuana(llm:accepted), nicotine(llm:accepted), recreational(llm:accepted), smoke(llm:accepted), smoker(llm:accepted), tobacco(llm:accepted), vape(llm:accepted), weed(llm:accepted)
+carbonate          -> coca(llm:accepted), perrier(llm:accepted)
+carbonation        -> bubbly(llm:accepted), fizzy(llm:accepted), pepsi(llm:accepted)
+cbd                -> herbal(llm:accepted), oil(llm:accepted), product(llm:accepted), thc(llm:accepted)
+childhood          -> adolescence(llm:accepted), baby(llm:accepted), birth(llm:accepted), born(llm:accepted), child(llm:accepted), infancy(llm:accepted), infant(llm:accepted), kid(llm:accepted), teen(llm:accepted), teenager(llm:accepted), toddler(llm:accepted), young(llm:accepted)
+chiropractor       -> acupuncturist(llm:accepted), alignment(llm:accepted), cervical(llm:accepted), psoas(llm:accepted), pt(llm:accepted), spinal(llm:accepted), vertebrae(llm:accepted)
+choke              -> drown(llm:accepted), splutter(llm:accepted), suffocate(llm:accepted)
+chug               -> beer(llm:accepted), champagne(llm:accepted), coke(llm:accepted), cola(llm:accepted), fanta(llm:accepted), guinness(llm:accepted), gulp(llm:accepted), prosecco(llm:accepted), seltzer(llm:accepted), shotgun(llm:accepted), sip(llm:accepted), soda(llm:accepted), sparkle(llm:accepted), sprite(llm:accepted), vodka(llm:accepted), wine(llm:accepted)
+co2                -> carbon(llm:accepted), dioxide(llm:accepted), frother(llm:accepted), nitrogen(llm:accepted), tonic(llm:accepted)
+collarbone         -> blade(llm:accepted), bone(llm:accepted), cage(llm:accepted), cartilage(llm:accepted), collar(llm:accepted)
+colonoscopy        -> endo(llm:accepted)
+community          -> askreddit(llm:accepted), forum(llm:accepted), group(llm:accepted), r/noburp(llm:accepted), reddit(llm:accepted), sub(llm:accepted), subedit(llm:accepted), subreddit(llm:accepted), thread(llm:accepted), tiktok(llm:accepted), validation(llm:accepted)
+complication       -> adverse(llm:accepted), aspiration(llm:accepted), implication(llm:accepted), inconvenience(llm:accepted), intervention(llm:accepted), laryngeospasm(llm:accepted), outweigh(llm:accepted), possibility(llm:accepted), potential(llm:accepted), unforeseen(llm:accepted)
+concern            -> doubt(llm:accepted), hesitant(llm:accepted), warn(llm:accepted)
+condition          -> affliction(llm:accepted), diagnosis(llm:accepted), disease(llm:accepted), problem(llm:accepted), syndrome(llm:accepted)
+confusion          -> expert(llm:accepted), ignorance(llm:accepted), uneducated(llm:accepted)
+constipation       -> colon(llm:accepted)
+consult            -> meeting(llm:accepted)
+consultation       -> apt(llm:accepted), arrange(llm:accepted), availability(llm:accepted), book(llm:accepted), clinic(llm:accepted), contact(llm:accepted), email(llm:accepted), reschedule(llm:accepted), scheduler(llm:accepted), submit(llm:accepted), telehealth(llm:accepted), visit(llm:accepted)
+control            -> automatic(llm:accepted), command(llm:accepted), conscious(llm:accepted), controllable(llm:accepted), gradually(llm:accepted), suppress(llm:accepted)
+convince           -> accept(llm:accepted), acknowledge(llm:accepted), advocate(llm:accepted), explain(llm:accepted), insist(llm:accepted), listen(llm:accepted), prove(llm:accepted), recognize(llm:accepted), suggest(llm:accepted), tell(llm:accepted), trust(llm:accepted), understand(llm:accepted)
+cough              -> salivate(llm:accepted), tickly(llm:accepted), uvula(llm:accepted)
+covid              -> infection(llm:accepted), vaccinate(llm:accepted), vaccine(llm:accepted)
+cripple            -> agonize(llm:accepted), destroy(llm:accepted), horrendous(llm:accepted), horrific(llm:accepted), incapacitate(llm:accepted), killer(llm:accepted), nightmare(llm:accepted), unrelenting(llm:accepted)
+croak              -> groan(llm:accepted), grumble(llm:accepted)
+curious            -> interest(llm:accepted), intrigue(llm:accepted), keen(llm:accepted), wonder(llm:accepted)
+debilitate         -> disrupt(llm:accepted), spoil(llm:accepted)
+deflate            -> empty(llm:accepted), shrink(llm:accepted), squish(llm:accepted), vacuum(llm:accepted)
+demographics       -> collection(llm:accepted), questionnaire(llm:accepted), sampling(llm:accepted), spreadsheet(llm:accepted)
+deny               -> aetna(llm:accepted), anthem(llm:accepted), appeal(llm:accepted), authorization(llm:accepted), axa(llm:accepted), cigna(llm:accepted), coverage(llm:accepted), denial(llm:accepted), medicare(llm:accepted), policy(llm:accepted), ppo(llm:accepted), uhc(llm:accepted), united(llm:accepted)
+depressing         -> optimism(llm:accepted), unhappy(llm:accepted)
+depression         -> cortisol(llm:accepted), gad(llm:accepted), insomnia(llm:accepted)
+desperate          -> deserve(llm:accepted)
+devastate          -> bugger(llm:accepted), bummer(llm:accepted), disappointment(llm:accepted), disrespect(llm:accepted), heartbreak(llm:accepted), lowkey(llm:accepted)
+diagnostic         -> confirm(llm:accepted), criterion(llm:accepted), definitive(llm:accepted), differential(llm:accepted), undergo(llm:accepted)
+diaphragm          -> compress(llm:accepted), squeeze(llm:accepted)
+diary              -> blog(llm:accepted), log(llm:accepted)
+digestion          -> absorb(llm:accepted), absorption(llm:accepted), acidity(llm:accepted), bacteria(llm:accepted), bowel(llm:accepted), carbohydrate(llm:accepted), digest(llm:accepted), digestive(llm:accepted), enzyme(llm:accepted), ferment(llm:accepted), fiber(llm:accepted), gut(llm:accepted), intake(llm:accepted), intestinal(llm:accepted), microbiome(llm:accepted), nutrient(llm:accepted), overgrowth(llm:accepted), stool(llm:accepted), transit(llm:accepted)
+dilation           -> dilatation(llm:accepted), enlarge(llm:accepted), hypertensive(llm:accepted), lax(llm:accepted)
+disappoint         -> disheartened(llm:accepted)
+discomfort         -> embarrassment(llm:accepted)
+disgust            -> shit(llm:accepted)
+disorder           -> dysphasia(llm:accepted)
+disregard          -> asymptomatic(llm:accepted), dx(llm:accepted), hashimoto(llm:accepted), hypochondriac(llm:accepted), misdiagnosis(llm:accepted), ulcerative(llm:accepted), unaware(llm:accepted)
+doctor             -> colleague(llm:accepted), institute(llm:accepted)
+dose               -> 100mg(llm:accepted), 125(llm:accepted), 150(llm:accepted), 50cc(llm:accepted), 50mg(llm:accepted), 50u(llm:accepted), 60(llm:accepted), 75(llm:accepted), 80(llm:accepted), unit(llm:accepted)
+downside           -> con(llm:accepted), consequence(llm:accepted), expense(llm:accepted), expensive(llm:accepted), hassle(llm:accepted), invasive(llm:accepted), risk(llm:accepted), risky(llm:accepted), roadblock(llm:accepted)
+dramamine          -> benadryl(llm:accepted), gravol(llm:accepted), metoclopramide(llm:accepted), nauzene(llm:accepted), promethazine(llm:accepted), zofran(llm:accepted)
+drink              -> beverage(llm:accepted), cider(llm:accepted), consumption(llm:accepted), drinker(llm:accepted), drunk(llm:accepted), juice(llm:accepted), lemonade(llm:accepted), mixer(llm:accepted), water(llm:accepted)
+dysfunction        -> dyssynergia(llm:accepted), dystonia(llm:accepted), hypertonic(llm:accepted), hypertrophy(llm:accepted), laryngeal(llm:accepted)
+eat                -> bite(llm:accepted), bread(llm:accepted), breakfast(llm:accepted), burger(llm:accepted), butter(llm:accepted), chew(llm:accepted), consume(llm:accepted), cook(llm:accepted), dinner(llm:accepted), eater(llm:accepted), egg(llm:accepted), fry(llm:accepted), lunch(llm:accepted), meal(llm:accepted), pasta(llm:accepted), potato(llm:accepted), smoothie(llm:accepted), snack(llm:accepted), soup(llm:accepted)
+eliminate          -> elimination(llm:accepted), management(llm:accepted), modification(llm:accepted), reduce(llm:accepted), reduction(llm:accepted), reintroduce(llm:accepted), sensitivity(llm:accepted), strict(llm:accepted)
+embarrass          -> awkward(llm:accepted), fun(llm:accepted), funny(llm:accepted), hilarious(llm:accepted), joke(llm:accepted), mortify(llm:accepted)
+emetophobe         -> confront(llm:accepted), deathly(llm:accepted), emet(llm:accepted), overcome(llm:accepted), petrify(llm:accepted), r/emetophobia(llm:accepted), scare(llm:accepted)
+esophagitis        -> peptic(llm:accepted)
+exaggerate         -> obsess(llm:accepted), simulate(llm:accepted)
+examination        -> bloodwork(llm:accepted), ct(llm:accepted), evaluation(llm:accepted), lab(llm:accepted), panel(llm:accepted), preliminary(llm:accepted), radiology(llm:accepted), stroboscopy(llm:accepted), videoendoscopy(llm:accepted), workup(llm:accepted)
+excite             -> eager(llm:accepted), yay(llm:accepted)
+exercise           -> calisthenics(llm:accepted), method(llm:accepted), rep(llm:accepted), strengthen(llm:accepted), workout(llm:accepted)
+exist              -> aware(llm:accepted), discover(llm:accepted), discovery(llm:accepted), dismiss(llm:accepted), existence(llm:accepted), recognition(llm:accepted), underlying(llm:accepted)
+experience         -> story(llm:accepted)
+fart               -> excuse(llm:accepted), farty(llm:accepted), hide(llm:accepted), toot(llm:accepted)
+fast               -> quick(llm:accepted)
+fees               -> bill(llm:accepted), charge(llm:accepted), facility(llm:accepted), fee(llm:accepted), invoice(llm:accepted), quote(llm:accepted), rebate(llm:accepted), upfront(llm:accepted)
+fever              -> bronchitis(llm:accepted), congestion(llm:accepted), dizziness(llm:accepted), eczema(llm:accepted), headache(llm:accepted), infect(llm:accepted), itch(llm:accepted), lymph(llm:accepted), node(llm:accepted), rash(llm:accepted), tonsillitis(llm:accepted), turbinate(llm:accepted)
+flatulence         -> abdominal(llm:accepted), bloatedness(llm:accepted), constipate(llm:accepted), diarrhoea(llm:accepted), distension(llm:accepted), poop(llm:accepted), stomachache(llm:accepted), wind(llm:accepted)
+flustered          -> moody(llm:accepted), uninformed(llm:accepted), whine(llm:accepted), woah(llm:accepted)
+fodmap             -> diet(llm:accepted), histamine(llm:accepted), keto(llm:accepted), nutritionist(llm:accepted), paleo(llm:accepted), vegan(llm:accepted), wheat(llm:accepted)
+food               -> bean(llm:accepted), cracker(llm:accepted), fruit(llm:accepted), liquid(llm:accepted), meat(llm:accepted), noodle(llm:accepted), raw(llm:accepted), rice(llm:accepted), steak(llm:accepted), texture(llm:accepted), tomato(llm:accepted), vegetable(llm:accepted), yogurt(llm:accepted)
+freaky             -> aah(llm:accepted), agh(llm:accepted), ahhh(llm:accepted), aw(llm:accepted), oooh(llm:accepted), spooky(llm:accepted), urgh(llm:accepted), whoa(llm:accepted)
+frequency          -> decrease(llm:accepted), degree(llm:accepted), gradual(llm:accepted), increase(llm:accepted), intensity(llm:accepted), level(llm:accepted), likelihood(llm:accepted), occurrence(llm:accepted), percentage(llm:accepted), quantity(llm:accepted), range(llm:accepted), significant(llm:accepted)
+frustrate          -> angry(llm:accepted), confuse(llm:accepted), depressed(llm:accepted), disheartening(llm:accepted), dismissive(llm:accepted), emotional(llm:accepted), hopeless(llm:accepted), impatient(llm:accepted), sad(llm:accepted)
+fullness           -> blockage(llm:accepted), breathless(llm:accepted), fatigue(llm:accepted), pang(llm:accepted), rumble(llm:accepted)
+ga                 -> anesthetize(llm:accepted), narcose(llm:accepted)
+gag                -> barf(llm:accepted), heave(llm:accepted), retch(llm:accepted), urge(llm:accepted)
+gastritis          -> celiac(llm:accepted), colitis(llm:accepted), crohn(llm:accepted), eoe(llm:accepted), eosinophilic(llm:accepted), gastroparesis(llm:accepted), gord(llm:accepted), helicobacter(llm:accepted), pylori(llm:accepted), ulcer(llm:accepted)
+gastro             -> dietitian(llm:accepted), gastrointestinal(llm:accepted)
+gastroenterologist -> gastroenterology(llm:accepted), gi(llm:accepted), gis(llm:accepted), pediatrician(llm:accepted)
+gasx               -> beano(llm:accepted), bismol(llm:accepted), charcoal(llm:accepted), ginger(llm:accepted), peppermint(llm:accepted), pepto(llm:accepted), rennie(llm:accepted)
+gaviscon           -> alginate(llm:accepted)
+globus             -> foreign(llm:accepted), sensory(llm:accepted)
+gp                 -> primary(llm:accepted)
+grateful           -> amazing(llm:accepted), appreciative(llm:accepted), awesome(llm:accepted), comfort(llm:accepted), empathetic(llm:accepted), fortunate(llm:accepted), glad(llm:accepted), happy(llm:accepted), pleased(llm:accepted), reassure(llm:accepted), relatable(llm:accepted), support(llm:accepted), thankful(llm:accepted), validate(llm:accepted), welcome(llm:accepted), wonderful(llm:accepted)
+healthcare         -> america(llm:accepted), american(llm:accepted), canadian(llm:accepted), employer(llm:accepted), finance(llm:accepted), financial(llm:accepted), fund(llm:accepted), government(llm:accepted), hmo(llm:accepted), insure(llm:accepted), ohip(llm:accepted), reimburse(llm:accepted), sector(llm:accepted)
+help               -> helpful(llm:accepted)
+hernia             -> barrett(llm:accepted), inguinal(llm:accepted), repair(llm:accepted)
+hiccup             -> audible(llm:accepted), bout(llm:accepted), episode(llm:accepted), frequent(llm:accepted), loud(llm:accepted), sharp(llm:accepted)
+hopeful            -> confident(llm:accepted), congratulation(llm:accepted), hope(llm:accepted), motivate(llm:accepted), positive(llm:accepted), promise(llm:accepted), stoke(llm:accepted), thrill(llm:accepted)
+hospital           -> alexandra(llm:accepted), chelsea(llm:accepted), epworth(llm:accepted), jefferson(llm:accepted), manchester(llm:accepted), oak(llm:accepted), parkside(llm:accepted), royal(llm:accepted), shard(llm:accepted), st(llm:accepted), uc(llm:accepted), wimbledon(llm:accepted)
+hungry             -> appetite(llm:accepted), hunger(llm:accepted)
+hypermobile        -> collagen(llm:accepted), comorbidity(llm:accepted), connective(llm:accepted), genetics(llm:accepted), hypermobility(llm:accepted), mcas(llm:accepted), mobility(llm:accepted), scoliosis(llm:accepted)
+hypersalivation    -> excessive(llm:accepted), hyper(llm:accepted)
+hyperventilate     -> artery(llm:accepted), pulse(llm:accepted)
+hypnosis           -> cognitive(llm:accepted)
+illness            -> ailment(llm:accepted), asthma(llm:accepted), autoimmune(llm:accepted), endometriosis(llm:accepted), migraine(llm:accepted)
+impress            -> compassion(llm:accepted), cool(llm:accepted), enthusiastic(llm:accepted), forthcoming(llm:accepted), friendly(llm:accepted), intelligent(llm:accepted), knowledgeable(llm:accepted), lovely(llm:accepted), nice(llm:accepted), personable(llm:accepted), receptive(llm:accepted), wholesome(llm:accepted)
+incident           -> instance(llm:accepted), occasion(llm:accepted)
+inconsistent       -> anxiousness(llm:accepted), unpredictable(llm:accepted)
+inconvenient       -> ashamed(llm:accepted)
+incredible         -> beyond(llm:accepted), extreme(llm:accepted), hella(llm:accepted), immense(llm:accepted), insane(llm:accepted), super(llm:accepted), truly(llm:accepted), unbelievable(llm:accepted)
+independent        -> neurology(llm:accepted), neuromuscular(llm:accepted)
+inflammation       -> ulceration(llm:accepted)
+inflate            -> capacity(llm:accepted), cavity(llm:accepted), expansion(llm:accepted), pressurize(llm:accepted)
+inhale             -> breath(llm:accepted), deep(llm:accepted), wheeze(llm:accepted), yawn(llm:accepted)
+injection          -> dosage(llm:accepted), inject(llm:accepted), jab(llm:accepted), shot(llm:accepted)
+insertion          -> filler(llm:accepted), insert(llm:accepted)
+intestine          -> duodenum(llm:accepted), organ(llm:accepted), tract(llm:accepted)
+intolerant         -> dairy(llm:accepted), fructose(llm:accepted), gluten(llm:accepted), intolerance(llm:accepted), lactose(llm:accepted)
+intubation         -> spray(llm:accepted), steroid(llm:accepted)
+investigate        -> address(llm:accepted), analysis(llm:accepted), assess(llm:accepted), conclude(llm:accepted), determine(llm:accepted), exclude(llm:accepted), explore(llm:accepted), indicate(llm:accepted), pursue(llm:accepted)
+issue              -> difficulty(llm:accepted), imbalance(llm:accepted), trouble(llm:accepted)
+iv                 -> agent(llm:accepted), anaesthetist(llm:accepted), lidocaine(llm:accepted), nurse(llm:accepted), sedative(llm:accepted), vein(llm:accepted)
+laryngopedia       -> com(llm:accepted), edu(llm:accepted), faq(llm:accepted), pdf(llm:accepted), scholar(llm:accepted), source(llm:accepted), webinar(llm:accepted), wikipedia(llm:accepted)
+laugh              -> hahaha(llm:accepted), smile(llm:accepted)
+les                -> barrier(llm:accepted), compromise(llm:accepted), damage(llm:accepted), peristalsis(llm:accepted)
+lightheaded        -> fuzzy(llm:accepted), jolt(llm:accepted), lightheadedness(llm:accepted)
+lump               -> bruise(llm:accepted), knot(llm:accepted), lodge(llm:accepted), lumpy(llm:accepted), soreness(llm:accepted), stuck(llm:accepted), tightness(llm:accepted)
+lung               -> collapse(llm:accepted), oxygen(llm:accepted)
+maneuver           -> core(llm:accepted), gentle(llm:accepted), manipulation(llm:accepted), manual(llm:accepted), mendelsohn(llm:accepted), motion(llm:accepted), position(llm:accepted), sideways(llm:accepted), tuck(llm:accepted)
+manipulate         -> activate(llm:accepted), retrain(llm:accepted)
+manometry          -> barium(llm:accepted), biopsy(llm:accepted), bravo(llm:accepted), egd(llm:accepted), esophagram(llm:accepted), esophogram(llm:accepted), imaging(llm:accepted), impedance(llm:accepted), monitor(llm:accepted), motility(llm:accepted), ph(llm:accepted), probe(llm:accepted)
+medicaid           -> hsa(llm:accepted), tricare(llm:accepted)
+meditation         -> diaphragmatic(llm:accepted), eft(llm:accepted), incorporate(llm:accepted), meditate(llm:accepted), mindfulness(llm:accepted), physio(llm:accepted), pilates(llm:accepted), routine(llm:accepted), yoga(llm:accepted)
+metabolism         -> caloric(llm:accepted), calorie(llm:accepted), fat(llm:accepted), fibre(llm:accepted), healthy(llm:accepted), malnutrition(llm:accepted), potassium(llm:accepted), tolerance(llm:accepted)
+microburp          -> micro(llm:accepted), mini(llm:accepted), small(llm:accepted), tiny(llm:accepted)
+mint               -> fennel(llm:accepted), menthol(llm:accepted)
+misalignment       -> distortion(llm:accepted), extremity(llm:accepted), injury(llm:accepted)
+miserable          -> dread(llm:accepted)
+misery             -> agony(llm:accepted), blight(llm:accepted), disability(llm:accepted), endure(llm:accepted), frustration(llm:accepted), hell(llm:accepted), indescribable(llm:accepted), ruin(llm:accepted), suicidal(llm:accepted)
+motrin             -> advil(llm:accepted), aspirin(llm:accepted), ibuprofen(llm:accepted), tylenol(llm:accepted)
+movement           -> angle(llm:accepted), cue(llm:accepted), stimulate(llm:accepted), twist(llm:accepted)
+ms                 -> mr(llm:accepted), mrs(llm:accepted)
+mucus              -> nasal(llm:accepted), salivation(llm:accepted), sinus(llm:accepted), stuffy(llm:accepted), thick(llm:accepted)
+muscle             -> paralyze(llm:accepted)
+myalgia            -> baclofen(llm:accepted), cricothyroid(llm:accepted), edema(llm:accepted), rectus(llm:accepted), skeletal(llm:accepted)
+myotomy            -> botulinum(llm:accepted), toxin(llm:accepted)
+natural            -> adapt(llm:accepted), adjust(llm:accepted), subconscious(llm:accepted), teach(llm:accepted), unconscious(llm:accepted)
+nausea             -> emetic(llm:accepted), sickness(llm:accepted)
+nauseous           -> queasy(llm:accepted), unwell(llm:accepted)
+nervous            -> cautious(llm:accepted)
+nhs                -> doncaster(llm:accepted), england(llm:accepted), salford(llm:accepted), scotland(llm:accepted), uk(llm:accepted)
+nissen             -> bariatric(llm:accepted), bypass(llm:accepted), fundoplication(llm:accepted), hh(llm:accepted), hiatal(llm:accepted), hiatus(llm:accepted), laparoscopic(llm:accepted), linx(llm:accepted), revision(llm:accepted), sleeve(llm:accepted), tif(llm:accepted)
+nitrogenize        -> nitro(llm:accepted)
+noise              -> churn(llm:accepted), sound(llm:accepted)
+nuisance           -> bane(llm:accepted), deteriorate(llm:accepted), harrowing(llm:accepted), ramification(llm:accepted), repercussion(llm:accepted), resentful(llm:accepted)
+ocd                -> abuse(llm:accepted), autistic(llm:accepted), physiological(llm:accepted)
+op                 -> operative(llm:accepted), opp(llm:accepted)
+osteopath          -> biofeedback(llm:accepted), cranial(llm:accepted), hypnotherapy(llm:accepted), naturopath(llm:accepted), naturopathic(llm:accepted), physiotherapist(llm:accepted), somatic(llm:accepted)
+otolaryngologist   -> department(llm:accepted), laryngology(llm:accepted), phoniatrician(llm:accepted), phoniatrics(llm:accepted), specialty(llm:accepted)
+overeating         -> chocolate(llm:accepted), fatty(llm:accepted), greasy(llm:accepted), overeat(llm:accepted), sugar(llm:accepted), sugary(llm:accepted)
+pain               -> ache(llm:accepted), distend(llm:accepted), distention(llm:accepted), hurt(llm:accepted), stab(llm:accepted)
+painkiller         -> acetaminophen(llm:accepted), codeine(llm:accepted), zyrtec(llm:accepted)
+palpate            -> circumference(llm:accepted), landmark(llm:accepted), numbness(llm:accepted), posterior(llm:accepted), protrude(llm:accepted)
+pandemic           -> cancel(llm:accepted), lockdown(llm:accepted), outbreak(llm:accepted)
+pantoprazol        -> bentyl(llm:accepted), prevacid(llm:accepted), tagamet(llm:accepted)
+pathology          -> abdomino(llm:accepted), phrenic(llm:accepted)
+patient            -> folk(llm:accepted), individual(llm:accepted), people(llm:accepted)
+pelvis             -> anterior(llm:accepted), hamstring(llm:accepted)
+permanent          -> benefit(llm:accepted), cure(llm:accepted), effective(llm:accepted), effectiveness(llm:accepted), guarantee(llm:accepted), success(llm:accepted)
+phlegm             -> congested(llm:accepted), drainage(llm:accepted), drip(llm:accepted), irritate(llm:accepted), irritation(llm:accepted), mucous(llm:accepted), postnasal(llm:accepted), scratch(llm:accepted)
+phobia             -> afraid(llm:accepted), aversion(llm:accepted), exposure(llm:accepted), fear(llm:accepted), irrational(llm:accepted), mental(llm:accepted), psychological(llm:accepted), ptsd(llm:accepted), terrify(llm:accepted), trauma(llm:accepted), traumatic(llm:accepted), traumatize(llm:accepted)
+pill               -> capsule(llm:accepted), dissolvable(llm:accepted), multivitamin(llm:accepted), tablet(llm:accepted), vitamin(llm:accepted)
+pop                -> crack(llm:accepted), escape(llm:accepted), fizz(llm:accepted), fizzle(llm:accepted), gargle(llm:accepted), puff(llm:accepted)
+posture            -> postural(llm:accepted)
+ppis               -> blocker(llm:accepted), h2(llm:accepted), inhibitor(llm:accepted), prescribe(llm:accepted), protonix(llm:accepted), rebound(llm:accepted)
+practice           -> consistent(llm:accepted), effort(llm:accepted), encourage(llm:accepted), engage(llm:accepted), experiment(llm:accepted), focus(llm:accepted), learn(llm:accepted), patience(llm:accepted), practise(llm:accepted), skill(llm:accepted), train(llm:accepted), transition(llm:accepted)
+practitioner       -> gps(llm:accepted), mds(llm:accepted)
+procedure          -> operation(llm:accepted)
+progress           -> continue(llm:accepted), improvement(llm:accepted), journey(llm:accepted), optimistic(llm:accepted), update(llm:accepted)
+provider           -> network(llm:accepted), service(llm:accepted)
+psyche             -> mess(llm:accepted), wound(llm:accepted)
+psychotherapist    -> phd(llm:accepted), underdiagnose(llm:accepted)
+push               -> coax(llm:accepted), force(llm:accepted), press(llm:accepted)
+ranitidine         -> mylanta(llm:accepted), omeprazol(llm:accepted), sucralfate(llm:accepted)
+rare               -> infrequent(llm:accepted), infrequently(llm:accepted), odd(llm:accepted), random(llm:accepted), rarely(llm:accepted), unexpected(llm:accepted), unlikely(llm:accepted), unlucky(llm:accepted), unusual(llm:accepted)
+rcpd               -> cpd(llm:accepted), inability(llm:accepted), misdiagnose(llm:accepted), noburp(llm:accepted)
+recovery           -> groggy(llm:accepted), healing(llm:accepted), painless(llm:accepted), period(llm:accepted), prepare(llm:accepted), process(llm:accepted), recover(llm:accepted), rough(llm:accepted), scary(llm:accepted), smooth(llm:accepted), timeline(llm:accepted)
+referral           -> approval(llm:accepted), approve(llm:accepted), ccg(llm:accepted), funding(llm:accepted), kaiser(llm:accepted), letter(llm:accepted), private(llm:accepted)
+reflux             -> erode(llm:accepted), erosion(llm:accepted), neutralize(llm:accepted), reducer(llm:accepted)
+regurgitate        -> aspirate(llm:accepted), bile(llm:accepted), puke(llm:accepted), saliva(llm:accepted)
+related            -> attribute(llm:accepted), cause(llm:accepted), connect(llm:accepted), contribute(llm:accepted), correlate(llm:accepted), correlation(llm:accepted), relation(llm:accepted), tie(llm:accepted)
+relax              -> loose(llm:accepted)
+relaxation         -> loosen(llm:accepted)
+relief             -> relieve(llm:accepted)
+research           -> clinical(llm:accepted), datum(llm:accepted), discussion(llm:accepted), document(llm:accepted), educate(llm:accepted), evidence(llm:accepted), field(llm:accepted), info(llm:accepted), information(llm:accepted), journal(llm:accepted), knowledge(llm:accepted), literature(llm:accepted), online(llm:accepted), page(llm:accepted), paper(llm:accepted), print(llm:accepted), publication(llm:accepted), publish(llm:accepted), resource(llm:accepted), review(llm:accepted)
+revelation         -> awe(llm:accepted), ecstatic(llm:accepted), enlighten(llm:accepted), epiphany(llm:accepted), sincere(llm:accepted), stumble(llm:accepted), woohoo(llm:accepted)
+roar               -> demon(llm:accepted), demonic(llm:accepted), dinosaur(llm:accepted), dragon(llm:accepted), monster(llm:accepted), pterodactyl(llm:accepted), raptor(llm:accepted), velociraptor(llm:accepted)
+salad              -> broccoli(llm:accepted), carrot(llm:accepted)
+scan               -> laparoscopy(llm:accepted), mri(llm:accepted)
+scared             -> freak(llm:accepted)
+scope              -> pharyngoscopy(llm:accepted)
+screen             -> bsw(llm:accepted), fluoroscopy(llm:accepted), footage(llm:accepted), photo(llm:accepted), picture(llm:accepted), radiologist(llm:accepted), technician(llm:accepted), video(llm:accepted), xray(llm:accepted)
+sensation          -> block(llm:accepted), feel(llm:accepted), tickle(llm:accepted)
+sensitive          -> aggravate(llm:accepted), squeamish(llm:accepted), unsettling(llm:accepted), upset(llm:accepted)
+shoulder           -> arm(llm:accepted), chin(llm:accepted), hip(llm:accepted), jaw(llm:accepted), neck(llm:accepted), spine(llm:accepted)
+sibo               -> bacterial(llm:accepted), candida(llm:accepted), dysbiosis(llm:accepted), ibd(llm:accepted), methane(llm:accepted), parasite(llm:accepted)
+simethicone        -> buscopan(llm:accepted), windeze(llm:accepted)
+sit                -> bend(llm:accepted), curl(llm:accepted), fetal(llm:accepted), knee(llm:accepted), lay(llm:accepted), lean(llm:accepted), lie(llm:accepted), recline(llm:accepted), scrunch(llm:accepted), slouch(llm:accepted), squat(llm:accepted)
+sleep              -> apnea(llm:accepted), asleep(llm:accepted), bed(llm:accepted), cpap(llm:accepted), elevate(llm:accepted), incline(llm:accepted), pillow(llm:accepted), prop(llm:accepted), recliner(llm:accepted), riser(llm:accepted), sleeper(llm:accepted), upright(llm:accepted), wedge(llm:accepted)
+sleepy             -> comfy(llm:accepted), cozy(llm:accepted), disoriented(llm:accepted), drowsy(llm:accepted), lethargic(llm:accepted), loopy(llm:accepted), woozy(llm:accepted)
+slim               -> athletic(llm:accepted), chubby(llm:accepted), obese(llm:accepted), overweight(llm:accepted), petite(llm:accepted), slender(llm:accepted)
+smell              -> bitter(llm:accepted), ew(llm:accepted), foul(llm:accepted), gross(llm:accepted), metallic(llm:accepted), nasty(llm:accepted), odor(llm:accepted), odorless(llm:accepted), stink(llm:accepted), stinky(llm:accepted), taste(llm:accepted)
+sniff              -> nostril(llm:accepted), syringe(llm:accepted)
+socialize          -> amusement(llm:accepted), attendance(llm:accepted), concert(llm:accepted), event(llm:accepted), graduation(llm:accepted), hangout(llm:accepted), outing(llm:accepted), social(llm:accepted), wedding(llm:accepted)
+sore               -> hoarse(llm:accepted), numb(llm:accepted), soar(llm:accepted)
+specialist         -> consultant(llm:accepted), doc(llm:accepted), gastrologist(llm:accepted), laryngologist(llm:accepted), pcp(llm:accepted), pediatric(llm:accepted), physician(llm:accepted), refer(llm:accepted)
+spectrum           -> common(llm:accepted), extent(llm:accepted), lesser(llm:accepted), majority(llm:accepted), minority(llm:accepted), severity(llm:accepted), uncommon(llm:accepted), unique(llm:accepted), universal(llm:accepted), vast(llm:accepted)
+sphincter          -> cp(llm:accepted), dilate(llm:accepted), dysfunctional(llm:accepted), esophageal(llm:accepted), malfunction(llm:accepted), musculature(llm:accepted), valve(llm:accepted), weaken(llm:accepted)
+spicy              -> citrus(llm:accepted), curry(llm:accepted), garlic(llm:accepted), onion(llm:accepted), salty(llm:accepted), spice(llm:accepted)
+spit               -> drool(llm:accepted), foamy(llm:accepted), frothy(llm:accepted), throw(llm:accepted)
+statistic          -> anecdotal(llm:accepted), argument(llm:accepted), bias(llm:accepted), mathematical(llm:accepted), objective(llm:accepted), proof(llm:accepted), pseudoscience(llm:accepted), science(llm:accepted), scientist(llm:accepted), unscientific(llm:accepted), valid(llm:accepted)
+sternum            -> suprasternal(llm:accepted)
+stomach            -> gastric(llm:accepted), tummy(llm:accepted)
+stress             -> adrenaline(llm:accepted), exacerbate(llm:accepted)
+stretch            -> contort(llm:accepted), contract(llm:accepted), massage(llm:accepted)
+struggle           -> challenge(llm:accepted)
+study              -> academic(llm:accepted), conduct(llm:accepted), evaluate(llm:accepted), manuscript(llm:accepted), peer(llm:accepted)
+suffer             -> complain(llm:accepted), cope(llm:accepted), deal(llm:accepted)
+summon             -> exorcise(llm:accepted), exorcism(llm:accepted), exorcist(llm:accepted)
+supplement         -> betaine(llm:accepted), iron(llm:accepted), laxative(llm:accepted), magnesium(llm:accepted), miralax(llm:accepted)
+surgery            -> surgical(llm:accepted)
+surprise           -> shock(llm:accepted)
+sweat              -> dizzy(llm:accepted), faint(llm:accepted), hot(llm:accepted), pale(llm:accepted), profuse(llm:accepted), restless(llm:accepted), shake(llm:accepted), shaky(llm:accepted), shiver(llm:accepted), sweater(llm:accepted), tingle(llm:accepted)
+tachycardia        -> bp(llm:accepted), dysautonomia(llm:accepted)
+talk               -> say(llm:accepted), speak(llm:accepted)
+technique          -> action(llm:accepted), guide(llm:accepted), strategy(llm:accepted), tip(llm:accepted), tool(llm:accepted), trick(llm:accepted), tutorial(llm:accepted)
+ten                -> 10(llm:accepted)
+tender             -> calf(llm:accepted), clavicle(llm:accepted), compression(llm:accepted), gland(llm:accepted), quad(llm:accepted), skin(llm:accepted)
+tense              -> lock(llm:accepted)
+tension            -> clench(llm:accepted), constrict(llm:accepted), stiff(llm:accepted), stiffness(llm:accepted), strain(llm:accepted), tighten(llm:accepted)
+test               -> exam(llm:accepted), investigation(llm:accepted)
+theory             -> causation(llm:accepted), component(llm:accepted), connection(llm:accepted), development(llm:accepted), factor(llm:accepted), logical(llm:accepted), mechanism(llm:accepted), plausible(llm:accepted), scientific(llm:accepted), speculate(llm:accepted), theoretic(llm:accepted), theorize(llm:accepted)
+therapist          -> occupational(llm:accepted), psychiatrist(llm:accepted)
+thing              -> stuff(llm:accepted)
+thorax             -> manometer(llm:accepted)
+throat             -> mouth(llm:accepted), tongue(llm:accepted)
+tight              -> contraction(llm:accepted)
+trap               -> accumulation(llm:accepted), excess(llm:accepted), exit(llm:accepted), expulsion(llm:accepted)
+treatment          -> option(llm:accepted), solution(llm:accepted), treat(llm:accepted)
+trigger            -> culprit(llm:accepted), induce(llm:accepted), occur(llm:accepted)
+tube               -> airway(llm:accepted), cable(llm:accepted), cannula(llm:accepted), catheter(llm:accepted), endoscope(llm:accepted), instrument(llm:accepted), laryngoscope(llm:accepted), ng(llm:accepted), passage(llm:accepted), pipe(llm:accepted), windpipe(llm:accepted)
+ues                -> epiglottis(llm:accepted)
+unbearable         -> bad(llm:accepted), chronic(llm:accepted), constant(llm:accepted), excruciating(llm:accepted), horrible(llm:accepted), intensify(llm:accepted), nauseate(llm:accepted), severe(llm:accepted), terrible(llm:accepted), unmanageable(llm:accepted), worse(llm:accepted)
+uncomfortable      -> sick(llm:accepted)
+uncontrollable     -> accident(llm:accepted), sneeze(llm:accepted), spontaneous(llm:accepted), uncontrolled(llm:accepted)
+underweight        -> anorexic(llm:accepted), bmi(llm:accepted), loss(llm:accepted), skinny(llm:accepted), thin(llm:accepted), weight(llm:accepted)
+unnatural          -> counterintuitive(llm:accepted), unnerving(llm:accepted)
+unproductive       -> incapacity(llm:accepted)
+violent            -> aggressive(llm:accepted), projectile(llm:accepted), scream(llm:accepted)
+virus              -> bug(llm:accepted), flu(llm:accepted)
+vocal              -> breathy(llm:accepted), chord(llm:accepted), cord(llm:accepted), gravelly(llm:accepted), hoarseness(llm:accepted), larynx(llm:accepted), nerve(llm:accepted), paralysis(llm:accepted), trachea(llm:accepted), voice(llm:accepted), weakness(llm:accepted)
+vomit              -> purge(llm:accepted)
+worsen             -> amplify(llm:accepted), escalate(llm:accepted)
+
+## all accepted by LLM, including already in eval set
+100u               -> 100mg(llm:accepted), 125(llm:accepted), 150(llm:accepted), 50mg(llm:accepted), 50u(llm:accepted), 65(llm:accepted), 75u(llm:accepted), 80u(llm:accepted), dosage(llm:accepted), dose(llm:accepted), injection(llm:accepted), jab(llm:accepted), unit(llm:accepted)
+abdomen            -> ab(llm:accepted), abdominal(llm:accepted), belly(llm:accepted), chest(llm:accepted), diaphragm(llm:accepted), rib(llm:accepted), ribcage(llm:accepted), sternum(llm:accepted), torso(llm:accepted)
+abnormal           -> abnormality(llm:accepted), biopsy(llm:accepted), blockage(llm:accepted), dilate(llm:accepted), dysmotility(llm:accepted), endoflip(llm:accepted), esophageal(llm:accepted), hypertensive(llm:accepted), ineffective(llm:accepted), inflame(llm:accepted), inflammation(llm:accepted), motility(llm:accepted), obstruction(llm:accepted), peristalsis(llm:accepted), pharynx(llm:accepted), scan(llm:accepted), spasm(llm:accepted), stricture(llm:accepted), ultrasound(llm:accepted)
+achalasia          -> cricopharyngeal(llm:accepted), cricopharyngeus(llm:accepted), dysfunction(llm:accepted), dysmotility(llm:accepted), dysphagia(llm:accepted), dysphonia(llm:accepted), endoflip(llm:accepted), esophagoscopy(llm:accepted), neurological(llm:accepted), neurologist(llm:accepted)
+acid               -> acidity(llm:accepted), bile(llm:accepted), gastroesophageal(llm:accepted), heartburn(llm:accepted), hypersensitivity(llm:accepted), laryngopharyngeal(llm:accepted), lining(llm:accepted), lpr(llm:accepted), ppi(llm:accepted), ppis(llm:accepted), protect(llm:accepted), rebound(llm:accepted), regurgitation(llm:accepted), sour(llm:accepted), ulcer(llm:accepted), upset(llm:accepted)
+acupuncture        -> biofeedback(llm:accepted), chiropractic(llm:accepted), chiropractor(llm:accepted), counseling(llm:accepted), eft(llm:accepted), hypnosis(llm:accepted), hypnotherapy(llm:accepted), meditation(llm:accepted), osteopath(llm:accepted), physio(llm:accepted), physiotherapist(llm:accepted), physiotherapy(llm:accepted), reiki(llm:accepted), therapist(llm:accepted), therapy(llm:accepted)
+adhd               -> amitriptyline(llm:accepted), antidepressant(llm:accepted), autism(llm:accepted), counseling(llm:accepted), depression(llm:accepted), ocd(llm:accepted), ssri(llm:accepted), stimulant(llm:accepted)
+administer         -> anaesthesia(llm:accepted), botulinum(llm:accepted), elect(llm:accepted), inject(llm:accepted), local(llm:accepted), perform(llm:accepted), sedate(llm:accepted), toxin(llm:accepted)
+aerophagia         -> achalasia(llm:accepted), dysfunction(llm:accepted), dysmotility(llm:accepted), dyspepsia(llm:accepted), gastroparesis(llm:accepted), gerd(llm:accepted), ibs(llm:accepted), obstruction(llm:accepted), sibo(llm:accepted), syndrome(llm:accepted)
+albuterol          -> metoclopramide(llm:accepted), mylanta(llm:accepted), zantac(llm:accepted)
+alcohol            -> alcoholic(llm:accepted), beer(llm:accepted), booze(llm:accepted), bubbly(llm:accepted), carbonation(llm:accepted), cider(llm:accepted), cocktail(llm:accepted), drunk(llm:accepted), gin(llm:accepted), guinness(llm:accepted), lager(llm:accepted), liquor(llm:accepted), mixer(llm:accepted), vodka(llm:accepted), wine(llm:accepted)
+alone              -> community(llm:accepted), lonely(llm:accepted), validate(llm:accepted), weirdo(llm:accepted), welcome(llm:accepted)
+anatomy            -> chord(llm:accepted), cricopharyngeal(llm:accepted), cricopharyngeus(llm:accepted), ligament(llm:accepted), physiology(llm:accepted), region(llm:accepted), structure(llm:accepted), tissue(llm:accepted), trachea(llm:accepted)
+anesthesia         -> administer(llm:accepted), anaesthesia(llm:accepted), anesthesiologist(llm:accepted), anesthetic(llm:accepted), intubate(llm:accepted), intubation(llm:accepted), iv(llm:accepted), needle(llm:accepted), propofol(llm:accepted), recovery(llm:accepted), sedate(llm:accepted), sedation(llm:accepted)
+anesthesiologist   -> anaesthetist(llm:accepted), anesthetist(llm:accepted), assistant(llm:accepted), facility(llm:accepted), fee(llm:accepted), fees(llm:accepted), fentanyl(llm:accepted), gown(llm:accepted), iv(llm:accepted), nurse(llm:accepted), outpatient(llm:accepted), paperwork(llm:accepted), propofol(llm:accepted), receptionist(llm:accepted), scheduler(llm:accepted), sedate(llm:accepted), sedation(llm:accepted), staff(llm:accepted), surgical(llm:accepted), theatre(llm:accepted), twilight(llm:accepted)
+annoy              -> annoyed(llm:accepted), anxious(llm:accepted), awkward(llm:accepted), bothersome(llm:accepted), embarrass(llm:accepted), frustrate(llm:accepted), inconvenient(llm:accepted), intense(llm:accepted), tired(llm:accepted), uncomfortable(llm:accepted), unpleasant(llm:accepted)
+annoyed            -> angry(llm:accepted), annoy(llm:accepted), depressed(llm:accepted), frustrate(llm:accepted), hopeless(llm:accepted), impatient(llm:accepted), ugh(llm:accepted)
+antacid            -> esomeprazole(llm:accepted), famotidine(llm:accepted), gasx(llm:accepted), gaviscon(llm:accepted), medication(llm:accepted), nexium(llm:accepted), omeprazole(llm:accepted), otc(llm:accepted), pantoprazole(llm:accepted), pepcid(llm:accepted), ppi(llm:accepted), ppis(llm:accepted), prescription(llm:accepted), prilosec(llm:accepted), rennie(llm:accepted), simethicone(llm:accepted), tums(llm:accepted), zantac(llm:accepted)
+antibiotic         -> antacid(llm:accepted), dexilant(llm:accepted), hcl(llm:accepted), lansoprazole(llm:accepted), nexium(llm:accepted), omeprazole(llm:accepted), pantoprazole(llm:accepted), prilosec(llm:accepted), probiotic(llm:accepted), probiotics(llm:accepted), proton(llm:accepted), pylori(llm:accepted), sibo(llm:accepted), zantac(llm:accepted)
+antihistamine      -> benadryl(llm:accepted), decongestant(llm:accepted), flonase(llm:accepted), nauzene(llm:accepted), omeprazol(llm:accepted), otc(llm:accepted), ranitidine(llm:accepted), rennie(llm:accepted), rx(llm:accepted), zantac(llm:accepted), zyrtec(llm:accepted)
+anxiety            -> adhd(llm:accepted), anxious(llm:accepted), attack(llm:accepted), depression(llm:accepted), distress(llm:accepted), embarrassment(llm:accepted), emet(llm:accepted), emetophobia(llm:accepted), emotional(llm:accepted), fear(llm:accepted), mental(llm:accepted), ocd(llm:accepted), panic(llm:accepted), phobia(llm:accepted), psychological(llm:accepted), psychologist(llm:accepted), ptsd(llm:accepted), social(llm:accepted), spiral(llm:accepted), stress(llm:accepted), trauma(llm:accepted)
+anxious            -> anxiety(llm:accepted), awkward(llm:accepted), depressed(llm:accepted), embarrass(llm:accepted), emotional(llm:accepted), frustrate(llm:accepted), nauseous(llm:accepted), nervous(llm:accepted), panic(llm:accepted), panicky(llm:accepted), paranoid(llm:accepted), scared(llm:accepted), scary(llm:accepted), sick(llm:accepted), stress(llm:accepted), uncomfortable(llm:accepted), unwell(llm:accepted)
+appointment        -> apt(llm:accepted), availability(llm:accepted), book(llm:accepted), cancellation(llm:accepted), clinic(llm:accepted), consult(llm:accepted), consultation(llm:accepted), contact(llm:accepted), date(llm:accepted), email(llm:accepted), meeting(llm:accepted), pcp(llm:accepted), receptionist(llm:accepted), referral(llm:accepted), reschedule(llm:accepted), schedule(llm:accepted), scheduler(llm:accepted), telehealth(llm:accepted), visit(llm:accepted), zoom(llm:accepted)
+arthritis          -> auto(llm:accepted), collagen(llm:accepted), fibromyalgia(llm:accepted), hypothyroidism(llm:accepted), ibd(llm:accepted), rheumatoid(llm:accepted)
+article            -> copy(llm:accepted), document(llm:accepted), journal(llm:accepted), literature(llm:accepted), page(llm:accepted), paper(llm:accepted), printout(llm:accepted), publication(llm:accepted), publish(llm:accepted), research(llm:accepted), resource(llm:accepted), review(llm:accepted), website(llm:accepted)
+asphyxiate         -> asphyxiation(llm:accepted), pharyngeal(llm:accepted)
+association        -> afflict(llm:accepted), associate(llm:accepted), aversion(llm:accepted), defense(llm:accepted), dysfunction(llm:accepted), fear(llm:accepted), irrational(llm:accepted), mechanism(llm:accepted), phobia(llm:accepted), rational(llm:accepted), syndrome(llm:accepted), trauma(llm:accepted), traumatic(llm:accepted), traumatize(llm:accepted)
+attack             -> adrenaline(llm:accepted), anxiety(llm:accepted), bout(llm:accepted), episode(llm:accepted), hyperventilate(llm:accepted), nausea(llm:accepted), nauseous(llm:accepted), palp(llm:accepted), palpitation(llm:accepted), panic(llm:accepted), ptsd(llm:accepted), sob(llm:accepted), spike(llm:accepted), spiral(llm:accepted), suffocate(llm:accepted), sweat(llm:accepted), verge(llm:accepted)
+awful              -> bad(llm:accepted), disgust(llm:accepted), dread(llm:accepted), gross(llm:accepted), hate(llm:accepted), hell(llm:accepted), horrendous(llm:accepted), horrible(llm:accepted), horrific(llm:accepted), insane(llm:accepted), intense(llm:accepted), miserable(llm:accepted), nasty(llm:accepted), nauseate(llm:accepted), nauseous(llm:accepted), nightmare(llm:accepted), sick(llm:accepted), suck(llm:accepted), terrible(llm:accepted), ugh(llm:accepted), uncomfortable(llm:accepted), worst(llm:accepted)
+baffle             -> clueless(llm:accepted), dismissive(llm:accepted), ignorant(llm:accepted), moron(llm:accepted), perplex(llm:accepted)
+bcbs               -> aetna(llm:accepted), anthem(llm:accepted), appeal(llm:accepted), approve(llm:accepted), axa(llm:accepted), bupa(llm:accepted), cigna(llm:accepted), coverage(llm:accepted), denial(llm:accepted), deny(llm:accepted), insurer(llm:accepted), medicaid(llm:accepted), medicare(llm:accepted), network(llm:accepted), ohip(llm:accepted), policy(llm:accepted), ppo(llm:accepted), uhc(llm:accepted), united(llm:accepted)
+bearable           -> bothersome(llm:accepted), dull(llm:accepted), tender(llm:accepted), unpleasant(llm:accepted), unpleasantness(llm:accepted)
+bizarre            -> alien(llm:accepted), cruel(llm:accepted), disconcerting(llm:accepted), disturb(llm:accepted), horrify(llm:accepted), repulsive(llm:accepted), rude(llm:accepted), silly(llm:accepted), strange(llm:accepted), stupid(llm:accepted), unfortunate(llm:accepted), wretched(llm:accepted), yuck(llm:accepted)
+blame              -> acknowledge(llm:accepted), attribute(llm:accepted), depression(llm:accepted), dismiss(llm:accepted), exacerbate(llm:accepted), gaslight(llm:accepted), heighten(llm:accepted), ignore(llm:accepted), label(llm:accepted), misdiagnose(llm:accepted), psychological(llm:accepted), psychosomatic(llm:accepted), undiagnosed(llm:accepted)
+bleb               -> chiari(llm:accepted), costocondritis(llm:accepted), flatus(llm:accepted), gastroptosis(llm:accepted), hida(llm:accepted), ileus(llm:accepted), myotonia(llm:accepted), overactive(llm:accepted), plexus(llm:accepted)
+bloat              -> ache(llm:accepted), bloatedness(llm:accepted), constipate(llm:accepted), constipation(llm:accepted), cramp(llm:accepted), discomfort(llm:accepted), flatulence(llm:accepted), fullness(llm:accepted), gassy(llm:accepted), gurgly(llm:accepted), indigestion(llm:accepted), nausea(llm:accepted), nauseate(llm:accepted), nauseous(llm:accepted), uncomfortable(llm:accepted)
+borborygmus        -> pectoral(llm:accepted), proximal(llm:accepted), thoracic(llm:accepted)
+botox              -> myotomy(llm:accepted), procedure(llm:accepted), surgery(llm:accepted)
+breathe            -> breath(llm:accepted), breather(llm:accepted), deep(llm:accepted), diaphragm(llm:accepted), exhale(llm:accepted), gasp(llm:accepted), inhale(llm:accepted), lung(llm:accepted), shallow(llm:accepted)
+bubble             -> accumulate(llm:accepted), buildup(llm:accepted), burst(llm:accepted), escape(llm:accepted), exhale(llm:accepted), expel(llm:accepted), explosion(llm:accepted), gargle(llm:accepted), gasp(llm:accepted), gurgle(llm:accepted), inhale(llm:accepted), pop(llm:accepted), pressurize(llm:accepted), puff(llm:accepted), release(llm:accepted), rise(llm:accepted), squeeze(llm:accepted), stuck(llm:accepted), trap(llm:accepted), trickle(llm:accepted), upwards(llm:accepted)
+buildup            -> accumulate(llm:accepted), accumulation(llm:accepted), build(llm:accepted), building(llm:accepted), compress(llm:accepted), distention(llm:accepted), excess(llm:accepted), expansion(llm:accepted), expel(llm:accepted), expulsion(llm:accepted), generate(llm:accepted), pressurize(llm:accepted), produce(llm:accepted), production(llm:accepted), release(llm:accepted), trap(llm:accepted)
+burn               -> ache(llm:accepted), acidity(llm:accepted), bile(llm:accepted), bitter(llm:accepted), heartburn(llm:accepted), indigestion(llm:accepted), irritate(llm:accepted), irritation(llm:accepted), sour(llm:accepted), sting(llm:accepted)
+burp               -> audible(llm:accepted), belch(llm:accepted), control(llm:accepted), controllable(llm:accepted), gurgle(llm:accepted), intentional(llm:accepted), involuntary(llm:accepted), loud(llm:accepted), microburp(llm:accepted), release(llm:accepted), suppress(llm:accepted)
+burper             -> gurgler(llm:accepted), noburper(llm:accepted), nonburper(llm:accepted)
+burst              -> balloon(llm:accepted), bubble(llm:accepted), exhale(llm:accepted), expand(llm:accepted), explosion(llm:accepted), gasp(llm:accepted), inflate(llm:accepted), puff(llm:accepted), rise(llm:accepted), roar(llm:accepted), rush(llm:accepted), upward(llm:accepted), upwards(llm:accepted)
+calm               -> distract(llm:accepted), hydrate(llm:accepted), lay(llm:accepted), lie(llm:accepted), settle(llm:accepted)
+camera             -> cannula(llm:accepted), catheter(llm:accepted), endoscope(llm:accepted), endoscopy(llm:accepted), gastroscopy(llm:accepted), laryngoscope(llm:accepted), probe(llm:accepted), scope(llm:accepted), videoscope(llm:accepted)
+cannabis           -> cbd(llm:accepted), cigarette(llm:accepted), drug(llm:accepted), edible(llm:accepted), gummy(llm:accepted), marijuana(llm:accepted), nicotine(llm:accepted), recreational(llm:accepted), smoke(llm:accepted), smoker(llm:accepted), thc(llm:accepted), tobacco(llm:accepted), vape(llm:accepted), weed(llm:accepted)
+carbonate          -> bubbly(llm:accepted), carbonation(llm:accepted), champagne(llm:accepted), coca(llm:accepted), coke(llm:accepted), cola(llm:accepted), fizz(llm:accepted), fizzy(llm:accepted), pepsi(llm:accepted), perrier(llm:accepted), seltzer(llm:accepted), soda(llm:accepted), sparkle(llm:accepted), sprite(llm:accepted)
+carbonation        -> beer(llm:accepted), bubbly(llm:accepted), carbonate(llm:accepted), champagne(llm:accepted), cider(llm:accepted), coke(llm:accepted), cola(llm:accepted), fanta(llm:accepted), fizz(llm:accepted), fizzy(llm:accepted), pepsi(llm:accepted), seltzer(llm:accepted), soda(llm:accepted), sprite(llm:accepted)
+cbd                -> cannabis(llm:accepted), herbal(llm:accepted), oil(llm:accepted), product(llm:accepted), supplement(llm:accepted), thc(llm:accepted)
+childhood          -> adolescence(llm:accepted), baby(llm:accepted), birth(llm:accepted), born(llm:accepted), child(llm:accepted), infancy(llm:accepted), infant(llm:accepted), kid(llm:accepted), teen(llm:accepted), teenager(llm:accepted), toddler(llm:accepted), young(llm:accepted)
+chiropractor       -> acupuncture(llm:accepted), acupuncturist(llm:accepted), alignment(llm:accepted), cervical(llm:accepted), massage(llm:accepted), pelvis(llm:accepted), physio(llm:accepted), physiotherapist(llm:accepted), posture(llm:accepted), psoas(llm:accepted), pt(llm:accepted), scoliosis(llm:accepted), spinal(llm:accepted), spine(llm:accepted), therapist(llm:accepted), vertebrae(llm:accepted)
+choke              -> aspirate(llm:accepted), cough(llm:accepted), drown(llm:accepted), laryngospasm(llm:accepted), lump(llm:accepted), regurgitate(llm:accepted), regurgitation(llm:accepted), splutter(llm:accepted), suffocate(llm:accepted), swallow(llm:accepted), windpipe(llm:accepted)
+chug               -> beer(llm:accepted), champagne(llm:accepted), coke(llm:accepted), cola(llm:accepted), drink(llm:accepted), fanta(llm:accepted), fizz(llm:accepted), guinness(llm:accepted), gulp(llm:accepted), prosecco(llm:accepted), seltzer(llm:accepted), shotgun(llm:accepted), sip(llm:accepted), soda(llm:accepted), sparkle(llm:accepted), sprite(llm:accepted), vodka(llm:accepted), wine(llm:accepted)
+co2                -> carbon(llm:accepted), dioxide(llm:accepted), frother(llm:accepted), nitro(llm:accepted), nitrogen(llm:accepted), nitrogenize(llm:accepted), tonic(llm:accepted)
+collarbone         -> blade(llm:accepted), bone(llm:accepted), cage(llm:accepted), cartilage(llm:accepted), collar(llm:accepted), ribcage(llm:accepted), sternum(llm:accepted)
+colonoscopy        -> biopsy(llm:accepted), bravo(llm:accepted), egd(llm:accepted), endo(llm:accepted), endoscopy(llm:accepted), esophagram(llm:accepted), esophogram(llm:accepted), gastroscopy(llm:accepted)
+community          -> askreddit(llm:accepted), forum(llm:accepted), group(llm:accepted), r/noburp(llm:accepted), reddit(llm:accepted), sub(llm:accepted), subedit(llm:accepted), subreddit(llm:accepted), support(llm:accepted), thread(llm:accepted), tiktok(llm:accepted), validate(llm:accepted), validation(llm:accepted)
+complication       -> adverse(llm:accepted), aspiration(llm:accepted), concern(llm:accepted), damage(llm:accepted), downside(llm:accepted), implication(llm:accepted), inconvenience(llm:accepted), intervention(llm:accepted), invasive(llm:accepted), laryngeospasm(llm:accepted), outweigh(llm:accepted), possibility(llm:accepted), potential(llm:accepted), risk(llm:accepted), unforeseen(llm:accepted)
+concern            -> complication(llm:accepted), doubt(llm:accepted), hesitant(llm:accepted), possibility(llm:accepted), risk(llm:accepted), warn(llm:accepted), worry(llm:accepted)
+condition          -> affliction(llm:accepted), diagnosis(llm:accepted), disease(llm:accepted), disorder(llm:accepted), dysfunction(llm:accepted), illness(llm:accepted), issue(llm:accepted), problem(llm:accepted), syndrome(llm:accepted)
+confusion          -> expert(llm:accepted), ignorance(llm:accepted), uneducated(llm:accepted)
+constipation       -> bacteria(llm:accepted), bowel(llm:accepted), colon(llm:accepted), constipate(llm:accepted), digestion(llm:accepted), digestive(llm:accepted), distension(llm:accepted), distention(llm:accepted), flatulence(llm:accepted), gastritis(llm:accepted), gastroparesis(llm:accepted), gut(llm:accepted), ibs(llm:accepted), indigestion(llm:accepted), inflammation(llm:accepted), intestinal(llm:accepted), obstruction(llm:accepted), overgrowth(llm:accepted), sibo(llm:accepted), stool(llm:accepted)
+consult            -> appointment(llm:accepted), apt(llm:accepted), clinic(llm:accepted), consultation(llm:accepted), contact(llm:accepted), meeting(llm:accepted), telehealth(llm:accepted), visit(llm:accepted)
+consultation       -> appointment(llm:accepted), approve(llm:accepted), apt(llm:accepted), arrange(llm:accepted), availability(llm:accepted), book(llm:accepted), clinic(llm:accepted), consult(llm:accepted), contact(llm:accepted), email(llm:accepted), evaluation(llm:accepted), reschedule(llm:accepted), scheduler(llm:accepted), submit(llm:accepted), telehealth(llm:accepted), visit(llm:accepted)
+control            -> automatic(llm:accepted), command(llm:accepted), conscious(llm:accepted), controllable(llm:accepted), gradually(llm:accepted), involuntary(llm:accepted), relax(llm:accepted), suppress(llm:accepted)
+convince           -> accept(llm:accepted), acknowledge(llm:accepted), advocate(llm:accepted), educate(llm:accepted), explain(llm:accepted), insist(llm:accepted), listen(llm:accepted), prove(llm:accepted), recognize(llm:accepted), refer(llm:accepted), referral(llm:accepted), suggest(llm:accepted), tell(llm:accepted), trust(llm:accepted), understand(llm:accepted)
+cough              -> choke(llm:accepted), exhale(llm:accepted), gag(llm:accepted), heave(llm:accepted), inhale(llm:accepted), irritation(llm:accepted), mucus(llm:accepted), phlegm(llm:accepted), retch(llm:accepted), saliva(llm:accepted), salivate(llm:accepted), sneeze(llm:accepted), spit(llm:accepted), tickle(llm:accepted), tickly(llm:accepted), uvula(llm:accepted)
+covid              -> infection(llm:accepted), pandemic(llm:accepted), vaccinate(llm:accepted), vaccine(llm:accepted)
+cramp              -> ache(llm:accepted), bloat(llm:accepted), bloatedness(llm:accepted), churn(llm:accepted), distend(llm:accepted), distension(llm:accepted), distention(llm:accepted), fullness(llm:accepted), growl(llm:accepted), grumble(llm:accepted), indigestion(llm:accepted), nausea(llm:accepted), pain(llm:accepted), rumble(llm:accepted), stab(llm:accepted), tightness(llm:accepted)
+cripple            -> agonize(llm:accepted), debilitate(llm:accepted), destroy(llm:accepted), distress(llm:accepted), excruciating(llm:accepted), horrendous(llm:accepted), horrific(llm:accepted), incapacitate(llm:accepted), intensify(llm:accepted), killer(llm:accepted), nightmare(llm:accepted), severe(llm:accepted), terrible(llm:accepted), unbearable(llm:accepted), unrelenting(llm:accepted)
+croak              -> bubble(llm:accepted), gargle(llm:accepted), groan(llm:accepted), growl(llm:accepted), grumble(llm:accepted), gurgle(llm:accepted), gurgly(llm:accepted), hiccup(llm:accepted), rumble(llm:accepted)
+curious            -> interest(llm:accepted), intrigue(llm:accepted), keen(llm:accepted), wonder(llm:accepted)
+debilitate         -> chronic(llm:accepted), cripple(llm:accepted), depressed(llm:accepted), discomfort(llm:accepted), disrupt(llm:accepted), distress(llm:accepted), emotional(llm:accepted), endure(llm:accepted), excruciating(llm:accepted), exhaust(llm:accepted), horrible(llm:accepted), intense(llm:accepted), intensify(llm:accepted), miserable(llm:accepted), ptsd(llm:accepted), ruin(llm:accepted), severe(llm:accepted), spoil(llm:accepted), suffer(llm:accepted), terrible(llm:accepted), traumatize(llm:accepted), unbearable(llm:accepted)
+deflate            -> burst(llm:accepted), compress(llm:accepted), distend(llm:accepted), empty(llm:accepted), expand(llm:accepted), inflate(llm:accepted), shrink(llm:accepted), squish(llm:accepted), vacuum(llm:accepted)
+demographics       -> collection(llm:accepted), questionnaire(llm:accepted), sampling(llm:accepted), spreadsheet(llm:accepted)
+deny               -> aetna(llm:accepted), anthem(llm:accepted), appeal(llm:accepted), approval(llm:accepted), approve(llm:accepted), authorization(llm:accepted), axa(llm:accepted), bcbs(llm:accepted), cigna(llm:accepted), coverage(llm:accepted), denial(llm:accepted), medicare(llm:accepted), policy(llm:accepted), ppo(llm:accepted), uhc(llm:accepted), united(llm:accepted)
+depressing         -> optimism(llm:accepted), unhappy(llm:accepted)
+depression         -> abuse(llm:accepted), adhd(llm:accepted), antidepressant(llm:accepted), anxiety(llm:accepted), autism(llm:accepted), cortisol(llm:accepted), counseling(llm:accepted), fatigue(llm:accepted), gad(llm:accepted), illness(llm:accepted), insomnia(llm:accepted), ocd(llm:accepted), ptsd(llm:accepted), trauma(llm:accepted)
+desperate          -> deserve(llm:accepted), grateful(llm:accepted)
+devastate          -> bugger(llm:accepted), bummer(llm:accepted), disappointment(llm:accepted), disheartening(llm:accepted), disrespect(llm:accepted), heartbreak(llm:accepted), lowkey(llm:accepted)
+diagnose           -> conclude(llm:accepted), confirm(llm:accepted), criterion(llm:accepted), diagnosis(llm:accepted), diagnostic(llm:accepted), disease(llm:accepted), dysmotility(llm:accepted), eosinophilic(llm:accepted), evaluate(llm:accepted), gastroparesis(llm:accepted), misdiagnose(llm:accepted), misdiagnosis(llm:accepted), syndrome(llm:accepted), undiagnosed(llm:accepted)
+diagnostic         -> assess(llm:accepted), clinical(llm:accepted), conduct(llm:accepted), confirm(llm:accepted), criterion(llm:accepted), definitive(llm:accepted), determine(llm:accepted), diagnosis(llm:accepted), differential(llm:accepted), esophagoscopy(llm:accepted), evaluate(llm:accepted), examination(llm:accepted), preliminary(llm:accepted), prove(llm:accepted), undergo(llm:accepted)
+diaphragm          -> abdomen(llm:accepted), clench(llm:accepted), compress(llm:accepted), contract(llm:accepted), exhale(llm:accepted), expand(llm:accepted), inhale(llm:accepted), lung(llm:accepted), musculature(llm:accepted), relaxation(llm:accepted), squeeze(llm:accepted), strengthen(llm:accepted), tension(llm:accepted), trachea(llm:accepted)
+diarrhea           -> bloat(llm:accepted), bloatedness(llm:accepted), bowel(llm:accepted), constipate(llm:accepted), constipation(llm:accepted), cramp(llm:accepted), diarrhoea(llm:accepted), distension(llm:accepted), distention(llm:accepted), flatulence(llm:accepted), indigestion(llm:accepted), intestinal(llm:accepted), obstruction(llm:accepted), poop(llm:accepted), stomachache(llm:accepted), stool(llm:accepted)
+diary              -> blog(llm:accepted), document(llm:accepted), journal(llm:accepted), log(llm:accepted)
+digestion          -> absorb(llm:accepted), absorption(llm:accepted), acidity(llm:accepted), bacteria(llm:accepted), bowel(llm:accepted), carbohydrate(llm:accepted), constipation(llm:accepted), digest(llm:accepted), digestive(llm:accepted), eliminate(llm:accepted), enzyme(llm:accepted), ferment(llm:accepted), fiber(llm:accepted), gut(llm:accepted), intake(llm:accepted), intestinal(llm:accepted), intestine(llm:accepted), metabolism(llm:accepted), microbiome(llm:accepted), motility(llm:accepted), nutrient(llm:accepted), overgrowth(llm:accepted), stool(llm:accepted), transit(llm:accepted)
+dilation           -> dilatation(llm:accepted), dilate(llm:accepted), dysmotility(llm:accepted), endoflip(llm:accepted), endoscope(llm:accepted), enlarge(llm:accepted), esophagoscopy(llm:accepted), hypertensive(llm:accepted), inflate(llm:accepted), inject(llm:accepted), injection(llm:accepted), lax(llm:accepted), manometry(llm:accepted), myotomy(llm:accepted), spasm(llm:accepted), toxin(llm:accepted), weaken(llm:accepted)
+disappoint         -> annoyed(llm:accepted), discourage(llm:accepted), disheartened(llm:accepted), disheartening(llm:accepted), dismissive(llm:accepted), frustrate(llm:accepted), impatient(llm:accepted), sad(llm:accepted)
+discomfort         -> ache(llm:accepted), bloat(llm:accepted), bloatedness(llm:accepted), cramp(llm:accepted), distention(llm:accepted), distress(llm:accepted), embarrassment(llm:accepted), excruciating(llm:accepted), flatulence(llm:accepted), fullness(llm:accepted), gurgle(llm:accepted), indigestion(llm:accepted), nausea(llm:accepted), nauseate(llm:accepted), pain(llm:accepted), pressure(llm:accepted), tightness(llm:accepted), unbearable(llm:accepted), uncomfortable(llm:accepted)
+discourage         -> disappoint(llm:accepted), disheartened(llm:accepted), disheartening(llm:accepted), frustrate(llm:accepted), hopeless(llm:accepted), impatient(llm:accepted)
+disgust            -> awful(llm:accepted), ew(llm:accepted), foul(llm:accepted), gross(llm:accepted), hate(llm:accepted), horrify(llm:accepted), nasty(llm:accepted), puke(llm:accepted), shit(llm:accepted), smell(llm:accepted), taste(llm:accepted)
+disorder           -> achalasia(llm:accepted), condition(llm:accepted), disease(llm:accepted), dysfunction(llm:accepted), dysphagia(llm:accepted), dysphasia(llm:accepted), dysphonia(llm:accepted), gastroparesis(llm:accepted), illness(llm:accepted), issue(llm:accepted), rcpd(llm:accepted), syndrome(llm:accepted)
+disregard          -> ailment(llm:accepted), asymptomatic(llm:accepted), crohn(llm:accepted), disease(llm:accepted), dx(llm:accepted), dyspepsia(llm:accepted), hashimoto(llm:accepted), hypochondriac(llm:accepted), ibd(llm:accepted), misdiagnosis(llm:accepted), ulcerative(llm:accepted), unaware(llm:accepted)
+distress           -> anxiety(llm:accepted), depression(llm:accepted), discomfort(llm:accepted), emotional(llm:accepted), fatigue(llm:accepted), psychological(llm:accepted), ptsd(llm:accepted), stress(llm:accepted), trauma(llm:accepted)
+doctor             -> clinic(llm:accepted), colleague(llm:accepted), consultant(llm:accepted), doc(llm:accepted), ent(llm:accepted), gastroenterologist(llm:accepted), gastrologist(llm:accepted), gp(llm:accepted), gps(llm:accepted), institute(llm:accepted), laryngologist(llm:accepted), mr(llm:accepted), otolaryngologist(llm:accepted), pcp(llm:accepted), physician(llm:accepted), provider(llm:accepted), specialist(llm:accepted), surgeon(llm:accepted)
+dose               -> 100mg(llm:accepted), 100u(llm:accepted), 125(llm:accepted), 150(llm:accepted), 50cc(llm:accepted), 50mg(llm:accepted), 50u(llm:accepted), 60(llm:accepted), 75(llm:accepted), 80(llm:accepted), dosage(llm:accepted), injection(llm:accepted), jab(llm:accepted), shot(llm:accepted), unit(llm:accepted)
+downside           -> complication(llm:accepted), con(llm:accepted), consequence(llm:accepted), expense(llm:accepted), expensive(llm:accepted), hassle(llm:accepted), invasive(llm:accepted), risk(llm:accepted), risky(llm:accepted), roadblock(llm:accepted)
+dramamine          -> benadryl(llm:accepted), gravol(llm:accepted), metoclopramide(llm:accepted), nauzene(llm:accepted), promethazine(llm:accepted), zofran(llm:accepted)
+drink              -> alcohol(llm:accepted), beer(llm:accepted), beverage(llm:accepted), carbonation(llm:accepted), chug(llm:accepted), cider(llm:accepted), consume(llm:accepted), consumption(llm:accepted), drinker(llm:accepted), drunk(llm:accepted), fizz(llm:accepted), gulp(llm:accepted), juice(llm:accepted), lemonade(llm:accepted), mixer(llm:accepted), prosecco(llm:accepted), sip(llm:accepted), soda(llm:accepted), vodka(llm:accepted), water(llm:accepted), wine(llm:accepted)
+dysfunction        -> achalasia(llm:accepted), botulinum(llm:accepted), clinical(llm:accepted), cricopharyngeal(llm:accepted), cricopharyngeus(llm:accepted), dysfunctional(llm:accepted), dysphagia(llm:accepted), dysphonia(llm:accepted), dyssynergia(llm:accepted), dystonia(llm:accepted), hypertonic(llm:accepted), hypertrophy(llm:accepted), laryngeal(llm:accepted), malfunction(llm:accepted), neurological(llm:accepted), pathology(llm:accepted), syndrome(llm:accepted)
+dysphagia          -> achalasia(llm:accepted), botulinum(llm:accepted), cricopharyngeal(llm:accepted), cricopharyngeus(llm:accepted), diagnostic(llm:accepted), disorder(llm:accepted), dysfunction(llm:accepted), dysphasia(llm:accepted), dysphonia(llm:accepted), dystonia(llm:accepted), endoscope(llm:accepted), evaluate(llm:accepted), laryngeal(llm:accepted), laryngologist(llm:accepted)
+eat                -> bite(llm:accepted), bread(llm:accepted), breakfast(llm:accepted), burger(llm:accepted), butter(llm:accepted), chew(llm:accepted), consume(llm:accepted), cook(llm:accepted), digest(llm:accepted), dinner(llm:accepted), eater(llm:accepted), egg(llm:accepted), fry(llm:accepted), gassy(llm:accepted), hungry(llm:accepted), lunch(llm:accepted), meal(llm:accepted), overeat(llm:accepted), pasta(llm:accepted), potato(llm:accepted), smoothie(llm:accepted), snack(llm:accepted), soup(llm:accepted)
+eliminate          -> elimination(llm:accepted), intolerance(llm:accepted), intolerant(llm:accepted), management(llm:accepted), modification(llm:accepted), reduce(llm:accepted), reduction(llm:accepted), reintroduce(llm:accepted), sensitivity(llm:accepted), strict(llm:accepted)
+embarrass          -> awkward(llm:accepted), embarrassment(llm:accepted), fun(llm:accepted), funny(llm:accepted), hilarious(llm:accepted), joke(llm:accepted), laugh(llm:accepted), mortify(llm:accepted)
+emetophobe         -> afraid(llm:accepted), confront(llm:accepted), deathly(llm:accepted), emet(llm:accepted), emetophobia(llm:accepted), fear(llm:accepted), irrational(llm:accepted), ocd(llm:accepted), overcome(llm:accepted), petrify(llm:accepted), phobia(llm:accepted), r/emetophobia(llm:accepted), scare(llm:accepted), scared(llm:accepted), terrify(llm:accepted), traumatic(llm:accepted), traumatize(llm:accepted)
+emetophobia        -> afraid(llm:accepted), anxiety(llm:accepted), aversion(llm:accepted), emet(llm:accepted), emetophobe(llm:accepted), exposure(llm:accepted), fear(llm:accepted), irrational(llm:accepted), ocd(llm:accepted), phobia(llm:accepted), ptsd(llm:accepted), scared(llm:accepted), terrify(llm:accepted), trauma(llm:accepted), traumatic(llm:accepted), traumatize(llm:accepted), vomit(llm:accepted)
+endoscopy          -> barium(llm:accepted), biopsy(llm:accepted), colonoscopy(llm:accepted), egd(llm:accepted), endoflip(llm:accepted), esophagram(llm:accepted), esophogram(llm:accepted), gastroenterologist(llm:accepted), gastroscopy(llm:accepted), manometry(llm:accepted), probe(llm:accepted), scope(llm:accepted)
+ent                -> clinic(llm:accepted), consultant(llm:accepted), doc(llm:accepted), doctor(llm:accepted), gastro(llm:accepted), gastroenterologist(llm:accepted), gastroenterology(llm:accepted), gastrologist(llm:accepted), gp(llm:accepted), gps(llm:accepted), laryngologist(llm:accepted), otolaryngologist(llm:accepted), pcp(llm:accepted), physician(llm:accepted), provider(llm:accepted), refer(llm:accepted), referral(llm:accepted), specialist(llm:accepted), surgeon(llm:accepted)
+esophagitis        -> biopsy(llm:accepted), eoe(llm:accepted), eosinophilic(llm:accepted), gastritis(llm:accepted), gerd(llm:accepted), gord(llm:accepted), helicobacter(llm:accepted), inflammation(llm:accepted), peptic(llm:accepted), ulcer(llm:accepted)
+esophagus          -> abnormal(llm:accepted), airway(llm:accepted), contract(llm:accepted), cricopharyngeus(llm:accepted), diaphragm(llm:accepted), dilate(llm:accepted), epiglottis(llm:accepted), esophageal(llm:accepted), inflame(llm:accepted), peristalsis(llm:accepted), sphincter(llm:accepted), throat(llm:accepted), ues(llm:accepted), valve(llm:accepted)
+exaggerate         -> exorcist(llm:accepted), intensify(llm:accepted), obsess(llm:accepted), simulate(llm:accepted)
+examination        -> bloodwork(llm:accepted), ct(llm:accepted), egd(llm:accepted), endoscope(llm:accepted), esophagoscopy(llm:accepted), esophagram(llm:accepted), esophogram(llm:accepted), evaluation(llm:accepted), lab(llm:accepted), laryngoscope(llm:accepted), panel(llm:accepted), preliminary(llm:accepted), radiology(llm:accepted), stroboscopy(llm:accepted), videoendoscopy(llm:accepted), workup(llm:accepted)
+excite             -> amazing(llm:accepted), awesome(llm:accepted), congratulation(llm:accepted), eager(llm:accepted), glad(llm:accepted), grateful(llm:accepted), happy(llm:accepted), hopeful(llm:accepted), nice(llm:accepted), optimistic(llm:accepted), pleased(llm:accepted), reassure(llm:accepted), stoke(llm:accepted), thankful(llm:accepted), thrill(llm:accepted), yay(llm:accepted)
+exercise           -> calisthenics(llm:accepted), diaphragmatic(llm:accepted), engage(llm:accepted), maneuver(llm:accepted), massage(llm:accepted), method(llm:accepted), movement(llm:accepted), pilates(llm:accepted), posture(llm:accepted), rep(llm:accepted), routine(llm:accepted), strengthen(llm:accepted), stretch(llm:accepted), technique(llm:accepted), workout(llm:accepted), yoga(llm:accepted)
+exhaust            -> debilitate(llm:accepted), disoriented(llm:accepted), dizzy(llm:accepted), faint(llm:accepted), nauseate(llm:accepted), suffocate(llm:accepted), tired(llm:accepted)
+exist              -> accept(llm:accepted), acknowledge(llm:accepted), aware(llm:accepted), condition(llm:accepted), diagnose(llm:accepted), diagnosis(llm:accepted), discover(llm:accepted), discovery(llm:accepted), dismiss(llm:accepted), existence(llm:accepted), recognition(llm:accepted), recognize(llm:accepted), underlying(llm:accepted)
+experience         -> story(llm:accepted)
+explode            -> ache(llm:accepted), balloon(llm:accepted), burst(llm:accepted), cramp(llm:accepted), deflate(llm:accepted), fullness(llm:accepted), inflate(llm:accepted), nauseate(llm:accepted), rumble(llm:accepted), sick(llm:accepted)
+famotidine         -> antacid(llm:accepted), blocker(llm:accepted), drug(llm:accepted), esomeprazole(llm:accepted), h2(llm:accepted), inhibitor(llm:accepted), lansoprazole(llm:accepted), medication(llm:accepted), nexium(llm:accepted), omeprazole(llm:accepted), otc(llm:accepted), pantoprazole(llm:accepted), pepcid(llm:accepted), ppi(llm:accepted), ppis(llm:accepted), prescription(llm:accepted), prilosec(llm:accepted), protonix(llm:accepted), zantac(llm:accepted)
+fart               -> audible(llm:accepted), awkward(llm:accepted), embarrass(llm:accepted), excuse(llm:accepted), farty(llm:accepted), flatulence(llm:accepted), gas(llm:accepted), gassy(llm:accepted), hide(llm:accepted), joke(llm:accepted), loud(llm:accepted), noise(llm:accepted), odorless(llm:accepted), smell(llm:accepted), stink(llm:accepted), stinky(llm:accepted), toot(llm:accepted)
+fast               -> quick(llm:accepted)
+fees               -> bill(llm:accepted), charge(llm:accepted), facility(llm:accepted), fee(llm:accepted), invoice(llm:accepted), medicare(llm:accepted), quote(llm:accepted), rebate(llm:accepted), upfront(llm:accepted)
+fever              -> bronchitis(llm:accepted), congestion(llm:accepted), dizziness(llm:accepted), eczema(llm:accepted), headache(llm:accepted), infect(llm:accepted), infection(llm:accepted), itch(llm:accepted), lymph(llm:accepted), node(llm:accepted), rash(llm:accepted), sweat(llm:accepted), tender(llm:accepted), tonsillitis(llm:accepted), turbinate(llm:accepted)
+flatulence         -> abdominal(llm:accepted), bloat(llm:accepted), bloatedness(llm:accepted), bowel(llm:accepted), constipate(llm:accepted), constipation(llm:accepted), cramp(llm:accepted), diarrhea(llm:accepted), diarrhoea(llm:accepted), discomfort(llm:accepted), distension(llm:accepted), distention(llm:accepted), fart(llm:accepted), gas(llm:accepted), indigestion(llm:accepted), poop(llm:accepted), stomachache(llm:accepted), wind(llm:accepted)
+flex               -> activate(llm:accepted), clench(llm:accepted), contort(llm:accepted), contract(llm:accepted), contraction(llm:accepted), engage(llm:accepted), maneuver(llm:accepted), massage(llm:accepted), movement(llm:accepted), press(llm:accepted), push(llm:accepted), squeeze(llm:accepted), strain(llm:accepted), strengthen(llm:accepted), tense(llm:accepted), tighten(llm:accepted), twist(llm:accepted)
+flustered          -> moody(llm:accepted), uninformed(llm:accepted), whine(llm:accepted), woah(llm:accepted)
+fodmap             -> carbohydrate(llm:accepted), dairy(llm:accepted), diet(llm:accepted), dietitian(llm:accepted), elimination(llm:accepted), fiber(llm:accepted), fibre(llm:accepted), gluten(llm:accepted), histamine(llm:accepted), keto(llm:accepted), lactose(llm:accepted), nutritionist(llm:accepted), paleo(llm:accepted), reintroduce(llm:accepted), sugar(llm:accepted), vegan(llm:accepted), vegetable(llm:accepted), wheat(llm:accepted)
+food               -> bean(llm:accepted), bread(llm:accepted), butter(llm:accepted), carbohydrate(llm:accepted), chew(llm:accepted), cracker(llm:accepted), dairy(llm:accepted), egg(llm:accepted), fruit(llm:accepted), garlic(llm:accepted), liquid(llm:accepted), meat(llm:accepted), noodle(llm:accepted), onion(llm:accepted), pasta(llm:accepted), potato(llm:accepted), raw(llm:accepted), rice(llm:accepted), soup(llm:accepted), steak(llm:accepted), texture(llm:accepted), tomato(llm:accepted), vegetable(llm:accepted), yogurt(llm:accepted)
+freaky             -> aah(llm:accepted), agh(llm:accepted), ahhh(llm:accepted), aw(llm:accepted), oooh(llm:accepted), spooky(llm:accepted), urgh(llm:accepted), whoa(llm:accepted)
+frequency          -> decrease(llm:accepted), degree(llm:accepted), frequent(llm:accepted), gradual(llm:accepted), gradually(llm:accepted), increase(llm:accepted), intensity(llm:accepted), level(llm:accepted), likelihood(llm:accepted), occurrence(llm:accepted), percentage(llm:accepted), quantity(llm:accepted), range(llm:accepted), severity(llm:accepted), significant(llm:accepted)
+frustrate          -> angry(llm:accepted), annoy(llm:accepted), annoyed(llm:accepted), awkward(llm:accepted), confuse(llm:accepted), depressed(llm:accepted), disappoint(llm:accepted), discourage(llm:accepted), disheartening(llm:accepted), dismissive(llm:accepted), embarrass(llm:accepted), emotional(llm:accepted), exhaust(llm:accepted), hopeless(llm:accepted), impatient(llm:accepted), sad(llm:accepted), uncomfortable(llm:accepted)
+fullness           -> bloatedness(llm:accepted), blockage(llm:accepted), breathless(llm:accepted), chest(llm:accepted), cramp(llm:accepted), distention(llm:accepted), dizziness(llm:accepted), fatigue(llm:accepted), headache(llm:accepted), knot(llm:accepted), pang(llm:accepted), pressure(llm:accepted), rumble(llm:accepted), sharp(llm:accepted), stab(llm:accepted), swell(llm:accepted), tender(llm:accepted), tightness(llm:accepted)
+ga                 -> administer(llm:accepted), anaesthesia(llm:accepted), anesthesia(llm:accepted), anesthetic(llm:accepted), anesthetize(llm:accepted), narcose(llm:accepted), propofol(llm:accepted), sedate(llm:accepted), sedation(llm:accepted), twilight(llm:accepted)
+gag                -> barf(llm:accepted), heave(llm:accepted), puke(llm:accepted), retch(llm:accepted), urge(llm:accepted), vomit(llm:accepted)
+gas                -> abdomen(llm:accepted), bowel(llm:accepted), colon(llm:accepted), distension(llm:accepted), fart(llm:accepted), flatulence(llm:accepted), gassy(llm:accepted), intestine(llm:accepted), poop(llm:accepted), wind(llm:accepted)
+gassy              -> bloat(llm:accepted), fart(llm:accepted), gurgly(llm:accepted), nauseate(llm:accepted), nauseous(llm:accepted), upset(llm:accepted)
+gastritis          -> celiac(llm:accepted), colitis(llm:accepted), crohn(llm:accepted), disease(llm:accepted), dysmotility(llm:accepted), eoe(llm:accepted), eosinophilic(llm:accepted), esophagitis(llm:accepted), gastroparesis(llm:accepted), gerd(llm:accepted), gord(llm:accepted), helicobacter(llm:accepted), ibs(llm:accepted), inflammation(llm:accepted), pylori(llm:accepted), ulcer(llm:accepted)
+gastro             -> biopsy(llm:accepted), celiac(llm:accepted), dietitian(llm:accepted), endo(llm:accepted), eoe(llm:accepted), eosinophilic(llm:accepted), gastroenterologist(llm:accepted), gastrointestinal(llm:accepted), gi(llm:accepted), ibs(llm:accepted), peptic(llm:accepted), pylori(llm:accepted)
+gastroenterologist -> consultant(llm:accepted), doc(llm:accepted), ent(llm:accepted), gastro(llm:accepted), gastroenterology(llm:accepted), gastroscopy(llm:accepted), gi(llm:accepted), gis(llm:accepted), gp(llm:accepted), gps(llm:accepted), laryngologist(llm:accepted), otolaryngologist(llm:accepted), pcp(llm:accepted), pediatrician(llm:accepted), physician(llm:accepted), primary(llm:accepted), specialist(llm:accepted), surgeon(llm:accepted)
+gastroscopy        -> biopsy(llm:accepted), colonoscopy(llm:accepted), egd(llm:accepted), endoflip(llm:accepted), endoscope(llm:accepted), endoscopy(llm:accepted), esophagoscopy(llm:accepted), esophagram(llm:accepted), esophogram(llm:accepted), scope(llm:accepted)
+gasx               -> antacid(llm:accepted), beano(llm:accepted), bismol(llm:accepted), charcoal(llm:accepted), gaviscon(llm:accepted), ginger(llm:accepted), pepcid(llm:accepted), peppermint(llm:accepted), pepto(llm:accepted), rennie(llm:accepted), simethicone(llm:accepted), tums(llm:accepted)
+gaviscon           -> alginate(llm:accepted), antacid(llm:accepted), esomeprazole(llm:accepted), famotidine(llm:accepted), nexium(llm:accepted), omeprazole(llm:accepted), pantoprazole(llm:accepted), pepcid(llm:accepted), pepto(llm:accepted), ppi(llm:accepted), prilosec(llm:accepted), rennie(llm:accepted), simethicone(llm:accepted), tums(llm:accepted), zantac(llm:accepted)
+gerd               -> dysmotility(llm:accepted), eoe(llm:accepted), eosinophilic(llm:accepted), esophagitis(llm:accepted), gastritis(llm:accepted), gastroparesis(llm:accepted), gord(llm:accepted), heartburn(llm:accepted), hernia(llm:accepted), hh(llm:accepted), ibs(llm:accepted), indigestion(llm:accepted), inflammation(llm:accepted), lpr(llm:accepted), ppis(llm:accepted), rcpd(llm:accepted), reflux(llm:accepted), ulcer(llm:accepted)
+globus             -> drainage(llm:accepted), drip(llm:accepted), foreign(llm:accepted), fullness(llm:accepted), laryngeal(llm:accepted), lumpy(llm:accepted), mucus(llm:accepted), postnasal(llm:accepted), sensation(llm:accepted), sensory(llm:accepted), sinus(llm:accepted), tickle(llm:accepted)
+gp                 -> consultant(llm:accepted), doc(llm:accepted), doctor(llm:accepted), ent(llm:accepted), gastro(llm:accepted), gastroenterologist(llm:accepted), gastrologist(llm:accepted), gps(llm:accepted), otolaryngologist(llm:accepted), pcp(llm:accepted), physician(llm:accepted), primary(llm:accepted), provider(llm:accepted), referral(llm:accepted), specialist(llm:accepted), surgeon(llm:accepted)
+grateful           -> amazing(llm:accepted), appreciative(llm:accepted), awesome(llm:accepted), comfort(llm:accepted), empathetic(llm:accepted), fortunate(llm:accepted), glad(llm:accepted), happy(llm:accepted), hopeful(llm:accepted), pleased(llm:accepted), reassure(llm:accepted), relatable(llm:accepted), support(llm:accepted), thankful(llm:accepted), validate(llm:accepted), welcome(llm:accepted), wonderful(llm:accepted)
+growl              -> croak(llm:accepted), gargle(llm:accepted), groan(llm:accepted), grumble(llm:accepted), gurgle(llm:accepted), gurgly(llm:accepted), roar(llm:accepted), rumble(llm:accepted)
+gurgle             -> audible(llm:accepted), bloat(llm:accepted), bubble(llm:accepted), burp(llm:accepted), flatulence(llm:accepted), gargle(llm:accepted), gurgly(llm:accepted), hiccup(llm:accepted), loud(llm:accepted), nausea(llm:accepted), noise(llm:accepted), rumble(llm:accepted)
+gurgly             -> bloat(llm:accepted), cramp(llm:accepted), fullness(llm:accepted), gargle(llm:accepted), gassy(llm:accepted), growl(llm:accepted), gurgle(llm:accepted), nauseate(llm:accepted), nauseous(llm:accepted), queasy(llm:accepted), rumble(llm:accepted)
+healthcare         -> america(llm:accepted), american(llm:accepted), bcbs(llm:accepted), canadian(llm:accepted), coverage(llm:accepted), employer(llm:accepted), expense(llm:accepted), finance(llm:accepted), financial(llm:accepted), fund(llm:accepted), government(llm:accepted), hmo(llm:accepted), insure(llm:accepted), medicaid(llm:accepted), ohip(llm:accepted), policy(llm:accepted), ppo(llm:accepted), reimburse(llm:accepted), sector(llm:accepted)
+heartburn          -> acid(llm:accepted), acidity(llm:accepted), antacid(llm:accepted), burn(llm:accepted), esomeprazole(llm:accepted), famotidine(llm:accepted), gastritis(llm:accepted), gerd(llm:accepted), indigestion(llm:accepted), lpr(llm:accepted), nausea(llm:accepted), nexium(llm:accepted), omeprazole(llm:accepted), otc(llm:accepted), pantoprazole(llm:accepted), pepcid(llm:accepted), ppi(llm:accepted), ppis(llm:accepted), rebound(llm:accepted), reflux(llm:accepted), regurgitation(llm:accepted), tums(llm:accepted), ulcer(llm:accepted)
+help               -> helpful(llm:accepted)
+hernia             -> barrett(llm:accepted), esophagitis(llm:accepted), fundoplication(llm:accepted), gastritis(llm:accepted), gerd(llm:accepted), hh(llm:accepted), hiatal(llm:accepted), hiatus(llm:accepted), inguinal(llm:accepted), nissen(llm:accepted), repair(llm:accepted), stricture(llm:accepted), tif(llm:accepted), ulcer(llm:accepted)
+hiccup             -> audible(llm:accepted), bout(llm:accepted), croak(llm:accepted), episode(llm:accepted), excruciating(llm:accepted), frequent(llm:accepted), gargle(llm:accepted), gurgle(llm:accepted), intense(llm:accepted), involuntary(llm:accepted), loud(llm:accepted), sharp(llm:accepted), violent(llm:accepted)
+hopeful            -> awesome(llm:accepted), confident(llm:accepted), congratulation(llm:accepted), encourage(llm:accepted), excite(llm:accepted), glad(llm:accepted), grateful(llm:accepted), happy(llm:accepted), hope(llm:accepted), motivate(llm:accepted), optimistic(llm:accepted), pleased(llm:accepted), positive(llm:accepted), promise(llm:accepted), reassure(llm:accepted), stoke(llm:accepted), thrill(llm:accepted)
+hospital           -> alexandra(llm:accepted), chelsea(llm:accepted), clinic(llm:accepted), department(llm:accepted), epworth(llm:accepted), facility(llm:accepted), jefferson(llm:accepted), manchester(llm:accepted), oak(llm:accepted), outpatient(llm:accepted), parkside(llm:accepted), royal(llm:accepted), shard(llm:accepted), st(llm:accepted), theatre(llm:accepted), uc(llm:accepted), wimbledon(llm:accepted)
+hungry             -> appetite(llm:accepted), bloat(llm:accepted), eat(llm:accepted), gassy(llm:accepted), hunger(llm:accepted), meal(llm:accepted), nauseate(llm:accepted), nauseous(llm:accepted), snack(llm:accepted)
+hypermobile        -> collagen(llm:accepted), comorbidity(llm:accepted), connective(llm:accepted), genetics(llm:accepted), heds(llm:accepted), hypermobility(llm:accepted), mcas(llm:accepted), mobility(llm:accepted), scoliosis(llm:accepted)
+hypersalivation    -> excessive(llm:accepted), hyper(llm:accepted), nausea(llm:accepted), salivate(llm:accepted), salivation(llm:accepted)
+hyperventilate     -> artery(llm:accepted), pulse(llm:accepted), thorax(llm:accepted)
+hypnosis           -> biofeedback(llm:accepted), cognitive(llm:accepted), eft(llm:accepted), hypnotherapy(llm:accepted), somatic(llm:accepted)
+ibs                -> candida(llm:accepted), celiac(llm:accepted), constipation(llm:accepted), crohn(llm:accepted), dyspepsia(llm:accepted), eoe(llm:accepted), esophagitis(llm:accepted), gastritis(llm:accepted), gastro(llm:accepted), gastroparesis(llm:accepted), gerd(llm:accepted), gord(llm:accepted), intolerance(llm:accepted), lactose(llm:accepted), pylori(llm:accepted), sibo(llm:accepted), ulcer(llm:accepted)
+illness            -> adhd(llm:accepted), ailment(llm:accepted), asthma(llm:accepted), autism(llm:accepted), autoimmune(llm:accepted), condition(llm:accepted), crohn(llm:accepted), depression(llm:accepted), disease(llm:accepted), endometriosis(llm:accepted), gastritis(llm:accepted), gastroparesis(llm:accepted), ibs(llm:accepted), infection(llm:accepted), migraine(llm:accepted), ocd(llm:accepted), ptsd(llm:accepted)
+impress            -> appreciative(llm:accepted), awesome(llm:accepted), compassion(llm:accepted), cool(llm:accepted), empathetic(llm:accepted), enthusiastic(llm:accepted), forthcoming(llm:accepted), friendly(llm:accepted), grateful(llm:accepted), intelligent(llm:accepted), knowledgeable(llm:accepted), lovely(llm:accepted), nice(llm:accepted), personable(llm:accepted), receptive(llm:accepted), wholesome(llm:accepted), wonderful(llm:accepted)
+incident           -> bout(llm:accepted), episode(llm:accepted), illness(llm:accepted), instance(llm:accepted), occasion(llm:accepted), trauma(llm:accepted), traumatic(llm:accepted), traumatize(llm:accepted)
+inconsistent       -> anxiousness(llm:accepted), disconcerting(llm:accepted), infrequent(llm:accepted), uncontrolled(llm:accepted), unpredictable(llm:accepted), unsettling(llm:accepted)
+inconvenient       -> annoy(llm:accepted), ashamed(llm:accepted), awkward(llm:accepted), disrupt(llm:accepted), embarrass(llm:accepted), hide(llm:accepted), mortify(llm:accepted)
+incredible         -> amazing(llm:accepted), beyond(llm:accepted), extreme(llm:accepted), hella(llm:accepted), immense(llm:accepted), indescribable(llm:accepted), insane(llm:accepted), super(llm:accepted), truly(llm:accepted), unbelievable(llm:accepted), wonderful(llm:accepted)
+independent        -> dyssynergia(llm:accepted), hypertonic(llm:accepted), neurology(llm:accepted), neuromuscular(llm:accepted)
+indigestion        -> acidity(llm:accepted), bloatedness(llm:accepted), burn(llm:accepted), constipate(llm:accepted), constipation(llm:accepted), cramp(llm:accepted), diarrhea(llm:accepted), diarrhoea(llm:accepted), gastritis(llm:accepted), gerd(llm:accepted), heartburn(llm:accepted), ibs(llm:accepted), inflammation(llm:accepted), nausea(llm:accepted)
+inflammation       -> esophagitis(llm:accepted), infection(llm:accepted), inflame(llm:accepted), irritate(llm:accepted), irritation(llm:accepted), ulcer(llm:accepted), ulceration(llm:accepted)
+inflate            -> balloon(llm:accepted), capacity(llm:accepted), cavity(llm:accepted), dilate(llm:accepted), distend(llm:accepted), distention(llm:accepted), enlarge(llm:accepted), expand(llm:accepted), expansion(llm:accepted), pressurize(llm:accepted)
+inhale             -> breath(llm:accepted), breathe(llm:accepted), deep(llm:accepted), diaphragm(llm:accepted), exhale(llm:accepted), gasp(llm:accepted), lung(llm:accepted), wheeze(llm:accepted), yawn(llm:accepted)
+inhaler            -> albuterol(llm:accepted)
+injection          -> administer(llm:accepted), dosage(llm:accepted), dose(llm:accepted), inject(llm:accepted), jab(llm:accepted), shot(llm:accepted), treatment(llm:accepted)
+insertion          -> agent(llm:accepted), anaesthetist(llm:accepted), anesthetist(llm:accepted), edema(llm:accepted), filler(llm:accepted), insert(llm:accepted), lidocaine(llm:accepted), lymph(llm:accepted), node(llm:accepted), numbness(llm:accepted)
+intense            -> excruciating(llm:accepted), horrible(llm:accepted), horrific(llm:accepted), severe(llm:accepted), unbearable(llm:accepted), uncomfortable(llm:accepted), unpleasant(llm:accepted)
+intestine          -> abdomen(llm:accepted), bacteria(llm:accepted), bacterial(llm:accepted), bowel(llm:accepted), colon(llm:accepted), digestion(llm:accepted), distend(llm:accepted), distension(llm:accepted), distention(llm:accepted), duodenum(llm:accepted), gut(llm:accepted), intestinal(llm:accepted), organ(llm:accepted), overgrowth(llm:accepted), poop(llm:accepted), stool(llm:accepted), tract(llm:accepted)
+intolerable        -> unmanageable(llm:accepted)
+intolerant         -> carbohydrate(llm:accepted), celiac(llm:accepted), dairy(llm:accepted), fructose(llm:accepted), gluten(llm:accepted), intolerance(llm:accepted), lactose(llm:accepted)
+intubation         -> anesthesia(llm:accepted), cord(llm:accepted), intubate(llm:accepted), laryngeal(llm:accepted), lidocaine(llm:accepted), nasal(llm:accepted), nerve(llm:accepted), numb(llm:accepted), sedate(llm:accepted), sedation(llm:accepted), spray(llm:accepted), steroid(llm:accepted), swell(llm:accepted), vocal(llm:accepted)
+investigate        -> address(llm:accepted), analysis(llm:accepted), assess(llm:accepted), clinical(llm:accepted), conclude(llm:accepted), conduct(llm:accepted), determine(llm:accepted), evaluate(llm:accepted), exclude(llm:accepted), explore(llm:accepted), indicate(llm:accepted), prove(llm:accepted), pursue(llm:accepted)
+involuntary        -> accident(llm:accepted), automatic(llm:accepted), random(llm:accepted), sneeze(llm:accepted), spontaneous(llm:accepted), uncontrollable(llm:accepted), uncontrolled(llm:accepted), unexpected(llm:accepted)
+issue              -> condition(llm:accepted), difficulty(llm:accepted), disease(llm:accepted), disorder(llm:accepted), distress(llm:accepted), illness(llm:accepted), imbalance(llm:accepted), obstruction(llm:accepted), problem(llm:accepted), rcpd(llm:accepted), struggle(llm:accepted), symptom(llm:accepted), trouble(llm:accepted)
+iv                 -> agent(llm:accepted), anaesthetist(llm:accepted), anesthesiologist(llm:accepted), cannula(llm:accepted), codeine(llm:accepted), drowsy(llm:accepted), lidocaine(llm:accepted), loopy(llm:accepted), numb(llm:accepted), nurse(llm:accepted), paracetamol(llm:accepted), sedate(llm:accepted), sedation(llm:accepted), sedative(llm:accepted), sleepy(llm:accepted), tylenol(llm:accepted), vein(llm:accepted), woozy(llm:accepted)
+laryngopedia       -> com(llm:accepted), edu(llm:accepted), faq(llm:accepted), pdf(llm:accepted), publication(llm:accepted), scholar(llm:accepted), source(llm:accepted), webinar(llm:accepted), website(llm:accepted), wikipedia(llm:accepted)
+laryngospasm       -> aspirate(llm:accepted), choke(llm:accepted), laryngeospasm(llm:accepted), regurgitation(llm:accepted), scary(llm:accepted)
+laugh              -> funny(llm:accepted), hahaha(llm:accepted), hilarious(llm:accepted), joke(llm:accepted), smile(llm:accepted)
+les                -> barrier(llm:accepted), compromise(llm:accepted), cricopharyngeus(llm:accepted), damage(llm:accepted), dilate(llm:accepted), esophageal(llm:accepted), esophagus(llm:accepted), malfunction(llm:accepted), motility(llm:accepted), peristalsis(llm:accepted), sphincter(llm:accepted), ues(llm:accepted), valve(llm:accepted)
+lightheaded        -> dizziness(llm:accepted), dizzy(llm:accepted), faint(llm:accepted), fatigue(llm:accepted), fuzzy(llm:accepted), jolt(llm:accepted), lightheadedness(llm:accepted), loopy(llm:accepted), panicky(llm:accepted), shaky(llm:accepted)
+lump               -> bruise(llm:accepted), fullness(llm:accepted), knot(llm:accepted), lodge(llm:accepted), lumpy(llm:accepted), sensation(llm:accepted), sore(llm:accepted), soreness(llm:accepted), stuck(llm:accepted), swell(llm:accepted), tightness(llm:accepted)
+lung               -> airway(llm:accepted), capacity(llm:accepted), cavity(llm:accepted), collapse(llm:accepted), compress(llm:accepted), diaphragm(llm:accepted), exhale(llm:accepted), expand(llm:accepted), expansion(llm:accepted), gasp(llm:accepted), inflate(llm:accepted), inhale(llm:accepted), organ(llm:accepted), oxygen(llm:accepted), trachea(llm:accepted), windpipe(llm:accepted)
+maneuver           -> contort(llm:accepted), core(llm:accepted), engage(llm:accepted), flex(llm:accepted), gentle(llm:accepted), manipulate(llm:accepted), manipulation(llm:accepted), manual(llm:accepted), massage(llm:accepted), mendelsohn(llm:accepted), motion(llm:accepted), movement(llm:accepted), pilates(llm:accepted), position(llm:accepted), sideways(llm:accepted), technique(llm:accepted), tuck(llm:accepted), yoga(llm:accepted)
+manipulate         -> activate(llm:accepted), clench(llm:accepted), constrict(llm:accepted), contort(llm:accepted), contract(llm:accepted), contraction(llm:accepted), engage(llm:accepted), flex(llm:accepted), maneuver(llm:accepted), manipulation(llm:accepted), massage(llm:accepted), relaxation(llm:accepted), retrain(llm:accepted), squeeze(llm:accepted), stimulate(llm:accepted), strengthen(llm:accepted), tighten(llm:accepted)
+manometry          -> barium(llm:accepted), biopsy(llm:accepted), bravo(llm:accepted), dysmotility(llm:accepted), egd(llm:accepted), endoflip(llm:accepted), endoscopy(llm:accepted), esophagoscopy(llm:accepted), esophagram(llm:accepted), esophogram(llm:accepted), gastroscopy(llm:accepted), imaging(llm:accepted), impedance(llm:accepted), monitor(llm:accepted), motility(llm:accepted), ph(llm:accepted), probe(llm:accepted), scan(llm:accepted), test(llm:accepted)
+medicaid           -> aetna(llm:accepted), anthem(llm:accepted), axa(llm:accepted), bcbs(llm:accepted), bupa(llm:accepted), cigna(llm:accepted), coverage(llm:accepted), hmo(llm:accepted), hsa(llm:accepted), insurer(llm:accepted), ohip(llm:accepted), policy(llm:accepted), ppo(llm:accepted), tricare(llm:accepted), uhc(llm:accepted), united(llm:accepted)
+meditation         -> biofeedback(llm:accepted), diaphragmatic(llm:accepted), eft(llm:accepted), hypnotherapy(llm:accepted), incorporate(llm:accepted), meditate(llm:accepted), mindfulness(llm:accepted), physio(llm:accepted), pilates(llm:accepted), relaxation(llm:accepted), routine(llm:accepted), yoga(llm:accepted)
+metabolism         -> caloric(llm:accepted), calorie(llm:accepted), carbohydrate(llm:accepted), digestion(llm:accepted), fat(llm:accepted), fiber(llm:accepted), fibre(llm:accepted), genetics(llm:accepted), healthy(llm:accepted), malnutrition(llm:accepted), nutrient(llm:accepted), potassium(llm:accepted), tolerance(llm:accepted)
+microburp          -> audible(llm:accepted), belch(llm:accepted), burp(llm:accepted), involuntary(llm:accepted), micro(llm:accepted), mini(llm:accepted), pop(llm:accepted), small(llm:accepted), spontaneous(llm:accepted), tiny(llm:accepted), uncontrollable(llm:accepted), uncontrolled(llm:accepted), unexpected(llm:accepted)
+mint               -> fennel(llm:accepted), ginger(llm:accepted), herbal(llm:accepted), menthol(llm:accepted), peppermint(llm:accepted)
+misalignment       -> alignment(llm:accepted), compression(llm:accepted), distortion(llm:accepted), extremity(llm:accepted), injury(llm:accepted), psoas(llm:accepted), scoliosis(llm:accepted), somatic(llm:accepted), spine(llm:accepted), vertebrae(llm:accepted)
+miserable          -> awful(llm:accepted), bad(llm:accepted), debilitate(llm:accepted), depressed(llm:accepted), dread(llm:accepted), exhaust(llm:accepted), gassy(llm:accepted), horrible(llm:accepted), misery(llm:accepted), nauseate(llm:accepted), nauseous(llm:accepted), ruin(llm:accepted), sick(llm:accepted), terrible(llm:accepted), tired(llm:accepted), unbearable(llm:accepted), uncomfortable(llm:accepted), unwell(llm:accepted)
+misery             -> agony(llm:accepted), blight(llm:accepted), cripple(llm:accepted), debilitate(llm:accepted), disability(llm:accepted), endure(llm:accepted), frustration(llm:accepted), hell(llm:accepted), indescribable(llm:accepted), miserable(llm:accepted), ruin(llm:accepted), suicidal(llm:accepted)
+motrin             -> advil(llm:accepted), aspirin(llm:accepted), ibuprofen(llm:accepted), painkiller(llm:accepted), tylenol(llm:accepted)
+movement           -> angle(llm:accepted), clench(llm:accepted), contort(llm:accepted), contract(llm:accepted), contraction(llm:accepted), core(llm:accepted), cue(llm:accepted), engage(llm:accepted), flex(llm:accepted), maneuver(llm:accepted), manipulate(llm:accepted), massage(llm:accepted), motion(llm:accepted), position(llm:accepted), posture(llm:accepted), stimulate(llm:accepted), stretch(llm:accepted), technique(llm:accepted), tuck(llm:accepted), twist(llm:accepted)
+ms                 -> mr(llm:accepted), mrs(llm:accepted)
+mucus              -> congested(llm:accepted), congestion(llm:accepted), cough(llm:accepted), drainage(llm:accepted), drip(llm:accepted), irritation(llm:accepted), mucous(llm:accepted), nasal(llm:accepted), phlegm(llm:accepted), postnasal(llm:accepted), saliva(llm:accepted), salivate(llm:accepted), salivation(llm:accepted), sinus(llm:accepted), stuffy(llm:accepted), thick(llm:accepted)
+muscle             -> ab(llm:accepted), anatomy(llm:accepted), contract(llm:accepted), core(llm:accepted), cp(llm:accepted), cricopharyngeus(llm:accepted), diaphragm(llm:accepted), les(llm:accepted), mechanism(llm:accepted), musculature(llm:accepted), paralyze(llm:accepted), relaxation(llm:accepted), sphincter(llm:accepted), strengthen(llm:accepted), tense(llm:accepted), tighten(llm:accepted), ues(llm:accepted), valve(llm:accepted)
+myalgia            -> baclofen(llm:accepted), cricothyroid(llm:accepted), edema(llm:accepted), rectus(llm:accepted), skeletal(llm:accepted), succinylcholine(llm:accepted)
+myotomy            -> botulinum(llm:accepted), dilation(llm:accepted), dosage(llm:accepted), injection(llm:accepted), toxin(llm:accepted), treatment(llm:accepted)
+natural            -> adapt(llm:accepted), adjust(llm:accepted), automatic(llm:accepted), conscious(llm:accepted), control(llm:accepted), controllable(llm:accepted), focus(llm:accepted), intentional(llm:accepted), involuntary(llm:accepted), learn(llm:accepted), relax(llm:accepted), relaxation(llm:accepted), subconscious(llm:accepted), suppress(llm:accepted), teach(llm:accepted), train(llm:accepted), unconscious(llm:accepted)
+nausea             -> ache(llm:accepted), anxiety(llm:accepted), bloat(llm:accepted), bloatedness(llm:accepted), cramp(llm:accepted), diarrhea(llm:accepted), discomfort(llm:accepted), dizziness(llm:accepted), emetic(llm:accepted), fullness(llm:accepted), heartburn(llm:accepted), horrible(llm:accepted), indigestion(llm:accepted), nauseate(llm:accepted), nauseous(llm:accepted), pain(llm:accepted), sick(llm:accepted), sickness(llm:accepted)
+nauseous           -> anxious(llm:accepted), awful(llm:accepted), bloat(llm:accepted), dizzy(llm:accepted), faint(llm:accepted), gassy(llm:accepted), gurgly(llm:accepted), horrible(llm:accepted), miserable(llm:accepted), nausea(llm:accepted), nauseate(llm:accepted), puke(llm:accepted), queasy(llm:accepted), sick(llm:accepted), sickness(llm:accepted), terrible(llm:accepted), uncomfortable(llm:accepted), unwell(llm:accepted)
+nervous            -> afraid(llm:accepted), anxious(llm:accepted), cautious(llm:accepted), hopeful(llm:accepted), impatient(llm:accepted), optimistic(llm:accepted), panicky(llm:accepted), reassure(llm:accepted), scared(llm:accepted), scary(llm:accepted), terrify(llm:accepted), worry(llm:accepted)
+nhs                -> ccg(llm:accepted), consultant(llm:accepted), doncaster(llm:accepted), england(llm:accepted), gp(llm:accepted), gps(llm:accepted), healthcare(llm:accepted), referral(llm:accepted), salford(llm:accepted), scotland(llm:accepted), uk(llm:accepted)
+nissen             -> bariatric(llm:accepted), bypass(llm:accepted), endoflip(llm:accepted), esophagitis(llm:accepted), fundoplication(llm:accepted), hh(llm:accepted), hiatal(llm:accepted), hiatus(llm:accepted), laparoscopic(llm:accepted), linx(llm:accepted), revision(llm:accepted), sleeve(llm:accepted), tif(llm:accepted)
+nitrogenize        -> nitro(llm:accepted)
+noise              -> audible(llm:accepted), churn(llm:accepted), croak(llm:accepted), gargle(llm:accepted), groan(llm:accepted), growl(llm:accepted), grumble(llm:accepted), gurgle(llm:accepted), gurgly(llm:accepted), loud(llm:accepted), roar(llm:accepted), rumble(llm:accepted), sound(llm:accepted)
+nuisance           -> bane(llm:accepted), blight(llm:accepted), depressing(llm:accepted), deteriorate(llm:accepted), harrowing(llm:accepted), ramification(llm:accepted), repercussion(llm:accepted), resentful(llm:accepted)
+ocd                -> abuse(llm:accepted), anxiety(llm:accepted), autism(llm:accepted), autistic(llm:accepted), depression(llm:accepted), emetophobia(llm:accepted), illness(llm:accepted), irrational(llm:accepted), phobia(llm:accepted), physiological(llm:accepted), psychological(llm:accepted), psychologist(llm:accepted), psychosomatic(llm:accepted), ptsd(llm:accepted), trauma(llm:accepted)
+omeprazole         -> antacid(llm:accepted), blocker(llm:accepted), dexilant(llm:accepted), esomeprazole(llm:accepted), famotidine(llm:accepted), gaviscon(llm:accepted), h2(llm:accepted), inhibitor(llm:accepted), lansoprazole(llm:accepted), medication(llm:accepted), nexium(llm:accepted), otc(llm:accepted), pantoprazole(llm:accepted), pepcid(llm:accepted), ppi(llm:accepted), ppis(llm:accepted), prescription(llm:accepted), prilosec(llm:accepted), proton(llm:accepted), protonix(llm:accepted), tums(llm:accepted), zantac(llm:accepted)
+op                 -> operation(llm:accepted), operative(llm:accepted), opp(llm:accepted), surgery(llm:accepted)
+osteopath          -> acupuncture(llm:accepted), biofeedback(llm:accepted), cranial(llm:accepted), hypnotherapy(llm:accepted), naturopath(llm:accepted), naturopathic(llm:accepted), physiotherapist(llm:accepted), somatic(llm:accepted)
+otolaryngologist   -> clinic(llm:accepted), consultant(llm:accepted), department(llm:accepted), ent(llm:accepted), laryngologist(llm:accepted), laryngology(llm:accepted), pcp(llm:accepted), pediatric(llm:accepted), phoniatrician(llm:accepted), phoniatrics(llm:accepted), physician(llm:accepted), specialist(llm:accepted), specialty(llm:accepted), surgeon(llm:accepted)
+overeating         -> chocolate(llm:accepted), fatty(llm:accepted), greasy(llm:accepted), overeat(llm:accepted), sugar(llm:accepted), sugary(llm:accepted)
+pain               -> ache(llm:accepted), agony(llm:accepted), bloat(llm:accepted), bout(llm:accepted), cramp(llm:accepted), discomfort(llm:accepted), distend(llm:accepted), distention(llm:accepted), excruciating(llm:accepted), fullness(llm:accepted), headache(llm:accepted), heartburn(llm:accepted), hurt(llm:accepted), indigestion(llm:accepted), intense(llm:accepted), nausea(llm:accepted), nauseate(llm:accepted), stab(llm:accepted), tightness(llm:accepted), uncomfortable(llm:accepted)
+painkiller         -> acetaminophen(llm:accepted), advil(llm:accepted), benadryl(llm:accepted), codeine(llm:accepted), dramamine(llm:accepted), ibuprofen(llm:accepted), motrin(llm:accepted), paracetamol(llm:accepted), pepcid(llm:accepted), prilosec(llm:accepted), tylenol(llm:accepted), zantac(llm:accepted), zofran(llm:accepted), zyrtec(llm:accepted)
+palpate            -> circumference(llm:accepted), insertion(llm:accepted), landmark(llm:accepted), lymph(llm:accepted), node(llm:accepted), numbness(llm:accepted), posterior(llm:accepted), protrude(llm:accepted), stiff(llm:accepted), stiffness(llm:accepted), tender(llm:accepted), tingle(llm:accepted), vertebrae(llm:accepted)
+pandemic           -> cancel(llm:accepted), covid(llm:accepted), lockdown(llm:accepted), outbreak(llm:accepted), reschedule(llm:accepted)
+panic              -> anxiety(llm:accepted), anxious(llm:accepted), fear(llm:accepted), stress(llm:accepted)
+pantoprazol        -> bentyl(llm:accepted), metoclopramide(llm:accepted), nauzene(llm:accepted), prevacid(llm:accepted), ranitidine(llm:accepted), tagamet(llm:accepted), zantac(llm:accepted)
+pantoprazole       -> antacid(llm:accepted), dexilant(llm:accepted), esomeprazole(llm:accepted), famotidine(llm:accepted), gaviscon(llm:accepted), h2(llm:accepted), inhibitor(llm:accepted), lansoprazole(llm:accepted), nexium(llm:accepted), omeprazole(llm:accepted), otc(llm:accepted), pepcid(llm:accepted), ppi(llm:accepted), ppis(llm:accepted), prescription(llm:accepted), prilosec(llm:accepted), proton(llm:accepted), sucralfate(llm:accepted), zantac(llm:accepted)
+paracetamol        -> acetaminophen(llm:accepted), advil(llm:accepted), benadryl(llm:accepted), codeine(llm:accepted), ibuprofen(llm:accepted), motrin(llm:accepted), painkiller(llm:accepted), tylenol(llm:accepted)
+pathology          -> abdomino(llm:accepted), dysfunction(llm:accepted), dysphonia(llm:accepted), dyssynergia(llm:accepted), dystonia(llm:accepted), neuromuscular(llm:accepted), phrenic(llm:accepted), physiology(llm:accepted), somatic(llm:accepted)
+patient            -> doctor(llm:accepted), folk(llm:accepted), individual(llm:accepted), people(llm:accepted), physician(llm:accepted)
+pelvis             -> anterior(llm:accepted), bone(llm:accepted), cage(llm:accepted), hamstring(llm:accepted), hip(llm:accepted), spine(llm:accepted), torso(llm:accepted)
+pepcid             -> antacid(llm:accepted), blocker(llm:accepted), esomeprazole(llm:accepted), famotidine(llm:accepted), gaviscon(llm:accepted), h2(llm:accepted), inhibitor(llm:accepted), lansoprazole(llm:accepted), medication(llm:accepted), nexium(llm:accepted), omeprazole(llm:accepted), otc(llm:accepted), pantoprazole(llm:accepted), ppi(llm:accepted), ppis(llm:accepted), prescription(llm:accepted), prilosec(llm:accepted), rennie(llm:accepted), tums(llm:accepted), zantac(llm:accepted)
+permanent          -> benefit(llm:accepted), botulinum(llm:accepted), cure(llm:accepted), effective(llm:accepted), effectiveness(llm:accepted), guarantee(llm:accepted), myotomy(llm:accepted), risk(llm:accepted), success(llm:accepted)
+phlegm             -> congested(llm:accepted), congestion(llm:accepted), cough(llm:accepted), drainage(llm:accepted), drip(llm:accepted), irritate(llm:accepted), irritation(llm:accepted), mucous(llm:accepted), mucus(llm:accepted), postnasal(llm:accepted), scratch(llm:accepted)
+phobia             -> afraid(llm:accepted), anxiety(llm:accepted), aversion(llm:accepted), distress(llm:accepted), emetophobe(llm:accepted), emetophobia(llm:accepted), exposure(llm:accepted), fear(llm:accepted), irrational(llm:accepted), mental(llm:accepted), ocd(llm:accepted), panic(llm:accepted), psychological(llm:accepted), ptsd(llm:accepted), scared(llm:accepted), terrify(llm:accepted), trauma(llm:accepted), traumatic(llm:accepted), traumatize(llm:accepted)
+pill               -> advil(llm:accepted), capsule(llm:accepted), dissolvable(llm:accepted), ibuprofen(llm:accepted), multivitamin(llm:accepted), painkiller(llm:accepted), paracetamol(llm:accepted), supplement(llm:accepted), tablet(llm:accepted), tums(llm:accepted), tylenol(llm:accepted), vitamin(llm:accepted)
+pop                -> bubble(llm:accepted), burst(llm:accepted), crack(llm:accepted), escape(llm:accepted), fizz(llm:accepted), fizzle(llm:accepted), gargle(llm:accepted), puff(llm:accepted)
+posture            -> angle(llm:accepted), chiropractor(llm:accepted), core(llm:accepted), engage(llm:accepted), maneuver(llm:accepted), misalignment(llm:accepted), movement(llm:accepted), pelvis(llm:accepted), position(llm:accepted), postural(llm:accepted), scoliosis(llm:accepted), shoulder(llm:accepted), spine(llm:accepted)
+ppi                -> antacid(llm:accepted), dexilant(llm:accepted), esomeprazole(llm:accepted), famotidine(llm:accepted), gaviscon(llm:accepted), h2(llm:accepted), inhibitor(llm:accepted), lansoprazole(llm:accepted), medication(llm:accepted), nexium(llm:accepted), omeprazole(llm:accepted), otc(llm:accepted), pantoprazole(llm:accepted), pepcid(llm:accepted), ppis(llm:accepted), prescription(llm:accepted), prilosec(llm:accepted), proton(llm:accepted), tums(llm:accepted), zantac(llm:accepted)
+ppis               -> antacid(llm:accepted), blocker(llm:accepted), dexilant(llm:accepted), esomeprazole(llm:accepted), famotidine(llm:accepted), gaviscon(llm:accepted), h2(llm:accepted), inhibitor(llm:accepted), lansoprazole(llm:accepted), medication(llm:accepted), nexium(llm:accepted), omeprazole(llm:accepted), otc(llm:accepted), pantoprazole(llm:accepted), pepcid(llm:accepted), ppi(llm:accepted), prescribe(llm:accepted), prilosec(llm:accepted), proton(llm:accepted), protonix(llm:accepted), rebound(llm:accepted), tums(llm:accepted), zantac(llm:accepted)
+practice           -> consistent(llm:accepted), effort(llm:accepted), encourage(llm:accepted), engage(llm:accepted), experiment(llm:accepted), focus(llm:accepted), learn(llm:accepted), patience(llm:accepted), practise(llm:accepted), relax(llm:accepted), skill(llm:accepted), train(llm:accepted), transition(llm:accepted)
+practitioner       -> gps(llm:accepted), mds(llm:accepted), physician(llm:accepted), provider(llm:accepted)
+pressure           -> abdomen(llm:accepted), blockage(llm:accepted), clench(llm:accepted), compress(llm:accepted), cramp(llm:accepted), distend(llm:accepted), distention(llm:accepted), fullness(llm:accepted), knot(llm:accepted), press(llm:accepted), pressurize(llm:accepted), sternum(llm:accepted), tension(llm:accepted), tighten(llm:accepted), tightness(llm:accepted)
+procedure          -> anesthesia(llm:accepted), botox(llm:accepted), injection(llm:accepted), myotomy(llm:accepted), operation(llm:accepted), surgery(llm:accepted), treatment(llm:accepted)
+progress           -> consistent(llm:accepted), continue(llm:accepted), hopeful(llm:accepted), improvement(llm:accepted), journey(llm:accepted), optimistic(llm:accepted), transition(llm:accepted), update(llm:accepted)
+provider           -> coverage(llm:accepted), department(llm:accepted), network(llm:accepted), physician(llm:accepted), service(llm:accepted)
+psyche             -> mess(llm:accepted), wound(llm:accepted)
+psychotherapist    -> phd(llm:accepted), underdiagnose(llm:accepted)
+push               -> clench(llm:accepted), coax(llm:accepted), contract(llm:accepted), exhale(llm:accepted), flex(llm:accepted), force(llm:accepted), press(llm:accepted), puff(llm:accepted), release(llm:accepted), squeeze(llm:accepted), tense(llm:accepted), tighten(llm:accepted)
+ranitidine         -> esomeprazole(llm:accepted), lansoprazole(llm:accepted), mylanta(llm:accepted), nauzene(llm:accepted), omeprazol(llm:accepted), pantoprazol(llm:accepted), prevacid(llm:accepted), prilosec(llm:accepted), rennie(llm:accepted), sucralfate(llm:accepted), tagamet(llm:accepted), zantac(llm:accepted)
+rare               -> infrequent(llm:accepted), infrequently(llm:accepted), odd(llm:accepted), random(llm:accepted), rarely(llm:accepted), uncommon(llm:accepted), unexpected(llm:accepted), unlikely(llm:accepted), unlucky(llm:accepted), unusual(llm:accepted)
+rcpd               -> achalasia(llm:accepted), aerophagia(llm:accepted), condition(llm:accepted), cpd(llm:accepted), diagnose(llm:accepted), diagnosis(llm:accepted), disease(llm:accepted), disorder(llm:accepted), dysfunction(llm:accepted), illness(llm:accepted), inability(llm:accepted), misdiagnose(llm:accepted), noburp(llm:accepted), syndrome(llm:accepted)
+recovery           -> anesthesia(llm:accepted), groggy(llm:accepted), healing(llm:accepted), nervous(llm:accepted), painless(llm:accepted), period(llm:accepted), prepare(llm:accepted), process(llm:accepted), recover(llm:accepted), rough(llm:accepted), scary(llm:accepted), smooth(llm:accepted), sore(llm:accepted), timeline(llm:accepted)
+referral           -> appointment(llm:accepted), approval(llm:accepted), approve(llm:accepted), ccg(llm:accepted), consult(llm:accepted), consultation(llm:accepted), ent(llm:accepted), funding(llm:accepted), gastroenterologist(llm:accepted), gastrologist(llm:accepted), gp(llm:accepted), gps(llm:accepted), kaiser(llm:accepted), letter(llm:accepted), nhs(llm:accepted), otolaryngologist(llm:accepted), pcp(llm:accepted), private(llm:accepted), refer(llm:accepted), specialist(llm:accepted)
+reflux             -> erode(llm:accepted), erosion(llm:accepted), gerd(llm:accepted), heartburn(llm:accepted), indigestion(llm:accepted), neutralize(llm:accepted), ppis(llm:accepted), protonix(llm:accepted), reducer(llm:accepted), regurgitation(llm:accepted)
+regurgitate        -> aspirate(llm:accepted), bile(llm:accepted), choke(llm:accepted), phlegm(llm:accepted), puke(llm:accepted), regurgitation(llm:accepted), saliva(llm:accepted), spit(llm:accepted)
+regurgitation      -> acid(llm:accepted), aspirate(llm:accepted), bile(llm:accepted), choke(llm:accepted), heartburn(llm:accepted), laryngospasm(llm:accepted), phlegm(llm:accepted), reflux(llm:accepted), regurgitate(llm:accepted)
+related            -> attribute(llm:accepted), cause(llm:accepted), connect(llm:accepted), connection(llm:accepted), contribute(llm:accepted), correlate(llm:accepted), correlation(llm:accepted), relation(llm:accepted), tie(llm:accepted)
+relax              -> clench(llm:accepted), contract(llm:accepted), loose(llm:accepted), loosen(llm:accepted), relaxation(llm:accepted), tense(llm:accepted), tight(llm:accepted), tighten(llm:accepted)
+relaxation         -> loosen(llm:accepted), tension(llm:accepted)
+relief             -> improvement(llm:accepted), release(llm:accepted), relieve(llm:accepted)
+research           -> article(llm:accepted), clinical(llm:accepted), datum(llm:accepted), discussion(llm:accepted), document(llm:accepted), educate(llm:accepted), evidence(llm:accepted), field(llm:accepted), info(llm:accepted), information(llm:accepted), journal(llm:accepted), knowledge(llm:accepted), literature(llm:accepted), online(llm:accepted), page(llm:accepted), paper(llm:accepted), print(llm:accepted), publication(llm:accepted), publish(llm:accepted), resource(llm:accepted), review(llm:accepted), scientific(llm:accepted), study(llm:accepted)
+revelation         -> awe(llm:accepted), discovery(llm:accepted), ecstatic(llm:accepted), enlighten(llm:accepted), epiphany(llm:accepted), sincere(llm:accepted), stumble(llm:accepted), wholesome(llm:accepted), woohoo(llm:accepted)
+roar               -> demon(llm:accepted), demonic(llm:accepted), dinosaur(llm:accepted), dragon(llm:accepted), monster(llm:accepted), pterodactyl(llm:accepted), raptor(llm:accepted), velociraptor(llm:accepted)
+salad              -> broccoli(llm:accepted), carrot(llm:accepted)
+scan               -> biopsy(llm:accepted), bloodwork(llm:accepted), colonoscopy(llm:accepted), ct(llm:accepted), egd(llm:accepted), endo(llm:accepted), endoscopy(llm:accepted), esophagoscopy(llm:accepted), esophagram(llm:accepted), gastroscopy(llm:accepted), imaging(llm:accepted), lab(llm:accepted), laparoscopy(llm:accepted), mri(llm:accepted), ultrasound(llm:accepted), xray(llm:accepted)
+scared             -> afraid(llm:accepted), anxious(llm:accepted), emetophobe(llm:accepted), emetophobia(llm:accepted), fear(llm:accepted), freak(llm:accepted), nervous(llm:accepted), phobia(llm:accepted), scare(llm:accepted), scary(llm:accepted), terrify(llm:accepted), traumatic(llm:accepted), traumatize(llm:accepted), worry(llm:accepted)
+scope              -> camera(llm:accepted), cannula(llm:accepted), endoscope(llm:accepted), endoscopy(llm:accepted), gastroscopy(llm:accepted), laryngoscope(llm:accepted), manometry(llm:accepted), pharyngoscopy(llm:accepted), probe(llm:accepted), tube(llm:accepted), videoscope(llm:accepted)
+screen             -> bsw(llm:accepted), camera(llm:accepted), esophogram(llm:accepted), fluoroscopy(llm:accepted), footage(llm:accepted), laryngoscope(llm:accepted), photo(llm:accepted), picture(llm:accepted), radiologist(llm:accepted), scope(llm:accepted), stroboscopy(llm:accepted), technician(llm:accepted), video(llm:accepted), xray(llm:accepted)
+sensation          -> block(llm:accepted), bubble(llm:accepted), burn(llm:accepted), choke(llm:accepted), feel(llm:accepted), fullness(llm:accepted), globus(llm:accepted), lump(llm:accepted), pop(llm:accepted), spasm(llm:accepted), swell(llm:accepted), tickle(llm:accepted), tightness(llm:accepted)
+sensitive          -> aggravate(llm:accepted), irritate(llm:accepted), squeamish(llm:accepted), unpleasant(llm:accepted), unsettling(llm:accepted), upset(llm:accepted)
+shoulder           -> arm(llm:accepted), blade(llm:accepted), chin(llm:accepted), hip(llm:accepted), jaw(llm:accepted), neck(llm:accepted), pelvis(llm:accepted), rib(llm:accepted), spine(llm:accepted), sternum(llm:accepted), torso(llm:accepted)
+sibo               -> antibiotic(llm:accepted), bacterial(llm:accepted), candida(llm:accepted), celiac(llm:accepted), constipation(llm:accepted), crohn(llm:accepted), dysbiosis(llm:accepted), eosinophilic(llm:accepted), esophagitis(llm:accepted), gastritis(llm:accepted), gastroparesis(llm:accepted), helicobacter(llm:accepted), ibd(llm:accepted), ibs(llm:accepted), methane(llm:accepted), overgrowth(llm:accepted), parasite(llm:accepted), pylori(llm:accepted)
+simethicone        -> antacid(llm:accepted), beano(llm:accepted), bismol(llm:accepted), buscopan(llm:accepted), charcoal(llm:accepted), gasx(llm:accepted), pepcid(llm:accepted), pepto(llm:accepted), rennie(llm:accepted), tums(llm:accepted), windeze(llm:accepted)
+sit                -> bend(llm:accepted), curl(llm:accepted), fetal(llm:accepted), knee(llm:accepted), lay(llm:accepted), lean(llm:accepted), lie(llm:accepted), recline(llm:accepted), scrunch(llm:accepted), slouch(llm:accepted), squat(llm:accepted)
+sleep              -> apnea(llm:accepted), asleep(llm:accepted), bed(llm:accepted), cpap(llm:accepted), elevate(llm:accepted), incline(llm:accepted), pillow(llm:accepted), prop(llm:accepted), recline(llm:accepted), recliner(llm:accepted), riser(llm:accepted), sleeper(llm:accepted), upright(llm:accepted), wedge(llm:accepted)
+sleepy             -> comfy(llm:accepted), cozy(llm:accepted), disoriented(llm:accepted), dizzy(llm:accepted), drowsy(llm:accepted), faint(llm:accepted), groggy(llm:accepted), lethargic(llm:accepted), lightheaded(llm:accepted), loopy(llm:accepted), tired(llm:accepted), woozy(llm:accepted)
+slim               -> athletic(llm:accepted), chubby(llm:accepted), fat(llm:accepted), obese(llm:accepted), overweight(llm:accepted), petite(llm:accepted), skinny(llm:accepted), slender(llm:accepted), thin(llm:accepted), underweight(llm:accepted)
+smell              -> barf(llm:accepted), bile(llm:accepted), bitter(llm:accepted), disgust(llm:accepted), ew(llm:accepted), fart(llm:accepted), foul(llm:accepted), gross(llm:accepted), metallic(llm:accepted), nasty(llm:accepted), odor(llm:accepted), odorless(llm:accepted), poop(llm:accepted), puke(llm:accepted), sour(llm:accepted), stink(llm:accepted), stinky(llm:accepted), taste(llm:accepted)
+sniff              -> inject(llm:accepted), lidocaine(llm:accepted), needle(llm:accepted), nostril(llm:accepted), syringe(llm:accepted)
+socialize          -> amusement(llm:accepted), attendance(llm:accepted), concert(llm:accepted), event(llm:accepted), graduation(llm:accepted), hangout(llm:accepted), outing(llm:accepted), social(llm:accepted), wedding(llm:accepted)
+sore               -> bruise(llm:accepted), hoarse(llm:accepted), hurt(llm:accepted), irritate(llm:accepted), irritation(llm:accepted), knot(llm:accepted), lump(llm:accepted), numb(llm:accepted), scratch(llm:accepted), soar(llm:accepted), soreness(llm:accepted), swell(llm:accepted), tickle(llm:accepted)
+spasm              -> clench(llm:accepted), constrict(llm:accepted), contract(llm:accepted), contraction(llm:accepted), dysfunctional(llm:accepted), inflame(llm:accepted), inflammation(llm:accepted), irritate(llm:accepted), knot(llm:accepted), malfunction(llm:accepted), tighten(llm:accepted), tightness(llm:accepted)
+specialist         -> consultant(llm:accepted), doc(llm:accepted), doctor(llm:accepted), ent(llm:accepted), gastroenterologist(llm:accepted), gastrologist(llm:accepted), gp(llm:accepted), laryngologist(llm:accepted), otolaryngologist(llm:accepted), pcp(llm:accepted), pediatric(llm:accepted), physician(llm:accepted), provider(llm:accepted), refer(llm:accepted), referral(llm:accepted), surgeon(llm:accepted)
+spectrum           -> common(llm:accepted), extent(llm:accepted), lesser(llm:accepted), majority(llm:accepted), minority(llm:accepted), rare(llm:accepted), severity(llm:accepted), uncommon(llm:accepted), unique(llm:accepted), universal(llm:accepted), vast(llm:accepted)
+sphincter          -> abnormal(llm:accepted), cp(llm:accepted), cricopharyngeus(llm:accepted), dilate(llm:accepted), dysfunctional(llm:accepted), esophageal(llm:accepted), esophagus(llm:accepted), les(llm:accepted), malfunction(llm:accepted), mechanism(llm:accepted), muscle(llm:accepted), musculature(llm:accepted), spasm(llm:accepted), ues(llm:accepted), valve(llm:accepted), weaken(llm:accepted)
+spicy              -> citrus(llm:accepted), curry(llm:accepted), garlic(llm:accepted), onion(llm:accepted), salty(llm:accepted), spice(llm:accepted)
+spit               -> aspirate(llm:accepted), barf(llm:accepted), bile(llm:accepted), choke(llm:accepted), cough(llm:accepted), drool(llm:accepted), foamy(llm:accepted), frothy(llm:accepted), mouth(llm:accepted), mucus(llm:accepted), phlegm(llm:accepted), puke(llm:accepted), regurgitate(llm:accepted), retch(llm:accepted), saliva(llm:accepted), salivate(llm:accepted), throw(llm:accepted)
+statistic          -> analysis(llm:accepted), anecdotal(llm:accepted), argument(llm:accepted), bias(llm:accepted), datum(llm:accepted), evidence(llm:accepted), literature(llm:accepted), mathematical(llm:accepted), objective(llm:accepted), proof(llm:accepted), prove(llm:accepted), pseudoscience(llm:accepted), science(llm:accepted), scientific(llm:accepted), scientist(llm:accepted), unscientific(llm:accepted), valid(llm:accepted)
+sternum            -> blade(llm:accepted), bone(llm:accepted), cage(llm:accepted), chest(llm:accepted), collarbone(llm:accepted), rib(llm:accepted), ribcage(llm:accepted), spine(llm:accepted), suprasternal(llm:accepted)
+stomach            -> abdomen(llm:accepted), abdominal(llm:accepted), belly(llm:accepted), colon(llm:accepted), diarrhea(llm:accepted), esophagus(llm:accepted), gastric(llm:accepted), gut(llm:accepted), indigestion(llm:accepted), intestine(llm:accepted), poop(llm:accepted), tummy(llm:accepted)
+stress             -> adhd(llm:accepted), adrenaline(llm:accepted), anxiety(llm:accepted), anxious(llm:accepted), attack(llm:accepted), depression(llm:accepted), distress(llm:accepted), emotional(llm:accepted), exacerbate(llm:accepted), fatigue(llm:accepted), mental(llm:accepted), ocd(llm:accepted), panic(llm:accepted), psychological(llm:accepted), tense(llm:accepted)
+stretch            -> contort(llm:accepted), contract(llm:accepted), dilate(llm:accepted), engage(llm:accepted), flex(llm:accepted), massage(llm:accepted)
+struggle           -> challenge(llm:accepted), cope(llm:accepted), deal(llm:accepted), difficulty(llm:accepted), issue(llm:accepted), suffer(llm:accepted), trouble(llm:accepted)
+study              -> academic(llm:accepted), article(llm:accepted), clinical(llm:accepted), conduct(llm:accepted), datum(llm:accepted), evaluate(llm:accepted), evidence(llm:accepted), journal(llm:accepted), literature(llm:accepted), manuscript(llm:accepted), paper(llm:accepted), peer(llm:accepted), publish(llm:accepted), research(llm:accepted), review(llm:accepted), scientific(llm:accepted)
+suffer             -> complain(llm:accepted), cope(llm:accepted), deal(llm:accepted), endure(llm:accepted), struggle(llm:accepted)
+summon             -> exorcise(llm:accepted), exorcism(llm:accepted), exorcist(llm:accepted)
+supplement         -> antacid(llm:accepted), beano(llm:accepted), betaine(llm:accepted), charcoal(llm:accepted), enzyme(llm:accepted), hcl(llm:accepted), iron(llm:accepted), laxative(llm:accepted), magnesium(llm:accepted), miralax(llm:accepted), otc(llm:accepted), pepcid(llm:accepted), probiotic(llm:accepted), probiotics(llm:accepted), rennie(llm:accepted), simethicone(llm:accepted), vitamin(llm:accepted), zantac(llm:accepted)
+surgeon            -> anesthesiologist(llm:accepted), colleague(llm:accepted), consultant(llm:accepted), doc(llm:accepted), ent(llm:accepted), laryngologist(llm:accepted), otolaryngologist(llm:accepted), pcp(llm:accepted), physician(llm:accepted), specialist(llm:accepted)
+surgery            -> botox(llm:accepted), consultation(llm:accepted), injection(llm:accepted), op(llm:accepted), operation(llm:accepted), procedure(llm:accepted), surgical(llm:accepted)
+surprise           -> accident(llm:accepted), odd(llm:accepted), random(llm:accepted), rare(llm:accepted), shock(llm:accepted), unexpected(llm:accepted)
+swallow            -> chew(llm:accepted), choke(llm:accepted), sip(llm:accepted), stuck(llm:accepted)
+sweat              -> dizziness(llm:accepted), dizzy(llm:accepted), faint(llm:accepted), fever(llm:accepted), hot(llm:accepted), lightheaded(llm:accepted), pale(llm:accepted), profuse(llm:accepted), restless(llm:accepted), shake(llm:accepted), shaky(llm:accepted), shiver(llm:accepted), sweater(llm:accepted), tingle(llm:accepted)
+swell              -> bruise(llm:accepted), knot(llm:accepted), lump(llm:accepted), lymph(llm:accepted), node(llm:accepted), sore(llm:accepted), soreness(llm:accepted), tender(llm:accepted)
+symptom            -> discomfort(llm:accepted), gastritis(llm:accepted), gerd(llm:accepted), ibs(llm:accepted), illness(llm:accepted), issue(llm:accepted)
+tachycardia        -> bp(llm:accepted), dysautonomia(llm:accepted), palp(llm:accepted)
+talk               -> explain(llm:accepted), listen(llm:accepted), say(llm:accepted), speak(llm:accepted), tell(llm:accepted)
+technique          -> action(llm:accepted), diaphragmatic(llm:accepted), exercise(llm:accepted), guide(llm:accepted), maneuver(llm:accepted), manual(llm:accepted), massage(llm:accepted), mechanism(llm:accepted), meditation(llm:accepted), method(llm:accepted), movement(llm:accepted), position(llm:accepted), posture(llm:accepted), strategy(llm:accepted), tip(llm:accepted), tool(llm:accepted), trick(llm:accepted), tutorial(llm:accepted), yoga(llm:accepted)
+telemed            -> telehealth(llm:accepted)
+ten                -> 10(llm:accepted)
+tender             -> bruise(llm:accepted), calf(llm:accepted), clavicle(llm:accepted), compression(llm:accepted), dull(llm:accepted), gland(llm:accepted), lymph(llm:accepted), node(llm:accepted), quad(llm:accepted), skin(llm:accepted)
+tense              -> clench(llm:accepted), contract(llm:accepted), engage(llm:accepted), flex(llm:accepted), knot(llm:accepted), lock(llm:accepted), squeeze(llm:accepted), stiff(llm:accepted), strain(llm:accepted), tension(llm:accepted), tight(llm:accepted), tighten(llm:accepted)
+tension            -> clench(llm:accepted), constrict(llm:accepted), knot(llm:accepted), stiff(llm:accepted), stiffness(llm:accepted), strain(llm:accepted), tense(llm:accepted), tight(llm:accepted), tighten(llm:accepted), tightness(llm:accepted)
+test               -> abnormality(llm:accepted), barium(llm:accepted), biopsy(llm:accepted), colonoscopy(llm:accepted), diagnosis(llm:accepted), egd(llm:accepted), endoscopy(llm:accepted), esophagram(llm:accepted), esophogram(llm:accepted), exam(llm:accepted), gastro(llm:accepted), gastroscopy(llm:accepted), imaging(llm:accepted), investigation(llm:accepted), lab(llm:accepted), manometry(llm:accepted), monitor(llm:accepted), scan(llm:accepted), study(llm:accepted), ultrasound(llm:accepted), workup(llm:accepted)
+theory             -> causation(llm:accepted), component(llm:accepted), connection(llm:accepted), development(llm:accepted), factor(llm:accepted), logical(llm:accepted), mechanism(llm:accepted), plausible(llm:accepted), scientific(llm:accepted), speculate(llm:accepted), theoretic(llm:accepted), theorize(llm:accepted)
+therapist          -> acupuncture(llm:accepted), acupuncturist(llm:accepted), biofeedback(llm:accepted), chiropractic(llm:accepted), chiropractor(llm:accepted), cognitive(llm:accepted), counseling(llm:accepted), hypnotherapy(llm:accepted), meditation(llm:accepted), occupational(llm:accepted), physio(llm:accepted), physiotherapist(llm:accepted), psychiatrist(llm:accepted), psychologist(llm:accepted), pt(llm:accepted), therapy(llm:accepted)
+thing              -> stuff(llm:accepted)
+thorax             -> manometer(llm:accepted)
+throat             -> airway(llm:accepted), chest(llm:accepted), esophagus(llm:accepted), jaw(llm:accepted), mouth(llm:accepted), neck(llm:accepted), phlegm(llm:accepted), sternum(llm:accepted), tongue(llm:accepted), ues(llm:accepted), uvula(llm:accepted)
+tight              -> blockage(llm:accepted), clench(llm:accepted), constrict(llm:accepted), contract(llm:accepted), contraction(llm:accepted), knot(llm:accepted), spasm(llm:accepted), stiff(llm:accepted), strain(llm:accepted), tense(llm:accepted), tension(llm:accepted), tighten(llm:accepted), tightness(llm:accepted)
+trap               -> accumulate(llm:accepted), accumulation(llm:accepted), bubble(llm:accepted), buildup(llm:accepted), burst(llm:accepted), cramp(llm:accepted), distend(llm:accepted), distention(llm:accepted), escape(llm:accepted), excess(llm:accepted), exit(llm:accepted), expand(llm:accepted), expel(llm:accepted), expulsion(llm:accepted), fullness(llm:accepted), release(llm:accepted), rise(llm:accepted), stuck(llm:accepted)
+treatment          -> injection(llm:accepted), myotomy(llm:accepted), option(llm:accepted), procedure(llm:accepted), referral(llm:accepted), solution(llm:accepted), treat(llm:accepted)
+trigger            -> aggravate(llm:accepted), cause(llm:accepted), culprit(llm:accepted), exacerbate(llm:accepted), induce(llm:accepted), occur(llm:accepted)
+tube               -> airway(llm:accepted), cable(llm:accepted), camera(llm:accepted), cannula(llm:accepted), catheter(llm:accepted), endoscope(llm:accepted), instrument(llm:accepted), laryngoscope(llm:accepted), ng(llm:accepted), passage(llm:accepted), pipe(llm:accepted), probe(llm:accepted), scope(llm:accepted), windpipe(llm:accepted)
+tums               -> antacid(llm:accepted), charcoal(llm:accepted), esomeprazole(llm:accepted), famotidine(llm:accepted), gasx(llm:accepted), gaviscon(llm:accepted), ginger(llm:accepted), nexium(llm:accepted), omeprazole(llm:accepted), pantoprazole(llm:accepted), pepcid(llm:accepted), peppermint(llm:accepted), pepto(llm:accepted), ppi(llm:accepted), prilosec(llm:accepted), rennie(llm:accepted), simethicone(llm:accepted), zantac(llm:accepted)
+ues                -> cp(llm:accepted), cricopharyngeal(llm:accepted), cricopharyngeus(llm:accepted), diaphragm(llm:accepted), epiglottis(llm:accepted), esophageal(llm:accepted), esophagus(llm:accepted), les(llm:accepted), muscle(llm:accepted), sphincter(llm:accepted), valve(llm:accepted)
+unbearable         -> bad(llm:accepted), bloat(llm:accepted), chronic(llm:accepted), constant(llm:accepted), cripple(llm:accepted), debilitate(llm:accepted), discomfort(llm:accepted), excruciating(llm:accepted), horrible(llm:accepted), intense(llm:accepted), intensify(llm:accepted), miserable(llm:accepted), nauseate(llm:accepted), severe(llm:accepted), terrible(llm:accepted), uncomfortable(llm:accepted), unmanageable(llm:accepted), worse(llm:accepted), worsen(llm:accepted)
+uncomfortable      -> anxious(llm:accepted), awful(llm:accepted), bad(llm:accepted), bloat(llm:accepted), discomfort(llm:accepted), gurgly(llm:accepted), miserable(llm:accepted), nauseate(llm:accepted), nauseous(llm:accepted), sick(llm:accepted), unbearable(llm:accepted), unpleasant(llm:accepted)
+uncontrollable     -> accident(llm:accepted), cough(llm:accepted), involuntary(llm:accepted), random(llm:accepted), sneeze(llm:accepted), spontaneous(llm:accepted), uncontrolled(llm:accepted), unexpected(llm:accepted), yawn(llm:accepted)
+underweight        -> anorexic(llm:accepted), bmi(llm:accepted), loss(llm:accepted), skinny(llm:accepted), slim(llm:accepted), thin(llm:accepted), weight(llm:accepted)
+unnatural          -> counterintuitive(llm:accepted), unnerving(llm:accepted)
+unproductive       -> incapacity(llm:accepted)
+violent            -> afraid(llm:accepted), aggressive(llm:accepted), disgust(llm:accepted), heave(llm:accepted), hiccup(llm:accepted), horrific(llm:accepted), intense(llm:accepted), involuntary(llm:accepted), projectile(llm:accepted), puke(llm:accepted), retch(llm:accepted), scream(llm:accepted), sneeze(llm:accepted), traumatic(llm:accepted), traumatize(llm:accepted), unpleasant(llm:accepted), urge(llm:accepted)
+virus              -> bug(llm:accepted), flu(llm:accepted), illness(llm:accepted), infection(llm:accepted), inflame(llm:accepted)
+vocal              -> airway(llm:accepted), anatomy(llm:accepted), breathy(llm:accepted), chord(llm:accepted), cord(llm:accepted), dysphonia(llm:accepted), gravelly(llm:accepted), hoarseness(llm:accepted), larynx(llm:accepted), nerve(llm:accepted), paralysis(llm:accepted), trachea(llm:accepted), voice(llm:accepted), weakness(llm:accepted)
+vomit              -> barf(llm:accepted), expel(llm:accepted), gag(llm:accepted), heave(llm:accepted), puke(llm:accepted), purge(llm:accepted), retch(llm:accepted), sick(llm:accepted), throw(llm:accepted)
+worry              -> afraid(llm:accepted), concern(llm:accepted), fear(llm:accepted), nervous(llm:accepted), scare(llm:accepted), scared(llm:accepted), scary(llm:accepted), terrify(llm:accepted)
+worsen             -> aggravate(llm:accepted), amplify(llm:accepted), debilitate(llm:accepted), escalate(llm:accepted), exacerbate(llm:accepted), increase(llm:accepted), intensify(llm:accepted), severe(llm:accepted), severity(llm:accepted), unbearable(llm:accepted), worse(llm:accepted)
+
+## verification issues (terms must be returned unchanged)
+100 :: initial:schema=string || closure:schema=string
+100u :: initial:schema=string || closure:schema=string || closure:schema=string
+130 :: initial:schema=string || closure:schema=string
+130cc :: initial:schema=empty
+90cc :: initial:schema=empty
+90ml :: initial:schema=empty
+abdomen :: initial:schema=string || closure:schema=string | unknown=torso || closure:schema=string | unknown=torso
+abnormal :: initial:schema=string || closure:schema=string || closure:schema=string
+achalasia :: initial:schema=string || closure:schema=string | unknown=dysmotility,dysphagia || closure:schema=string | unknown=dysmotility
+acid :: initial:schema=string || closure:schema=string || closure:schema=string
+acpd :: initial:schema=empty
+acupuncture :: initial:schema=string || closure:schema=string || closure:schema=string
+adhd :: initial:schema=string || closure:schema=string
+administer :: initial:schema=string || closure:schema=string | unknown=inject,sedate || closure:schema=string | unknown=inject
+aerophagia :: initial:schema=string || closure:schema=string || closure:schema=string
+agoraphobic :: initial:schema=string || closure:schema=string
+albuterol :: initial:schema=string || closure:schema=string
+alcohol :: initial:schema=string || closure:schema=string | unknown=booze
+alone :: initial:schema=string || closure:schema=string || closure:schema=string
+anatomy :: initial:schema=string || closure:schema=string | unknown=structure || closure:schema=string | unknown=structure
+anesthesia :: initial:schema=string || closure:schema=string | unknown=anesthetic,iv,sedation || closure:schema=string | unknown=iv
+anesthesiologist :: initial:schema=string || closure:schema=string || closure:schema=string
+annoy :: initial:schema=string || closure:schema=string | unknown=frustrate || closure:schema=string | unknown=annoyed,awkward,embarrass,frustrate,uncomfortable
+annoyed :: initial:schema=string || closure:schema=string | unknown=frustrate || closure:schema=string | unknown=depressed,frustrate,hopeless,impatient
+antacid :: initial:schema=string || closure:schema=string || closure:schema=string
+antibiotic :: initial:schema=string || closure:schema=string || closure:schema=string | unknown=proton
+antihistamine :: initial:schema=string || closure:schema=string || closure:schema=string
+anxiety :: initial:schema=string || closure:schema=string || closure:schema=string
+anxious :: initial:schema=string || closure:schema=string || closure:schema=string
+appointment :: initial:schema=string || closure:schema=string || closure:schema=string
+arthritis :: initial:schema=string || closure:schema=string | unknown=ibd || closure:schema=string | unknown=fibromyalgia,rheumatoid
+article :: initial:schema=string || closure:schema=string || closure:schema=string
+asphyxiate :: initial:schema=string || closure:schema=string
+association :: initial:schema=string | unknown=association || closure:schema=string | unknown=phobia || closure:schema=string | unknown=trauma
+attack :: initial:schema=string || closure:schema=string | unknown=anxiety,hyperventilate,nausea,panic,spike,suffocate || closure:schema=string | unknown=anxiety,panic
+awful :: initial:schema=string || closure:schema=string | unknown=horrendous || closure:schema=string
+baffle :: initial:schema=string || closure:schema=string || closure:schema=string
+bcbs :: initial:schema=string || closure:schema=string | unknown=deny || closure:schema=string
+bearable :: initial:schema=string || closure:schema=string || closure:schema=string | unknown=unpleasantness
+bizarre :: initial:schema=string | unknown=bizarre || closure:schema=string || closure:schema=string
+blame :: initial:schema=string || closure:schema=string
+bleb :: initial:schema=string || closure:schema=string
+bloat :: initial:schema=string || closure:schema=string || closure:schema=string | unknown=nausea
+bloodstream :: initial:schema=empty
+borborygmus :: initial:schema=string || closure:schema=string
+botox :: initial:schema=string || closure:schema=string
+breathe :: initial:schema=string || closure:schema=string | unknown=inhale || closure:schema=string | unknown=deep,diaphragm,exhale,inhale
+bubble :: initial:schema=string | unknown=bubble || closure:schema=string || closure:schema=string
+buildup :: initial:schema=string | unknown=buildup || closure:schema=string || closure:schema=string
+burn :: initial:schema=string || closure:schema=string | unknown=burn || closure:schema=string | unknown=irritate
+burp :: initial:schema=string || closure:schema=string || closure:schema=string | unknown=involuntary
+burper :: initial:schema=string || closure:schema=string
+burst :: initial:schema=string || closure:schema=string | unknown=inflate || closure:schema=string | unknown=expand,inflate,puff,rise,rush
+calm :: initial:schema=string || closure:schema=string | unknown=settle || closure:schema=string | unknown=lie,settle
+camera :: initial:schema=string || closure:schema=string | unknown=probe || closure:schema=string | unknown=probe
+cannabis :: initial:schema=string || closure:schema=string | unknown=vape || closure:schema=string
+carbonate :: initial:schema=string || closure:schema=string | unknown=soda || closure:schema=string
+carbonation :: initial:schema=string || closure:schema=string || closure:schema=string
+cbd :: initial:schema=string || closure:schema=string | unknown=oil,supplement
+childhood :: initial:schema=string || closure:schema=string
+chiropractor :: initial:schema=string || closure:schema=string || closure:schema=string
+choke :: initial:schema=string || closure:schema=string | unknown=choking || closure:schema=string | unknown=aspirate,cough,drown,laryngospasm,lump,regurgitate,regurgitation,splutter,suffocate,swallow,windpipe
+chug :: initial:schema=string || closure:schema=string | unknown=soda || closure:schema=string
+co2 :: initial:schema=string || closure:schema=string || closure:schema=string
+collarbone :: initial:schema=string || closure:schema=string || closure:schema=string | unknown=sternum
+colonoscopy :: initial:schema=string || closure:schema=string | unknown=endoscopy || closure:schema=string | unknown=endoscopy
+community :: initial:schema=string || closure:schema=string || closure:schema=string | unknown=forum,group,subreddit,support,thread,validation
+complication :: initial:schema=string | unknown=complication || closure:schema=string || closure:schema=string
+concern :: initial:schema=string || closure:schema=string || closure:schema=string
+condition :: initial:schema=string || closure:schema=string
+confusion :: initial:schema=string | unknown=confusion || closure:schema=string | unknown=ignorance || closure:schema=string | unknown=ignorance
+constipation :: initial:schema=string || closure:schema=string
+consult :: initial:schema=string || closure:schema=string
+consultation :: initial:schema=string || closure:schema=string || closure:schema=string
+contraceptive :: initial:schema=empty
+control :: initial:schema=string || closure:schema=string || closure:schema=string
+convince :: initial:schema=string || closure:schema=string || closure:schema=string
+cough :: initial:schema=string || closure:schema=string | unknown=retch || closure:schema=string
+covid :: initial:schema=string || closure:schema=string
+cramp :: initial:schema=string || closure:schema=string || closure:schema=string
+cripple :: initial:schema=string || closure:schema=string | unknown=debilitate,incapacitate || closure:schema=string
+croak :: initial:schema=string || closure:schema=string | unknown=gurgle || closure:schema=string | unknown=gurgle,gurgly,hiccup
+curious :: initial:schema=string || closure:schema=string
+curse :: initial:schema=string | unknown=curse || closure:schema=string
+debilitate :: initial:schema=string || closure:schema=string | unknown=excruciating,miserable || closure:schema=string
+deflate :: initial:schema=string | unknown=deflate || closure:schema=string | unknown=inflate || closure:schema=string | unknown=inflate
+delight :: initial:schema=string || closure:schema=string
+demographics :: initial:schema=string | unknown=demographics || closure:schema=string
+deny :: initial:schema=string || closure:schema=string || closure:schema=string
+depressing :: initial:schema=string || closure:schema=string
+depression :: initial:schema=string || closure:schema=string | unknown=anxiety,trauma || closure:schema=string | unknown=anxiety,ptsd,trauma
+desperate :: initial:schema=string || closure:schema=string
+devastate :: initial:schema=string || closure:schema=string || closure:schema=string | unknown=disheartening,disrespect,heartbreak
+diagnose :: initial:schema=string || closure:schema=string | unknown=evaluate || closure:schema=string
+diagnostic :: initial:schema=string || closure:schema=string | unknown=evaluate || closure:schema=string | unknown=evaluate
+diaphragm :: initial:schema=string | unknown=diaphragm || closure:schema=string || closure:schema=string | unknown=contract,relaxation
+diarrhea :: initial:schema=string | unknown=bloatingness || closure:schema=string | unknown=bloatingness || closure:schema=string
+diary :: initial:schema=string || closure:schema=string | unknown=journal
+digestion :: initial:schema=string || closure:schema=string
+dilation :: initial:schema=string || closure:schema=string || closure:schema=string
+disappoint :: initial:schema=string || closure:schema=string || closure:schema=string
+disbelief :: initial:schema=string | unknown=disbelief || closure:schema=string
+discomfort :: initial:schema=string || closure:schema=string | unknown=nausea
+discourage :: initial:schema=string || closure:schema=string
+disgust :: initial:schema=string || closure:schema=string | unknown=nasty || closure:schema=string
+disinterested :: initial:schema=empty
+disorder :: initial:schema=string || closure:schema=string | unknown=dysfunction || closure:schema=string
+disregard :: initial:schema=string || closure:schema=string | unknown=misdiagnosis || closure:schema=string
+distress :: initial:schema=string | unknown=distress || closure:schema=string || closure:schema=string | unknown=anxiety,depression,discomfort,emotional,fatigue,psychological,ptsd,stress,trauma
+doctor :: initial:schema=string || closure:schema=string || closure:schema=string
+dose :: initial:schema=string || closure:schema=string || closure:schema=string | unknown=dosage
+downside :: initial:schema=string | unknown=downside || closure:schema=string | unknown=risky || closure:schema=string | unknown=consequence,hassle,risk,risky
+dramamine :: initial:schema=string || closure:schema=string || closure:schema=string
+drink :: initial:schema=string || closure:schema=string || closure:schema=string
+dysfunction :: initial:schema=string || closure:schema=string || closure:schema=string | unknown=neurological
+dysphagia :: initial:schema=string || closure:schema=string || closure:schema=string | unknown=dysphonia
+eat :: initial:schema=string || closure:schema=string || closure:schema=string
+edge :: initial:schema=string || closure:schema=string
+eliminate :: initial:schema=string || closure:schema=string
+embarrass :: initial:schema=string || closure:schema=string | unknown=awkward,embarrassment,mortify || closure:schema=string | unknown=embarrassment
+emetophobe :: initial:schema=string || closure:schema=string || closure:schema=string
+emetophobia :: initial:schema=string || closure:schema=string | unknown=anxiety,fear,phobia,trauma || closure:schema=string
+endoscopy :: initial:schema=string || closure:schema=string || closure:schema=string
+ent :: initial:schema=string || closure:schema=string || closure:schema=string
+er :: initial:schema=string || closure:schema=string
+esophagitis :: initial:schema=string || closure:schema=string | unknown=inflammation || closure:schema=string | unknown=inflammation
+esophagus :: initial:schema=string || closure:schema=string || closure:schema=string
+exaggerate :: initial:schema=string || closure:schema=string || closure:schema=string
+examination :: initial:schema=string || closure:schema=string || closure:schema=string | unknown=evaluation
+excite :: initial:schema=string || closure:schema=string
+exercise :: initial:schema=string || closure:schema=string || closure:schema=string
+exhaust :: initial:schema=string || closure:schema=string || closure:schema=string
+exist :: initial:schema=string || closure:schema=string | unknown=discover,existence,recognize || closure:schema=string | unknown=acknowledge,discover,dismiss,existence,recognize
+experience :: initial:schema=string
+explode :: initial:schema=string || closure:schema=string | unknown=burst
+famotidine :: initial:schema=string || closure:schema=string || closure:schema=string
+fart :: initial:schema=string || closure:schema=string | unknown=smell || closure:schema=string
+fast :: initial:schema=string || closure:schema=string
+fees :: initial:schema=string || closure:schema=string || closure:schema=string
+fever :: initial:schema=string || closure:schema=string || closure:schema=string
+fibro :: initial:schema=empty
+flatulence :: initial:schema=string || closure:schema=string || closure:schema=string
+flex :: initial:schema=string || closure:schema=string | unknown=tense || closure:schema=string | unknown=contort,contract,strain,strengthen,tense,tighten,twist
+flustered :: initial:schema=string || closure:schema=string
+fodmap :: initial:schema=string || closure:schema=string || closure:schema=string
+food :: initial:schema=string || closure:schema=string || closure:schema=string
+freaky :: initial:schema=string || closure:schema=string
+frequency :: initial:schema=string | unknown=frequency || closure:schema=string | unknown=frequency || closure:schema=string
+frustrate :: initial:schema=string || closure:schema=string || closure:schema=string
+fullness :: initial:schema=string | unknown=bloatingness || closure:schema=string || closure:schema=string
+ga :: initial:schema=string || closure:schema=string || closure:schema=string
+gag :: initial:schema=string | unknown=gag || closure:schema=string | unknown=retch || closure:schema=string | unknown=retch,vomit
+gas :: initial:schema=string || closure:schema=string
+gasonex :: initial:schema=empty
+gassy :: initial:schema=string || closure:schema=string | unknown=bloat,nauseate,nauseous,upset
+gastritis :: initial:schema=string || closure:schema=string || closure:schema=string | unknown=inflammation
+gastro :: initial:schema=string || closure:schema=string || closure:schema=string
+gastroenteritis :: initial:schema=string || closure:schema=string
+gastroenterologist :: initial:schema=string || closure:schema=string | unknown=gi || closure:schema=string
+gastroscopy :: initial:schema=string || closure:schema=string | unknown=endoflip,esophagoscopy,esophagram || closure:schema=string | unknown=endoflip,esophagoscopy,esophagram
+gasx :: initial:schema=string || closure:schema=string || closure:schema=string
+gaviscon :: initial:schema=string || closure:schema=string | unknown=antacid || closure:schema=string | unknown=antacid,esomeprazole,famotidine,nexium,omeprazole,pantoprazole,pepcid,ppi,prilosec,zantac
+gerd :: initial:schema=string || closure:schema=string || closure:schema=string
+globus :: initial:schema=string || closure:schema=string || closure:schema=string
+gp :: initial:schema=string || closure:schema=string || closure:schema=string
+grateful :: initial:schema=string || closure:schema=string | unknown=thankful,welcome || closure:schema=string
+growl :: initial:schema=string || closure:schema=string || closure:schema=string | unknown=growl,gurgle
+gummy :: initial:schema=string || closure:schema=string
+gurgle :: initial:schema=string || closure:schema=string | unknown=gargle,rumble || closure:schema=string | unknown=noise
+gurgly :: initial:schema=string || closure:schema=string | unknown=nauseous || closure:schema=string | unknown=nauseous
+healthcare :: initial:schema=string || closure:schema=string || closure:schema=string
+heartburn :: initial:schema=string || closure:schema=string || closure:schema=string
+heds :: initial:schema=string || closure:schema=string
+help :: initial:schema=string || closure:schema=string
+hernia :: initial:schema=string || closure:schema=string | unknown=hiatal || closure:schema=string | unknown=hiatal
+hiccup :: initial:schema=string || closure:schema=string || closure:schema=string
+hopeful :: initial:schema=string | unknown=hopeful || closure:schema=string || closure:schema=string
+hospital :: initial:schema=string || closure:schema=string || closure:schema=string
+hungry :: initial:schema=string | unknown=hungry || closure:schema=string || closure:schema=string | unknown=hungry
+hypermobile :: initial:schema=string || closure:schema=string | unknown=hypermobility || closure:schema=string | unknown=heds,hypermobility
+hypersalivation :: initial:schema=string | unknown=bloatingness || closure:schema=string || closure:schema=string | unknown=salivate
+hyperventilate :: initial:schema=string || closure:schema=string
+hypnosis :: initial:schema=string || closure:schema=string
+ibs :: initial:schema=string || closure:schema=string | unknown=sibo || closure:schema=string
+illness :: initial:schema=string || closure:schema=string || closure:schema=string
+impress :: initial:schema=string || closure:schema=string || closure:schema=string
+incident :: initial:schema=string || closure:schema=string | unknown=traumatize
+inconsistent :: initial:schema=string || closure:schema=string | unknown=unpredictable
+inconvenient :: initial:schema=string || closure:schema=string | unknown=ashamed || closure:schema=string | unknown=embarrass
+incredible :: initial:schema=string | unknown=incredible || closure:schema=string || closure:schema=string
+independent :: initial:schema=string || closure:schema=string || closure:schema=string
+indigestion :: initial:schema=string || closure:schema=string | unknown=nausea || closure:schema=string | unknown=nausea
+inevitable :: initial:schema=string || closure:schema=string
+inflammation :: initial:schema=string || closure:schema=string | unknown=inflame || closure:schema=string | unknown=inflame,irritation,ulcer,ulceration
+inflate :: initial:schema=string || closure:schema=string | unknown=expand || closure:schema=string | unknown=expand
+inhale :: initial:schema=string | unknown=inhale,sneezes || closure:schema=string | unknown=exhale || closure:schema=string | unknown=exhale,inhale
+inhaler :: initial:schema=string | unknown=inhaler || closure:schema=string
+injection :: initial:schema=string || closure:schema=string | unknown=dosage,dose,inject,jab,shot
+insertion :: initial:schema=string || closure:schema=string || closure:schema=string
+intense :: initial:schema=string || closure:schema=string | unknown=severe
+intestine :: initial:schema=string || closure:schema=string || closure:schema=string
+intolerable :: initial:schema=string || closure:schema=string
+intolerant :: initial:schema=string || closure:schema=string | unknown=gluten,lactose || closure:schema=string | unknown=fructose,gluten,lactose
+intubation :: initial:schema=string || closure:schema=string || closure:schema=string
+investigate :: initial:schema=string || closure:schema=string | unknown=evaluate || closure:schema=string | unknown=analyze,assess,evaluate
+involuntary :: initial:schema=string | unknown=involuntary || closure:schema=string | unknown=spontaneous || closure:schema=string | unknown=spontaneous
+issue :: initial:schema=string || closure:schema=string | unknown=problem || closure:schema=string | unknown=problem
+iv :: initial:schema=string || closure:schema=string | unknown=sedative || closure:schema=string | unknown=sedation
+laryngopedia :: initial:schema=string || closure:schema=string || closure:schema=string
+laryngospasm :: initial:schema=string || closure:schema=string || closure:schema=string
+laugh :: initial:schema=string | unknown=laugh || closure:schema=string | unknown=hahaha
+les :: initial:schema=string || closure:schema=string | unknown=sphincter || closure:schema=string | unknown=sphincter
+lightheaded :: initial:schema=string || closure:schema=string | unknown=dizzy,faint,shaky || closure:schema=string | unknown=dizzy,faint,fatigue,fuzzy,jolt,lightheadedness,loopy,panicky,shaky
+lump :: initial:schema=string | unknown=ticklish || closure:schema=string | unknown=swell || closure:schema=string | unknown=lump
+lung :: initial:schema=string || closure:schema=string || closure:schema=string
+lupus :: initial:schema=empty
+maneuver :: initial:schema=string || closure:schema=string || closure:schema=string
+manipulate :: initial:schema=string || closure:schema=string | unknown=maneuver || closure:schema=string
+manometry :: initial:schema=string || closure:schema=string || closure:schema=string
+medicaid :: initial:schema=string || closure:schema=string || closure:schema=string
+meditation :: initial:schema=string || closure:schema=string | unknown=yoga || closure:schema=string
+meridian :: initial:schema=empty
+metabolism :: initial:schema=string || closure:schema=string || closure:schema=string
+microburp :: initial:schema=string || closure:schema=string || closure:schema=string
+mint :: initial:schema=string || closure:schema=string | unknown=menthol,peppermint || closure:schema=string | unknown=menthol,peppermint
+mirena :: initial:schema=string || closure:schema=string
+misalignment :: initial:schema=string || closure:schema=string || closure:schema=string
+miserable :: initial:schema=string || closure:schema=string || closure:schema=string
+misery :: initial:schema=string || closure:schema=string || closure:schema=string
+motrin :: initial:schema=string || closure:schema=string | unknown=ibuprofen || closure:schema=string | unknown=ibuprofen
+movement :: initial:schema=string || closure:schema=string | unknown=stretch || closure:schema=string
+ms :: initial:schema=string | unknown=ms || closure:schema=string
+mucus :: initial:schema=string || closure:schema=string || closure:schema=string
+muscle :: initial:schema=string || closure:schema=string | unknown=musculature || closure:schema=string
+myalgia :: initial:schema=string || closure:schema=string
+myotomy :: initial:schema=string || closure:schema=string | unknown=injection,treatment || closure:schema=string | unknown=dosage,injection
+nasoendoscopy :: initial:schema=empty
+natural :: initial:schema=string || closure:schema=string | unknown=relax || closure:schema=string | unknown=control,relax
+nausea :: initial:schema=string | unknown=emic || closure:schema=string | unknown=nauseous || closure:schema=string
+nauseous :: initial:schema=string || closure:schema=string | unknown=nausea,queasy,sick || closure:schema=string | unknown=queasy
+nervous :: initial:schema=string || closure:schema=string || closure:schema=string
+nhs :: initial:schema=string || closure:schema=string
+nissen :: initial:schema=string || closure:schema=string | unknown=fundoplication,laparoscopic,linx,revision || closure:schema=string | unknown=fundoplication,laparoscopic,revision
+nitrogenize :: initial:schema=string || closure:schema=string || closure:schema=string
+noise :: initial:schema=string || closure:schema=string || closure:schema=string | unknown=groan,growl,grumble,gurgle
+nuisance :: initial:schema=string || closure:schema=string || closure:schema=string
+ocd :: initial:schema=string || closure:schema=string | unknown=anxiety,depression,ptsd,trauma
+omeprazole :: initial:schema=string || closure:schema=string || closure:schema=string
+op :: initial:schema=string | unknown=op || closure:schema=string | unknown=operation,operative || closure:schema=string
+orgasm :: initial:schema=string || closure:schema=string
+osteopath :: initial:schema=string || closure:schema=string
+otolaryngologist :: initial:schema=string || closure:schema=string || closure:schema=string
+overeating :: initial:schema=string || closure:schema=string || closure:schema=string
+pain :: initial:schema=string || closure:schema=string || closure:schema=string
+painkiller :: initial:schema=string || closure:schema=string || closure:schema=string
+palpate :: initial:schema=string || closure:schema=string || closure:schema=string | unknown=node
+panadol :: initial:schema=empty
+pandemic :: initial:schema=string || closure:schema=string | unknown=lockdown,outbreak
+panic :: initial:schema=string | unknown=panic || closure:schema=string | unknown=anxious,fear,stress
+pantoprazol :: initial:schema=string || closure:schema=string || closure:schema=string
+pantoprazole :: initial:schema=string || closure:schema=string || closure:schema=string
+paracetamol :: initial:schema=string || closure:schema=string || closure:schema=string
+pathology :: initial:schema=string | unknown=pathology || closure:schema=string | unknown=neuromuscular || closure:schema=string | unknown=dysfunction,neuromuscular,physiology
+patient :: initial:schema=string || closure:schema=string
+pelvis :: initial:schema=string || closure:schema=string | unknown=hip || closure:schema=string
+pepcid :: initial:schema=string || closure:schema=string | unknown=ppi || closure:schema=string
+permanent :: initial:schema=string || closure:schema=string | unknown=cure,guarantee || closure:schema=string | unknown=cure,guarantee,success
+phlegm :: initial:schema=string || closure:schema=string | unknown=ticklish || closure:schema=string | unknown=mucous,mucus
+phobia :: initial:schema=string || closure:schema=string | unknown=anxiety,fear,irrational,mental,ocd,panic,psychological,ptsd,scared || closure:schema=string
+pill :: initial:schema=string || closure:schema=string || closure:schema=string
+pneumothorax :: initial:schema=string || closure:schema=string
+pooch :: initial:schema=string || closure:schema=string
+pop :: initial:schema=string | unknown=pop || closure:schema=string | unknown=fizz || closure:schema=string | unknown=fizz
+posture :: initial:schema=string || closure:schema=string | unknown=posture || closure:schema=string | unknown=posture
+ppi :: initial:schema=string || closure:schema=string || closure:schema=string
+ppis :: initial:schema=string || closure:schema=string || closure:schema=string
+practice :: initial:schema=string | unknown=practice || closure:schema=string || closure:schema=string
+practitioner :: initial:schema=string || closure:schema=string
+pressure :: initial:schema=string || closure:schema=string || closure:schema=string | unknown=tension,tighten
+procedure :: initial:schema=string || closure:schema=string
+progress :: initial:schema=string || closure:schema=string
+provider :: initial:schema=string | unknown=provider || closure:schema=string
+psyche :: initial:schema=string || closure:schema=string
+psychotherapist :: initial:schema=string || closure:schema=string
+push :: initial:schema=string || closure:schema=string | unknown=squeeze || closure:schema=string | unknown=force,press,push,squeeze,tense,tighten
+ranitidine :: initial:schema=string || closure:schema=string || closure:schema=string
+rare :: initial:schema=string || closure:schema=string || closure:schema=string | unknown=rarely,uncommon,unexpected,unlikely,unlucky
+rcpd :: initial:schema=string || closure:schema=string || closure:schema=string
+recovery :: initial:schema=string || closure:schema=string || closure:schema=string
+referral :: initial:schema=string || closure:schema=string | unknown=refer
+reflux :: initial:schema=string || closure:schema=string || closure:schema=string
+regurgitate :: initial:schema=string || closure:schema=string | unknown=bile,phlegm,puke,regurgitation,spit || closure:schema=string | unknown=bile,puke,regurgitation,spit
+regurgitation :: initial:schema=string || closure:schema=string || closure:schema=string
+related :: initial:schema=string || closure:schema=string | unknown=correlate || closure:schema=string | unknown=connection,correlate
+relax :: initial:schema=string | unknown=relax || closure:schema=string | unknown=loosen || closure:schema=string | unknown=loosen
+relaxation :: initial:schema=string | unknown=relaxation || closure:schema=string | unknown=loosen
+relief :: initial:schema=string
+research :: initial:schema=string || closure:schema=string || closure:schema=string
+revelation :: initial:schema=string || closure:schema=string | unknown=epiphany || closure:schema=string | unknown=epiphany
+rhabdomyolysis :: initial:schema=empty
+rheumatologist :: initial:schema=string || closure:schema=string
+roar :: initial:schema=string | unknown=roar || closure:schema=string | unknown=roar || closure:schema=string
+salad :: initial:schema=string || closure:schema=string
+scan :: initial:schema=string || closure:schema=string | unknown=endoscopy || closure:schema=string
+scared :: initial:schema=string || closure:schema=string || closure:schema=string
+scope :: initial:schema=string || closure:schema=string | unknown=probe || closure:schema=string | unknown=endoscope,probe
+screen :: initial:schema=string || closure:schema=string || closure:schema=string | unknown=fluoroscopy,xray
+sensation :: initial:schema=string || closure:schema=string | unknown=tick || closure:schema=string | unknown=ticklish
+sensitive :: initial:schema=string || closure:schema=string | unknown=unpleasant,unsettling,upset || closure:schema=string | unknown=unpleasant
+shiatsu :: initial:schema=empty
+shoulder :: initial:schema=string | unknown=shoulder || closure:schema=string | unknown=neck,torso || closure:schema=string | unknown=torso
+sibo :: initial:schema=string || closure:schema=string || closure:schema=string
+simethicone :: initial:schema=string || closure:schema=string || closure:schema=string
+sit :: initial:schema=string || closure:schema=string | unknown=crouch || closure:schema=string
+sleep :: initial:schema=string || closure:schema=string || closure:schema=string
+sleepy :: initial:schema=string || closure:schema=string || closure:schema=string | unknown=disoriented,dizzy
+slim :: initial:schema=string || closure:schema=string || closure:schema=string
+smell :: initial:schema=string || closure:schema=string
+sniff :: initial:schema=string || closure:schema=string | unknown=inject || closure:schema=string | unknown=inject,lidocaine,needle,nostril,syringe
+socialize :: initial:schema=string || closure:schema=string | unknown=event,outing || closure:schema=string
+sore :: initial:schema=string || closure:schema=string || closure:schema=string | unknown=hurt,irritate,irritation,soreness
+spasm :: initial:schema=string || closure:schema=string | unknown=tighten || closure:schema=string | unknown=constrict,contraction,inflame,irritate,tighten,tightness
+specialist :: initial:schema=string || closure:schema=string || closure:schema=string
+spectrum :: initial:schema=string || closure:schema=string | unknown=common,rare || closure:schema=string | unknown=rare
+sphincter :: initial:schema=string || closure:schema=string | unknown=muscle || closure:schema=string | unknown=dysfunctional,malfunction,mechanism,muscle,spasm
+spicy :: initial:schema=string || closure:schema=string | unknown=spicy || closure:schema=string
+spit :: initial:schema=string || closure:schema=string || closure:schema=string | unknown=saliva
+stagnation :: initial:schema=empty
+statistic :: initial:schema=string || closure:schema=string || closure:schema=string | unknown=evidence
+sternum :: initial:schema=string || closure:schema=string | unknown=chest || closure:schema=string | unknown=chest,collarbone,ribcage
+stomach :: initial:schema=string || closure:schema=string || closure:schema=string | unknown=belly
+stress :: initial:schema=string || closure:schema=string | unknown=anxiety || closure:schema=string | unknown=adrenaline,anxiety,anxious
+stretch :: initial:schema=string | unknown=stretch || closure:schema=string | unknown=stretch || closure:schema=string | unknown=flex
+struggle :: initial:schema=string | unknown=struggle || closure:schema=string || closure:schema=string
+study :: initial:schema=string || closure:schema=string | unknown=manuscript || closure:schema=string | unknown=literature,manuscript,paper,publish,research,review,scientific
+succinylcholine :: initial:schema=string || closure:schema=string
+suck :: initial:schema=string || closure:schema=string
+suffer :: initial:schema=string || closure:schema=string | unknown=struggle || closure:schema=string | unknown=cope,endure,struggle
+summon :: initial:schema=string || closure:schema=string
+supplement :: initial:schema=string || closure:schema=string || closure:schema=string | unknown=probiotic
+surgeon :: initial:schema=string || closure:schema=string | unknown=physician || closure:schema=string
+surgery :: initial:schema=string || closure:schema=string || closure:schema=string
+surprise :: initial:schema=string | unknown=surprise || closure:schema=string || closure:schema=string
+swallow :: initial:schema=string || closure:schema=string || closure:schema=string
+sweat :: initial:schema=string || closure:schema=string | unknown=sweater || closure:schema=string
+swell :: initial:schema=string | unknown=swell || closure:schema=string | unknown=knot,lump || closure:schema=string | unknown=lump,node
+symptom :: initial:schema=string || closure:schema=string
+tachycardia :: initial:schema=string | unknown=tachycardia || closure:schema=string | unknown=tachycardia || closure:schema=string | unknown=tachycardia
+talk :: initial:schema=string || closure:schema=string
+technique :: initial:schema=string || closure:schema=string || closure:schema=string
+telemed :: initial:schema=string | unknown=telemed || closure:schema=string
+ten :: initial:schema=string || closure:schema=string || closure:schema=string
+tender :: initial:schema=string | unknown=tender || closure:schema=string || closure:schema=string
+tense :: initial:schema=string || closure:schema=string | unknown=tension || closure:schema=string | unknown=stiff,strain,tight,tighten
+tension :: initial:schema=string || closure:schema=string | unknown=stiffness,strain,tense,tight,tighten,tightness
+test :: initial:schema=string || closure:schema=string || closure:schema=string
+theory :: initial:schema=string || closure:schema=string | unknown=mechanism || closure:schema=string | unknown=mechanism
+therapist :: initial:schema=string || closure:schema=string || closure:schema=string
+thing :: initial:schema=string || closure:schema=string
+thorax :: initial:schema=string | unknown=thorax || closure:schema=string
+throat :: initial:schema=string | unknown=throat || closure:schema=string | unknown=uvula || closure:schema=string
+tight :: initial:schema=string || closure:schema=string || closure:schema=string | unknown=stiff
+trap :: initial:schema=string || closure:schema=string || closure:schema=string
+treatment :: initial:schema=string || closure:schema=string
+trigger :: initial:schema=string || closure:schema=string | unknown=induce || closure:schema=string | unknown=cause,induce
+tube :: initial:schema=string || closure:schema=string | unknown=cannula,catheter,probe,scope || closure:schema=string | unknown=probe
+tums :: initial:schema=string || closure:schema=string || closure:schema=string
+ues :: initial:schema=string || closure:schema=string | unknown=cricopharyngeal,esophageal,esophagus || closure:schema=string
+unbearable :: initial:schema=string || closure:schema=string || closure:schema=string
+uncomfortable :: initial:schema=string || closure:schema=string | unknown=unpleasant || closure:schema=string | unknown=unpleasant
+uncontrollable :: initial:schema=string || closure:schema=string | unknown=involuntary
+underweight :: initial:schema=string | unknown=underweight || closure:schema=string | unknown=underweight || closure:schema=string | unknown=bmi,skinny,thin,underweight
+unnatural :: initial:schema=string || closure:schema=string
+unproductive :: initial:schema=string | unknown=unproductive || closure:schema=string
+violent :: initial:schema=string || closure:schema=string || closure:schema=string | unknown=retch
+virus :: initial:schema=string || closure:schema=string || closure:schema=string | unknown=infection,inflame
+vocal :: initial:schema=string || closure:schema=string | unknown=cord || closure:schema=string | unknown=larynx
+vomit :: initial:schema=string || closure:schema=string || closure:schema=string
+worry :: initial:schema=string || closure:schema=string || closure:schema=string
+worsen :: initial:schema=string || closure:schema=string || closure:schema=string
+yack :: initial:schema=string | unknown=yack || closure:schema=string
+
+# Original seeds (from expansion keys): 381
+# After augmentation (unique terms in eval set): 1836
+# Total added from expansions via LLM decisions: 1455
