@@ -1,0 +1,16 @@
+{
+  "fit_shape": [
+    1820,
+    300
+  ],
+  "max_components": 60,
+  "method": "max_distance",
+  "drop_top": 0,
+  "k_elbow_total": 10,
+  "k_elbow_effective": 10,
+  "var_at_elbow": 0.02197534590959549,
+  "k_target_total": 60,
+  "k_target_effective": 60,
+  "target_variance_residual": 0.9,
+  "cum_var_residual_at_target": 0.8640805068425834
+}

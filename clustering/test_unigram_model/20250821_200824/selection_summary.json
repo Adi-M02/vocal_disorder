@@ -1,0 +1,36 @@
+{
+  "model": "clustering/test_unigram_model/word2vec_08_20_20_37/word2vec_cbow.model",
+  "vocab": "clustering/test_unigram_model/word2vec_08_20_20_37/added_eval_08_20_20_45/new_eval_set.json",
+  "embedding_dim": 300,
+  "n_terms": 1820,
+  "pca": {
+    "fit_on": "subset",
+    "fit_topn": 200000,
+    "max_components": 60,
+    "drop_top": 0,
+    "method": "max_distance",
+    "target_variance_residual": 0.9,
+    "k_elbow_total": 10,
+    "k_target_total": 60,
+    "chosen_dim_mode": "target",
+    "chosen_k_total": 60,
+    "chosen_k_effective": 60
+  },
+  "kmeans": {
+    "k_range": [
+      3,
+      30
+    ],
+    "K_elbow_inertia": 11,
+    "K_silhouette_max": 16,
+    "K_composite": 16,
+    "K_final": 14,
+    "metrics_at_final": {
+      "silhouette": 0.10078918188810349,
+      "inertia": 1124.52197265625,
+      "cohesion_mean": 0.6110898852348328,
+      "size_imbalance": 0.40378597144454625
+    }
+  },
+  "plotly_html": "clustering/test_unigram_model/20250821_200824/clusters_2d_plotly.html"
+}

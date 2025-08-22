@@ -1,0 +1,3613 @@
+{
+  "model": "clustering/test_unigram_model/word2vec_08_20_20_37/word2vec_cbow.model",
+  "vocab": "clustering/test_unigram_model/word2vec_08_20_20_37/added_eval_08_20_20_45/new_eval_set.json",
+  "K_final": 14,
+  "pca_components_total": 60,
+  "pca_components_effective": 60,
+  "top_n": 50,
+  "min_sim": 0.4,
+  "total_docs": 139124,
+  "docs_source": "processed_no_ngrams",
+  "ngram_phraser_dir": null,
+  "note": "Counts are token frequencies across all docs; includes only clustered in-vocab terms with sim_to_centroid >= min_sim.",
+  "clusters": [
+    {
+      "cluster": 0,
+      "size": 137,
+      "top_terms_by_frequency": [
+        {
+          "term": "cause",
+          "count": 8570,
+          "sim_to_centroid": 0.483881
+        },
+        {
+          "term": "rcpd",
+          "count": 8352,
+          "sim_to_centroid": 0.578265
+        },
+        {
+          "term": "condition",
+          "count": 5182,
+          "sim_to_centroid": 0.48822
+        },
+        {
+          "term": "anxiety",
+          "count": 4652,
+          "sim_to_centroid": 0.434475
+        },
+        {
+          "term": "emetophobia",
+          "count": 3590,
+          "sim_to_centroid": 0.498579
+        },
+        {
+          "term": "suffer",
+          "count": 3371,
+          "sim_to_centroid": 0.516816
+        },
+        {
+          "term": "noburp",
+          "count": 3106,
+          "sim_to_centroid": 0.648065
+        },
+        {
+          "term": "related",
+          "count": 2601,
+          "sim_to_centroid": 0.577039
+        },
+        {
+          "term": "severe",
+          "count": 2186,
+          "sim_to_centroid": 0.55291
+        },
+        {
+          "term": "common",
+          "count": 2153,
+          "sim_to_centroid": 0.511002
+        },
+        {
+          "term": "inability",
+          "count": 1935,
+          "sim_to_centroid": 0.533217
+        },
+        {
+          "term": "disorder",
+          "count": 1208,
+          "sim_to_centroid": 0.504702
+        },
+        {
+          "term": "young",
+          "count": 1204,
+          "sim_to_centroid": 0.450889
+        },
+        {
+          "term": "child",
+          "count": 926,
+          "sim_to_centroid": 0.454665
+        },
+        {
+          "term": "potential",
+          "count": 919,
+          "sim_to_centroid": 0.487258
+        },
+        {
+          "term": "mental",
+          "count": 880,
+          "sim_to_centroid": 0.46672
+        },
+        {
+          "term": "chronic",
+          "count": 819,
+          "sim_to_centroid": 0.610435
+        },
+        {
+          "term": "dysfunction",
+          "count": 791,
+          "sim_to_centroid": 0.472086
+        },
+        {
+          "term": "constipation",
+          "count": 778,
+          "sim_to_centroid": 0.480068
+        },
+        {
+          "term": "worsen",
+          "count": 758,
+          "sim_to_centroid": 0.572759
+        },
+        {
+          "term": "noburper",
+          "count": 742,
+          "sim_to_centroid": 0.504804
+        },
+        {
+          "term": "theory",
+          "count": 699,
+          "sim_to_centroid": 0.570815
+        },
+        {
+          "term": "connect",
+          "count": 684,
+          "sim_to_centroid": 0.509815
+        },
+        {
+          "term": "phobia",
+          "count": 648,
+          "sim_to_centroid": 0.49293
+        },
+        {
+          "term": "factor",
+          "count": 568,
+          "sim_to_centroid": 0.638961
+        },
+        {
+          "term": "contribute",
+          "count": 547,
+          "sim_to_centroid": 0.739184
+        },
+        {
+          "term": "associate",
+          "count": 530,
+          "sim_to_centroid": 0.525345
+        },
+        {
+          "term": "debilitate",
+          "count": 511,
+          "sim_to_centroid": 0.563028
+        },
+        {
+          "term": "connection",
+          "count": 494,
+          "sim_to_centroid": 0.555023
+        },
+        {
+          "term": "majority",
+          "count": 416,
+          "sim_to_centroid": 0.53096
+        },
+        {
+          "term": "possibility",
+          "count": 412,
+          "sim_to_centroid": 0.441308
+        },
+        {
+          "term": "correlation",
+          "count": 400,
+          "sim_to_centroid": 0.633684
+        },
+        {
+          "term": "childhood",
+          "count": 358,
+          "sim_to_centroid": 0.694066
+        },
+        {
+          "term": "birth",
+          "count": 304,
+          "sim_to_centroid": 0.495871
+        },
+        {
+          "term": "born",
+          "count": 304,
+          "sim_to_centroid": 0.419731
+        },
+        {
+          "term": "psychological",
+          "count": 294,
+          "sim_to_centroid": 0.772061
+        },
+        {
+          "term": "teen",
+          "count": 284,
+          "sim_to_centroid": 0.460146
+        },
+        {
+          "term": "illness",
+          "count": 276,
+          "sim_to_centroid": 0.679322
+        },
+        {
+          "term": "unlikely",
+          "count": 256,
+          "sim_to_centroid": 0.419306
+        },
+        {
+          "term": "exacerbate",
+          "count": 249,
+          "sim_to_centroid": 0.705258
+        },
+        {
+          "term": "blame",
+          "count": 244,
+          "sim_to_centroid": 0.521509
+        },
+        {
+          "term": "spectrum",
+          "count": 222,
+          "sim_to_centroid": 0.643119
+        },
+        {
+          "term": "extent",
+          "count": 215,
+          "sim_to_centroid": 0.555871
+        },
+        {
+          "term": "trauma",
+          "count": 209,
+          "sim_to_centroid": 0.727692
+        },
+        {
+          "term": "severity",
+          "count": 209,
+          "sim_to_centroid": 0.59255
+        },
+        {
+          "term": "underweight",
+          "count": 196,
+          "sim_to_centroid": 0.418728
+        },
+        {
+          "term": "asthma",
+          "count": 194,
+          "sim_to_centroid": 0.415252
+        },
+        {
+          "term": "uncommon",
+          "count": 182,
+          "sim_to_centroid": 0.49749
+        },
+        {
+          "term": "migraine",
+          "count": 182,
+          "sim_to_centroid": 0.422973
+        },
+        {
+          "term": "attribute",
+          "count": 167,
+          "sim_to_centroid": 0.689424
+        }
+      ],
+      "top_terms_by_frequency_lines": "cause\t8570\t0.483881\nrcpd\t8352\t0.578265\ncondition\t5182\t0.488220\nanxiety\t4652\t0.434475\nemetophobia\t3590\t0.498579\nsuffer\t3371\t0.516816\nnoburp\t3106\t0.648065\nrelated\t2601\t0.577039\nsevere\t2186\t0.552910\ncommon\t2153\t0.511002\ninability\t1935\t0.533217\ndisorder\t1208\t0.504702\nyoung\t1204\t0.450889\nchild\t926\t0.454665\npotential\t919\t0.487258\nmental\t880\t0.466720\nchronic\t819\t0.610435\ndysfunction\t791\t0.472086\nconstipation\t778\t0.480068\nworsen\t758\t0.572759\nnoburper\t742\t0.504804\ntheory\t699\t0.570815\nconnect\t684\t0.509815\nphobia\t648\t0.492930\nfactor\t568\t0.638961\ncontribute\t547\t0.739184\nassociate\t530\t0.525345\ndebilitate\t511\t0.563028\nconnection\t494\t0.555023\nmajority\t416\t0.530960\npossibility\t412\t0.441308\ncorrelation\t400\t0.633684\nchildhood\t358\t0.694066\nbirth\t304\t0.495871\nborn\t304\t0.419731\npsychological\t294\t0.772061\nteen\t284\t0.460146\nillness\t276\t0.679322\nunlikely\t256\t0.419306\nexacerbate\t249\t0.705258\nblame\t244\t0.521509\nspectrum\t222\t0.643119\nextent\t215\t0.555871\ntrauma\t209\t0.727692\nseverity\t209\t0.592550\nunderweight\t196\t0.418728\nasthma\t194\t0.415252\nuncommon\t182\t0.497490\nmigraine\t182\t0.422973\nattribute\t167\t0.689424"
+    },
+    {
+      "cluster": 1,
+      "size": 300,
+      "top_terms_by_frequency": [
+        {
+          "term": "yay",
+          "count": 419,
+          "sim_to_centroid": 0.701201
+        },
+        {
+          "term": "beyond",
+          "count": 303,
+          "sim_to_centroid": 0.521925
+        },
+        {
+          "term": "diary",
+          "count": 151,
+          "sim_to_centroid": 0.417614
+        },
+        {
+          "term": "log",
+          "count": 123,
+          "sim_to_centroid": 0.581305
+        },
+        {
+          "term": "deserve",
+          "count": 112,
+          "sim_to_centroid": 0.670273
+        },
+        {
+          "term": "unbelievable",
+          "count": 108,
+          "sim_to_centroid": 0.707023
+        },
+        {
+          "term": "ahhh",
+          "count": 59,
+          "sim_to_centroid": 0.762008
+        },
+        {
+          "term": "devastate",
+          "count": 54,
+          "sim_to_centroid": 0.712844
+        },
+        {
+          "term": "demonic",
+          "count": 52,
+          "sim_to_centroid": 0.605108
+        },
+        {
+          "term": "lockdown",
+          "count": 50,
+          "sim_to_centroid": 0.595533
+        },
+        {
+          "term": "revelation",
+          "count": 48,
+          "sim_to_centroid": 0.636299
+        },
+        {
+          "term": "disappointment",
+          "count": 47,
+          "sim_to_centroid": 0.720227
+        },
+        {
+          "term": "woohoo",
+          "count": 45,
+          "sim_to_centroid": 0.832799
+        },
+        {
+          "term": "whoa",
+          "count": 44,
+          "sim_to_centroid": 0.805358
+        },
+        {
+          "term": "disbelief",
+          "count": 41,
+          "sim_to_centroid": 0.688407
+        },
+        {
+          "term": "blog",
+          "count": 39,
+          "sim_to_centroid": 0.774555
+        },
+        {
+          "term": "stink",
+          "count": 38,
+          "sim_to_centroid": 0.629634
+        },
+        {
+          "term": "shotgun",
+          "count": 37,
+          "sim_to_centroid": 0.567148
+        },
+        {
+          "term": "incorporate",
+          "count": 37,
+          "sim_to_centroid": 0.55747
+        },
+        {
+          "term": "nonburper",
+          "count": 35,
+          "sim_to_centroid": 0.731814
+        },
+        {
+          "term": "depressing",
+          "count": 35,
+          "sim_to_centroid": 0.708414
+        },
+        {
+          "term": "wound",
+          "count": 35,
+          "sim_to_centroid": 0.511974
+        },
+        {
+          "term": "unnatural",
+          "count": 35,
+          "sim_to_centroid": 0.495817
+        },
+        {
+          "term": "ew",
+          "count": 34,
+          "sim_to_centroid": 0.685936
+        },
+        {
+          "term": "toot",
+          "count": 34,
+          "sim_to_centroid": 0.595989
+        },
+        {
+          "term": "stomachache",
+          "count": 34,
+          "sim_to_centroid": 0.508455
+        },
+        {
+          "term": "hella",
+          "count": 33,
+          "sim_to_centroid": 0.820377
+        },
+        {
+          "term": "delight",
+          "count": 33,
+          "sim_to_centroid": 0.787458
+        },
+        {
+          "term": "nuisance",
+          "count": 33,
+          "sim_to_centroid": 0.713465
+        },
+        {
+          "term": "fuzzy",
+          "count": 32,
+          "sim_to_centroid": 0.588122
+        },
+        {
+          "term": "freaky",
+          "count": 31,
+          "sim_to_centroid": 0.690543
+        },
+        {
+          "term": "escalate",
+          "count": 31,
+          "sim_to_centroid": 0.513611
+        },
+        {
+          "term": "woah",
+          "count": 29,
+          "sim_to_centroid": 0.868569
+        },
+        {
+          "term": "trickle",
+          "count": 29,
+          "sim_to_centroid": 0.463767
+        },
+        {
+          "term": "indescribable",
+          "count": 28,
+          "sim_to_centroid": 0.781072
+        },
+        {
+          "term": "farty",
+          "count": 28,
+          "sim_to_centroid": 0.725282
+        },
+        {
+          "term": "dragon",
+          "count": 28,
+          "sim_to_centroid": 0.67578
+        },
+        {
+          "term": "exorcism",
+          "count": 28,
+          "sim_to_centroid": 0.593987
+        },
+        {
+          "term": "pterodactyl",
+          "count": 28,
+          "sim_to_centroid": 0.538368
+        },
+        {
+          "term": "meditate",
+          "count": 27,
+          "sim_to_centroid": 0.628286
+        },
+        {
+          "term": "hypnosis",
+          "count": 26,
+          "sim_to_centroid": 0.655835
+        },
+        {
+          "term": "intolerable",
+          "count": 26,
+          "sim_to_centroid": 0.634862
+        },
+        {
+          "term": "ignorance",
+          "count": 26,
+          "sim_to_centroid": 0.593592
+        },
+        {
+          "term": "nicotine",
+          "count": 26,
+          "sim_to_centroid": 0.494181
+        },
+        {
+          "term": "petrify",
+          "count": 25,
+          "sim_to_centroid": 0.665783
+        },
+        {
+          "term": "osteopath",
+          "count": 25,
+          "sim_to_centroid": 0.649159
+        },
+        {
+          "term": "footage",
+          "count": 25,
+          "sim_to_centroid": 0.606125
+        },
+        {
+          "term": "tonsillitis",
+          "count": 25,
+          "sim_to_centroid": 0.603267
+        },
+        {
+          "term": "prosecco",
+          "count": 25,
+          "sim_to_centroid": 0.597178
+        },
+        {
+          "term": "awe",
+          "count": 24,
+          "sim_to_centroid": 0.825794
+        }
+      ],
+      "top_terms_by_frequency_lines": "yay\t419\t0.701201\nbeyond\t303\t0.521925\ndiary\t151\t0.417614\nlog\t123\t0.581305\ndeserve\t112\t0.670273\nunbelievable\t108\t0.707023\nahhh\t59\t0.762008\ndevastate\t54\t0.712844\ndemonic\t52\t0.605108\nlockdown\t50\t0.595533\nrevelation\t48\t0.636299\ndisappointment\t47\t0.720227\nwoohoo\t45\t0.832799\nwhoa\t44\t0.805358\ndisbelief\t41\t0.688407\nblog\t39\t0.774555\nstink\t38\t0.629634\nshotgun\t37\t0.567148\nincorporate\t37\t0.557470\nnonburper\t35\t0.731814\ndepressing\t35\t0.708414\nwound\t35\t0.511974\nunnatural\t35\t0.495817\new\t34\t0.685936\ntoot\t34\t0.595989\nstomachache\t34\t0.508455\nhella\t33\t0.820377\ndelight\t33\t0.787458\nnuisance\t33\t0.713465\nfuzzy\t32\t0.588122\nfreaky\t31\t0.690543\nescalate\t31\t0.513611\nwoah\t29\t0.868569\ntrickle\t29\t0.463767\nindescribable\t28\t0.781072\nfarty\t28\t0.725282\ndragon\t28\t0.675780\nexorcism\t28\t0.593987\npterodactyl\t28\t0.538368\nmeditate\t27\t0.628286\nhypnosis\t26\t0.655835\nintolerable\t26\t0.634862\nignorance\t26\t0.593592\nnicotine\t26\t0.494181\npetrify\t25\t0.665783\nosteopath\t25\t0.649159\nfootage\t25\t0.606125\ntonsillitis\t25\t0.603267\nprosecco\t25\t0.597178\nawe\t24\t0.825794"
+    },
+    {
+      "cluster": 2,
+      "size": 132,
+      "top_terms_by_frequency": [
+        {
+          "term": "appointment",
+          "count": 4714,
+          "sim_to_centroid": 0.539086
+        },
+        {
+          "term": "schedule",
+          "count": 2475,
+          "sim_to_centroid": 0.530845
+        },
+        {
+          "term": "hospital",
+          "count": 1956,
+          "sim_to_centroid": 0.784067
+        },
+        {
+          "term": "referral",
+          "count": 1847,
+          "sim_to_centroid": 0.542173
+        },
+        {
+          "term": "book",
+          "count": 1778,
+          "sim_to_centroid": 0.642164
+        },
+        {
+          "term": "uk",
+          "count": 1640,
+          "sim_to_centroid": 0.59984
+        },
+        {
+          "term": "consultation",
+          "count": 1429,
+          "sim_to_centroid": 0.75377
+        },
+        {
+          "term": "nhs",
+          "count": 1276,
+          "sim_to_centroid": 0.533794
+        },
+        {
+          "term": "local",
+          "count": 1133,
+          "sim_to_centroid": 0.576456
+        },
+        {
+          "term": "visit",
+          "count": 1081,
+          "sim_to_centroid": 0.589871
+        },
+        {
+          "term": "contact",
+          "count": 1069,
+          "sim_to_centroid": 0.703403
+        },
+        {
+          "term": "email",
+          "count": 964,
+          "sim_to_centroid": 0.692236
+        },
+        {
+          "term": "consult",
+          "count": 938,
+          "sim_to_centroid": 0.653781
+        },
+        {
+          "term": "private",
+          "count": 925,
+          "sim_to_centroid": 0.746465
+        },
+        {
+          "term": "clinic",
+          "count": 797,
+          "sim_to_centroid": 0.831955
+        },
+        {
+          "term": "mr",
+          "count": 775,
+          "sim_to_centroid": 0.594877
+        },
+        {
+          "term": "surgeon",
+          "count": 647,
+          "sim_to_centroid": 0.63129
+        },
+        {
+          "term": "date",
+          "count": 591,
+          "sim_to_centroid": 0.566849
+        },
+        {
+          "term": "expensive",
+          "count": 549,
+          "sim_to_centroid": 0.528153
+        },
+        {
+          "term": "institute",
+          "count": 547,
+          "sim_to_centroid": 0.516631
+        },
+        {
+          "term": "bill",
+          "count": 516,
+          "sim_to_centroid": 0.763794
+        },
+        {
+          "term": "operation",
+          "count": 498,
+          "sim_to_centroid": 0.642209
+        },
+        {
+          "term": "healthcare",
+          "count": 407,
+          "sim_to_centroid": 0.692407
+        },
+        {
+          "term": "ms",
+          "count": 403,
+          "sim_to_centroid": 0.528973
+        },
+        {
+          "term": "provider",
+          "count": 394,
+          "sim_to_centroid": 0.768478
+        },
+        {
+          "term": "kaiser",
+          "count": 390,
+          "sim_to_centroid": 0.806493
+        },
+        {
+          "term": "approve",
+          "count": 389,
+          "sim_to_centroid": 0.878206
+        },
+        {
+          "term": "meeting",
+          "count": 371,
+          "sim_to_centroid": 0.561111
+        },
+        {
+          "term": "charge",
+          "count": 351,
+          "sim_to_centroid": 0.791394
+        },
+        {
+          "term": "letter",
+          "count": 339,
+          "sim_to_centroid": 0.708194
+        },
+        {
+          "term": "deny",
+          "count": 303,
+          "sim_to_centroid": 0.828572
+        },
+        {
+          "term": "cancel",
+          "count": 293,
+          "sim_to_centroid": 0.682925
+        },
+        {
+          "term": "staff",
+          "count": 286,
+          "sim_to_centroid": 0.562795
+        },
+        {
+          "term": "canadian",
+          "count": 272,
+          "sim_to_centroid": 0.761977
+        },
+        {
+          "term": "surgical",
+          "count": 262,
+          "sim_to_centroid": 0.733366
+        },
+        {
+          "term": "manchester",
+          "count": 247,
+          "sim_to_centroid": 0.78888
+        },
+        {
+          "term": "network",
+          "count": 237,
+          "sim_to_centroid": 0.804251
+        },
+        {
+          "term": "exam",
+          "count": 228,
+          "sim_to_centroid": 0.413607
+        },
+        {
+          "term": "appeal",
+          "count": 224,
+          "sim_to_centroid": 0.856069
+        },
+        {
+          "term": "anesthesiologist",
+          "count": 223,
+          "sim_to_centroid": 0.611245
+        },
+        {
+          "term": "coverage",
+          "count": 198,
+          "sim_to_centroid": 0.824752
+        },
+        {
+          "term": "fee",
+          "count": 175,
+          "sim_to_centroid": 0.822854
+        },
+        {
+          "term": "quote",
+          "count": 171,
+          "sim_to_centroid": 0.838298
+        },
+        {
+          "term": "financial",
+          "count": 155,
+          "sim_to_centroid": 0.702396
+        },
+        {
+          "term": "department",
+          "count": 154,
+          "sim_to_centroid": 0.849148
+        },
+        {
+          "term": "bcbs",
+          "count": 150,
+          "sim_to_centroid": 0.81791
+        },
+        {
+          "term": "colleague",
+          "count": 150,
+          "sim_to_centroid": 0.641225
+        },
+        {
+          "term": "st",
+          "count": 149,
+          "sim_to_centroid": 0.803393
+        },
+        {
+          "term": "fees",
+          "count": 147,
+          "sim_to_centroid": 0.882307
+        },
+        {
+          "term": "england",
+          "count": 145,
+          "sim_to_centroid": 0.786803
+        }
+      ],
+      "top_terms_by_frequency_lines": "appointment\t4714\t0.539086\nschedule\t2475\t0.530845\nhospital\t1956\t0.784067\nreferral\t1847\t0.542173\nbook\t1778\t0.642164\nuk\t1640\t0.599840\nconsultation\t1429\t0.753770\nnhs\t1276\t0.533794\nlocal\t1133\t0.576456\nvisit\t1081\t0.589871\ncontact\t1069\t0.703403\nemail\t964\t0.692236\nconsult\t938\t0.653781\nprivate\t925\t0.746465\nclinic\t797\t0.831955\nmr\t775\t0.594877\nsurgeon\t647\t0.631290\ndate\t591\t0.566849\nexpensive\t549\t0.528153\ninstitute\t547\t0.516631\nbill\t516\t0.763794\noperation\t498\t0.642209\nhealthcare\t407\t0.692407\nms\t403\t0.528973\nprovider\t394\t0.768478\nkaiser\t390\t0.806493\napprove\t389\t0.878206\nmeeting\t371\t0.561111\ncharge\t351\t0.791394\nletter\t339\t0.708194\ndeny\t303\t0.828572\ncancel\t293\t0.682925\nstaff\t286\t0.562795\ncanadian\t272\t0.761977\nsurgical\t262\t0.733366\nmanchester\t247\t0.788880\nnetwork\t237\t0.804251\nexam\t228\t0.413607\nappeal\t224\t0.856069\nanesthesiologist\t223\t0.611245\ncoverage\t198\t0.824752\nfee\t175\t0.822854\nquote\t171\t0.838298\nfinancial\t155\t0.702396\ndepartment\t154\t0.849148\nbcbs\t150\t0.817910\ncolleague\t150\t0.641225\nst\t149\t0.803393\nfees\t147\t0.882307\nengland\t145\t0.786803"
+    },
+    {
+      "cluster": 3,
+      "size": 90,
+      "top_terms_by_frequency": [
+        {
+          "term": "burp",
+          "count": 71916,
+          "sim_to_centroid": 0.742498
+        },
+        {
+          "term": "vomit",
+          "count": 11543,
+          "sim_to_centroid": 0.486092
+        },
+        {
+          "term": "learn",
+          "count": 5192,
+          "sim_to_centroid": 0.647467
+        },
+        {
+          "term": "small",
+          "count": 4665,
+          "sim_to_centroid": 0.558502
+        },
+        {
+          "term": "gag",
+          "count": 3943,
+          "sim_to_centroid": 0.491621
+        },
+        {
+          "term": "force",
+          "count": 3767,
+          "sim_to_centroid": 0.788837
+        },
+        {
+          "term": "relax",
+          "count": 3334,
+          "sim_to_centroid": 0.526691
+        },
+        {
+          "term": "microburp",
+          "count": 3022,
+          "sim_to_centroid": 0.662916
+        },
+        {
+          "term": "practice",
+          "count": 3012,
+          "sim_to_centroid": 0.557632
+        },
+        {
+          "term": "control",
+          "count": 2706,
+          "sim_to_centroid": 0.618743
+        },
+        {
+          "term": "release",
+          "count": 2648,
+          "sim_to_centroid": 0.663518
+        },
+        {
+          "term": "loud",
+          "count": 2526,
+          "sim_to_centroid": 0.586369
+        },
+        {
+          "term": "relieve",
+          "count": 2481,
+          "sim_to_centroid": 0.536385
+        },
+        {
+          "term": "cough",
+          "count": 2096,
+          "sim_to_centroid": 0.509734
+        },
+        {
+          "term": "micro",
+          "count": 2076,
+          "sim_to_centroid": 0.69471
+        },
+        {
+          "term": "taste",
+          "count": 1984,
+          "sim_to_centroid": 0.457009
+        },
+        {
+          "term": "progress",
+          "count": 1652,
+          "sim_to_centroid": 0.40884
+        },
+        {
+          "term": "tiny",
+          "count": 1531,
+          "sim_to_centroid": 0.657591
+        },
+        {
+          "term": "random",
+          "count": 1452,
+          "sim_to_centroid": 0.623465
+        },
+        {
+          "term": "continue",
+          "count": 1417,
+          "sim_to_centroid": 0.400372
+        },
+        {
+          "term": "belch",
+          "count": 1330,
+          "sim_to_centroid": 0.613281
+        },
+        {
+          "term": "natural",
+          "count": 1315,
+          "sim_to_centroid": 0.746265
+        },
+        {
+          "term": "method",
+          "count": 1093,
+          "sim_to_centroid": 0.40841
+        },
+        {
+          "term": "teach",
+          "count": 995,
+          "sim_to_centroid": 0.578155
+        },
+        {
+          "term": "pop",
+          "count": 976,
+          "sim_to_centroid": 0.467753
+        },
+        {
+          "term": "focus",
+          "count": 941,
+          "sim_to_centroid": 0.427883
+        },
+        {
+          "term": "technique",
+          "count": 916,
+          "sim_to_centroid": 0.459921
+        },
+        {
+          "term": "escape",
+          "count": 885,
+          "sim_to_centroid": 0.555117
+        },
+        {
+          "term": "yawn",
+          "count": 874,
+          "sim_to_centroid": 0.733036
+        },
+        {
+          "term": "uncontrollable",
+          "count": 805,
+          "sim_to_centroid": 0.661977
+        },
+        {
+          "term": "accident",
+          "count": 723,
+          "sim_to_centroid": 0.727982
+        },
+        {
+          "term": "consistent",
+          "count": 685,
+          "sim_to_centroid": 0.612527
+        },
+        {
+          "term": "trick",
+          "count": 682,
+          "sim_to_centroid": 0.560578
+        },
+        {
+          "term": "effort",
+          "count": 601,
+          "sim_to_centroid": 0.491112
+        },
+        {
+          "term": "command",
+          "count": 567,
+          "sim_to_centroid": 0.754544
+        },
+        {
+          "term": "induce",
+          "count": 544,
+          "sim_to_centroid": 0.412678
+        },
+        {
+          "term": "involuntary",
+          "count": 517,
+          "sim_to_centroid": 0.86495
+        },
+        {
+          "term": "conscious",
+          "count": 495,
+          "sim_to_centroid": 0.523168
+        },
+        {
+          "term": "inhale",
+          "count": 471,
+          "sim_to_centroid": 0.611682
+        },
+        {
+          "term": "regurgitate",
+          "count": 470,
+          "sim_to_centroid": 0.406127
+        },
+        {
+          "term": "occasion",
+          "count": 358,
+          "sim_to_centroid": 0.405059
+        },
+        {
+          "term": "gradually",
+          "count": 347,
+          "sim_to_centroid": 0.435645
+        },
+        {
+          "term": "mini",
+          "count": 338,
+          "sim_to_centroid": 0.717436
+        },
+        {
+          "term": "urge",
+          "count": 336,
+          "sim_to_centroid": 0.530755
+        },
+        {
+          "term": "sneeze",
+          "count": 321,
+          "sim_to_centroid": 0.563963
+        },
+        {
+          "term": "expel",
+          "count": 289,
+          "sim_to_centroid": 0.509346
+        },
+        {
+          "term": "automatic",
+          "count": 282,
+          "sim_to_centroid": 0.724051
+        },
+        {
+          "term": "retch",
+          "count": 258,
+          "sim_to_centroid": 0.434644
+        },
+        {
+          "term": "subconscious",
+          "count": 254,
+          "sim_to_centroid": 0.552175
+        },
+        {
+          "term": "suppress",
+          "count": 245,
+          "sim_to_centroid": 0.70874
+        }
+      ],
+      "top_terms_by_frequency_lines": "burp\t71916\t0.742498\nvomit\t11543\t0.486092\nlearn\t5192\t0.647467\nsmall\t4665\t0.558502\ngag\t3943\t0.491621\nforce\t3767\t0.788837\nrelax\t3334\t0.526691\nmicroburp\t3022\t0.662916\npractice\t3012\t0.557632\ncontrol\t2706\t0.618743\nrelease\t2648\t0.663518\nloud\t2526\t0.586369\nrelieve\t2481\t0.536385\ncough\t2096\t0.509734\nmicro\t2076\t0.694710\ntaste\t1984\t0.457009\nprogress\t1652\t0.408840\ntiny\t1531\t0.657591\nrandom\t1452\t0.623465\ncontinue\t1417\t0.400372\nbelch\t1330\t0.613281\nnatural\t1315\t0.746265\nmethod\t1093\t0.408410\nteach\t995\t0.578155\npop\t976\t0.467753\nfocus\t941\t0.427883\ntechnique\t916\t0.459921\nescape\t885\t0.555117\nyawn\t874\t0.733036\nuncontrollable\t805\t0.661977\naccident\t723\t0.727982\nconsistent\t685\t0.612527\ntrick\t682\t0.560578\neffort\t601\t0.491112\ncommand\t567\t0.754544\ninduce\t544\t0.412678\ninvoluntary\t517\t0.864950\nconscious\t495\t0.523168\ninhale\t471\t0.611682\nregurgitate\t470\t0.406127\noccasion\t358\t0.405059\ngradually\t347\t0.435645\nmini\t338\t0.717436\nurge\t336\t0.530755\nsneeze\t321\t0.563963\nexpel\t289\t0.509346\nautomatic\t282\t0.724051\nretch\t258\t0.434644\nsubconscious\t254\t0.552175\nsuppress\t245\t0.708740"
+    },
+    {
+      "cluster": 4,
+      "size": 81,
+      "top_terms_by_frequency": [
+        {
+          "term": "botox",
+          "count": 40648,
+          "sim_to_centroid": 0.436791
+        },
+        {
+          "term": "procedure",
+          "count": 19080,
+          "sim_to_centroid": 0.491116
+        },
+        {
+          "term": "treatment",
+          "count": 7409,
+          "sim_to_centroid": 0.477306
+        },
+        {
+          "term": "injection",
+          "count": 4946,
+          "sim_to_centroid": 0.703528
+        },
+        {
+          "term": "unit",
+          "count": 4253,
+          "sim_to_centroid": 0.575702
+        },
+        {
+          "term": "success",
+          "count": 3876,
+          "sim_to_centroid": 0.544221
+        },
+        {
+          "term": "100",
+          "count": 3326,
+          "sim_to_centroid": 0.522039
+        },
+        {
+          "term": "dose",
+          "count": 2955,
+          "sim_to_centroid": 0.5792
+        },
+        {
+          "term": "patient",
+          "count": 2871,
+          "sim_to_centroid": 0.540437
+        },
+        {
+          "term": "option",
+          "count": 1702,
+          "sim_to_centroid": 0.478542
+        },
+        {
+          "term": "shot",
+          "count": 1433,
+          "sim_to_centroid": 0.401069
+        },
+        {
+          "term": "risk",
+          "count": 1122,
+          "sim_to_centroid": 0.46142
+        },
+        {
+          "term": "inject",
+          "count": 1102,
+          "sim_to_centroid": 0.64883
+        },
+        {
+          "term": "perform",
+          "count": 1020,
+          "sim_to_centroid": 0.500372
+        },
+        {
+          "term": "ga",
+          "count": 923,
+          "sim_to_centroid": 0.559271
+        },
+        {
+          "term": "permanent",
+          "count": 912,
+          "sim_to_centroid": 0.624505
+        },
+        {
+          "term": "80",
+          "count": 864,
+          "sim_to_centroid": 0.669864
+        },
+        {
+          "term": "anesthetic",
+          "count": 851,
+          "sim_to_centroid": 0.476508
+        },
+        {
+          "term": "75",
+          "count": 833,
+          "sim_to_centroid": 0.635781
+        },
+        {
+          "term": "effective",
+          "count": 709,
+          "sim_to_centroid": 0.536605
+        },
+        {
+          "term": "dysphagia",
+          "count": 523,
+          "sim_to_centroid": 0.468703
+        },
+        {
+          "term": "benefit",
+          "count": 511,
+          "sim_to_centroid": 0.533212
+        },
+        {
+          "term": "cricopharyngeal",
+          "count": 503,
+          "sim_to_centroid": 0.450199
+        },
+        {
+          "term": "myotomy",
+          "count": 376,
+          "sim_to_centroid": 0.784555
+        },
+        {
+          "term": "dosage",
+          "count": 342,
+          "sim_to_centroid": 0.689532
+        },
+        {
+          "term": "dilation",
+          "count": 335,
+          "sim_to_centroid": 0.584201
+        },
+        {
+          "term": "complication",
+          "count": 322,
+          "sim_to_centroid": 0.509778
+        },
+        {
+          "term": "range",
+          "count": 311,
+          "sim_to_centroid": 0.453554
+        },
+        {
+          "term": "60",
+          "count": 298,
+          "sim_to_centroid": 0.544838
+        },
+        {
+          "term": "individual",
+          "count": 292,
+          "sim_to_centroid": 0.491812
+        },
+        {
+          "term": "cp",
+          "count": 237,
+          "sim_to_centroid": 0.480246
+        },
+        {
+          "term": "150",
+          "count": 217,
+          "sim_to_centroid": 0.731143
+        },
+        {
+          "term": "timeline",
+          "count": 201,
+          "sim_to_centroid": 0.549131
+        },
+        {
+          "term": "invasive",
+          "count": 195,
+          "sim_to_centroid": 0.555875
+        },
+        {
+          "term": "anaesthesia",
+          "count": 174,
+          "sim_to_centroid": 0.512689
+        },
+        {
+          "term": "con",
+          "count": 171,
+          "sim_to_centroid": 0.434473
+        },
+        {
+          "term": "100u",
+          "count": 170,
+          "sim_to_centroid": 0.736274
+        },
+        {
+          "term": "50u",
+          "count": 148,
+          "sim_to_centroid": 0.823511
+        },
+        {
+          "term": "intervention",
+          "count": 142,
+          "sim_to_centroid": 0.553603
+        },
+        {
+          "term": "endoscope",
+          "count": 140,
+          "sim_to_centroid": 0.544986
+        },
+        {
+          "term": "administer",
+          "count": 138,
+          "sim_to_centroid": 0.750994
+        },
+        {
+          "term": "125",
+          "count": 129,
+          "sim_to_centroid": 0.65495
+        },
+        {
+          "term": "undergo",
+          "count": 124,
+          "sim_to_centroid": 0.607935
+        },
+        {
+          "term": "downside",
+          "count": 121,
+          "sim_to_centroid": 0.506451
+        },
+        {
+          "term": "percentage",
+          "count": 112,
+          "sim_to_centroid": 0.504913
+        },
+        {
+          "term": "toxin",
+          "count": 108,
+          "sim_to_centroid": 0.727788
+        },
+        {
+          "term": "effectiveness",
+          "count": 106,
+          "sim_to_centroid": 0.74135
+        },
+        {
+          "term": "risky",
+          "count": 91,
+          "sim_to_centroid": 0.550673
+        },
+        {
+          "term": "100mg",
+          "count": 87,
+          "sim_to_centroid": 0.718927
+        },
+        {
+          "term": "likelihood",
+          "count": 79,
+          "sim_to_centroid": 0.517318
+        }
+      ],
+      "top_terms_by_frequency_lines": "botox\t40648\t0.436791\nprocedure\t19080\t0.491116\ntreatment\t7409\t0.477306\ninjection\t4946\t0.703528\nunit\t4253\t0.575702\nsuccess\t3876\t0.544221\n100\t3326\t0.522039\ndose\t2955\t0.579200\npatient\t2871\t0.540437\noption\t1702\t0.478542\nshot\t1433\t0.401069\nrisk\t1122\t0.461420\ninject\t1102\t0.648830\nperform\t1020\t0.500372\nga\t923\t0.559271\npermanent\t912\t0.624505\n80\t864\t0.669864\nanesthetic\t851\t0.476508\n75\t833\t0.635781\neffective\t709\t0.536605\ndysphagia\t523\t0.468703\nbenefit\t511\t0.533212\ncricopharyngeal\t503\t0.450199\nmyotomy\t376\t0.784555\ndosage\t342\t0.689532\ndilation\t335\t0.584201\ncomplication\t322\t0.509778\nrange\t311\t0.453554\n60\t298\t0.544838\nindividual\t292\t0.491812\ncp\t237\t0.480246\n150\t217\t0.731143\ntimeline\t201\t0.549131\ninvasive\t195\t0.555875\nanaesthesia\t174\t0.512689\ncon\t171\t0.434473\n100u\t170\t0.736274\n50u\t148\t0.823511\nintervention\t142\t0.553603\nendoscope\t140\t0.544986\nadminister\t138\t0.750994\n125\t129\t0.654950\nundergo\t124\t0.607935\ndownside\t121\t0.506451\npercentage\t112\t0.504913\ntoxin\t108\t0.727788\neffectiveness\t106\t0.741350\nrisky\t91\t0.550673\n100mg\t87\t0.718927\nlikelihood\t79\t0.517318"
+    },
+    {
+      "cluster": 5,
+      "size": 119,
+      "top_terms_by_frequency": [
+        {
+          "term": "test",
+          "count": 5627,
+          "sim_to_centroid": 0.496451
+        },
+        {
+          "term": "diagnose",
+          "count": 2712,
+          "sim_to_centroid": 0.523763
+        },
+        {
+          "term": "gi",
+          "count": 2467,
+          "sim_to_centroid": 0.52328
+        },
+        {
+          "term": "gerd",
+          "count": 2001,
+          "sim_to_centroid": 0.544497
+        },
+        {
+          "term": "endoscopy",
+          "count": 1596,
+          "sim_to_centroid": 0.612871
+        },
+        {
+          "term": "ibs",
+          "count": 1530,
+          "sim_to_centroid": 0.570903
+        },
+        {
+          "term": "hernia",
+          "count": 1473,
+          "sim_to_centroid": 0.460617
+        },
+        {
+          "term": "esophageal",
+          "count": 1400,
+          "sim_to_centroid": 0.588573
+        },
+        {
+          "term": "manometry",
+          "count": 1093,
+          "sim_to_centroid": 0.600812
+        },
+        {
+          "term": "barium",
+          "count": 1088,
+          "sim_to_centroid": 0.469929
+        },
+        {
+          "term": "hiatal",
+          "count": 987,
+          "sim_to_centroid": 0.517218
+        },
+        {
+          "term": "les",
+          "count": 931,
+          "sim_to_centroid": 0.49526
+        },
+        {
+          "term": "confirm",
+          "count": 808,
+          "sim_to_centroid": 0.584558
+        },
+        {
+          "term": "gastroenterologist",
+          "count": 745,
+          "sim_to_centroid": 0.59688
+        },
+        {
+          "term": "damage",
+          "count": 672,
+          "sim_to_centroid": 0.407399
+        },
+        {
+          "term": "gastro",
+          "count": 536,
+          "sim_to_centroid": 0.675092
+        },
+        {
+          "term": "bowel",
+          "count": 527,
+          "sim_to_centroid": 0.462545
+        },
+        {
+          "term": "sibo",
+          "count": 508,
+          "sim_to_centroid": 0.800283
+        },
+        {
+          "term": "syndrome",
+          "count": 483,
+          "sim_to_centroid": 0.640302
+        },
+        {
+          "term": "er",
+          "count": 414,
+          "sim_to_centroid": 0.421425
+        },
+        {
+          "term": "disease",
+          "count": 395,
+          "sim_to_centroid": 0.713479
+        },
+        {
+          "term": "colon",
+          "count": 384,
+          "sim_to_centroid": 0.508099
+        },
+        {
+          "term": "motility",
+          "count": 380,
+          "sim_to_centroid": 0.796587
+        },
+        {
+          "term": "gastric",
+          "count": 371,
+          "sim_to_centroid": 0.656317
+        },
+        {
+          "term": "lpr",
+          "count": 342,
+          "sim_to_centroid": 0.551754
+        },
+        {
+          "term": "intolerance",
+          "count": 319,
+          "sim_to_centroid": 0.539755
+        },
+        {
+          "term": "gastritis",
+          "count": 280,
+          "sim_to_centroid": 0.710659
+        },
+        {
+          "term": "infection",
+          "count": 268,
+          "sim_to_centroid": 0.622801
+        },
+        {
+          "term": "ph",
+          "count": 260,
+          "sim_to_centroid": 0.720802
+        },
+        {
+          "term": "gastroscopy",
+          "count": 258,
+          "sim_to_centroid": 0.68186
+        },
+        {
+          "term": "colonoscopy",
+          "count": 254,
+          "sim_to_centroid": 0.704299
+        },
+        {
+          "term": "misdiagnose",
+          "count": 234,
+          "sim_to_centroid": 0.565319
+        },
+        {
+          "term": "barrett",
+          "count": 224,
+          "sim_to_centroid": 0.622122
+        },
+        {
+          "term": "stool",
+          "count": 223,
+          "sim_to_centroid": 0.575441
+        },
+        {
+          "term": "abnormal",
+          "count": 221,
+          "sim_to_centroid": 0.536287
+        },
+        {
+          "term": "scan",
+          "count": 212,
+          "sim_to_centroid": 0.782897
+        },
+        {
+          "term": "monitor",
+          "count": 203,
+          "sim_to_centroid": 0.555824
+        },
+        {
+          "term": "gastroparesis",
+          "count": 192,
+          "sim_to_centroid": 0.799441
+        },
+        {
+          "term": "inflammation",
+          "count": 192,
+          "sim_to_centroid": 0.658254
+        },
+        {
+          "term": "ct",
+          "count": 189,
+          "sim_to_centroid": 0.696447
+        },
+        {
+          "term": "celiac",
+          "count": 188,
+          "sim_to_centroid": 0.772238
+        },
+        {
+          "term": "ulcer",
+          "count": 188,
+          "sim_to_centroid": 0.681686
+        },
+        {
+          "term": "dilate",
+          "count": 176,
+          "sim_to_centroid": 0.526286
+        },
+        {
+          "term": "pylori",
+          "count": 174,
+          "sim_to_centroid": 0.821684
+        },
+        {
+          "term": "aerophagia",
+          "count": 166,
+          "sim_to_centroid": 0.560058
+        },
+        {
+          "term": "ultrasound",
+          "count": 159,
+          "sim_to_centroid": 0.731719
+        },
+        {
+          "term": "bacteria",
+          "count": 157,
+          "sim_to_centroid": 0.574004
+        },
+        {
+          "term": "achalasia",
+          "count": 148,
+          "sim_to_centroid": 0.641234
+        },
+        {
+          "term": "determine",
+          "count": 145,
+          "sim_to_centroid": 0.569206
+        },
+        {
+          "term": "gastrointestinal",
+          "count": 133,
+          "sim_to_centroid": 0.573054
+        }
+      ],
+      "top_terms_by_frequency_lines": "test\t5627\t0.496451\ndiagnose\t2712\t0.523763\ngi\t2467\t0.523280\ngerd\t2001\t0.544497\nendoscopy\t1596\t0.612871\nibs\t1530\t0.570903\nhernia\t1473\t0.460617\nesophageal\t1400\t0.588573\nmanometry\t1093\t0.600812\nbarium\t1088\t0.469929\nhiatal\t987\t0.517218\nles\t931\t0.495260\nconfirm\t808\t0.584558\ngastroenterologist\t745\t0.596880\ndamage\t672\t0.407399\ngastro\t536\t0.675092\nbowel\t527\t0.462545\nsibo\t508\t0.800283\nsyndrome\t483\t0.640302\ner\t414\t0.421425\ndisease\t395\t0.713479\ncolon\t384\t0.508099\nmotility\t380\t0.796587\ngastric\t371\t0.656317\nlpr\t342\t0.551754\nintolerance\t319\t0.539755\ngastritis\t280\t0.710659\ninfection\t268\t0.622801\nph\t260\t0.720802\ngastroscopy\t258\t0.681860\ncolonoscopy\t254\t0.704299\nmisdiagnose\t234\t0.565319\nbarrett\t224\t0.622122\nstool\t223\t0.575441\nabnormal\t221\t0.536287\nscan\t212\t0.782897\nmonitor\t203\t0.555824\ngastroparesis\t192\t0.799441\ninflammation\t192\t0.658254\nct\t189\t0.696447\nceliac\t188\t0.772238\nulcer\t188\t0.681686\ndilate\t176\t0.526286\npylori\t174\t0.821684\naerophagia\t166\t0.560058\nultrasound\t159\t0.731719\nbacteria\t157\t0.574004\nachalasia\t148\t0.641234\ndetermine\t145\t0.569206\ngastrointestinal\t133\t0.573054"
+    },
+    {
+      "cluster": 6,
+      "size": 132,
+      "top_terms_by_frequency": [
+        {
+          "term": "eat",
+          "count": 16115,
+          "sim_to_centroid": 0.547463
+        },
+        {
+          "term": "drink",
+          "count": 15659,
+          "sim_to_centroid": 0.537572
+        },
+        {
+          "term": "food",
+          "count": 8554,
+          "sim_to_centroid": 0.555831
+        },
+        {
+          "term": "water",
+          "count": 6879,
+          "sim_to_centroid": 0.456548
+        },
+        {
+          "term": "meal",
+          "count": 3273,
+          "sim_to_centroid": 0.463157
+        },
+        {
+          "term": "beer",
+          "count": 2130,
+          "sim_to_centroid": 0.557926
+        },
+        {
+          "term": "diet",
+          "count": 2039,
+          "sim_to_centroid": 0.488589
+        },
+        {
+          "term": "liquid",
+          "count": 1868,
+          "sim_to_centroid": 0.463795
+        },
+        {
+          "term": "soda",
+          "count": 1480,
+          "sim_to_centroid": 0.614721
+        },
+        {
+          "term": "alcohol",
+          "count": 1445,
+          "sim_to_centroid": 0.589949
+        },
+        {
+          "term": "sip",
+          "count": 1272,
+          "sim_to_centroid": 0.436964
+        },
+        {
+          "term": "chew",
+          "count": 1064,
+          "sim_to_centroid": 0.540149
+        },
+        {
+          "term": "carbonation",
+          "count": 987,
+          "sim_to_centroid": 0.57066
+        },
+        {
+          "term": "dinner",
+          "count": 940,
+          "sim_to_centroid": 0.553654
+        },
+        {
+          "term": "beverage",
+          "count": 730,
+          "sim_to_centroid": 0.56589
+        },
+        {
+          "term": "soup",
+          "count": 685,
+          "sim_to_centroid": 0.767161
+        },
+        {
+          "term": "chug",
+          "count": 635,
+          "sim_to_centroid": 0.505367
+        },
+        {
+          "term": "lunch",
+          "count": 582,
+          "sim_to_centroid": 0.499994
+        },
+        {
+          "term": "healthy",
+          "count": 557,
+          "sim_to_centroid": 0.408996
+        },
+        {
+          "term": "shake",
+          "count": 512,
+          "sim_to_centroid": 0.67129
+        },
+        {
+          "term": "hot",
+          "count": 486,
+          "sim_to_centroid": 0.682011
+        },
+        {
+          "term": "fodmap",
+          "count": 482,
+          "sim_to_centroid": 0.43356
+        },
+        {
+          "term": "sparkle",
+          "count": 464,
+          "sim_to_centroid": 0.510696
+        },
+        {
+          "term": "dairy",
+          "count": 426,
+          "sim_to_centroid": 0.761625
+        },
+        {
+          "term": "seltzer",
+          "count": 408,
+          "sim_to_centroid": 0.600438
+        },
+        {
+          "term": "wine",
+          "count": 379,
+          "sim_to_centroid": 0.77251
+        },
+        {
+          "term": "sugar",
+          "count": 377,
+          "sim_to_centroid": 0.793948
+        },
+        {
+          "term": "breakfast",
+          "count": 370,
+          "sim_to_centroid": 0.651549
+        },
+        {
+          "term": "bread",
+          "count": 350,
+          "sim_to_centroid": 0.814782
+        },
+        {
+          "term": "juice",
+          "count": 332,
+          "sim_to_centroid": 0.863336
+        },
+        {
+          "term": "gluten",
+          "count": 331,
+          "sim_to_centroid": 0.623223
+        },
+        {
+          "term": "consume",
+          "count": 327,
+          "sim_to_centroid": 0.78329
+        },
+        {
+          "term": "thick",
+          "count": 307,
+          "sim_to_centroid": 0.559971
+        },
+        {
+          "term": "coke",
+          "count": 303,
+          "sim_to_centroid": 0.770026
+        },
+        {
+          "term": "gulp",
+          "count": 302,
+          "sim_to_centroid": 0.423406
+        },
+        {
+          "term": "egg",
+          "count": 292,
+          "sim_to_centroid": 0.80103
+        },
+        {
+          "term": "spicy",
+          "count": 285,
+          "sim_to_centroid": 0.761541
+        },
+        {
+          "term": "snack",
+          "count": 267,
+          "sim_to_centroid": 0.750093
+        },
+        {
+          "term": "ginger",
+          "count": 265,
+          "sim_to_centroid": 0.746661
+        },
+        {
+          "term": "intake",
+          "count": 265,
+          "sim_to_centroid": 0.649341
+        },
+        {
+          "term": "fruit",
+          "count": 254,
+          "sim_to_centroid": 0.909256
+        },
+        {
+          "term": "smoothie",
+          "count": 251,
+          "sim_to_centroid": 0.842001
+        },
+        {
+          "term": "lactose",
+          "count": 250,
+          "sim_to_centroid": 0.654364
+        },
+        {
+          "term": "calorie",
+          "count": 237,
+          "sim_to_centroid": 0.702058
+        },
+        {
+          "term": "bubbly",
+          "count": 233,
+          "sim_to_centroid": 0.59175
+        },
+        {
+          "term": "digest",
+          "count": 231,
+          "sim_to_centroid": 0.595422
+        },
+        {
+          "term": "fat",
+          "count": 228,
+          "sim_to_centroid": 0.546403
+        },
+        {
+          "term": "meat",
+          "count": 227,
+          "sim_to_centroid": 0.821707
+        },
+        {
+          "term": "carbohydrate",
+          "count": 219,
+          "sim_to_centroid": 0.81939
+        },
+        {
+          "term": "vegetable",
+          "count": 211,
+          "sim_to_centroid": 0.881868
+        }
+      ],
+      "top_terms_by_frequency_lines": "eat\t16115\t0.547463\ndrink\t15659\t0.537572\nfood\t8554\t0.555831\nwater\t6879\t0.456548\nmeal\t3273\t0.463157\nbeer\t2130\t0.557926\ndiet\t2039\t0.488589\nliquid\t1868\t0.463795\nsoda\t1480\t0.614721\nalcohol\t1445\t0.589949\nsip\t1272\t0.436964\nchew\t1064\t0.540149\ncarbonation\t987\t0.570660\ndinner\t940\t0.553654\nbeverage\t730\t0.565890\nsoup\t685\t0.767161\nchug\t635\t0.505367\nlunch\t582\t0.499994\nhealthy\t557\t0.408996\nshake\t512\t0.671290\nhot\t486\t0.682011\nfodmap\t482\t0.433560\nsparkle\t464\t0.510696\ndairy\t426\t0.761625\nseltzer\t408\t0.600438\nwine\t379\t0.772510\nsugar\t377\t0.793948\nbreakfast\t370\t0.651549\nbread\t350\t0.814782\njuice\t332\t0.863336\ngluten\t331\t0.623223\nconsume\t327\t0.783290\nthick\t307\t0.559971\ncoke\t303\t0.770026\ngulp\t302\t0.423406\negg\t292\t0.801030\nspicy\t285\t0.761541\nsnack\t267\t0.750093\nginger\t265\t0.746661\nintake\t265\t0.649341\nfruit\t254\t0.909256\nsmoothie\t251\t0.842001\nlactose\t250\t0.654364\ncalorie\t237\t0.702058\nbubbly\t233\t0.591750\ndigest\t231\t0.595422\nfat\t228\t0.546403\nmeat\t227\t0.821707\ncarbohydrate\t219\t0.819390\nvegetable\t211\t0.881868"
+    },
+    {
+      "cluster": 7,
+      "size": 159,
+      "top_terms_by_frequency": [
+        {
+          "term": "muscle",
+          "count": 6711,
+          "sim_to_centroid": 0.524271
+        },
+        {
+          "term": "esophagus",
+          "count": 3745,
+          "sim_to_centroid": 0.404695
+        },
+        {
+          "term": "push",
+          "count": 3471,
+          "sim_to_centroid": 0.562091
+        },
+        {
+          "term": "neck",
+          "count": 3139,
+          "sim_to_centroid": 0.680204
+        },
+        {
+          "term": "sit",
+          "count": 2421,
+          "sim_to_centroid": 0.46987
+        },
+        {
+          "term": "position",
+          "count": 1684,
+          "sim_to_centroid": 0.61314
+        },
+        {
+          "term": "stretch",
+          "count": 1523,
+          "sim_to_centroid": 0.704771
+        },
+        {
+          "term": "ues",
+          "count": 1446,
+          "sim_to_centroid": 0.450795
+        },
+        {
+          "term": "sphincter",
+          "count": 1391,
+          "sim_to_centroid": 0.440305
+        },
+        {
+          "term": "deep",
+          "count": 1196,
+          "sim_to_centroid": 0.472663
+        },
+        {
+          "term": "tight",
+          "count": 1124,
+          "sim_to_centroid": 0.565152
+        },
+        {
+          "term": "tongue",
+          "count": 1065,
+          "sim_to_centroid": 0.579286
+        },
+        {
+          "term": "posture",
+          "count": 801,
+          "sim_to_centroid": 0.563356
+        },
+        {
+          "term": "movement",
+          "count": 767,
+          "sim_to_centroid": 0.632508
+        },
+        {
+          "term": "massage",
+          "count": 760,
+          "sim_to_centroid": 0.619927
+        },
+        {
+          "term": "diaphragm",
+          "count": 754,
+          "sim_to_centroid": 0.745082
+        },
+        {
+          "term": "lean",
+          "count": 683,
+          "sim_to_centroid": 0.549831
+        },
+        {
+          "term": "belly",
+          "count": 680,
+          "sim_to_centroid": 0.515798
+        },
+        {
+          "term": "abdominal",
+          "count": 669,
+          "sim_to_centroid": 0.457554
+        },
+        {
+          "term": "shoulder",
+          "count": 666,
+          "sim_to_centroid": 0.757894
+        },
+        {
+          "term": "tense",
+          "count": 652,
+          "sim_to_centroid": 0.663565
+        },
+        {
+          "term": "cricopharyngeus",
+          "count": 643,
+          "sim_to_centroid": 0.450516
+        },
+        {
+          "term": "larynx",
+          "count": 641,
+          "sim_to_centroid": 0.589867
+        },
+        {
+          "term": "balloon",
+          "count": 581,
+          "sim_to_centroid": 0.458557
+        },
+        {
+          "term": "chin",
+          "count": 560,
+          "sim_to_centroid": 0.74289
+        },
+        {
+          "term": "vocal",
+          "count": 539,
+          "sim_to_centroid": 0.452116
+        },
+        {
+          "term": "abdomen",
+          "count": 525,
+          "sim_to_centroid": 0.720051
+        },
+        {
+          "term": "jaw",
+          "count": 514,
+          "sim_to_centroid": 0.787287
+        },
+        {
+          "term": "nerve",
+          "count": 505,
+          "sim_to_centroid": 0.548101
+        },
+        {
+          "term": "lung",
+          "count": 474,
+          "sim_to_centroid": 0.492065
+        },
+        {
+          "term": "motion",
+          "count": 458,
+          "sim_to_centroid": 0.637617
+        },
+        {
+          "term": "block",
+          "count": 448,
+          "sim_to_centroid": 0.609367
+        },
+        {
+          "term": "tension",
+          "count": 433,
+          "sim_to_centroid": 0.65278
+        },
+        {
+          "term": "press",
+          "count": 419,
+          "sim_to_centroid": 0.840832
+        },
+        {
+          "term": "spasm",
+          "count": 415,
+          "sim_to_centroid": 0.48523
+        },
+        {
+          "term": "ab",
+          "count": 405,
+          "sim_to_centroid": 0.722742
+        },
+        {
+          "term": "rise",
+          "count": 394,
+          "sim_to_centroid": 0.531635
+        },
+        {
+          "term": "arm",
+          "count": 377,
+          "sim_to_centroid": 0.760743
+        },
+        {
+          "term": "yoga",
+          "count": 359,
+          "sim_to_centroid": 0.51852
+        },
+        {
+          "term": "squeeze",
+          "count": 353,
+          "sim_to_centroid": 0.813715
+        },
+        {
+          "term": "loose",
+          "count": 352,
+          "sim_to_centroid": 0.528737
+        },
+        {
+          "term": "strain",
+          "count": 349,
+          "sim_to_centroid": 0.644813
+        },
+        {
+          "term": "tighten",
+          "count": 325,
+          "sim_to_centroid": 0.688347
+        },
+        {
+          "term": "strengthen",
+          "count": 306,
+          "sim_to_centroid": 0.701837
+        },
+        {
+          "term": "paralyze",
+          "count": 298,
+          "sim_to_centroid": 0.508627
+        },
+        {
+          "term": "twist",
+          "count": 290,
+          "sim_to_centroid": 0.773222
+        },
+        {
+          "term": "rib",
+          "count": 286,
+          "sim_to_centroid": 0.612719
+        },
+        {
+          "term": "adjust",
+          "count": 283,
+          "sim_to_centroid": 0.407389
+        },
+        {
+          "term": "action",
+          "count": 278,
+          "sim_to_centroid": 0.45995
+        },
+        {
+          "term": "cord",
+          "count": 269,
+          "sim_to_centroid": 0.409454
+        }
+      ],
+      "top_terms_by_frequency_lines": "muscle\t6711\t0.524271\nesophagus\t3745\t0.404695\npush\t3471\t0.562091\nneck\t3139\t0.680204\nsit\t2421\t0.469870\nposition\t1684\t0.613140\nstretch\t1523\t0.704771\nues\t1446\t0.450795\nsphincter\t1391\t0.440305\ndeep\t1196\t0.472663\ntight\t1124\t0.565152\ntongue\t1065\t0.579286\nposture\t801\t0.563356\nmovement\t767\t0.632508\nmassage\t760\t0.619927\ndiaphragm\t754\t0.745082\nlean\t683\t0.549831\nbelly\t680\t0.515798\nabdominal\t669\t0.457554\nshoulder\t666\t0.757894\ntense\t652\t0.663565\ncricopharyngeus\t643\t0.450516\nlarynx\t641\t0.589867\nballoon\t581\t0.458557\nchin\t560\t0.742890\nvocal\t539\t0.452116\nabdomen\t525\t0.720051\njaw\t514\t0.787287\nnerve\t505\t0.548101\nlung\t474\t0.492065\nmotion\t458\t0.637617\nblock\t448\t0.609367\ntension\t433\t0.652780\npress\t419\t0.840832\nspasm\t415\t0.485230\nab\t405\t0.722742\nrise\t394\t0.531635\narm\t377\t0.760743\nyoga\t359\t0.518520\nsqueeze\t353\t0.813715\nloose\t352\t0.528737\nstrain\t349\t0.644813\ntighten\t325\t0.688347\nstrengthen\t306\t0.701837\nparalyze\t298\t0.508627\ntwist\t290\t0.773222\nrib\t286\t0.612719\nadjust\t283\t0.407389\naction\t278\t0.459950\ncord\t269\t0.409454"
+    },
+    {
+      "cluster": 8,
+      "size": 92,
+      "top_terms_by_frequency": [
+        {
+          "term": "medication",
+          "count": 2024,
+          "sim_to_centroid": 0.739672
+        },
+        {
+          "term": "pill",
+          "count": 1450,
+          "sim_to_centroid": 0.436077
+        },
+        {
+          "term": "prescribe",
+          "count": 675,
+          "sim_to_centroid": 0.72616
+        },
+        {
+          "term": "omeprazole",
+          "count": 603,
+          "sim_to_centroid": 0.827942
+        },
+        {
+          "term": "antacid",
+          "count": 520,
+          "sim_to_centroid": 0.870086
+        },
+        {
+          "term": "wedge",
+          "count": 500,
+          "sim_to_centroid": 0.420963
+        },
+        {
+          "term": "ppis",
+          "count": 465,
+          "sim_to_centroid": 0.736047
+        },
+        {
+          "term": "tums",
+          "count": 359,
+          "sim_to_centroid": 0.843563
+        },
+        {
+          "term": "gaviscon",
+          "count": 348,
+          "sim_to_centroid": 0.858706
+        },
+        {
+          "term": "drug",
+          "count": 341,
+          "sim_to_centroid": 0.72
+        },
+        {
+          "term": "ppi",
+          "count": 315,
+          "sim_to_centroid": 0.798441
+        },
+        {
+          "term": "tablet",
+          "count": 312,
+          "sim_to_centroid": 0.76495
+        },
+        {
+          "term": "supplement",
+          "count": 288,
+          "sim_to_centroid": 0.7729
+        },
+        {
+          "term": "prescription",
+          "count": 282,
+          "sim_to_centroid": 0.826613
+        },
+        {
+          "term": "ibuprofen",
+          "count": 236,
+          "sim_to_centroid": 0.576221
+        },
+        {
+          "term": "simethicone",
+          "count": 229,
+          "sim_to_centroid": 0.797107
+        },
+        {
+          "term": "antibiotic",
+          "count": 213,
+          "sim_to_centroid": 0.672715
+        },
+        {
+          "term": "zofran",
+          "count": 206,
+          "sim_to_centroid": 0.755084
+        },
+        {
+          "term": "famotidine",
+          "count": 204,
+          "sim_to_centroid": 0.868043
+        },
+        {
+          "term": "pepcid",
+          "count": 199,
+          "sim_to_centroid": 0.894939
+        },
+        {
+          "term": "peppermint",
+          "count": 173,
+          "sim_to_centroid": 0.737168
+        },
+        {
+          "term": "tylenol",
+          "count": 163,
+          "sim_to_centroid": 0.597452
+        },
+        {
+          "term": "probiotics",
+          "count": 154,
+          "sim_to_centroid": 0.764525
+        },
+        {
+          "term": "enzyme",
+          "count": 152,
+          "sim_to_centroid": 0.59848
+        },
+        {
+          "term": "pantoprazole",
+          "count": 131,
+          "sim_to_centroid": 0.863178
+        },
+        {
+          "term": "vitamin",
+          "count": 131,
+          "sim_to_centroid": 0.612637
+        },
+        {
+          "term": "capsule",
+          "count": 124,
+          "sim_to_centroid": 0.699283
+        },
+        {
+          "term": "prilosec",
+          "count": 112,
+          "sim_to_centroid": 0.889947
+        },
+        {
+          "term": "otc",
+          "count": 107,
+          "sim_to_centroid": 0.907773
+        },
+        {
+          "term": "gasx",
+          "count": 98,
+          "sim_to_centroid": 0.801249
+        },
+        {
+          "term": "laxative",
+          "count": 91,
+          "sim_to_centroid": 0.796162
+        },
+        {
+          "term": "blocker",
+          "count": 86,
+          "sim_to_centroid": 0.843486
+        },
+        {
+          "term": "probiotic",
+          "count": 85,
+          "sim_to_centroid": 0.77529
+        },
+        {
+          "term": "nexium",
+          "count": 83,
+          "sim_to_centroid": 0.899347
+        },
+        {
+          "term": "antidepressant",
+          "count": 81,
+          "sim_to_centroid": 0.692656
+        },
+        {
+          "term": "reducer",
+          "count": 81,
+          "sim_to_centroid": 0.565635
+        },
+        {
+          "term": "acupuncture",
+          "count": 81,
+          "sim_to_centroid": 0.464558
+        },
+        {
+          "term": "advil",
+          "count": 80,
+          "sim_to_centroid": 0.694692
+        },
+        {
+          "term": "magnesium",
+          "count": 77,
+          "sim_to_centroid": 0.756279
+        },
+        {
+          "term": "charcoal",
+          "count": 73,
+          "sim_to_centroid": 0.813835
+        },
+        {
+          "term": "cannabis",
+          "count": 68,
+          "sim_to_centroid": 0.613952
+        },
+        {
+          "term": "h2",
+          "count": 61,
+          "sim_to_centroid": 0.813551
+        },
+        {
+          "term": "painkiller",
+          "count": 61,
+          "sim_to_centroid": 0.632128
+        },
+        {
+          "term": "steroid",
+          "count": 59,
+          "sim_to_centroid": 0.688414
+        },
+        {
+          "term": "inhaler",
+          "count": 58,
+          "sim_to_centroid": 0.594351
+        },
+        {
+          "term": "marijuana",
+          "count": 58,
+          "sim_to_centroid": 0.441898
+        },
+        {
+          "term": "cbd",
+          "count": 55,
+          "sim_to_centroid": 0.755234
+        },
+        {
+          "term": "amitriptyline",
+          "count": 53,
+          "sim_to_centroid": 0.815293
+        },
+        {
+          "term": "rennie",
+          "count": 51,
+          "sim_to_centroid": 0.866875
+        },
+        {
+          "term": "beano",
+          "count": 51,
+          "sim_to_centroid": 0.762683
+        }
+      ],
+      "top_terms_by_frequency_lines": "medication\t2024\t0.739672\npill\t1450\t0.436077\nprescribe\t675\t0.726160\nomeprazole\t603\t0.827942\nantacid\t520\t0.870086\nwedge\t500\t0.420963\nppis\t465\t0.736047\ntums\t359\t0.843563\ngaviscon\t348\t0.858706\ndrug\t341\t0.720000\nppi\t315\t0.798441\ntablet\t312\t0.764950\nsupplement\t288\t0.772900\nprescription\t282\t0.826613\nibuprofen\t236\t0.576221\nsimethicone\t229\t0.797107\nantibiotic\t213\t0.672715\nzofran\t206\t0.755084\nfamotidine\t204\t0.868043\npepcid\t199\t0.894939\npeppermint\t173\t0.737168\ntylenol\t163\t0.597452\nprobiotics\t154\t0.764525\nenzyme\t152\t0.598480\npantoprazole\t131\t0.863178\nvitamin\t131\t0.612637\ncapsule\t124\t0.699283\nprilosec\t112\t0.889947\notc\t107\t0.907773\ngasx\t98\t0.801249\nlaxative\t91\t0.796162\nblocker\t86\t0.843486\nprobiotic\t85\t0.775290\nnexium\t83\t0.899347\nantidepressant\t81\t0.692656\nreducer\t81\t0.565635\nacupuncture\t81\t0.464558\nadvil\t80\t0.694692\nmagnesium\t77\t0.756279\ncharcoal\t73\t0.813835\ncannabis\t68\t0.613952\nh2\t61\t0.813551\npainkiller\t61\t0.632128\nsteroid\t59\t0.688414\ninhaler\t58\t0.594351\nmarijuana\t58\t0.441898\ncbd\t55\t0.755234\namitriptyline\t53\t0.815293\nrennie\t51\t0.866875\nbeano\t51\t0.762683"
+    },
+    {
+      "cluster": 9,
+      "size": 105,
+      "top_terms_by_frequency": [
+        {
+          "term": "sick",
+          "count": 2934,
+          "sim_to_centroid": 0.610224
+        },
+        {
+          "term": "fear",
+          "count": 2089,
+          "sim_to_centroid": 0.482213
+        },
+        {
+          "term": "suck",
+          "count": 1671,
+          "sim_to_centroid": 0.492149
+        },
+        {
+          "term": "scared",
+          "count": 1560,
+          "sim_to_centroid": 0.541588
+        },
+        {
+          "term": "awful",
+          "count": 1543,
+          "sim_to_centroid": 0.645225
+        },
+        {
+          "term": "alone",
+          "count": 1500,
+          "sim_to_centroid": 0.56946
+        },
+        {
+          "term": "laugh",
+          "count": 1466,
+          "sim_to_centroid": 0.51608
+        },
+        {
+          "term": "miserable",
+          "count": 1285,
+          "sim_to_centroid": 0.621549
+        },
+        {
+          "term": "panic",
+          "count": 1215,
+          "sim_to_centroid": 0.408487
+        },
+        {
+          "term": "kid",
+          "count": 1144,
+          "sim_to_centroid": 0.523207
+        },
+        {
+          "term": "hate",
+          "count": 1134,
+          "sim_to_centroid": 0.798761
+        },
+        {
+          "term": "embarrass",
+          "count": 1104,
+          "sim_to_centroid": 0.669641
+        },
+        {
+          "term": "puke",
+          "count": 1028,
+          "sim_to_centroid": 0.58724
+        },
+        {
+          "term": "afraid",
+          "count": 1010,
+          "sim_to_centroid": 0.470938
+        },
+        {
+          "term": "incredible",
+          "count": 981,
+          "sim_to_centroid": 0.457422
+        },
+        {
+          "term": "social",
+          "count": 979,
+          "sim_to_centroid": 0.490927
+        },
+        {
+          "term": "fun",
+          "count": 931,
+          "sim_to_centroid": 0.745124
+        },
+        {
+          "term": "truly",
+          "count": 809,
+          "sim_to_centroid": 0.533531
+        },
+        {
+          "term": "gross",
+          "count": 801,
+          "sim_to_centroid": 0.578117
+        },
+        {
+          "term": "hell",
+          "count": 782,
+          "sim_to_centroid": 0.709191
+        },
+        {
+          "term": "shit",
+          "count": 775,
+          "sim_to_centroid": 0.654207
+        },
+        {
+          "term": "funny",
+          "count": 695,
+          "sim_to_centroid": 0.57368
+        },
+        {
+          "term": "freak",
+          "count": 691,
+          "sim_to_centroid": 0.441599
+        },
+        {
+          "term": "terrify",
+          "count": 674,
+          "sim_to_centroid": 0.590319
+        },
+        {
+          "term": "ugh",
+          "count": 508,
+          "sim_to_centroid": 0.669811
+        },
+        {
+          "term": "shock",
+          "count": 508,
+          "sim_to_centroid": 0.486024
+        },
+        {
+          "term": "event",
+          "count": 475,
+          "sim_to_centroid": 0.50994
+        },
+        {
+          "term": "ruin",
+          "count": 432,
+          "sim_to_centroid": 0.611949
+        },
+        {
+          "term": "drunk",
+          "count": 414,
+          "sim_to_centroid": 0.582542
+        },
+        {
+          "term": "stupid",
+          "count": 369,
+          "sim_to_centroid": 0.524136
+        },
+        {
+          "term": "emetophobe",
+          "count": 349,
+          "sim_to_centroid": 0.49952
+        },
+        {
+          "term": "awkward",
+          "count": 322,
+          "sim_to_centroid": 0.596486
+        },
+        {
+          "term": "scare",
+          "count": 307,
+          "sim_to_centroid": 0.559657
+        },
+        {
+          "term": "traumatic",
+          "count": 304,
+          "sim_to_centroid": 0.478756
+        },
+        {
+          "term": "disgust",
+          "count": 301,
+          "sim_to_centroid": 0.686637
+        },
+        {
+          "term": "joke",
+          "count": 301,
+          "sim_to_centroid": 0.671778
+        },
+        {
+          "term": "excuse",
+          "count": 277,
+          "sim_to_centroid": 0.587453
+        },
+        {
+          "term": "complain",
+          "count": 276,
+          "sim_to_centroid": 0.522447
+        },
+        {
+          "term": "wedding",
+          "count": 269,
+          "sim_to_centroid": 0.577847
+        },
+        {
+          "term": "hahaha",
+          "count": 236,
+          "sim_to_centroid": 0.656666
+        },
+        {
+          "term": "exhaust",
+          "count": 235,
+          "sim_to_centroid": 0.581303
+        },
+        {
+          "term": "misery",
+          "count": 227,
+          "sim_to_centroid": 0.522034
+        },
+        {
+          "term": "rush",
+          "count": 227,
+          "sim_to_centroid": 0.40414
+        },
+        {
+          "term": "nightmare",
+          "count": 208,
+          "sim_to_centroid": 0.77025
+        },
+        {
+          "term": "emotional",
+          "count": 187,
+          "sim_to_centroid": 0.528532
+        },
+        {
+          "term": "dread",
+          "count": 181,
+          "sim_to_centroid": 0.722145
+        },
+        {
+          "term": "hide",
+          "count": 181,
+          "sim_to_centroid": 0.580155
+        },
+        {
+          "term": "concert",
+          "count": 158,
+          "sim_to_centroid": 0.558918
+        },
+        {
+          "term": "teenager",
+          "count": 158,
+          "sim_to_centroid": 0.456212
+        },
+        {
+          "term": "horrendous",
+          "count": 154,
+          "sim_to_centroid": 0.644882
+        }
+      ],
+      "top_terms_by_frequency_lines": "sick\t2934\t0.610224\nfear\t2089\t0.482213\nsuck\t1671\t0.492149\nscared\t1560\t0.541588\nawful\t1543\t0.645225\nalone\t1500\t0.569460\nlaugh\t1466\t0.516080\nmiserable\t1285\t0.621549\npanic\t1215\t0.408487\nkid\t1144\t0.523207\nhate\t1134\t0.798761\nembarrass\t1104\t0.669641\npuke\t1028\t0.587240\nafraid\t1010\t0.470938\nincredible\t981\t0.457422\nsocial\t979\t0.490927\nfun\t931\t0.745124\ntruly\t809\t0.533531\ngross\t801\t0.578117\nhell\t782\t0.709191\nshit\t775\t0.654207\nfunny\t695\t0.573680\nfreak\t691\t0.441599\nterrify\t674\t0.590319\nugh\t508\t0.669811\nshock\t508\t0.486024\nevent\t475\t0.509940\nruin\t432\t0.611949\ndrunk\t414\t0.582542\nstupid\t369\t0.524136\nemetophobe\t349\t0.499520\nawkward\t322\t0.596486\nscare\t307\t0.559657\ntraumatic\t304\t0.478756\ndisgust\t301\t0.686637\njoke\t301\t0.671778\nexcuse\t277\t0.587453\ncomplain\t276\t0.522447\nwedding\t269\t0.577847\nhahaha\t236\t0.656666\nexhaust\t235\t0.581303\nmisery\t227\t0.522034\nrush\t227\t0.404140\nnightmare\t208\t0.770250\nemotional\t187\t0.528532\ndread\t181\t0.722145\nhide\t181\t0.580155\nconcert\t158\t0.558918\nteenager\t158\t0.456212\nhorrendous\t154\t0.644882"
+    },
+    {
+      "cluster": 10,
+      "size": 149,
+      "top_terms_by_frequency": [
+        {
+          "term": "doctor",
+          "count": 30127,
+          "sim_to_centroid": 0.487675
+        },
+        {
+          "term": "ent",
+          "count": 4616,
+          "sim_to_centroid": 0.510257
+        },
+        {
+          "term": "treat",
+          "count": 4190,
+          "sim_to_centroid": 0.48104
+        },
+        {
+          "term": "sub",
+          "count": 3275,
+          "sim_to_centroid": 0.455401
+        },
+        {
+          "term": "specialist",
+          "count": 2567,
+          "sim_to_centroid": 0.517296
+        },
+        {
+          "term": "video",
+          "count": 2163,
+          "sim_to_centroid": 0.408081
+        },
+        {
+          "term": "research",
+          "count": 1903,
+          "sim_to_centroid": 0.724306
+        },
+        {
+          "term": "subreddit",
+          "count": 1731,
+          "sim_to_centroid": 0.518748
+        },
+        {
+          "term": "diagnosis",
+          "count": 1662,
+          "sim_to_centroid": 0.55828
+        },
+        {
+          "term": "refer",
+          "count": 1656,
+          "sim_to_centroid": 0.505879
+        },
+        {
+          "term": "group",
+          "count": 1604,
+          "sim_to_centroid": 0.586792
+        },
+        {
+          "term": "study",
+          "count": 1549,
+          "sim_to_centroid": 0.598512
+        },
+        {
+          "term": "doc",
+          "count": 1482,
+          "sim_to_centroid": 0.521856
+        },
+        {
+          "term": "gp",
+          "count": 1464,
+          "sim_to_centroid": 0.502346
+        },
+        {
+          "term": "suggest",
+          "count": 1384,
+          "sim_to_centroid": 0.491834
+        },
+        {
+          "term": "paper",
+          "count": 1325,
+          "sim_to_centroid": 0.669454
+        },
+        {
+          "term": "reddit",
+          "count": 1270,
+          "sim_to_centroid": 0.591509
+        },
+        {
+          "term": "info",
+          "count": 1226,
+          "sim_to_centroid": 0.618882
+        },
+        {
+          "term": "community",
+          "count": 1219,
+          "sim_to_centroid": 0.544368
+        },
+        {
+          "term": "information",
+          "count": 1125,
+          "sim_to_centroid": 0.696956
+        },
+        {
+          "term": "convince",
+          "count": 915,
+          "sim_to_centroid": 0.4829
+        },
+        {
+          "term": "listen",
+          "count": 813,
+          "sim_to_centroid": 0.56236
+        },
+        {
+          "term": "thread",
+          "count": 743,
+          "sim_to_centroid": 0.559164
+        },
+        {
+          "term": "support",
+          "count": 719,
+          "sim_to_centroid": 0.579545
+        },
+        {
+          "term": "exist",
+          "count": 700,
+          "sim_to_centroid": 0.499368
+        },
+        {
+          "term": "recognize",
+          "count": 668,
+          "sim_to_centroid": 0.533546
+        },
+        {
+          "term": "article",
+          "count": 636,
+          "sim_to_centroid": 0.75357
+        },
+        {
+          "term": "page",
+          "count": 592,
+          "sim_to_centroid": 0.697036
+        },
+        {
+          "term": "online",
+          "count": 535,
+          "sim_to_centroid": 0.725485
+        },
+        {
+          "term": "accept",
+          "count": 500,
+          "sim_to_centroid": 0.474534
+        },
+        {
+          "term": "primary",
+          "count": 443,
+          "sim_to_centroid": 0.516484
+        },
+        {
+          "term": "evidence",
+          "count": 439,
+          "sim_to_centroid": 0.634086
+        },
+        {
+          "term": "prove",
+          "count": 419,
+          "sim_to_centroid": 0.579637
+        },
+        {
+          "term": "website",
+          "count": 393,
+          "sim_to_centroid": 0.75658
+        },
+        {
+          "term": "knowledge",
+          "count": 368,
+          "sim_to_centroid": 0.664339
+        },
+        {
+          "term": "forum",
+          "count": 367,
+          "sim_to_centroid": 0.605141
+        },
+        {
+          "term": "review",
+          "count": 360,
+          "sim_to_centroid": 0.765433
+        },
+        {
+          "term": "folk",
+          "count": 353,
+          "sim_to_centroid": 0.558293
+        },
+        {
+          "term": "consultant",
+          "count": 349,
+          "sim_to_centroid": 0.618214
+        },
+        {
+          "term": "datum",
+          "count": 341,
+          "sim_to_centroid": 0.700526
+        },
+        {
+          "term": "dismiss",
+          "count": 305,
+          "sim_to_centroid": 0.510521
+        },
+        {
+          "term": "address",
+          "count": 297,
+          "sim_to_centroid": 0.662865
+        },
+        {
+          "term": "source",
+          "count": 292,
+          "sim_to_centroid": 0.790112
+        },
+        {
+          "term": "r/noburp",
+          "count": 290,
+          "sim_to_centroid": 0.702907
+        },
+        {
+          "term": "publish",
+          "count": 279,
+          "sim_to_centroid": 0.76533
+        },
+        {
+          "term": "pcp",
+          "count": 276,
+          "sim_to_centroid": 0.624753
+        },
+        {
+          "term": "diagnostic",
+          "count": 272,
+          "sim_to_centroid": 0.620892
+        },
+        {
+          "term": "print",
+          "count": 258,
+          "sim_to_centroid": 0.661589
+        },
+        {
+          "term": "ignore",
+          "count": 255,
+          "sim_to_centroid": 0.453061
+        },
+        {
+          "term": "statistic",
+          "count": 244,
+          "sim_to_centroid": 0.571972
+        }
+      ],
+      "top_terms_by_frequency_lines": "doctor\t30127\t0.487675\nent\t4616\t0.510257\ntreat\t4190\t0.481040\nsub\t3275\t0.455401\nspecialist\t2567\t0.517296\nvideo\t2163\t0.408081\nresearch\t1903\t0.724306\nsubreddit\t1731\t0.518748\ndiagnosis\t1662\t0.558280\nrefer\t1656\t0.505879\ngroup\t1604\t0.586792\nstudy\t1549\t0.598512\ndoc\t1482\t0.521856\ngp\t1464\t0.502346\nsuggest\t1384\t0.491834\npaper\t1325\t0.669454\nreddit\t1270\t0.591509\ninfo\t1226\t0.618882\ncommunity\t1219\t0.544368\ninformation\t1125\t0.696956\nconvince\t915\t0.482900\nlisten\t813\t0.562360\nthread\t743\t0.559164\nsupport\t719\t0.579545\nexist\t700\t0.499368\nrecognize\t668\t0.533546\narticle\t636\t0.753570\npage\t592\t0.697036\nonline\t535\t0.725485\naccept\t500\t0.474534\nprimary\t443\t0.516484\nevidence\t439\t0.634086\nprove\t419\t0.579637\nwebsite\t393\t0.756580\nknowledge\t368\t0.664339\nforum\t367\t0.605141\nreview\t360\t0.765433\nfolk\t353\t0.558293\nconsultant\t349\t0.618214\ndatum\t341\t0.700526\ndismiss\t305\t0.510521\naddress\t297\t0.662865\nsource\t292\t0.790112\nr/noburp\t290\t0.702907\npublish\t279\t0.765330\npcp\t276\t0.624753\ndiagnostic\t272\t0.620892\nprint\t258\t0.661589\nignore\t255\t0.453061\nstatistic\t244\t0.571972"
+    },
+    {
+      "cluster": 11,
+      "size": 105,
+      "top_terms_by_frequency": [
+        {
+          "term": "anesthesia",
+          "count": 2502,
+          "sim_to_centroid": 0.48208
+        },
+        {
+          "term": "sore",
+          "count": 2375,
+          "sim_to_centroid": 0.582562
+        },
+        {
+          "term": "recovery",
+          "count": 1561,
+          "sim_to_centroid": 0.449069
+        },
+        {
+          "term": "scope",
+          "count": 783,
+          "sim_to_centroid": 0.557026
+        },
+        {
+          "term": "needle",
+          "count": 769,
+          "sim_to_centroid": 0.573135
+        },
+        {
+          "term": "tube",
+          "count": 735,
+          "sim_to_centroid": 0.47959
+        },
+        {
+          "term": "prepare",
+          "count": 706,
+          "sim_to_centroid": 0.418083
+        },
+        {
+          "term": "rough",
+          "count": 697,
+          "sim_to_centroid": 0.473189
+        },
+        {
+          "term": "nurse",
+          "count": 668,
+          "sim_to_centroid": 0.524833
+        },
+        {
+          "term": "lump",
+          "count": 668,
+          "sim_to_centroid": 0.4528
+        },
+        {
+          "term": "camera",
+          "count": 627,
+          "sim_to_centroid": 0.477167
+        },
+        {
+          "term": "tired",
+          "count": 601,
+          "sim_to_centroid": 0.492596
+        },
+        {
+          "term": "nasal",
+          "count": 533,
+          "sim_to_centroid": 0.543059
+        },
+        {
+          "term": "numb",
+          "count": 492,
+          "sim_to_centroid": 0.738974
+        },
+        {
+          "term": "recover",
+          "count": 421,
+          "sim_to_centroid": 0.439323
+        },
+        {
+          "term": "iv",
+          "count": 398,
+          "sim_to_centroid": 0.645383
+        },
+        {
+          "term": "smooth",
+          "count": 391,
+          "sim_to_centroid": 0.507546
+        },
+        {
+          "term": "asleep",
+          "count": 368,
+          "sim_to_centroid": 0.524217
+        },
+        {
+          "term": "swell",
+          "count": 361,
+          "sim_to_centroid": 0.662811
+        },
+        {
+          "term": "spray",
+          "count": 353,
+          "sim_to_centroid": 0.669254
+        },
+        {
+          "term": "drip",
+          "count": 316,
+          "sim_to_centroid": 0.409338
+        },
+        {
+          "term": "sinus",
+          "count": 208,
+          "sim_to_centroid": 0.50844
+        },
+        {
+          "term": "soreness",
+          "count": 180,
+          "sim_to_centroid": 0.67182
+        },
+        {
+          "term": "laryngoscope",
+          "count": 180,
+          "sim_to_centroid": 0.502876
+        },
+        {
+          "term": "intubation",
+          "count": 169,
+          "sim_to_centroid": 0.6617
+        },
+        {
+          "term": "sedation",
+          "count": 146,
+          "sim_to_centroid": 0.532204
+        },
+        {
+          "term": "scratch",
+          "count": 133,
+          "sim_to_centroid": 0.671237
+        },
+        {
+          "term": "faint",
+          "count": 130,
+          "sim_to_centroid": 0.585671
+        },
+        {
+          "term": "insert",
+          "count": 124,
+          "sim_to_centroid": 0.680438
+        },
+        {
+          "term": "dizzy",
+          "count": 122,
+          "sim_to_centroid": 0.60076
+        },
+        {
+          "term": "itch",
+          "count": 117,
+          "sim_to_centroid": 0.558441
+        },
+        {
+          "term": "painless",
+          "count": 117,
+          "sim_to_centroid": 0.546699
+        },
+        {
+          "term": "sniff",
+          "count": 115,
+          "sim_to_centroid": 0.528048
+        },
+        {
+          "term": "hoarse",
+          "count": 102,
+          "sim_to_centroid": 0.462429
+        },
+        {
+          "term": "intubate",
+          "count": 101,
+          "sim_to_centroid": 0.653624
+        },
+        {
+          "term": "bearable",
+          "count": 100,
+          "sim_to_centroid": 0.425489
+        },
+        {
+          "term": "nostril",
+          "count": 92,
+          "sim_to_centroid": 0.652739
+        },
+        {
+          "term": "tender",
+          "count": 90,
+          "sim_to_centroid": 0.53165
+        },
+        {
+          "term": "tickle",
+          "count": 88,
+          "sim_to_centroid": 0.595319
+        },
+        {
+          "term": "sedate",
+          "count": 86,
+          "sim_to_centroid": 0.627407
+        },
+        {
+          "term": "groggy",
+          "count": 85,
+          "sim_to_centroid": 0.73423
+        },
+        {
+          "term": "fever",
+          "count": 78,
+          "sim_to_centroid": 0.612499
+        },
+        {
+          "term": "bruise",
+          "count": 76,
+          "sim_to_centroid": 0.704634
+        },
+        {
+          "term": "gown",
+          "count": 76,
+          "sim_to_centroid": 0.451741
+        },
+        {
+          "term": "aspirate",
+          "count": 74,
+          "sim_to_centroid": 0.448538
+        },
+        {
+          "term": "passage",
+          "count": 68,
+          "sim_to_centroid": 0.472411
+        },
+        {
+          "term": "sleepy",
+          "count": 66,
+          "sim_to_centroid": 0.722768
+        },
+        {
+          "term": "vaccine",
+          "count": 66,
+          "sim_to_centroid": 0.580971
+        },
+        {
+          "term": "bitter",
+          "count": 66,
+          "sim_to_centroid": 0.483833
+        },
+        {
+          "term": "lidocaine",
+          "count": 58,
+          "sim_to_centroid": 0.670853
+        }
+      ],
+      "top_terms_by_frequency_lines": "anesthesia\t2502\t0.482080\nsore\t2375\t0.582562\nrecovery\t1561\t0.449069\nscope\t783\t0.557026\nneedle\t769\t0.573135\ntube\t735\t0.479590\nprepare\t706\t0.418083\nrough\t697\t0.473189\nnurse\t668\t0.524833\nlump\t668\t0.452800\ncamera\t627\t0.477167\ntired\t601\t0.492596\nnasal\t533\t0.543059\nnumb\t492\t0.738974\nrecover\t421\t0.439323\niv\t398\t0.645383\nsmooth\t391\t0.507546\nasleep\t368\t0.524217\nswell\t361\t0.662811\nspray\t353\t0.669254\ndrip\t316\t0.409338\nsinus\t208\t0.508440\nsoreness\t180\t0.671820\nlaryngoscope\t180\t0.502876\nintubation\t169\t0.661700\nsedation\t146\t0.532204\nscratch\t133\t0.671237\nfaint\t130\t0.585671\ninsert\t124\t0.680438\ndizzy\t122\t0.600760\nitch\t117\t0.558441\npainless\t117\t0.546699\nsniff\t115\t0.528048\nhoarse\t102\t0.462429\nintubate\t101\t0.653624\nbearable\t100\t0.425489\nnostril\t92\t0.652739\ntender\t90\t0.531650\ntickle\t88\t0.595319\nsedate\t86\t0.627407\ngroggy\t85\t0.734230\nfever\t78\t0.612499\nbruise\t76\t0.704634\ngown\t76\t0.451741\naspirate\t74\t0.448538\npassage\t68\t0.472411\nsleepy\t66\t0.722768\nvaccine\t66\t0.580971\nbitter\t66\t0.483833\nlidocaine\t58\t0.670853"
+    },
+    {
+      "cluster": 12,
+      "size": 90,
+      "top_terms_by_frequency": [
+        {
+          "term": "hope",
+          "count": 12162,
+          "sim_to_centroid": 0.461287
+        },
+        {
+          "term": "happy",
+          "count": 3343,
+          "sim_to_centroid": 0.815885
+        },
+        {
+          "term": "update",
+          "count": 3024,
+          "sim_to_centroid": 0.436888
+        },
+        {
+          "term": "glad",
+          "count": 2947,
+          "sim_to_centroid": 0.742876
+        },
+        {
+          "term": "interest",
+          "count": 2830,
+          "sim_to_centroid": 0.520551
+        },
+        {
+          "term": "amazing",
+          "count": 1982,
+          "sim_to_centroid": 0.676324
+        },
+        {
+          "term": "excite",
+          "count": 1939,
+          "sim_to_centroid": 0.757445
+        },
+        {
+          "term": "story",
+          "count": 1907,
+          "sim_to_centroid": 0.463583
+        },
+        {
+          "term": "helpful",
+          "count": 1788,
+          "sim_to_centroid": 0.573298
+        },
+        {
+          "term": "curious",
+          "count": 1637,
+          "sim_to_centroid": 0.460174
+        },
+        {
+          "term": "nervous",
+          "count": 1632,
+          "sim_to_centroid": 0.427191
+        },
+        {
+          "term": "nice",
+          "count": 1624,
+          "sim_to_centroid": 0.752085
+        },
+        {
+          "term": "congratulation",
+          "count": 1188,
+          "sim_to_centroid": 0.719189
+        },
+        {
+          "term": "welcome",
+          "count": 1035,
+          "sim_to_centroid": 0.631362
+        },
+        {
+          "term": "frustrate",
+          "count": 969,
+          "sim_to_centroid": 0.600839
+        },
+        {
+          "term": "awesome",
+          "count": 948,
+          "sim_to_centroid": 0.848353
+        },
+        {
+          "term": "positive",
+          "count": 897,
+          "sim_to_centroid": 0.639643
+        },
+        {
+          "term": "journey",
+          "count": 755,
+          "sim_to_centroid": 0.579736
+        },
+        {
+          "term": "thankful",
+          "count": 701,
+          "sim_to_centroid": 0.699666
+        },
+        {
+          "term": "sad",
+          "count": 676,
+          "sim_to_centroid": 0.692866
+        },
+        {
+          "term": "encourage",
+          "count": 643,
+          "sim_to_centroid": 0.520077
+        },
+        {
+          "term": "confuse",
+          "count": 540,
+          "sim_to_centroid": 0.526044
+        },
+        {
+          "term": "desperate",
+          "count": 515,
+          "sim_to_centroid": 0.429663
+        },
+        {
+          "term": "hopeful",
+          "count": 513,
+          "sim_to_centroid": 0.757088
+        },
+        {
+          "term": "trust",
+          "count": 505,
+          "sim_to_centroid": 0.487229
+        },
+        {
+          "term": "cool",
+          "count": 496,
+          "sim_to_centroid": 0.738521
+        },
+        {
+          "term": "grateful",
+          "count": 486,
+          "sim_to_centroid": 0.828892
+        },
+        {
+          "term": "reassure",
+          "count": 423,
+          "sim_to_centroid": 0.792288
+        },
+        {
+          "term": "confident",
+          "count": 421,
+          "sim_to_centroid": 0.561405
+        },
+        {
+          "term": "discourage",
+          "count": 388,
+          "sim_to_centroid": 0.665685
+        },
+        {
+          "term": "promise",
+          "count": 385,
+          "sim_to_centroid": 0.712302
+        },
+        {
+          "term": "wonderful",
+          "count": 373,
+          "sim_to_centroid": 0.762173
+        },
+        {
+          "term": "comfort",
+          "count": 361,
+          "sim_to_centroid": 0.662888
+        },
+        {
+          "term": "validate",
+          "count": 295,
+          "sim_to_centroid": 0.70627
+        },
+        {
+          "term": "disappoint",
+          "count": 268,
+          "sim_to_centroid": 0.771212
+        },
+        {
+          "term": "lovely",
+          "count": 237,
+          "sim_to_centroid": 0.659456
+        },
+        {
+          "term": "silly",
+          "count": 192,
+          "sim_to_centroid": 0.460141
+        },
+        {
+          "term": "optimistic",
+          "count": 175,
+          "sim_to_centroid": 0.747392
+        },
+        {
+          "term": "hesitant",
+          "count": 166,
+          "sim_to_centroid": 0.669563
+        },
+        {
+          "term": "knowledgeable",
+          "count": 161,
+          "sim_to_centroid": 0.629155
+        },
+        {
+          "term": "keen",
+          "count": 134,
+          "sim_to_centroid": 0.753991
+        },
+        {
+          "term": "friendly",
+          "count": 134,
+          "sim_to_centroid": 0.59823
+        },
+        {
+          "term": "pleased",
+          "count": 130,
+          "sim_to_centroid": 0.830655
+        },
+        {
+          "term": "cautious",
+          "count": 119,
+          "sim_to_centroid": 0.674972
+        },
+        {
+          "term": "rude",
+          "count": 119,
+          "sim_to_centroid": 0.663355
+        },
+        {
+          "term": "unfortunate",
+          "count": 115,
+          "sim_to_centroid": 0.659484
+        },
+        {
+          "term": "annoyed",
+          "count": 109,
+          "sim_to_centroid": 0.677672
+        },
+        {
+          "term": "bizarre",
+          "count": 103,
+          "sim_to_centroid": 0.597847
+        },
+        {
+          "term": "thrill",
+          "count": 102,
+          "sim_to_centroid": 0.810775
+        },
+        {
+          "term": "hopeless",
+          "count": 102,
+          "sim_to_centroid": 0.690243
+        }
+      ],
+      "top_terms_by_frequency_lines": "hope\t12162\t0.461287\nhappy\t3343\t0.815885\nupdate\t3024\t0.436888\nglad\t2947\t0.742876\ninterest\t2830\t0.520551\namazing\t1982\t0.676324\nexcite\t1939\t0.757445\nstory\t1907\t0.463583\nhelpful\t1788\t0.573298\ncurious\t1637\t0.460174\nnervous\t1632\t0.427191\nnice\t1624\t0.752085\ncongratulation\t1188\t0.719189\nwelcome\t1035\t0.631362\nfrustrate\t969\t0.600839\nawesome\t948\t0.848353\npositive\t897\t0.639643\njourney\t755\t0.579736\nthankful\t701\t0.699666\nsad\t676\t0.692866\nencourage\t643\t0.520077\nconfuse\t540\t0.526044\ndesperate\t515\t0.429663\nhopeful\t513\t0.757088\ntrust\t505\t0.487229\ncool\t496\t0.738521\ngrateful\t486\t0.828892\nreassure\t423\t0.792288\nconfident\t421\t0.561405\ndiscourage\t388\t0.665685\npromise\t385\t0.712302\nwonderful\t373\t0.762173\ncomfort\t361\t0.662888\nvalidate\t295\t0.706270\ndisappoint\t268\t0.771212\nlovely\t237\t0.659456\nsilly\t192\t0.460141\noptimistic\t175\t0.747392\nhesitant\t166\t0.669563\nknowledgeable\t161\t0.629155\nkeen\t134\t0.753991\nfriendly\t134\t0.598230\npleased\t130\t0.830655\ncautious\t119\t0.674972\nrude\t119\t0.663355\nunfortunate\t115\t0.659484\nannoyed\t109\t0.677672\nbizarre\t103\t0.597847\nthrill\t102\t0.810775\nhopeless\t102\t0.690243"
+    },
+    {
+      "cluster": 13,
+      "size": 129,
+      "top_terms_by_frequency": [
+        {
+          "term": "feel",
+          "count": 39090,
+          "sim_to_centroid": 0.549212
+        },
+        {
+          "term": "gurgle",
+          "count": 13645,
+          "sim_to_centroid": 0.680959
+        },
+        {
+          "term": "pain",
+          "count": 11790,
+          "sim_to_centroid": 0.722614
+        },
+        {
+          "term": "bloat",
+          "count": 10841,
+          "sim_to_centroid": 0.740966
+        },
+        {
+          "term": "stomach",
+          "count": 10179,
+          "sim_to_centroid": 0.547163
+        },
+        {
+          "term": "gas",
+          "count": 8774,
+          "sim_to_centroid": 0.464292
+        },
+        {
+          "term": "bad",
+          "count": 8409,
+          "sim_to_centroid": 0.516003
+        },
+        {
+          "term": "worse",
+          "count": 6875,
+          "sim_to_centroid": 0.407964
+        },
+        {
+          "term": "nausea",
+          "count": 4484,
+          "sim_to_centroid": 0.687238
+        },
+        {
+          "term": "pressure",
+          "count": 4371,
+          "sim_to_centroid": 0.566338
+        },
+        {
+          "term": "chest",
+          "count": 4052,
+          "sim_to_centroid": 0.641789
+        },
+        {
+          "term": "hiccup",
+          "count": 3501,
+          "sim_to_centroid": 0.560768
+        },
+        {
+          "term": "uncomfortable",
+          "count": 3087,
+          "sim_to_centroid": 0.636
+        },
+        {
+          "term": "constant",
+          "count": 2911,
+          "sim_to_centroid": 0.758172
+        },
+        {
+          "term": "noise",
+          "count": 2463,
+          "sim_to_centroid": 0.482387
+        },
+        {
+          "term": "extreme",
+          "count": 2397,
+          "sim_to_centroid": 0.451698
+        },
+        {
+          "term": "discomfort",
+          "count": 2395,
+          "sim_to_centroid": 0.631487
+        },
+        {
+          "term": "stuck",
+          "count": 2137,
+          "sim_to_centroid": 0.438861
+        },
+        {
+          "term": "trap",
+          "count": 2123,
+          "sim_to_centroid": 0.565599
+        },
+        {
+          "term": "worst",
+          "count": 2062,
+          "sim_to_centroid": 0.488628
+        },
+        {
+          "term": "nauseous",
+          "count": 2025,
+          "sim_to_centroid": 0.678971
+        },
+        {
+          "term": "croak",
+          "count": 1966,
+          "sim_to_centroid": 0.556986
+        },
+        {
+          "term": "bubble",
+          "count": 1942,
+          "sim_to_centroid": 0.501381
+        },
+        {
+          "term": "hurt",
+          "count": 1782,
+          "sim_to_centroid": 0.529121
+        },
+        {
+          "term": "horrible",
+          "count": 1533,
+          "sim_to_centroid": 0.66132
+        },
+        {
+          "term": "sensation",
+          "count": 1459,
+          "sim_to_centroid": 0.460198
+        },
+        {
+          "term": "heartburn",
+          "count": 1182,
+          "sim_to_centroid": 0.519371
+        },
+        {
+          "term": "terrible",
+          "count": 1156,
+          "sim_to_centroid": 0.644065
+        },
+        {
+          "term": "annoy",
+          "count": 1155,
+          "sim_to_centroid": 0.506739
+        },
+        {
+          "term": "excessive",
+          "count": 1082,
+          "sim_to_centroid": 0.524715
+        },
+        {
+          "term": "flatulence",
+          "count": 1080,
+          "sim_to_centroid": 0.519681
+        },
+        {
+          "term": "attack",
+          "count": 978,
+          "sim_to_centroid": 0.422969
+        },
+        {
+          "term": "intense",
+          "count": 851,
+          "sim_to_centroid": 0.715989
+        },
+        {
+          "term": "rarely",
+          "count": 805,
+          "sim_to_centroid": 0.446035
+        },
+        {
+          "term": "saliva",
+          "count": 766,
+          "sim_to_centroid": 0.513778
+        },
+        {
+          "term": "burn",
+          "count": 749,
+          "sim_to_centroid": 0.633422
+        },
+        {
+          "term": "gassy",
+          "count": 720,
+          "sim_to_centroid": 0.572106
+        },
+        {
+          "term": "frequent",
+          "count": 702,
+          "sim_to_centroid": 0.529286
+        },
+        {
+          "term": "episode",
+          "count": 678,
+          "sim_to_centroid": 0.580866
+        },
+        {
+          "term": "excess",
+          "count": 601,
+          "sim_to_centroid": 0.474779
+        },
+        {
+          "term": "smell",
+          "count": 567,
+          "sim_to_centroid": 0.446135
+        },
+        {
+          "term": "empty",
+          "count": 560,
+          "sim_to_centroid": 0.419207
+        },
+        {
+          "term": "hungry",
+          "count": 553,
+          "sim_to_centroid": 0.584177
+        },
+        {
+          "term": "insane",
+          "count": 551,
+          "sim_to_centroid": 0.520314
+        },
+        {
+          "term": "ache",
+          "count": 541,
+          "sim_to_centroid": 0.641792
+        },
+        {
+          "term": "spit",
+          "count": 525,
+          "sim_to_centroid": 0.412261
+        },
+        {
+          "term": "violent",
+          "count": 499,
+          "sim_to_centroid": 0.547928
+        },
+        {
+          "term": "mucus",
+          "count": 479,
+          "sim_to_centroid": 0.524952
+        },
+        {
+          "term": "unpleasant",
+          "count": 460,
+          "sim_to_centroid": 0.413745
+        },
+        {
+          "term": "phlegm",
+          "count": 426,
+          "sim_to_centroid": 0.484119
+        }
+      ],
+      "top_terms_by_frequency_lines": "feel\t39090\t0.549212\ngurgle\t13645\t0.680959\npain\t11790\t0.722614\nbloat\t10841\t0.740966\nstomach\t10179\t0.547163\ngas\t8774\t0.464292\nbad\t8409\t0.516003\nworse\t6875\t0.407964\nnausea\t4484\t0.687238\npressure\t4371\t0.566338\nchest\t4052\t0.641789\nhiccup\t3501\t0.560768\nuncomfortable\t3087\t0.636000\nconstant\t2911\t0.758172\nnoise\t2463\t0.482387\nextreme\t2397\t0.451698\ndiscomfort\t2395\t0.631487\nstuck\t2137\t0.438861\ntrap\t2123\t0.565599\nworst\t2062\t0.488628\nnauseous\t2025\t0.678971\ncroak\t1966\t0.556986\nbubble\t1942\t0.501381\nhurt\t1782\t0.529121\nhorrible\t1533\t0.661320\nsensation\t1459\t0.460198\nheartburn\t1182\t0.519371\nterrible\t1156\t0.644065\nannoy\t1155\t0.506739\nexcessive\t1082\t0.524715\nflatulence\t1080\t0.519681\nattack\t978\t0.422969\nintense\t851\t0.715989\nrarely\t805\t0.446035\nsaliva\t766\t0.513778\nburn\t749\t0.633422\ngassy\t720\t0.572106\nfrequent\t702\t0.529286\nepisode\t678\t0.580866\nexcess\t601\t0.474779\nsmell\t567\t0.446135\nempty\t560\t0.419207\nhungry\t553\t0.584177\ninsane\t551\t0.520314\nache\t541\t0.641792\nspit\t525\t0.412261\nviolent\t499\t0.547928\nmucus\t479\t0.524952\nunpleasant\t460\t0.413745\nphlegm\t426\t0.484119"
+    }
+  ]
+}
