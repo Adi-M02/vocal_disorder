@@ -1,0 +1,27 @@
+{
+  "model": "testing/ngram_evals/2/word2vec_cbow.model",
+  "vocab": "testing/ngram_evals/2/cbow_08_20_13_55/output.json",
+  "embedding_dim": 300,
+  "n_terms": 9786,
+  "pca_components": 9,
+  "pca_variance_explained": 0.6830750703811646,
+  "k_range": [
+    3,
+    30
+  ],
+  "K_elbow_inertia": 11,
+  "K_silhouette_max": 6,
+  "K_composite": 6,
+  "K_final": 7,
+  "metrics_at_final": {
+    "silhouette": 0.19505959749221802,
+    "inertia": 4765.95849609375,
+    "cohesion_mean": 0.7141048908233643,
+    "size_imbalance": 0.43801378713110534
+  },
+  "docs_source": "ngram_phrased",
+  "ngram_phraser_dir": "testing/ngram_evals/2",
+  "min_sim": 0.4,
+  "top_n": 50,
+  "plotly_html": "clustering/ngram_2_threshold/kmeans_9/20250821_171226/clusters_2d_plotly.html"
+}

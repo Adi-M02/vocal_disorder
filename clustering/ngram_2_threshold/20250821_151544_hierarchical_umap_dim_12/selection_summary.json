@@ -1,0 +1,26 @@
+{
+  "model": "testing/ngram_evals/2/word2vec_cbow.model",
+  "vocab": "testing/ngram_evals/2/cbow_08_20_13_55/output.json",
+  "embedding_dim": 300,
+  "n_terms": 9786,
+  "umap_dim": 12,
+  "k_range": [
+    3,
+    30
+  ],
+  "K_silhouette_max": 15,
+  "K_composite": 15,
+  "K_final": 15,
+  "metrics_at_final": {
+    "silhouette": 0.3070814907550812,
+    "davies_bouldin": 1.0576495445773517,
+    "calinski_harabasz": 3586.1803375344603,
+    "cohesion_mean": 3.014855407858596,
+    "size_imbalance": 0.4289307590991678
+  },
+  "docs_source": "ngram_phrased",
+  "ngram_phraser_dir": "testing/ngram_evals/2",
+  "min_sim": 0.0,
+  "top_n": 50,
+  "fastcluster_used": true
+}

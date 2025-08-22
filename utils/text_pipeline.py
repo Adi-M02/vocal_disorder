@@ -4,6 +4,7 @@ sys.path.append('../vocal_disorder')
 from tokenizer import clean_and_tokenize
 from utils.load_lemmatizer import load_lookup
 from spellchecker_folder.spellchecker import spellcheck_token_list
+from testing.test_ngram_generation import load_phrasers_from_dir, apply_ngrams
 from utils.stopwords import STOPWORDS
 
 def process_text(text, stoplist = True, lemmatize = True, lookup_path='testing/combined_lemmas.json'):
@@ -33,12 +34,12 @@ def remove_unigram_stopwords(tokens: List[str]) -> List[str]:
     """
     return [t for t in tokens if t not in STOPWORDS]
 
-def ngram_and_process(document, phraser, stoplist=True, lemmatize=True, lookup_path='testing/combined_lemmas.json'):
+def ngram_and_process(document, ngram_phraser_dir):
     """
     process a document and return ngrams
     """
-    toks = process_text(document, stoplist=stoplist, lemmatize=lemmatize, lookup_path=lookup_path)
-    if len(toks) == 0:
-        return []
-    ngrams = phraser[toks]
-    return ngrams
+    toks = process_text(document, stoplist=False)
+    bigram, trigram = load_phrasers_from_dir(ngram_phraser_dir)
+    toks = apply_ngrams(toks, bigram, trigram)
+    toks = remove_unigram_stopwords(toks)
+    return toks

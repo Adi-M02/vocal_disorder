@@ -1,0 +1,14 @@
+Recommended UMAP dim=6
+- Composite score = 0.777597
+- mean T(k)      = 0.9691
+- mean C(k)      = 0.9680
+- LCMC AUC       = 0.3029
+- Stress-1       = 0.3210
+
+Next: run Ward clustering on Y_best.npy (or embeddings_best.tsv).
+Example:
+  from scipy.cluster.hierarchy import linkage, fcluster
+  import numpy as np
+  Y = np.load('Y_best.npy')
+  Z = linkage(Y, method='ward', metric='euclidean')
+  labels = fcluster(Z, K, criterion='maxclust')

@@ -1,21 +1,25 @@
 #!/usr/bin/env python3
 """
 Cluster Word2Vec terms with PCA (to N dims) + L2 normalization + KMeans sweep,
-then ALWAYS count per-cluster term frequencies over a corpus.
+then ALWAYS count per-cluster term frequencies over a corpus, and finally
+**visualize clusters interactively in 2D with Plotly** (HTML output).
 
 Docs source:
   - If --ngram-phraser-dir is provided: use process_ngram_docs(ngram_phraser_dir=...)
   - Else: fall back to process_all_noburp() (no n-gram phrasing)
 
 Outputs (in the timestamped run dir under --outdir) include:
-  - cluster_term_freqs_K<best>.json
-      - per cluster:
-        - top_terms_by_frequency (structured list of dicts)
-        - top_terms_by_frequency_lines (newline string: "term\\tcount\\tsim")
-  - cluster_terms_minSim_K<best>.json
-      - cluster -> [terms with sim >= --min-sim]
-  - cluster_terms_minSim_lines_K<best>.json
-      - cluster -> "term1\\nterm2\\n..."  (newline-formatted for readability)
+  - k_scan_metrics.csv                         # sweep metrics
+  - silhouette_vs_k.png, inertia_vs_k.png      # selection plots
+  - clusters_K<best>.csv                       # token, cluster, sim_to_centroid
+  - cluster_summaries_K<best>.json             # top terms by sim per cluster
+  - cluster_term_freqs_K<best>.json            # per-cluster top terms by frequency (filtered by --min-sim)
+  - cluster_terms_minSim_K<best>.json          # cluster -> [terms with sim >= --min-sim]
+  - cluster_terms_minSim_lines_K<best>.json    # cluster -> "term1\nterm2\n..."
+  - clusters_2d_plotly.html                    # interactive 2D PCA plot with dropdown (MinSim / All)
+
+Requirements:
+  pip install gensim scikit-learn joblib plotly matplotlib
 """
 
 from __future__ import annotations
@@ -42,11 +46,16 @@ from sklearn.preprocessing import normalize
 from sklearn.metrics import silhouette_score, davies_bouldin_score, calinski_harabasz_score
 from joblib import dump
 
-# Headless matplotlib (safe with multiprocessing)
+# Headless matplotlib (safe with multiprocessing) — only used for selection plots
 os.environ.setdefault("MPLBACKEND", "Agg")
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
+
+# Plotly for interactive viz
+import plotly.graph_objects as go
+from plotly import colors as pcolors
+import plotly.io as pio
 
 try:
     from gensim.models import Word2Vec, KeyedVectors
@@ -154,12 +163,26 @@ def summarize_clusters(tokens: List[str], Z: np.ndarray, labels: np.ndarray, cen
     return out
 
 
+def _plotly_palette(K: int) -> List[str]:
+    """Return at least K distinct colors by cycling several qualitative palettes."""
+    pal = []
+    # Combine multiple qualitative palettes to increase unique colors
+    for name in [
+        'Plotly', 'D3', 'G10', 'T10', 'Alphabet', 'Dark24', 'Light24', 'Set3', 'Pastel', 'Safe'
+    ]:
+        pal.extend(getattr(pcolors.qualitative, name, []))
+    if not pal:
+        pal = ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#9467bd', '#8c564b', '#e377c2', '#7f7f7f', '#bcbd22', '#17becf']
+    # Cycle if K exceeds palette length
+    return [pal[i % len(pal)] for i in range(K)]
+
+
 # -------------------------
 # Main
 # -------------------------
 
 def main():
-    ap = argparse.ArgumentParser(description="PCA(N) + L2 + KMeans (+ ALWAYS: corpus term counts)")
+    ap = argparse.ArgumentParser(description="PCA(N) + L2 + KMeans (+ ALWAYS: corpus term counts) + interactive 2D Plotly viz")
     ap.add_argument("--model", required=True, help="Path to Gensim model or KeyedVectors")
     ap.add_argument("--vocab", required=True, help="Path to vocab (JSON or TXT)")
     ap.add_argument("--outdir", required=True, help="Directory for timestamped outputs")
@@ -177,8 +200,12 @@ def main():
                     help="Directory containing trained n-gram phrasers; if omitted, fall back to process_all_noburp() (no n-grams).")
     ap.add_argument("--top-freq", type=int, default=50,
                     help="Top-N terms by frequency per cluster (default 50)")
-    ap.add_argument("--min-sim", type=float, default=0.0,
+    ap.add_argument("--min-sim", type=float, default=0.4,
                     help="Minimum sim_to_centroid to include a term (default 0.0)")
+
+    # Plotly viz tweakables
+    ap.add_argument("--viz-point-size", type=float, default=6.0, help="Marker size for terms (default 6)")
+    ap.add_argument("--viz-opacity", type=float, default=0.85, help="Marker opacity (default 0.85)")
 
     args = ap.parse_args()
 
@@ -314,7 +341,7 @@ def main():
     else:
         K_final = K_comp if not np.isnan(K_comp) else K_sil
 
-    # Plots
+    # Selection plots
     plt.figure(figsize=(7,4))
     plt.plot(Ks_arr, silhouette_arr, marker='o', linewidth=1)
     plt.axvline(K_sil, linestyle='--', label=f"sil max @ {K_sil}")
@@ -356,7 +383,6 @@ def main():
         docs_source = "ngram_phrased"
     else:
         logging.info("No --ngram-phraser-dir provided; falling back to process_all_noburp() (no n-gram phrasing).")
-        # Use defaults that include lemmatization + stopword removal
         docs_iter = process_all_noburp(show_progress=True)
         docs_source = "processed_no_ngrams"
 
@@ -386,19 +412,15 @@ def main():
     clusters_out = []
     for k in range(km_best.n_clusters):
         cnt = per_cluster_counts.get(k, Counter())
-        # filter by similarity threshold
         filtered_items = [(t, c) for t, c in cnt.items() if term2sim.get(t, -1.0) >= min_sim]
         if not filtered_items:
             logging.warning(f"Cluster {k}: 0 terms meet min-sim={min_sim:.3f}; output will be empty for this cluster.")
-        # sort by (-count, -sim, term)
         filtered_items.sort(key=lambda kv: (-kv[1], -term2sim.get(kv[0], 0.0), kv[0]))
 
-        # structured list
         top_struct = [
             {"term": t, "count": int(c), "sim_to_centroid": round(term2sim.get(t, 0.0), 6)}
             for t, c in filtered_items[:top_n]
         ]
-        # newline-formatted list for readability
         top_lines = [
             f"{t}\t{c}\t{term2sim.get(t, 0.0):.6f}"
             for t, c in filtered_items[:top_n]
@@ -449,6 +471,109 @@ def main():
     terms_min_sim_lines_path.write_text(json.dumps(clusters_terms_lines, indent=2), encoding="utf-8")
     logging.info(f"Wrote cluster→terms (newline) JSON to {terms_min_sim_lines_path}")
 
+    # -------------------------
+    # NEW: Interactive 2D Plotly visualization (PCA to 2D on Z)
+    # -------------------------
+    logging.info("Creating interactive 2D Plotly visualization of clusters")
+
+    # PCA to 2D on the SAME Z space used for clustering (faithful view)
+    pca2 = PCA(n_components=2, svd_solver="auto", random_state=args.random_state)
+    Z2 = pca2.fit_transform(Z)  # shape: (n_terms, 2)
+
+    Kf = km_best.n_clusters
+    palette = _plotly_palette(Kf)
+
+    # Project raw KMeans centroids to 2D
+    cent2 = pca2.transform(km_best.cluster_centers_)
+
+    # Build traces per cluster for two modes: MinSim-only and All terms
+    traces = []
+    visibility_min = []  # visibility when MinSim is active
+    visibility_all = []  # visibility when All is active
+
+    # Create point traces (per cluster) for MinSim
+    mask_minSim = sims >= min_sim
+    for k in range(Kf):
+        idx = np.where((lab_best == k) & mask_minSim)[0]
+        hover = np.stack([
+            np.array(in_vocab, dtype=object)[idx],
+            np.full(idx.size, k),
+            sims[idx]
+        ], axis=1) if idx.size else np.empty((0,3), dtype=object)
+        traces.append(go.Scattergl(
+            x=Z2[idx,0] if idx.size else [],
+            y=Z2[idx,1] if idx.size else [],
+            mode='markers',
+            name=f"c{k} (n={idx.size}) — MinSim",
+            marker=dict(size=args.viz_point_size, opacity=args.viz_opacity, color=palette[k]),
+            customdata=hover,
+            hovertemplate="<b>%{customdata[0]}</b><br>cluster=%{customdata[1]}<br>sim=%{customdata[2]:.3f}<extra></extra>",
+            showlegend=True
+        ))
+        visibility_min.append(True)
+        visibility_all.append(False)
+
+    # Create point traces (per cluster) for All terms
+    for k in range(Kf):
+        idx = np.where(lab_best == k)[0]
+        hover = np.stack([
+            np.array(in_vocab, dtype=object)[idx],
+            np.full(idx.size, k),
+            sims[idx]
+        ], axis=1) if idx.size else np.empty((0,3), dtype=object)
+        traces.append(go.Scattergl(
+            x=Z2[idx,0] if idx.size else [],
+            y=Z2[idx,1] if idx.size else [],
+            mode='markers',
+            name=f"c{k} (all n={idx.size})",
+            marker=dict(size=args.viz_point_size, opacity=args.viz_opacity, color=palette[k], symbol='circle-open'),
+            customdata=hover,
+            hovertemplate="<b>%{customdata[0]}</b><br>cluster=%{customdata[1]}<br>sim=%{customdata[2]:.3f}<extra></extra>",
+            showlegend=True
+        ))
+        visibility_min.append(False)
+        visibility_all.append(True)
+
+    # Centroid trace (always visible)
+    traces.append(go.Scatter(
+        x=cent2[:,0], y=cent2[:,1],
+        mode='markers+text',
+        marker=dict(size=14, color='black', symbol='x'),
+        text=[str(k) for k in range(Kf)],
+        textposition='top center',
+        name='centroids'
+    ))
+    visibility_min.append(True)
+    visibility_all.append(True)
+
+    # Layout with dropdown to toggle MinSim vs All
+    updatemenus = [
+        dict(
+            type='dropdown',
+            x=1.02, xanchor='left', y=1.0, yanchor='top',
+            buttons=[
+                dict(label=f"MinSim ≥ {min_sim:.3f}", method='update',
+                     args=[{'visible': visibility_min},
+                           {'title': f"Clusters in 2D (PCA on Z) — MinSim ≥ {min_sim:.3f}"}]),
+                dict(label='All terms', method='update',
+                     args=[{'visible': visibility_all},
+                           {'title': 'Clusters in 2D (PCA on Z) — All terms'}])
+            ]
+        )
+    ]
+
+    fig = go.Figure(data=traces, layout=go.Layout(
+        title=f"Clusters in 2D (PCA on Z) — MinSim ≥ {min_sim:.3f}",
+        xaxis=dict(title='PC1'), yaxis=dict(title='PC2'),
+        hovermode='closest',
+        updatemenus=updatemenus,
+        legend=dict(font=dict(size=10))
+    ))
+
+    html_path = outdir / "clusters_2d_plotly.html"
+    pio.write_html(fig, file=str(html_path), include_plotlyjs='cdn', full_html=True, auto_open=False)
+    logging.info(f"Wrote interactive Plotly HTML: {html_path}")
+
     # Decision file
     selection = {
         "model": str(model_path),
@@ -472,6 +597,7 @@ def main():
         "ngram_phraser_dir": args.ngram_phraser_dir,
         "min_sim": min_sim,
         "top_n": top_n,
+        "plotly_html": str(html_path)
     }
     (outdir / "selection_summary.json").write_text(json.dumps(selection, indent=2), encoding="utf-8")
 
