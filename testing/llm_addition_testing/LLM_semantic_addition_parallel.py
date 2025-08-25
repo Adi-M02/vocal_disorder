@@ -1,31 +1,37 @@
 #!/usr/bin/env python3
 """
-Single-term evaluator for seed-term expansions (STRICT one-candidate schema, LLM-only relations)
-===============================================================================================
+Batch evaluator for seed-term expansions (LLM-only WordNet-like relations, single call per seed)
+================================================================================================
 
 What this does
 --------------
-- Evaluates **one expansion term at a time** against its seed using an LLM.
-- No WordNet. The LLM is instructed to internally judge relations:
+- For each SEED, sends the **entire candidate list** to the LLM in **one request**.
+- No WordNet library: the LLM internally decides relations akin to WordNet:
   hypernym (umbrella), hyponym (specific), holonym (whole), cohyponym (sibling),
-  synonyms / morphological variants — and reject ultra-generic catch-alls.
-- **Strict I/O schema per call** so the model can ONLY emit either [] (reject) or ["<exact candidate>"] (accept).
-- Optional `--relation_mode` can also return a `"relation"` label so you can audit how well
-  it reproduces WordNet-like signals (still with strict JSON schema).
-- Rich logging + verification:
-  • Per-pair NDJSON audit: latency, attempts, schema used, errors, unknown returns, optional relation label.
-  • Per-seed NDJSON line: {seed, accepted:[...], checked_subset:bool, violations:[...]}.
-  • Human-readable summary log with per-seed acceptance rates + error sections.
+  plus synonyms / near-synonyms / morphological variants — all within the R-CPD domain.
+- Supports optional anchors: with `--use_anchors` we pass the FULL set of seed terms
+  as contextual anchors (mirrors your earlier closure idea).
+- Optional **iterative closure** inside the candidate list up to `--closure_iters` rounds
+  (OFF by default so single vs batch are directly comparable).
+- **STRICT output contract**: the model must return JSON:
+    {
+      "seed": "<echo seed>",
+      "decisions": ["subset of provided candidates" ...],
+      // optional when --relation_mode:
+      "relations": { "<accepted_cand>": "<relation_label>", ... }
+    }
+  relation labels from: hypernym, hyponym, holonym, cohyponym,
+  synonym, morphological_variant, near_synonym, unrelated, unknown.
 
-Outputs
--------
-  • decisions.ndjson                (per-pair audit)
-  • seeds_accepted.ndjson          (one line per seed with accepted list + subset check)
-  • accepted_by_seed.json          { seed: [accepted terms] }
-  • filtered_expansions.json       { seed: [accepted terms] } (same as above; mirrors input shape)
-  • accepted_all_flat.json         [all accepted terms across all seeds, in encounter order]
-  • accepted_aligned_by_seed.json  { seed: [accepted-or-empty-string aligned to input order] }
-  • summary.json                   run stats + settings
+Outputs (same set as single-term)
+---------------------------------
+  • decisions.ndjson
+  • seeds_accepted.ndjson
+  • accepted_by_seed.json
+  • filtered_expansions.json
+  • accepted_all_flat.json
+  • accepted_aligned_by_seed.json
+  • summary.json
 """
 
 from __future__ import annotations
@@ -44,7 +50,7 @@ from typing import Dict, Iterable, List, Optional, Set, Tuple
 import requests
 
 # -----------------------------
-# Shared defaults
+# Shared defaults (identical to single)
 # -----------------------------
 
 GLOBAL_CONTEXT_DEFAULT = (
@@ -84,14 +90,14 @@ def verify_unchanged(candidates: List[str], returned_terms: List[str]) -> Dict[s
     return {"unknown_terms": sorted(set(unknown)), "duplicates": sorted(dupes)}
 
 # -----------------------------
-# LLM relation categories
+# Relation categories
 # -----------------------------
 
 RELATION_ENUM = [
-    "hypernym",            # candidate is a broader umbrella of seed (e.g., tachycardia → heart_condition)
-    "hyponym",             # candidate is a more specific instance/type of seed
-    "holonym",             # candidate is a whole that includes the seed as a part/member
-    "cohyponym",           # candidate is a sibling under the same hypernym as seed
+    "hypernym",
+    "hyponym",
+    "holonym",
+    "cohyponym",
     "synonym",
     "morphological_variant",
     "near_synonym",
@@ -100,10 +106,10 @@ RELATION_ENUM = [
 ]
 
 # -----------------------------
-# LLM client (Ollama) — STRICT single-candidate protocol
+# LLM client (Ollama) — STRICT batch protocol (one call per seed)
 # -----------------------------
 
-class LlmSimilarityDecider:
+class LlmBatchDecider:
     def __init__(
         self,
         model: str,
@@ -111,14 +117,16 @@ class LlmSimilarityDecider:
         temperature: float = 0.0,
         tokens = 2048,
         timeout: int = 60,
-        include_relation: bool = False,
+        include_relations: bool = False,
+        closure_iters: int = 0,  # default OFF for parity with single-term
         global_context: str = GLOBAL_CONTEXT_DEFAULT,
         session: Optional[requests.Session] = None,
     ):
         self.url = url
         self.timeout = timeout
         self.global_context = (global_context or GLOBAL_CONTEXT_DEFAULT).strip()
-        self.include_relation = bool(include_relation)
+        self.include_relations = bool(include_relations)
+        self.closure_iters = max(0, int(closure_iters))
         self.session = session or requests.Session()
 
         self.base_payload = {
@@ -127,62 +135,73 @@ class LlmSimilarityDecider:
             "stream": False,
         }
 
-        # Initial pass: single candidate, strict schema + relation-aware rules
-        self.system_initial = (
-            "You are a semantic similarity decider for short terms and underscore-separated MWEs.\n"
+        # Batch system message (no anchors)
+        closure_blurb = (
+            "Iterative closure: perform up to N rounds (N provided) of closure within the candidate list: "
+            "if a candidate is accepted and another candidate stands in one of the above relations to it (or to the seed), "
+            "accept that other candidate as well.\n"
+            if self.closure_iters > 0 else ""
+        )
+
+        self.system_batch = (
+            "You are a semantic decider for short terms / underscore-separated MWEs in the R-CPD domain.\n"
             f"DOMAIN CONTEXT:\n{self.global_context}\n\n"
             "TASK (STRICT):\n"
-            "Given a SEED and EXACTLY ONE CANDIDATE, return STRICT JSON with keys {seed, decisions"
-            + (", relation" if self.include_relation else "")
-            + "}.\n"
-            "The ONLY valid outputs for 'decisions' are either [] (reject) or [<exact candidate>] (accept).\n"
-            "Do NOT alter, normalize, or invent strings. Return no explanations.\n\n"
-            "ACCEPT if the candidate helps a user find/name/describe the same concept as the seed OR is a closely\n"
-            "neighboring concept in this R-CPD domain, including ALL of the following relation types:\n"
+            "You will be given a SEED and a CANDIDATE_LIST. Decide which candidates belong with the seed.\n"
+            "Accept a candidate if it helps a user find/name/describe the same concept as the seed OR is a closely neighboring\n"
+            "concept in this domain via ANY of these relations:\n"
             "  • hypernym (umbrella term of the seed)\n"
-            "  • hyponym (more specific instance/type of the seed)\n"
-            "  • holonym (a whole that includes the seed as a part/member)\n"
-            "  • cohyponym (a sibling under the same umbrella as the seed)\n"
-            "Also accept synonyms, near-synonyms, and morphological variants (noun/verb/adj forms of the same phenomenon).\n\n"
-            + ("When you include 'relation', choose exactly one from: " + ", ".join(RELATION_ENUM) + ".\n" if self.include_relation else "")
+            "  • hyponym (specific instance/type of the seed)\n"
+            "  • holonym (a whole that includes the seed as part/member)\n"
+            "  • cohyponym (sibling under the same umbrella as the seed)\n"
+            "Additionally accept synonyms, near-synonyms, and morphological variants (noun/verb/adjective forms of the same phenomenon).\n"
+            f"{closure_blurb}"
+            "STRICT OUTPUT:\n"
+            "Return ONLY JSON with keys:\n"
+            "  seed: string (exact echo of the input SEED)\n"
+            "  decisions: array of strings (subset of EXACT items from CANDIDATE_LIST; no extra items; no duplicates)\n"
+            + ("  relations: object {<accepted_candidate>: <one-of enum>} (optional map; keys must be a subset of 'decisions')\n" if self.include_relations else "") +
+            "Do not include explanations or commentary."
         )
 
-        # Closure pass: same rules, but with anchors
-        self.system_closure = (
-            "You are expanding a concept bucket defined by the FULL SET OF SEED TERMS (potentially ~2000 strings).\n"
+        # Batch system message (with anchors)
+        self.system_batch_with_anchors = (
+            "You are a semantic decider for short terms / underscore-separated MWEs in the R-CPD domain.\n"
+            f"DOMAIN CONTEXT:\n{self.global_context}\n\n"
             "You will be given:\n"
-            " • SEED (the focal term),\n"
-            " • VOCAB_BUCKET_SEEDS (a long list of seed terms acting as anchors/context), and\n"
-            " • EXACTLY ONE REMAINING_CANDIDATE.\n"
-            "Return STRICT JSON {seed, decisions"
-            + (", relation" if self.include_relation else "")
-            + "}.\n"
-            "The ONLY valid outputs for 'decisions' are [] or [<exact candidate>].\n"
-            "Apply the same acceptance rules (hypernym, hyponym, holonym, cohyponym, synonyms, morphology).\n\n"
-            f"DOMAIN CONTEXT:\n{self.global_context}\n"
+            "  • SEED (the focal term),\n"
+            "  • VOCAB_BUCKET_SEEDS (a long list of known seed terms as anchors/context),\n"
+            "  • CANDIDATE_LIST.\n"
+            "Decide which CANDIDATE_LIST items belong with the seed within the R-CPD domain using the anchors as context.\n"
+            "Accept if the candidate relates to the seed (or to an already accepted candidate) via ANY of:\n"
+            "  hypernym, hyponym, holonym, cohyponym, synonym, near_synonym, morphological_variant.\n"
+            f"{closure_blurb}"
+            "STRICT OUTPUT:\n"
+            "Return ONLY JSON with keys:\n"
+            "  seed: string (exact echo of the input SEED)\n"
+            "  decisions: array of strings (subset of EXACT items from CANDIDATE_LIST; no extra items; no duplicates)\n"
+            + ("  relations: object {<accepted_candidate>: <one-of enum>} (optional map; keys must be a subset of 'decisions')\n" if self.include_relations else "") +
+            "Do not include explanations or commentary."
         )
 
-    # Per-call JSON schema locked to the exact candidate (and optional relation)
-    def _build_single_candidate_schema(self, candidate: str) -> dict:
+    # JSON schema for batch: restrict decisions to provided candidates; optional relations map
+    def _build_batch_schema(self, candidates: List[str]) -> dict:
         props = {
             "seed": {"type": "string"},
             "decisions": {
-                "oneOf": [
-                    {"type": "array", "maxItems": 0},  # reject → []
-                    {  # accept → [candidate]
-                        "type": "array",
-                        "minItems": 1,
-                        "maxItems": 1,
-                        "items": {"const": candidate},
-                    },
-                ]
+                "type": "array",
+                "items": {"type": "string", "enum": candidates},
+                "uniqueItems": True,
             },
         }
         required = ["seed", "decisions"]
-        if self.include_relation:
-            # Make relation OPTIONAL to avoid forcing a label on rejects.
-            props["relation"] = {"type": "string", "enum": RELATION_ENUM}
-            # not in 'required'
+
+        if self.include_relations:
+            props["relations"] = {
+                "type": "object",
+                "propertyNames": {"type": "string", "enum": candidates},
+                "additionalProperties": {"type": "string", "enum": RELATION_ENUM},
+            }
 
         return {
             "type": "object",
@@ -191,27 +210,22 @@ class LlmSimilarityDecider:
             "properties": props,
         }
 
-    def _build_user_prompt_initial(self, seed: str, candidate: str) -> str:
-        base = (
-            f"SEED: {seed}\n"
-            f"CANDIDATE (evaluate only this exact string; accept ⇒ return it, reject ⇒ return []):\n- {candidate}\n\n"
+    def _build_user_prompt(self, seed: str, candidates: List[str], anchors: Optional[List[str]]) -> str:
+        cand_str = "\n".join(f"- {c}" for c in candidates) if candidates else "(none)"
+        header = f"SEED: {seed}\n"
+        if anchors:
+            anc_str = "\n".join(f"- {a}" for a in anchors)
+            header += f"VOCAB_BUCKET_SEEDS (anchors/context):\n{anc_str}\n\n"
+        body = f"CANDIDATE_LIST (evaluate ONLY these exact strings):\n{cand_str}\n\n"
+        if self.closure_iters > 0:
+            body += f"ITERATIVE_CLOSURE_ROUNDS: {self.closure_iters}\n\n"
+        tail = (
+            "Respond ONLY with JSON: {\"seed\": <seed>, \"decisions\": [<subset of candidates>]}"
+            if not self.include_relations
+            else "Respond ONLY with JSON: {\"seed\": <seed>, \"decisions\": [<subset>], \"relations\": {<accepted_candidate>: <one of "
+                 + ", ".join(RELATION_ENUM) + ">}}"
         )
-        if self.include_relation:
-            return base + "Respond ONLY with JSON {\"seed\": <seed>, \"decisions\": [] or [<exact candidate>], optionally \"relation\": <one label>}."
-        else:
-            return base + "Respond ONLY with JSON {\"seed\": <seed>, \"decisions\": [] or [<exact candidate>]}."
-
-    def _build_user_prompt_closure(self, seed: str, anchors: List[str], candidate: str) -> str:
-        anc_str = "\n".join(f"- {a}" for a in anchors) if anchors else "(none)"
-        base = (
-            f"SEED: {seed}\n"
-            f"VOCAB_BUCKET_SEEDS (long list acting as anchors/context):\n{anc_str}\n\n"
-            f"REMAINING_CANDIDATE (evaluate ONLY this exact string):\n- {candidate}\n\n"
-        )
-        if self.include_relation:
-            return base + "Respond ONLY with JSON {\"seed\": <seed>, \"decisions\": [] or [<exact candidate>], optionally \"relation\": <one label>}."
-        else:
-            return base + "Respond ONLY with JSON {\"seed\": <seed>, \"decisions\": [] or [<exact candidate>]}."
+        return header + body + tail
 
     def _post(self, payload: dict) -> dict:
         resp = self.session.post(self.url, headers={"Content-Type": "application/json"}, json=payload, timeout=self.timeout)
@@ -231,70 +245,52 @@ class LlmSimilarityDecider:
             return body
         raise ValueError("Unexpected Ollama response format")
 
-    def _coerce_terms(self, out: dict) -> Tuple[List[str], str]:
-        raw = out.get("decisions", []) if isinstance(out, dict) else []
-        if not isinstance(raw, list):
-            return [], "empty"
-        if raw and isinstance(raw[0], dict):
-            # Defensive: convert list of objects with {term: ...} into strings
-            terms: List[str] = []
-            for item in raw:
-                t = item.get("term") if isinstance(item, dict) else None
-                if isinstance(t, str):
-                    terms.append(t)
-            return terms, "object->string"
-        else:
-            return [t for t in raw if isinstance(t, str)], "string"
-
-    def _extract_relation(self, out: dict) -> Optional[str]:
-        rel = out.get("relation")
-        return rel if isinstance(rel, str) else None
-
-    # Single-candidate calls ----------------------------------------------
-    def judge_single_initial(self, seed: str, candidate: str) -> Tuple[bool, Dict]:
+    def judge_batch(self, seed: str, candidates: List[str], anchors: Optional[List[str]]) -> Tuple[Set[str], Dict]:
         payload = dict(self.base_payload)
-        payload["format"] = self._build_single_candidate_schema(candidate)
+        payload["format"] = self._build_batch_schema(candidates)
+        # Choose system message variant
+        system_msg = self.system_batch_with_anchors if anchors else self.system_batch
         payload["messages"] = [
-            {"role": "system", "content": self.system_initial},
-            {"role": "user", "content": self._build_user_prompt_initial(seed, candidate)},
+            {"role": "system", "content": system_msg},
+            {"role": "user", "content": self._build_user_prompt(seed, candidates, anchors)},
         ]
         out = self._post(payload)
-        terms, schema_used = self._coerce_terms(out)
-        relation = self._extract_relation(out)
-        returned_seed = out.get("seed") if isinstance(out, dict) else None
-        ver = verify_unchanged([candidate], terms)
-        ver["schema_used"] = schema_used
-        ver["phase"] = "initial"
-        ver["seed_echo_ok"] = (returned_seed == seed)
-        ver["relation"] = relation
-        accepted = (len(terms) == 1 and terms[0] == candidate)
-        schema_ok = (len(terms) in (0, 1)) and not ver["unknown_terms"] and not ver["duplicates"] and ver["seed_echo_ok"]
-        ver["schema_ok"] = schema_ok
-        return accepted, ver
 
-    def judge_single_with_anchors(self, seed: str, anchors: List[str], candidate: str) -> Tuple[bool, Dict]:
-        payload = dict(self.base_payload)
-        payload["format"] = self._build_single_candidate_schema(candidate)
-        payload["messages"] = [
-            {"role": "system", "content": self.system_closure},
-            {"role": "user", "content": self._build_user_prompt_closure(seed, anchors, candidate)},
-        ]
-        out = self._post(payload)
-        terms, schema_used = self._coerce_terms(out)
-        relation = self._extract_relation(out)
+        # Parse outputs
+        decisions_raw = out.get("decisions", []) if isinstance(out, dict) else []
+        relations_raw = out.get("relations", {}) if (self.include_relations and isinstance(out, dict)) else {}
+        if not isinstance(decisions_raw, list):
+            decisions_raw = []
+        if not isinstance(relations_raw, dict):
+            relations_raw = {}
+
+        accepted_terms = [t for t in decisions_raw if isinstance(t, str)]
+        ver = verify_unchanged(candidates, accepted_terms)
         returned_seed = out.get("seed") if isinstance(out, dict) else None
-        ver = verify_unchanged([candidate], terms)
-        ver["schema_used"] = schema_used
-        ver["phase"] = "closure"
-        ver["seed_echo_ok"] = (returned_seed == seed)
-        ver["relation"] = relation
-        accepted = (len(terms) == 1 and terms[0] == candidate)
-        schema_ok = (len(terms) in (0, 1)) and not ver["unknown_terms"] and not ver["duplicates"] and ver["seed_echo_ok"]
+
+        # Constrain relations map
+        relations: Dict[str, str] = {}
+        for k, v in relations_raw.items():
+            if isinstance(k, str) and isinstance(v, str) and k in accepted_terms and v in RELATION_ENUM:
+                relations[k] = v
+
+        schema_used = "batch"
+        ver.update({
+            "schema_used": schema_used,
+            "phase": "batch_with_anchors" if anchors else "batch",
+            "seed_echo_ok": (returned_seed == seed),
+            "relations": relations,
+        })
+
+        # schema_ok if: seed echo ok, no unknown/dupes, and relations keys subset of accepted
+        rel_keys_ok = all(k in accepted_terms for k in relations.keys())
+        schema_ok = ver["seed_echo_ok"] and not ver["unknown_terms"] and not ver["duplicates"] and rel_keys_ok
         ver["schema_ok"] = schema_ok
-        return accepted, ver
+
+        return set(accepted_terms), ver
 
 # -----------------------------
-# Data model for per-term decisions
+# Data model for per-term decisions (expanded from batch)
 # -----------------------------
 
 @dataclass
@@ -303,8 +299,8 @@ class DecisionRecord:
     candidate: str
     accepted: bool
     decision: str  # "accept" | "reject" | "error" | "unknown_mismatch"
-    prompt_type: str  # "initial" | "closure" | "shortcut"
-    schema_used: str = "unknown"
+    prompt_type: str  # "batch" | "batch_with_anchors" | "shortcut"
+    schema_used: str = "batch"
     unknown_terms: List[str] = field(default_factory=list)
     duplicates: List[str] = field(default_factory=list)
     attempts: int = 1
@@ -317,24 +313,24 @@ class DecisionRecord:
         return json.dumps(asdict(self), ensure_ascii=False)
 
 # -----------------------------
-# Runner (sequential across seeds; no multi-seed concurrency)
+# Runner (sequential across seeds; one LLM call per seed)
 # -----------------------------
 
-class SingleTermRunner:
+class BatchRunner:
     def __init__(self, args: argparse.Namespace, global_anchors: Optional[List[str]] = None):
         self.args = args
         self.session = requests.Session()
-        self.judge = LlmSimilarityDecider(
+        self.judge = LlmBatchDecider(
             model=args.model,
             url=args.url,
             temperature=args.temperature,
             tokens=args.tokens,
             timeout=args.timeout,
-            include_relation=bool(args.relation_mode),
+            include_relations=bool(args.relation_mode),
+            closure_iters=int(args.closure_iters),
             global_context=args.global_context,
             session=self.session,
         )
-        # Global anchors = entire seed vocabulary when --use_anchors is passed
         self.global_anchors: List[str] = list(global_anchors or [])
         self.cache: Dict[Tuple[str, str], DecisionRecord] = {}
         if args.cache_path and Path(args.cache_path).exists():
@@ -359,134 +355,86 @@ class SingleTermRunner:
         except Exception as e:
             print(f"[warn] Failed to write cache {path}: {e}")
 
-    # Core eval -----------------------------------------------------------
-    def _call_with_retries(self, fn, *args, **kwargs) -> Tuple[bool, Dict, int, Optional[str]]:
+    # Core eval (single call per seed) -----------------------------------
+    def _call_with_retries(self, fn, *args, **kwargs) -> Tuple[Set[str], Dict, int, Optional[str]]:
         max_tries = max(1, int(self.args.retries) + 1)
         delay = 0.6
         for attempt in range(1, max_tries + 1):
             t0 = time.time()
             try:
-                ok, ver = fn(*args, **kwargs)
+                acc, ver = fn(*args, **kwargs)
                 ms = int((time.time() - t0) * 1000)
-                return ok, ver, ms, None
+                return acc, ver, ms, None
             except Exception as e:
                 ms = int((time.time() - t0) * 1000)
                 if attempt >= max_tries:
-                    return False, {"phase": "?", "schema_used": "?", "unknown_terms": [], "duplicates": []}, ms, str(e)
+                    return set(), {"phase": "?", "schema_used": "?", "unknown_terms": [], "duplicates": [], "relations": {}}, ms, str(e)
                 # Exponential backoff with jitter
                 sleep_s = delay * (2 ** (attempt - 1)) * (1.0 + 0.25 * random.random())
                 time.sleep(min(sleep_s, 5.0))
-        return False, {"phase": "?", "schema_used": "?", "unknown_terms": [], "duplicates": []}, 0, "unknown"
+        return set(), {"phase": "?", "schema_used": "?", "unknown_terms": [], "duplicates": [], "relations": {}}, 0, "unknown"
 
-    def eval_pair(self, seed: str, candidate: str, anchors: Optional[List[str]] = None) -> DecisionRecord:
-        # Basic input validation
-        if not isinstance(seed, str) or not isinstance(candidate, str) or not seed or not candidate:
-            return DecisionRecord(
-                seed=str(seed),
-                candidate=str(candidate),
-                accepted=False,
-                decision="error",
-                prompt_type="initial",
-                error="invalid seed/candidate type or empty string",
-            )
+    def eval_seed_batch(self, seed: str, candidates: List[str], anchors: Optional[List[str]]) -> Tuple[Set[str], Dict, int, Optional[str]]:
+        return self._call_with_retries(self.judge.judge_batch, seed, candidates, anchors)
 
-        key = (seed, candidate)
-        if self.args.cache_path and key in self.cache:
-            return self.cache[key]
-
-        # Auto-accept shortcut when candidate == seed
-        if self.args.auto_accept_if_equal and candidate == seed:
-            rec = DecisionRecord(
-                seed=seed,
-                candidate=candidate,
-                accepted=True,
-                decision="accept",
-                prompt_type="shortcut",
-                schema_used="-",
-                attempts=0,
-                latency_ms=0,
-                relation="synonym" if self.args.relation_mode else None,
-            )
-            if self.args.cache_path:
-                self._append_cache(self.args.cache_path, rec)
-            return rec
-
-        # If --use_anchors, always use the (large) global seed vocabulary as anchors
-        use_anchors = bool(self.args.use_anchors and anchors)
-
-        if use_anchors:
-            ok, ver, ms, err = self._call_with_retries(self.judge.judge_single_with_anchors, seed, anchors or [], candidate)
-            prompt_type = "closure"
-        else:
-            ok, ver, ms, err = self._call_with_retries(self.judge.judge_single_initial, seed, candidate)
-            prompt_type = "initial"
-
-        if err is not None:
-            rec = DecisionRecord(
-                seed=seed,
-                candidate=candidate,
-                accepted=False,
-                decision="error",
-                prompt_type=prompt_type,
-                schema_used=ver.get("schema_used", "unknown"),
-                unknown_terms=ver.get("unknown_terms", []),
-                duplicates=ver.get("duplicates", []),
-                attempts=max(1, int(self.args.retries) + 1),
-                latency_ms=ms,
-                error=str(err),
-                relation=ver.get("relation"),
-            )
-        else:
-            # Use schema_ok to differentiate reject vs schema mismatch
-            schema_ok = ver.get("schema_ok", True)
-            if ok:
-                decision = "accept"
-            elif (not schema_ok) or ver.get("unknown_terms") or ver.get("duplicates"):
-                decision = "unknown_mismatch"
-            else:
-                decision = "reject"
-            rec = DecisionRecord(
-                seed=seed,
-                candidate=candidate,
-                accepted=ok,
-                decision=decision,
-                prompt_type=prompt_type,
-                schema_used=ver.get("schema_used", "unknown"),
-                unknown_terms=ver.get("unknown_terms", []),
-                duplicates=ver.get("duplicates", []),
-                attempts=1,
-                latency_ms=ms,
-                error=None,
-                relation=ver.get("relation"),
-            )
-        if self.args.cache_path:
-            self._append_cache(self.args.cache_path, rec)
-        return rec
-
-    # Per-seed sequential flow; **no** within-seed or cross-seed concurrency
-    def process_seed(self, seed: str, candidates: List[str]) -> Tuple[Set[str], List[DecisionRecord], List[str]]:
-        accepted: Set[str] = set()
+    # Expand batch result into per-candidate DecisionRecords
+    def expand_records(self, seed: str, candidates: List[str], accepted: Set[str], ver: Dict, latency_ms: int, err: Optional[str]) -> Tuple[Set[str], List[DecisionRecord], List[str]]:
         records: List[DecisionRecord] = []
-        aligned: List[str] = []  # same length/order as input candidates; accepted term or ""
+        aligned: List[str] = []
+        prompt_type_base = ver.get("phase", "batch")
+        schema_used = ver.get("schema_used", "batch")
+        unknown_terms = ver.get("unknown_terms", [])
+        duplicates = ver.get("duplicates", [])
+        schema_ok = ver.get("schema_ok", True)
+        relations_map: Dict[str, str] = ver.get("relations", {}) if isinstance(ver.get("relations", {}), dict) else {}
 
-        # Decide which anchors to use: global seed vocab (if --use_anchors) vs none
-        anchors_ctx: Optional[List[str]] = self.global_anchors if self.args.use_anchors and self.global_anchors else None
+        # Optionally force-accept equality, and mark those as 'shortcut'
+        accepted_eff = set(accepted)
+        equality_forced: Set[str] = set()
+        if self.args.auto_accept_if_equal:
+            for cand in candidates:
+                if cand == seed and cand not in accepted_eff:
+                    accepted_eff.add(cand)
+                    equality_forced.add(cand)
 
         for cand in candidates:
-            if not isinstance(cand, str) or not cand:
-                # Emit an error record for bad candidate type
-                records.append(DecisionRecord(seed=seed, candidate=str(cand), accepted=False, decision="error", prompt_type="initial", error="non-string or empty candidate"))
-                aligned.append("")
-                continue
-
-            rec = self.eval_pair(seed, cand, anchors=anchors_ctx)
-            records.append(rec)
-            if rec.accepted:
-                accepted.add(cand)
-                aligned.append(cand)
+            is_forced = cand in equality_forced
+            if err is not None:
+                rec = DecisionRecord(
+                    seed=seed, candidate=cand, accepted=False, decision="error",
+                    prompt_type=prompt_type_base, schema_used=schema_used,
+                    unknown_terms=unknown_terms, duplicates=duplicates,
+                    attempts=max(1, int(self.args.retries) + 1), latency_ms=latency_ms, error=str(err),
+                    relation=(relations_map.get(cand) if not is_forced else ("synonym" if self.args.relation_mode else None)),
+                )
             else:
-                aligned.append("")
-        return accepted, records, aligned
+                ok = cand in accepted_eff
+                if ok:
+                    decision = "accept"
+                elif (not schema_ok) or unknown_terms or duplicates:
+                    decision = "unknown_mismatch"
+                else:
+                    decision = "reject"
+                rec = DecisionRecord(
+                    seed=seed, candidate=cand, accepted=ok, decision=decision,
+                    prompt_type=("shortcut" if is_forced else prompt_type_base), schema_used=schema_used,
+                    unknown_terms=unknown_terms, duplicates=duplicates,
+                    attempts=1, latency_ms=latency_ms, error=None,
+                    relation=(relations_map.get(cand) if not is_forced else ("synonym" if self.args.relation_mode else None)),
+                )
+            records.append(rec)
+            aligned.append(cand if rec.accepted else "")
+            if self.args.cache_path:
+                self._append_cache(self.args.cache_path, rec)
+
+        # Return the equality-augmented set so seed-level outputs match single-term behavior
+        return accepted_eff, records, aligned
+
+    # Per-seed sequential flow (one LLM call)
+    def process_seed(self, seed: str, candidates: List[str]) -> Tuple[Set[str], List[DecisionRecord], List[str]]:
+        anchors_ctx: Optional[List[str]] = self.global_anchors if self.args.use_anchors and self.global_anchors else None
+        accepted, ver, ms, err = self.eval_seed_batch(seed, candidates, anchors_ctx)
+        return self.expand_records(seed, candidates, accepted, ver, ms, err)
 
 # -----------------------------
 # File I/O & Logging
@@ -501,7 +449,7 @@ def save_json(path: Path, data: dict):
         json.dump(data, f, indent=2, ensure_ascii=False)
 
 def setup_logger(log_file: Path) -> logging.Logger:
-    logger = logging.getLogger("single_term_eval")
+    logger = logging.getLogger("batch_eval")
     logger.setLevel(logging.INFO)
     logger.handlers.clear()
     fh = logging.FileHandler(log_file, mode="w", encoding="utf-8")
@@ -538,7 +486,7 @@ def log_summary(logger: logging.Logger, all_records: List[DecisionRecord], accep
     unk = sum(1 for r in all_records if r.decision == "unknown_mismatch")
     err = sum(1 for r in all_records if r.decision == "error")
 
-    logger.info("# Single-term LLM evaluation summary (LLM-only relations)")
+    logger.info("# Batch LLM evaluation summary (LLM-only WordNet-like relations)")
     logger.info(f"Total evals: {total} | accept={acc} reject={rej} unknown_mismatch={unk} error={err}")
     lat_ok = [r.latency_ms for r in all_records if r.decision in {"accept", "reject", "unknown_mismatch"}]
     if lat_ok:
@@ -547,7 +495,7 @@ def log_summary(logger: logging.Logger, all_records: List[DecisionRecord], accep
         )
     logger.info("")
 
-    # Per-seed acceptance rates (+ top relation hints if present)
+    # Per-seed acceptance rates (+ quick relation overview if present)
     if any(r.relation for r in all_records):
         from collections import Counter
         logger.info("## relation labels (when --relation_mode is on)")
@@ -572,7 +520,7 @@ def log_summary(logger: logging.Logger, all_records: List[DecisionRecord], accep
     logger.info("")
 
     # Verification issues
-    logger.info("## verification issues (model must return [] or [<exact candidate>])")
+    logger.info("## verification issues (model must return a subset of provided candidates)")
     issues = [r for r in all_records if r.unknown_terms or r.duplicates]
     if not issues:
         logger.info("(none)")
@@ -597,11 +545,11 @@ def log_summary(logger: logging.Logger, all_records: List[DecisionRecord], accep
             )
 
 # -----------------------------
-# Main (sequential across seeds)
+# Main (sequential across seeds, one call per seed)
 # -----------------------------
 
 def main():
-    ap = argparse.ArgumentParser(description="Single-term LLM judgments for seed expansions (STRICT schema, R-CPD aware, LLM-only relations).")
+    ap = argparse.ArgumentParser(description="Batch LLM judgments for seed expansions (single call per seed; LLM-only WordNet-like relations).")
     ap.add_argument("--expansions", required=True, help="Path to expansions JSON {seed: [terms]}")
     ap.add_argument("--outdir", required=False, help="Directory for outputs (ignored in debug mode)")
 
@@ -617,7 +565,7 @@ def main():
     # Execution controls
     ap.add_argument("--retries", type=int, default=2, help="Retry count on request/parse errors (exponential backoff)")
     ap.add_argument("--sort", action="store_true", help="Sort final lists alphabetically where applicable")
-    ap.add_argument("--auto_accept_if_equal", action="store_true", help="Auto-accept when candidate == seed")
+    ap.add_argument("--auto_accept_if_equal", action="store_true", help="Auto-accept when candidate == seed (post-parse)")
 
     # Filtering / limits
     ap.add_argument("--seed_filter", type=str, nargs="*", default=None, help="Only process these seeds (exact match)")
@@ -625,18 +573,20 @@ def main():
 
     # Anchors
     ap.add_argument("--use_anchors", action="store_true",
-                    help="If set, the closure prompt uses the FULL seed vocabulary (all seeds in the JSON) as anchors/context.")
+                    help="If set, the batch prompt uses the FULL seed vocabulary (all seeds in the JSON) as anchors/context.")
+
+    # Relations + closure
+    ap.add_argument("--relation_mode", action="store_true",
+                    help="If set, the model may also output a 'relations' map with a single relation label per accepted candidate.")
+    ap.add_argument("--closure_iters", type=int, default=0,
+                    help="How many iterative closure rounds the model should apply within the candidate list (0..N). Default 0 for parity with single-term.")
 
     # Caching
-    ap.add_argument("--cache_path", type=str, default=None, help="Optional JSONL cache file for decisions (read+append)")
-
-    # Relation label mode (optional)
-    ap.add_argument("--relation_mode", action="store_true",
-                    help="If set, the model may also output a 'relation' label (hypernym/hyponym/holonym/cohyponym/…).")
+    ap.add_argument("--cache_path", type=str, default=None, help="Optional JSONL cache file for per-pair decisions (append-only)")
 
     # Debug
-    ap.add_argument("--debug_seed", type=str, default=None, help="If set, evaluate only this seed and --debug_term")
-    ap.add_argument("--debug_term", type=str, default=None, help="If set with --debug_seed, evaluate only this candidate")
+    ap.add_argument("--debug_seed", type=str, default=None, help="If set, evaluate only this seed (one LLM call) and optionally show one candidate")
+    ap.add_argument("--debug_term", type=str, default=None, help="Used with --debug_seed to print the specific (seed,candidate) decision line")
 
     args = ap.parse_args()
 
@@ -647,31 +597,52 @@ def main():
     # Prepare global anchors (full seed vocabulary) if requested
     global_seed_vocab: List[str] = sorted([str(s) for s, v in expansions.items() if isinstance(v, list) and v]) if args.use_anchors else []
 
-    # --- DEBUG MODE: single pair ---
-    if args.debug_seed and args.debug_term:
-        runner = SingleTermRunner(args, global_anchors=global_seed_vocab)
+    # --- DEBUG MODE: one seed call ---
+    if args.debug_seed:
         seed = args.debug_seed
-        cand_list = expansions.get(seed)
-        if not isinstance(cand_list, list):
+        cand_list_full = expansions.get(seed)
+        if not isinstance(cand_list_full, list):
             print(f"[warn] Seed '{seed}' not found or expansions not a list.")
             return
-        if args.debug_term not in cand_list:
-            print(f"[warn] Candidate '{args.debug_term}' is NOT in expansions for seed '{seed}'.")
-        rec = runner.eval_pair(seed, args.debug_term, anchors=global_seed_vocab if args.use_anchors else None)
-        print("=== DEBUG SINGLE-PAIR ===")
-        print(json.dumps(asdict(rec), indent=2, ensure_ascii=False))
+        candidates = [str(c) for c in cand_list_full]
+        if args.limit_per_seed and args.limit_per_seed > 0:
+            candidates = candidates[: args.limit_per_seed]
+
+        runner = BatchRunner(args, global_anchors=global_seed_vocab)
+        accepted, ver, ms, err = runner.eval_seed_batch(seed, candidates, global_seed_vocab if args.use_anchors else None)
+        acc_set, records, aligned = runner.expand_records(seed, candidates, accepted, ver, ms, err)
+
+        if args.debug_term:
+            rec = next((r for r in records if r.candidate == args.debug_term), None)
+            if rec is None:
+                print(f"[warn] Candidate '{args.debug_term}' not in list for seed '{seed}'.")
+            else:
+                print("=== DEBUG SINGLE-PAIR (from batch) ===")
+                print(json.dumps(asdict(rec), indent=2, ensure_ascii=False))
+        else:
+            print("=== DEBUG BATCH ===")
+            print(json.dumps({
+                "seed": seed,
+                "accepted": sorted(list(acc_set)),
+                "schema_ok": ver.get("schema_ok", False),
+                "unknown_terms": ver.get("unknown_terms", []),
+                "duplicates": ver.get("duplicates", []),
+                "relations": ver.get("relations", {}),
+                "latency_ms": ms,
+                "error": err,
+            }, indent=2, ensure_ascii=False))
         return
 
     # --- NORMAL MODE (sequential across seeds) ---
     if not args.outdir:
-        raise ValueError("--outdir is required unless --debug_seed and --debug_term are set")
+        raise ValueError("--outdir is required unless --debug_seed is set")
 
     outdir = Path(args.outdir).expanduser().resolve()
     timestamp = datetime.now().strftime("%m_%d_%H_%M")
-    eval_dir = outdir / f"single_term_eval_{timestamp}"
+    eval_dir = outdir / f"batch_eval_{timestamp}"
     eval_dir.mkdir(parents=True, exist_ok=True)
 
-    log_path = eval_dir / "single_term_eval.log"
+    log_path = eval_dir / "batch_eval.log"
     ndjson_pairs_path = eval_dir / "decisions.ndjson"
     ndjson_seeds_path = eval_dir / "seeds_accepted.ndjson"
     accepted_by_seed_path = eval_dir / "accepted_by_seed.json"
@@ -681,7 +652,7 @@ def main():
     summary_path = eval_dir / "summary.json"
 
     logger = setup_logger(log_path)
-    runner = SingleTermRunner(args, global_anchors=global_seed_vocab)
+    runner = BatchRunner(args, global_anchors=global_seed_vocab)
 
     # Filter seeds if requested
     seeds = list(expansions.keys())
@@ -708,9 +679,10 @@ def main():
     per_seed_rows: List[dict] = []
 
     # Process seeds sequentially (no concurrency)
-    logger.info("# Concurrency disabled: server serializes per-model requests; processing seeds sequentially.")
+    logger.info("# Concurrency disabled: server serializes per-model requests; processing seeds sequentially (one call per seed).")
     for seed, cand_list in jobs:
         acc, recs, aligned = runner.process_seed(seed, cand_list)
+
         # Subset check + logging: make sure accepted ⊆ original expansions
         original_list = expansions.get(seed, [])
         original_set = set(original_list) if isinstance(original_list, list) else set()
@@ -774,6 +746,7 @@ def main():
         "retries": args.retries,
         "sorted": bool(args.sort),
         "relation_mode": bool(args.relation_mode),
+        "closure_iters": int(args.closure_iters),
     }
     save_json(summary_path, summary)
 
@@ -786,7 +759,7 @@ def main():
     logger.info(f"# Accepted flat  : {accepted_all_flat_path.resolve()}")
     logger.info(f"# Accepted align : {accepted_aligned_path.resolve()}")
     logger.info(f"# Summary        : {summary_path.resolve()}")
-    logger.info(f"# UseAnchors={bool(args.use_anchors)} Retries={args.retries} Sort={bool(args.sort)} RelationMode={bool(args.relation_mode)}")
+    logger.info(f"# UseAnchors={bool(args.use_anchors)} Retries={args.retries} Sort={bool(args.sort)} RelationMode={bool(args.relation_mode)} ClosureIters={int(args.closure_iters)}")
     logger.info("")
     log_summary(logger, all_records, accepted_by_seed)
 

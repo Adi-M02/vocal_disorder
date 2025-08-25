@@ -1,0 +1,20 @@
+{
+  "total_evals": 18889,
+  "accept": 3681,
+  "reject": 15207,
+  "unknown_mismatch": 1,
+  "error": 0,
+  "seeds_with_errors": 0,
+  "seeds_all_empty": 1457,
+  "latency_ms_median": 1252,
+  "latency_ms_p90": 1575,
+  "out_dir": "/data/not_backed_up/amukundan/vocal_disorder/testing/llm_addition_testing/single/single_term_eval_08_24_22_39",
+  "model": "llama3.3:latest",
+  "url": "http://localhost:11434/api/chat",
+  "temperature": 0.0,
+  "timeout": 60,
+  "use_anchors": false,
+  "retries": 2,
+  "sorted": false,
+  "relation_mode": false
+}

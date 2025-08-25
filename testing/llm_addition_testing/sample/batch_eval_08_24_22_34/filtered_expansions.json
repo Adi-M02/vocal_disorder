@@ -1,0 +1,93 @@
+{
+  "burp_door_open": [],
+  "out_of_pocket": [
+    "insurance_cover",
+    "my_deductible",
+    "deductible",
+    "self_pay",
+    "copay",
+    "pay_out_of_pocket",
+    "insurance_coverage"
+  ],
+  "numb_needle": [
+    "numb_stuff",
+    "numb_agent",
+    "numb_spray"
+  ],
+  "extreme_annoy": [],
+  "nauseous": [
+    "feel_nauseous",
+    "nauseate",
+    "super_nauseous",
+    "dry_heave",
+    "nausea",
+    "awful",
+    "sick",
+    "very_uncomfortable",
+    "horrible",
+    "miserable",
+    "dizzy",
+    "uncomfortable",
+    "feel_sick",
+    "feel_nauseate",
+    "unwell"
+  ],
+  "inability_to_burp": [
+    "rcpd",
+    "disorder",
+    "health_issue",
+    "condition",
+    "dysfunction",
+    "unable_to_burp",
+    "gi_issue",
+    "noburp"
+  ],
+  "rcpd": [],
+  "examination": [
+    "endoscopy",
+    "egd"
+  ],
+  "scan": [
+    "xray",
+    "esophagram",
+    "mri",
+    "imaging",
+    "ct_scan",
+    "ultrasound",
+    "barium_swallow",
+    "x_ray",
+    "a_x_ray"
+  ],
+  "gastroscopy": [
+    "barium_swallow",
+    "swallow_test",
+    "swallow_study",
+    "scan",
+    "upper_endoscopy",
+    "endoscopy",
+    "egd",
+    "examination",
+    "barium_swallow_test",
+    "esophagram"
+  ],
+  "tachycardia": [
+    "anxiety_depression",
+    "bp",
+    "vagus_nerve_be",
+    "cortisol",
+    "headache_fatigue"
+  ],
+  "blood_pressure": [
+    "high_blood_pressure",
+    "hypertension",
+    "blood_pressure_cuff",
+    "blood_pressure_reading",
+    "bp",
+    "systolic_pressure",
+    "blood_pressure_monitor",
+    "blood_pressure_medication",
+    "diastolic_pressure",
+    "low_blood_pressure",
+    "blood_pressure_chart"
+  ]
+}

@@ -1,0 +1,12 @@
+{"seed": "burp_door_open", "accepted": [], "checked_subset": true, "violations": []}
+{"seed": "out_of_pocket", "accepted": ["insurance_cover", "my_deductible", "deductible", "self_pay", "copay", "pay_out_of_pocket", "insurance_coverage"], "checked_subset": true, "violations": []}
+{"seed": "numb_needle", "accepted": ["numb_stuff", "numb_agent", "numb_spray"], "checked_subset": true, "violations": []}
+{"seed": "extreme_annoy", "accepted": [], "checked_subset": true, "violations": []}
+{"seed": "nauseous", "accepted": ["feel_nauseous", "nauseate", "super_nauseous", "dry_heave", "nausea", "awful", "sick", "very_uncomfortable", "horrible", "miserable", "dizzy", "uncomfortable", "feel_sick", "feel_nauseate", "unwell"], "checked_subset": true, "violations": []}
+{"seed": "inability_to_burp", "accepted": ["rcpd", "disorder", "health_issue", "condition", "dysfunction", "unable_to_burp", "gi_issue", "noburp"], "checked_subset": true, "violations": []}
+{"seed": "rcpd", "accepted": [], "checked_subset": true, "violations": []}
+{"seed": "examination", "accepted": ["endoscopy", "egd"], "checked_subset": true, "violations": []}
+{"seed": "scan", "accepted": ["xray", "esophagram", "mri", "imaging", "ct_scan", "ultrasound", "barium_swallow", "x_ray", "a_x_ray"], "checked_subset": true, "violations": []}
+{"seed": "gastroscopy", "accepted": ["barium_swallow", "swallow_test", "swallow_study", "scan", "upper_endoscopy", "endoscopy", "egd", "examination", "barium_swallow_test", "esophagram"], "checked_subset": true, "violations": []}
+{"seed": "tachycardia", "accepted": ["anxiety_depression", "bp", "vagus_nerve_be", "cortisol", "headache_fatigue"], "checked_subset": true, "violations": []}
+{"seed": "blood_pressure", "accepted": ["high_blood_pressure", "hypertension", "blood_pressure_cuff", "blood_pressure_reading", "bp", "systolic_pressure", "blood_pressure_monitor", "blood_pressure_medication", "diastolic_pressure", "low_blood_pressure", "blood_pressure_chart"], "checked_subset": true, "violations": []}

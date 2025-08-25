@@ -1,0 +1,32 @@
+# Concurrency disabled: server serializes per-model requests; processing seeds sequentially (one call per seed).
+# Output dir: /data/not_backed_up/amukundan/vocal_disorder/testing/llm_addition_testing/sample/batch_eval_08_24_22_33
+# Pair decisions : /data/not_backed_up/amukundan/vocal_disorder/testing/llm_addition_testing/sample/batch_eval_08_24_22_33/decisions.ndjson
+# Seed rows      : /data/not_backed_up/amukundan/vocal_disorder/testing/llm_addition_testing/sample/batch_eval_08_24_22_33/seeds_accepted.ndjson
+# Accepted map   : /data/not_backed_up/amukundan/vocal_disorder/testing/llm_addition_testing/sample/batch_eval_08_24_22_33/accepted_by_seed.json
+# Filtered exp   : /data/not_backed_up/amukundan/vocal_disorder/testing/llm_addition_testing/sample/batch_eval_08_24_22_33/filtered_expansions.json
+# Accepted flat  : /data/not_backed_up/amukundan/vocal_disorder/testing/llm_addition_testing/sample/batch_eval_08_24_22_33/accepted_all_flat.json
+# Accepted align : /data/not_backed_up/amukundan/vocal_disorder/testing/llm_addition_testing/sample/batch_eval_08_24_22_33/accepted_aligned_by_seed.json
+# Summary        : /data/not_backed_up/amukundan/vocal_disorder/testing/llm_addition_testing/sample/batch_eval_08_24_22_33/summary.json
+# UseAnchors=False Retries=2 Sort=False RelationMode=False ClosureIters=0
+
+# Batch LLM evaluation summary (LLM-only WordNet-like relations)
+Total evals: 190 | accept=49 reject=141 unknown_mismatch=0 error=0
+Latency (ms) median=3725 p90=5287 max=5287
+
+## per-seed acceptance rates
+blood_pressure               | total=  11 accept=   4 reject=   7 unknown=  0 error=  0
+examination                  | total=   2 accept=   2 reject=   0 unknown=  0 error=  0
+gastroscopy                  | total=  26 accept=   9 reject=  17 unknown=  0 error=  0
+inability_to_burp            | total=  25 accept=   6 reject=  19 unknown=  0 error=  0
+nauseous                     | total=  25 accept=   7 reject=  18 unknown=  0 error=  0
+numb_needle                  | total=  25 accept=   3 reject=  22 unknown=  0 error=  0
+out_of_pocket                | total=  25 accept=   5 reject=  20 unknown=  0 error=  0
+rcpd                         | total=   1 accept=   0 reject=   1 unknown=  0 error=  0
+scan                         | total=  25 accept=   9 reject=  16 unknown=  0 error=  0
+tachycardia                  | total=  25 accept=   4 reject=  21 unknown=  0 error=  0
+
+## verification issues (model must return a subset of provided candidates)
+(none)
+
+## request/parse errors
+(none)

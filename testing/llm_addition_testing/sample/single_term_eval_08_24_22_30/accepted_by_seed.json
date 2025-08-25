@@ -1,0 +1,82 @@
+{
+  "burp_door_open": [],
+  "out_of_pocket": [
+    "self_pay",
+    "insurance_coverage",
+    "my_deductible",
+    "deductible",
+    "cost",
+    "pay_out_of_pocket",
+    "pay",
+    "copay"
+  ],
+  "numb_needle": [],
+  "extreme_annoy": [],
+  "nauseous": [
+    "sick",
+    "nausea",
+    "unwell",
+    "nauseate",
+    "feel_nauseous",
+    "dry_heave",
+    "gassy",
+    "feel_nauseate",
+    "super_nauseous",
+    "feel_sick",
+    "uncomfortable"
+  ],
+  "inability_to_burp": [
+    "r_cpd_i",
+    "disorder",
+    "health_issue",
+    "condition",
+    "r_cpd",
+    "rcpd",
+    "dysfunction",
+    "noburp",
+    "unable_to_burp",
+    "have_r_cpd",
+    "this_condition"
+  ],
+  "rcpd": [],
+  "examination": [
+    "egd",
+    "endoscopy"
+  ],
+  "scan": [
+    "upper_endoscopy",
+    "barium_swallow_study",
+    "colonoscopy",
+    "esophagram",
+    "egd",
+    "xray",
+    "mri",
+    "ultrasound",
+    "a_x_ray",
+    "barium_swallow",
+    "imaging",
+    "ct_scan",
+    "gastroscopy",
+    "barium_swallow_test"
+  ],
+  "gastroscopy": [
+    "upper_endoscopy",
+    "colonoscopy",
+    "esophagram",
+    "egd",
+    "endoscopy",
+    "barium_swallow",
+    "swallow_study",
+    "barium_swallow_test"
+  ],
+  "tachycardia": [],
+  "blood_pressure": [
+    "high_blood_pressure",
+    "hypertension",
+    "low_blood_pressure",
+    "bp",
+    "diastolic_pressure",
+    "blood_pressure_reading",
+    "systolic_pressure"
+  ]
+}

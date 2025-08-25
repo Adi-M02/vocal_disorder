@@ -1,0 +1,72 @@
+{
+  "burp_door_open": [],
+  "out_of_pocket": [
+    "deductible",
+    "pay_out_of_pocket",
+    "copay",
+    "self_pay",
+    "my_deductible"
+  ],
+  "numb_needle": [
+    "numb_spray",
+    "numb_stuff",
+    "numb_agent"
+  ],
+  "extreme_annoy": [],
+  "nauseous": [
+    "unwell",
+    "dry_heave",
+    "sick",
+    "feel_nauseous",
+    "nauseate",
+    "nausea",
+    "feel_sick"
+  ],
+  "inability_to_burp": [
+    "dysfunction",
+    "gi_issue",
+    "unable_to_burp",
+    "disorder",
+    "condition",
+    "health_issue"
+  ],
+  "rcpd": [],
+  "examination": [
+    "egd",
+    "endoscopy"
+  ],
+  "scan": [
+    "imaging",
+    "ultrasound",
+    "x_ray",
+    "barium_swallow",
+    "a_x_ray",
+    "xray",
+    "esophagram",
+    "ct_scan",
+    "mri"
+  ],
+  "gastroscopy": [
+    "swallow_test",
+    "swallow_study",
+    "modify_barium_swallow",
+    "endoscopy",
+    "barium_swallow",
+    "upper_endoscopy",
+    "barium_swallow_test",
+    "egd",
+    "esophagram"
+  ],
+  "tachycardia": [
+    "headache_fatigue",
+    "bp",
+    "cortisol",
+    "anxiety_depression"
+  ],
+  "blood_pressure": [
+    "low_blood_pressure",
+    "high_blood_pressure",
+    "hypertension",
+    "bp"
+  ]
+}
