@@ -32,6 +32,7 @@ Outputs (same set as single-term)
   • accepted_all_flat.json
   • accepted_aligned_by_seed.json
   • summary.json
+  • unknown_mismatch.ndjson   <-- NEW detailed diagnostics for schema mismatches
 """
 
 from __future__ import annotations
@@ -279,7 +280,12 @@ class LlmBatchDecider:
             "schema_used": schema_used,
             "phase": "batch_with_anchors" if anchors else "batch",
             "seed_echo_ok": (returned_seed == seed),
+            "returned_seed": returned_seed,
             "relations": relations,
+            # --- NEW: raw visibility for diagnostics ---
+            "raw_model_json": json.dumps(out, ensure_ascii=False),
+            "raw_decisions": decisions_raw,
+            "raw_relations": relations_raw,
         })
 
         # schema_ok if: seed echo ok, no unknown/dupes, and relations keys subset of accepted
@@ -333,6 +339,8 @@ class BatchRunner:
         )
         self.global_anchors: List[str] = list(global_anchors or [])
         self.cache: Dict[Tuple[str, str], DecisionRecord] = {}
+        # NEW: keep per-seed verification blobs for diagnostics
+        self.last_ver_map: Dict[str, Dict] = {}
         if args.cache_path and Path(args.cache_path).exists():
             self._load_cache(args.cache_path)
 
@@ -379,6 +387,8 @@ class BatchRunner:
 
     # Expand batch result into per-candidate DecisionRecords
     def expand_records(self, seed: str, candidates: List[str], accepted: Set[str], ver: Dict, latency_ms: int, err: Optional[str]) -> Tuple[Set[str], List[DecisionRecord], List[str]]:
+        # store ver for diagnostics
+        self.last_ver_map[seed] = dict(ver) if isinstance(ver, dict) else {}
         records: List[DecisionRecord] = []
         aligned: List[str] = []
         prompt_type_base = ver.get("phase", "batch")
@@ -405,7 +415,7 @@ class BatchRunner:
                     prompt_type=prompt_type_base, schema_used=schema_used,
                     unknown_terms=unknown_terms, duplicates=duplicates,
                     attempts=max(1, int(self.args.retries) + 1), latency_ms=latency_ms, error=str(err),
-                    relation=(relations_map.get(cand) if not is_forced else ("synonym" if self.args.relation_mode else None)),
+                    relation=(relations_map.get(cand) if not is_forced else None),
                 )
             else:
                 ok = cand in accepted_eff
@@ -420,7 +430,7 @@ class BatchRunner:
                     prompt_type=("shortcut" if is_forced else prompt_type_base), schema_used=schema_used,
                     unknown_terms=unknown_terms, duplicates=duplicates,
                     attempts=1, latency_ms=latency_ms, error=None,
-                    relation=(relations_map.get(cand) if not is_forced else ("synonym" if self.args.relation_mode else None)),
+                    relation=(relations_map.get(cand) if not is_forced else None),
                 )
             records.append(rec)
             aligned.append(cand if rec.accepted else "")
@@ -466,6 +476,12 @@ def write_ndjson(path: Path, records: List[DecisionRecord]):
 def write_seed_ndjson(path: Path, per_seed_rows: List[dict]):
     with open(path, "w", encoding="utf-8") as f:
         for row in per_seed_rows:
+            f.write(json.dumps(row, ensure_ascii=False) + "\n")
+
+# NEW: unknown_mismatch diagnostics writer
+def write_unknown_ndjson(path: Path, rows: List[dict]):
+    with open(path, "w", encoding="utf-8") as f:
+        for row in rows:
             f.write(json.dumps(row, ensure_ascii=False) + "\n")
 
 def percentile(arr: List[int], p: float) -> float:
@@ -630,6 +646,11 @@ def main():
                 "relations": ver.get("relations", {}),
                 "latency_ms": ms,
                 "error": err,
+                # NEW: extra visibility in debug mode
+                "returned_seed": ver.get("returned_seed"),
+                "raw_decisions": ver.get("raw_decisions"),
+                "raw_relations": ver.get("raw_relations"),
+                "raw_model_json": ver.get("raw_model_json"),
             }, indent=2, ensure_ascii=False))
         return
 
@@ -650,6 +671,8 @@ def main():
     accepted_all_flat_path = eval_dir / "accepted_all_flat.json"
     accepted_aligned_path = eval_dir / "accepted_aligned_by_seed.json"
     summary_path = eval_dir / "summary.json"
+    # NEW: unknown-mismatch diagnostics file
+    unknown_diag_path = eval_dir / "unknown_mismatch.ndjson"
 
     logger = setup_logger(log_path)
     runner = BatchRunner(args, global_anchors=global_seed_vocab)
@@ -677,6 +700,8 @@ def main():
     accepted_by_seed: Dict[str, List[str]] = {}
     aligned_by_seed: Dict[str, List[str]] = {}
     per_seed_rows: List[dict] = []
+    # NEW: collect unknown-mismatch diagnostics rows
+    unknown_diag_rows: List[dict] = []
 
     # Process seeds sequentially (no concurrency)
     logger.info("# Concurrency disabled: server serializes per-model requests; processing seeds sequentially (one call per seed).")
@@ -701,6 +726,35 @@ def main():
         })
         all_records.extend(recs)
 
+        # -----------------------------
+        # NEW: build unknown_mismatch diagnostics rows for this seed
+        # -----------------------------
+        ver = runner.last_ver_map.get(seed, {})  # seed-level verification blob
+        for r in recs:
+            if r.decision == "unknown_mismatch":
+                unknown_diag_rows.append({
+                    "seed": seed,
+                    "candidate": r.candidate,
+                    "prompt_type": r.prompt_type,
+                    # flags summarizing *why* this is an unknown_mismatch
+                    "reason_flags": {
+                        "schema_ok": bool(ver.get("schema_ok", False)),
+                        "seed_echo_ok": bool(ver.get("seed_echo_ok", False)),
+                        "has_unknown_terms": bool(r.unknown_terms),
+                        "has_duplicates": bool(r.duplicates),
+                    },
+                    # exact verification outputs
+                    "unknown_terms": r.unknown_terms,      # invented/altered items from decisions[]
+                    "duplicates": r.duplicates,            # repeated items in decisions[]
+                    "returned_seed": ver.get("returned_seed"),
+                    "raw_decisions": ver.get("raw_decisions"),     # model's raw decisions array
+                    "raw_relations": ver.get("raw_relations"),     # model's raw relations map (if any)
+                    "relations_filtered": ver.get("relations", {}),# filtered/valid relations we kept
+                    "schema_used": r.schema_used,
+                    # the full raw JSON from the model for this seed call:
+                    "raw_model_json": ver.get("raw_model_json"),
+                })
+
     # Write per-pair audit
     write_ndjson(ndjson_pairs_path, all_records)
 
@@ -722,6 +776,9 @@ def main():
             if term:
                 accepted_all_flat.append(term)
     save_json(accepted_all_flat_path, accepted_all_flat)
+
+    # NEW: write unknown-mismatch diagnostics
+    write_unknown_ndjson(unknown_diag_path, unknown_diag_rows)
 
     # Summary JSON
     seeds_with_errors = len({r.seed for r in all_records if r.decision == "error"})
@@ -747,6 +804,9 @@ def main():
         "sorted": bool(args.sort),
         "relation_mode": bool(args.relation_mode),
         "closure_iters": int(args.closure_iters),
+        # NEW: count of unknown-mismatch diagnostics written
+        "unknown_mismatch_rows": len(unknown_diag_rows),
+        "unknown_mismatch_log": str(unknown_diag_path.resolve()),
     }
     save_json(summary_path, summary)
 
@@ -759,6 +819,7 @@ def main():
     logger.info(f"# Accepted flat  : {accepted_all_flat_path.resolve()}")
     logger.info(f"# Accepted align : {accepted_aligned_path.resolve()}")
     logger.info(f"# Summary        : {summary_path.resolve()}")
+    logger.info(f"# Unknown-mismatch NDJSON : {unknown_diag_path.resolve()}")  # NEW
     logger.info(f"# UseAnchors={bool(args.use_anchors)} Retries={args.retries} Sort={bool(args.sort)} RelationMode={bool(args.relation_mode)} ClosureIters={int(args.closure_iters)}")
     logger.info("")
     log_summary(logger, all_records, accepted_by_seed)
