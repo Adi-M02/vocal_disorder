@@ -1,0 +1,5135 @@
+{
+  "0_regret": [],
+  "100": [
+    "50",
+    "60",
+    "70",
+    "80",
+    "90"
+  ],
+  "1000_firecracker": [],
+  "100_unit": [
+    "150_unit",
+    "200_unit",
+    "25_unit",
+    "30_unit",
+    "40_unit",
+    "50",
+    "50_unit",
+    "75_unit",
+    "80_unit",
+    "unit"
+  ],
+  "100u": [],
+  "10_unit": [
+    "25_unit",
+    "50_100_unit",
+    "60_unit",
+    "receive_100_unit",
+    "unit_of_botox"
+  ],
+  "120_unit": [
+    "125_unit",
+    "45_unit",
+    "65_unit",
+    "75_unit_with_doctor_bastian",
+    "receive_100_unit"
+  ],
+  "130": [
+    "115",
+    "120",
+    "140",
+    "145",
+    "160",
+    "180",
+    "190",
+    "57",
+    "65"
+  ],
+  "130cc": [],
+  "1_gallon_abdomen": [],
+  "20_min_procedure": [],
+  "28_week_pregnant": [],
+  "3_month_mark": [
+    "6_month_mark",
+    "6_week_mark",
+    "three_month_mark"
+  ],
+  "4_injection": [],
+  "4_month_mark": [
+    "mu"
+  ],
+  "50_unit": [
+    "100_unit",
+    "150_unit",
+    "200_unit",
+    "25_unit",
+    "30_unit",
+    "40_unit",
+    "75_unit",
+    "80_unit"
+  ],
+  "6_day_in": [],
+  "6_month_pregnant": [
+    "7_month_pregnant",
+    "8_month_pregnant",
+    "9_month_pregnant",
+    "look_pregnant",
+    "month_pregnant",
+    "pregnant",
+    "pregnant_belly",
+    "queasy",
+    "six_month_pregnant"
+  ],
+  "70_cc": [],
+  "70_unit": [
+    "100_unit_under_ga",
+    "150_unit",
+    "200_unit",
+    "25_unit",
+    "30_unit",
+    "40_unit",
+    "60_unit",
+    "75_unit",
+    "80_unit",
+    "85_unit",
+    "receive_100_unit",
+    "unit_of_botox"
+  ],
+  "80_unit": [
+    "100_unit",
+    "125_unit",
+    "150_unit",
+    "200_unit",
+    "30_unit",
+    "50_unit",
+    "60_unit",
+    "70_unit",
+    "75_unit",
+    "fifteenth",
+    "fifth"
+  ],
+  "8_month_pregnant": [
+    "6_month_pregnant",
+    "7_month_pregnant",
+    "9_month_pregnant",
+    "puffy",
+    "six_month_pregnant"
+  ],
+  "90cc": [],
+  "90ml": [],
+  "a_little_stuck": [],
+  "abdomen": [
+    "abdominal",
+    "chest",
+    "compress",
+    "organ",
+    "pelvis",
+    "press",
+    "rib",
+    "rib_cage",
+    "sternum"
+  ],
+  "abdominal_distension": [
+    "distend_stomach",
+    "stomach_distension"
+  ],
+  "abdominal_pain": [
+    "chest_pain",
+    "cramp",
+    "diarrhea",
+    "diarrhoea",
+    "dizziness",
+    "indigestion",
+    "palpitation",
+    "shortness_of_breath",
+    "stomach_pain"
+  ],
+  "abdominal_throat_muscle": [],
+  "able_to_burp": [
+    "able_to_burp_on_command",
+    "belch",
+    "burp",
+    "burp_on_command",
+    "inability_to_burp",
+    "unable_to_burp"
+  ],
+  "able_to_fart": [],
+  "able_to_learn": [],
+  "abnormal": [
+    "abnormality",
+    "blockage"
+  ],
+  "about_to_burst": [],
+  "absolutely_starve": [],
+  "accept_the_consequence": [],
+  "accident_throw_up": [],
+  "accompany_by_flatulence": [],
+  "achalasia": [],
+  "acid": [
+    "acid_reflux",
+    "acid_taste",
+    "acidity",
+    "stomach_acid"
+  ],
+  "acid_feel": [],
+  "acid_reduction_medication": [],
+  "acid_reflux": [
+    "lpr_reflux",
+    "reflux",
+    "silent_reflux"
+  ],
+  "acid_reflux_pain": [],
+  "acpd": [],
+  "activate_charcoal": [
+    "charcoal"
+  ],
+  "active_ed": [],
+  "active_squeeze": [],
+  "actually_care": [],
+  "actually_throw_up": [],
+  "actually_understand": [],
+  "acupuncture": [
+    "hypnotherapy",
+    "physiotherapist",
+    "physiotherapy"
+  ],
+  "adams_apple": [
+    "your_adams_apple"
+  ],
+  "adhd": [
+    "autism"
+  ],
+  "adhd_medication": [
+    "diazepam",
+    "prescription_drug",
+    "prescription_medication",
+    "preventative",
+    "ssri",
+    "sucralfate",
+    "valium",
+    "zantac"
+  ],
+  "administer": [
+    "inject"
+  ],
+  "administer_medication": [],
+  "adult_size_dosage": [],
+  "aerophagia": [],
+  "affect_burp": [],
+  "affect_your_anxiety": [],
+  "afraid_of_vomit": [
+    "fear_of_vomit",
+    "inability_to_vomit",
+    "terrify_of_vomit",
+    "vomit_phobia"
+  ],
+  "afraid_to_puke": [],
+  "afraid_to_vomit": [],
+  "after_eat": [
+    "eat"
+  ],
+  "after_meal": [
+    "between_meal",
+    "big_meal",
+    "during_meal",
+    "every_meal",
+    "heavy_meal",
+    "large_meal",
+    "meal",
+    "snack"
+  ],
+  "after_the_botox": [],
+  "aggressive_carbonate_seltzer": [],
+  "agoraphobic": [],
+  "air_be_escape": [],
+  "air_be_trap": [],
+  "air_bounce_up": [],
+  "air_bubble": [
+    "bubble",
+    "motion",
+    "rise"
+  ],
+  "air_bubble_bob": [],
+  "air_bubble_sensation": [],
+  "air_build_up": [],
+  "air_issue": [],
+  "air_leak": [],
+  "air_manipulation": [],
+  "air_pressure": [],
+  "air_puke": [],
+  "air_slip": [],
+  "air_trap": [
+    "growl",
+    "knot",
+    "rumble",
+    "trap_air",
+    "trap_gas"
+  ],
+  "air_vomit": [
+    "actual_vomit",
+    "gag",
+    "gag_reflex",
+    "heave",
+    "induce_vomit",
+    "puke",
+    "retch",
+    "throw_up",
+    "vomit"
+  ],
+  "air_vomit_help": [],
+  "airplane_chair": [],
+  "albuterol": [],
+  "alcohol": [
+    "alcoholic_drink",
+    "beer",
+    "beverage",
+    "carbonate",
+    "carbonation",
+    "cider",
+    "cocktail",
+    "coffee",
+    "liquor",
+    "soda",
+    "vodka",
+    "wine"
+  ],
+  "alcohol_with_food": [],
+  "alcoholic_seltzer": [],
+  "all_air": [],
+  "all_those_symptom": [],
+  "allergy_have_improve": [],
+  "almost_every_right": [],
+  "almost_everyday": [],
+  "almost_faint": [],
+  "alone": [
+    "amusing",
+    "lonely",
+    "miserable",
+    "ridiculous"
+  ],
+  "already_so_tight": [],
+  "already_stop_work": [],
+  "alternative_medicine": [],
+  "always_feel_sick": [],
+  "always_hate_eat": [],
+  "amount_of_botox": [],
+  "anatomy": [],
+  "anecdotal_evidence": [
+    "definitive",
+    "entity",
+    "experiment_evidence",
+    "family_history",
+    "material",
+    "scientific_evidence"
+  ],
+  "anesthesia": [
+    "anaesthesia",
+    "anesthetic",
+    "general_anesthesia",
+    "general_anesthetic",
+    "local_anesthetic",
+    "sedation"
+  ],
+  "anesthesiologist": [
+    "anaesthetist",
+    "anesthetist"
+  ],
+  "annoy": [
+    "annoyed",
+    "awful",
+    "awkward",
+    "bad",
+    "bothersome",
+    "frustrate",
+    "inconvenient",
+    "intense",
+    "odd",
+    "strange",
+    "tough",
+    "uncomfortable",
+    "unpleasant",
+    "weird"
+  ],
+  "annoyed": [
+    "angry",
+    "annoy",
+    "awkward",
+    "frustrate",
+    "funny",
+    "mad"
+  ],
+  "another_injection": [
+    "another_shot",
+    "first_injection",
+    "repeat_injection",
+    "second_injection",
+    "second_shot",
+    "third_shot"
+  ],
+  "antacid": [
+    "drug",
+    "famotidine",
+    "medication",
+    "omeprazole",
+    "pepcid",
+    "prilosec",
+    "tums",
+    "zantac"
+  ],
+  "anterior_pelvic_tilt": [],
+  "antibiotic": [
+    "medication"
+  ],
+  "antihistamine": [
+    "antiemetic",
+    "benadryl",
+    "prilosec",
+    "ranitidine",
+    "zantac"
+  ],
+  "antispasmodic_medication": [],
+  "anxiety": [
+    "anxiety_attack",
+    "depression",
+    "fear",
+    "mental_state",
+    "panic",
+    "panic_attack",
+    "stress"
+  ],
+  "anxiety_around_clothing": [],
+  "anxiety_disorder": [
+    "panic_disorder"
+  ],
+  "anxiety_management": [],
+  "anxious": [
+    "anxious_about",
+    "anxious_person",
+    "depressed",
+    "nauseous",
+    "nervous",
+    "sick",
+    "unwell"
+  ],
+  "any_further_test": [],
+  "appeal_the_claim": [],
+  "appointment": [
+    "contact",
+    "meeting",
+    "receptionist",
+    "referral"
+  ],
+  "arthritis": [],
+  "article": [
+    "copy",
+    "forum",
+    "page",
+    "paper",
+    "print",
+    "publication",
+    "thread"
+  ],
+  "as_a_baby": [],
+  "as_a_kid": [],
+  "asphyxiate": [
+    "asphyxiation",
+    "obstruct"
+  ],
+  "assist_in_diagnosis": [],
+  "associate_symptom": [
+    "common_symptom",
+    "main_symptom",
+    "r_cpd_symptom",
+    "symptom_e_g",
+    "symptom_of_r_cpd"
+  ],
+  "association": [
+    "mechanism"
+  ],
+  "asthma_act_up": [],
+  "attack": [
+    "panic_attack"
+  ],
+  "attitude_and_sass": [],
+  "autoimmune_condition": [],
+  "automatic_burp": [],
+  "autonomic_nervous_system": [
+    "nervous_system",
+    "parasympathetic"
+  ],
+  "avoid_aggressor": [],
+  "avoid_alcohol": [
+    "alcohol_caffeine",
+    "latte"
+  ],
+  "avoid_bend_over": [],
+  "avoid_burp_gerd": [],
+  "avoid_carbonate_beverage": [
+    "amaretto",
+    "latte",
+    "martini"
+  ],
+  "avoid_eat": [],
+  "avoid_long_drink": [],
+  "avoid_pasta": [],
+  "awake_procedure": [],
+  "awake_version": [],
+  "awful": [
+    "bad",
+    "dread",
+    "horrendous",
+    "horrible",
+    "horrific",
+    "insane",
+    "intense",
+    "miserable",
+    "nasty",
+    "nauseous",
+    "sick",
+    "terrible",
+    "uncomfortable",
+    "worst"
+  ],
+  "back_pain": [],
+  "back_up_position": [],
+  "bacterial_level": [],
+  "bad_digestion": [],
+  "bad_gurgle": [],
+  "bad_mechanism": [],
+  "bad_stomach_pain": [],
+  "bad_symptom": [],
+  "bad_trigger": [],
+  "bad_vomit_experience": [],
+  "baffle": [],
+  "balloon_up": [],
+  "barely_sleep": [],
+  "barium_swallow": [
+    "barium_swallow_test",
+    "modify_barium_swallow",
+    "swallow_study",
+    "swallow_test"
+  ],
+  "barrett_esophagus": [
+    "barrett_esophagus_which",
+    "esophageal"
+  ],
+  "bastian_laryngopedia": [],
+  "bcbs": [],
+  "be_nervous": [],
+  "be_not_normal": [],
+  "be_relax": [],
+  "be_sick": [],
+  "be_tense": [],
+  "be_through_botox": [],
+  "beano_pill": [],
+  "bearable": [],
+  "become_fart": [],
+  "become_light": [],
+  "become_more_confident": [],
+  "become_more_natural": [],
+  "become_so_pain": [],
+  "before_surgery": [],
+  "belch_like_noise": [],
+  "belch_reflex": [
+    "mechanical",
+    "retrograde"
+  ],
+  "belly_be_pop": [],
+  "belly_button": [],
+  "bend_over": [
+    "lean_over",
+    "squat_instead_of_bend_over"
+  ],
+  "big_bubble": [],
+  "big_pain_hiccup": [],
+  "big_release_burp": [],
+  "big_trigger": [],
+  "biofeedback_method": [],
+  "birth_control": [],
+  "bit_of_resistance": [],
+  "bitter_taste": [
+    "acid_taste",
+    "sour_taste"
+  ],
+  "bizarre": [],
+  "blame": [
+    "attribute"
+  ],
+  "bleb": [],
+  "bloat": [
+    "extreme_bloat",
+    "less_bloat",
+    "severe_bloat",
+    "super_bloat"
+  ],
+  "bloat_actually_hurt": [],
+  "bloat_be_horrid": [],
+  "bloat_distension": [
+    "ileus"
+  ],
+  "bloat_have_settle": [],
+  "bloat_on_plane": [],
+  "bloat_symptom": [],
+  "block_nose": [
+    "runny_nose",
+    "stuffy_nose"
+  ],
+  "blood_pressure": [],
+  "blood_work": [
+    "colonoscopy",
+    "imaging",
+    "lab",
+    "mri",
+    "scan",
+    "ultrasound"
+  ],
+  "bloodstream": [],
+  "blow_my_nose": [],
+  "bodily_awareness": [],
+  "body_automatic_stifle": [],
+  "body_be_learn": [],
+  "body_confidence": [],
+  "body_feel_empty": [],
+  "body_image": [],
+  "body_natural_tendency": [],
+  "body_pathology": [],
+  "book_my_procedure": [],
+  "borborygmus": [],
+  "bother_i": [],
+  "botox": [],
+  "botox_another_go": [],
+  "botox_cover": [],
+  "botox_effect": [],
+  "botox_inject": [],
+  "botox_injection": [
+    "dilation",
+    "first_injection",
+    "injection",
+    "office_injection",
+    "second_injection",
+    "second_shot",
+    "third_injection",
+    "treatment"
+  ],
+  "botox_injection_procedure": [],
+  "botox_journey": [],
+  "botox_loosen_it": [],
+  "botox_prescription": [],
+  "botox_procedure": [],
+  "botox_treatment": [
+    "diagnose_and_treat",
+    "diagnosis_and_treatment",
+    "r_cpd_treatment",
+    "receive_treatment",
+    "seek_treatment",
+    "success_treat",
+    "treat",
+    "treat_rcpd",
+    "treatment"
+  ],
+  "botox_wear_off": [
+    "the_botox_wear",
+    "wear_off",
+    "wear_off_after",
+    "wear_off_complete"
+  ],
+  "botox_yesterday": [],
+  "bowel_cancer": [],
+  "brain_stop_i": [],
+  "bravo_ph_monitor": [],
+  "break_down": [
+    "digest"
+  ],
+  "breath_in": [],
+  "breathe": [
+    "breathe_deep",
+    "breathe_through",
+    "choke",
+    "drown",
+    "exhale",
+    "inhale",
+    "sing",
+    "sneeze",
+    "spasm",
+    "squeeze",
+    "strain",
+    "suffocate",
+    "tense",
+    "tense_up",
+    "wheeze",
+    "wheezy"
+  ],
+  "breathe_be_change": [],
+  "breathe_issue": [
+    "main_issue",
+    "sinus_issue"
+  ],
+  "breathe_pattern": [
+    "alignment",
+    "compression",
+    "conjunction",
+    "pectoral",
+    "regulation"
+  ],
+  "breathe_technique": [],
+  "bring_acid": [],
+  "bring_i_distress": [],
+  "brink_of_nausea": [],
+  "brisk_walk_uphill": [],
+  "brush_my_tooth": [],
+  "brutal_hiccup": [],
+  "bubble": [
+    "air_bubble",
+    "bubble_of_air",
+    "gargle",
+    "gas_bubble",
+    "gurgle",
+    "pop",
+    "rise"
+  ],
+  "bubble_feel": [],
+  "bubble_get_unstuck": [],
+  "bubbly_drink": [
+    "chocolate_milk",
+    "cider",
+    "energy_drink",
+    "gin_and_tonic",
+    "hard_liquor",
+    "hot_chocolate",
+    "liquor",
+    "soft_drink"
+  ],
+  "build_up_air": [
+    "air_buildup"
+  ],
+  "buildup": [],
+  "bunch_of_phlegm": [],
+  "burn": [
+    "ache",
+    "bruise",
+    "burn_sensation",
+    "heart_burn",
+    "irritate",
+    "itch",
+    "scratch",
+    "tickle"
+  ],
+  "burn_sensation": [
+    "constriction",
+    "globus_sensation",
+    "tickle",
+    "tightness"
+  ],
+  "burp": [
+    "belch",
+    "yawn"
+  ],
+  "burp_active": [],
+  "burp_be_fly": [],
+  "burp_be_involuntary": [],
+  "burp_be_stuck": [],
+  "burp_break": [],
+  "burp_door_open": [],
+  "burp_every_sip": [],
+  "burp_function": [],
+  "burp_machine": [],
+  "burp_nonstop": [],
+  "burp_odd": [],
+  "burp_random": [],
+  "burp_spill_out": [],
+  "burp_while_eat": [],
+  "burper": [
+    "no_burper",
+    "non_burper",
+    "regular_burper"
+  ],
+  "burst": [
+    "ball",
+    "balloon",
+    "beat",
+    "blow_up",
+    "exit",
+    "explode",
+    "hole",
+    "inflate",
+    "puff_out",
+    "rise",
+    "tear",
+    "wall"
+  ],
+  "calm": [
+    "calm_myself",
+    "clean",
+    "comfy",
+    "flush",
+    "light",
+    "pull",
+    "shake",
+    "shiver",
+    "stay_calm",
+    "wash"
+  ],
+  "calm_the_vagus": [],
+  "camera": [],
+  "camera_one": [],
+  "camera_show": [],
+  "can_be_risky": [],
+  "can_not_breathe": [],
+  "can_not_wait": [],
+  "cannabis": [
+    "marijuana"
+  ],
+  "cannot_walk": [],
+  "carbon_dioxide": [
+    "co2"
+  ],
+  "carbonate": [
+    "alcohol",
+    "anything_carbonate",
+    "beverage",
+    "carbonate_beverage",
+    "cider",
+    "coffee",
+    "fruit_juice",
+    "liquor",
+    "mixer",
+    "non_carbonate",
+    "orange_juice",
+    "soda",
+    "soft_drink",
+    "vodka",
+    "whiskey",
+    "wine"
+  ],
+  "carbonate_beverage": [
+    "alcohol",
+    "beverage",
+    "carbonate",
+    "carbonate_drink",
+    "carbonation",
+    "cider",
+    "coke",
+    "drink_carbonate",
+    "drink_fizzy",
+    "energy_drink",
+    "fizz",
+    "fizzy",
+    "fizzy_drink",
+    "ginger_ale",
+    "seltzer",
+    "soda",
+    "soda_water",
+    "soft_drink"
+  ],
+  "carbonate_drink": [
+    "alcohol",
+    "beer",
+    "beverage",
+    "carbonate",
+    "carbonate_beverage",
+    "carbonation",
+    "cider",
+    "coke",
+    "drink_beer",
+    "drink_carbonate_beverage",
+    "drink_fizzy",
+    "drink_soda",
+    "fizz",
+    "fizzy",
+    "fizzy_drink",
+    "seltzer",
+    "soda",
+    "soda_water",
+    "soft_drink"
+  ],
+  "carbonation": [
+    "carbonate",
+    "ginger_ale",
+    "seltzer",
+    "soda",
+    "soda_water"
+  ],
+  "carbonation_mess_you": [],
+  "catch_a_bug": [],
+  "cause_damage": [],
+  "cause_i_pain": [],
+  "cause_us_pain": [],
+  "cbd": [],
+  "certain_age": [
+    "age_23",
+    "early_childhood"
+  ],
+  "certain_food_trigger": [],
+  "certain_motion": [],
+  "certain_position": [
+    "angle",
+    "bend",
+    "chair",
+    "lean_back",
+    "side_to_side",
+    "slouch",
+    "tuck",
+    "twist",
+    "weird_position",
+    "while_stand"
+  ],
+  "chance_of_success": [
+    "80_success_rate",
+    "his_success_rate",
+    "lower_success_rate",
+    "success_rate"
+  ],
+  "change_and_adjustment": [],
+  "change_in_bloat": [],
+  "change_my_eat": [],
+  "change_my_life": [],
+  "change_my_voice": [],
+  "chase_every_bite": [
+    "almost_every_bite",
+    "between_bite",
+    "single_bite",
+    "wash_every_bite"
+  ],
+  "chest_be_explode": [],
+  "chest_esophagus": [],
+  "chest_inward": [
+    "inwards"
+  ],
+  "chest_pain": [
+    "headache"
+  ],
+  "chest_pressure": [],
+  "chest_tightness": [
+    "tight_chest"
+  ],
+  "chest_wall": [],
+  "chest_x_ray": [
+    "x_ray"
+  ],
+  "chewable_tums": [],
+  "chicken_head_movement": [],
+  "child_condition": [],
+  "child_pose": [
+    "cobra_pose",
+    "yoga_pose"
+  ],
+  "child_size_dose": [],
+  "childhood": [
+    "adult",
+    "adulthood",
+    "birth",
+    "child",
+    "early_childhood",
+    "infancy",
+    "infant",
+    "kid",
+    "teen",
+    "teenager",
+    "toddler"
+  ],
+  "chin_squeeze_exercise": [],
+  "chinese_medicine": [
+    "nux_vomica"
+  ],
+  "chiropractor": [
+    "physiotherapist",
+    "physiotherapy",
+    "speech_therapist"
+  ],
+  "choke": [
+    "drown",
+    "go_down",
+    "suffocate"
+  ],
+  "choke_bloat_settle": [],
+  "choke_on_food": [],
+  "choke_on_water": [],
+  "chronic_bloat": [],
+  "chronic_burp": [],
+  "chronic_dysphagia": [],
+  "chronic_heartburn": [],
+  "chronic_nausea": [
+    "constant_nausea",
+    "gastritis",
+    "migraine",
+    "tinnitus"
+  ],
+  "chronic_pain": [],
+  "chronic_pelvic_pain": [],
+  "chronic_reflux": [
+    "laryngopharyngeal_reflux",
+    "laryngopharyngeal_reflux_lpr",
+    "ulceration"
+  ],
+  "chronic_tight_muscle": [],
+  "chug": [],
+  "chug_bunch_fluid": [],
+  "chug_liquid": [],
+  "ck_level": [],
+  "close_ent": [],
+  "close_my_rib": [],
+  "clothing_issue": [],
+  "co2": [
+    "carbon_dioxide",
+    "fluid"
+  ],
+  "cold_symptom": [],
+  "collarbone": [
+    "shoulder_blade",
+    "sternum"
+  ],
+  "colonoscopy": [
+    "endoscopy",
+    "gastroscopy",
+    "scan"
+  ],
+  "come_forward": [],
+  "common_condition": [],
+  "community": [
+    "forum",
+    "group",
+    "member"
+  ],
+  "complete_disregard_it": [],
+  "complete_tolerate": [],
+  "complete_under_anesthesia": [],
+  "complication": [],
+  "compress_my_gurgle": [],
+  "concern": [],
+  "condition": [
+    "disease",
+    "disorder",
+    "illness",
+    "knowledge",
+    "syndrome"
+  ],
+  "condition_be_debilitate": [],
+  "confidence_have_raise": [],
+  "confusion": [],
+  "connection_doctor_suggestion": [],
+  "consistent_every_day": [],
+  "constant_burp": [],
+  "constant_cold_sweat": [],
+  "constant_cycle": [],
+  "constant_fart": [],
+  "constant_gas": [],
+  "constant_in_discomfort": [],
+  "constant_micro_burp": [],
+  "constant_nausea": [
+    "chest_pain",
+    "chronic_nausea",
+    "diarrhea",
+    "dizziness",
+    "extreme_nausea",
+    "indigestion",
+    "migraine",
+    "palpitation"
+  ],
+  "constant_overload": [],
+  "constant_sore_throat": [],
+  "constant_swallow": [],
+  "constant_tight_chest": [],
+  "constant_worry": [],
+  "constipation": [
+    "chest_pain",
+    "diarrhea",
+    "diarrhoea",
+    "gastritis",
+    "indigestion",
+    "palpitation"
+  ],
+  "consult": [
+    "consultation",
+    "initial_consult",
+    "initial_consultation",
+    "video_consult"
+  ],
+  "consult_with_gi": [],
+  "consultation": [
+    "appointment"
+  ],
+  "consultation_visit": [],
+  "contestant_gurgle": [],
+  "continue_to_cope": [],
+  "contort_my_neck": [],
+  "contraceptive": [],
+  "contribute_factor": [],
+  "control": [
+    "belch",
+    "burp",
+    "command",
+    "force"
+  ],
+  "control_microburp": [],
+  "control_my_diet": [],
+  "control_the_breathe": [],
+  "controversial_diagnosis": [],
+  "convince": [
+    "convince_them",
+    "try_to_convince"
+  ],
+  "coping_mechanism": [
+    "defense_mechanism"
+  ],
+  "coping_strategy": [],
+  "core_muscle": [
+    "anterior",
+    "frontal",
+    "pectoral",
+    "soft_palate"
+  ],
+  "core_strength": [],
+  "correct_electrical_feedback": [],
+  "correct_my_posture": [],
+  "cost_prohibitive": [],
+  "cough": [
+    "gag_reflex",
+    "sneeze",
+    "yawn"
+  ],
+  "cough_and_burp": [],
+  "cough_extra_hard": [],
+  "could_barely_talk": [],
+  "could_not_burp": [],
+  "could_taste_it": [],
+  "countless_patient": [],
+  "couple_small_burp": [],
+  "cover_the_procedure": [],
+  "covid": [],
+  "cp_botox": [],
+  "cp_dysfunction": [],
+  "crack_my_jaw": [],
+  "cramp": [
+    "chest_pain",
+    "dizziness",
+    "headache",
+    "stomach_cramp"
+  ],
+  "crazy_tight": [],
+  "create_a_sound": [],
+  "cricoid_massage": [
+    "massage",
+    "neck_massage",
+    "shaker_exercise_cricoid_massage",
+    "throat_massage"
+  ],
+  "cricopharyngeal_muscle": [
+    "cp_muscle",
+    "cricoid_muscle",
+    "cricopharyngeus_muscle",
+    "sphincter",
+    "sphincter_muscle"
+  ],
+  "cricopharyngeus_sphincter": [],
+  "cripple": [],
+  "croak": [
+    "bubble",
+    "croak_noise",
+    "croak_sound",
+    "frog_croak",
+    "gargle",
+    "growl",
+    "gurgle",
+    "noise",
+    "rumble"
+  ],
+  "croak_club": [],
+  "croak_noise": [
+    "croak",
+    "frog_noise",
+    "gargle",
+    "gargle_noise",
+    "growl",
+    "growl_noise",
+    "grumble",
+    "gurgle_noise",
+    "loud_gurgle_noise",
+    "loud_noise",
+    "noise",
+    "rumble",
+    "rumble_noise",
+    "strange_noise",
+    "weird_gurgle_noise",
+    "weird_noise"
+  ],
+  "crop_dust": [
+    "joker"
+  ],
+  "cruel_combination": [],
+  "crystallize_ginger": [
+    "ginger_tea",
+    "green_tea",
+    "hummus",
+    "olive",
+    "turmeric"
+  ],
+  "cure_rcpd": [],
+  "cure_yourself": [],
+  "curious": [
+    "curious_about",
+    "curious_if",
+    "curious_to_hear",
+    "curious_to_see",
+    "just_curious",
+    "very_curious"
+  ],
+  "current_stressor": [],
+  "curse": [],
+  "cut_out_carbonation": [],
+  "cut_out_dairy": [
+    "gluten_dairy"
+  ],
+  "cut_your_gut": [],
+  "daily_live": [],
+  "daily_misery": [
+    "hardship"
+  ],
+  "daily_ppis": [],
+  "damage_my_throat": [],
+  "damage_the_muscle": [],
+  "dangerous_vomit": [],
+  "deal_with_depression": [],
+  "debilitate": [],
+  "decrease_since_then": [],
+  "deep_breath": [
+    "belly_breath",
+    "big_breath",
+    "break",
+    "breath",
+    "deep_breathe",
+    "full_breath",
+    "inhale",
+    "pause",
+    "puff",
+    "puff_out",
+    "shallow_breath"
+  ],
+  "deep_guttural": [],
+  "defer_pain": [],
+  "definitely_go_away": [],
+  "deflate": [],
+  "delight": [],
+  "demographics": [],
+  "demon_burp": [],
+  "deny": [
+    "denial",
+    "deny_coverage",
+    "initial_deny"
+  ],
+  "deny_the_claim": [],
+  "depressing": [],
+  "depression": [
+    "mental_health"
+  ],
+  "desperate": [
+    "hopeless"
+  ],
+  "devastate": [],
+  "develop_emetophobia": [
+    "grow_out"
+  ],
+  "diagnose": [
+    "diagnose_r_cpd",
+    "diagnose_with_gerd",
+    "diagnosis",
+    "official_diagnose",
+    "self_diagnose"
+  ],
+  "diagnose_ocd": [],
+  "diagnose_roulette": [],
+  "diagnose_with_anxiety": [],
+  "diagnostic": [
+    "diagnosis_and_treatment",
+    "diagnosis_of_r_cpd",
+    "diagnostic_test"
+  ],
+  "diagnostic_step": [],
+  "diagnostic_tool": [],
+  "diaphragm": [],
+  "diaphragmatic_belly_breathe": [],
+  "diarrhea": [
+    "chest_pain",
+    "constipation",
+    "cramp",
+    "diarrhoea",
+    "indigestion",
+    "stomach_ache",
+    "upset_stomach"
+  ],
+  "diary": [
+    "blog",
+    "journal"
+  ],
+  "dietary_change": [
+    "diet_change",
+    "lifestyle_change",
+    "mitigation"
+  ],
+  "dietary_consideration": [],
+  "dietary_intolerance": [],
+  "different_mechanism": [],
+  "difficult_to_breathe": [],
+  "difficulty_breathe": [
+    "breathe_issue"
+  ],
+  "difficulty_swallow": [
+    "slow_swallow",
+    "swallow_difficulty",
+    "trouble_swallow"
+  ],
+  "digest_enough": [],
+  "digestion": [
+    "absorption",
+    "digest",
+    "digestive",
+    "ferment",
+    "fermentation",
+    "nutrient"
+  ],
+  "digestion_aid": [],
+  "digestive_issue": [
+    "gastro_issue",
+    "gastrointestinal_issue",
+    "gi_issue",
+    "gut_issue",
+    "health_issue"
+  ],
+  "digestive_system": [
+    "nervous_system",
+    "organ",
+    "system"
+  ],
+  "digestive_tract": [
+    "digestive_system",
+    "gi_tract",
+    "tract"
+  ],
+  "dilation": [],
+  "diligent_oral_hygiene": [],
+  "disappoint": [
+    "disappointment"
+  ],
+  "disbelief": [],
+  "discomfort": [
+    "chest_pain",
+    "cramp",
+    "diarrhea",
+    "distress",
+    "flatulence",
+    "hunger",
+    "nausea",
+    "pain",
+    "pressure"
+  ],
+  "discomfort_have_pass": [],
+  "discourage": [],
+  "discuss_the_condition": [],
+  "disgust": [
+    "demon",
+    "demonic",
+    "funny",
+    "monster",
+    "nasty",
+    "repulsive",
+    "ridiculous",
+    "violent",
+    "wet"
+  ],
+  "disinterested": [],
+  "dislodge_some_gas": [],
+  "disorder": [
+    "condition",
+    "disease",
+    "dysfunction",
+    "dysphagia",
+    "ed",
+    "pathology"
+  ],
+  "disregard": [],
+  "distend_abdomen": [],
+  "distend_stomach": [
+    "abdominal_bloat",
+    "abdominal_cramp",
+    "abdominal_distension",
+    "stomach_distension",
+    "transverse_colon"
+  ],
+  "distress": [],
+  "do_its_damage": [],
+  "do_not_burn": [],
+  "do_physical_thing": [],
+  "do_see_result": [],
+  "do_shaker": [],
+  "do_them_anywhere": [],
+  "doctor": [
+    "doc",
+    "gastroenterologist",
+    "gp",
+    "pcp",
+    "physician",
+    "specialist"
+  ],
+  "dose": [
+    "dosage"
+  ],
+  "down_my_throat": [],
+  "down_your_trachea": [],
+  "downside": [],
+  "downward_dog": [],
+  "drama_head_movement": [],
+  "dramamine": [
+    "benadryl"
+  ],
+  "drastic_worsen_emetophobia": [],
+  "dread_air_vomit": [],
+  "dread_it": [],
+  "drink": [
+    "alcohol",
+    "beer",
+    "beverage",
+    "carbonate",
+    "carbonation",
+    "sip",
+    "soda",
+    "wine"
+  ],
+  "drink_hot_soup": [],
+  "drink_more_water": [],
+  "drink_soda": [
+    "alcohol",
+    "beverage",
+    "carbonate",
+    "carbonation",
+    "coke",
+    "drink",
+    "soda",
+    "wine"
+  ],
+  "drink_water": [
+    "bread",
+    "chase_with_water",
+    "chug_water",
+    "eat",
+    "food",
+    "liquid",
+    "meal",
+    "sip_of_water",
+    "sip_water",
+    "smoothie",
+    "snack",
+    "solid_food",
+    "soup",
+    "water"
+  ],
+  "drink_water_normal": [],
+  "dry_heave": [
+    "barf",
+    "gag",
+    "gag_myself",
+    "gag_reflex",
+    "heave",
+    "puke",
+    "retch",
+    "sick",
+    "throw_up",
+    "vomit"
+  ],
+  "due_to_anxiety": [],
+  "during_the_week": [],
+  "dysfunction": [
+    "pathology"
+  ],
+  "dysphagia": [
+    "disorder"
+  ],
+  "dysphagia_issue": [],
+  "early_symptom": [],
+  "easy_manage": [],
+  "easy_with_time": [],
+  "eat": [
+    "after_eat",
+    "barely_eat",
+    "breakfast",
+    "consume",
+    "dinner",
+    "eat_slow",
+    "eat_solid",
+    "lunch",
+    "meal",
+    "overeat",
+    "snack"
+  ],
+  "eat_disorder": [
+    "anorexia",
+    "aversion",
+    "behavior",
+    "depression",
+    "ed",
+    "harm",
+    "illness",
+    "panic_disorder",
+    "ptsd"
+  ],
+  "eat_enjoy": [],
+  "eat_feel_normal": [],
+  "eat_gas_x": [],
+  "eat_healthy": [],
+  "eat_less": [],
+  "eat_probiotics": [],
+  "eat_ridiculous_slow": [],
+  "eat_slow": [],
+  "eat_small": [],
+  "eat_tiny_meal": [],
+  "eat_too_much": [],
+  "ed_treatment": [],
+  "edge": [
+    "arm",
+    "bend",
+    "chair",
+    "elbow",
+    "floor",
+    "foot",
+    "ground",
+    "hip",
+    "knee",
+    "leg",
+    "seat",
+    "shoulder",
+    "surface",
+    "waist",
+    "wall"
+  ],
+  "effect_your_voice": [],
+  "effective_induce": [],
+  "electrolyte_drink": [],
+  "elevate_ck_level": [],
+  "elevate_pillow": [],
+  "eliminate": [
+    "cut_out"
+  ],
+  "eliminate_other_issue": [],
+  "elimination_diet": [
+    "diet",
+    "diet_change",
+    "diet_low_fodmap",
+    "fodmap_diet",
+    "low_fodmap_diet"
+  ],
+  "embarrass": [
+    "awkward",
+    "embarrassment",
+    "obnoxious",
+    "super_embarrass"
+  ],
+  "embarrass_gurgle": [],
+  "emetophobe": [],
+  "emetophobia": [
+    "extreme_emetophobia",
+    "severe_emetophobia"
+  ],
+  "emotional_state": [],
+  "encourage_gurgle": [],
+  "endo_belly": [],
+  "endo_experience": [],
+  "endometriosis_methane": [],
+  "endoscopy": [
+    "colonoscopy",
+    "gastroscopy",
+    "scan"
+  ],
+  "enjoy_eat_again": [],
+  "ensure_drink": [],
+  "ent": [
+    "ent_specialist",
+    "ent_who",
+    "local_ent"
+  ],
+  "ent_issue": [],
+  "entire_community": [],
+  "entire_day": [],
+  "entire_life": [
+    "child",
+    "childhood",
+    "female",
+    "infant",
+    "kid",
+    "my_life",
+    "teen",
+    "teenager",
+    "whole_life"
+  ],
+  "er": [
+    "emergency_room"
+  ],
+  "er_doctor": [],
+  "esophageal_damage": [],
+  "esophageal_dysfunction": [],
+  "esophageal_motility_dysfunction": [],
+  "esophageal_motility_problem": [],
+  "esophageal_ph_monitor": [],
+  "esophageal_sphincter": [
+    "lower_esophageal_sphincter",
+    "lower_sphincter",
+    "smooth_muscle",
+    "sphincter",
+    "sphincter_muscle",
+    "upper_esophageal_sphincter",
+    "upper_esophageal_sphincter_ues",
+    "upper_sphincter"
+  ],
+  "esophageal_ulcer": [],
+  "esophagitis": [
+    "chronic_gastritis",
+    "gastritis",
+    "inflammation"
+  ],
+  "esophagus": [
+    "trachea"
+  ],
+  "esophagus_be_floppy": [],
+  "esophagus_dilate": [],
+  "esophagus_straight": [],
+  "especially_alcohol": [],
+  "every_doctor": [],
+  "every_morning": [
+    "bedtime",
+    "every_night",
+    "morning",
+    "nightly",
+    "nighttime"
+  ],
+  "every_single_symptom": [],
+  "every_symptom": [],
+  "everything_be_puffy": [],
+  "exacerbate_the_condition": [],
+  "exaggerate": [],
+  "examination": [],
+  "excess_gas": [
+    "amount_of_gas",
+    "constipation",
+    "distension",
+    "distention",
+    "excessive_gas",
+    "extra_gas",
+    "gas_buildup",
+    "gas_trap",
+    "inflammation",
+    "produce_gas",
+    "trap_gas"
+  ],
+  "excess_saliva": [
+    "excessive_saliva",
+    "extra_saliva",
+    "mucous",
+    "mucus",
+    "thick_saliva"
+  ],
+  "excessive_belch": [],
+  "excessive_bloat": [
+    "abdominal_bloat",
+    "bloat_flatulence",
+    "extreme_bloat",
+    "severe_bloat"
+  ],
+  "excessive_burp": [],
+  "excessive_flatulence": [
+    "bloat_flatulence",
+    "distention",
+    "excess_flatulence",
+    "excessive_gas",
+    "extreme_flatulence",
+    "flatulence",
+    "flatulence_etc"
+  ],
+  "excessive_microburp": [],
+  "excessive_mucus": [],
+  "excite": [
+    "so_excite",
+    "super_excite",
+    "thrill",
+    "very_excite"
+  ],
+  "executive_dysfunction": [],
+  "exercise": [
+    "activity",
+    "massage",
+    "movement",
+    "neck_exercise",
+    "stretch",
+    "workout",
+    "yoga"
+  ],
+  "exhale_more_often": [],
+  "exhaust": [
+    "beat",
+    "cry",
+    "shit",
+    "tired"
+  ],
+  "exist": [
+    "condition",
+    "existence",
+    "r_cpd_be"
+  ],
+  "exist_condition": [],
+  "expect_after_procedure": [],
+  "expect_long_term": [],
+  "expel_the_air": [],
+  "experience": [
+    "deal",
+    "go_through",
+    "similar_experience",
+    "suffer"
+  ],
+  "experience_any_vomit": [],
+  "experience_dysphagia": [],
+  "experience_gurgle": [],
+  "experience_reflux": [],
+  "experience_small_burp": [],
+  "experiment_drug": [],
+  "explode": [
+    "blow_up",
+    "burst",
+    "explosion_of_air",
+    "go_to_explode",
+    "heave"
+  ],
+  "explore_the_connection": [],
+  "explore_with_diet": [],
+  "exposure_therapy": [],
+  "extend_my_chin": [],
+  "extend_my_neck": [],
+  "extend_period": [
+    "maiden"
+  ],
+  "extension_of_gurgle": [],
+  "extra_gurgle": [],
+  "extreme_annoy": [],
+  "extreme_bad_bloat": [],
+  "extreme_dizzy": [],
+  "extreme_emetophobia": [],
+  "extreme_frequent_burp": [],
+  "extreme_gassy": [],
+  "extreme_high_anxiety": [],
+  "extreme_nauseous": [
+    "carsick",
+    "dreadful",
+    "extreme_nausea",
+    "incredible_nauseous",
+    "intense_nausea",
+    "sickness",
+    "slightly_nauseous"
+  ],
+  "extreme_pain": [
+    "abdominal_pain",
+    "chest_pain",
+    "cramp",
+    "incredible_pain",
+    "intense_pain",
+    "pain_hiccup"
+  ],
+  "extreme_pressure": [],
+  "extreme_regurgitation": [],
+  "extreme_uncomfortable": [
+    "super_uncomfortable",
+    "very_uncomfortable"
+  ],
+  "fail_burp": [],
+  "fail_drama": [],
+  "fairly_intolerable": [],
+  "fake_bloat": [],
+  "family_doctor": [
+    "general_practitioner",
+    "gp",
+    "pcp",
+    "primary_care_physician"
+  ],
+  "famotidine": [
+    "antacid",
+    "omeprazole",
+    "pepcid",
+    "prilosec",
+    "tums",
+    "zantac"
+  ],
+  "fart": [],
+  "fart_a_lot": [],
+  "fart_bomb": [],
+  "fart_frequency": [],
+  "fart_it_out": [],
+  "fart_less_often": [],
+  "fart_machine": [
+    "whale"
+  ],
+  "fast": [
+    "easy",
+    "quick"
+  ],
+  "fear_come_true": [],
+  "fear_of_vomit": [
+    "afraid_of_vomit",
+    "inability_to_vomit",
+    "phobia_of_vomit",
+    "vomit",
+    "vomit_phobia"
+  ],
+  "feed_up": [],
+  "feel_a_release": [],
+  "feel_air_escape": [],
+  "feel_air_push": [],
+  "feel_air_stuck": [],
+  "feel_big": [],
+  "feel_crazy": [],
+  "feel_fine": [],
+  "feel_frustrate": [],
+  "feel_horrible": [],
+  "feel_kinda_numb": [],
+  "feel_like_phlegm": [],
+  "feel_like_water": [],
+  "feel_miserable": [],
+  "feel_nauseous": [
+    "anxious",
+    "feel_nauseate",
+    "feel_sick",
+    "gassy",
+    "nausea",
+    "nauseate",
+    "nauseous",
+    "puke",
+    "sick",
+    "sickness",
+    "super_nauseous",
+    "throat_nausea",
+    "throw_up"
+  ],
+  "feel_normal_again": [],
+  "feel_of_burp": [],
+  "feel_overall_unwell": [],
+  "feel_poor": [],
+  "feel_pressure": [],
+  "feel_pretty_sick": [],
+  "feel_really_discourage": [],
+  "feel_sick": [
+    "drunk",
+    "feel_nauseate",
+    "feel_nauseous",
+    "gassy",
+    "miserable",
+    "nauseate",
+    "nauseous",
+    "puke",
+    "sick",
+    "super_nauseous",
+    "throw_up"
+  ],
+  "feel_so_close": [],
+  "feel_so_discourage": [],
+  "feel_so_validate": [],
+  "feel_something_different": [],
+  "feel_stiff": [],
+  "feel_terrible": [],
+  "feel_tight_sometimes": [],
+  "feel_unrecognized": [],
+  "feel_unwell": [],
+  "feel_very_full": [],
+  "feel_weird": [],
+  "fees": [
+    "charge",
+    "fee",
+    "payment"
+  ],
+  "fellow_emetophobe": [],
+  "fennel_seed": [],
+  "fetal_for_awhile": [],
+  "fever": [
+    "congestion",
+    "dizziness",
+    "numbness",
+    "tonsillitis"
+  ],
+  "few_tiny_burp": [],
+  "fibro": [],
+  "finally_understand": [],
+  "finger_method": [],
+  "finger_technique": [],
+  "finger_thing": [],
+  "first_burp": [],
+  "first_dose": [
+    "second_dose",
+    "third_dose"
+  ],
+  "first_few_burp": [],
+  "first_injection": [
+    "second_injection",
+    "second_shot",
+    "third_injection"
+  ],
+  "first_round": [
+    "round_1",
+    "round_2",
+    "second_round",
+    "third_round",
+    "two_round"
+  ],
+  "first_start_swim": [],
+  "first_step": [],
+  "fish_oil_supplement": [],
+  "fit_the_criterion": [],
+  "fix_the_issue": [],
+  "fizzy_drink": [
+    "alcohol",
+    "beer",
+    "beverage",
+    "carbonate",
+    "carbonate_beverage",
+    "carbonate_drink",
+    "carbonation",
+    "coke",
+    "drink_beer",
+    "drink_carbonate",
+    "drink_carbonate_beverage",
+    "drink_fizzy",
+    "drink_soda",
+    "fizz",
+    "fizzy",
+    "seltzer",
+    "soda",
+    "soda_water"
+  ],
+  "flat_stomach": [
+    "bloat_belly",
+    "flat_belly",
+    "flat_tummy"
+  ],
+  "flat_stomach_after": [],
+  "flatulence": [],
+  "flatulence_get_worse": [],
+  "flatulence_way_down": [],
+  "flex": [
+    "clench",
+    "contort",
+    "contract",
+    "engage",
+    "maneuver",
+    "motion",
+    "movement",
+    "press",
+    "squeeze",
+    "tense",
+    "tighten",
+    "twist"
+  ],
+  "flex_ab": [],
+  "floppy_les": [],
+  "flustered": [],
+  "focus_on_relax": [
+    "loosen_up"
+  ],
+  "focus_on_schoolwork": [],
+  "fodmap": [
+    "fodmap_diet",
+    "low_fodmap",
+    "low_fodmap_diet"
+  ],
+  "fodmap_diet": [
+    "diet",
+    "diet_change",
+    "diet_low_fodmap",
+    "elimination_diet",
+    "gluten_free_diet",
+    "low_fodmap_diet"
+  ],
+  "food": [
+    "bread",
+    "cracker",
+    "liquid",
+    "meal",
+    "rice",
+    "solid_food",
+    "soup",
+    "water",
+    "yogurt"
+  ],
+  "food_air": [],
+  "food_and_coffee": [],
+  "food_feel_stuck": [],
+  "food_intake_disorder": [],
+  "food_issue": [],
+  "food_linger": [],
+  "force_a_croak": [],
+  "force_burp": [],
+  "force_it_out": [],
+  "force_speed": [],
+  "force_these_gurgle": [],
+  "force_to_swallow": [],
+  "foresee_future": [],
+  "forward_face_burp": [],
+  "forward_head": [
+    "anterior",
+    "cord",
+    "element"
+  ],
+  "freak_myself_out": [],
+  "freaky": [
+    "funky",
+    "wacky"
+  ],
+  "frequency": [
+    "average",
+    "bpm"
+  ],
+  "frequent_panic_attack": [],
+  "frog_noise": [
+    "croak",
+    "croak_noise",
+    "gargle",
+    "growl",
+    "grumble",
+    "gurgle",
+    "gurgle_noise",
+    "loud_noise",
+    "noise",
+    "rumble",
+    "weird_gurgle_noise",
+    "weird_noise"
+  ],
+  "frustrate": [
+    "annoy",
+    "annoyed",
+    "disappoint",
+    "so_frustrate",
+    "very_frustrate"
+  ],
+  "frustrate_i": [],
+  "full_anesthesia": [],
+  "full_burp_out": [],
+  "full_deep_breath": [],
+  "full_feel": [],
+  "full_of_air": [
+    "air_trap",
+    "empty",
+    "fill_with_air",
+    "trap_air"
+  ],
+  "full_on_cold": [],
+  "full_so_quick": [],
+  "full_spectrum_cannabis": [],
+  "fullness": [
+    "tightness"
+  ],
+  "functional_esophagus": [],
+  "ga": [],
+  "ga_celiac_disease": [],
+  "ga_procedure": [
+    "surgical_procedure"
+  ],
+  "gag": [
+    "barf",
+    "dry_heave",
+    "gag_myself",
+    "gag_reflex",
+    "heave",
+    "my_gag_reflex",
+    "puke",
+    "retch",
+    "throw_up",
+    "vomit"
+  ],
+  "gag_a_lot": [],
+  "gag_acid_reflux": [],
+  "gag_myself": [
+    "dry_heave",
+    "gag",
+    "gag_yourself",
+    "heave",
+    "my_gag_reflex",
+    "puke",
+    "retch"
+  ],
+  "gag_reflex": [
+    "gag",
+    "heave",
+    "puke",
+    "reflex",
+    "retch",
+    "vomit"
+  ],
+  "gag_reflux": [],
+  "gag_uncontrollable": [],
+  "gape_les": [],
+  "gas": [
+    "air",
+    "wind"
+  ],
+  "gas_air": [],
+  "gas_air_buildup": [],
+  "gas_build_up": [],
+  "gas_ex": [],
+  "gas_expand": [],
+  "gas_get_trap": [],
+  "gas_in_throat": [],
+  "gas_move_around": [],
+  "gas_pain": [],
+  "gas_produce": [
+    "bean",
+    "create_gas",
+    "cruciferous_vegetable",
+    "mushroom",
+    "produce_gas",
+    "tomato"
+  ],
+  "gas_trap_inside": [],
+  "gas_x": [
+    "take_gas_x"
+  ],
+  "gas_x_pill": [],
+  "gasonex": [],
+  "gassy": [
+    "nauseous"
+  ],
+  "gastritis": [
+    "esophagitis"
+  ],
+  "gastro": [
+    "gastro_doctor"
+  ],
+  "gastro_issue": [
+    "gastrointestinal_issue",
+    "gi_issue",
+    "gut_issue",
+    "pelvic_floor_issue"
+  ],
+  "gastro_procedure": [],
+  "gastroenteritis": [],
+  "gastroenterologist": [
+    "doc",
+    "family_doctor",
+    "gp",
+    "neurologist",
+    "pcp"
+  ],
+  "gastroscopy": [
+    "colonoscopy",
+    "endoscopy",
+    "examination",
+    "scan"
+  ],
+  "gasx": [],
+  "gaviscon": [],
+  "gaviscon_advance": [],
+  "gaviscon_medicine": [],
+  "general_anesthesia": [
+    "anaesthesia",
+    "anesthesia",
+    "anesthetic",
+    "general_anesthetic",
+    "local_anesthesia",
+    "local_anesthetic",
+    "sedation"
+  ],
+  "general_anxiety": [],
+  "general_gi_discomfort": [],
+  "general_practitioner": [
+    "family_doctor",
+    "pcp",
+    "primary_care_physician"
+  ],
+  "genetic_linkage": [],
+  "gentle_bubble": [],
+  "gentle_squeeze": [],
+  "gerd": [
+    "diagnose_with_gerd"
+  ],
+  "gerd_improve": [],
+  "gerd_related": [],
+  "get_full_easy": [],
+  "get_hard": [],
+  "get_ignore": [],
+  "get_into_position": [],
+  "get_it_cover": [],
+  "get_nauseous": [],
+  "get_off_medication": [],
+  "get_old": [],
+  "get_sore": [],
+  "get_stuck": [],
+  "get_terrible": [],
+  "get_the_botox": [],
+  "get_the_surgery": [],
+  "gi_doc": [
+    "doc",
+    "gastro_doctor",
+    "gastroenterologist",
+    "gi_doctor",
+    "gp",
+    "neurologist",
+    "pcp",
+    "primary_care_doctor",
+    "primary_care_physician",
+    "psychiatrist"
+  ],
+  "gi_doctor": [
+    "doc",
+    "doctor",
+    "gastro_doctor",
+    "gastroenterologist",
+    "gi_doc",
+    "gp",
+    "pcp",
+    "primary_care_doctor"
+  ],
+  "gi_issue": [
+    "digestive_issue",
+    "gastro_issue",
+    "gastrointestinal_issue",
+    "gut_issue",
+    "health_issue",
+    "medical_issue"
+  ],
+  "gi_movement": [],
+  "gi_specialist": [
+    "doc",
+    "ent_specialist",
+    "family_doctor",
+    "gastroenterologist",
+    "gp",
+    "naturopath",
+    "pcp",
+    "primary_care_physician"
+  ],
+  "gi_test": [
+    "allergy_test",
+    "breath_test",
+    "bunch_of_test",
+    "diagnostic_test",
+    "medical_test",
+    "sibo_test",
+    "stool_test"
+  ],
+  "give_i_hope": [],
+  "globus": [
+    "globus_sensation"
+  ],
+  "globus_sensation": [
+    "burn_sensation",
+    "gag_sensation",
+    "tightness"
+  ],
+  "gluten_free": [
+    "dairy_free",
+    "gluten_free_diet",
+    "lactose_free"
+  ],
+  "gluten_sensitivity": [
+    "sensitive_stomach"
+  ],
+  "go_back_down": [],
+  "go_outside": [],
+  "go_to_therapy": [],
+  "go_to_vomit": [],
+  "golf_ball": [],
+  "good_decision": [
+    "decision",
+    "right_decision"
+  ],
+  "good_experience": [],
+  "good_procedure": [],
+  "good_workout": [],
+  "gp": [
+    "doc",
+    "doctor",
+    "family_doctor",
+    "gastroenterologist",
+    "pcp",
+    "physician",
+    "primary_care_physician",
+    "specialist"
+  ],
+  "gp_office": [],
+  "gradual_drop": [],
+  "gradually_get_better": [],
+  "grateful": [
+    "glad",
+    "happy",
+    "so_grateful"
+  ],
+  "grateful_for_anything": [],
+  "great_reduce_gas": [],
+  "growl": [
+    "croak",
+    "gargle",
+    "groan",
+    "grumble",
+    "noise",
+    "rumble"
+  ],
+  "gulp_of_water": [
+    "bite",
+    "bottle_of_water",
+    "capsule",
+    "glass_of_water",
+    "liter_of_water",
+    "mouthful",
+    "mouthful_of_water",
+    "purse",
+    "spoon",
+    "swig_of_water",
+    "tablespoon",
+    "teaspoon"
+  ],
+  "gummy": [],
+  "gurgle": [
+    "air_bubble",
+    "bubble",
+    "gargle",
+    "growl",
+    "gurgle_noise",
+    "noise",
+    "rumble"
+  ],
+  "gurgle_and_pain": [],
+  "gurgle_be_different": [],
+  "gurgle_burp": [],
+  "gurgle_come": [],
+  "gurgle_noise": [
+    "croak",
+    "croak_noise",
+    "frog_noise",
+    "gargle",
+    "growl",
+    "grumble",
+    "gurgle",
+    "loud_gurgle_noise",
+    "noise",
+    "rumble",
+    "weird_gurgle_noise",
+    "weird_noise"
+  ],
+  "gurgle_sound": [],
+  "gurgly": [],
+  "gut_issue": [],
+  "h_pylori": [],
+  "happen_daily_now": [],
+  "happy_burp": [],
+  "hard_to_breathe": [
+    "struggle_to_breathe"
+  ],
+  "hard_to_push": [],
+  "hard_to_swallow": [],
+  "hate_throw_up": [],
+  "have_hiccup_current": [],
+  "have_not_eat": [],
+  "have_not_vomit": [],
+  "have_to_fart": [],
+  "have_to_pee": [],
+  "have_to_relax": [],
+  "have_try_everything": [],
+  "head_be_back": [],
+  "head_turn": [
+    "lean",
+    "movement",
+    "play_around",
+    "position",
+    "posture",
+    "trick",
+    "twist"
+  ],
+  "health_issue": [
+    "digestive_issue",
+    "gastro_issue",
+    "gastrointestinal_issue",
+    "gi_issue",
+    "gut_issue",
+    "medical_issue"
+  ],
+  "health_psychologist": [],
+  "healthcare": [
+    "health_care"
+  ],
+  "heart_issue": [],
+  "heartburn": [
+    "chest_pain",
+    "constipation",
+    "diarrhea",
+    "gastritis",
+    "indigestion",
+    "migraine",
+    "nausea",
+    "palpitation"
+  ],
+  "heartburn_medication": [
+    "acid_reflux_medication",
+    "allergy_medication",
+    "aspirin",
+    "lorazepam",
+    "ppi_medication",
+    "preventative",
+    "sucralfate",
+    "tagamet",
+    "zantac"
+  ],
+  "heavy_mucus": [],
+  "heds": [],
+  "hella_unpleasant": [],
+  "help": [
+    "alleviate",
+    "ease",
+    "trick",
+    "try"
+  ],
+  "hernia": [
+    "hiatal_hernia",
+    "hiatus_hernia"
+  ],
+  "hiatal_hernia": [
+    "hernia",
+    "hiatus_hernia"
+  ],
+  "hiatal_hernia_surgery": [],
+  "hiccup": [
+    "sneeze",
+    "yawn"
+  ],
+  "hiccup_pretty_frequently": [],
+  "hiccup_random": [],
+  "high_blood_pressure": [],
+  "high_dosage_eventual": [],
+  "high_dose": [
+    "another_dose",
+    "big_dose",
+    "dosage",
+    "dose",
+    "high_dosage",
+    "lower_dose",
+    "second_dose"
+  ],
+  "high_fever": [],
+  "high_initial_dose": [],
+  "high_pain_tolerance": [],
+  "high_pitch": [
+    "loudness",
+    "pitch"
+  ],
+  "high_protein_meal": [],
+  "high_range": [],
+  "high_success_rate": [
+    "80_success_rate",
+    "90_success_rate",
+    "lower_success_rate",
+    "rate_of_success",
+    "success_rate"
+  ],
+  "highly_fermentable_food": [],
+  "hip_girdle": [],
+  "hold_in_gas": [],
+  "hold_my_breath": [],
+  "hold_stuff_in": [],
+  "hopeful": [
+    "glad",
+    "happy",
+    "hope",
+    "optimistic",
+    "positive",
+    "promise"
+  ],
+  "hormone_change": [],
+  "horrendous_pain_hiccup": [],
+  "horrible_condition": [],
+  "horrible_heartburn": [],
+  "horrible_hypersalivation": [
+    "horrible_cramp"
+  ],
+  "horrible_old_symptom": [],
+  "horrible_rcpd_symptom": [],
+  "hospital": [
+    "clinic"
+  ],
+  "hot_compress": [],
+  "hot_shower": [],
+  "hot_soup": [],
+  "how_to_burp": [],
+  "huge_bloat_belly": [],
+  "huge_burp": [],
+  "huge_meal": [
+    "full_meal",
+    "popcorn"
+  ],
+  "huge_necessity": [],
+  "humiliate_i": [],
+  "hunger_cue": [],
+  "hungry": [
+    "hunger",
+    "starve",
+    "thirsty"
+  ],
+  "hurt_a_bit": [],
+  "hyper_salivation": [
+    "excessive_salivation",
+    "hyper_salivate",
+    "salivation"
+  ],
+  "hypermobile": [],
+  "hypersalivation": [],
+  "hypertonicity_of_ues": [],
+  "hyperventilate": [],
+  "hypnosis": [],
+  "i_can_burp": [],
+  "i_could_cry": [],
+  "i_hit_puberty": [],
+  "i_now_burp": [],
+  "i_take_simethicone": [],
+  "ibs": [
+    "diagnose_with_ibs",
+    "ibs_symptom"
+  ],
+  "ibs_water_handy": [],
+  "illness": [
+    "ailment",
+    "cancer",
+    "condition",
+    "depression",
+    "disease",
+    "disorder",
+    "ed",
+    "harm",
+    "health_problem",
+    "trauma"
+  ],
+  "imagine_heartburn": [],
+  "imbalance_of_bacteria": [],
+  "immense_pressure": [],
+  "immune_system": [],
+  "implement_more_cardio": [],
+  "impossible_to_ignore": [],
+  "imposter_syndrome": [],
+  "impress": [],
+  "improve_my_life": [],
+  "improve_posture": [],
+  "improve_with_medication": [],
+  "in_my_head": [],
+  "in_my_throat": [],
+  "in_office": [],
+  "in_office_botox": [],
+  "in_office_dose": [],
+  "in_office_procedure": [],
+  "in_public": [],
+  "in_tears": [],
+  "inability_to_burp": [
+    "unable_to_burp"
+  ],
+  "inadvertent_tighten": [],
+  "incident": [
+    "episode",
+    "instance",
+    "occasion"
+  ],
+  "inconsistent": [],
+  "inconsistent_recovery": [],
+  "inconvenient": [
+    "awkward",
+    "inopportune"
+  ],
+  "incredible": [
+    "fantastic",
+    "insane",
+    "unbelievable",
+    "unimaginable",
+    "wonderful"
+  ],
+  "incredible_tough": [],
+  "independent": [],
+  "indigestion": [
+    "chest_pain",
+    "constipation",
+    "cramp",
+    "diarrhea",
+    "dizziness",
+    "heartburn",
+    "migraine",
+    "palpitation",
+    "shortness_of_breath",
+    "upset_stomach"
+  ],
+  "indigestion_sour_stomach": [],
+  "induce_a_gag": [],
+  "induce_burp": [],
+  "inevitable": [],
+  "inflammation": [
+    "esophagitis"
+  ],
+  "inflate": [
+    "balloon",
+    "blow_up",
+    "expand",
+    "expansion"
+  ],
+  "ingest_more_air": [],
+  "inhale": [],
+  "inhaler": [],
+  "initial_appointment": [
+    "apt",
+    "first_appointment"
+  ],
+  "inject_a_syringe": [],
+  "inject_the_botox": [],
+  "injection": [],
+  "insane_bloat": [],
+  "insane_nervous": [],
+  "insecure_and_miserable": [],
+  "insertion": [
+    "insert"
+  ],
+  "insurance_company": [
+    "insurer"
+  ],
+  "intense": [],
+  "intense_reflux": [],
+  "internal_gurgle": [],
+  "intestine": [
+    "abdomen",
+    "bowel",
+    "chest_cavity",
+    "colon",
+    "digestive_system",
+    "digestive_tract",
+    "gut",
+    "large_intestine",
+    "organ",
+    "small_intestine",
+    "tract"
+  ],
+  "intolerable": [],
+  "intolerant": [
+    "be_lactose_intolerant",
+    "intolerance",
+    "lactose_intolerant"
+  ],
+  "intubation": [],
+  "invasive_procedure": [],
+  "invasive_thing": [],
+  "investigate": [],
+  "involuntary": [
+    "automatic",
+    "uncontrollable"
+  ],
+  "irreversible_damage": [],
+  "irritate_the_throat": [],
+  "isolate_the_muscle": [],
+  "issue": [],
+  "issue_with_swallow": [],
+  "iv": [],
+  "iv_fluid": [
+    "mocha"
+  ],
+  "jaw_pain": [],
+  "joint_hypermobility": [],
+  "just_ignore_i": [],
+  "kill_the_botox": [],
+  "kinda_gross": [
+    "creepy",
+    "downright",
+    "super_gross",
+    "tasteless"
+  ],
+  "kinda_stinky": [],
+  "knot_muscle": [],
+  "lactose_intolerant": [
+    "be_lactose_intolerant",
+    "dairy_intolerance",
+    "intolerance",
+    "intolerant"
+  ],
+  "large_dose": [
+    "another_dose",
+    "big_dose",
+    "dosage",
+    "high_dosage",
+    "high_dose",
+    "small_dose",
+    "standard_dose",
+    "third_dose",
+    "two_dose"
+  ],
+  "laryngopedia": [],
+  "laryngospasm": [],
+  "larynx_lower_exercise": [
+    "neck_exercise",
+    "shaker_exercise_and_larynx_lower",
+    "shaker_exercise_cricoid_massage",
+    "shaker_exercise_search",
+    "vertical_shaker_exercise"
+  ],
+  "last_for_hour": [],
+  "laugh": [
+    "clap",
+    "cry",
+    "funny",
+    "joke",
+    "scream",
+    "smile",
+    "yell"
+  ],
+  "laugh_and_burp": [],
+  "laugh_at_i": [],
+  "laugh_fit": [],
+  "lay_upside_down": [],
+  "lean_backward": [],
+  "lean_forward": [
+    "head_forward",
+    "neck_forward"
+  ],
+  "learn_behavior": [
+    "fault"
+  ],
+  "learn_burp_technique": [],
+  "learn_new_way": [],
+  "learn_to_burp": [],
+  "leave_the_house": [],
+  "les": [],
+  "les_tone": [],
+  "less_bloat": [
+    "bloat"
+  ],
+  "less_nauseous": [
+    "anxious",
+    "feel_nauseous",
+    "mild_nauseous",
+    "nauseate",
+    "nauseous",
+    "slightly_nauseous",
+    "super_nauseous",
+    "unwell",
+    "vague_nauseous"
+  ],
+  "less_pain": [],
+  "let_go": [],
+  "let_one_rip": [],
+  "lie_down": [
+    "bed",
+    "couch",
+    "go_to_bed",
+    "lay",
+    "lie",
+    "lie_flat",
+    "recline",
+    "sit",
+    "sit_down",
+    "stand",
+    "stand_up"
+  ],
+  "lie_down_flat": [
+    "horizontal",
+    "lay_down_flat",
+    "lay_flat",
+    "lie_flat",
+    "pat",
+    "stand_up_straight",
+    "straight_shoulder"
+  ],
+  "lie_flat": [
+    "complete_flat",
+    "horizontal",
+    "lay_down_flat",
+    "lay_flat",
+    "lie_down_flat",
+    "pat",
+    "stand_up_straight",
+    "upright"
+  ],
+  "life_change": [
+    "a_life_changer",
+    "thrill",
+    "truly_life_change"
+  ],
+  "life_will_change": [],
+  "light_head": [
+    "vision"
+  ],
+  "lightheaded": [
+    "dizzy",
+    "faint",
+    "fuzzy",
+    "light_head"
+  ],
+  "like_a_balloon": [],
+  "limit_drink_water": [],
+  "liquid_come_up": [],
+  "liquid_diet": [],
+  "liquid_tylenol": [
+    "acetaminophen",
+    "codeine",
+    "painkiller",
+    "tylenol"
+  ],
+  "little_bit_nervous": [],
+  "little_disappoint": [],
+  "little_gurgle": [],
+  "little_hiccup": [],
+  "little_improvement": [],
+  "little_inhale_burp": [],
+  "little_nauseous": [],
+  "little_quirk": [
+    "quirk",
+    "quirk_of_mine",
+    "weird_quirk"
+  ],
+  "little_runny": [],
+  "live_in_pain": [],
+  "liver_problem": [],
+  "local_anesthesia": [
+    "general_anesthesia"
+  ],
+  "local_anesthetic": [
+    "anesthetic",
+    "general_anesthesia",
+    "general_anesthetic",
+    "local_anesthesia"
+  ],
+  "local_gp": [],
+  "locate_the_muscle": [],
+  "long_drink": [],
+  "long_wait": [],
+  "longstanding_constipation": [],
+  "longstanding_issue": [],
+  "look_distend": [],
+  "look_pregnant": [],
+  "loosen_my_throat": [],
+  "lose_most_hope": [],
+  "lose_weight": [
+    "skinny",
+    "underweight"
+  ],
+  "lot_of_emotion": [],
+  "lot_of_gurgle": [],
+  "lot_of_pain": [],
+  "lot_of_saliva": [],
+  "lot_of_water": [],
+  "loud_cough": [],
+  "low_carbohydrate_diet": [],
+  "low_fodmap_diet": [
+    "diet",
+    "diet_change",
+    "elimination_diet",
+    "fodmap_diet"
+  ],
+  "low_position": [],
+  "lower_gi_problem": [],
+  "lower_gi_tract": [],
+  "lower_my_larynx": [],
+  "lower_stomach": [],
+  "lower_your_voice": [],
+  "lump": [
+    "sore",
+    "soreness",
+    "swell"
+  ],
+  "lung": [
+    "organ"
+  ],
+  "lung_energy": [],
+  "lupus": [],
+  "main_symptom": [
+    "associate_symptom",
+    "chest_pain",
+    "common_symptom",
+    "shortness_of_breath",
+    "symptom_of_r_cpd"
+  ],
+  "make_funny_gesture": [],
+  "make_i_anxious": [],
+  "make_i_bloat": [],
+  "make_i_sick": [],
+  "make_it_gurgle": [],
+  "make_thing_worse": [],
+  "make_up": [],
+  "make_yourself_gag": [],
+  "maneuver": [
+    "motion",
+    "movement",
+    "wiggle"
+  ],
+  "manipulate": [
+    "massage"
+  ],
+  "manipulate_them": [],
+  "manometry": [
+    "esophageal_manometry",
+    "manometry_test"
+  ],
+  "manual_visceral_manipulation": [],
+  "many_test": [],
+  "marketing_scheme": [],
+  "massage_my_throat": [],
+  "massage_throat": [],
+  "medicaid": [
+    "health_care",
+    "medicare"
+  ],
+  "medical_anxiety": [],
+  "medical_article": [
+    "icon",
+    "journal_article",
+    "research_article"
+  ],
+  "medical_intervention": [],
+  "medical_problem": [],
+  "medical_report": [],
+  "medical_system": [
+    "gps",
+    "healthcare_system"
+  ],
+  "meditation": [],
+  "mental_health": [
+    "depression",
+    "health",
+    "hypochondria",
+    "mental_state"
+  ],
+  "mental_state": [
+    "anxiety_disorder"
+  ],
+  "meridian": [],
+  "mess_up": [],
+  "messy_food": [],
+  "metabolic_waste_product": [],
+  "metabolism": [
+    "absorption",
+    "urination"
+  ],
+  "metal_bar": [],
+  "methane_and_hydrogen": [
+    "hydrogen"
+  ],
+  "micro_burp": [
+    "burp",
+    "micro_burp_but",
+    "micro_burp_today",
+    "micro_burp_when",
+    "mini_burp",
+    "tiny_burp",
+    "yawn"
+  ],
+  "microburp": [
+    "random_microburp",
+    "tiny_microburp"
+  ],
+  "microburp_on_command": [],
+  "might_pass_out": [],
+  "might_puke": [],
+  "mild_rhabdo": [],
+  "mild_to_none": [],
+  "mimic_heart_palpitation": [],
+  "mimic_nausea": [],
+  "mind_at_ease": [],
+  "mind_blow": [],
+  "mini_burp": [
+    "burp",
+    "micro_burp",
+    "micro_burp_but",
+    "tiny_burp",
+    "yawn"
+  ],
+  "mini_burp_sound": [],
+  "mini_panic_attack": [],
+  "minimize_air_swallow": [],
+  "minimize_damage": [],
+  "minimize_the_gurgle": [],
+  "minor_gastritis": [],
+  "minor_problem": [],
+  "mint": [
+    "candy",
+    "chocolate",
+    "coffee",
+    "fruit",
+    "ginger",
+    "gum",
+    "juice",
+    "milk",
+    "peppermint",
+    "seed",
+    "tea",
+    "tomato"
+  ],
+  "mint_tea": [
+    "alcoholic_beverage",
+    "coca_cola",
+    "gin_and_tonic",
+    "ginger_tea",
+    "green_tea",
+    "herbal_tea",
+    "hot_tea",
+    "peppermint_tea",
+    "pepsi"
+  ],
+  "mirena": [],
+  "misalignment": [],
+  "miserable": [
+    "awful",
+    "bad",
+    "depressed",
+    "dread",
+    "horrendous",
+    "horrible",
+    "nauseous",
+    "sick",
+    "terrible",
+    "uncomfortable",
+    "unwell"
+  ],
+  "misery": [],
+  "miss_outing": [],
+  "mock_us": [],
+  "modify_barium_swallow": [
+    "barium_swallow",
+    "barium_swallow_study",
+    "barium_swallow_test",
+    "barium_swallow_which",
+    "swallow_study",
+    "swallow_test"
+  ],
+  "money_well_spend": [],
+  "more_air": [],
+  "more_botox": [],
+  "more_confidence": [],
+  "more_desperate": [],
+  "more_disrupt_condition": [],
+  "more_flatulent": [],
+  "more_food_eat": [],
+  "more_force": [],
+  "more_frequent_meal": [],
+  "more_gurgle": [],
+  "more_intense": [
+    "less_intense"
+  ],
+  "more_paralyze": [],
+  "more_public": [],
+  "more_relieve": [],
+  "most_pain": [],
+  "mostly_air": [],
+  "motrin": [
+    "advil",
+    "ibuprofen"
+  ],
+  "mouth_and_throat": [],
+  "mouth_close": [
+    "mouth_shut",
+    "quiet",
+    "silent"
+  ],
+  "mouth_just_water": [],
+  "mouth_shut": [
+    "mouth_close",
+    "mute"
+  ],
+  "mouth_water": [],
+  "move_the_gas": [],
+  "move_your_neck": [],
+  "movement": [
+    "flex",
+    "maneuver",
+    "motion",
+    "position",
+    "posture",
+    "stretch",
+    "twist"
+  ],
+  "movement_of_air": [],
+  "movement_of_regurgitation": [],
+  "ms": [
+    "mr",
+    "transfer"
+  ],
+  "much_more_bloat": [],
+  "mucus": [
+    "phlegm",
+    "saliva"
+  ],
+  "mucus_feel": [],
+  "mucusy_feel": [],
+  "multiple_otc_medication": [],
+  "multiple_quick_bite": [],
+  "multiple_time": [
+    "hundred_of_time",
+    "several_time"
+  ],
+  "muscle": [
+    "diaphragm",
+    "muscle_memory",
+    "sphincter",
+    "sphincter_muscle"
+  ],
+  "muscle_break_down": [],
+  "muscle_cut_procedure": [],
+  "muscle_forget": [],
+  "muscle_have_tighten": [],
+  "muscle_pain": [],
+  "muscle_reaction": [],
+  "muscle_tension_dysphonia": [],
+  "my_body_look": [],
+  "my_worst_reflux": [],
+  "myalgia": [],
+  "myotomy": [],
+  "mystery_for_i": [],
+  "mystery_gum_recession": [],
+  "nasal_passage": [
+    "cannula",
+    "catheter",
+    "ear_canal",
+    "nasal_cavity",
+    "nostril"
+  ],
+  "nasoendoscopy": [],
+  "natural": [
+    "come_natural",
+    "key"
+  ],
+  "natural_bodily_function": [],
+  "natural_cave_forward": [],
+  "natural_now": [],
+  "natural_process": [],
+  "natural_supplement_muscle": [],
+  "nausea": [
+    "chest_pain",
+    "cramp",
+    "diarrhea",
+    "headache",
+    "indigestion",
+    "sickness",
+    "stomach_ache",
+    "upset_stomach"
+  ],
+  "nausea_daily": [],
+  "nauseous": [
+    "anxious",
+    "awful",
+    "dizzy",
+    "dread",
+    "feel_nauseate",
+    "feel_nauseous",
+    "feel_sick",
+    "gassy",
+    "horrible",
+    "intense",
+    "miserable",
+    "nausea",
+    "nauseate",
+    "panic_attack",
+    "sick",
+    "super_nauseous",
+    "uncomfortable",
+    "unwell"
+  ],
+  "neck_cramp": [],
+  "neck_exercise": [
+    "exercise",
+    "yoga"
+  ],
+  "neck_musculature": [],
+  "neck_pain": [],
+  "neck_sit_up": [],
+  "need_additional_dose": [],
+  "need_some_imaging": [],
+  "needle_be_attach": [],
+  "needle_of_botox": [],
+  "negative_experience": [
+    "personal_experience",
+    "wisdom"
+  ],
+  "negative_reaction": [
+    "adverse_reaction"
+  ],
+  "nerve_damage": [
+    "injury"
+  ],
+  "nerve_pain": [],
+  "nervous": [
+    "annoyed",
+    "anxious",
+    "anxious_about",
+    "little_nervous",
+    "nervous_about",
+    "pretty_nervous",
+    "super_anxious",
+    "super_nervous",
+    "very_nervous"
+  ],
+  "nervous_anxious_tummy": [],
+  "neuromuscular_block_agent": [],
+  "neuromuscular_reeducation": [],
+  "never_burp_again": [],
+  "never_go_away": [],
+  "never_loud": [],
+  "never_schedule_anything": [],
+  "never_taste_anything": [],
+  "new_disease": [],
+  "new_nissen": [],
+  "new_pain": [],
+  "new_research": [],
+  "news_article": [],
+  "nhs": [],
+  "night_reflux": [],
+  "night_terror": [],
+  "nightly_attack": [],
+  "nissen": [],
+  "nitrogenize": [
+    "nitrogen"
+  ],
+  "no_anesthesia": [],
+  "no_answer": [],
+  "no_belch": [],
+  "no_bloat": [],
+  "no_burp_issue": [],
+  "no_burp_syndrome": [],
+  "no_burper": [],
+  "no_carbohydrate_diet": [],
+  "no_carbonate_drink": [],
+  "no_clear_pattern": [],
+  "no_constrictive_clothing": [],
+  "no_control_over": [],
+  "no_doctor_near": [],
+  "no_long_hyperfixate": [],
+  "no_more_gurgle": [],
+  "no_slow_swallow": [],
+  "no_sound": [],
+  "no_taste_whatsoever": [],
+  "nocturnal_reflux": [],
+  "noise": [
+    "audible",
+    "growl",
+    "quiet",
+    "rumble",
+    "sound"
+  ],
+  "non_burp": [],
+  "non_burper": [],
+  "non_carbonate": [
+    "avoid_carbonate"
+  ],
+  "non_corrosive_gerd": [],
+  "normal_burp": [],
+  "normal_injection": [],
+  "normal_people": [],
+  "nose_allergy": [],
+  "nose_scope": [],
+  "not_actually_choke": [],
+  "not_burp_normal": [],
+  "not_die": [],
+  "not_drink_enough": [],
+  "not_drool": [],
+  "not_enough_amplitude": [],
+  "not_experience_heartburn": [],
+  "not_extreme_bloat": [],
+  "not_feel_relief": [],
+  "not_force_yourself": [],
+  "not_have_gurgle": [],
+  "not_have_heartburn": [],
+  "not_much_research": [],
+  "not_nauseous": [],
+  "not_normal": [],
+  "not_optimistic": [],
+  "not_overly_flatulent": [],
+  "not_overthink": [],
+  "not_quite_enough": [],
+  "not_relax": [],
+  "not_relax_enough": [],
+  "not_relieve": [],
+  "not_see_result": [],
+  "not_take_serious": [],
+  "not_to_relapse": [],
+  "nothing_come_out": [],
+  "nothing_help": [],
+  "nothing_work_anymore": [],
+  "nuisance": [],
+  "numb_injection": [],
+  "numb_needle": [
+    "rubber"
+  ],
+  "numb_spray": [
+    "he_spray",
+    "spray",
+    "spray_lidocaine",
+    "spray_numb",
+    "they_spray"
+  ],
+  "occasional_bloat": [],
+  "occasional_noise": [],
+  "occipitofrontalis_muscle": [],
+  "ocd": [
+    "harm_ocd"
+  ],
+  "office_procedure": [
+    "injection",
+    "office"
+  ],
+  "omeprazole": [
+    "antacid",
+    "famotidine",
+    "pepcid",
+    "prilosec",
+    "tums",
+    "zantac"
+  ],
+  "omeprazole_2x_day": [],
+  "op": [],
+  "open_my_airway": [],
+  "open_my_throat": [],
+  "open_the_door": [],
+  "organic_calcium": [],
+  "orgasm": [],
+  "osteopath": [],
+  "other_autoimmune_stuff": [],
+  "other_test": [],
+  "otolaryngologist": [
+    "physician"
+  ],
+  "out_fart_anybody": [],
+  "out_more_easy": [],
+  "out_of_control": [],
+  "out_of_nowhere": [],
+  "out_of_pocket": [
+    "pay_out_of_pocket"
+  ],
+  "out_of_state": [
+    "coverage"
+  ],
+  "outpatient_procedure": [],
+  "outpatient_surgery": [],
+  "outpatient_way": [],
+  "outwardly_bloat": [],
+  "over_control": [],
+  "over_think": [],
+  "overeating": [],
+  "overly_burp": [],
+  "pain": [
+    "ache",
+    "chest_pain",
+    "cramp",
+    "diarrhea",
+    "discomfort",
+    "headache",
+    "hurt",
+    "nausea",
+    "stomach_ache"
+  ],
+  "pain_and_torture": [],
+  "pain_and_traumatic": [],
+  "pain_bloat": [],
+  "pain_hiccup": [
+    "chest_pain",
+    "cramp",
+    "diarrhea",
+    "hiccup",
+    "stomach_ache"
+  ],
+  "painkiller": [
+    "acetaminophen",
+    "advil",
+    "antiemetic",
+    "benadryl",
+    "codeine",
+    "ibuprofen",
+    "motrin",
+    "pepcid",
+    "prescription",
+    "sedative",
+    "tylenol"
+  ],
+  "painkiller_beforehand": [],
+  "palpate": [],
+  "panadol": [],
+  "pandemic": [],
+  "panic": [
+    "anxiety",
+    "fear",
+    "freak_out",
+    "panic_attack"
+  ],
+  "panic_attack": [
+    "anxiety",
+    "panic"
+  ],
+  "panic_moment": [],
+  "pantoprazol": [],
+  "pantoprazole": [],
+  "paracetamol": [],
+  "paralysis_be_temporary": [],
+  "paralyze_in_pain": [],
+  "paralyze_it_once": [],
+  "partially_paralyze": [
+    "basically_paralyze",
+    "essential_paralyze",
+    "paralyze",
+    "temporary_paralyze"
+  ],
+  "pass_gas": [
+    "flatulence",
+    "gas_buildup",
+    "gas_trap",
+    "hunger",
+    "release_gas",
+    "trap_gas"
+  ],
+  "pass_out_pepcid": [],
+  "passive_method": [],
+  "passive_technique": [],
+  "path_to_burp": [],
+  "pathology": [
+    "stricture"
+  ],
+  "patient": [],
+  "patient_questionnaire": [],
+  "pelvic_bone": [],
+  "pelvic_floor": [
+    "pelvic_floor_dysfunction",
+    "pelvic_floor_muscle"
+  ],
+  "pelvic_floor_muscle": [
+    "connective_tissue",
+    "fascia",
+    "pelvic_muscle",
+    "weak_muscle"
+  ],
+  "pelvic_pain_relief": [],
+  "pelvis": [
+    "hip"
+  ],
+  "people_with_dysfunction": [],
+  "pepcid": [
+    "antacid",
+    "famotidine",
+    "medication",
+    "omeprazole",
+    "prilosec",
+    "tums",
+    "zantac"
+  ],
+  "period_of_bloat": [],
+  "period_pain": [],
+  "permanent": [
+    "last_resort",
+    "permanent_cure",
+    "permanent_fix",
+    "permanent_side_effect"
+  ],
+  "permanent_abnormal_les": [],
+  "permanent_burp_normal": [],
+  "permanent_on_ppis": [],
+  "phlegm": [
+    "mucus",
+    "saliva",
+    "spit"
+  ],
+  "phobia": [],
+  "phobia_develop": [],
+  "phobia_of_vomit": [
+    "difficulty_vomit",
+    "fear_of_vomit",
+    "inability_to_vomit",
+    "vomit_phobia"
+  ],
+  "phobia_psyche": [],
+  "physical_cannot_swallow": [],
+  "physical_explanation": [],
+  "physical_problem": [],
+  "physical_uncomfortable": [],
+  "physio_practice": [],
+  "physiological_explanation": [],
+  "pill": [
+    "capsule",
+    "tablet"
+  ],
+  "pinch_myself": [
+    "crop"
+  ],
+  "pip_payment": [],
+  "plug_everything_up": [],
+  "pneumothorax": [],
+  "pooch": [],
+  "poor_child": [],
+  "poor_quality_sleep": [],
+  "pop": [
+    "burst",
+    "gargle",
+    "growl",
+    "let_out",
+    "little_pop",
+    "rumble",
+    "tap",
+    "tiny_pop"
+  ],
+  "position_of_diaphragm": [],
+  "post_botox": [],
+  "post_botox_symptom": [],
+  "post_op": [
+    "mark",
+    "post_botox",
+    "post_operation",
+    "post_surgery"
+  ],
+  "postural_alignment_standpoint": [],
+  "posture": [
+    "exercise",
+    "maneuver",
+    "movement",
+    "position",
+    "strength",
+    "yoga"
+  ],
+  "ppi": [],
+  "ppis": [
+    "take_ppis"
+  ],
+  "ppis_stop_work": [],
+  "practice": [
+    "experiment"
+  ],
+  "practice_burp": [],
+  "practice_my_burp": [],
+  "practice_that_muscle": [],
+  "practice_the_exercise": [],
+  "practice_with_video": [],
+  "practitioner": [
+    "physician"
+  ],
+  "pre_botox": [
+    "prior_to_botox"
+  ],
+  "pre_op_test": [],
+  "pre_surgery_consultation": [],
+  "pregnant_look": [],
+  "prescription_antibiotic": [],
+  "pressure": [
+    "air",
+    "blockage",
+    "gas",
+    "tension",
+    "tightness"
+  ],
+  "pressure_build_up": [],
+  "pressure_dynamic": [],
+  "pressurize_tube": [],
+  "prevent_bloat": [],
+  "prevent_the_croak": [],
+  "previous_eat_food": [],
+  "primary_care_physician": [
+    "family_doctor",
+    "general_practitioner",
+    "gp",
+    "pcp",
+    "primary_care_provider"
+  ],
+  "prize_fight": [],
+  "problem_swallow": [],
+  "procedure": [
+    "injection",
+    "office",
+    "operation",
+    "surgery",
+    "treatment"
+  ],
+  "procedure_asleep": [],
+  "progress": [
+    "improvement",
+    "stage",
+    "transition"
+  ],
+  "projectile_vomit": [
+    "barf",
+    "puke"
+  ],
+  "proper_burp": [],
+  "proper_posture": [],
+  "provider": [],
+  "pseudo_burp": [],
+  "psyche": [
+    "scheme"
+  ],
+  "psychological_condition": [],
+  "psychotherapist": [],
+  "puff_of_air": [],
+  "push": [
+    "contract",
+    "flex",
+    "flow",
+    "force",
+    "force_them",
+    "motion",
+    "move",
+    "movement",
+    "press",
+    "pull",
+    "squeeze",
+    "try_to_force"
+  ],
+  "push_air_out": [],
+  "push_air_upward": [],
+  "push_it_out": [],
+  "push_it_outside": [],
+  "push_my_stomach": [],
+  "push_out_burp": [],
+  "push_the_air": [],
+  "quick_jog": [],
+  "quiet_burp": [],
+  "quite_subtle": [],
+  "r_cpd": [
+    "r_cpd_be",
+    "r_cpd_but",
+    "r_cpd_can",
+    "r_cpd_do",
+    "r_cpd_have",
+    "r_cpd_i",
+    "r_cpd_suffer",
+    "retrograde_cricopharyngeal_dysfunction_r",
+    "retrograde_cricopharyngeus_dysfunction_r"
+  ],
+  "r_cpd_related": [
+    "link_to_r_cpd"
+  ],
+  "r_cpd_symptom": [
+    "associate_symptom",
+    "constipation",
+    "gastritis",
+    "ibs_symptom",
+    "symptom",
+    "symptom_e_g",
+    "symptom_of_r_cpd",
+    "these_symptom"
+  ],
+  "raise_awareness": [
+    "discovery",
+    "knowledge",
+    "recognition",
+    "spread_awareness",
+    "widely_know"
+  ],
+  "raise_the_quantity": [],
+  "random_burp": [],
+  "random_point": [],
+  "ranitidine": [
+    "tagamet",
+    "zantac"
+  ],
+  "rapid_breakdown": [],
+  "rapid_cause_damage": [],
+  "rapid_gum_recession": [],
+  "rare": [
+    "pretty_rare",
+    "super_rare",
+    "true",
+    "uncommon",
+    "unique",
+    "very_rare"
+  ],
+  "rcpd": [],
+  "rcpd_be_real": [],
+  "rcpd_induce_asthma": [],
+  "rcpd_related": [],
+  "rcpd_symptom": [],
+  "real_bad_symptom": [],
+  "realistic_expectation": [],
+  "realize_any_connection": [],
+  "really_distress": [],
+  "really_horrible_procedure": [],
+  "really_loud_gurgle": [],
+  "really_skinny": [],
+  "really_uncomfortable": [],
+  "really_understand": [],
+  "recommend_physician": [],
+  "record_and_test": [],
+  "recover_quick": [],
+  "recovery": [
+    "breeze"
+  ],
+  "recovery_be_hell": [],
+  "recovery_time": [],
+  "reduce_vocal_range": [],
+  "referral": [],
+  "reflux": [
+    "regurgitation"
+  ],
+  "reflux_feel_different": [],
+  "reflux_medication": [
+    "acid_medication",
+    "acid_reflux_medication",
+    "antacid",
+    "famotidine",
+    "heartburn_medication",
+    "medication",
+    "omeprazole",
+    "pepcid",
+    "ppi_medication",
+    "prilosec",
+    "zantac"
+  ],
+  "reflux_surgery": [],
+  "refuse_to_believe": [
+    "cannot_believe"
+  ],
+  "refuse_to_relax": [],
+  "regain_its_movement": [],
+  "regurgitate": [
+    "regurgitate_food",
+    "regurgitation",
+    "saliva",
+    "spit",
+    "throw_up",
+    "vomit"
+  ],
+  "regurgitate_acid": [],
+  "regurgitation": [],
+  "regurgitation_after_botox": [],
+  "regurgitation_afterwards": [],
+  "regurgitation_without_air": [],
+  "reject_botox": [],
+  "reject_thing": [],
+  "related": [
+    "connect",
+    "connection",
+    "connection_between",
+    "correlate",
+    "correlation",
+    "link_between",
+    "related_to_noburp",
+    "related_to_r_cpd",
+    "related_to_rcpd"
+  ],
+  "related_symptom": [],
+  "related_to_emetophobia": [],
+  "relative_subtle": [],
+  "relax": [
+    "loose",
+    "loosen",
+    "loosen_up",
+    "open",
+    "open_up",
+    "relaxation"
+  ],
+  "relax_injection": [],
+  "relax_more_intense": [],
+  "relax_my_muscle": [],
+  "relax_my_throat": [],
+  "relax_the_body": [],
+  "relax_your_breathe": [],
+  "relaxation": [],
+  "release_enough_air": [],
+  "release_gas": [
+    "buildup_of_gas",
+    "expel_gas",
+    "gas_escape",
+    "pass_gas"
+  ],
+  "release_most_flatulence": [],
+  "release_pressure": [],
+  "release_stress": [],
+  "release_the_air": [],
+  "release_the_pressure": [],
+  "release_toxin": [],
+  "release_trap_gas": [],
+  "relief": [
+    "improvement",
+    "release"
+  ],
+  "relief_afterwards": [],
+  "relief_be_possible": [],
+  "relief_from_burp": [],
+  "relieve_gas": [],
+  "relieve_the_pressure": [],
+  "reluctant_to_eat": [],
+  "repetitive_exercise": [],
+  "repress_trauma": [],
+  "request_a_referral": [],
+  "research": [
+    "study"
+  ],
+  "research_doctor": [],
+  "research_hospital": [],
+  "research_paper": [
+    "article",
+    "bastian_paper",
+    "page",
+    "publication"
+  ],
+  "reset_the_function": [],
+  "resist_to_botox": [],
+  "retch_noise": [],
+  "retrograde_cricopharyngeal_dysphagia": [],
+  "retrograde_criopharyngeal_dysfunction": [],
+  "revelation": [],
+  "rhabdomyolysis": [],
+  "rheumatologist": [],
+  "ribcage_stick_out": [],
+  "roar": [
+    "whoosh"
+  ],
+  "rotate_my_neck": [],
+  "round_2": [
+    "round_two"
+  ],
+  "round_3": [],
+  "rub_my_stomach": [],
+  "ruin_my_life": [],
+  "ruin_their_live": [],
+  "rule_out": [],
+  "rumble_in_throat": [],
+  "runny_nose": [
+    "block_nose",
+    "stuffy_nose"
+  ],
+  "safe_food": [
+    "broccoli",
+    "cabbage",
+    "carrot",
+    "cauliflower",
+    "celery",
+    "cruciferous_vegetable",
+    "fatty_food",
+    "fry_food",
+    "garlic",
+    "greasy_food",
+    "onion",
+    "raw_vegetable",
+    "red_meat",
+    "roast",
+    "salad",
+    "sugary_food",
+    "tomato",
+    "vegetable",
+    "wheat"
+  ],
+  "salad": [
+    "burger",
+    "butter",
+    "cheese",
+    "chocolate",
+    "meat",
+    "noodle",
+    "oatmeal",
+    "pasta",
+    "sandwich",
+    "yogurt"
+  ],
+  "salty_snack": [],
+  "same_muscle": [],
+  "scan": [
+    "colonoscopy",
+    "ct_scan",
+    "gastroscopy"
+  ],
+  "scare_i": [],
+  "scared": [
+    "afraid",
+    "fear",
+    "freak_out",
+    "hate",
+    "panic",
+    "scare",
+    "terrify",
+    "too_scared",
+    "worry"
+  ],
+  "scared_of_vomit": [],
+  "schedule_another_one": [],
+  "school_student": [],
+  "scope": [
+    "camera"
+  ],
+  "screen": [],
+  "second_dose": [
+    "another_dose",
+    "first_dose",
+    "high_dosage",
+    "high_dose",
+    "third_dose"
+  ],
+  "second_find": [],
+  "second_injection": [
+    "another_injection",
+    "first_injection",
+    "second_shot",
+    "third_injection"
+  ],
+  "second_op": [],
+  "second_round": [
+    "another_round",
+    "first_round",
+    "round_1",
+    "round_2",
+    "third_round"
+  ],
+  "second_shot": [
+    "another_injection",
+    "first_injection",
+    "second_injection",
+    "third_injection",
+    "third_shot"
+  ],
+  "second_time": [
+    "third_time"
+  ],
+  "self_conscious": [],
+  "self_cure_process": [],
+  "self_esteem": [],
+  "semi_chew_food": [],
+  "sensation": [
+    "tickle",
+    "tightness"
+  ],
+  "sensitive": [
+    "cautious",
+    "dangerous",
+    "extreme_sensitive",
+    "more_sensitive",
+    "sensitivity",
+    "shaky",
+    "thin",
+    "very_sensitive",
+    "weak"
+  ],
+  "sensitive_gag_reflex": [],
+  "sensory_issue": [
+    "fairy"
+  ],
+  "series_of_fart": [],
+  "serious_emotional_reaction": [],
+  "severe_affect_daily": [],
+  "severe_anxiety": [
+    "anxiety_attack",
+    "health_anxiety"
+  ],
+  "severe_anxious": [],
+  "severe_bloat": [
+    "excessive_bloat",
+    "extreme_bloat"
+  ],
+  "severe_blow": [],
+  "severe_panic_attack": [],
+  "severe_side_effect": [],
+  "shaker_chin_up": [],
+  "shaker_exercise": [
+    "exercise",
+    "larynx_lower_exercise",
+    "massage",
+    "method",
+    "movement",
+    "neck_exercise",
+    "practise",
+    "shaker_exercise_and_larynx_lower",
+    "shaker_exercise_cricoid_massage",
+    "technique"
+  ],
+  "shaky_weak_voice": [],
+  "share_your_pain": [],
+  "sharp_inhale": [],
+  "sharp_pain": [
+    "ache",
+    "cramp",
+    "excruciating_pain",
+    "intense_pain",
+    "sharp",
+    "stab",
+    "tightness",
+    "tingle"
+  ],
+  "shiatsu": [],
+  "shit_diet": [],
+  "shit_side_effect": [],
+  "shortness_of_breath": [],
+  "shoulder": [
+    "arm",
+    "chair",
+    "chin",
+    "hip",
+    "jaw",
+    "knee",
+    "leg",
+    "neck",
+    "rib",
+    "spine"
+  ],
+  "shoulder_and_tongue": [],
+  "shrug_his_shoulder": [],
+  "shrug_my_shoulder": [],
+  "sibo": [],
+  "sick_and_drain": [],
+  "side_effect": [
+    "effect",
+    "outcome"
+  ],
+  "significant_relief": [],
+  "silent_flux": [],
+  "silent_reflux": [
+    "acid_reflux",
+    "lpr_reflux",
+    "lpr_silent_reflux",
+    "reflux"
+  ],
+  "simethicone": [],
+  "similar_recovery_time": [],
+  "similar_symptom": [],
+  "similar_to_gurgle": [],
+  "simple_scope": [],
+  "sing_negate_effect": [],
+  "sing_voice": [
+    "loss_of_voice",
+    "loudness",
+    "pitch",
+    "voice",
+    "weak_voice"
+  ],
+  "sing_voice_strong": [],
+  "sit": [
+    "bed",
+    "chair",
+    "couch",
+    "desk",
+    "front",
+    "lay",
+    "lean_back",
+    "recline",
+    "seat",
+    "sit_down",
+    "sit_there",
+    "sit_up",
+    "sit_upright",
+    "stand",
+    "stand_up"
+  ],
+  "sit_around": [],
+  "sit_up": [],
+  "sit_up_straight": [
+    "angle",
+    "bend",
+    "chair",
+    "lean",
+    "lean_back",
+    "slouch",
+    "tilt"
+  ],
+  "skeletal_muscle_relaxant": [],
+  "skin_breakdown": [],
+  "skin_tight_suit": [],
+  "skip_a_beat": [],
+  "skip_breakfast": [
+    "brunch",
+    "picnic"
+  ],
+  "skip_meal": [
+    "dairy_product"
+  ],
+  "sleep": [
+    "lie"
+  ],
+  "sleep_more_upright": [],
+  "sleepy": [
+    "drowsy"
+  ],
+  "slide_hiatal_hernia": [],
+  "slight_bloat_after": [],
+  "slight_pinch": [],
+  "slight_relief": [],
+  "slight_vibrate": [],
+  "slightly_pain": [],
+  "slightly_sore_throat": [],
+  "slightly_strange": [],
+  "slightly_worry": [],
+  "slim": [
+    "petite",
+    "skinny",
+    "slender",
+    "underweight",
+    "very_thin"
+  ],
+  "slip_mushy_diet": [],
+  "slouch_down": [],
+  "slow_but_surely": [],
+  "slow_digestive_system": [],
+  "slow_go_away": [],
+  "slow_swallow": [
+    "difficulty_swallow",
+    "slight_slow_swallow",
+    "slow_swallow_kick",
+    "trouble_swallow"
+  ],
+  "slow_swallow_afterward": [],
+  "slow_wear_off": [],
+  "slurp_noodle": [],
+  "small_air_blister": [],
+  "small_bite": [
+    "between_bite",
+    "each_bite",
+    "every_bite",
+    "take_small_bite",
+    "tiny_bite"
+  ],
+  "small_burp": [],
+  "small_hh_2cm": [],
+  "small_in_diameter": [],
+  "small_involuntary_microburp": [],
+  "small_micro_burp": [],
+  "small_portion": [
+    "bowl",
+    "toast"
+  ],
+  "small_pressure": [],
+  "small_sip": [
+    "few_sip",
+    "sip",
+    "sip_of_water",
+    "take_small_sip",
+    "tiny_sip"
+  ],
+  "small_stage": [],
+  "small_stomach": [],
+  "smell": [
+    "foul",
+    "odor",
+    "stink",
+    "taste"
+  ],
+  "smoke_physical_hurt": [],
+  "sniff": [
+    "sniff_and_swallow",
+    "swallow_and_sniff"
+  ],
+  "so_annoy": [],
+  "so_many_hiccup": [],
+  "so_many_year": [],
+  "so_miserable": [],
+  "so_much_discomfort": [],
+  "so_much_pain": [],
+  "so_much_saliva": [],
+  "so_pain": [],
+  "so_severe": [],
+  "so_strange": [],
+  "so_stubborn": [],
+  "so_terrify": [],
+  "social_anxiety": [
+    "anxiety",
+    "anxiety_and_depression",
+    "depression",
+    "embarrassment",
+    "health_anxiety",
+    "mental_health",
+    "mental_state",
+    "severe_anxiety",
+    "stress_and_anxiety"
+  ],
+  "social_anxious": [],
+  "social_aspect": [],
+  "social_development": [],
+  "social_event": [
+    "concert",
+    "dance",
+    "event",
+    "party",
+    "social_activity",
+    "social_occasion",
+    "wedding"
+  ],
+  "social_situation": [
+    "embarrass",
+    "embarrassment",
+    "sport",
+    "stress"
+  ],
+  "social_worker": [],
+  "socialize": [],
+  "socialize_be_tricky": [],
+  "some_case": [],
+  "some_relief": [
+    "immediate_relief",
+    "instant_relief",
+    "provide_relief",
+    "relief",
+    "relief_soon",
+    "relieve",
+    "temporary_relief"
+  ],
+  "someone_believe_i": [],
+  "something_psychological": [],
+  "sometimes_it_help": [],
+  "sore": [
+    "ache",
+    "little_sore",
+    "mild_sore",
+    "minor_sore",
+    "pretty_sore",
+    "slightly_sore",
+    "some_soreness",
+    "sore_throat",
+    "soreness",
+    "strep_throat",
+    "super_sore"
+  ],
+  "sore_and_weak": [],
+  "sore_stomach": [],
+  "sore_throat": [
+    "itch",
+    "sore",
+    "soreness",
+    "strep_throat"
+  ],
+  "sore_throat_afterwards": [],
+  "sore_voice": [],
+  "soul_crush": [],
+  "sound_awful": [
+    "sound_terrible"
+  ],
+  "sound_different": [],
+  "soup_noodle": [],
+  "space_to_vent": [],
+  "spasm": [],
+  "speak_their_language": [],
+  "specialist": [
+    "consultant",
+    "family_doctor",
+    "gp",
+    "otolaryngologist",
+    "physician"
+  ],
+  "specific_doctor": [],
+  "specific_treatment": [],
+  "spectrum": [],
+  "speech_therapist": [
+    "chiropractor",
+    "physiotherapist",
+    "speech_therapy"
+  ],
+  "sphincter": [
+    "flap",
+    "muscle",
+    "sphincter_muscle"
+  ],
+  "spicy": [
+    "spicy_food"
+  ],
+  "spicy_food": [
+    "acid_food",
+    "certain_food",
+    "chocolate",
+    "coffee",
+    "cruciferous_vegetable",
+    "fatty_food",
+    "fry_food",
+    "garlic",
+    "greasy_food",
+    "milk",
+    "onion",
+    "tea",
+    "tomato",
+    "trigger_food",
+    "vegetable"
+  ],
+  "spit": [
+    "mucus",
+    "phlegm",
+    "saliva"
+  ],
+  "spit_or_water": [],
+  "square_one": [],
+  "squeeze_my_chest": [],
+  "squeeze_them_out": [],
+  "stagnation": [],
+  "star_jump": [],
+  "start_choke": [],
+  "start_real_early": [],
+  "start_wear_off": [],
+  "state_insurance": [],
+  "statistic": [
+    "datum",
+    "evidence",
+    "individual",
+    "statement",
+    "subject"
+  ],
+  "sternum": [
+    "bone",
+    "breastbone",
+    "collarbone",
+    "fold",
+    "pinch",
+    "rib",
+    "upper"
+  ],
+  "stick_my_finger": [],
+  "still_bloat": [],
+  "still_boat": [],
+  "still_here_suffer": [],
+  "stomach": [
+    "abdomen",
+    "belly",
+    "bowel",
+    "chest",
+    "colon",
+    "esophagus",
+    "gut",
+    "intestine",
+    "lung",
+    "tummy"
+  ],
+  "stomach_ache": [
+    "diarrhea",
+    "indigestion",
+    "nausea",
+    "upset_stomach"
+  ],
+  "stomach_be_contract": [],
+  "stomach_be_distend": [],
+  "stomach_be_stretch": [],
+  "stomach_cramp": [
+    "chest_pain",
+    "cramp",
+    "diarrhea",
+    "dizziness",
+    "headache",
+    "indigestion",
+    "palpitation",
+    "upset_stomach"
+  ],
+  "stomach_distend": [],
+  "stomach_gas": [],
+  "stomach_grow": [],
+  "stomach_gurgle": [],
+  "stomach_hurt": [],
+  "stomach_issue": [],
+  "stomach_pain": [
+    "abdominal_pain",
+    "chest_pain",
+    "constipate",
+    "constipation",
+    "cramp",
+    "diarrhea",
+    "indigestion",
+    "nausea",
+    "pain_hiccup",
+    "stomach_ache",
+    "upset_stomach"
+  ],
+  "stomach_throat_gurgle": [],
+  "stomach_wrap_surgery": [],
+  "stop_hiccup": [],
+  "stop_take_omeprazole": [],
+  "stop_the_gurgle": [],
+  "strange_burp": [],
+  "strange_noise": [
+    "croak_noise",
+    "dinosaur_noise",
+    "funny_noise",
+    "gargle_noise",
+    "growl_noise",
+    "grumble",
+    "loud_noise",
+    "rumble_noise",
+    "thud",
+    "weird_gurgle_noise",
+    "weird_noise"
+  ],
+  "strengthen_the_throat": [],
+  "strep_throat_feel": [],
+  "strep_throat_pain": [],
+  "stress": [
+    "anxiety",
+    "depression",
+    "focus",
+    "tense"
+  ],
+  "stress_tension": [],
+  "stretch": [
+    "flex",
+    "maneuver",
+    "movement",
+    "squeeze",
+    "tense",
+    "twist"
+  ],
+  "stretch_mark": [],
+  "stretch_my_neck": [],
+  "stretch_the_stomach": [],
+  "stringy_food": [],
+  "structural_issue": [
+    "unsafe"
+  ],
+  "struggle": [
+    "cope",
+    "deal",
+    "difficult",
+    "difficulty",
+    "problem",
+    "trouble"
+  ],
+  "struggle_daily": [],
+  "struggle_to_breathe": [
+    "hyperventilate",
+    "trouble_breathe"
+  ],
+  "struggle_to_burp": [],
+  "struggle_to_eat": [],
+  "struggle_to_vomit": [],
+  "study": [
+    "case_study",
+    "expert",
+    "knowledge",
+    "literature",
+    "research",
+    "subject"
+  ],
+  "subdue_the_symptom": [],
+  "success_after_botox": [],
+  "succinylcholine": [],
+  "succinylcholine_induce_postoperative": [],
+  "suck": [],
+  "sudden_gasp": [],
+  "suffer": [
+    "have_r_cpd",
+    "never_meet",
+    "r_cpd_have",
+    "suffer_from_r_cpd"
+  ],
+  "suffer_from_regurgitation": [],
+  "suffer_from_tmj": [],
+  "summon": [],
+  "super_bloat": [
+    "bloat",
+    "extreme_bloat"
+  ],
+  "super_easy": [
+    "painless",
+    "quick_and_easy"
+  ],
+  "super_excite": [
+    "so_excite",
+    "very_excite"
+  ],
+  "super_gurgly": [],
+  "super_numb": [],
+  "super_pain": [],
+  "super_sore": [
+    "little_sore",
+    "mild_sore",
+    "minor_sore",
+    "pretty_sore",
+    "slightly_sore",
+    "some_soreness",
+    "sore",
+    "soreness"
+  ],
+  "super_unbearable_pain": [],
+  "superficial_breathe": [],
+  "supplement": [],
+  "supragastric_belch": [],
+  "supragastric_burp": [
+    "large_belch"
+  ],
+  "supraventricular_tachycardia": [],
+  "surgeon": [
+    "doc",
+    "physician"
+  ],
+  "surgery": [
+    "operation",
+    "procedure"
+  ],
+  "surgery_route": [],
+  "surgical_center": [
+    "midwest_surgery_center"
+  ],
+  "surprise": [
+    "shock",
+    "startle"
+  ],
+  "swallow": [
+    "chew",
+    "difficulty_swallow",
+    "drink_water",
+    "gulp",
+    "swallow_pill",
+    "swallow_saliva",
+    "trouble_swallow"
+  ],
+  "swallow_a_lot": [],
+  "swallow_air": [
+    "excess_air",
+    "extra_air",
+    "produce_air_inside"
+  ],
+  "swallow_be_slow": [],
+  "swallow_clinic": [],
+  "swallow_disorder": [
+    "dysphagia",
+    "treat_swallow_disorder",
+    "voice_disorder"
+  ],
+  "swallow_issue": [],
+  "swallow_less_air": [],
+  "swallow_more": [],
+  "swallow_more_air": [],
+  "swallow_my_spit": [],
+  "swallow_pill": [
+    "large_pill",
+    "pill",
+    "swallow_tablet",
+    "take_pill"
+  ],
+  "swallow_reflex": [],
+  "swallow_spit": [],
+  "swallow_test": [
+    "barium_swallow_test",
+    "bunch_of_test",
+    "endoscopy",
+    "examination",
+    "gastroscopy",
+    "manometry_test",
+    "motility_test",
+    "scan",
+    "test",
+    "these_test"
+  ],
+  "swallow_the_barf": [],
+  "swallow_water_help": [],
+  "sweat": [
+    "adrenaline",
+    "cold_sweat",
+    "drool"
+  ],
+  "swell": [],
+  "swell_gum": [],
+  "sympathetic_nervous_system": [],
+  "symptom": [
+    "chest_pain",
+    "gastritis",
+    "heartburn",
+    "nausea"
+  ],
+  "symptom_be_debilitate": [],
+  "symptom_come_back": [],
+  "symptom_go_away": [],
+  "symptom_management": [],
+  "symptom_resolve": [],
+  "symptom_worsen": [
+    "worsen_with_age"
+  ],
+  "tachycardia": [],
+  "take_antacid": [
+    "antacid",
+    "sucralfate",
+    "zantac"
+  ],
+  "take_gasz": [],
+  "take_it_serious": [],
+  "take_out_loan": [],
+  "take_pill": [
+    "horse_pill",
+    "large_pill",
+    "pill",
+    "swallow_pill",
+    "swallow_tablet",
+    "tablet"
+  ],
+  "talk": [
+    "chat",
+    "conversation",
+    "explain",
+    "laugh",
+    "say",
+    "sing",
+    "speak",
+    "tell",
+    "voice",
+    "warn",
+    "whisper",
+    "yell"
+  ],
+  "talk_and_burp": [],
+  "talk_and_eat": [],
+  "talk_with_people": [],
+  "taper_down": [],
+  "taste_like_vomit": [],
+  "teach_my_body": [],
+  "teach_themselves": [
+    "learn_how",
+    "teach",
+    "teach_myself",
+    "teach_yourself"
+  ],
+  "teach_yourself": [
+    "learn",
+    "learn_how",
+    "retrain",
+    "self_teach",
+    "teach_myself",
+    "teach_myself_how",
+    "teach_themselves",
+    "teach_your_body"
+  ],
+  "tears_of_joy": [
+    "horror",
+    "hysteria",
+    "overjoy"
+  ],
+  "technique": [
+    "method"
+  ],
+  "telehealth_appointment": [
+    "virtual_appointment"
+  ],
+  "telemed": [],
+  "temporary_bloat": [],
+  "temporary_paralyze": [
+    "essential_paralyze",
+    "partially_paralyze"
+  ],
+  "temporary_side_effect": [],
+  "temporary_slow_swallow": [],
+  "ten": [
+    "11",
+    "8",
+    "five",
+    "seven",
+    "six",
+    "three"
+  ],
+  "tender": [
+    "dull"
+  ],
+  "tense": [
+    "constrict",
+    "contract",
+    "engage",
+    "flex",
+    "movement",
+    "strain",
+    "stretch",
+    "tense_up",
+    "tension",
+    "tight",
+    "tighten"
+  ],
+  "tense_air": [],
+  "tense_muscle": [],
+  "tense_unnecessary_muscle": [],
+  "tension": [
+    "blockage",
+    "injury",
+    "tense",
+    "tightness"
+  ],
+  "tension_and_inflammation": [],
+  "terrible_pain_hiccup": [],
+  "test": [
+    "barium_swallow_test",
+    "blood_test",
+    "diagnostic_test",
+    "gi_test",
+    "manometry_test",
+    "motility_test",
+    "swallow_test",
+    "these_test"
+  ],
+  "theory": [
+    "hypothesis",
+    "mechanism"
+  ],
+  "therapist": [
+    "physical_therapist",
+    "physiotherapist",
+    "speech_therapist",
+    "therapy"
+  ],
+  "thing": [
+    "aspect",
+    "habit",
+    "part",
+    "reason",
+    "stuff"
+  ],
+  "think_be_alone": [],
+  "third_time": [
+    "fourth",
+    "second_time",
+    "third"
+  ],
+  "this_misery": [],
+  "thoracic_surgeon": [
+    "primary_care_physician"
+  ],
+  "thorax": [
+    "dilator",
+    "lymph_node",
+    "rib_cage",
+    "wrist"
+  ],
+  "throat": [
+    "airway",
+    "chest",
+    "jaw",
+    "mouth",
+    "neck"
+  ],
+  "throat_and_chest": [],
+  "throat_area": [],
+  "throat_be_close": [],
+  "throat_be_relax": [],
+  "throat_be_sore": [],
+  "throat_be_tight": [],
+  "throat_botox": [],
+  "throat_burn": [],
+  "throat_burp": [],
+  "throat_cancer": [],
+  "throat_gargle": [],
+  "throat_gurgle": [],
+  "throat_might_hurt": [],
+  "throat_muscle": [],
+  "throat_nausea": [
+    "chest_pain",
+    "constant_nausea",
+    "feel_nauseous",
+    "headache",
+    "indigestion",
+    "nausea",
+    "sickness",
+    "stomach_ache",
+    "upset_stomach"
+  ],
+  "throat_noise": [],
+  "throat_recovery_process": [],
+  "throat_scope": [],
+  "throat_soreness": [],
+  "throat_specialist": [],
+  "through_the_mouth": [],
+  "through_the_neck": [],
+  "throw_up": [
+    "barf",
+    "gag",
+    "heave",
+    "puke",
+    "retch",
+    "sick",
+    "vomit"
+  ],
+  "throw_up_air": [
+    "air_vomit"
+  ],
+  "throw_up_correct": [],
+  "tif_procedure": [
+    "formation"
+  ],
+  "tight": [
+    "constrict",
+    "contract",
+    "loose",
+    "stiff",
+    "super_tight",
+    "tense",
+    "tense_up",
+    "tension",
+    "tighten",
+    "tighten_up",
+    "tightness",
+    "too_tight",
+    "very_tight",
+    "weak"
+  ],
+  "tighten_back_up": [],
+  "tilt_neck_up": [],
+  "tiny_air": [],
+  "tiny_micro_burp": [],
+  "tiny_of_gurgle": [],
+  "tired_of_this": [],
+  "to_believe_you": [],
+  "to_release_air": [],
+  "to_squeeze_it": [],
+  "to_swallow": [],
+  "ton_of_air": [
+    "air",
+    "air_bubble",
+    "air_pocket",
+    "amount_of_air",
+    "excess_air",
+    "excessive_air",
+    "extra_air"
+  ],
+  "tongue_posture": [
+    "good_posture",
+    "neck_position",
+    "postural",
+    "posture",
+    "right_position",
+    "tongue_position"
+  ],
+  "too_much_acid": [],
+  "too_much_sodium": [],
+  "toothbrush_method": [],
+  "touch_each_other": [],
+  "trap": [
+    "block",
+    "escape"
+  ],
+  "trap_air": [
+    "air",
+    "air_bubble",
+    "air_inside",
+    "air_trap",
+    "distention",
+    "excess_air",
+    "fill_with_air",
+    "full_of_air",
+    "gas",
+    "pressure",
+    "tightness"
+  ],
+  "trap_gas": [
+    "amount_of_gas",
+    "excess_gas",
+    "excessive_gas",
+    "gas",
+    "gas_buildup",
+    "gas_trap",
+    "pass_gas"
+  ],
+  "trap_gas_pose": [],
+  "trap_the_air": [],
+  "traumatic_experience": [],
+  "travel_further_up": [],
+  "treat_the_regurgitation": [],
+  "treat_them_symptomatic": [],
+  "treatment": [
+    "treat"
+  ],
+  "treatment_be_available": [],
+  "treatment_plan": [],
+  "treatment_service": [],
+  "trick_your_esophagus": [],
+  "trigger": [
+    "cause"
+  ],
+  "trigger_burp": [],
+  "trigger_gas": [],
+  "trigger_it": [],
+  "trigger_the_gurgle": [],
+  "trouble_swallow": [
+    "difficulty_swallow",
+    "slow_swallow",
+    "swallow",
+    "swallow_difficulty"
+  ],
+  "try_out_everything": [],
+  "try_sing": [],
+  "tube": [
+    "catheter",
+    "nose",
+    "nostril",
+    "spray",
+    "trachea"
+  ],
+  "tums": [
+    "antacid",
+    "famotidine",
+    "omeprazole",
+    "pepcid",
+    "prilosec",
+    "zantac"
+  ],
+  "turn_my_head": [],
+  "turn_pale": [],
+  "turn_your_head": [],
+  "twist_my_head": [],
+  "two_action_together": [],
+  "two_injection_site": [],
+  "typical_stretch": [],
+  "ues": [
+    "our_ues",
+    "ues_muscle",
+    "upper_esophageal_sphincter_ues"
+  ],
+  "ues_normalize": [],
+  "ues_squeeze": [],
+  "ues_then_pop": [],
+  "ulcerative_colitis": [
+    "colitis"
+  ],
+  "unable_to_breath": [],
+  "unable_to_burp": [
+    "able_to_burp",
+    "inability_to_burp"
+  ],
+  "unbearable": [
+    "become_unbearable"
+  ],
+  "uncomfortable": [
+    "awful",
+    "awkward",
+    "dread",
+    "intense",
+    "miserable",
+    "super_uncomfortable",
+    "unpleasant",
+    "very_uncomfortable"
+  ],
+  "uncomfortable_air_vomit": [],
+  "uncontrollable": [
+    "involuntary",
+    "uncontrollable_burp",
+    "uncontrolled"
+  ],
+  "uncontrollable_burp": [
+    "micro_burp",
+    "micro_burp_start",
+    "regurgitation",
+    "uncontrolled_burp"
+  ],
+  "uncontrollable_come_out": [],
+  "uncoordinated_suffer": [],
+  "under_anesthesia": [
+    "anaesthesia",
+    "general_anesthesia",
+    "general_anesthetic",
+    "local_anesthesia",
+    "local_anesthetic",
+    "no_anesthetic",
+    "sedate",
+    "sedation",
+    "under_general_anaesthesia",
+    "under_general_anesthesia",
+    "under_general_anesthetic"
+  ],
+  "under_sedation": [],
+  "under_the_weather": [],
+  "understand_this_pain": [],
+  "underweight": [
+    "borderline_underweight",
+    "lose_weight",
+    "skinny",
+    "slender",
+    "slim",
+    "thin",
+    "very_skinny"
+  ],
+  "unhealthy_carbonate_beverage": [],
+  "unit_of_botox": [],
+  "university_bathroom": [],
+  "unless_medical_necessary": [],
+  "unnamed_condition": [],
+  "unnatural": [],
+  "unnecessary_uncomfortable_test": [],
+  "unproductive": [],
+  "unrecognized_medical_condition": [],
+  "unrelated_anxiety": [],
+  "unstable_joint": [],
+  "untreated_for_year": [],
+  "unusual_case": [],
+  "unusual_gurgle": [],
+  "unusual_throat_gurgle": [],
+  "up_my_esophagus": [],
+  "up_the_nose": [],
+  "update_u_guy": [],
+  "upper_air": [],
+  "upper_body_move": [],
+  "upper_esophageal_sphincter": [
+    "esophageal_sphincter",
+    "lower_esophageal_sphincter",
+    "lower_sphincter",
+    "sphincter",
+    "sphincter_muscle",
+    "upper_esophageal_sphincter_ues",
+    "upper_sphincter"
+  ],
+  "upper_esophagus": [
+    "esophageal",
+    "les_lower_esophageal",
+    "lower_esophageal_sphincter",
+    "lower_esophagus",
+    "our_esophagus",
+    "upper_esophageal_sphincter",
+    "upper_esophageal_sphincter_ues"
+  ],
+  "upper_stomach_pain": [],
+  "urge_to_swallow": [],
+  "urgent_care": [
+    "colonoscopy"
+  ],
+  "use_the_bathroom": [],
+  "use_to_stretch": [],
+  "usual_flat_stomach": [],
+  "usual_rcpd_symptom": [],
+  "usually_violent": [],
+  "utter_agony": [],
+  "valium_zombie": [],
+  "vascular_surgeon": [],
+  "verge_of_burp": [],
+  "very_eager": [],
+  "very_excite": [
+    "so_excite",
+    "super_excite"
+  ],
+  "very_exhaust": [],
+  "very_frustrate": [
+    "your_frustration"
+  ],
+  "very_little_discomfort": [],
+  "very_regular": [],
+  "very_sharp_pain": [],
+  "very_sore_throat": [],
+  "very_tense_person": [],
+  "very_uncomfortable": [
+    "extreme_uncomfortable",
+    "super_uncomfortable",
+    "uncomfortable"
+  ],
+  "very_very_quiet": [],
+  "very_worry": [],
+  "vicious_circle": [],
+  "violent": [],
+  "violent_vomit": [
+    "carsick",
+    "unable_to_vomit",
+    "vomit_episode"
+  ],
+  "virtual_visit": [],
+  "virus": [],
+  "visceral_hypersensitivity": [],
+  "vocal": [
+    "ability_to_sing",
+    "my_vocal_chord",
+    "vocal_chord",
+    "vocal_cord",
+    "vocal_range"
+  ],
+  "vocal_chord": [],
+  "vocal_cord": [
+    "voice_box"
+  ],
+  "vocal_issue": [],
+  "vocal_range": [
+    "comprise",
+    "upper_range"
+  ],
+  "vocal_therapy": [],
+  "voice_center": [
+    "medical_voice_center"
+  ],
+  "voice_change": [
+    "major_change",
+    "seem_to_vary",
+    "vary_from_person_to_person"
+  ],
+  "voice_chord": [],
+  "voice_control": [],
+  "voice_feel_weak": [],
+  "vomit": [
+    "barf",
+    "gag",
+    "gag_reflex",
+    "heave",
+    "puke",
+    "purge",
+    "retch",
+    "sick"
+  ],
+  "vomit_air": [],
+  "vomit_reflex": [],
+  "water_be_swallow": [],
+  "wave_off": [],
+  "way_more_gas": [],
+  "way_worse": [],
+  "weak_voice": [
+    "hoarse_voice",
+    "loss_of_voice",
+    "voice_change"
+  ],
+  "wear_baggy_clothes": [
+    "wear_tight_clothes"
+  ],
+  "wear_off": [
+    "botox_wear_off",
+    "the_botox_wear",
+    "wear_off_after",
+    "wear_off_around"
+  ],
+  "wear_tight_clothes": [],
+  "week_post_botox": [],
+  "weight_gain": [],
+  "weird_gas_release": [],
+  "weird_personal_quirk": [],
+  "weird_pressure": [],
+  "weird_sound": [],
+  "weird_thing_ever": [],
+  "whenever_i_laugh": [],
+  "while_exercise": [],
+  "whole_body": [
+    "abdomen",
+    "bone",
+    "grind",
+    "organ",
+    "rib",
+    "rib_cage",
+    "sternum"
+  ],
+  "whole_different_person": [],
+  "whole_life": [
+    "child",
+    "childhood",
+    "entire_life",
+    "female",
+    "infant",
+    "my_life",
+    "teen",
+    "teenager"
+  ],
+  "whole_new_world": [],
+  "whole_preparation": [],
+  "wide_than_usual": [],
+  "will_get_worse": [],
+  "will_understand": [],
+  "willing_to_travel": [],
+  "without_insurance": [],
+  "without_worry": [],
+  "work_really_well": [],
+  "worry": [
+    "afraid",
+    "concern",
+    "expect",
+    "guess",
+    "panic",
+    "scare",
+    "scared",
+    "terrify",
+    "think",
+    "worry_about"
+  ],
+  "worse_over_time": [],
+  "worse_than_ever": [],
+  "worse_with_age": [
+    "old",
+    "tend_to_worsen_with_age",
+    "twenties",
+    "worsen_with_age"
+  ],
+  "worsen": [
+    "exacerbate",
+    "exacerbate_by",
+    "tend_to_worsen_with_age",
+    "worsen_with_age"
+  ],
+  "worsen_symptom": [],
+  "worst_trigger_food": [],
+  "worth_it": [],
+  "would_come_out": [],
+  "would_throw_up": [],
+  "wrong_with_i": [],
+  "x_ray": [],
+  "yack": [],
+  "yawn_a_lot": [],
+  "yoga_pose": [
+    "child_pose",
+    "cobra_pose",
+    "fetal_position",
+    "pose"
+  ],
+  "yoga_stretch": [],
+  "your_croak_worse": [],
+  "zero_control": [
+    "plaster"
+  ],
+  "zero_relief": [],
+  "zofran_neck_exercise": []
+}

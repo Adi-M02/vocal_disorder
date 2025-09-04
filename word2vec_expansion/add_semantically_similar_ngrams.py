@@ -3,7 +3,7 @@
 Promote semantically-related expansion terms into the global seed list using WordNet.
 
 Usage:
-  python augment_seeds_with_wordnet.py \
+  python word2vec_expansion/add_semantically_similar_ngrams.py \
       --expansions path/to/expansions.json \
       --outdir path/to/output_dir \
       [--hyper_depth 1] [--hypo_depth 1] [--hol_depth 1] \
@@ -15,9 +15,11 @@ Usage:
 Inputs:
 - expansions.json : { "<seed>": ["term1","term2",...], ... }
 
-Outputs (written under --outdir/added_terms_to_eval/):
-- new_eval_set.json : { "seed_terms": [...] }  (deduped, optionally sorted)
-- wordnet_addition.log : text log of ALL additions per seed (one line per seed)
+Outputs (written under --outdir/added_eval_<timestamp>/):
+- new_eval_set.json               : { "seed_terms": [...] }  (existing global list, deduped, optionally sorted)
+- wordnet_addition.log            : text log of ALL additions per seed (existing)
+- wordnet_accepted_by_seed.json   : { "<seed>": ["accepted1","accepted2",...], ... }  <-- NEW
+  (Matches the structure of your LLM additions file exactly, with empty lists for seeds with no accepts.)
 """
 
 import argparse
@@ -192,21 +194,6 @@ def _morphy_all_forms(tok: str) -> Set[str]:
 def extract_semantic_head(seed: str) -> str:
     """
     Heuristic semantic head extractor for underscore phrases.
-
-    Examples:
-      'get_stuck'         -> 'stuck'
-      'food_get_stuck'    -> 'stuck'
-      'something_blocked' -> 'blocked'
-      'unable_to_burp'    -> 'burp'
-      'stomach_fill_up'   -> 'fill_up' (multiword verb already in WN)
-
-    Strategy:
-      1) If the whole seed is a WN lemma, return it.
-      2) Tokenize on '_' and drop light verbs.
-      3) If a 'get_X' pattern exists, head = X.
-      4) If rightmost 2-token tail is a WN lemma (e.g. 'fill_up'), choose it.
-      5) Else choose the rightmost token with synsets (direct or morphy).
-      6) Fallback: last content token.
     """
     s = seed.strip().lower()
     if wn.synsets(s):
@@ -313,7 +300,7 @@ def expand_wordnet_neighborhood(
 # POS helpers (noun gating)
 # -----------------------------
 def dominant_pos_is_noun(word: str) -> bool:
-    """Return True if the seed's dominant POS (by synset count) is noun."""
+    """Return True if the seed's dominant POS is noun."""
     ss = synsets_any(word)
     if not ss:
         return False
@@ -348,8 +335,8 @@ def select_candidates_for_seed(
     """
     Return (accepted_terms, reasons_map) for a single seed.
     - POS gating: if the seed's dominant POS is noun, only noun candidates are considered.
-    - Acceptance loop runs BEFORE closure (so more are admitted, then can propagate).
-    - Head-overlap rule is broad: any overlap with head or head's WN synonyms/derivations admits.
+    - Acceptance loop runs BEFORE closure.
+    - Head-overlap rule admits candidates sharing head or head's synonyms/derivations.
     """
     seed_n = norm(seed)
     cands = [norm(t) for t in expansion_terms]
@@ -383,8 +370,7 @@ def select_candidates_for_seed(
             accepted.add(t)
             reasons[t] = "seed-wordnet"
 
-    # --- (B) Broad head-overlap rule: admit candidates sharing head or head's synonyms/derivations ---
-    # Build a bucket around the head (broad by request)
+    # --- (B) Broad head-overlap rule ---
     head_bucket: Set[str] = set()
     head_bucket |= _morphy_all_forms(head)
     for ss in synsets_any(head):
@@ -392,7 +378,6 @@ def select_candidates_for_seed(
             head_bucket.add(l.name().lower())
             for d in l.derivationally_related_forms():
                 head_bucket.add(d.name().lower())
-    # expand with morphy again
     expanded_head_bucket = set()
     for h in list(head_bucket):
         expanded_head_bucket |= _morphy_all_forms(h)
@@ -406,7 +391,7 @@ def select_candidates_for_seed(
             accepted.add(t)
             reasons[t] = "head-overlap"
 
-    # --- (C) Closure AFTER acceptance: 1-hop neighborhoods from admitted pivots (as in your original design) ---
+    # --- (C) Closure AFTER acceptance (limited hops from admitted pivots) ---
     if closure_iters > 0 and accepted:
         frontier = deque(sorted(accepted))
         seen_frontier = set(frontier)
@@ -447,7 +432,7 @@ def load_json(path: str) -> dict:
     with open(path, "r", encoding="utf-8") as f:
         return json.load(f)
 
-def save_json(path: str, data: dict):
+def save_json(path: Path, data: dict):
     with open(path, "w", encoding="utf-8") as f:
         json.dump(data, f, indent=2, ensure_ascii=False)
 
@@ -458,21 +443,17 @@ def setup_file_logger(log_file: Path) -> logging.Logger:
     logger = logging.getLogger("augment_wn")
     logger.setLevel(logging.INFO)
     logger.handlers.clear()
-
-    # File-only logger (no console)
     fh = logging.FileHandler(log_file, mode="w", encoding="utf-8")
     fh.setLevel(logging.INFO)
     fh.setFormatter(logging.Formatter("%(message)s"))
     logger.addHandler(fh)
-
     return logger
 
 def log_per_seed_lines(logger: logging.Logger, added_by_seed: Dict[str, List[Tuple[str, str]]]):
     if not added_by_seed:
         logger.info("No additions recorded.")
         return
-    maxw = max(len(s) for s in added_by_seed.keys())
-    maxw = max(12, min(maxw, 28))  # clamp for readability
+    maxw = max(len(s) for s in added_by_seed.keys()) if added_by_seed else 12
     for seed in sorted(added_by_seed.keys()):
         pairs = added_by_seed[seed]
         if not pairs:
@@ -514,16 +495,19 @@ def main():
 
     json_out_path = eval_dir / "new_eval_set.json"
     log_path = eval_dir / "wordnet_addition.log"
+    # NEW: per-seed acceptance map path (matches LLM structure)
+    per_seed_accept_path = eval_dir / "wordnet_accepted_by_seed.json"
 
     logger = setup_file_logger(log_path)
 
     base_seeds: List[str] = sorted(norm(s) for s in expansions.keys())
     augmented: Set[str] = set(base_seeds)
     added_by_seed: Dict[str, List[Tuple[str, str]]] = defaultdict(list)
-    accepted_by_seed = defaultdict(list)
+    accepted_by_seed: Dict[str, List[Tuple[str, str]]] = defaultdict(list)
+
     for seed, cand_list in expansions.items():
         if not isinstance(cand_list, list):
-            continue
+            cand_list = []
         accepted, reasons = select_candidates_for_seed(
             seed,
             cand_list,
@@ -538,20 +522,30 @@ def main():
             pos_gate_nouns=bool(args.pos_gate_nouns),
             max_per_seed=args.max_per_seed,
         )
+        seed_n = norm(seed)
         for t in sorted(accepted):
-            accepted_by_seed[norm(seed)].append((t, reasons.get(t, "accepted")))
+            accepted_by_seed[seed_n].append((t, reasons.get(t, "accepted")))
             if t not in augmented:
                 augmented.add(t)
-                added_by_seed[norm(seed)].append((t, reasons.get(t, "accepted")))
+                added_by_seed[seed_n].append((t, reasons.get(t, "accepted")))
 
     out_list = sorted(augmented | set(base_seeds)) if args.sort else list(augmented | set(base_seeds))
     save_json(json_out_path, {"seed_terms": out_list})
+
+    # ---- NEW: write per-seed acceptance JSON to match LLM output format ----
+    # Include ALL base seeds with empty lists if none accepted (to mirror your LLM file structure).
+    per_seed_accept: Dict[str, List[str]] = {}
+    for seed in base_seeds:
+        terms = [t for (t, _r) in accepted_by_seed.get(seed, [])]
+        per_seed_accept[seed] = sorted(set(terms))
+    save_json(per_seed_accept_path, per_seed_accept)
 
     # ---- Write the log (full list, no truncation; no console output) ----
     logger.info("# Additions written by augment_seeds_with_wordnet")
     logger.info(f"# Expansions: {Path(args.expansions).resolve()}")
     logger.info(f"# Output dir: {eval_dir.resolve()}")
     logger.info(f"# JSON out  : {json_out_path.resolve()}")
+    logger.info(f"# Per-seed WordNet accepts : {per_seed_accept_path.resolve()}")
     logger.info(f"# HyperDepth={args.hyper_depth} HypoDepth={args.hypo_depth} "
                 f"HolDepth={args.hol_depth} CoHypoUp={args.cohypo_up} CoHypoDown={args.cohypo_down} "
                 f"AdjHops={args.adj_hops} ClosureIters={args.closure_iters} "

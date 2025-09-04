@@ -1,0 +1,16 @@
+{
+  "num_seeds": 2074,
+  "unique_base_terms": 7052,
+  "unique_llm_kept_terms": 3124,
+  "unique_wordnet_kept_terms": 1486,
+  "unique_only_llm_terms": 2741,
+  "unique_only_wordnet_terms": 422,
+  "unique_removed_by_both_terms": 4638,
+  "unique_llm_extra_not_in_base": 0,
+  "unique_wordnet_extra_not_in_base": 0,
+  "paths": {
+    "base": "/local/disk2/not_backed_up/amukundan/research/vocal_disorder/testing/semantic_addition_testing/test_base_expansion/test.json",
+    "llm": "/local/disk2/not_backed_up/amukundan/research/vocal_disorder/testing/semantic_addition_testing/llm_output/single_with_anchor/single_term_eval_08_24_22_57/accepted_by_seed.json",
+    "wordnet": "/local/disk2/not_backed_up/amukundan/research/vocal_disorder/testing/semantic_addition_testing/wordnet_output/added_eval_09_03_22_58/wordnet_accepted_by_seed.json"
+  }
+}
