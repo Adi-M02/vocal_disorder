@@ -32,7 +32,8 @@ Outputs (same set as single-term)
   • accepted_all_flat.json
   • accepted_aligned_by_seed.json
   • summary.json
-  • unknown_mismatch.ndjson   <-- NEW detailed diagnostics for schema mismatches
+  • unknown_mismatch.ndjson   <-- detailed diagnostics for schema mismatches
+  • new_seeds.json            <-- NEW: {"seed_terms": [unique accepted terms]}
 """
 
 from __future__ import annotations
@@ -454,7 +455,7 @@ def load_json(path: str) -> dict:
     with open(path, "r", encoding="utf-8") as f:
         return json.load(f)
 
-def save_json(path: Path, data: dict):
+def save_json(path: Path, data: dict | list):
     with open(path, "w", encoding="utf-8") as f:
         json.dump(data, f, indent=2, ensure_ascii=False)
 
@@ -673,6 +674,8 @@ def main():
     summary_path = eval_dir / "summary.json"
     # NEW: unknown-mismatch diagnostics file
     unknown_diag_path = eval_dir / "unknown_mismatch.ndjson"
+    # NEW: all accepted terms as seed_terms JSON
+    new_seeds_path = eval_dir / "new_seeds.json"
 
     logger = setup_logger(log_path)
     runner = BatchRunner(args, global_anchors=global_seed_vocab)
@@ -777,6 +780,17 @@ def main():
                 accepted_all_flat.append(term)
     save_json(accepted_all_flat_path, accepted_all_flat)
 
+    # NEW: Write unique accepted terms as a seed_terms JSON (order-preserving; sorted if --sort)
+    seen_terms: Set[str] = set()
+    accepted_unique: List[str] = []
+    for term in accepted_all_flat:
+        if term not in seen_terms:
+            seen_terms.add(term)
+            accepted_unique.append(term)
+    if args.sort:
+        accepted_unique = sorted(accepted_unique)
+    save_json(new_seeds_path, {"seed_terms": accepted_unique})
+
     # NEW: write unknown-mismatch diagnostics
     write_unknown_ndjson(unknown_diag_path, unknown_diag_rows)
 
@@ -807,6 +821,8 @@ def main():
         # NEW: count of unknown-mismatch diagnostics written
         "unknown_mismatch_rows": len(unknown_diag_rows),
         "unknown_mismatch_log": str(unknown_diag_path.resolve()),
+        # NEW: path to the consolidated seed_terms JSON
+        "new_seeds_json": str(new_seeds_path.resolve()),
     }
     save_json(summary_path, summary)
 
@@ -818,6 +834,7 @@ def main():
     logger.info(f"# Filtered exp   : {filtered_expansions_path.resolve()}")
     logger.info(f"# Accepted flat  : {accepted_all_flat_path.resolve()}")
     logger.info(f"# Accepted align : {accepted_aligned_path.resolve()}")
+    logger.info(f"# New seeds JSON : {new_seeds_path.resolve()}")
     logger.info(f"# Summary        : {summary_path.resolve()}")
     logger.info(f"# Unknown-mismatch NDJSON : {unknown_diag_path.resolve()}")  # NEW
     logger.info(f"# UseAnchors={bool(args.use_anchors)} Retries={args.retries} Sort={bool(args.sort)} RelationMode={bool(args.relation_mode)} ClosureIters={int(args.closure_iters)}")

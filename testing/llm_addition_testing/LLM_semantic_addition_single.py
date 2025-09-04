@@ -609,7 +609,7 @@ def main():
     ap.add_argument("--model", type=str, default="llama3.3:latest", help="Ollama model name")
     ap.add_argument("--url", type=str, default="http://localhost:11434/api/chat", help="Ollama chat endpoint")
     ap.add_argument("--temperature", type=float, default=0.0, help="LLM temperature")
-    ap.add_argument("--tokens", type=int, default=2048, help="LLM context tokens")
+    ap.add_argument("--tokens", type=int, default=8196, help="LLM context tokens")
     ap.add_argument("--timeout", type=int, default=60, help="HTTP timeout seconds")
     ap.add_argument("--global_context", type=str, default=GLOBAL_CONTEXT_DEFAULT,
         help="Short domain context sentence(s) injected into prompts")

@@ -1,0 +1,1 @@
+# Concurrency disabled: server serializes per-model requests; processing seeds sequentially (one call per seed).
