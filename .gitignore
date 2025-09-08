@@ -191,3 +191,4 @@ finetuned_*
 **/word2vec_*.model.syn1neg.npy
 **/word2vec_*.model.wv.vectors.npy
 
+testing/llm_addition_testing/rcpd_finetuned
