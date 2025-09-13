@@ -2,10 +2,10 @@
 set -euo pipefail
 
 # ---------- CONFIG ----------
-THRESHOLDS=(5 2)
+THRESHOLDS=(1 2 3 4 5)
 URLS=("http://localhost:11434/api/chat" "http://localhost:11435/api/chat" "http://localhost:11436/api/chat" "http://localhost:11437/api/chat")
 
-OUT_BASE="testing/ngram_evals_test"
+OUT_BASE="testing/ngram_evals_test_no_digits"
 
 EVAL_SCRIPT="testing/evaluate_word2phrase_ngrams.py"
 W2V_SCRIPT="word2vec_expansion/ngram_generation/train_word2vec_on_ngrams.py"
@@ -76,61 +76,61 @@ for thr in "${THRESHOLDS[@]}"; do
   echo "[info $(ts)] threshold=$thr pipeline finished"
 done
 
-# ---------- Stage 2: LLM semantic addition in BATCHES of URL count ----------
-echo
-echo "============================================================"
-echo "[info $(ts)] Starting LLM semantic addition in batches of ${#URLS[@]}"
-echo "============================================================"
+# # ---------- Stage 2: LLM semantic addition in BATCHES of URL count ----------
+# echo
+# echo "============================================================"
+# echo "[info $(ts)] Starting LLM semantic addition in batches of ${#URLS[@]}"
+# echo "============================================================"
 
-fail=0
-pending=()
-for thr in "${THRESHOLDS[@]}"; do
-  pending+=("$thr")
-  # when we have a full batch equal to number of URLs, launch & wait
-  if ((${#pending[@]} == ${#URLS[@]})); then
-    pids=()
-    echo "[info $(ts)] Launching batch: ${pending[*]}"
-    for i in "${!pending[@]}"; do
-      thr_i="${pending[$i]}"
-      url="${URLS[$i]}"
-      run_llm "$thr_i" "$url" &
-      pids+=("$!")
-      echo "[info $(ts)] spawned LLM job for thr=$thr_i on $url (pid=${pids[-1]})"
-    done
-    # wait for the batch
-    for pid in "${pids[@]}"; do
-      if ! wait "$pid"; then
-        fail=1
-      fi
-    done
-    echo "[info $(ts)] Batch complete."
-    pending=()
-  fi
-done
+# fail=0
+# pending=()
+# for thr in "${THRESHOLDS[@]}"; do
+#   pending+=("$thr")
+#   # when we have a full batch equal to number of URLs, launch & wait
+#   if ((${#pending[@]} == ${#URLS[@]})); then
+#     pids=()
+#     echo "[info $(ts)] Launching batch: ${pending[*]}"
+#     for i in "${!pending[@]}"; do
+#       thr_i="${pending[$i]}"
+#       url="${URLS[$i]}"
+#       run_llm "$thr_i" "$url" &
+#       pids+=("$!")
+#       echo "[info $(ts)] spawned LLM job for thr=$thr_i on $url (pid=${pids[-1]})"
+#     done
+#     # wait for the batch
+#     for pid in "${pids[@]}"; do
+#       if ! wait "$pid"; then
+#         fail=1
+#       fi
+#     done
+#     echo "[info $(ts)] Batch complete."
+#     pending=()
+#   fi
+# done
 
-# leftover (final partial batch)
-if ((${#pending[@]} > 0)); then
-  pids=()
-  echo "[info $(ts)] Launching final batch: ${pending[*]}"
-  for i in "${!pending[@]}"; do
-    thr_i="${pending[$i]}"
-    url="${URLS[$i]}"
-    run_llm "$thr_i" "$url" &
-    pids+=("$!")
-    echo "[info $(ts)] spawned LLM job for thr=$thr_i on $url (pid=${pids[-1]})"
-  done
-  for pid in "${pids[@]}"; do
-    if ! wait "$pid"; then
-      fail=1
-    fi
-  done
-  echo "[info $(ts)] Final batch complete."
-fi
+# # leftover (final partial batch)
+# if ((${#pending[@]} > 0)); then
+#   pids=()
+#   echo "[info $(ts)] Launching final batch: ${pending[*]}"
+#   for i in "${!pending[@]}"; do
+#     thr_i="${pending[$i]}"
+#     url="${URLS[$i]}"
+#     run_llm "$thr_i" "$url" &
+#     pids+=("$!")
+#     echo "[info $(ts)] spawned LLM job for thr=$thr_i on $url (pid=${pids[-1]})"
+#   done
+#   for pid in "${pids[@]}"; do
+#     if ! wait "$pid"; then
+#       fail=1
+#     fi
+#   done
+#   echo "[info $(ts)] Final batch complete."
+# fi
 
-if [[ $fail -eq 0 ]]; then
-  echo "[info $(ts)] All LLM batches completed successfully."
-else
-  echo "[warn $(ts)] One or more LLM jobs failed. Check logs under $OUT_BASE/<thr>/llm_semantic_addition.log"
-fi
+# if [[ $fail -eq 0 ]]; then
+#   echo "[info $(ts)] All LLM batches completed successfully."
+# else
+#   echo "[warn $(ts)] One or more LLM jobs failed. Check logs under $OUT_BASE/<thr>/llm_semantic_addition.log"
+# fi
 
-echo "[info $(ts)] Pipeline complete. Outputs under: $OUT_BASE"
+# echo "[info $(ts)] Pipeline complete. Outputs under: $OUT_BASE"

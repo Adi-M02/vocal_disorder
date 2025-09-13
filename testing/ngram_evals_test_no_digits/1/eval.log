@@ -1,0 +1,13 @@
+[info] output directory: /local/disk2/not_backed_up/amukundan/research/vocal_disorder/testing/ngram_evals_test_no_digits/1
+[info] loading FULL corpus with process_all_noburp(stoplist=False) ...
+[info] full-corpus docs loaded for training: 139124
+[info] training Word2Phrase on FULL corpus: min_count=5, threshold=1.0, scoring=default, passes=2, connectors=12 words
+[info] produced_vocab size (FULL corpus): 52272
+[info] loading EVAL slice from Mongo for users file: vocabulary_evaluation/manual_terms_7_12/users.txt
+[info] loaded 49 users from vocabulary_evaluation/manual_terms_7_12/users.txt (sample: ['Symbiotic66', 'Cautious-Emphasis-33', 'Snoo_51908', 'Jazzlike-Coach4151', 'RGanong'])
+[info] EVAL slice raw texts: 2082
+[info] EVAL slice tokenized docs: 2082, non-empty: 2078
+[info] seed terms: raw=2074, normalized_unique=2061
+[info] seed terms: raw=2074, normalized_unique=2061
+[info] eval occurrences counted: total=14237, unique_present=2005
+[info] wrote outputs to: testing/ngram_evals_test_no_digits/1

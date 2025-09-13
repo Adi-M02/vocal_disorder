@@ -10,6 +10,7 @@ def clean_and_tokenize(text: str) -> list[str]:
     emoticon_pat  = re.compile(r'(?:[:;=8][\-^]?[)(DPp])', re.I)
     # now allow apostrophes through, to strip them in the next step
     junk_pattern = re.compile(r"[^A-Za-z0-9'/\- ]+")
+    digit_pattern = re.compile(r"\d+")
 
     # 1) decompose accents, then strip all combining marks
     clean = unicodedata.normalize("NFKD", text)
@@ -28,10 +29,11 @@ def clean_and_tokenize(text: str) -> list[str]:
     # 3) preserve r/ and u/ 
     clean = re.sub(r"\b([ru])/", r"\1<SLASH>", clean, flags=re.I)
 
-    # 4) collapse other slashes & hyphens
+    # 4) collapse other slashes & hyphens & remove digits
     clean = clean.replace("/", " ")
     clean = clean.replace("<SLASH>", "/")
     clean = clean.replace("-", " ")
+    clean = digit_pattern.sub(" ", clean)
 
     # 5) drop all junk except letters, numbers, apostrophes, hyphens, spaces
     clean = junk_pattern.sub(" ", clean)
