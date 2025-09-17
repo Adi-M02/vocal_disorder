@@ -644,8 +644,10 @@ def main():
     if not isinstance(expansions, dict):
         raise ValueError("Expansions JSON must be an object mapping seeds to lists of terms.")
 
-    # Prepare global anchors (full seed vocabulary) if requested
-    global_seed_vocab: List[str] = sorted([str(s) for s, v in expansions.items() if isinstance(v, list) and v]) if args.use_anchors else []
+    # hardcoded path to global seed vocab for anchors
+    all_expansions = load_json('testing/ngram_evals_test_no_digits/4/topk_25_min_cos_0.4_cbow.json')
+    global_seed_vocab: List[str] = sorted([str(s) for s, v in all_expansions.items() if isinstance(v, list) and v]) if args.use_anchors else []
+    # global_seed_vocab: List[str] = sorted([str(s) for s, v in expansions.items() if isinstance(v, list) and v]) if args.use_anchors else []
 
     # --- DEBUG MODE: single pair ---
     if args.debug_seed and args.debug_term:

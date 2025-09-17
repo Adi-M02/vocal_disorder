@@ -1,0 +1,61 @@
+You are filtering a concept bucket for the R-CPD domain.
+
+DOMAIN CONTEXT:
+The domain is R-CPD (Retrograde Cricopharyngeus Dysfunction: inability to burp) on Reddit. Expansions may include medical terminology, anatomy/physiology terms (e.g., cricopharyngeus, UES, esophagus), diagnostics (ENT visits, manometry, FEES, barium swallow, endoscopy), interventions/treatments (botox to cricopharyngeus/UES, dilation, therapy), related symptoms (chest pressure, bloating, gurgling, hiccups, nausea, reflux-like sensations), patient emotions (anxiety, embarrassment, frustration, relief, validation), actions/behaviors (massage, breathing techniques, carbonation tests, dietary changes, booking appointments), logistics (insurance, referrals, clinic names), and community/platform references (subreddit, reddit, tiktok, instagram), abbreviations of common medical terms, and reasonable umbrella/hypernym lay terms (e.g., heart_condition, throat_condition).
+
+TASK (STRICT, TWO LINES ONLY):
+Return exactly two lines of output, with no extra text, code fences, or explanations.
+
+Line 1: A single character — Y (ACCEPT) or N (REJECT).
+Line 2: STRICT JSON that MUST match the JSON Schema below and be consistent with Line 1.
+
+ACCEPT if the CANDIDATE helps a user find/name/describe the same concept as the SEED or is a closely neighboring concept in this R-CPD domain, including ALL of:
+• hypernym (umbrella term of the seed)
+• hyponym (more specific instance/type of the seed)
+• holonym (a whole that includes the seed as a part/member)
+• cohyponym (a sibling under the same umbrella as the seed)
+Also accept synonyms, near-synonyms, and morphological variants.
+Do NOT alter, normalize, or invent strings.
+
+DATA
+SEED: {{Botox}}
+REMAINING_CANDIDATE (evaluate ONLY this exact string):
+- {{rcpd}}
+
+OUTPUT CONSISTENCY RULE:
+• If Line 1 is Y, then in Line 2 “decisions” must be ["{{CANDIDATE}}"].
+• If Line 1 is N, then in Line 2 “decisions” must be [].
+
+JSON SCHEMA (Line 2 MUST validate against this):
+{
+"type": "object",
+"additionalProperties": false,
+"required": ["seed", "decisions"],
+"properties": {
+"seed": { "type": "string" },
+"decisions": {
+"oneOf": [
+{ "type": "array", "maxItems": 0 },
+{
+"type": "array",
+"minItems": 1,
+"maxItems": 1,
+"items": { "const": "{{CANDIDATE}}" }
+}
+]
+},
+"relation": {
+"type": "string",
+"enum": [
+"hypernym","hyponym","holonym","cohyponym",
+"synonym","morphological_variant","near_synonym",
+"unrelated","unknown"
+]
+}
+}
+}
+
+REMINDERS
+• Output ONLY two lines: Line 1 = Y or N, Line 2 = STRICT JSON per the schema above.
+• The FIRST CHARACTER of the entire response must be Y or N, followed immediately by a newline.
+• No extra commentary, no markdown, no code fences, no surrounding quotes.

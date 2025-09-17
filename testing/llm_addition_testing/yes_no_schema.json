@@ -1,0 +1,7 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "YesOrNo",
+  "description": "Model must output a single JSON string: either \"Y\" or \"N\".",
+  "type": "string",
+  "enum": ["Y", "N"]
+}

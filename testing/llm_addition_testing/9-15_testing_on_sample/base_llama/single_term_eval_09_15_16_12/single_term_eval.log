@@ -1,0 +1,52 @@
+# Concurrency disabled: server serializes per-model requests; processing seeds sequentially.
+# Output dir: /data/not_backed_up/amukundan/vocal_disorder/testing/llm_addition_testing/9-15_testing_on_sample/base_llama/single_term_eval_09_15_16_12
+# Pair decisions : /data/not_backed_up/amukundan/vocal_disorder/testing/llm_addition_testing/9-15_testing_on_sample/base_llama/single_term_eval_09_15_16_12/decisions.ndjson
+# Seed rows      : /data/not_backed_up/amukundan/vocal_disorder/testing/llm_addition_testing/9-15_testing_on_sample/base_llama/single_term_eval_09_15_16_12/seeds_accepted.ndjson
+# Accepted map   : /data/not_backed_up/amukundan/vocal_disorder/testing/llm_addition_testing/9-15_testing_on_sample/base_llama/single_term_eval_09_15_16_12/accepted_by_seed.json
+# Filtered exp   : /data/not_backed_up/amukundan/vocal_disorder/testing/llm_addition_testing/9-15_testing_on_sample/base_llama/single_term_eval_09_15_16_12/filtered_expansions.json
+# Accepted flat  : /data/not_backed_up/amukundan/vocal_disorder/testing/llm_addition_testing/9-15_testing_on_sample/base_llama/single_term_eval_09_15_16_12/accepted_all_flat.json
+# Accepted align : /data/not_backed_up/amukundan/vocal_disorder/testing/llm_addition_testing/9-15_testing_on_sample/base_llama/single_term_eval_09_15_16_12/accepted_aligned_by_seed.json
+# Summary        : /data/not_backed_up/amukundan/vocal_disorder/testing/llm_addition_testing/9-15_testing_on_sample/base_llama/single_term_eval_09_15_16_12/summary.json
+# UseAnchors=True Retries=2 Sort=False RelationMode=False
+
+# Single-term LLM evaluation summary (LLM-only relations)
+Total evals: 725 | accept=352 reject=373 unknown_mismatch=0 error=0
+Latency (ms) median=1408 p90=1880 max=10090
+
+## per-seed acceptance rates
+adhd                         | total=  25 accept=  10 reject=  15 unknown=  0 error=  0
+anesthesiologist             | total=  25 accept=  16 reject=   9 unknown=  0 error=  0
+barium_swallow               | total=  25 accept=  17 reject=   8 unknown=  0 error=  0
+botox_procedure              | total=  25 accept=  20 reject=   5 unknown=  0 error=  0
+bubble                       | total=  25 accept=  17 reject=   8 unknown=  0 error=  0
+burp                         | total=  25 accept=  15 reject=  10 unknown=  0 error=  0
+certain_age                  | total=  25 accept=   8 reject=  17 unknown=  0 error=  0
+disgust                      | total=  25 accept=   7 reject=  18 unknown=  0 error=  0
+eat                          | total=  25 accept=  25 reject=   0 unknown=  0 error=  0
+excess_saliva                | total=  25 accept=   8 reject=  17 unknown=  0 error=  0
+experience                   | total=   6 accept=   3 reject=   3 unknown=  0 error=  0
+family_doctor                | total=  25 accept=  24 reject=   1 unknown=  0 error=  0
+flat_stomach                 | total=  25 accept=   2 reject=  23 unknown=  0 error=  0
+full_anesthesia              | total=  25 accept=   9 reject=  16 unknown=  0 error=  0
+hiatal_hernia                | total=  25 accept=  20 reject=   5 unknown=  0 error=  0
+hiccup                       | total=  25 accept=  13 reject=  12 unknown=  0 error=  0
+hunger_cue                   | total=  25 accept=   6 reject=  19 unknown=  0 error=  0
+ibs                          | total=  25 accept=  19 reject=   6 unknown=  0 error=  0
+inhaler                      | total=  25 accept=   7 reject=  18 unknown=  0 error=  0
+negative_reaction            | total=  25 accept=   7 reject=  18 unknown=  0 error=  0
+news_article                 | total=  25 accept=   5 reject=  20 unknown=  0 error=  0
+op                           | total=  25 accept=   1 reject=  24 unknown=  0 error=  0
+pantoprazol                  | total=  25 accept=  13 reject=  12 unknown=  0 error=  0
+puff_of_air                  | total=  25 accept=  10 reject=  15 unknown=  0 error=  0
+relaxation                   | total=  25 accept=   7 reject=  18 unknown=  0 error=  0
+relief                       | total=  19 accept=  16 reject=   3 unknown=  0 error=  0
+suck                         | total=  25 accept=   7 reject=  18 unknown=  0 error=  0
+vicious_circle               | total=  25 accept=   5 reject=  20 unknown=  0 error=  0
+without_insurance            | total=  25 accept=  17 reject=   8 unknown=  0 error=  0
+worry                        | total=  25 accept=  18 reject=   7 unknown=  0 error=  0
+
+## verification issues (model must return [] or [<exact candidate>])
+(none)
+
+## request/parse errors
+(none)
