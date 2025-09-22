@@ -193,3 +193,4 @@ finetuned_*
 
 testing/llm_addition_testing/rcpd_finetuned
 spellchecker_folder/spell_cache/
+spellchecker_folder/spell_cache

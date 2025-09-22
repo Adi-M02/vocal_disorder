@@ -33,10 +33,11 @@ def _init_worker():
     os.environ.setdefault("OMP_NUM_THREADS", "1")
     os.environ.setdefault("MKL_NUM_THREADS", "1")
 
-def _process_one(text: str, stoplist = True, lemmatize = True) -> List[str]:
+def _process_one(text: str, tokenize = True,stoplist = True, lemmatize = True) -> List[str]:
     """Your process_text logic using preloaded lookup."""
     assert _LOOKUP is not None, "Worker not initialized; missing lookup."
-
+    if not tokenize:
+        return text.split()
     toks = clean_and_tokenize(text)
     if lemmatize:
         toks = [_LOOKUP.get(tok, tok) for tok in toks]
@@ -109,6 +110,7 @@ def process_all_noburp(
     max_workers: int | None = None,
     chunksize: int = 2000,
     show_progress: bool = True,
+    tokenize: bool = True,
     stoplist: bool = True,
     lemmatize: bool = True
 ) -> List[List[str]]:
@@ -129,7 +131,7 @@ def process_all_noburp(
         max_workers=max_workers,
         initializer=_init_worker,
     ) as ex:
-        worker = partial(_process_one, stoplist=stoplist, lemmatize=lemmatize)
+        worker = partial(_process_one, tokenize=tokenize, stoplist=stoplist, lemmatize=lemmatize)
         mapped = ex.map(worker, doc_iter, chunksize=chunksize)
         if show_progress:
             for toks in tqdm(mapped, unit="doc"):
