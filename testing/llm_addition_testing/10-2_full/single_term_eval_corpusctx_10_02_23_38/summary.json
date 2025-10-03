@@ -1,0 +1,31 @@
+{
+  "total_evals": 19464,
+  "accept": 4727,
+  "reject": 14648,
+  "unknown_mismatch": 89,
+  "error": 0,
+  "seeds_with_errors": 0,
+  "seeds_all_empty": 1383,
+  "latency_ms_median": 7863,
+  "latency_ms_p90": 10373,
+  "out_dir": "/data/not_backed_up/amukundan/vocal_disorder/testing/llm_addition_testing/10-2_full/single_term_eval_corpusctx_10_02_23_38",
+  "model": "llama3.3:latest",
+  "default_url": "http://localhost:11436/api/chat",
+  "instances": 4,
+  "endpoints_used": [
+    "http://localhost:11434/api/chat",
+    "http://localhost:11435/api/chat",
+    "http://localhost:11436/api/chat",
+    "http://localhost:11437/api/chat"
+  ],
+  "temperature": 0.0,
+  "tokens": 8192,
+  "timeout": 60,
+  "retries": 2,
+  "sorted": false,
+  "use_anchors": true,
+  "anchors_count": 781,
+  "cache_path": "testing/adding_context/cache/ngram_df_baseTokens_and_ngramText.parquet",
+  "k": 3,
+  "window": 50
+}
