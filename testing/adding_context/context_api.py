@@ -7,50 +7,57 @@ from a cached corpus, using the enhanced behavior:
   - minimal prettify (HTML unescape, zero-width removal, markdown de-escape).
 
 Usage (CLI):
+  # Single term
   python context_api.py --cache cache/ngram_df_baseTokens_and_ngramText.parquet \
                         --term botox_procedure \
                         -k 5 \
                         --window 5 \
                         --format parquet \
-                        --module test_get_similar \
+                        --json
+
+  # Multi-term (comma-separated)
+  python context_api.py --cache cache/ngram_df_baseTokens_and_ngramText.parquet \
+                        --terms botox_procedure,throatox \
+                        -k 3 \
+                        --window 5 \
+                        --format parquet \
                         --json
 """
 
-from typing import List, Dict, Sequence
-import importlib
+from typing import List, Dict, Sequence, Union
 import argparse
 import json
 import pandas as pd
+import sys
 
-# Change to your actual setup module filename (without .py)
-# It must export:
-#   - load_ngram_df(cache_path, format="parquet") -> pd.DataFrame
-#   - sample_base_windows_around_term(df, term, k, window) -> List[List[str]]
-DEFAULT_SETUP_MODULE = "test_get_similar"
+# If your repo layout requires this path tweak, keep it;
+# otherwise it's harmless.
+sys.path.append('../vocal_disorder')
+
+# Fixed module import (no dynamic import or --module arg needed)
+from testing.adding_context import test_get_similar as setup_mod
 
 __all__ = [
     "load_cached_corpus",
     "query_base_windows",
     "query_term_windows",               # backward-compat alias
     "query_from_cache",
-    "query_base_windows_for_terms",     # NEW (multi-term)
-    "query_from_cache_for_terms",       # NEW (multi-term + load)
+    "query_base_windows_for_terms",     # multi-term
+    "query_from_cache_for_terms",       # multi-term + load
+    "windows_list_for_terms",           # convenience (list output)
+    "windows_list_from_cache_for_terms"
 ]
 
 
-def _load_setup_module(module_name: str):
-    return importlib.import_module(module_name)
-
+# ---------------- Core helpers ----------------
 
 def load_cached_corpus(
     cache_path: str,
     *,
     format: str = "parquet",
-    setup_module: str = DEFAULT_SETUP_MODULE,
 ) -> pd.DataFrame:
-    """Load cached dataframe (doc_id, base_tokens, ngram_text) and rebuild derived cols."""
-    mod = _load_setup_module(setup_module)
-    return mod.load_ngram_df(cache_path, format=format)
+    """Load cached dataframe (doc_id, base_tokens, ngram_text) via setup_mod."""
+    return setup_mod.load_ngram_df(cache_path, format=format)
 
 
 def query_base_windows(
@@ -58,8 +65,6 @@ def query_base_windows(
     term: str,
     k: int,
     window: int,
-    *,
-    setup_module: str = DEFAULT_SETUP_MODULE,
 ) -> List[List[str]]:
     """
     Return **base-text** windows grouped per document (up to k docs), using the improved logic:
@@ -71,9 +76,7 @@ def query_base_windows(
         raise ValueError("k must be >= 0")
     if window < 0:
         raise ValueError("window must be >= 0")
-
-    mod = _load_setup_module(setup_module)
-    return mod.sample_base_windows_around_term(df, term, k, window)
+    return setup_mod.sample_base_windows_around_term(df, term, k, window)
 
 
 # Back-compat alias (old name)
@@ -82,11 +85,9 @@ def query_term_windows(
     term: str,
     k: int,
     window: int,
-    *,
-    setup_module: str = DEFAULT_SETUP_MODULE,
 ) -> List[List[str]]:
     """Deprecated: use query_base_windows. Kept for compatibility."""
-    return query_base_windows(df, term, k, window, setup_module=setup_module)
+    return query_base_windows(df, term, k, window)
 
 
 def query_from_cache(
@@ -96,22 +97,19 @@ def query_from_cache(
     window: int,
     *,
     format: str = "parquet",
-    setup_module: str = DEFAULT_SETUP_MODULE,
 ) -> List[List[str]]:
     """Convenience: load cache and query base windows in one call."""
-    df = load_cached_corpus(cache_path, format=format, setup_module=setup_module)
-    return query_base_windows(df, term, k, window, setup_module=setup_module)
+    df = load_cached_corpus(cache_path, format=format)
+    return query_base_windows(df, term, k, window)
 
 
-# ---------- NEW: multi-term helpers ----------
+# ---------- Multi-term helpers ----------
 
 def query_base_windows_for_terms(
     df: pd.DataFrame,
     terms: Sequence[str],
     k: int,
     window: int,
-    *,
-    setup_module: str = DEFAULT_SETUP_MODULE,
 ) -> Dict[str, List[List[str]]]:
     """
     Query base windows for multiple terms at once.
@@ -122,10 +120,9 @@ def query_base_windows_for_terms(
     if window < 0:
         raise ValueError("window must be >= 0")
 
-    mod = _load_setup_module(setup_module)
     out: Dict[str, List[List[str]]] = {}
     for term in terms:
-        out[term] = mod.sample_base_windows_around_term(df, term, k, window)
+        out[term] = setup_mod.sample_base_windows_around_term(df, term, k, window)
     return out
 
 
@@ -136,60 +133,140 @@ def query_from_cache_for_terms(
     window: int,
     *,
     format: str = "parquet",
-    setup_module: str = DEFAULT_SETUP_MODULE,
 ) -> Dict[str, List[List[str]]]:
     """
     Convenience: load cache once, then query windows for multiple terms.
     Returns {term: List[List[str]]}.
     """
-    df = load_cached_corpus(cache_path, format=format, setup_module=setup_module)
-    return query_base_windows_for_terms(df, terms, k, window, setup_module=setup_module)
+    df = load_cached_corpus(cache_path, format=format)
+    return query_base_windows_for_terms(df, terms, k, window)
+
+
+# ---------- Convenience: list-style outputs ----------
+
+def windows_list_for_terms(
+    df: pd.DataFrame,
+    terms: Sequence[str],
+    k: int,
+    window: int,
+    *,
+    flatten: bool = False,
+) -> Union[List[List[str]], List[List[List[str]]]]:
+    """
+    Convenience wrapper that returns windows as a List rather than a dict.
+
+    If flatten=False (default):
+        returns a List[List[List[str]]] where each element aligns with `terms` order:
+            [ windows_for_term_0, windows_for_term_1, ... ]
+        and each windows_for_term_i is the usual per-doc List[List[str]].
+
+    If flatten=True:
+        flattens across terms into a single List[List[str]] (concatenating per-doc windows).
+    """
+    result_per_term = [query_base_windows(df, t, k, window) for t in terms]
+    if not flatten:
+        return result_per_term
+    flat: List[List[str]] = []
+    for per_doc in result_per_term:
+        flat.extend(per_doc)
+    return flat
+
+
+def windows_list_from_cache_for_terms(
+    cache_path: str,
+    terms: Sequence[str],
+    k: int,
+    window: int,
+    *,
+    format: str = "parquet",
+    flatten: bool = False,
+) -> Union[List[List[str]], List[List[List[str]]]]:
+    """
+    Same as windows_list_for_terms, but loads the cache internally first.
+    """
+    df = load_cached_corpus(cache_path, format=format)
+    return windows_list_for_terms(df, terms, k, window, flatten=flatten)
 
 
 # ---------------- CLI ----------------
 
 def _build_argparser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(
-        description="Query **base-text** windows around a term from a cached n-gram dataframe."
+        description="Query **base-text** windows around term(s) from a cached n-gram dataframe."
     )
-    p.add_argument("--cache", default="cache/ngram_df_baseTokens_and_ngramText.parquet",
+    p.add_argument("--cache", default="testing/adding_context/cache/ngram_df_baseTokens_and_ngramText.parquet",
                    help="Path to cached DF (parquet/feather/pickle).")
-    p.add_argument("--term", required=True,
+    # Either --term or --terms (comma-separated)
+    p.add_argument("--term",
                    help="Exact n-gram token to search (e.g., botox_procedure).")
+    p.add_argument("--terms",
+                   help="Comma-separated list of terms (e.g., termA,termB,termC).")
     p.add_argument("-k", type=int, required=True,
-                   help="Max number of matching documents to return.")
+                   help="Max number of matching documents to return per term.")
     p.add_argument("--window", type=int, required=True,
                    help="Context window size on each side (in base tokens).")
     p.add_argument("--format", default="parquet",
                    choices=["parquet", "feather", "pickle"],
                    help="Cache format.")
-    p.add_argument("--module", default=DEFAULT_SETUP_MODULE,
-                   help=f"Module name of your setup file (without .py). Default: {DEFAULT_SETUP_MODULE}")
     p.add_argument("--json", action="store_true",
                    help="Print JSON to stdout (default is a readable text format).")
     return p
 
 
+def _print_human_single(out: List[List[str]]) -> None:
+    if not out:
+        print("[]")
+        return
+    for i, winlist in enumerate(out, 1):
+        print(f"Doc {i} — {len(winlist)} hits")
+        for w in winlist:
+            print(f"  - {w}")
+
+
+def _print_human_multi(out: Dict[str, List[List[str]]]) -> None:
+    if not out:
+        print("{}")
+        return
+    for term, win_per_doc in out.items():
+        print(f"[{term}]")
+        if not win_per_doc:
+            print("  []")
+            continue
+        for i, winlist in enumerate(win_per_doc, 1):
+            print(f"  Doc {i} — {len(winlist)} hits")
+            for w in winlist:
+                print(f"    - {w}")
+
+
 def main():
     args = _build_argparser().parse_args()
-    df = load_cached_corpus(args.cache, format=args.format, setup_module=args.module)
-    out = query_base_windows(df, args.term, args.k, args.window, setup_module=args.module)
 
-    if args.json:
-        print(json.dumps(out, ensure_ascii=False))
+    # Validate term arguments
+    terms: Sequence[str]
+    if args.terms:
+        terms = [t.strip() for t in args.terms.split(",") if t.strip()]
+        if not terms:
+            raise SystemExit("Error: --terms provided but no valid terms found after parsing.")
+    elif args.term:
+        terms = [args.term]
     else:
-        if not out:
-            print("[]")
-            return
-        for i, winlist in enumerate(out, 1):
-            print(f"Doc {i} — {len(winlist)} hits")
-            for w in winlist:
-                print(f"  - {w}")
+        raise SystemExit("Error: provide either --term or --terms.")
+
+    df = load_cached_corpus(args.cache, format=args.format)
+
+    if len(terms) == 1:
+        out_single = query_base_windows(df, terms[0], args.k, args.window)
+        if args.json:
+            print(json.dumps(out_single, ensure_ascii=False))
+        else:
+            _print_human_single(out_single)
+    else:
+        out_multi = query_base_windows_for_terms(df, terms, args.k, args.window)
+        if args.json:
+            print(json.dumps(out_multi, ensure_ascii=False))
+        else:
+            _print_human_multi(out_multi)
 
 
 if __name__ == "__main__":
-    # main()
-    print(query_from_cache_for_terms(cache_path="cache/ngram_df_baseTokens_and_ngramText.parquet",
-                                      terms=["botox_procedure", "throatox"],
-                                      k=3,
-                                      window=5))
+    main()

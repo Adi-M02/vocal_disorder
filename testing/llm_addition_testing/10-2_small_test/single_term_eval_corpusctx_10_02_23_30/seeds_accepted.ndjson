@@ -1,0 +1,5 @@
+{"seed": "without_insurance", "accepted": ["medical_insurance", "pay_out_of_pocket", "cash", "insurance_coverage", "out_of_pocket", "high_deductible_plan", "self_pay", "total_cost", "out_of_pocket_expense"], "checked_subset": true, "violations": []}
+{"seed": "barium_swallow", "accepted": ["barium_swallow_test", "swallow_test", "swallow_study", "esophagram", "modify_barium_swallow"], "checked_subset": true, "violations": []}
+{"seed": "hiatal_hernia", "accepted": ["gord", "a_hiatal_hernia", "hiatus_hernia", "hernia"], "checked_subset": true, "violations": []}
+{"seed": "botox_procedure", "accepted": ["treatment", "botox", "throatox", "r_cpd_treatment", "receive_treatment", "office_procedure", "doctor_spiegel", "botox_treatment", "botox_injection", "injection", "first_injection", "operation", "procedure"], "checked_subset": true, "violations": []}
+{"seed": "sit_up_straight", "accepted": ["jaw_forward", "neck_forward", "chin_down", "certain_position", "tilt", "head_forward", "shoulder_back"], "checked_subset": true, "violations": []}

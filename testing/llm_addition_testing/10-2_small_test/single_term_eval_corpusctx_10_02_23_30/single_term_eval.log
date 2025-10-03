@@ -1,0 +1,20 @@
+# Parallel instances: 4 -> http://localhost:11434/api/chat, http://localhost:11435/api/chat, http://localhost:11436/api/chat, http://localhost:11437/api/chat
+# Output dir: /data/not_backed_up/amukundan/vocal_disorder/testing/llm_addition_testing/10-2_small_test/single_term_eval_corpusctx_10_02_23_30
+# Pair decisions : /data/not_backed_up/amukundan/vocal_disorder/testing/llm_addition_testing/10-2_small_test/single_term_eval_corpusctx_10_02_23_30/decisions.ndjson
+# Seed rows      : /data/not_backed_up/amukundan/vocal_disorder/testing/llm_addition_testing/10-2_small_test/single_term_eval_corpusctx_10_02_23_30/seeds_accepted.ndjson
+# Accepted map   : /data/not_backed_up/amukundan/vocal_disorder/testing/llm_addition_testing/10-2_small_test/single_term_eval_corpusctx_10_02_23_30/accepted_by_seed.json
+# Filtered exp   : /data/not_backed_up/amukundan/vocal_disorder/testing/llm_addition_testing/10-2_small_test/single_term_eval_corpusctx_10_02_23_30/filtered_expansions.json
+# Accepted flat  : /data/not_backed_up/amukundan/vocal_disorder/testing/llm_addition_testing/10-2_small_test/single_term_eval_corpusctx_10_02_23_30/accepted_all_flat.json
+# Accepted align : /data/not_backed_up/amukundan/vocal_disorder/testing/llm_addition_testing/10-2_small_test/single_term_eval_corpusctx_10_02_23_30/accepted_aligned_by_seed.json
+# Summary        : /data/not_backed_up/amukundan/vocal_disorder/testing/llm_addition_testing/10-2_small_test/single_term_eval_corpusctx_10_02_23_30/summary.json
+
+# Single-term LLM evaluation summary (with corpus context)
+Total evals: 125 | accept=38 reject=87 unknown_mismatch=0 error=0
+Latency (ms) median=4071 p90=8301 max=17116
+
+## per-seed acceptance rates
+barium_swallow               | total=  25 accept=   5 reject=  20 unknown=  0 error=  0
+botox_procedure              | total=  25 accept=  13 reject=  12 unknown=  0 error=  0
+hiatal_hernia                | total=  25 accept=   4 reject=  21 unknown=  0 error=  0
+sit_up_straight              | total=  25 accept=   7 reject=  18 unknown=  0 error=  0
+without_insurance            | total=  25 accept=   9 reject=  16 unknown=  0 error=  0

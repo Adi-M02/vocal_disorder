@@ -1,0 +1,45 @@
+# Processing seeds sequentially (one LLM call per candidate)
+# Output dir: /data/not_backed_up/amukundan/vocal_disorder/testing/llm_addition_testing/9-26_on_sample/single_term_eval_corpusctx_09_26_12_10
+# Pair decisions : /data/not_backed_up/amukundan/vocal_disorder/testing/llm_addition_testing/9-26_on_sample/single_term_eval_corpusctx_09_26_12_10/decisions.ndjson
+# Seed rows      : /data/not_backed_up/amukundan/vocal_disorder/testing/llm_addition_testing/9-26_on_sample/single_term_eval_corpusctx_09_26_12_10/seeds_accepted.ndjson
+# Accepted map   : /data/not_backed_up/amukundan/vocal_disorder/testing/llm_addition_testing/9-26_on_sample/single_term_eval_corpusctx_09_26_12_10/accepted_by_seed.json
+# Filtered exp   : /data/not_backed_up/amukundan/vocal_disorder/testing/llm_addition_testing/9-26_on_sample/single_term_eval_corpusctx_09_26_12_10/filtered_expansions.json
+# Accepted flat  : /data/not_backed_up/amukundan/vocal_disorder/testing/llm_addition_testing/9-26_on_sample/single_term_eval_corpusctx_09_26_12_10/accepted_all_flat.json
+# Accepted align : /data/not_backed_up/amukundan/vocal_disorder/testing/llm_addition_testing/9-26_on_sample/single_term_eval_corpusctx_09_26_12_10/accepted_aligned_by_seed.json
+# Summary        : /data/not_backed_up/amukundan/vocal_disorder/testing/llm_addition_testing/9-26_on_sample/single_term_eval_corpusctx_09_26_12_10/summary.json
+
+# Single-term LLM evaluation summary (with corpus context)
+Total evals: 725 | accept=138 reject=585 unknown_mismatch=2 error=0
+Latency (ms) median=1729 p90=1980 max=10152
+
+## per-seed acceptance rates
+adhd                         | total=  25 accept=   0 reject=  25 unknown=  0 error=  0
+anesthesiologist             | total=  25 accept=   0 reject=  24 unknown=  1 error=  0
+barium_swallow               | total=  25 accept=   9 reject=  16 unknown=  0 error=  0
+botox_procedure              | total=  25 accept=  10 reject=  15 unknown=  0 error=  0
+bubble                       | total=  25 accept=   9 reject=  16 unknown=  0 error=  0
+burp                         | total=  25 accept=  10 reject=  15 unknown=  0 error=  0
+certain_age                  | total=  25 accept=   2 reject=  23 unknown=  0 error=  0
+disgust                      | total=  25 accept=   6 reject=  19 unknown=  0 error=  0
+eat                          | total=  25 accept=   5 reject=  20 unknown=  0 error=  0
+excess_saliva                | total=  25 accept=   3 reject=  22 unknown=  0 error=  0
+experience                   | total=   6 accept=   2 reject=   4 unknown=  0 error=  0
+family_doctor                | total=  25 accept=  12 reject=  13 unknown=  0 error=  0
+flat_stomach                 | total=  25 accept=   0 reject=  25 unknown=  0 error=  0
+full_anesthesia              | total=  25 accept=   5 reject=  20 unknown=  0 error=  0
+hiatal_hernia                | total=  25 accept=   3 reject=  21 unknown=  1 error=  0
+hiccup                       | total=  25 accept=   2 reject=  23 unknown=  0 error=  0
+hunger_cue                   | total=  25 accept=   0 reject=  25 unknown=  0 error=  0
+ibs                          | total=  25 accept=   8 reject=  17 unknown=  0 error=  0
+inhaler                      | total=  25 accept=   0 reject=  25 unknown=  0 error=  0
+negative_reaction            | total=  25 accept=   3 reject=  22 unknown=  0 error=  0
+news_article                 | total=  25 accept=   2 reject=  23 unknown=  0 error=  0
+op                           | total=  25 accept=   2 reject=  23 unknown=  0 error=  0
+pantoprazol                  | total=  25 accept=   3 reject=  22 unknown=  0 error=  0
+puff_of_air                  | total=  25 accept=   4 reject=  21 unknown=  0 error=  0
+relaxation                   | total=  25 accept=   2 reject=  23 unknown=  0 error=  0
+relief                       | total=  19 accept=  13 reject=   6 unknown=  0 error=  0
+suck                         | total=  25 accept=   1 reject=  24 unknown=  0 error=  0
+vicious_circle               | total=  25 accept=   2 reject=  23 unknown=  0 error=  0
+without_insurance            | total=  25 accept=   8 reject=  17 unknown=  0 error=  0
+worry                        | total=  25 accept=  12 reject=  13 unknown=  0 error=  0

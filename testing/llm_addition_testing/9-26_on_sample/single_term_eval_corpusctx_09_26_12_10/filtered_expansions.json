@@ -1,0 +1,195 @@
+{
+  "worry": [
+    "worry_too_much",
+    "nervous_about",
+    "afraid",
+    "worry_about",
+    "panic",
+    "freak_out",
+    "anxious_about",
+    "think",
+    "overthink",
+    "scared",
+    "concern",
+    "nervous"
+  ],
+  "pantoprazol": [
+    "acid_reduce_medication",
+    "otc_medicine",
+    "acid_reducer"
+  ],
+  "bubble": [
+    "pop",
+    "bubble_of_air",
+    "air_bubble",
+    "air_stuck",
+    "air_escape",
+    "gas",
+    "gas_rise",
+    "pocket_of_air",
+    "gas_bubble"
+  ],
+  "op": [
+    "mr_k",
+    "procedure_with_doctor_spiegel"
+  ],
+  "botox_procedure": [
+    "operation",
+    "office_procedure",
+    "botox_injection",
+    "botox_treatment",
+    "consult",
+    "botox",
+    "treatment",
+    "procedure",
+    "injection",
+    "r_cpd_treatment"
+  ],
+  "relaxation": [
+    "loosen_up",
+    "muscle_contraction"
+  ],
+  "news_article": [
+    "bbc_article",
+    "reddit_thread"
+  ],
+  "hiccup": [
+    "single_hiccup",
+    "gurgle"
+  ],
+  "adhd": [],
+  "relief": [
+    "provide_relief",
+    "instant_relief",
+    "mini_burp",
+    "reprieve",
+    "relieve",
+    "control_over",
+    "small_burp",
+    "any_relief",
+    "significant_relief",
+    "some_relief",
+    "immediate_relief",
+    "temporary_relief",
+    "release"
+  ],
+  "anesthesiologist": [],
+  "hiatal_hernia": [
+    "gerd",
+    "hernia",
+    "hiatus_hernia"
+  ],
+  "without_insurance": [
+    "high_deductible_plan",
+    "self_pay",
+    "pay_out_of_pocket",
+    "insurance_pay",
+    "out_of_pocket",
+    "medical_insurance",
+    "insurance_coverage",
+    "insurance_cover"
+  ],
+  "ibs": [
+    "digestive_issue",
+    "diagnose_with_ibs",
+    "stomach_issue",
+    "sibo",
+    "gastro_issue",
+    "food_intolerance",
+    "gerd",
+    "gi_symptom"
+  ],
+  "vicious_circle": [
+    "paradox",
+    "chicken_and_egg"
+  ],
+  "hunger_cue": [],
+  "puff_of_air": [
+    "burst_of_air",
+    "medium_size_burp",
+    "bubble_pop",
+    "tiny_air_bubble"
+  ],
+  "suck": [
+    "v_mit"
+  ],
+  "experience": [
+    "personal_experience",
+    "similar_experience"
+  ],
+  "certain_age": [
+    "common_theme",
+    "misdiagnose_with_gerd"
+  ],
+  "inhaler": [],
+  "disgust": [
+    "embarrass",
+    "heave",
+    "nasty",
+    "throw_up_its",
+    "smell",
+    "gross"
+  ],
+  "full_anesthesia": [
+    "under_general",
+    "local_anesthesia",
+    "under_local_anesthesia",
+    "under_general_anesthetic",
+    "under_general_anaesthesia"
+  ],
+  "negative_reaction": [
+    "severe_side_effect",
+    "permanent_side_effect",
+    "unpleasant_side_effect"
+  ],
+  "excess_saliva": [
+    "salivation",
+    "hypersalivation",
+    "excessive_saliva"
+  ],
+  "eat": [
+    "snack",
+    "able_to_eat",
+    "consume",
+    "drink_anything_carbonate",
+    "eat_slow"
+  ],
+  "barium_swallow": [
+    "swallow_study",
+    "esophageal_manometry",
+    "esophagram",
+    "modify_barium_swallow",
+    "upper_endoscopy",
+    "barium_swallow_test",
+    "endoscopy",
+    "manometry_test",
+    "swallow_test"
+  ],
+  "family_doctor": [
+    "gp",
+    "gi_specialist",
+    "your_gp",
+    "local_doctor",
+    "my_pcp",
+    "pcp",
+    "primary_care_doc",
+    "primary_doctor",
+    "primary_care_doctor",
+    "primary_care_physician",
+    "ent_doctor",
+    "general_practitioner"
+  ],
+  "burp": [
+    "let_out",
+    "satisfy",
+    "able_to_burp",
+    "microburp",
+    "belch",
+    "mini_burp",
+    "real_burp",
+    "small_burp",
+    "tiny_burp",
+    "micro_burp"
+  ],
+  "flat_stomach": []
+}

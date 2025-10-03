@@ -355,7 +355,7 @@ def sample_base_windows_around_term(df: pd.DataFrame, term: str, k: int, window:
     if window < 0:
         raise ValueError("`window` must be >= 0")
 
-    work = df.copy()
+    work = df.copy(deep=False)
 
     if "ngram_tokens" not in work.columns:
         if "ngram_text" not in work.columns:

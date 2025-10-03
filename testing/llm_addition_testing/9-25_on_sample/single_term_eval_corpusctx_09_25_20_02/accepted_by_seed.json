@@ -1,0 +1,277 @@
+{
+  "worry": [
+    "concern",
+    "worry_about",
+    "freak_out",
+    "worry_too_much",
+    "overthink",
+    "panic",
+    "scared",
+    "slow_swallow",
+    "nervous",
+    "anxious_about",
+    "think",
+    "afraid",
+    "expect",
+    "nervous_about"
+  ],
+  "pantoprazol": [
+    "acid_reduce_medication",
+    "otc_medicine",
+    "acid_reducer",
+    "zantac",
+    "ppis_and_h_blocker",
+    "pepcid_ac",
+    "reflux_gourmet",
+    "peppermint_oil_capsule"
+  ],
+  "bubble": [
+    "air_trap",
+    "gas_rise",
+    "air_bubble",
+    "air_escape",
+    "pop",
+    "bubble_of_air",
+    "air",
+    "pocket_of_air",
+    "gas_bubble",
+    "gas",
+    "rise",
+    "air_rise",
+    "air_stuck"
+  ],
+  "op": [
+    "query",
+    "procedure_with_doctor_spiegel"
+  ],
+  "botox_procedure": [
+    "receive_treatment",
+    "botox_treatment",
+    "botox",
+    "operation",
+    "injection",
+    "first_injection",
+    "r_cpd_treatment",
+    "nd_procedure",
+    "botox_injection",
+    "office_procedure",
+    "procedure",
+    "treatment"
+  ],
+  "relaxation": [
+    "too_tight",
+    "loosen_up"
+  ],
+  "news_article": [
+    "bbc_article",
+    "guardian"
+  ],
+  "hiccup": [
+    "involuntary",
+    "tiny_burp",
+    "pain_hiccup",
+    "singular_hiccup",
+    "single_hiccup"
+  ],
+  "adhd": [
+    "underlying"
+  ],
+  "relief": [
+    "some_relief",
+    "real_burp",
+    "provide_relief",
+    "micro_burp_but",
+    "immediate_relief",
+    "release",
+    "any_relief",
+    "satisfy",
+    "instant_relief",
+    "relieve",
+    "temporary_relief",
+    "reprieve",
+    "small_burp",
+    "mini_burp",
+    "significant_relief"
+  ],
+  "anesthesiologist": [
+    "operate_room",
+    "anaesthetist",
+    "surgery_room",
+    "surgery_center",
+    "propofol"
+  ],
+  "hiatal_hernia": [
+    "gord",
+    "gerd",
+    "hernia",
+    "hiatus_hernia",
+    "hh",
+    "dysmotility",
+    "untreated_r_cpd"
+  ],
+  "without_insurance": [
+    "out_of_pocket_expense",
+    "cash",
+    "pay_out_of_pocket",
+    "insurance_cover",
+    "out_of_pocket",
+    "insurance_coverage",
+    "high_deductible_plan",
+    "total_cost",
+    "around_k",
+    "self_pay",
+    "medical_insurance"
+  ],
+  "ibs": [
+    "diagnose_with_ibs",
+    "gerd",
+    "food_intolerance",
+    "gi_symptom",
+    "sibo",
+    "digestive_issue",
+    "gastroparesis",
+    "gi_issue",
+    "stomach_issue",
+    "ibs_symptom",
+    "gi_problem",
+    "constipation",
+    "misdiagnosis"
+  ],
+  "vicious_circle": [
+    "pressure_buildup",
+    "chicken_and_egg",
+    "paradox"
+  ],
+  "hunger_cue": [],
+  "puff_of_air": [
+    "airy",
+    "random_microburp",
+    "tiny_little",
+    "tissue_resistance",
+    "burst_of_air",
+    "bubble_pop",
+    "teeny",
+    "tiny_air_bubble",
+    "very_tiny",
+    "involuntary_micro"
+  ],
+  "suck": [
+    "really_suck",
+    "get_rid",
+    "gross"
+  ],
+  "experience": [
+    "go_through",
+    "similar_experience",
+    "story",
+    "personal_experience"
+  ],
+  "certain_age": [
+    "common_theme"
+  ],
+  "inhaler": [],
+  "disgust": [
+    "heave",
+    "smell",
+    "throw_up_but",
+    "throw_up_when",
+    "throw_up_its",
+    "gross",
+    "nasty",
+    "embarrass"
+  ],
+  "full_anesthesia": [
+    "under_general_anaesthesia",
+    "under_general_anesthetic",
+    "local_anesthesia",
+    "under_general",
+    "without_ga"
+  ],
+  "negative_reaction": [
+    "potential_risk",
+    "permanent_side_effect",
+    "mutual",
+    "big_concern",
+    "unpleasant_side_effect",
+    "severe_side_effect"
+  ],
+  "excess_saliva": [
+    "mucous",
+    "hypersalivation",
+    "hyper_salivation",
+    "salivation",
+    "post_nasal_drip",
+    "excessive_saliva"
+  ],
+  "eat": [
+    "drink_anything_carbonate",
+    "barely_eat",
+    "after_eat",
+    "consume",
+    "lunch",
+    "heavy",
+    "chew",
+    "snack",
+    "dinner",
+    "eat_solid",
+    "overeat",
+    "able_to_eat",
+    "meal",
+    "few_bite",
+    "bread",
+    "eat_slow",
+    "breakfast",
+    "eat_anything",
+    "hungry"
+  ],
+  "barium_swallow": [
+    "swallow_test",
+    "manometry_test",
+    "swallow_study",
+    "esophagram",
+    "scan",
+    "modify_barium_swallow",
+    "egd",
+    "esophageal_manometry",
+    "endoscopy",
+    "upper_endoscopy",
+    "barium_swallow_test"
+  ],
+  "family_doctor": [
+    "primary_care_physician",
+    "my_pcp",
+    "primary_doctor",
+    "local_doctor",
+    "primary_care_doc",
+    "general_practitioner",
+    "ear_nose_and_throat",
+    "gi_specialist",
+    "ent_referral",
+    "gp",
+    "your_gp",
+    "primary_care_doctor",
+    "pcp"
+  ],
+  "burp": [
+    "force_them",
+    "able_to_burp",
+    "real_burp",
+    "release_air",
+    "normal_burper",
+    "satisfy",
+    "burp_on_command",
+    "involuntary",
+    "turn_my_head",
+    "tiny_burp",
+    "silent",
+    "belch",
+    "let_out",
+    "small_burp",
+    "mini_burp",
+    "microburp",
+    "micro_burp"
+  ],
+  "flat_stomach": [
+    "unzip"
+  ]
+}

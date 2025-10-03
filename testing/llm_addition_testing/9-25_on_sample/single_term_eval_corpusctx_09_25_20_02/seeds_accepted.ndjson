@@ -1,0 +1,30 @@
+{"seed": "worry", "accepted": ["concern", "worry_about", "freak_out", "worry_too_much", "overthink", "panic", "scared", "slow_swallow", "nervous", "anxious_about", "think", "afraid", "expect", "nervous_about"], "checked_subset": true, "violations": []}
+{"seed": "pantoprazol", "accepted": ["acid_reduce_medication", "otc_medicine", "acid_reducer", "zantac", "ppis_and_h_blocker", "pepcid_ac", "reflux_gourmet", "peppermint_oil_capsule"], "checked_subset": true, "violations": []}
+{"seed": "bubble", "accepted": ["air_trap", "gas_rise", "air_bubble", "air_escape", "pop", "bubble_of_air", "air", "pocket_of_air", "gas_bubble", "gas", "rise", "air_rise", "air_stuck"], "checked_subset": true, "violations": []}
+{"seed": "op", "accepted": ["query", "procedure_with_doctor_spiegel"], "checked_subset": true, "violations": []}
+{"seed": "botox_procedure", "accepted": ["receive_treatment", "botox_treatment", "botox", "operation", "injection", "first_injection", "r_cpd_treatment", "nd_procedure", "botox_injection", "office_procedure", "procedure", "treatment"], "checked_subset": true, "violations": []}
+{"seed": "relaxation", "accepted": ["too_tight", "loosen_up"], "checked_subset": true, "violations": []}
+{"seed": "news_article", "accepted": ["bbc_article", "guardian"], "checked_subset": true, "violations": []}
+{"seed": "hiccup", "accepted": ["involuntary", "tiny_burp", "pain_hiccup", "singular_hiccup", "single_hiccup"], "checked_subset": true, "violations": []}
+{"seed": "adhd", "accepted": ["underlying"], "checked_subset": true, "violations": []}
+{"seed": "relief", "accepted": ["some_relief", "real_burp", "provide_relief", "micro_burp_but", "immediate_relief", "release", "any_relief", "satisfy", "instant_relief", "relieve", "temporary_relief", "reprieve", "small_burp", "mini_burp", "significant_relief"], "checked_subset": true, "violations": []}
+{"seed": "anesthesiologist", "accepted": ["operate_room", "anaesthetist", "surgery_room", "surgery_center", "propofol"], "checked_subset": true, "violations": []}
+{"seed": "hiatal_hernia", "accepted": ["gord", "gerd", "hernia", "hiatus_hernia", "hh", "dysmotility", "untreated_r_cpd"], "checked_subset": true, "violations": []}
+{"seed": "without_insurance", "accepted": ["out_of_pocket_expense", "cash", "pay_out_of_pocket", "insurance_cover", "out_of_pocket", "insurance_coverage", "high_deductible_plan", "total_cost", "around_k", "self_pay", "medical_insurance"], "checked_subset": true, "violations": []}
+{"seed": "ibs", "accepted": ["diagnose_with_ibs", "gerd", "food_intolerance", "gi_symptom", "sibo", "digestive_issue", "gastroparesis", "gi_issue", "stomach_issue", "ibs_symptom", "gi_problem", "constipation", "misdiagnosis"], "checked_subset": true, "violations": []}
+{"seed": "vicious_circle", "accepted": ["pressure_buildup", "chicken_and_egg", "paradox"], "checked_subset": true, "violations": []}
+{"seed": "hunger_cue", "accepted": [], "checked_subset": true, "violations": []}
+{"seed": "puff_of_air", "accepted": ["airy", "random_microburp", "tiny_little", "tissue_resistance", "burst_of_air", "bubble_pop", "teeny", "tiny_air_bubble", "very_tiny", "involuntary_micro"], "checked_subset": true, "violations": []}
+{"seed": "suck", "accepted": ["really_suck", "get_rid", "gross"], "checked_subset": true, "violations": []}
+{"seed": "experience", "accepted": ["go_through", "similar_experience", "story", "personal_experience"], "checked_subset": true, "violations": []}
+{"seed": "certain_age", "accepted": ["common_theme"], "checked_subset": true, "violations": []}
+{"seed": "inhaler", "accepted": [], "checked_subset": true, "violations": []}
+{"seed": "disgust", "accepted": ["heave", "smell", "throw_up_but", "throw_up_when", "throw_up_its", "gross", "nasty", "embarrass"], "checked_subset": true, "violations": []}
+{"seed": "full_anesthesia", "accepted": ["under_general_anaesthesia", "under_general_anesthetic", "local_anesthesia", "under_general", "without_ga"], "checked_subset": true, "violations": []}
+{"seed": "negative_reaction", "accepted": ["potential_risk", "permanent_side_effect", "mutual", "big_concern", "unpleasant_side_effect", "severe_side_effect"], "checked_subset": true, "violations": []}
+{"seed": "excess_saliva", "accepted": ["mucous", "hypersalivation", "hyper_salivation", "salivation", "post_nasal_drip", "excessive_saliva"], "checked_subset": true, "violations": []}
+{"seed": "eat", "accepted": ["drink_anything_carbonate", "barely_eat", "after_eat", "consume", "lunch", "heavy", "chew", "snack", "dinner", "eat_solid", "overeat", "able_to_eat", "meal", "few_bite", "bread", "eat_slow", "breakfast", "eat_anything", "hungry"], "checked_subset": true, "violations": []}
+{"seed": "barium_swallow", "accepted": ["swallow_test", "manometry_test", "swallow_study", "esophagram", "scan", "modify_barium_swallow", "egd", "esophageal_manometry", "endoscopy", "upper_endoscopy", "barium_swallow_test"], "checked_subset": true, "violations": []}
+{"seed": "family_doctor", "accepted": ["primary_care_physician", "my_pcp", "primary_doctor", "local_doctor", "primary_care_doc", "general_practitioner", "ear_nose_and_throat", "gi_specialist", "ent_referral", "gp", "your_gp", "primary_care_doctor", "pcp"], "checked_subset": true, "violations": []}
+{"seed": "burp", "accepted": ["force_them", "able_to_burp", "real_burp", "release_air", "normal_burper", "satisfy", "burp_on_command", "involuntary", "turn_my_head", "tiny_burp", "silent", "belch", "let_out", "small_burp", "mini_burp", "microburp", "micro_burp"], "checked_subset": true, "violations": []}
+{"seed": "flat_stomach", "accepted": ["unzip"], "checked_subset": true, "violations": []}
