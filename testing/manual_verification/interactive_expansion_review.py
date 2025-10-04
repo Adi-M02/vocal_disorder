@@ -137,11 +137,11 @@ def extract_context_strings(windows_per_doc: List[List[str]], max_n: int = 2) ->
 # ------- Main -------
 def main():
     ap = argparse.ArgumentParser(description="Interactive manual eval with cached corpus contexts.")
-    ap.add_argument("--expansions", required=True, type=Path, help="Path to expansions JSON.")
+    ap.add_argument("--expansions", default='/local/disk2/not_backed_up/amukundan/research/vocal_disorder/testing/llm_addition_testing/10-2_full/single_term_eval_corpusctx_10_02_23_38/accepted_by_seed.json', type=Path, help="Path to expansions JSON.")
     ap.add_argument("--cache", default="base_ngram_cache_with_details.parquet", type=str, help="Cached corpus path for load_cached_corpus.")
     ap.add_argument("--cache-format", choices=["parquet", "jsonl"], default="parquet")
-    ap.add_argument("--out", required=True, type=Path, help="Output CSV (append-only).")
-    ap.add_argument("--resume", action="store_true", help="Skip terms already decided.")
+    ap.add_argument("--out", default='testing/manual_verification/manual_eval.csv', type=Path, help="Output CSV (append-only).")
+    ap.add_argument("--resume", action="store_true", default=True, help="Skip terms already decided.")
     args = ap.parse_args()
 
     expansions = load_expansions(args.expansions)

@@ -1,0 +1,21 @@
+<html><head><meta charset='utf-8'><title>per-Event Vocabulary Summary</title></head><body>
+<h1>per-Event Vocabulary Summary (window = ±90 days)</h1>
+<h3>Inputs</h3>
+<ul>
+<li>Parquet: base_ngram_cache_with_details.parquet</li>
+<li>Botox CSV: annotated_users/user_botox_dates_fixed.csv</li>
+<li>Vocab JSON: testing/llm_addition_testing/10-1_all/single_term_eval_corpusctx_10_01_23_04/accepted_all_flat.json</li>
+<li>Event day included in post: ts ≥ t0</li>
+<li>Bin size: 7 days; Overlap policy: clip_midpoint</li>
+</ul>
+<h3>Downloads</h3><ul>
+<li><a href='../w90/csv/per_term_prepost_stats.csv'>Per-term pre/post stats</a></li>
+<li><a href='../w90/csv/mcnemar_paired.csv'>McNemar paired test</a></li>
+<li><a href='../w90/csv/time_series_bins.csv'>Time series (bins)</a></li>
+<li><a href='../w90/csv/assoc_rules_pre_to_post.csv'>Association rules (pre⇒post)</a></li>
+</ul>
+<h3>Top movers (by |log2(lift)|)</h3>
+<img src='../w90/plots/top_terms_log2lift.png' style='max-width: 100%;'>
+<h3>Time series (top movers)</h3>
+<img src='../w90/plots/time_series.png' style='max-width: 100%;'>
+</body></html>
