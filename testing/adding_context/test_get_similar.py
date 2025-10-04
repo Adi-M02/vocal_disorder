@@ -9,7 +9,7 @@ from difflib import SequenceMatcher
 
 # --- pipeline pieces 
 from utils.load_process_ngram_docs import process_ngram_docs
-from utils.load_and_process_docs import process_all_noburp
+from utils.load_and_process_docs import process_all_noburp, process_all_noburp_details
 from utils.load_json import load_json
 
 # Provided utilities (paths per your message)
@@ -19,7 +19,7 @@ from spellchecker_folder.spellchecker import spellcheck_token_list
 from utils.stopwords import STOPWORDS                  # Not used when stoplist=False; imported for parity
 
 # If you use lemmas, point to your JSON (placeholder path OK)
-LOOKUP_PATH = "combined_lemmas.json"
+LOOKUP_PATH = "testing/adding_context/combined_lemmas.json"
 _LOOKUP = None
 if os.path.exists(LOOKUP_PATH):
     try:
@@ -27,7 +27,29 @@ if os.path.exists(LOOKUP_PATH):
     except Exception:
         _LOOKUP = None
 
+def _stemish(w: str) -> str:
+    w = w.lower()
+    # very light suffix folding for containment checks
+    for suf in ("ing", "ed", "es", "s"):
+        if len(w) > len(suf) + 1 and w.endswith(suf):
+            return w[:-len(suf)]
+    return w
 
+def _approx_term_in_text(text: str, term_underscore: str) -> bool:
+    """
+    True if all query words (underscores -> spaces) appear in order in `text`,
+    allowing simple suffix variations (ed/ing/es/s).
+    """
+    tokens = re.findall(r"[a-zA-Z']+", text.lower())
+    q_words = term_underscore.replace("_", " ").lower().split()
+    q_stems = [_stemish(w) for w in q_words]
+    i = 0
+    for tok in tokens:
+        if tok.startswith(q_stems[i]):
+            i += 1
+            if i == len(q_stems):
+                return True
+    return False
 # =============================================================================
 # BUILD
 # =============================================================================
@@ -45,19 +67,25 @@ def build_ngram_df(ngram_phraser_dir: str) -> pd.DataFrame:
     """
     # 1) Base tokens (split tokens). If the function returns strings, split them.
     base_docs = process_all_noburp(tokenize=False, stoplist=False, lemmatize=False)
+    details = process_all_noburp_details()
     if base_docs and isinstance(base_docs[0], str):
         base_docs = [s.split() for s in base_docs]
 
     # 2) N-gram token lists (existing pipeline)
     ngram_docs = process_ngram_docs(ngram_phraser_dir)
 
-    if len(base_docs) != len(ngram_docs):
+    if not len(base_docs) == len(ngram_docs) == len(details):
         raise ValueError(f"Mismatched lengths: base={len(base_docs)} vs ngram={len(ngram_docs)}")
+
+    created_utc = [d.get("created_utc") for d in details]
+    author      = [d.get("author") for d in details]
 
     df = pd.DataFrame({
         "doc_id": range(len(base_docs)),
         "base_tokens": base_docs,
         "ngram_tokens": ngram_docs,
+        "created_utc": created_utc,
+        "author": author,
     })
 
     # Derived columns
@@ -82,7 +110,7 @@ def save_ngram_df(df: pd.DataFrame, path: str, *, format: str = "parquet") -> No
     format: 'parquet' (default) | 'feather' | 'pickle'
     """
     os.makedirs(os.path.dirname(path) or ".", exist_ok=True)
-    to_save = df[["doc_id", "base_tokens", "ngram_text"]].copy()
+    to_save = df[["doc_id", "base_tokens", "ngram_text", "created_utc", "author", "ngram_tokens", "ngram_token_set", "ngram_len"]].copy()
 
     if format == "parquet":
         to_save.to_parquet(path, engine="pyarrow", compression="zstd", index=False)
@@ -178,13 +206,21 @@ def _norm(tok: str) -> str:
     s = tok.lower()
     s = _punct_re.sub("", s)         # drop punctuation
     s = re.sub(r"\d+", "", s)        # drop digits
-    # Conservative plural folding helps 'procedure' ~ 'procedures'
-    if len(s) > 4 and s.endswith("es"):
+
+    # Optional: try your lookup first, if available
+    if _LOOKUP is not None:
+        s = _LOOKUP.get(s, s)
+
+    # Fold common inflections
+    if len(s) > 5 and s.endswith("ing"):
+        s = s[:-3]
+    elif len(s) > 4 and s.endswith("ed"):
+        s = s[:-2]
+    elif len(s) > 4 and s.endswith("es"):
         s = s[:-2]
     elif len(s) > 3 and s.endswith("s"):
         s = s[:-1]
     return s
-
 def _prettify_base_snippet(text: str) -> str:
     """
     Minimal cleanup so output looks closer to rendered Reddit text:
@@ -407,7 +443,8 @@ def sample_base_windows_around_term(df: pd.DataFrame, term: str, k: int, window:
                 right = min(n_base, bR + window)
                 snippet_tokens = base_tokens[left:right]
                 snippet = _prettify_base_snippet(" ".join(snippet_tokens))
-                if snippet:
+                # keep only windows that (approximately) contain the query phrase
+                if snippet and _approx_term_in_text(snippet, term):
                     doc_candidates.append((snippet, len(snippet_tokens)))
         else:
             # ---- (B) Fallback: pipeline compose to locate term span ----
@@ -427,7 +464,8 @@ def sample_base_windows_around_term(df: pd.DataFrame, term: str, k: int, window:
                 right = min(n_base, bR_term + window)
                 snippet_tokens = base_tokens[left:right]
                 snippet = _prettify_base_snippet(" ".join(snippet_tokens))
-                if snippet:
+                # keep only windows that (approximately) contain the query phrase
+                if snippet and _approx_term_in_text(snippet, term):
                     doc_candidates.append((snippet, len(snippet_tokens)))
 
         # Deduplicate candidates by text, keep first occurrence (and its length)
@@ -465,13 +503,13 @@ if __name__ == "__main__":
     df = build_ngram_df("testing/ngram_evals_test_no_digits/4")
 
     # Save compact cache (doc_id + base_tokens + ngram_text)
-    cache_path = "cache/ngram_df_baseTokens_and_ngramText.parquet"
+    cache_path = "base_ngram_cache_with_details.parquet"
     save_ngram_df(df, cache_path, format="parquet")
 
-    # Load and sample
-    df2 = load_ngram_df(cache_path, format="parquet")
+    # # Load and sample
+    # df2 = load_ngram_df(cache_path, format="parquet")
 
-    TERM = "throatox"
-    print("N-gram windows:", sample_docs_containing(df2, TERM, 3, window=50))
-    print("Base windows (ranked by closeness):", sample_base_windows_around_term(df2, TERM, 3, window=50))
+    # TERM = "throatox"
+    # print("N-gram windows:", sample_docs_containing(df2, TERM, 3, window=50))
+    # print("Base windows (ranked by closeness):", sample_base_windows_around_term(df2, TERM, 3, window=50))
 
