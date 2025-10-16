@@ -124,57 +124,150 @@ def _iter_noburp_documents(
     finally:
         cursor.close()
 
-
-def _iter_noburp_documents_with_details(
+# ---------------- NEW: metadata-preserving iterator (for parquet building) ----------------
+def stream_noburp_with_meta(
     mongo_uri: str = "mongodb://localhost:27017/",
     batch_size: int = 5000,
     filter_users: list[str] | None = None,
     min_docs: int | None = None,
 ) -> Iterator[Dict[str, Any]]:
     """
-    Stream dicts containing text + created_utc + author from reddit.noburp_all where subreddit='noburp'.
+    Stream noburp documents WITH metadata fields needed for parquet building.
 
-    For each underlying MongoDB document, this yields one or more entries:
-      - If body exists: one entry for the body (and we do NOT also emit title/selftext for that doc,
-        mirroring the precedence/continue used in _iter_noburp_documents).
-      - Else, we may emit title and selftext entries (if present).
+    Yields dicts with:
+      - author
+      - created_utc
+      - title
+      - selftext
+      - body
+      - subreddit
+      - kind: 'comment' if body present; 'post' if title/selftext present
+
+    This leaves all existing behavior untouched; use this function from your parquet script.
     """
     logging.info("Connecting to MongoDB at %s", mongo_uri)
     coll = pymongo.MongoClient(mongo_uri)[DB_NAME][COLLECTION_NAME]
 
     query: Dict[str, Any] = {"subreddit": FILTER_SUBREDDIT}
-    query.update(_build_author_filter(coll, filter_users, min_docs))
+
+    if min_docs is not None:
+        pipeline: list[dict] = [
+            {"$match": {"subreddit": FILTER_SUBREDDIT}},
+            {"$group": {"_id": "$author", "post_count": {"$sum": 1}}},
+            {"$match": {"post_count": {"$gte": int(min_docs)}}},
+        ]
+        authors = [doc["_id"] for doc in coll.aggregate(pipeline, allowDiskUse=True)]
+        if not authors:
+            return
+        if filter_users:
+            authors = [a for a in authors if a in filter_users]
+            if not authors:
+                return
+        query["author"] = {"$in": authors}
+    elif filter_users:
+        query["author"] = {"$in": filter_users}
 
     projection = {
-        "body": 1,
+        "author": 1,
+        "created_utc": 1,
         "title": 1,
         "selftext": 1,
-        "created_utc": 1,
-        "author": 1,
+        "body": 1,
+        "subreddit": 1,
         "_id": 0,
     }
     cursor = coll.find(query, projection=projection, batch_size=batch_size, no_cursor_timeout=True)
 
     try:
         for doc in cursor:
-            created_utc = doc.get("created_utc", None)
-            author = doc.get("author", None)
-
             body = (doc.get("body") or "").strip()
             if body:
-                yield {"text": body, "created_utc": created_utc, "author": author}
-                continue  # body takes precedence, match original behavior
-
+                yield body
+                continue
             title = (doc.get("title") or "").strip()
             if title:
-                yield {"text": title, "created_utc": created_utc, "author": author}
-
+                yield title
             selftext = (doc.get("selftext") or "").strip()
             if selftext:
-                yield {"text": selftext, "created_utc": created_utc, "author": author}
+                yield selftext
     finally:
         cursor.close()
+# -----------------------------------------------------------------------------------------
 
+# ---------------- NEW: metadata-preserving iterator (for parquet building) ----------------
+def stream_noburp_with_meta(
+    mongo_uri: str = "mongodb://localhost:27017/",
+    batch_size: int = 5000,
+    filter_users: list[str] | None = None,
+    min_docs: int | None = None,
+) -> Iterator[Dict[str, Any]]:
+    """
+    Stream noburp documents WITH metadata fields needed for parquet building.
+
+    Yields dicts with:
+      - author
+      - created_utc
+      - title
+      - selftext
+      - body
+      - subreddit
+      - kind: 'comment' if body present; 'post' if title/selftext present
+
+    This leaves all existing behavior untouched; use this function from your parquet script.
+    """
+    logging.info("Connecting to MongoDB at %s", mongo_uri)
+    coll = pymongo.MongoClient(mongo_uri)[DB_NAME][COLLECTION_NAME]
+
+    query: Dict[str, Any] = {"subreddit": FILTER_SUBREDDIT}
+
+    if min_docs is not None:
+        pipeline: list[dict] = [
+            {"$match": {"subreddit": FILTER_SUBREDDIT}},
+            {"$group": {"_id": "$author", "post_count": {"$sum": 1}}},
+            {"$match": {"post_count": {"$gte": int(min_docs)}}},
+        ]
+        authors = [doc["_id"] for doc in coll.aggregate(pipeline, allowDiskUse=True)]
+        if not authors:
+            return
+        if filter_users:
+            authors = [a for a in authors if a in filter_users]
+            if not authors:
+                return
+        query["author"] = {"$in": authors}
+    elif filter_users:
+        query["author"] = {"$in": filter_users}
+
+    projection = {
+        "author": 1,
+        "created_utc": 1,
+        "title": 1,
+        "selftext": 1,
+        "body": 1,
+        "subreddit": 1,
+        "_id": 0,
+    }
+    cursor = coll.find(query, projection=projection, batch_size=batch_size, no_cursor_timeout=True)
+
+    try:
+        for doc in cursor:
+            title = (doc.get("title") or "").strip() if isinstance(doc.get("title"), str) else ""
+            selftext = (doc.get("selftext") or "").strip() if isinstance(doc.get("selftext"), str) else ""
+            body = (doc.get("body") or "").strip() if isinstance(doc.get("body"), str) else ""
+
+            kind = "comment" if body else ("post" if (title or selftext) else "unknown")
+
+            yield {
+                "author": doc.get("author"),
+                "created_utc": doc.get("created_utc"),
+                "title": title,
+                "selftext": selftext,
+                "body": body,
+                "subreddit": doc.get("subreddit"),
+                "kind": kind,
+            }
+    finally:
+        cursor.close()
+# -----------------------------------------------------------------------------------------
 
 def process_all_noburp(
     mongo_uri: str = "mongodb://localhost:27017/",
