@@ -40,12 +40,14 @@ from testing.adding_context import test_get_similar as setup_mod
 __all__ = [
     "load_cached_corpus",
     "query_base_windows",
-    "query_term_windows",               # backward-compat alias
+    "query_term_windows",
     "query_from_cache",
-    "query_base_windows_for_terms",     # multi-term
-    "query_from_cache_for_terms",       # multi-term + load
-    "windows_list_for_terms",           # convenience (list output)
-    "windows_list_from_cache_for_terms"
+    "query_base_windows_for_terms",
+    "query_from_cache_for_terms",
+    "windows_list_for_terms",
+    "windows_list_from_cache_for_terms",
+    "select_whole_docs_by_length",
+    "select_whole_docs_by_length_from_cache",
 ]
 
 
@@ -187,6 +189,78 @@ def windows_list_from_cache_for_terms(
     df = load_cached_corpus(cache_path, format=format)
     return windows_list_for_terms(df, terms, k, window, flatten=flatten)
 
+# --- paste this anywhere below the multi-term helpers (before CLI is fine) ---
+
+from typing import List  # already imported at top, keep if present
+
+def select_whole_docs_by_length(
+    df: pd.DataFrame,
+    term: str,
+    k: int,
+    target_len: int,
+) -> List[str]:
+    """
+    Return up to `k` full documents (as a single space-joined string of base tokens)
+    for which the processed n-gram token `term` appears, ranked by how close the
+    document length (number of base tokens) is to `target_len`.
+
+    Selection:
+      1) Filter to rows whose n-gram tokens contain `term`.
+      2) Compute base_len = len(base_tokens).
+      3) Rank by |base_len - target_len| ascending; tie-break by larger base_len.
+      4) Return [" ".join(base_tokens), ...] up to k.
+    """
+    if k <= 0:
+        return []
+    if target_len < 1:
+        raise ValueError("target_len must be >= 1")
+
+    work = df.copy(deep=False)
+
+    # Ensure ngram_token_set exists for fast membership checks
+    if "ngram_token_set" not in work.columns:
+        if "ngram_tokens" in work.columns:
+            work["ngram_token_set"] = work["ngram_tokens"].apply(set)
+        elif "ngram_text" in work.columns:
+            work["ngram_tokens"] = work["ngram_text"].astype(str).str.split()
+            work["ngram_token_set"] = work["ngram_tokens"].apply(set)
+        else:
+            raise ValueError("Need 'ngram_tokens' or 'ngram_text' in DataFrame.")
+
+    if "base_tokens" not in work.columns:
+        raise ValueError("Need 'base_tokens' in DataFrame.")
+
+    # Filter by presence of term in n-gram tokens
+    hits = work[work["ngram_token_set"].apply(lambda s: term in s)].copy()
+    if hits.empty:
+        return []
+
+    # Compute base_len if missing
+    if "base_len" not in hits.columns:
+        hits["base_len"] = hits["base_tokens"].apply(len)
+
+    # Score and rank
+    hits["score"] = (hits["base_len"] - int(target_len)).abs()
+    hits = hits.sort_values(["score", "base_len"], ascending=[True, False]).head(k)
+
+    # Return full base docs as strings
+    return [" ".join(toks) for toks in hits["base_tokens"].tolist()]
+
+
+def select_whole_docs_by_length_from_cache(
+    cache_path: str,
+    term: str,
+    k: int,
+    target_len: int,
+    *,
+    format: str = "parquet",
+) -> List[str]:
+    """
+    Convenience wrapper: load cache, then call select_whole_docs_by_length.
+    """
+    df = load_cached_corpus(cache_path, format=format)
+    return select_whole_docs_by_length(df, term, k, target_len)
+
 
 # ---------------- CLI ----------------
 
@@ -269,4 +343,10 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    
+    df = load_cached_corpus("base_ngram_cache_with_details.parquet", format="parquet")
+    docs = select_whole_docs_by_length(df, term="choke_sensation", k=2, target_len=88)
+    for i, d in enumerate(docs, 1):
+        print(d)
+
+    
