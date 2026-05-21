@@ -146,6 +146,7 @@ def sample_docs_containing(df: pd.DataFrame, term: str, k: int, window: int) -> 
 if __name__ == "__main__":
     # Build fresh
     df = build_ngram_df("testing/ngram_evals_test_no_digits/4")
+<<<<<<< Updated upstream
     # Save ONLY ngram_text
     cache_path = "cache/ngram_df_only_text.parquet"
     save_ngram_df(df, cache_path, format="parquet")
@@ -156,6 +157,11 @@ if __name__ == "__main__":
     sys.exit(0)
 
     # --- Below here unchanged logic that assumes count_docs_containing / sampling still works ---
+=======
+    print(sample_docs_containing(df, "throatox", 3))
+    sys.exit(0)
+    # Load expansions and derive the seed vocabulary
+>>>>>>> Stashed changes
     all_expansions = load_json('testing/ngram_evals_test_no_digits/4/topk_25_min_cos_0.4_cbow.json')
     global_seed_vocab: List[str] = (
         sorted([str(s) for s, v in all_expansions.items() if isinstance(v, list) and v])
